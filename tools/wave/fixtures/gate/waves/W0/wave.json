@@ -1,0 +1,3 @@
+{"wave": "W0", "date": "2026-10-05", "buckets": [20], "targets": [
+ {"alias": "slus", "module": "slus/game_80001000", "name": "fa", "vram": "80001000", "insns": 4, "bucket": "A", "rank": 1, "reach": 0},
+ {"alias": "slus", "module": "slus/game_80001000", "name": "fb", "vram": "80001010", "insns": 4, "bucket": "A", "rank": 2, "reach": 0}]}

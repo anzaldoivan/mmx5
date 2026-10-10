@@ -1,0 +1,23 @@
+/* Shared body (DK-5), from the banked draft of func_800FC350_ovl06 by tools/wave/gate.py rescan. */
+#include "types.h"
+
+void DEDUP_NAME(u8* a0, u8* a1) {
+    if (*(signed char*)(a1 + 0x9A) > 0) {
+        *(s16*)(a0 + 0x54) = 10;
+        *(s16*)(a0 + 0x56) = 8;
+        *(s16*)(a0 + 0x58) = (5 - *(signed char*)(a0 + 2)) * 2;
+        *(s32*)(a0 + 0x8) = *(s32*)(a1 + 0x8);
+        *(s32*)(a0 + 0xC) = *(s32*)(a1 + 0xC);
+        *(u8*)(a0 + 5) = 1;
+        *(u8*)(a0 + 6) = 0;
+    } else if (*(s16*)(a0 + 0x56) != 0) {
+        (*(s16*)(a0 + 0x56))--;
+        if (*(s16*)(a0 + 0x56) & 1) {
+            u8* p = *(u8**)(a0 + 0x5C);
+            *(s32*)(a0 + 0x8) = *(s32*)(p + 0x18);
+            *(s32*)(a0 + 0xC) = *(s32*)(p + 0x1C);
+        }
+    } else {
+        (*(u8*)(a0 + 6))++;
+    }
+}

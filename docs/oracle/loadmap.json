@@ -1,0 +1,582 @@
+{
+ "exe": {
+  "b_addr": "00000000",
+  "b_size": 0,
+  "d_addr": "00000000",
+  "d_size": 0,
+  "gp0": "00000000",
+  "pc0": "8005894C",
+  "s_addr": "801FFFF0",
+  "s_size": 0,
+  "t_addr": "80010000",
+  "t_size": 532480
+ },
+ "overlays": [
+  {
+   "bin_offset": 2048,
+   "dest": "800EE970",
+   "dest_source": "8006FD50",
+   "dest_via": "*80010000",
+   "index": 0,
+   "kind": "code",
+   "size": 52524,
+   "source": "800E6188"
+  },
+  {
+   "bin_offset": 55296,
+   "dest": "800EE970",
+   "dest_source": "8006FD52",
+   "dest_via": "*80010000",
+   "index": 1,
+   "kind": "code",
+   "size": 62209,
+   "source": "800E6190"
+  },
+  {
+   "bin_offset": 118784,
+   "dest": "800EE970",
+   "dest_source": "8006FD54",
+   "dest_via": "*80010000",
+   "index": 2,
+   "kind": "code",
+   "size": 24520,
+   "source": "800E6198"
+  },
+  {
+   "bin_offset": 143360,
+   "dest": "800EE970",
+   "dest_source": "8006FD55",
+   "dest_via": "*80010000",
+   "index": 3,
+   "kind": "code",
+   "size": 47332,
+   "source": "800E61A0"
+  },
+  {
+   "bin_offset": 192512,
+   "dest": "800EE970",
+   "dest_source": "8006FD56",
+   "dest_via": "*80010000",
+   "index": 4,
+   "kind": "code",
+   "size": 83758,
+   "source": "800E61A8"
+  },
+  {
+   "bin_offset": 276480,
+   "dest": "800EE970",
+   "dest_source": "8006FD58",
+   "dest_via": "*80010000",
+   "index": 5,
+   "kind": "code",
+   "size": 28662,
+   "source": "800E61B0"
+  },
+  {
+   "bin_offset": 305152,
+   "dest": "800EE970",
+   "dest_source": "8006FD59",
+   "dest_via": "*80010000",
+   "index": 6,
+   "kind": "code",
+   "size": 69600,
+   "source": "800E61B8"
+  },
+  {
+   "bin_offset": 374784,
+   "dest": "800EE970",
+   "dest_source": "8006FD5A",
+   "dest_via": "*80010000",
+   "index": 7,
+   "kind": "code",
+   "size": 79542,
+   "source": "800E61C0"
+  },
+  {
+   "bin_offset": 454656,
+   "dest": "800EE970",
+   "dest_source": "8006FD5C",
+   "dest_via": "*80010000",
+   "index": 8,
+   "kind": "code",
+   "size": 22176,
+   "source": "800E61C8"
+  },
+  {
+   "bin_offset": 477184,
+   "dest": "800EE970",
+   "dest_source": "8006FD5D",
+   "dest_via": "*80010000",
+   "index": 9,
+   "kind": "code",
+   "size": 52498,
+   "source": "800E61D0"
+  },
+  {
+   "bin_offset": 530432,
+   "dest": "800EE970",
+   "dest_source": "8006FD5E",
+   "dest_via": "*80010000",
+   "index": 10,
+   "kind": "code",
+   "size": 55386,
+   "source": "800E61D8"
+  },
+  {
+   "bin_offset": 587776,
+   "dest": "800EE970",
+   "dest_source": "8006FD60",
+   "dest_via": "*80010000",
+   "index": 11,
+   "kind": "code",
+   "size": 46839,
+   "source": "800E61E0"
+  },
+  {
+   "bin_offset": 634880,
+   "dest": "800EE970",
+   "dest_source": "8006FD62",
+   "dest_via": "*80010000",
+   "index": 12,
+   "kind": "code",
+   "size": 14226,
+   "source": "800E61E8"
+  },
+  {
+   "bin_offset": 649216,
+   "dest": "800EE970",
+   "dest_source": "8006FD63",
+   "dest_via": "*80010000",
+   "index": 13,
+   "kind": "data",
+   "size": 1344,
+   "source": "800E61F0"
+  },
+  {
+   "bin_offset": 651264,
+   "dest": "800EE970",
+   "dest_source": "8006FD64",
+   "dest_via": "*80010000",
+   "index": 14,
+   "kind": "code",
+   "size": 14134,
+   "source": "800E61F8"
+  },
+  {
+   "bin_offset": 665600,
+   "dest": "800EE970",
+   "dest_source": "8006FD65",
+   "dest_via": "*80010000",
+   "index": 15,
+   "kind": "data",
+   "size": 1344,
+   "source": "800E6200"
+  },
+  {
+   "bin_offset": 667648,
+   "dest": "800EE970",
+   "dest_source": "8006FD66",
+   "dest_via": "*80010000",
+   "index": 16,
+   "kind": "code",
+   "size": 15488,
+   "source": "800E6208"
+  },
+  {
+   "bin_offset": 684032,
+   "dest": "800EE970",
+   "dest_source": "8006FD67",
+   "dest_via": "*80010000",
+   "index": 17,
+   "kind": "data",
+   "size": 1344,
+   "source": "800E6210"
+  },
+  {
+   "bin_offset": 686080,
+   "dest": "800EE970",
+   "dest_source": "8006FD68",
+   "dest_via": "*80010000",
+   "index": 18,
+   "kind": "code",
+   "size": 38792,
+   "source": "800E6218"
+  },
+  {
+   "bin_offset": 724992,
+   "dest": "800EE970",
+   "dest_source": "8006FD69",
+   "dest_via": "*80010000",
+   "index": 19,
+   "kind": "data",
+   "size": 1344,
+   "source": "800E6220"
+  },
+  {
+   "bin_offset": 727040,
+   "dest": "800EE970",
+   "dest_source": "8006FD6A",
+   "dest_via": "*80010000",
+   "index": 20,
+   "kind": "code",
+   "size": 33932,
+   "source": "800E6228"
+  },
+  {
+   "bin_offset": 761856,
+   "dest": "800EE970",
+   "dest_source": "8006FD6B",
+   "dest_via": "*80010000",
+   "index": 21,
+   "kind": "code",
+   "size": 6416,
+   "source": "800E6230"
+  },
+  {
+   "bin_offset": 770048,
+   "dest": "800EE970",
+   "dest_source": "8006FD6C",
+   "dest_via": "*80010000",
+   "index": 22,
+   "kind": "code",
+   "size": 2120,
+   "source": "800E6238"
+  },
+  {
+   "bin_offset": 774144,
+   "dest": "800EE970",
+   "dest_source": "8006FD6D",
+   "dest_via": "*80010000",
+   "index": 23,
+   "kind": "code",
+   "size": 3884,
+   "source": "800E6240"
+  },
+  {
+   "bin_offset": 778240,
+   "dest": "800EE970",
+   "dest_source": "8006FD6E",
+   "dest_via": "*80010000",
+   "index": 24,
+   "kind": "code",
+   "size": 30232,
+   "source": "800E6248"
+  },
+  {
+   "bin_offset": 808960,
+   "dest": "800EE970",
+   "dest_source": "8006FD6F",
+   "dest_via": "*80010000",
+   "index": 25,
+   "kind": "code",
+   "size": 15237,
+   "source": "800E6250"
+  },
+  {
+   "bin_offset": 825344,
+   "dest": "800EE970",
+   "dest_source": "8006FD70",
+   "dest_via": "*80010000",
+   "index": 26,
+   "kind": "code",
+   "size": 48404,
+   "source": "800E6258"
+  },
+  {
+   "bin_offset": 874496,
+   "dest": "800EE970",
+   "dest_source": "8006FD72",
+   "dest_via": "*80010000",
+   "index": 27,
+   "kind": "code",
+   "size": 63528,
+   "source": "800E6260"
+  },
+  {
+   "bin_offset": 940032,
+   "dest": "800EE970",
+   "dest_source": "8006FD74",
+   "dest_via": "*80010000",
+   "index": 28,
+   "kind": "code",
+   "size": 65773,
+   "source": "800E6268"
+  },
+  {
+   "bin_offset": 1007616,
+   "dest": "800EE970",
+   "dest_source": "8006FD7C",
+   "dest_via": "*80010000",
+   "index": 29,
+   "kind": "code",
+   "size": 48354,
+   "source": "800E6270"
+  },
+  {
+   "bin_offset": 1056768,
+   "dest": "800FA000",
+   "dest_source": "8006FC5C",
+   "index": 30,
+   "kind": "code",
+   "size": 15960,
+   "source": "800E6278"
+  },
+  {
+   "bin_offset": 1073152,
+   "dest": "800FA000",
+   "dest_source": "8006FC5D",
+   "index": 31,
+   "kind": "code",
+   "size": 23620,
+   "source": "800E6280"
+  },
+  {
+   "bin_offset": 1097728,
+   "dest": "800FA000",
+   "dest_source": "8006FC5E",
+   "index": 32,
+   "kind": "code",
+   "size": 20536,
+   "source": "800E6288"
+  },
+  {
+   "bin_offset": 1120256,
+   "dest": "800FA000",
+   "dest_source": "8006FC5F",
+   "index": 33,
+   "kind": "code",
+   "size": 20568,
+   "source": "800E6290"
+  },
+  {
+   "bin_offset": 1142784,
+   "dest": "800FA000",
+   "dest_source": "8006FC60",
+   "index": 34,
+   "kind": "code",
+   "size": 24946,
+   "source": "800E6298"
+  },
+  {
+   "bin_offset": 1169408,
+   "dest": "800FA000",
+   "dest_source": "8006FC61",
+   "index": 35,
+   "kind": "code",
+   "size": 23738,
+   "source": "800E62A0"
+  },
+  {
+   "bin_offset": 1193984,
+   "dest": "800FA000",
+   "dest_source": "8006FC62",
+   "index": 36,
+   "kind": "code",
+   "size": 20130,
+   "source": "800E62A8"
+  },
+  {
+   "bin_offset": 1214464,
+   "dest": "800FA000",
+   "dest_source": "8006FC63",
+   "index": 37,
+   "kind": "code",
+   "size": 15515,
+   "source": "800E62B0"
+  },
+  {
+   "bin_offset": 1230848,
+   "dest": null,
+   "index": 38,
+   "kind": "code",
+   "size": 14800,
+   "source": "800E62B8"
+  },
+  {
+   "bin_offset": 1247232,
+   "dest": null,
+   "index": 39,
+   "kind": "code",
+   "size": 19824,
+   "source": "800E62C0"
+  },
+  {
+   "bin_offset": 1267712,
+   "dest": "800FA000",
+   "dest_source": "8006FD80",
+   "index": 40,
+   "kind": "code",
+   "size": 1676,
+   "source": "800E62C8"
+  },
+  {
+   "bin_offset": 1269760,
+   "dest": "800FA000",
+   "dest_source": "8006FD81",
+   "index": 41,
+   "kind": "code",
+   "size": 6308,
+   "source": "800E62D0"
+  },
+  {
+   "bin_offset": 1277952,
+   "dest": "800FA000",
+   "dest_source": "8006FD82",
+   "index": 42,
+   "kind": "code",
+   "size": 1088,
+   "source": "800E62D8"
+  },
+  {
+   "bin_offset": 1280000,
+   "dest": "800FA000",
+   "dest_source": "8006FD83",
+   "index": 43,
+   "kind": "code",
+   "size": 936,
+   "source": "800E62E0"
+  },
+  {
+   "bin_offset": 1282048,
+   "dest": "800FA000",
+   "dest_source": "8006FD84",
+   "index": 44,
+   "kind": "code",
+   "size": 2068,
+   "source": "800E62E8"
+  },
+  {
+   "bin_offset": 1286144,
+   "dest": "800FA000",
+   "dest_source": "8006FD85",
+   "index": 45,
+   "kind": "code",
+   "size": 1856,
+   "source": "800E62F0"
+  },
+  {
+   "bin_offset": 1288192,
+   "dest": "800FA000",
+   "dest_source": "8006FD86",
+   "index": 46,
+   "kind": "code",
+   "size": 3124,
+   "source": "800E62F8"
+  },
+  {
+   "bin_offset": 1292288,
+   "dest": "800FA000",
+   "dest_source": "8006FD87",
+   "index": 47,
+   "kind": "code",
+   "size": 1456,
+   "source": "800E6300"
+  },
+  {
+   "bin_offset": 1294336,
+   "dest": "800FA000",
+   "dest_source": "8006FD88",
+   "index": 48,
+   "kind": "code",
+   "size": 1328,
+   "source": "800E6308"
+  },
+  {
+   "bin_offset": 1296384,
+   "dest": "800FA000",
+   "dest_source": "8006FD89",
+   "index": 49,
+   "kind": "code",
+   "size": 8648,
+   "source": "800E6310"
+  },
+  {
+   "bin_offset": 1306624,
+   "dest": "800FA000",
+   "dest_source": "8006FD8A",
+   "index": 50,
+   "kind": "code",
+   "size": 7308,
+   "source": "800E6318"
+  },
+  {
+   "bin_offset": 1314816,
+   "dest": "800FA000",
+   "dest_source": "8006FD8B",
+   "index": 51,
+   "kind": "code",
+   "size": 1036,
+   "source": "800E6320"
+  },
+  {
+   "bin_offset": 1316864,
+   "dest": "800FA000",
+   "dest_source": "8006FD8C",
+   "index": 52,
+   "kind": "code",
+   "size": 6504,
+   "source": "800E6328"
+  },
+  {
+   "bin_offset": 1325056,
+   "dest": "800FA000",
+   "dest_source": "8006FD8D",
+   "index": 53,
+   "kind": "code",
+   "size": 5536,
+   "source": "800E6330"
+  },
+  {
+   "bin_offset": 1331200,
+   "dest": "800FA000",
+   "dest_source": "8006FD8E",
+   "index": 54,
+   "kind": "code",
+   "size": 5464,
+   "source": "800E6338"
+  },
+  {
+   "bin_offset": 1337344,
+   "dest": "800FA000",
+   "dest_source": "8006FD8F",
+   "index": 55,
+   "kind": "code",
+   "size": 12992,
+   "source": "800E6340"
+  },
+  {
+   "bin_offset": 1351680,
+   "dest": "800FA000",
+   "dest_source": "8006FD90",
+   "index": 56,
+   "kind": "code",
+   "size": 16128,
+   "source": "800E6348"
+  },
+  {
+   "bin_offset": 1368064,
+   "dest": "800FA000",
+   "dest_source": "8006FD91",
+   "index": 57,
+   "kind": "code",
+   "size": 6120,
+   "source": "800E6350"
+  },
+  {
+   "bin_offset": 1374208,
+   "dest": "800FA000",
+   "dest_source": "8006FD92",
+   "index": 58,
+   "kind": "code",
+   "size": 8768,
+   "source": "800E6358"
+  }
+ ],
+ "table": {
+  "addr": "800E6188",
+  "bin_sha1": "3ab6c9cf7532d9702699b655d761c0dc0c2a7fab",
+  "bin_size": 1384448,
+  "count": 59,
+  "terminator": 59
+ }
+}

@@ -1,0 +1,2 @@
+# ---- psxdecomp: search refs/ though git ignores it ----
+!/refs/

@@ -1,0 +1,138 @@
+{
+ "_comment": "synthetic words encoded by us (G12): dup pair differs in jal target + lui/LO16 imm; family pair in registers; near pair in one opcode (andi vs ori); fam pair padded with 11 nops to 16 words (FAMILY_MIN_INSNS); sub pair = the 5-word fam skeleton, below the floor -> unique-tail",
+ "functions": [
+  {
+   "alias": "fx",
+   "name": "dup_a",
+   "vram": "80100000",
+   "kind": "game",
+   "words": [
+    "27BDFFE8",
+    "AFBF0010",
+    "0C008000",
+    "00000000",
+    "3C028003",
+    "8C421234",
+    "8FBF0010",
+    "03E00008",
+    "27BD0018"
+   ]
+  },
+  {
+   "alias": "fx",
+   "name": "dup_b",
+   "vram": "80100100",
+   "kind": "libobj",
+   "words": [
+    "27BDFFE8",
+    "AFBF0010",
+    "0C008040",
+    "00000000",
+    "3C028004",
+    "8C420010",
+    "8FBF0010",
+    "03E00008",
+    "27BD0018"
+   ]
+  },
+  {
+   "alias": "fx",
+   "name": "fam_a",
+   "vram": "80100200",
+   "status": "c",
+   "kind": "game",
+   "words": [
+    "00851021",
+    "00021880",
+    "24620005",
+    "00000000",
+    "00000000",
+    "00000000",
+    "00000000",
+    "00000000",
+    "00000000",
+    "00000000",
+    "00000000",
+    "00000000",
+    "00000000",
+    "00000000",
+    "03E00008",
+    "00000000"
+   ]
+  },
+  {
+   "alias": "fx",
+   "name": "fam_b",
+   "vram": "80100300",
+   "kind": "game",
+   "words": [
+    "00C71821",
+    "00032080",
+    "24830005",
+    "00000000",
+    "00000000",
+    "00000000",
+    "00000000",
+    "00000000",
+    "00000000",
+    "00000000",
+    "00000000",
+    "00000000",
+    "00000000",
+    "00000000",
+    "03E00008",
+    "00000000"
+   ]
+  },
+  {
+   "alias": "fx",
+   "name": "near_a",
+   "vram": "80100400",
+   "kind": "game",
+   "words": [
+    "00851021",
+    "304200FF",
+    "03E00008",
+    "00000000"
+   ]
+  },
+  {
+   "alias": "fx",
+   "name": "near_b",
+   "vram": "80100500",
+   "kind": "libgap",
+   "words": [
+    "00851021",
+    "344200FF",
+    "03E00008",
+    "00000000"
+   ]
+  },
+  {
+   "alias": "fx",
+   "name": "sub_a",
+   "vram": "80100600",
+   "kind": "game",
+   "words": [
+    "00851021",
+    "00021880",
+    "24620005",
+    "03E00008",
+    "00000000"
+   ]
+  },
+  {
+   "alias": "fx",
+   "name": "sub_b",
+   "vram": "80100700",
+   "kind": "game",
+   "words": [
+    "00C71821",
+    "00032080",
+    "24830005",
+    "03E00008",
+    "00000000"
+   ]
+  }
+ ]
+}

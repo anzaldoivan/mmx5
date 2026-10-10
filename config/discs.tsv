@@ -1,0 +1,4 @@
+# config/discs.tsv -- the README disc table's input (psxdecomp publish). source dump: the track hash equals the one
+# MegaManX5Recomp records for Redump #7437 (docs/prior-art.md, L1); not yet checked against Redump's own DAT.
+disc	serial	executable	track	source
+USA	SLUS-01334	SLUS_013.34		dump

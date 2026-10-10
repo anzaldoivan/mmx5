@@ -1,0 +1,5 @@
+{"alias": "slus", "name": "fa", "vram": "80001000", "status": "c"}
+{"alias": "slus", "name": "fb", "vram": "80001010", "status": "asm"}
+{"alias": "slus", "name": "fc", "vram": "80001020", "status": "asm"}
+{"alias": "slus", "name": "fd", "vram": "80001030", "status": "c"}
+{"alias": "slus", "name": "fe", "vram": "80001040", "status": "asm"}

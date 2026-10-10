@@ -1,0 +1,29 @@
+# synthetic fixture for tools/census/inventory.py --selftest (our own words; no game bytes)
+name: FX
+options:
+  basename: FX
+  asm_path: asm/fx
+  build_path: build/fx
+
+segments:
+  - name: toc
+    type: bin
+    start: 0x0
+  - name: ovl00
+    type: code
+    start: 0x100
+    vram: 0x80100000
+    subsegments:
+      - [0x100, asm, ovl00_80100000]
+      - [0x114, c, func_80100014_ovl00]
+      - [0x11C, asm, ovl00_8010001C]
+      - [0x128, bin]
+  - {name: ovl01, type: bin, start: 0x12A}
+  - name: ovl02
+    type: code
+    start: 0x130
+    vram: 0x80100000
+    subsegments:
+      - [0x130, asm, ovl02_80100000]
+  - {name: ovl03, type: bin, start: 0x138}
+  - [0x140]

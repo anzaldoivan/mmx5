@@ -1,0 +1,732 @@
+# splat config for the main exe (alias slus). All-asm split; `make split build BINARY=slus` must hash-match
+# config/check.slus.sha. Symbols: config/symbols.slus.txt (tools/build/seed_symbols.py). Outputs are ignored.
+name: SLUS_013.34
+sha1: 476e55ff4ac698a1ee0654c0f08804a5837bd2f3
+options:
+  basename: SLUS_013.34
+  target_path: extracted/retail/SLUS_013.34
+  base_path: ..
+  platform: psx
+  compiler: PSYQ
+
+  asm_path: asm/slus
+  src_path: src/slus
+  build_path: build/slus
+  ld_script_path: build/slus/SLUS_013.34.ld
+  elf_path: build/slus/SLUS_013.34.elf
+  generated_asm_macros_directory: asm/slus/include
+
+  find_file_boundaries: False
+  gp_value: 0x80091C30  # $gp scan (docs/ops/toolchain.md ## $gp)
+
+  o_as_suffix: True
+  use_legacy_include_asm: False
+  section_order: [".rodata", ".text", ".data", ".bss"]
+
+  symbol_addrs_path:
+    - config/symbols.slus.txt
+  undefined_funcs_auto_path: build/slus/undefined_funcs_auto.txt
+  undefined_syms_auto_path: build/slus/undefined_syms_auto.txt
+
+  subalign: 2
+  ld_align_section_vram_end: False  # retail .text starts at 0x80011DC8 (not 16-aligned)
+  ld_align_segment_vram_end: False
+  string_encoding: ASCII
+  data_string_encoding: ASCII
+  rodata_string_guesser_level: 2
+  data_string_guesser_level: 2
+
+segments:
+  - name: header
+    type: header
+    start: 0x0
+
+  - name: main
+    type: code
+    start: 0x800
+    vram: 0x80010000
+    subsegments:
+      - [0x800, rodata, 800]
+      - [0x860, .rodata, func_80019D24]  # carve
+      - [0x888, .rodata, func_8001A30C]  # carve
+      - [0x890, .rodata, func_8001B378]  # carve was: - [0x890, rodata, 890]  # carve
+      - [0x8A0, rodata, 8A0]  # carve
+      - [0x25C8, asm, game_80011DC8]  # text starts at main 0x80011DC8; 0x25BC-0x25C8 is rodata
+      - [0x3588, c, func_80012D88]  # T5 probes (tools/probe/probes.toml)
+      - [0x360C, asm, game_80012E0C]
+      - [0x37D4, c, func_80012FD4]  # carve
+      - [0x37DC, c, func_80012FDC]  # carve was: - [0x37DC, asm, game_80012FDC]  # carve
+      - [0x37E4, asm, game_80012FE4]  # carve
+      - [0x3AF8, c, func_800132F8]
+      - [0x3B48, asm, game_80013348]
+      - [0x3B88, asm, game_80013388]
+      - [0x6558, c, func_80015D58]  # carve
+      - [0x6560, asm, game_80015D60]  # carve
+      - [0xA524, c, func_80019D24]  # carve
+      - [0xA5F0, asm, game_80019DF0]  # carve
+      - [0xA7D0, c, func_80019FD0]  # carve
+      - [0xA828, asm, game_8001A028]  # carve
+      - [0xAB0C, c, func_8001A30C]  # carve
+      - [0xAE28, asm, game_8001A628]  # carve
+      - [0xBB78, c, func_8001B378]  # carve
+      - [0xBDB8, asm, game_8001B5B8]  # carve
+      - [0xEE68, c, func_8001E668]  # carve
+      - [0xEEAC, asm, game_8001E6AC]  # carve
+      - [0xFB14, c, func_8001F314]  # carve
+      - [0xFB78, asm, game_8001F378]  # carve
+      - [0x118B8, c, func_800210B8]  # carve
+      - [0x118D8, asm, game_800210D8]  # carve
+      - [0x11B18, c, func_80021318]  # carve
+      - [0x11C34, asm, game_80021434]  # carve
+      - [0x12028, c, func_80021828]  # carve
+      - [0x1207C, asm, game_8002187C]  # carve
+      - [0x120E0, c, func_800218E0]  # carve
+      - [0x1221C, asm, game_80021A1C]  # carve
+      - [0x137F0, c, func_80022FF0]  # carve
+      - [0x13858, c, func_80023058]  # carve
+      - [0x13908, c, func_80023108]  # carve was: - [0x13908, asm, game_80023108]  # carve
+      - [0x139B4, asm, game_800231B4]  # carve
+      - [0x13B20, c, func_80023320]  # carve
+      - [0x13B68, asm, game_80023368]  # carve
+      - [0x14054, c, func_80023854]  # carve
+      - [0x1405C, asm, game_8002385C]  # carve
+      - [0x17ADC, c, func_800272DC]  # carve
+      - [0x17AFC, asm, game_800272FC]  # carve
+      - [0x17C74, c, func_80027474]
+      - [0x17D14, asm, game_80027514]
+      - [0x19C18, c, func_80029418]  # carve
+      - [0x19D28, asm, game_80029528]  # carve
+      - [0x19E6C, c, func_8002966C]  # carve
+      - [0x19F9C, c, func_8002979C]  # carve was: - [0x19F9C, asm, game_8002979C]  # carve
+      - [0x1A0CC, asm, game_800298CC]  # carve
+      - [0x1A2E0, c, func_80029AE0]  # carve
+      - [0x1A418, asm, game_80029C18]  # carve
+      - [0x1A678, c, func_80029E78]  # carve
+      - [0x1A770, c, func_80029F70]  # carve
+      - [0x1A880, asm, game_8002A080]  # carve
+      - [0x1B13C, c, func_8002A93C]  # carve
+      - [0x1B144, asm, game_8002A944]  # carve
+      - [0x1B318, c, func_8002AB18]  # carve
+      - [0x1B320, asm, game_8002AB20]  # carve
+      - [0x1D408, c, func_8002CC08]  # carve
+      - [0x1D514, c, func_8002CD14]  # carve was: - [0x1D514, asm, game_8002CD14]  # carve
+      - [0x1D620, asm, game_8002CE20]  # carve
+      - [0x1D8E4, c, func_8002D0E4]  # carve
+      - [0x1D944, c, func_8002D144]  # carve was: - [0x1D944, asm, game_8002D144]  # carve
+      - [0x1D9A4, asm, game_8002D1A4]  # carve
+      - [0x1DA7C, c, func_8002D27C]  # carve
+      - [0x1DADC, c, func_8002D2DC]  # carve was: - [0x1DADC, asm, game_8002D2DC]  # carve
+      - [0x1DB3C, c, func_8002D33C]  # carve was: - [0x1DB3C, asm, game_8002D33C]  # carve
+      - [0x1DC3C, c, func_8002D43C]  # carve was: - [0x1DC3C, asm, game_8002D43C]  # carve
+      - [0x1DD3C, c, func_8002D53C]  # carve was: - [0x1DD3C, asm, game_8002D53C]  # carve
+      - [0x1DD9C, asm, game_8002D59C]  # carve
+      - [0x1DE9C, c, func_8002D69C]  # carve
+      - [0x1DEFC, asm, game_8002D6FC]  # carve
+      - [0x20DEC, c, func_800305EC]  # carve
+      - [0x20EE0, asm, game_800306E0]  # carve
+      - [0x21020, c, func_80030820]  # carve
+      - [0x21118, c, func_80030918]  # carve was: - [0x21118, asm, game_80030918]  # carve
+      - [0x2120C, c, func_80030A0C]  # carve
+      - [0x212E4, asm, game_80030AE4]  # carve
+      - [0x26790, c, func_80035F90]  # carve
+      - [0x26864, c, func_80036064]  # carve was: - [0x26864, asm, game_80036064]  # carve
+      - [0x26954, c, func_80036154]  # carve
+      - [0x26A24, c, func_80036224]  # carve was: - [0x26A24, asm, game_80036224]  # carve
+      - [0x26AE8, asm, game_800362E8]  # carve
+      - [0x26BB4, c, func_800363B4]  # carve
+      - [0x26C88, asm, game_80036488]  # carve
+      - [0x271F4, c, func_800369F4]  # carve
+      - [0x27254, asm, game_80036A54]  # carve
+      - [0x28088, c, func_80037888]  # carve
+      - [0x280C8, asm, game_800378C8]  # carve
+      - [0x29D2C, c, func_8003952C]  # carve
+      - [0x29D88, asm, game_80039588]  # carve
+      - [0x2AB04, c, func_8003A304]  # carve
+      - [0x2AB0C, asm, game_8003A30C]  # carve
+      - [0x2D500, c, func_8003CD00]  # carve
+      - [0x2D508, asm, game_8003CD08]  # carve
+      - [0x2F728, c, func_8003EF28]  # carve
+      - [0x2F7E0, c, func_8003EFE0]  # carve was: - [0x2F7E0, asm, game_8003EFE0]  # carve
+      - [0x2F894, c, func_8003F094]  # carve
+      - [0x2F954, asm, game_8003F154]  # carve
+      - [0x2FA94, c, func_8003F294]  # carve
+      - [0x2FAD8, asm, game_8003F2D8]  # carve
+      - [0x2FC14, c, func_8003F414]  # carve
+      - [0x2FCC4, asm, game_8003F4C4]  # carve
+      - [0x30040, c, func_8003F840]  # carve
+      - [0x30048, asm, game_8003F848]  # carve
+      - [0x31744, c, func_80040F44]  # carve
+      - [0x31764, c, func_80040F64]  # carve was: - [0x31764, asm, game_80040F64]  # carve
+      - [0x31784, asm, game_80040F84]  # carve
+      - [0x3407C, c, func_8004387C]  # carve
+      - [0x34104, asm, game_80043904]  # carve
+      - [0x34280, c, func_80043A80]  # carve
+      - [0x34308, asm, game_80043B08]  # carve
+      - [0x34EA0, c, func_800446A0]  # carve
+      - [0x34EC0, asm, game_800446C0]  # carve
+      - [0x36B84, c, func_80046384]  # carve
+      - [0x36BA4, asm, game_800463A4]  # carve
+      - [0x36FC8, c, func_800467C8]  # carve
+      - [0x37058, c, func_80046858]  # carve was: - [0x37058, asm, game_80046858]  # carve
+      - [0x37100, asm, game_80046900]  # carve
+      - [0x3726C, c, func_80046A6C]  # carve
+      - [0x372A8, asm, game_80046AA8]  # carve
+      - [0x38394, c, func_80047B94]  # carve
+      - [0x383D0, asm, game_80047BD0]  # carve
+      - [0x38AAC, c, func_800482AC]  # carve
+      - [0x38B4C, c, func_8004834C]  # carve was: - [0x38B4C, asm, game_8004834C]  # carve
+      - [0x38BD8, asm, game_800483D8]  # carve
+      - [0x38C48, c, func_80048448]  # carve
+      - [0x38C9C, asm, game_8004849C]  # carve
+      - [0x38CF0, c, func_800484F0]  # carve
+      - [0x38D44, asm, game_80048544]  # carve
+      - [0x38FF8, c, func_800487F8]  # carve
+      - [0x392E0, asm, game_80048AE0]  # carve
+      - [0x39B64, c, func_80049364]  # carve
+      - [0x39BF0, asm, game_800493F0]  # carve
+      - [0x39F8C, c, func_8004978C]  # carve
+      - [0x39FC8, asm, game_800497C8]  # carve
+      - [0x3A76C, c, func_80049F6C]  # carve
+      - [0x3A774, c, func_80049F74]  # carve was: - [0x3A774, asm, game_80049F74]  # carve
+      - [0x3A7CC, asm, game_80049FCC]  # carve
+      - [0x3AB64, c, func_8004A364]  # carve
+      - [0x3ABF4, c, func_8004A3F4]  # carve was: - [0x3ABF4, asm, game_8004A3F4]  # carve
+      - [0x3AC70, asm, game_8004A470]  # carve
+      - [0x3B088, c, func_8004A888]  # carve
+      - [0x3B0C4, asm, game_8004A8C4]  # carve
+      - [0x3B1BC, c, func_8004A9BC]  # carve
+      - [0x3B1F8, asm, game_8004A9F8]  # carve
+      - [0x3B91C, c, func_8004B11C]  # carve
+      - [0x3B924, asm, game_8004B124]  # carve
+      - [0x3B9AC, c, func_8004B1AC]  # carve
+      - [0x3B9FC, asm, game_8004B1FC]  # carve
+      - [0x3BAE4, c, func_8004B2E4]  # carve
+      - [0x3BAEC, asm, game_8004B2EC]  # carve
+      - [0x3BB28, c, func_8004B328]  # carve
+      - [0x3BB78, asm, game_8004B378]  # carve
+      - [0x3D3D8, c, func_8004CBD8]  # carve
+      - [0x3D434, asm, game_8004CC34]  # carve
+      - [0x3D7AC, c, func_8004CFAC]  # carve
+      - [0x3D7CC, asm, game_8004CFCC]  # carve
+      - [0x3E754, c, func_8004DF54]  # carve
+      - [0x3E774, asm, game_8004DF74]  # carve
+      - [0x3EA10, c, func_8004E210]  # carve
+      - [0x3EA5C, asm, game_8004E25C]  # carve
+      - [0x3F7E4, c, func_8004EFE4]  # carve
+      - [0x3F804, asm, game_8004F004]  # carve
+      - [0x41080, c, func_80050880]  # carve
+      - [0x41364, asm, game_80050B64]  # carve
+      - [0x41F48, c, func_80051748]  # carve
+      - [0x41F68, asm, game_80051768]  # carve
+      - [0x4240C, c, func_80051C0C]  # carve
+      - [0x4242C, asm, game_80051C2C]  # carve
+      - [0x42728, c, func_80051F28]  # carve
+      - [0x42748, asm, game_80051F48]  # carve
+      - [0x42A14, c, func_80052214]  # carve
+      - [0x42A34, asm, game_80052234]  # carve
+      - [0x42B50, c, func_80052350]  # carve
+      - [0x42B70, asm, game_80052370]  # carve
+      - [0x43380, c, func_80052B80]  # carve
+      - [0x433A0, asm, game_80052BA0]  # carve
+      - [0x43604, c, func_80052E04]  # carve
+      - [0x43624, c, func_80052E24]  # carve was: - [0x43624, asm, game_80052E24]  # carve
+      - [0x43644, asm, game_80052E44]  # carve
+      - [0x43988, c, func_80053188]  # carve
+      - [0x43A80, asm, game_80053280]  # carve
+      - [0x43AC0, c, func_800532C0]  # carve
+      - [0x43AE0, c, func_800532E0]  # carve
+      - [0x43B1C, asm, game_8005331C]  # carve
+      - [0x43BFC, c, func_800533FC]  # carve
+      - [0x43C04, asm, game_80053404]  # carve
+      - [0x43DC0, c, func_800535C0]  # carve
+      - [0x43DC8, asm, game_800535C8]  # carve
+      - [0x4424C, c, func_80053A4C]  # carve
+      - [0x44368, asm, game_80053B68]  # carve
+      - [0x44D9C, c, func_8005459C]  # carve
+      - [0x44DBC, c, func_800545BC]  # carve was: - [0x44DBC, asm, game_800545BC]  # carve
+      - [0x44DDC, c, func_800545DC]  # carve was: - [0x44DDC, asm, game_800545DC]  # carve
+      - [0x44E10, asm, game_80054610]  # carve
+      - [0x46C10, c, func_80056410]  # carve
+      - [0x46C58, asm, game_80056458]  # carve
+      - [0x46EE8, c, func_800566E8]  # carve
+      - [0x46F08, asm, game_80056708]  # carve
+      - [0x47700, c, func_80056F00]  # carve
+      - [0x47720, asm, game_80056F20]  # carve
+      - [0x47AFC, c, func_800572FC]  # carve
+      - [0x47B1C, asm, game_8005731C]  # carve
+      - [0x486BC, c, func_80057EBC]  # carve
+      - [0x486DC, asm, game_80057EDC]  # carve
+      - [0x48924, c, func_80058124]  # carve
+      - [0x4892C, c, func_8005812C]  # carve was: - [0x4892C, asm, game_8005812C]  # carve
+      - [0x48934, c, func_80058134]  # carve was: - [0x48934, asm, game_80058134]  # carve
+      - [0x4893C, c, func_8005813C]  # carve was: - [0x4893C, asm, game_8005813C]  # carve
+      - [0x48944, c, func_80058144]  # carve was: - [0x48944, asm, game_80058144]  # carve
+      - [0x4894C, c, func_8005814C]  # carve was: - [0x4894C, asm, game_8005814C]  # carve
+      - [0x48954, c, func_80058154]  # carve was: - [0x48954, asm, game_80058154]  # carve
+      - [0x4895C, c, func_8005815C]  # carve was: - [0x4895C, asm, game_8005815C]  # carve
+      - [0x48964, c, func_80058164]  # carve was: - [0x48964, asm, game_80058164]  # carve
+      - [0x4896C, c, func_8005816C]  # carve was: - [0x4896C, asm, game_8005816C]  # carve
+      - [0x48974, c, func_80058174]  # carve was: - [0x48974, asm, game_80058174]  # carve
+      - [0x4897C, c, func_8005817C]  # carve was: - [0x4897C, asm, game_8005817C]  # carve
+      - [0x48984, c, func_80058184]  # carve was: - [0x48984, asm, game_80058184]  # carve
+      - [0x4898C, c, func_8005818C]  # carve was: - [0x4898C, asm, game_8005818C]  # carve
+      - [0x48994, c, func_80058194]  # carve was: - [0x48994, asm, game_80058194]  # carve
+      - [0x4899C, c, func_8005819C]  # carve was: - [0x4899C, asm, game_8005819C]  # carve
+      - [0x489A4, c, func_800581A4]  # carve was: - [0x489A4, asm, game_800581A4]  # carve
+      - [0x489AC, c, func_800581AC]  # carve was: - [0x489AC, asm, game_800581AC]  # carve
+      - [0x489B4, c, func_800581B4]  # carve was: - [0x489B4, asm, game_800581B4]  # carve
+      - [0x489BC, c, func_800581BC]  # carve was: - [0x489BC, asm, game_800581BC]  # carve
+      - [0x489C4, c, func_800581C4]  # carve was: - [0x489C4, asm, game_800581C4]  # carve
+      - [0x489CC, c, func_800581CC]  # carve was: - [0x489CC, asm, game_800581CC]  # carve
+      - [0x489D4, c, func_800581D4]  # carve was: - [0x489D4, asm, game_800581D4]  # carve
+      - [0x489DC, c, func_800581DC]  # carve was: - [0x489DC, asm, game_800581DC]  # carve
+      - [0x489E4, c, func_800581E4]  # carve was: - [0x489E4, asm, game_800581E4]  # carve
+      - [0x489EC, c, func_800581EC]  # carve was: - [0x489EC, asm, game_800581EC]  # carve
+      - [0x489F4, c, func_800581F4]  # carve was: - [0x489F4, asm, game_800581F4]  # carve
+      - [0x489FC, c, func_800581FC]  # carve was: - [0x489FC, asm, game_800581FC]  # carve
+      - [0x48A04, c, func_80058204]  # carve was: - [0x48A04, asm, game_80058204]  # carve
+      - [0x48A0C, c, func_8005820C]  # carve was: - [0x48A0C, asm, game_8005820C]  # carve
+      - [0x48A14, c, func_80058214]  # carve was: - [0x48A14, asm, game_80058214]  # carve
+      - [0x48A1C, c, func_8005821C]  # carve was: - [0x48A1C, asm, game_8005821C]  # carve
+      - [0x48A24, c, func_80058224]  # carve was: - [0x48A24, asm, game_80058224]  # carve
+      - [0x48A2C, c, func_8005822C]  # carve was: - [0x48A2C, asm, game_8005822C]  # carve
+      - [0x48A34, c, func_80058234]  # carve was: - [0x48A34, asm, game_80058234]  # carve
+      - [0x48A3C, c, func_8005823C]  # carve was: - [0x48A3C, asm, game_8005823C]  # carve
+      - [0x48A44, c, func_80058244]  # carve was: - [0x48A44, asm, game_80058244]  # carve
+      - [0x48A4C, c, func_8005824C]  # carve was: - [0x48A4C, asm, game_8005824C]  # carve
+      - [0x48A54, c, func_80058254]  # carve was: - [0x48A54, asm, game_80058254]  # carve
+      - [0x48A5C, c, func_8005825C]  # carve was: - [0x48A5C, asm, game_8005825C]  # carve
+      - [0x48A64, c, func_80058264]  # carve was: - [0x48A64, asm, game_80058264]  # carve
+      - [0x48A6C, c, func_8005826C]  # carve was: - [0x48A6C, asm, game_8005826C]  # carve
+      - [0x48A74, c, func_80058274]  # carve was: - [0x48A74, asm, game_80058274]  # carve
+      - [0x48A7C, c, func_8005827C]  # carve was: - [0x48A7C, asm, game_8005827C]  # carve
+      - [0x48A84, c, func_80058284]  # carve was: - [0x48A84, asm, game_80058284]  # carve
+      - [0x48A8C, c, func_8005828C]  # carve was: - [0x48A8C, asm, game_8005828C]  # carve
+      - [0x48A94, c, func_80058294]  # carve was: - [0x48A94, asm, game_80058294]  # carve
+      - [0x48A9C, c, func_8005829C]  # carve was: - [0x48A9C, asm, game_8005829C]  # carve
+      - [0x48AA4, c, func_800582A4]  # carve was: - [0x48AA4, asm, game_800582A4]  # carve
+      - [0x48AAC, c, func_800582AC]  # carve was: - [0x48AAC, asm, game_800582AC]  # carve
+      - [0x48AB4, c, func_800582B4]  # carve was: - [0x48AB4, asm, game_800582B4]  # carve
+      - [0x48ABC, c, func_800582BC]  # carve was: - [0x48ABC, asm, game_800582BC]  # carve
+      - [0x48AC4, c, func_800582C4]  # carve was: - [0x48AC4, asm, game_800582C4]  # carve
+      - [0x48ACC, c, func_800582CC]  # carve was: - [0x48ACC, asm, game_800582CC]  # carve
+      - [0x48AD4, c, func_800582D4]  # carve was: - [0x48AD4, asm, game_800582D4]  # carve
+      - [0x48ADC, c, func_800582DC]  # carve was: - [0x48ADC, asm, game_800582DC]  # carve
+      - [0x48AE4, c, func_800582E4]  # carve was: - [0x48AE4, asm, game_800582E4]  # carve
+      - [0x48AEC, c, func_800582EC]  # carve was: - [0x48AEC, asm, game_800582EC]  # carve
+      - [0x48AF4, c, func_800582F4]  # carve was: - [0x48AF4, asm, game_800582F4]  # carve
+      - [0x48AFC, c, func_800582FC]  # carve was: - [0x48AFC, asm, game_800582FC]  # carve
+      - [0x48B04, c, func_80058304]  # carve was: - [0x48B04, asm, game_80058304]  # carve
+      - [0x48B0C, c, func_8005830C]  # carve was: - [0x48B0C, asm, game_8005830C]  # carve
+      - [0x48B14, c, func_80058314]  # carve was: - [0x48B14, asm, game_80058314]  # carve
+      - [0x48B1C, c, func_8005831C]  # carve was: - [0x48B1C, asm, game_8005831C]  # carve
+      - [0x48B24, c, func_80058324]  # carve was: - [0x48B24, asm, game_80058324]  # carve
+      - [0x48B2C, c, func_8005832C]  # carve was: - [0x48B2C, asm, game_8005832C]  # carve
+      - [0x48B34, c, func_80058334]  # carve was: - [0x48B34, asm, game_80058334]  # carve
+      - [0x48B3C, c, func_8005833C]  # carve was: - [0x48B3C, asm, game_8005833C]  # carve
+      - [0x48B44, c, func_80058344]  # carve was: - [0x48B44, asm, game_80058344]  # carve
+      - [0x48B4C, c, func_8005834C]  # carve was: - [0x48B4C, asm, game_8005834C]  # carve
+      - [0x48B54, c, func_80058354]  # carve was: - [0x48B54, asm, game_80058354]  # carve
+      - [0x48B5C, c, func_8005835C]  # carve was: - [0x48B5C, asm, game_8005835C]  # carve
+      - [0x48B64, c, func_80058364]  # carve was: - [0x48B64, asm, game_80058364]  # carve
+      - [0x48B6C, c, func_8005836C]  # carve was: - [0x48B6C, asm, game_8005836C]  # carve
+      - [0x48B74, c, func_80058374]  # carve was: - [0x48B74, asm, game_80058374]  # carve
+      - [0x48B7C, c, func_8005837C]  # carve was: - [0x48B7C, asm, game_8005837C]  # carve
+      - [0x48B84, c, func_80058384]  # carve was: - [0x48B84, asm, game_80058384]  # carve
+      - [0x48B8C, c, func_8005838C]  # carve was: - [0x48B8C, asm, game_8005838C]  # carve
+      - [0x48B94, c, func_80058394]  # carve was: - [0x48B94, asm, game_80058394]  # carve
+      - [0x48B9C, c, func_8005839C]  # carve was: - [0x48B9C, asm, game_8005839C]  # carve
+      - [0x48BA4, c, func_800583A4]  # carve was: - [0x48BA4, asm, game_800583A4]  # carve
+      - [0x48BAC, c, func_800583AC]  # carve was: - [0x48BAC, asm, game_800583AC]  # carve
+      - [0x48BB4, c, func_800583B4]  # carve was: - [0x48BB4, asm, game_800583B4]  # carve
+      - [0x48BBC, c, func_800583BC]  # carve was: - [0x48BBC, asm, game_800583BC]  # carve
+      - [0x48BC4, c, func_800583C4]  # carve was: - [0x48BC4, asm, game_800583C4]  # carve
+      - [0x48BCC, c, func_800583CC]  # carve was: - [0x48BCC, asm, game_800583CC]  # carve
+      - [0x48BD4, c, func_800583D4]  # carve was: - [0x48BD4, asm, game_800583D4]  # carve
+      - [0x48BDC, c, func_800583DC]  # carve was: - [0x48BDC, asm, game_800583DC]  # carve
+      - [0x48BE4, c, func_800583E4]  # carve was: - [0x48BE4, asm, game_800583E4]  # carve
+      - [0x48BEC, c, func_800583EC]  # carve was: - [0x48BEC, asm, game_800583EC]  # carve
+      - [0x48BF4, c, func_800583F4]  # carve was: - [0x48BF4, asm, game_800583F4]  # carve
+      - [0x48BFC, c, func_800583FC]  # carve was: - [0x48BFC, asm, game_800583FC]  # carve
+      - [0x48C04, c, func_80058404]  # carve was: - [0x48C04, asm, game_80058404]  # carve
+      - [0x48C0C, c, func_8005840C]  # carve was: - [0x48C0C, asm, game_8005840C]  # carve
+      - [0x48C14, c, func_80058414]  # carve was: - [0x48C14, asm, game_80058414]  # carve
+      - [0x48C1C, c, func_8005841C]  # carve was: - [0x48C1C, asm, game_8005841C]  # carve
+      - [0x48C24, c, func_80058424]  # carve was: - [0x48C24, asm, game_80058424]  # carve
+      - [0x48C2C, c, func_8005842C]  # carve was: - [0x48C2C, asm, game_8005842C]  # carve
+      - [0x48C34, c, func_80058434]  # carve was: - [0x48C34, asm, game_80058434]  # carve
+      - [0x48C3C, c, func_8005843C]  # carve was: - [0x48C3C, asm, game_8005843C]  # carve
+      - [0x48C44, c, func_80058444]  # carve was: - [0x48C44, asm, game_80058444]  # carve
+      - [0x48C4C, c, func_8005844C]  # carve was: - [0x48C4C, asm, game_8005844C]  # carve
+      - [0x48C54, c, func_80058454]  # carve was: - [0x48C54, asm, game_80058454]  # carve
+      - [0x48C5C, c, func_8005845C]  # carve was: - [0x48C5C, asm, game_8005845C]  # carve
+      - [0x48C64, c, func_80058464]  # carve was: - [0x48C64, asm, game_80058464]  # carve
+      - [0x48C6C, c, func_8005846C]  # carve was: - [0x48C6C, asm, game_8005846C]  # carve
+      - [0x48C74, c, func_80058474]  # carve was: - [0x48C74, asm, game_80058474]  # carve
+      - [0x48C7C, c, func_8005847C]  # carve was: - [0x48C7C, asm, game_8005847C]  # carve
+      - [0x48C84, c, func_80058484]  # carve was: - [0x48C84, asm, game_80058484]  # carve
+      - [0x48C8C, c, func_8005848C]  # carve was: - [0x48C8C, asm, game_8005848C]  # carve
+      - [0x48C94, c, func_80058494]  # carve was: - [0x48C94, asm, game_80058494]  # carve
+      - [0x48C9C, c, func_8005849C]  # carve was: - [0x48C9C, asm, game_8005849C]  # carve
+      - [0x48CA4, c, func_800584A4]  # carve was: - [0x48CA4, asm, game_800584A4]  # carve
+      - [0x48CAC, c, func_800584AC]  # carve was: - [0x48CAC, asm, game_800584AC]  # carve
+      - [0x48CB4, c, func_800584B4]  # carve was: - [0x48CB4, asm, game_800584B4]  # carve
+      - [0x48CBC, c, func_800584BC]  # carve was: - [0x48CBC, asm, game_800584BC]  # carve
+      - [0x48CC4, c, func_800584C4]  # carve was: - [0x48CC4, asm, game_800584C4]  # carve
+      - [0x48CCC, c, func_800584CC]  # carve was: - [0x48CCC, asm, game_800584CC]  # carve
+      - [0x48CD4, c, func_800584D4]  # carve was: - [0x48CD4, asm, game_800584D4]  # carve
+      - [0x48CDC, c, func_800584DC]  # carve was: - [0x48CDC, asm, game_800584DC]  # carve
+      - [0x48CE4, c, func_800584E4]  # carve was: - [0x48CE4, asm, game_800584E4]  # carve
+      - [0x48CEC, c, func_800584EC]  # carve was: - [0x48CEC, asm, game_800584EC]  # carve
+      - [0x48CF4, c, func_800584F4]  # carve was: - [0x48CF4, asm, game_800584F4]  # carve
+      - [0x48CFC, c, func_800584FC]  # carve was: - [0x48CFC, asm, game_800584FC]  # carve
+      - [0x48D04, c, func_80058504]  # carve was: - [0x48D04, asm, game_80058504]  # carve
+      - [0x48D0C, c, func_8005850C]  # carve was: - [0x48D0C, asm, game_8005850C]  # carve
+      - [0x48D14, c, func_80058514]  # carve was: - [0x48D14, asm, game_80058514]  # carve
+      - [0x48D1C, c, func_8005851C]  # carve was: - [0x48D1C, asm, game_8005851C]  # carve
+      - [0x48D24, c, func_80058524]  # carve was: - [0x48D24, asm, game_80058524]  # carve
+      - [0x48D2C, c, func_8005852C]  # carve was: - [0x48D2C, asm, game_8005852C]  # carve
+      - [0x48D34, c, func_80058534]  # carve was: - [0x48D34, asm, game_80058534]  # carve
+      - [0x48D3C, c, func_8005853C]  # carve was: - [0x48D3C, asm, game_8005853C]  # carve
+      - [0x48D44, c, func_80058544]  # carve was: - [0x48D44, asm, game_80058544]  # carve
+      - [0x48D4C, c, func_8005854C]  # carve was: - [0x48D4C, asm, game_8005854C]  # carve
+      - [0x48D54, c, func_80058554]  # carve was: - [0x48D54, asm, game_80058554]  # carve
+      - [0x48D5C, c, func_8005855C]  # carve was: - [0x48D5C, asm, game_8005855C]  # carve
+      - [0x48D64, c, func_80058564]  # carve was: - [0x48D64, asm, game_80058564]  # carve
+      - [0x48D6C, c, func_8005856C]  # carve was: - [0x48D6C, asm, game_8005856C]  # carve
+      - [0x48D74, c, func_80058574]  # carve was: - [0x48D74, asm, game_80058574]  # carve
+      - [0x48D7C, c, func_8005857C]  # carve was: - [0x48D7C, asm, game_8005857C]  # carve
+      - [0x48D84, c, func_80058584]  # carve was: - [0x48D84, asm, game_80058584]  # carve
+      - [0x48D8C, c, func_8005858C]  # carve was: - [0x48D8C, asm, game_8005858C]  # carve
+      - [0x48D94, c, func_80058594]  # carve was: - [0x48D94, asm, game_80058594]  # carve
+      - [0x48D9C, c, func_8005859C]  # carve was: - [0x48D9C, asm, game_8005859C]  # carve
+      - [0x48DA4, c, func_800585A4]  # carve was: - [0x48DA4, asm, game_800585A4]  # carve
+      - [0x48DAC, c, func_800585AC]  # carve was: - [0x48DAC, asm, game_800585AC]  # carve
+      - [0x48DB4, c, func_800585B4]  # carve was: - [0x48DB4, asm, game_800585B4]  # carve
+      - [0x48DBC, c, func_800585BC]  # carve was: - [0x48DBC, asm, game_800585BC]  # carve
+      - [0x48DC4, c, func_800585C4]  # carve was: - [0x48DC4, asm, game_800585C4]  # carve
+      - [0x48DCC, c, func_800585CC]  # carve was: - [0x48DCC, asm, game_800585CC]  # carve
+      - [0x48DD4, c, func_800585D4]  # carve was: - [0x48DD4, asm, game_800585D4]  # carve
+      - [0x48DDC, c, func_800585DC]  # carve was: - [0x48DDC, asm, game_800585DC]  # carve
+      - [0x48DE4, c, func_800585E4]  # carve was: - [0x48DE4, asm, game_800585E4]  # carve
+      - [0x48DEC, c, func_800585EC]  # carve was: - [0x48DEC, asm, game_800585EC]  # carve
+      - [0x48DF4, c, func_800585F4]  # carve was: - [0x48DF4, asm, game_800585F4]  # carve
+      - [0x48DFC, c, func_800585FC]  # carve was: - [0x48DFC, asm, game_800585FC]  # carve
+      - [0x48E04, c, func_80058604]  # carve was: - [0x48E04, asm, game_80058604]  # carve
+      - [0x48E0C, c, func_8005860C]  # carve was: - [0x48E0C, asm, game_8005860C]  # carve
+      - [0x48E14, c, func_80058614]  # carve was: - [0x48E14, asm, game_80058614]  # carve
+      - [0x48E1C, c, func_8005861C]  # carve was: - [0x48E1C, asm, game_8005861C]  # carve
+      - [0x48E24, c, func_80058624]  # carve was: - [0x48E24, asm, game_80058624]  # carve
+      - [0x48E2C, c, func_8005862C]  # carve was: - [0x48E2C, asm, game_8005862C]  # carve
+      - [0x48E34, c, func_80058634]  # carve was: - [0x48E34, asm, game_80058634]  # carve
+      - [0x48E3C, c, func_8005863C]  # carve was: - [0x48E3C, asm, game_8005863C]  # carve
+      - [0x48E44, c, func_80058644]  # carve was: - [0x48E44, asm, game_80058644]  # carve
+      - [0x48E4C, c, func_8005864C]  # carve was: - [0x48E4C, asm, game_8005864C]  # carve
+      - [0x48E54, c, func_80058654]  # carve was: - [0x48E54, asm, game_80058654]  # carve
+      - [0x48E5C, c, func_8005865C]  # carve was: - [0x48E5C, asm, game_8005865C]  # carve
+      - [0x48E64, c, func_80058664]  # carve was: - [0x48E64, asm, game_80058664]  # carve
+      - [0x48E6C, c, func_8005866C]  # carve was: - [0x48E6C, asm, game_8005866C]  # carve
+      - [0x48E74, c, func_80058674]  # carve was: - [0x48E74, asm, game_80058674]  # carve
+      - [0x48E7C, c, func_8005867C]  # carve was: - [0x48E7C, asm, game_8005867C]  # carve
+      - [0x48E84, c, func_80058684]  # carve was: - [0x48E84, asm, game_80058684]  # carve
+      - [0x48E8C, c, func_8005868C]  # carve was: - [0x48E8C, asm, game_8005868C]  # carve
+      - [0x48E94, c, func_80058694]  # carve was: - [0x48E94, asm, game_80058694]  # carve
+      - [0x48E9C, c, func_8005869C]  # carve was: - [0x48E9C, asm, game_8005869C]  # carve
+      - [0x48EA4, c, func_800586A4]  # carve was: - [0x48EA4, asm, game_800586A4]  # carve
+      - [0x48EAC, c, func_800586AC]  # carve was: - [0x48EAC, asm, game_800586AC]  # carve
+      - [0x48EB4, c, func_800586B4]  # carve was: - [0x48EB4, asm, game_800586B4]  # carve
+      - [0x48EBC, c, func_800586BC]  # carve was: - [0x48EBC, asm, game_800586BC]  # carve
+      - [0x48EC4, c, func_800586C4]  # carve was: - [0x48EC4, asm, game_800586C4]  # carve
+      - [0x48ECC, c, func_800586CC]  # carve was: - [0x48ECC, asm, game_800586CC]  # carve
+      - [0x48ED4, c, func_800586D4]  # carve was: - [0x48ED4, asm, game_800586D4]  # carve
+      - [0x48EDC, c, func_800586DC]  # carve was: - [0x48EDC, asm, game_800586DC]  # carve
+      - [0x48EE4, c, func_800586E4]  # carve was: - [0x48EE4, asm, game_800586E4]  # carve
+      - [0x48EEC, c, func_800586EC]  # carve was: - [0x48EEC, asm, game_800586EC]  # carve
+      - [0x48EF4, c, func_800586F4]  # carve was: - [0x48EF4, asm, game_800586F4]  # carve
+      - [0x48EFC, c, func_800586FC]  # carve was: - [0x48EFC, asm, game_800586FC]  # carve
+      - [0x48F04, c, func_80058704]  # carve was: - [0x48F04, asm, game_80058704]  # carve
+      - [0x48F0C, c, func_8005870C]  # carve was: - [0x48F0C, asm, game_8005870C]  # carve
+      - [0x48F14, c, func_80058714]  # carve was: - [0x48F14, asm, game_80058714]  # carve
+      - [0x48F1C, c, func_8005871C]  # carve was: - [0x48F1C, asm, game_8005871C]  # carve
+      - [0x48F24, c, func_80058724]  # carve was: - [0x48F24, asm, game_80058724]  # carve
+      - [0x48F2C, c, func_8005872C]  # carve was: - [0x48F2C, asm, game_8005872C]  # carve
+      - [0x48F34, c, func_80058734]  # carve was: - [0x48F34, asm, game_80058734]  # carve
+      - [0x48F3C, c, func_8005873C]  # carve was: - [0x48F3C, asm, game_8005873C]  # carve
+      - [0x48F44, c, func_80058744]  # carve was: - [0x48F44, asm, game_80058744]  # carve
+      - [0x48F4C, c, func_8005874C]  # carve was: - [0x48F4C, asm, game_8005874C]  # carve
+      - [0x48F54, c, func_80058754]  # carve was: - [0x48F54, asm, game_80058754]  # carve
+      - [0x48F5C, c, func_8005875C]  # carve was: - [0x48F5C, asm, game_8005875C]  # carve
+      - [0x48F64, c, func_80058764]  # carve was: - [0x48F64, asm, game_80058764]  # carve
+      - [0x48F6C, c, func_8005876C]  # carve was: - [0x48F6C, asm, game_8005876C]  # carve
+      - [0x48F74, c, func_80058774]  # carve was: - [0x48F74, asm, game_80058774]  # carve
+      - [0x48F7C, c, func_8005877C]  # carve was: - [0x48F7C, asm, game_8005877C]  # carve
+      - [0x48F84, c, func_80058784]  # carve was: - [0x48F84, asm, game_80058784]  # carve
+      - [0x48F8C, c, func_8005878C]  # carve was: - [0x48F8C, asm, game_8005878C]  # carve
+      - [0x48F94, c, func_80058794]  # carve was: - [0x48F94, asm, game_80058794]  # carve
+      - [0x48F9C, c, func_8005879C]  # carve was: - [0x48F9C, asm, game_8005879C]  # carve
+      - [0x48FA4, c, func_800587A4]  # carve was: - [0x48FA4, asm, game_800587A4]  # carve
+      - [0x48FAC, c, func_800587AC]  # carve was: - [0x48FAC, asm, game_800587AC]  # carve
+      - [0x48FB4, c, func_800587B4]  # carve was: - [0x48FB4, asm, game_800587B4]  # carve
+      - [0x48FBC, c, func_800587BC]  # carve was: - [0x48FBC, asm, game_800587BC]  # carve
+      - [0x48FC4, c, func_800587C4]  # carve was: - [0x48FC4, asm, game_800587C4]  # carve
+      - [0x48FCC, c, func_800587CC]  # carve was: - [0x48FCC, asm, game_800587CC]  # carve
+      - [0x48FD4, c, func_800587D4]  # carve was: - [0x48FD4, asm, game_800587D4]  # carve
+      - [0x48FDC, c, func_800587DC]  # carve was: - [0x48FDC, asm, game_800587DC]  # carve
+      - [0x48FE4, c, func_800587E4]  # carve was: - [0x48FE4, asm, game_800587E4]  # carve
+      - [0x48FEC, c, func_800587EC]  # carve was: - [0x48FEC, asm, game_800587EC]  # carve
+      - [0x48FF4, c, func_800587F4]  # carve was: - [0x48FF4, asm, game_800587F4]  # carve
+      - [0x48FFC, c, func_800587FC]  # carve was: - [0x48FFC, asm, game_800587FC]  # carve
+      - [0x49004, c, func_80058804]  # carve was: - [0x49004, asm, game_80058804]  # carve
+      - [0x4900C, c, func_8005880C]  # carve was: - [0x4900C, asm, game_8005880C]  # carve
+      - [0x49014, c, func_80058814]  # carve was: - [0x49014, asm, game_80058814]  # carve
+      - [0x4901C, c, func_8005881C]  # carve was: - [0x4901C, asm, game_8005881C]  # carve
+      - [0x49024, c, func_80058824]  # carve was: - [0x49024, asm, game_80058824]  # carve
+      - [0x4902C, c, func_8005882C]  # carve was: - [0x4902C, asm, game_8005882C]  # carve
+      - [0x49034, c, func_80058834]  # carve was: - [0x49034, asm, game_80058834]  # carve
+      - [0x4903C, c, func_8005883C]  # carve was: - [0x4903C, asm, game_8005883C]  # carve
+      - [0x49044, c, func_80058844]  # carve was: - [0x49044, asm, game_80058844]  # carve
+      - [0x4904C, c, func_8005884C]  # carve was: - [0x4904C, asm, game_8005884C]  # carve
+      - [0x49054, c, func_80058854]  # carve was: - [0x49054, asm, game_80058854]  # carve
+      - [0x4905C, c, func_8005885C]  # carve was: - [0x4905C, asm, game_8005885C]  # carve
+      - [0x49064, c, func_80058864]  # carve was: - [0x49064, asm, game_80058864]  # carve
+      - [0x4906C, c, func_8005886C]  # carve was: - [0x4906C, asm, game_8005886C]  # carve
+      - [0x49074, c, func_80058874]  # carve was: - [0x49074, asm, game_80058874]  # carve
+      - [0x4907C, c, func_8005887C]  # carve was: - [0x4907C, asm, game_8005887C]  # carve
+      - [0x49084, c, func_80058884]  # carve was: - [0x49084, asm, game_80058884]  # carve
+      - [0x4908C, c, func_8005888C]  # carve was: - [0x4908C, asm, game_8005888C]  # carve
+      - [0x49094, c, func_80058894]  # carve was: - [0x49094, asm, game_80058894]  # carve
+      - [0x4909C, c, func_8005889C]  # carve was: - [0x4909C, asm, game_8005889C]  # carve
+      - [0x490A4, c, func_800588A4]  # carve was: - [0x490A4, asm, game_800588A4]  # carve
+      - [0x490AC, c, func_800588AC]  # carve was: - [0x490AC, asm, game_800588AC]  # carve
+      - [0x490B4, c, func_800588B4]  # carve was: - [0x490B4, asm, game_800588B4]  # carve
+      - [0x490BC, c, func_800588BC]  # carve was: - [0x490BC, asm, game_800588BC]  # carve
+      - [0x490C4, c, func_800588C4]  # carve was: - [0x490C4, asm, game_800588C4]  # carve
+      - [0x490CC, c, func_800588CC]  # carve was: - [0x490CC, asm, game_800588CC]  # carve
+      - [0x490D4, c, func_800588D4]  # carve was: - [0x490D4, asm, game_800588D4]  # carve
+      - [0x490DC, c, func_800588DC]  # carve was: - [0x490DC, asm, game_800588DC]  # carve
+      - [0x490E4, c, func_800588E4]  # carve was: - [0x490E4, asm, game_800588E4]  # carve
+      - [0x490EC, c, func_800588EC]  # carve was: - [0x490EC, asm, game_800588EC]  # carve
+      - [0x490F4, c, func_800588F4]  # carve was: - [0x490F4, asm, game_800588F4]  # carve
+      - [0x490FC, c, func_800588FC]  # carve was: - [0x490FC, asm, game_800588FC]  # carve
+      - [0x49104, c, func_80058904]  # carve was: - [0x49104, asm, game_80058904]  # carve
+      - [0x4910C, c, func_8005890C]  # carve was: - [0x4910C, asm, game_8005890C]  # carve
+      - [0x49114, c, func_80058914]  # carve was: - [0x49114, asm, game_80058914]  # carve
+      - [0x4911C, c, func_8005891C]  # carve was: - [0x4911C, asm, game_8005891C]  # carve
+      - [0x49124, c, func_80058924]  # carve was: - [0x49124, asm, game_80058924]  # carve
+      - [0x4912C, c, func_8005892C]  # carve was: - [0x4912C, asm, game_8005892C]  # carve
+      - [0x49134, c, func_80058934]  # carve was: - [0x49134, asm, game_80058934]  # carve
+      - [0x4913C, c, func_8005893C]  # carve was: - [0x4913C, asm, game_8005893C]  # carve
+      - [0x49144, c, __main]  # carve was: - [0x49144, asm, 2MBYTE_2MBYTE]
+      - [0x4914C, asm, game_8005894C]  # carve
+      - [0x49208, asm, LIBSPU_S_CRWA]
+      - [0x493A8, asm, LIBSPU_SPU]
+      - [0x49EE8, asm, LIBSPU_S_INI]
+      - [0x4A048, asm, libgap_80059848]
+      - [0x4A078, asm, LIBSPU_S_M_UTIL]
+      - [0x4A188, asm, LIBSPU_S_GKS]
+      - [0x4A218, asm, LIBSPU_S_STM]
+      - [0x4A248, asm, LIBSND_CC_7]
+      - [0x4A318, asm, LIBSND_CC_100]
+      - [0x4A388, asm, LIBSND_MIDICC]
+      - [0x4A5B8, asm, LIBSND_MIDINOTE]
+      - [0x4A698, asm, LIBSND_MIDIPROG]
+      - [0x4A708, asm, LIBSND_MIDITIME]
+      - [0x4A7B8, asm, LIBSND_SSCLOSE]
+      - [0x4A988, asm, LIBSND_SSEND]
+      - [0x4AA38, asm, LIBSND_SSINIT]
+      - [0x4AAD8, asm, libgap_8005A2D8]
+      - [0x4AB18, asm, LIBSND_UT_ROFF]
+      - [0x4AB38, asm, LIBSND_SSISEOS]
+      - [0x4AB78, asm, LIBSND_SSOPENPJ]
+      - [0x4ACA8, asm, LIBSND_SEPINIT]
+      - [0x4B088, asm, LIBSND_SSPLAY]
+      - [0x4B0C8, asm, LIBSND_SSPLAY_2]
+      - [0x4B108, asm, libgap_8005A908]
+      - [0x4B1A8, asm, LIBSND_PLAYMODE]
+      - [0x4B2C8, asm, LIBSND_SSSATTR]
+      - [0x4B388, asm, LIBSPU_S_SCA]
+      - [0x4B708, asm, LIBSND_SSSMV]
+      - [0x4B758, asm, LIBSND_SSSTART]
+      - [0x4BA68, asm, LIBSND_SSCALL]
+      - [0x4BCD8, asm, LIBSND_CRES]
+      - [0x4BEE8, asm, LIBSND_PAUSE]
+      - [0x4BF88, asm, LIBSND_PLAY]
+      - [0x4BFB8, asm, LIBSND_MIDIREAD]
+      - [0x4C6A8, asm, LIBSND_NEXT]
+      - [0x4C7A8, asm, LIBSND_REPLAY]
+      - [0x4C808, asm, LIBSND_SSSTOP]
+      - [0x4C9E8, asm, LIBSND_SSSV]
+      - [0x4CAF8, asm, LIBSND_SSTABLE]
+      - [0x4CD18, asm, LIBSND_SSTICK]
+      - [0x4CE68, asm, LIBSND_SSVOL]
+      - [0x4CFF8, asm, LIBSND_TEMPO]
+      - [0x4D218, asm, LIBSND_DMYNOTE]
+      - [0x4D258, asm, libgap_8005CA58]
+      - [0x4D518, asm, LIBSND_DMYDE_0]
+      - [0x4D558, asm, libgap_8005CD58]
+      - [0x4DA18, asm, LIBSND_UT_GVA]
+      - [0x4DC58, asm, LIBSND_UT_KEYV]
+      - [0x4E038, asm, LIBSND_UT_RDEP]
+      - [0x4E0C8, asm, LIBSPU_S_SRMP]
+      - [0x4E5A8, asm, LIBSPU_S_SRA]
+      - [0x4EA78, asm, LIBSND_UT_REV]
+      - [0x4EB18, asm, LIBSPU_S_SR]
+      - [0x4EC08, asm, libgap_8005E408]
+      - [0x4EC48, asm, LIBSND_UT_VVOL4]
+      - [0x4ECD8, asm, LIBSND_VM_ALOC2]
+      - [0x4EEA8, asm, libgap_8005E6A8]
+      - [0x4EEB8, asm, LIBSND_VM_F]
+      - [0x4F388, asm, libgap_8005EB88]
+      - [0x4F3B8, asm, LIBSPU_S_SAV]
+      - [0x4F678, asm, libgap_8005EE78]
+      - [0x4F6A8, asm, LIBSPU_S_GAV]
+      - [0x4F6D8, asm, libgap_8005EED8]
+      - [0x4F738, asm, LIBSPU_S_SK]
+      - [0x4F8F8, asm, LIBSPU_S_SVA]
+      - [0x4FEF8, asm, LIBSPU_S_N2P]
+      - [0x500F8, asm, LIBSPU_S_GVEX]
+      - [0x50118, asm, LIBSND_VM_INIT]
+      - [0x50468, asm, LIBSPU_S_M_INIT]
+      - [0x504C8, asm, libgap_8005FCC8]
+      - [0x50508, asm, LIBSND_VM_KEY]
+      - [0x50CA8, asm, LIBSND_VM_ALOC1]
+      - [0x50F18, asm, LIBSND_VM_N2P]
+      - [0x510F8, asm, LIBSND_VM_NO1]
+      - [0x51668, asm, LIBSPU_S_SNC]
+      - [0x516B8, asm, LIBSND_VM_NOFF]
+      - [0x516F8, asm, LIBSND_VM_NOWOF]
+      - [0x517B8, asm, LIBSND_VM_NOWON]
+      - [0x51C88, asm, LIBSND_VM_SEQ]
+      - [0x52308, asm, LIBSND_VM_STAV]
+      - [0x523D8, asm, LIBSND_VM_VOL]
+      - [0x52978, asm, LIBSND_VM_VSU]
+      - [0x52A38, asm, libgap_80062238]
+      - [0x52A58, asm, LIBSND_VS_VAB]
+      - [0x52B08, asm, LIBSPU_S_M_F]
+      - [0x52B88, asm, LIBSPU_S_M_INT]
+      - [0x52E88, asm, LIBSND_VS_VH]
+      - [0x532E8, asm, LIBSND_VS_VTBP]
+      - [0x53478, asm, LIBSPU_S_STSA]
+      - [0x534D8, asm, LIBSPU_S_WP]
+      - [0x53568, asm, LIBSND_VS_VTC]
+      - [0x53598, asm, LIBSPU_S_ITC]
+      - [0x53648, asm, LIBETC_VSYNC]
+      - [0x53858, asm, LIBETC_INTR]
+      - [0x53F18, asm, LIBETC_INTR_VB]
+      - [0x54038, asm, LIBETC_INTR_DMA]
+      - [0x542EC, asm, libgap_80063AEC]
+      - [0x54308, asm, LIBCD_CDROM]
+      - [0x54338, asm, LIBCD_EVENT]
+      - [0x54488, asm, LIBCD_SYS]
+      - [0x54508, asm, LIBCD_ISO9660]
+      - [0x54E78, asm, LIBCD_CDREAD2]
+      - [0x54F28, asm, LIBCD_C_002]
+      - [0x54F88, asm, libgap_80064788]
+      - [0x55008, asm, LIBCD_C_004]
+      - [0x550F8, asm, LIBCD_C_005]
+      - [0x55188, asm, LIBCD_C_007]
+      - [0x55238, asm, LIBCD_C_008]
+      - [0x55278, asm, LIBCD_C_009]
+      - [0x55338, asm, libgap_80064B38]
+      - [0x55358, asm, LIBCD_C_011]
+      - [0x55E48, asm, LIBCD_BIOS_1]
+      - [0x573C8, asm, LIBCD_S_002]
+      - [0x574D8, asm, libgap_80066CD8]
+      - [0x574E8, asm, LIBCD_S_007]
+      - [0x57558, asm, libgap_80066D58]
+      - [0x575B8, asm, LIBCD_S_016]
+      - [0x57978, asm, LIBCD_S_020]
+      - [0x57998, asm, LIBCD_S_021]
+      - [0x579B8, asm, LIBCD_BIOS_2]
+      - [0x57AB8, asm, libgap_800672B8]
+      - [0x57AE8, asm, LIBCD_CDR_1]
+      - [0x58488, asm, libgap_80067C88]
+      - [0x58518, asm, LIBCD_BIOS_3]
+      - [0x58608, asm, libgap_80067E08]
+      - [0x58628, asm, LIBGTE_GEO_00]
+      - [0x586F8, asm, LIBGTE_GEO_01]
+      - [0x58798, textbin]  # hand-edit: psyq stamp, 2 invalid SPECIAL words, read as data
+      - [0x587A0, asm, LIBGTE_MSC00]
+      - [0x58828, asm, libgap_80068028]
+      - [0x58858, asm, LIBGTE_RATAN]
+      - [0x589D8, asm, LIBGTE_PATCHGTE]
+      - [0x58A84, textbin]  # hand-edit: _patch_gte template table (lui/addiu + lw copy loop), no terminator
+      - [0x58AB8, asm, LIBGPU_SYS]
+      - [0x5AACC, c, SYS_OBJ_2014]  # carve
+      - [0x5AAD4, asm, game_8006A2D4]  # carve
+      - [0x5B9B8, asm, LIBGPU_E03]
+      - [0x5BA78, asm, LIBGPU_E04]
+      - [0x5BAB8, asm, LIBGPU_P00]
+      - [0x5BAF8, asm, LIBGPU_P41]
+      - [0x5BB98, asm, LIBPRESS_LIBPRESS]
+      - [0x5C228, asm, LIBPRESS_VLC]
+      - [0x5C5A8, asm, LIBAPI_C112]
+      - [0x5C5B8, asm, LIBCARD_C171]
+      - [0x5C5C8, asm, LIBCARD_C172]
+      - [0x5C5D8, asm, LIBCARD_CARD]
+      - [0x5C618, asm, LIBCARD_A78]
+      - [0x5C628, asm, LIBCARD_A80]
+      - [0x5C638, asm, LIBCARD_INIT]
+      - [0x5C738, asm, LIBCARD_A74]
+      - [0x5C748, asm, LIBCARD_A75]
+      - [0x5C758, asm, LIBCARD_A76]
+      - [0x5C768, asm, LIBCARD_PATCH]
+      - [0x5C81C, textbin]  # hand-edit: _patch_card template table (lui/addiu + lw copy loop)
+      - [0x5C844, asm]
+      - [0x5C988, asm, libgap_8006C188]
+      - [0x5CA28, asm, LIBC_C19]
+      - [0x5CA38, asm, LIBC_C23]
+      - [0x5CA48, asm, LIBC_C24]
+      - [0x5CA58, asm, LIBC_C25]
+      - [0x5CA68, asm, LIBC_C42]
+      - [0x5CA78, asm, LIBC_C43]
+      - [0x5CA88, asm, LIBC_C63]
+      - [0x5CA98, asm, LIBAPI_C57]
+      - [0x5CAA8, asm, LIBAPI_C68]
+      - [0x5CAB8, asm, LIBAPI_C73]
+      - [0x5CAD0, asm, libgap_8006C2D0]
+      - [0x5CAE8, asm, LIBAPI_A07]
+      - [0x5CAF8, asm, LIBAPI_A08]
+      - [0x5CB08, asm, LIBAPI_A09]
+      - [0x5CB18, asm, LIBAPI_A10]
+      - [0x5CB28, asm, LIBAPI_A11]
+      - [0x5CB38, asm, LIBAPI_A12]
+      - [0x5CB48, asm, LIBAPI_A13]
+      - [0x5CB58, asm, LIBAPI_A14]
+      - [0x5CB68, asm, LIBAPI_A15]
+      - [0x5CB78, asm, LIBAPI_A16]
+      - [0x5CB88, asm, LIBAPI_A23]
+      - [0x5CB98, asm, LIBAPI_A24]
+      - [0x5CBA8, asm, LIBAPI_A25]
+      - [0x5CBB8, asm, libgap_8006C3B8]
+      - [0x5CBD8, asm, LIBAPI_A50]
+      - [0x5CBE8, asm, LIBAPI_A52]
+      - [0x5CBF8, asm, LIBAPI_A53]
+      - [0x5CC08, asm, LIBAPI_A54]
+      - [0x5CC18, asm, LIBAPI_A65]
+      - [0x5CC28, asm, LIBAPI_A67]
+      - [0x5CC38, asm, LIBAPI_A91]
+      - [0x5CC48, asm, LIBAPI_L10]
+      - [0x5CC58, asm, LIBAPI_COUNTER]
+      - [0x5CDC8, asm, LIBAPI_FIRST]
+      - [0x5D068, asm, LIBAPI_A66]
+      - [0x5D078, asm, LIBAPI_PAD]
+      - [0x5D308, asm, LIBAPI_A18]
+      - [0x5D318, asm, LIBAPI_A19]
+      - [0x5D328, asm, LIBAPI_A21]
+      - [0x5D338, asm, LIBAPI_L02]
+      - [0x5D348, asm, LIBAPI_L03]
+      - [0x5D358, asm, LIBAPI_PATCH]
+      - [0x5D3F8, asm, LIBAPI_CHCLRPAD]
+      - [0x5D468, asm, libgap_8006CC68]
+      - [0x5D4B8, asm, LIBPAD_PDCMD1]
+      - [0x5D4F8, asm, LIBPAD_PDCMD2]
+      - [0x5D668, asm, LIBPAD_PDENT2]
+      - [0x5D738, asm, LIBPAD_PDENT3]
+      - [0x5D838, asm, LIBPAD_PDMAIINI]
+      - [0x5D948, asm, LIBPAD_PDDIRINI]
+      - [0x5D9F8, asm, LIBPAD_PDDIRRES]
+      - [0x5E438, asm, LIBC_C40]
+      - [0x5E448, asm, LIBPAD_PDRESRES]
+      - [0x602B8, data, 602B8]
+  - [0x82800]

@@ -1,0 +1,254 @@
+# Probe ladder: 5 rungs x aspsx versions = 30 triples (cc1, cflags, maspsx); 5 L3 rows disabled (T4.1) -> 25 live.
+# Read by tools/probe/probe.py. Facts: docs/ops/toolchain.md (cc1 candidates).
+# constitution = true marks the triples PROJECT_CONTEXT.md names.
+
+# DISABLED: L3-gcc2952psx-as256/as267/as277/as279/as281 — 2026-10-04, phase 1.4 T4.1
+# Original intent: separate the aspsx version under gcc-2.95.2-psx.
+# Why disabled: indistinguishable losers. Within 2.56..2.86 only 3 maspsx gates differ,
+#   refs/maspsx/maspsx.py:42-47 (in :40-47): sltu_at off >=2.60 (negative-imm sltu/sltiu),
+#   gp_allow_offset >=2.70, gp_allow_la >=2.80. T3: 0 negative-imm sltiu of 1054, 0 $gp operands
+#   in 55 modules -> every version 2.56-2.86 emits identical bytes under -G0; T4 ladder 5/5 for all 6.
+#   2.86 kept: a choice within the class (constitution row), docs/ops/compiler-pin.md ## Equivalence class.
+# Re-enable if a probe shows a negative-imm sltiu or $gp use.
+#
+# [[triple]]
+# id = "L3-gcc2952psx-as256"
+# cc1 = "tools/bin/cc/gcc-2.95.2-psx/cc1"
+# cflags = ["-O2", "-G0", "-quiet", "-w"]
+# aspsx = "2.56"
+# maspsx_flags = []
+# asflags = ["-G0"]
+#
+# [[triple]]
+# id = "L3-gcc2952psx-as267"
+# cc1 = "tools/bin/cc/gcc-2.95.2-psx/cc1"
+# cflags = ["-O2", "-G0", "-quiet", "-w"]
+# aspsx = "2.67"
+# maspsx_flags = []
+# asflags = ["-G0"]
+#
+# [[triple]]
+# id = "L3-gcc2952psx-as277"
+# cc1 = "tools/bin/cc/gcc-2.95.2-psx/cc1"
+# cflags = ["-O2", "-G0", "-quiet", "-w"]
+# aspsx = "2.77"
+# maspsx_flags = []
+# asflags = ["-G0"]
+#
+# [[triple]]
+# id = "L3-gcc2952psx-as279"
+# cc1 = "tools/bin/cc/gcc-2.95.2-psx/cc1"
+# cflags = ["-O2", "-G0", "-quiet", "-w"]
+# aspsx = "2.79"
+# maspsx_flags = []
+# asflags = ["-G0"]
+#
+# [[triple]]
+# id = "L3-gcc2952psx-as281"
+# cc1 = "tools/bin/cc/gcc-2.95.2-psx/cc1"
+# cflags = ["-O2", "-G0", "-quiet", "-w"]
+# aspsx = "2.81"
+# maspsx_flags = []
+# asflags = ["-G0"]
+
+[[triple]]
+id = "L3-gcc2952psx-as286"
+cc1 = "tools/bin/cc/gcc-2.95.2-psx/cc1"
+cflags = ["-O2", "-G0", "-quiet", "-w"]
+aspsx = "2.86"
+maspsx_flags = []
+asflags = ["-G0"]
+constitution = true
+
+[[triple]]
+id = "L3b-gcc29166psx-as256"
+cc1 = "tools/bin/cc/gcc-2.91.66-psx/cc1"
+cflags = ["-O2", "-G0", "-quiet", "-w"]
+aspsx = "2.56"
+maspsx_flags = []
+asflags = ["-G0"]
+
+[[triple]]
+id = "L3b-gcc29166psx-as267"
+cc1 = "tools/bin/cc/gcc-2.91.66-psx/cc1"
+cflags = ["-O2", "-G0", "-quiet", "-w"]
+aspsx = "2.67"
+maspsx_flags = []
+asflags = ["-G0"]
+
+[[triple]]
+id = "L3b-gcc29166psx-as277"
+cc1 = "tools/bin/cc/gcc-2.91.66-psx/cc1"
+cflags = ["-O2", "-G0", "-quiet", "-w"]
+aspsx = "2.77"
+maspsx_flags = []
+asflags = ["-G0"]
+
+[[triple]]
+id = "L3b-gcc29166psx-as279"
+cc1 = "tools/bin/cc/gcc-2.91.66-psx/cc1"
+cflags = ["-O2", "-G0", "-quiet", "-w"]
+aspsx = "2.79"
+maspsx_flags = []
+asflags = ["-G0"]
+
+[[triple]]
+id = "L3b-gcc29166psx-as281"
+cc1 = "tools/bin/cc/gcc-2.91.66-psx/cc1"
+cflags = ["-O2", "-G0", "-quiet", "-w"]
+aspsx = "2.81"
+maspsx_flags = []
+asflags = ["-G0"]
+
+[[triple]]
+id = "L3b-gcc29166psx-as286"
+cc1 = "tools/bin/cc/gcc-2.91.66-psx/cc1"
+cflags = ["-O2", "-G0", "-quiet", "-w"]
+aspsx = "2.86"
+maspsx_flags = []
+asflags = ["-G0"]
+
+[[triple]]
+id = "L4-gcc272psx-as256"
+cc1 = "tools/bin/cc/gcc-2.7.2-psx/cc1"
+cflags = ["-O2", "-G0", "-g0", "-msoft-float", "-funsigned-char", "-quiet", "-w"]
+aspsx = "2.56"
+maspsx_flags = ["--expand-div"]
+asflags = ["-G0"]
+constitution = true
+
+[[triple]]
+id = "L4-gcc272psx-as267"
+cc1 = "tools/bin/cc/gcc-2.7.2-psx/cc1"
+cflags = ["-O2", "-G0", "-g0", "-msoft-float", "-funsigned-char", "-quiet", "-w"]
+aspsx = "2.67"
+maspsx_flags = ["--expand-div"]
+asflags = ["-G0"]
+
+[[triple]]
+id = "L4-gcc272psx-as277"
+cc1 = "tools/bin/cc/gcc-2.7.2-psx/cc1"
+cflags = ["-O2", "-G0", "-g0", "-msoft-float", "-funsigned-char", "-quiet", "-w"]
+aspsx = "2.77"
+maspsx_flags = ["--expand-div"]
+asflags = ["-G0"]
+
+[[triple]]
+id = "L4-gcc272psx-as279"
+cc1 = "tools/bin/cc/gcc-2.7.2-psx/cc1"
+cflags = ["-O2", "-G0", "-g0", "-msoft-float", "-funsigned-char", "-quiet", "-w"]
+aspsx = "2.79"
+maspsx_flags = ["--expand-div"]
+asflags = ["-G0"]
+
+[[triple]]
+id = "L4-gcc272psx-as281"
+cc1 = "tools/bin/cc/gcc-2.7.2-psx/cc1"
+cflags = ["-O2", "-G0", "-g0", "-msoft-float", "-funsigned-char", "-quiet", "-w"]
+aspsx = "2.81"
+maspsx_flags = ["--expand-div"]
+asflags = ["-G0"]
+
+[[triple]]
+id = "L4-gcc272psx-as286"
+cc1 = "tools/bin/cc/gcc-2.7.2-psx/cc1"
+cflags = ["-O2", "-G0", "-g0", "-msoft-float", "-funsigned-char", "-quiet", "-w"]
+aspsx = "2.86"
+maspsx_flags = ["--expand-div"]
+asflags = ["-G0"]
+
+[[triple]]
+id = "L5-gcc281psx-as256"
+cc1 = "tools/bin/cc/gcc-2.8.1-psx/cc1"
+cflags = ["-O2", "-G0", "-g0", "-msoft-float", "-funsigned-char", "-quiet", "-w"]
+aspsx = "2.56"
+maspsx_flags = ["--expand-div"]
+asflags = ["-G0"]
+
+[[triple]]
+id = "L5-gcc281psx-as267"
+cc1 = "tools/bin/cc/gcc-2.8.1-psx/cc1"
+cflags = ["-O2", "-G0", "-g0", "-msoft-float", "-funsigned-char", "-quiet", "-w"]
+aspsx = "2.67"
+maspsx_flags = ["--expand-div"]
+asflags = ["-G0"]
+
+[[triple]]
+id = "L5-gcc281psx-as277"
+cc1 = "tools/bin/cc/gcc-2.8.1-psx/cc1"
+cflags = ["-O2", "-G0", "-g0", "-msoft-float", "-funsigned-char", "-quiet", "-w"]
+aspsx = "2.77"
+maspsx_flags = ["--expand-div"]
+asflags = ["-G0"]
+
+[[triple]]
+id = "L5-gcc281psx-as279"
+cc1 = "tools/bin/cc/gcc-2.8.1-psx/cc1"
+cflags = ["-O2", "-G0", "-g0", "-msoft-float", "-funsigned-char", "-quiet", "-w"]
+aspsx = "2.79"
+maspsx_flags = ["--expand-div"]
+asflags = ["-G0"]
+
+[[triple]]
+id = "L5-gcc281psx-as281"
+cc1 = "tools/bin/cc/gcc-2.8.1-psx/cc1"
+cflags = ["-O2", "-G0", "-g0", "-msoft-float", "-funsigned-char", "-quiet", "-w"]
+aspsx = "2.81"
+maspsx_flags = ["--expand-div"]
+asflags = ["-G0"]
+
+[[triple]]
+id = "L5-gcc281psx-as286"
+cc1 = "tools/bin/cc/gcc-2.8.1-psx/cc1"
+cflags = ["-O2", "-G0", "-g0", "-msoft-float", "-funsigned-char", "-quiet", "-w"]
+aspsx = "2.86"
+maspsx_flags = ["--expand-div"]
+asflags = ["-G0"]
+
+[[triple]]
+id = "L6-gcc272-as256"
+cc1 = "tools/bin/cc/gcc-2.7.2/cc1"
+cflags = ["-O2", "-G8", "-g0", "-msoft-float", "-funsigned-char", "-quiet", "-w"]
+aspsx = "2.56"
+maspsx_flags = ["--no-macro-inc", "--expand-div", "-G8"]
+asflags = ["-G8"]
+
+[[triple]]
+id = "L6-gcc272-as267"
+cc1 = "tools/bin/cc/gcc-2.7.2/cc1"
+cflags = ["-O2", "-G8", "-g0", "-msoft-float", "-funsigned-char", "-quiet", "-w"]
+aspsx = "2.67"
+maspsx_flags = ["--no-macro-inc", "--expand-div", "-G8"]
+asflags = ["-G8"]
+
+[[triple]]
+id = "L6-gcc272-as277"
+cc1 = "tools/bin/cc/gcc-2.7.2/cc1"
+cflags = ["-O2", "-G8", "-g0", "-msoft-float", "-funsigned-char", "-quiet", "-w"]
+aspsx = "2.77"
+maspsx_flags = ["--no-macro-inc", "--expand-div", "-G8"]
+asflags = ["-G8"]
+
+[[triple]]
+id = "L6-gcc272-as279"
+cc1 = "tools/bin/cc/gcc-2.7.2/cc1"
+cflags = ["-O2", "-G8", "-g0", "-msoft-float", "-funsigned-char", "-quiet", "-w"]
+aspsx = "2.79"
+maspsx_flags = ["--no-macro-inc", "--expand-div", "-G8"]
+asflags = ["-G8"]
+
+[[triple]]
+id = "L6-gcc272-as281"
+cc1 = "tools/bin/cc/gcc-2.7.2/cc1"
+cflags = ["-O2", "-G8", "-g0", "-msoft-float", "-funsigned-char", "-quiet", "-w"]
+aspsx = "2.81"
+maspsx_flags = ["--no-macro-inc", "--expand-div", "-G8"]
+asflags = ["-G8"]
+
+[[triple]]
+id = "L6-gcc272-as286"
+cc1 = "tools/bin/cc/gcc-2.7.2/cc1"
+cflags = ["-O2", "-G8", "-g0", "-msoft-float", "-funsigned-char", "-quiet", "-w"]
+aspsx = "2.86"
+maspsx_flags = ["--no-macro-inc", "--expand-div", "-G8"]
+asflags = ["-G8"]

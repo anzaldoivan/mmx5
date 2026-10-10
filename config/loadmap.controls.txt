@@ -1,0 +1,17 @@
+# Controls for tools/loadmap/loadmap.py check over docs/oracle/loadmap.json.
+# <id> | positive|negative|lead | <python expression>; names: j exe ov table (+ len all any sum sorted set range list int zip).
+# positive must hold; negative is a planted false statement and must fail (caught); lead prints agrees/differs.
+P1.header | positive | exe['pc0'] == '8005894C' and exe['t_addr'] == '80010000' and exe['t_size'] == 0x82000
+P2.table | positive | table['addr'] == '800E6188' and table['count'] == 59 and len(ov) == 59
+P3.toc_terminator | positive | table['terminator'] == table['count']
+P4.offsets_monotonic | positive | all(a['bin_offset'] + a['size'] <= b['bin_offset'] for a, b in zip(ov, ov[1:]))
+P5.within_bin | positive | all(o['bin_offset'] % 2048 == 0 and o['bin_offset'] + o['size'] <= table['bin_size'] for o in ov)
+P6.data_set | positive | set(o['index'] for o in ov if o['kind'] == 'data') == {13, 15, 17, 19}
+N1.ovl0_dest | negative | ov[0]['dest'] == '800FA000'
+L7.count | lead | len(ov) == 59
+L7.code | lead | len([o for o in ov if o['kind'] == 'code']) == 53
+L7.code_with_dest | lead | len([o for o in ov if o['kind'] == 'code' and o['dest']]) == 53
+L7.dest_base | lead | set(o['dest'] for o in ov[0:30]) == {'800EE970'}
+L7.dest_fa000 | lead | set(o['dest'] for o in ov[30:38] + ov[40:59]) == {'800FA000'}
+L7.data | lead | sorted(o['index'] for o in ov if o['kind'] == 'data') == [13, 15, 17, 19]
+L7.dest_null | lead | [o['dest'] for o in ov[38:40]] == [None, None]

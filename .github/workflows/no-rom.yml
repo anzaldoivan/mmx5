@@ -1,0 +1,78 @@
+# .github/workflows/no-rom.yml — the ROM-free CI (installed by decomp-architect, install.py S2).
+#
+# What CI can and cannot prove here: the project's contract is BYTE-IDENTITY of every binary against the original
+# medium, which needs the game and is therefore never in CI. CI proves everything that does NOT need the game:
+#   * audits       — the tracked tree is public-clean (tools/audit_public.py: no game-derived bytes, no purge path,
+#                    nothing over the size threshold, no pasted disassembly), and any text-only self-checks the
+#                    project adds (a cookbook index freshness check, a symbol-reference lint, decoder unit tests).
+#   * compile-only — the committed C still compiles with the pinned vintage toolchain and the build's exact flags
+#                    (enabled: job `compile-only`, `make compile-only` in mk/fleet.mk; every src/**/*.c on every run).
+# Byte-identity is verified locally with the game and RECORDED in the tracked verification log.
+name: no-rom
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: "17 6 * * 1"        # weekly: audits + compile-only against fresh fetches (toolchain, maspsx pin)
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audits:
+    name: public-clean audit (no game bytes)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          submodules: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.12"
+      - name: audit_public — no game-derived bytes, no purge path, nothing > 50 MiB, no pasted disassembly (+ negative control)
+        run: make firewall-check PY=python
+      - name: format-check — src/ matches the tracked .clang-format (clang-format at the requirements-python.txt pin)
+        run: |
+          mkdir -p .run
+          grep -A1 -E '^clang-format==' requirements-python.txt > .run/req-format.txt
+          python -m venv .run/venv-format
+          .run/venv-format/bin/pip install -q --require-hashes -r .run/req-format.txt
+          make format-check CLANG_FORMAT=.run/venv-format/bin/clang-format
+      - name: progress-check — README progress block stamp equals HEAD:src/HEAD:config trees (G58)
+        run: make progress-check PY=python
+
+  compile-only:
+    name: compile-only (pinned cc1 + maspsx + binutils, no game bytes)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          submodules: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.14"        # was 3.12; the requirements-python.txt hashes are CPython 3.14 wheels
+      # bootstrap: venv, pinned binutils deb (sha256) wrapped in tools/bin/, cc1 candidates (tools/toolchain/fetch.sh, sha256)
+      - name: bootstrap — binutils + vintage compiler
+        run: bash tools/bootstrap.sh
+      - name: maspsx at the config/refs.toml pin
+        run: PY=python bash tools/refs_fetch.sh maspsx
+      - name: make compile-only — every src/**/*.c with mk/slus.mk's C flags
+        run: make compile-only PY=python
+      - name: types-check — tools/dedup/shapes.py over include/ and src/ (game-free; proven in a fresh worktree, T3.c1)
+        run: make types-check PY=python
+      # permuter/plateau selftests: pycparser+toml (decomp-permuter), rabbitizer (plateau) at the hashed pins
+      - name: selftest Python deps at the requirements-python.txt pins
+        run: |
+          mkdir -p .run
+          grep -A1 -E '^(pycparser|rabbitizer|toml)==' requirements-python.txt | grep -v '^--$' > .run/req-selftest.txt
+          python -m pip install -q --require-hashes -r .run/req-selftest.txt
+      - name: decomp-permuter at the config/refs.toml pin
+        run: PY=python bash tools/refs_fetch.sh decomp-permuter
+      # here, not in audits: reconcile/propagate selftests compile their fixture C with the pinned cc1 + maspsx
+      - name: tools-selftest — census/harness/sig/dedup/codegen/permuter tools on synthetic fixtures, each must exit 0 and print its control OK line
+        run: make tools-selftest PY=python

@@ -1,0 +1,12 @@
+{"alias": "slus", "module": "slus/seg", "name": "fa", "vram": "80001000", "insns": 4, "verdict": "draw", "reason": null, "rank": 1, "reach": 1}
+{"alias": "slus", "module": "slus/seg", "name": "fb_c", "vram": "80001100", "insns": 4, "verdict": "draw", "reason": null, "rank": 2, "reach": 1}
+{"alias": "slus", "module": "slus/seg", "name": "fc_noasm", "vram": "80001200", "insns": 4, "verdict": "draw", "reason": null, "rank": 3, "reach": 1}
+{"alias": "slus", "module": "slus/seg", "name": "fd", "vram": "80001300", "insns": 4, "verdict": "draw", "reason": null, "rank": 4, "reach": 1}
+{"alias": "slus", "module": "slus/seg", "name": "fe_twin", "vram": "80001400", "insns": 4, "verdict": "draw", "reason": null, "rank": 5, "reach": 1}
+{"alias": "slus", "module": "slus/seg", "name": "ff", "vram": "80001500", "insns": 3, "verdict": "draw", "reason": null, "rank": 6, "reach": 1}
+{"alias": "rockx5", "module": "rockx5/ovl00_80100000", "name": "ra", "vram": "80001600", "insns": 2, "verdict": "draw", "reason": null, "rank": 7, "reach": 1}
+{"alias": "rockx5", "module": "rockx5/ovl00_80100000", "name": "rb", "vram": "80001700", "insns": 2, "verdict": "draw", "reason": null, "rank": 8, "reach": 1}
+{"alias": "slus", "module": "slus/seg", "name": "fg", "vram": "80001800", "insns": 2, "verdict": "draw", "reason": null, "rank": 9, "reach": 1}
+{"alias": "slus", "module": "slus/seg", "name": "big", "vram": "80001900", "insns": 30, "verdict": "draw", "reason": null, "rank": 10, "reach": 1}
+{"alias": "slus", "module": "slus/seg", "name": "rod", "vram": "80001A00", "insns": 5, "verdict": "refused", "reason": "uncarveable", "rank": null, "reach": 1, "detail": "rodata"}
+{"alias": "slus", "module": "slus/seg", "name": "fbank", "vram": "80001B00", "insns": 3, "verdict": "refused", "reason": "already-c", "rank": null, "reach": 1}

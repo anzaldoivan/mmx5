@@ -1,0 +1,5 @@
+{"overlays": [
+ {"index": 0, "bin_offset": "00000100", "size": "0000002A", "kind": "code", "dest": "80100000"},
+ {"index": 1, "bin_offset": "0000012A", "size": "00000006", "kind": "data", "dest": "80100000"},
+ {"index": 2, "bin_offset": "00000130", "size": "00000008", "kind": "code", "dest": "80100000"},
+ {"index": 3, "bin_offset": "00000138", "size": "00000008", "kind": "code", "dest": null}]}

@@ -1,0 +1,1 @@
+{"alias": "slus", "module": "slus/game_80001000", "name": "fa", "vram": "80001000", "verdict": "failed", "rung": "r1", "reason": "word 0 (+0x0) differs", "date": "2026-10-05"}

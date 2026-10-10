@@ -1,0 +1,18 @@
+# propagate.py --selftest fixture: hand-written, no game bytes. Four dedup members at vram 0x80001000.
+name: FX.BIN
+options:
+  basename: FX.BIN
+  asm_path: asm/fx
+
+segments:
+  - name: header
+    type: header
+    start: 0x0
+  - name: main
+    type: code
+    start: 0x1000
+    vram: 0x80001000
+    subsegments:
+      - [0x1000, asm, game_80001000]  # four members; func_80001030's target bytes are planted to differ
+      - [0x1040, rodata, 1040]
+  - [0x1200]

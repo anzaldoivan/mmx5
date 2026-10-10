@@ -1,0 +1,5 @@
+{"alias": "slus", "name": "fa", "tries": 1, "best": "try: fa match", "date": "2026-10-05"}
+{"target": "slus_fb", "try_line": "try: fb diff 1 of 4 words", "tries": 12, "ctx_k": 41, "plateau": "wall", "minutes": 20}
+{"alias": "slus", "name": "fc", "tries": 31, "best": "try: fc diff 3 of 8 words", "date": "2026-10-05"}
+{"target": "slus_fd", "try_line": "try: fd diff 1 of 4 words", "tries": 2, "ctx_k": null, "plateau": null, "minutes": 3}
+{"target": "slus_fe", "try_line": "try: fe error cc1", "tries": 3, "ctx_k": 12, "plateau": null, "minutes": 5}

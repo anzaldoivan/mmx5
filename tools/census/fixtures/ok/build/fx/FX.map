@@ -1,0 +1,18 @@
+Linker script and memory map (synthetic fixture)
+
+ build/fx/asm/fx/ovl00_80100000.o(.text)
+ .text          0x80100000       0x14 build/fx/asm/fx/ovl00_80100000.o
+                0x80100004                func_80100004_ovl00
+                0x80100004                func_80100004_ovl00.NON_MATCHING
+                0x80100010                D_80100010_ovl00
+ build/fx/src/fx/func_80100014_ovl00.o(.text)
+ .text          0x80100014        0x8 build/fx/src/fx/func_80100014_ovl00.o
+                0x80100014                func_80100014_ovl00
+ build/fx/asm/fx/ovl00_8010001C.o(.text)
+ .text          0x8010001c        0xc build/fx/asm/fx/ovl00_8010001C.o
+                0x8010001c                func_8010001C_ovl00
+                0x80100024                .L80100024_ovl00
+ .data          0x80100028        0x2 build/fx/assets/fx/128.o
+ build/fx/asm/fx/ovl02_80100000.o(.text)
+ .text          0x80100000        0x8 build/fx/asm/fx/ovl02_80100000.o
+                0x80100000                func_80100000_ovl02

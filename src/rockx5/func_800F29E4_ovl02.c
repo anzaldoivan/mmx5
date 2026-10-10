@@ -1,0 +1,18 @@
+#include "types.h"
+
+#define SCR (*(u8**)0x1F80004C)
+
+extern void func_80016490(s32, s32, void*);
+extern void func_800F2AB4_ovl02(void* arg0, u8 arg1);
+
+void func_800F29E4_ovl02(ObjFE130* arg0) {
+    if (arg0->unk45 == 2) {
+        func_80016490(2, 0x24, arg0);
+        func_800F2AB4_ovl02(arg0, 0x11);
+    } else if (arg0->unk45 == 3) {
+        arg0->unk5 = 2;
+        arg0->unk6 = 0;
+    } else if (arg0->unk45 == 4) {
+        SCR[0x82] = 0;
+    }
+}

@@ -1,0 +1,3 @@
+# draw.py --selftest: one live entry (`false` exits 1 = still refuses). Synthetic.
+entries:
+  - {"alias": "fx", "vram": "80001020", "name": "game_80001020", "reason": "selftest live", "date": "2026-10-05", "reprobe": "false"}

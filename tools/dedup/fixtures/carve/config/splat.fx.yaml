@@ -1,0 +1,28 @@
+# carve.py --selftest fixture: hand-written, no game bytes. Code segments at vram 0x80000F00 and 0x80002000 (jtbl pad).
+name: FX.BIN
+options:
+  basename: FX.BIN
+  asm_path: asm/fx
+  target_path: fx.bin  # synthetic: zeros + jtbl_80002004's two words at 0x1104 (0x110C pad)
+
+segments:
+  - name: header
+    type: header
+    start: 0x0
+  - name: main
+    type: code
+    start: 0xF00
+    vram: 0x80000F00
+    subsegments:
+      - [0xF00, rodata, F00]  # region: F00-F80 unreferenced, F80 owned by 80001010, FC0 shared (1040+1050)
+      - [0x1000, asm, game_80001000]  # three functions; 80001010 owns rodata D_80000F80 (control)
+      - [0x1030, asm, game_80001030]  # planted: unresolved jump table, shared rodata D_80000FC0, overrun
+      - [0x1060, rodata, 1060]
+  - name: jt
+    type: code
+    start: 0x1100
+    vram: 0x80002000
+    subsegments:
+      - [0x1100, rodata, 1100]  # region: jtbl_80002004 (2 words) owned by 80002010, then a 4-byte zero pad
+      - [0x1110, asm, game_80002010]  # pad-free span end control
+  - [0x1200]

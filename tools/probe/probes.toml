@@ -1,0 +1,49 @@
+# Probes for `tools/probe/probe.py ladder`: one [[probe]] per target function (filled in T4).
+# Schema:
+#   [[probe]]
+#   alias  = "slus" | "rockx5"            # target = expected/build/<alias>/
+#   name   = "func_80012345"              # symbol in the compiled .o
+#   vram   = 0x80012345                   # target function address
+#   size   = 0x40                         # bytes compared
+#   src    = "src/<alias>/<name>.c"       # our C for it (splat c subsegment)
+#   module = "main" | "ovl00" …           # rockx5: overlay segment name in config/splat.rockx5.yaml
+
+[[probe]]
+alias = "slus"
+name = "func_80027474"
+vram = 0x80027474
+size = 0xA0
+src = "src/slus/func_80027474.c"
+module = "main"
+
+[[probe]]
+alias = "slus"
+name = "func_80012D88"
+vram = 0x80012D88
+size = 0x84
+src = "src/slus/func_80012D88.c"
+module = "main"
+
+[[probe]]
+alias = "slus"
+name = "func_800132F8"
+vram = 0x800132F8
+size = 0x50
+src = "src/slus/func_800132F8.c"
+module = "main"
+
+[[probe]]
+alias = "rockx5"
+name = "func_800F2448_ovl00"
+vram = 0x800F2448
+size = 0x3C
+src = "src/rockx5/func_800F2448_ovl00.c"
+module = "ovl00"
+
+[[probe]]
+alias = "rockx5"
+name = "func_800FF0B4_ovl04"
+vram = 0x800FF0B4
+size = 0x3C
+src = "src/rockx5/func_800FF0B4_ovl04.c"
+module = "ovl04"

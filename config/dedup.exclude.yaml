@@ -1,0 +1,35 @@
+# dedup.exclude.yaml -- functions the draw filter (tools/dedup/draw.py) must refuse, reason `exclude-list`.
+# Restricted YAML read by draw.py with the stdlib: `#` comment lines, `entries:` (or `entries: []` when empty), then
+# one entry per line as `  - {json object}` (a JSON object is YAML flow syntax). Keys, all strings:
+#   alias    slus | rockx5
+#   vram     8 hex digits, no 0x (as inventory.jsonl)
+#   name     the inventory name
+#   reason   why it must not be drawn
+#   date     YYYY-MM-DD the entry was added
+#   reprobe  argv run by shlex split, cwd repo root, no shell, 120 s timeout; non-zero exit = still refuses (live),
+#            exit 0 = stale -> draw.py prints `draw: stale exclude <alias> <vram> <reason>` and refuses to run (G38)
+# Example:
+#   - {"alias": "slus", "vram": "80012E0C", "name": "game_80012E0C", "reason": "...", "date": "2026-10-05", "reprobe": "python3 tools/dedup/carve.py plan slus 80012E0C"}
+entries:
+  - {"alias": "rockx5", "vram": "800EEE10", "name": "func_800EEE10_ovl02", "reason": "ledgered failure W3+W4 (diff 6/174); docs/ledger.md", "date": "2026-10-06", "reprobe": "test -f src/rockx5/func_800EEE10_ovl02.c"}
+  - {"alias": "rockx5", "vram": "800EFD5C", "name": "func_800EFD5C_ovl02", "reason": "ledgered failure W3+W4 (diff 10/50); docs/ledger.md", "date": "2026-10-06", "reprobe": "test -f src/rockx5/func_800EFD5C_ovl02.c"}
+  - {"alias": "rockx5", "vram": "800FDB00", "name": "func_800FDB00_ovl07", "reason": "ledgered failure W3+W4 (diff 2/48); docs/ledger.md", "date": "2026-10-06", "reprobe": "test -f src/rockx5/func_800FDB00_ovl07.c"}
+  - {"alias": "rockx5", "vram": "800F67D8", "name": "func_800F67D8_ovl09", "reason": "ledgered failure W5 (diff 32/44); docs/ledger.md", "date": "2026-10-06", "reprobe": "test -f src/rockx5/func_800F67D8_ovl09.c"}
+  - {"alias": "rockx5", "vram": "800FDEC8", "name": "func_800FDEC8_ovl34", "reason": "ledgered failure W5 (diff 2/48); docs/ledger.md", "date": "2026-10-06", "reprobe": "test -f src/rockx5/func_800FDEC8_ovl34.c"}
+  - {"alias": "rockx5", "vram": "800EF5E4", "name": "func_800EF5E4_ovl00", "reason": "ledgered failure W1 (diff 2/103); docs/ledger.md", "date": "2026-10-06", "reprobe": "test -f src/rockx5/func_800EF5E4_ovl00.c"}
+  - {"alias": "slus", "vram": "8001F950", "name": "func_8001F950", "reason": "ledgered failure W1 (diff 2/159); docs/ledger.md", "date": "2026-10-06", "reprobe": "test -f src/slus/func_8001F950.c"}
+  - {"alias": "rockx5", "vram": "800EECA4", "name": "D_800EECA4_ovl00", "reason": "ledgered failure W2 (SHA red in worktree); docs/ledger.md", "date": "2026-10-06", "reprobe": "test -f src/rockx5/D_800EECA4_ovl00.c"}
+  - {"alias": "rockx5", "vram": "800F16C8", "name": "func_800F16C8_ovl00", "reason": "ledgered failure W2 (diff 284/369); docs/ledger.md", "date": "2026-10-06", "reprobe": "test -f src/rockx5/func_800F16C8_ovl00.c"}
+  - {"alias": "rockx5", "vram": "800F19F0", "name": "func_800F19F0_ovl24", "reason": "ledgered failure W2 (diff 7/992); docs/ledger.md", "date": "2026-10-06", "reprobe": "test -f src/rockx5/func_800F19F0_ovl24.c"}
+  - {"alias": "rockx5", "vram": "800EF804", "name": "func_800EF804_ovl03", "reason": "ledgered failure W6 (diff 7/27); docs/ledger.md", "date": "2026-10-06", "reprobe": "test -f src/rockx5/func_800EF804_ovl03.c"}
+  - {"alias": "rockx5", "vram": "800FDDD4", "name": "func_800FDDD4_ovl07", "reason": "ledgered failure W7 (diff 8/48); docs/ledger.md", "date": "2026-10-06", "reprobe": "test -f src/rockx5/func_800FDDD4_ovl07.c"}
+  - {"alias": "rockx5", "vram": "800F0614", "name": "func_800F0614_ovl02", "reason": "ledgered failure W7 (diff 16/27); docs/ledger.md", "date": "2026-10-06", "reprobe": "test -f src/rockx5/func_800F0614_ovl02.c"}
+  - {"alias": "rockx5", "vram": "800F7494", "name": "func_800F7494_ovl06", "reason": "ledgered failure W8 (diff 15/27); docs/ledger.md", "date": "2026-10-07", "reprobe": "test -f src/rockx5/func_800F7494_ovl06.c"}
+  - {"alias": "rockx5", "vram": "800FE19C", "name": "func_800FE19C_ovl34", "reason": "ledgered failure W8 (diff 8/48); docs/ledger.md", "date": "2026-10-07", "reprobe": "test -f src/rockx5/func_800FE19C_ovl34.c"}
+  - {"alias": "rockx5", "vram": "800F15FC", "name": "func_800F15FC_ovl09", "reason": "ledgered failure W9 (diff 8/46); docs/ledger.md", "date": "2026-10-07", "reprobe": "test -f src/rockx5/func_800F15FC_ovl09.c"}
+  - {"alias": "rockx5", "vram": "800EFFA0", "name": "func_800EFFA0_ovl11", "reason": "ledgered failure W10 (diff 13/96); docs/ledger.md", "date": "2026-10-07", "reprobe": "test -f src/rockx5/func_800EFFA0_ovl11.c"}
+  - {"alias": "rockx5", "vram": "800F12EC", "name": "func_800F12EC_ovl08", "reason": "ledgered failure W11 (diff 4/96); docs/ledger.md", "date": "2026-10-07", "reprobe": "test -f src/rockx5/func_800F12EC_ovl08.c"}
+  - {"alias": "rockx5", "vram": "800F0258", "name": "func_800F0258_ovl12", "reason": "ledgered failure W11 (diff 3/55); docs/ledger.md", "date": "2026-10-07", "reprobe": "test -f src/rockx5/func_800F0258_ovl12.c"}
+  - {"alias": "rockx5", "vram": "800FDF40", "name": "func_800FDF40_ovl07", "reason": "ledgered failure W11 (diff 5/47); docs/ledger.md", "date": "2026-10-07", "reprobe": "test -f src/rockx5/func_800FDF40_ovl07.c"}
+  - {"alias": "rockx5", "vram": "800F321C", "name": "func_800F321C_ovl04", "reason": "ledgered failure W12 (diff 18/96); docs/ledger.md", "date": "2026-10-07", "reprobe": "test -f src/rockx5/func_800F321C_ovl04.c"}
+  - {"alias": "rockx5", "vram": "800F0258", "name": "func_800F0258_ovl14", "reason": "ledgered failure W12 (diff 3/55); docs/ledger.md", "date": "2026-10-07", "reprobe": "test -f src/rockx5/func_800F0258_ovl14.c"}

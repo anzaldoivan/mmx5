@@ -1,0 +1,2 @@
+// ROCK_X5.BIN overlay symbols (splat symbol_addrs format). Names and addresses only (G12).
+L_800EEFCC_ovl07 = 0x800EEFCC; // type:label rom:0x5BE5C

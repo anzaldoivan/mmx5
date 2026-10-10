@@ -1,0 +1,764 @@
+8001004C-80010060 | jumptable | FUN_80014dec | ghidra switch table, 5 entries, jr 80014F88
+80010060-80010088 | jumptable | FUN_80019d24 | ghidra switch table, 10 entries, jr 80019D84
+800100BC-800100D8 | jumptable | FUN_80023cc0 | ghidra switch table, 7 entries, jr 80023CFC
+800100D8-800101CC | jumptable | FUN_8002f460 | ghidra switch table, 61 entries, jr 8002F5B0
+800101D0-800102C4 | jumptable | FUN_8002f460 | ghidra switch table, 61 entries, jr 8002F6B0
+800102C8-800103BC | jumptable | FUN_8002f460 | ghidra switch table, 61 entries, jr 8002F7B0
+800103C0-800104B4 | jumptable | FUN_8002f460 | ghidra switch table, 61 entries, jr 8002F8AC
+800104B8-800105AC | jumptable | FUN_8002f8fc | ghidra switch table, 61 entries, jr 8002F9A4
+800105B0-800106A4 | jumptable | FUN_8002f8fc | ghidra switch table, 61 entries, jr 8002FA1C
+800106A8-8001079C | jumptable | FUN_8002f8fc | ghidra switch table, 61 entries, jr 8002FA94
+800107A0-80010894 | jumptable | FUN_8002f8fc | ghidra switch table, 61 entries, jr 8002FB0C
+80010898-80010998 | jumptable | FUN_8003028c | ghidra switch table, 64 entries, jr 80030310
+80010998-800109BC | jumptable | FUN_80030cbc | ghidra switch table, 9 entries, jr 80030CF8
+800109C0-800109E0 | jumptable | FUN_80030ed8 | ghidra switch table, 8 entries, jr 80030F04
+800109E0-80010A00 | jumptable | FUN_80030f40 | ghidra switch table, 8 entries, jr 80030F6C
+80010A00-80010A20 | jumptable | FUN_8003107c | ghidra switch table, 8 entries, jr 800310A8
+80010A20-80010A9C | jumptable | FUN_80031168 | ghidra switch table, 31 entries, jr 80031194
+80010AA0-80010AC0 | jumptable | FUN_80031398 | ghidra switch table, 8 entries, jr 800313C8
+80010AC0-80010B3C | jumptable | FUN_80031398 | ghidra switch table, 31 entries, jr 80031404
+80010B40-80010B60 | jumptable | FUN_80031508 | ghidra switch table, 8 entries, jr 80031534
+80010B60-80010C54 | jumptable | FUN_80031630 | ghidra switch table, 61 entries, jr 80031658
+80010C54-80010C7C | jumptable | FUN_800317b8 | ghidra switch table, 10 entries, jr 800319E4
+80010C7C-80010D10 | jumptable | FUN_80031f60 | ghidra switch table, 37 entries, jr 80032000
+80010D14-80010E00 | jumptable | FUN_80031f60 | ghidra switch table, 59 entries, jr 800320C0
+80010E04-80010E4C | jumptable | FUN_80031f60 | ghidra switch table, 18 entries, jr 800320F8
+80010E4C-80010E60 | jumptable | FUN_800321ec | ghidra switch table, 5 entries, jr 800322E4
+80010E60-80010E7C | jumptable | FUN_80034508 | ghidra switch table, 7 entries, jr 8003455C
+80010E80-80010E94 | jumptable | FUN_80034c28 | ghidra switch table, 5 entries, jr 80034C60
+80010E98-80010EAC | jumptable | FUN_80034d18 | ghidra switch table, 5 entries, jr 80034D50
+80010EAC-80010F84 | jumptable | FUN_8003a418 | ghidra switch table, 54 entries, jr 8003A470
+80010F84-80010FA4 | jumptable | FUN_8003c0ec | ghidra switch table, 8 entries, jr 8003C158
+80010FA4-80010FE4 | jumptable | FUN_8003f548 | ghidra switch table, 16 entries, jr 8003F588
+80011000-80011024 | jumptable | FUN_8004e360 | ghidra switch table, 9 entries, jr 8004E39C
+80011024-80011038 | jumptable | FUN_8004e660 | ghidra switch table, 5 entries, jr 8004E738
+80011038-80011068 | jumptable | FUN_800535c8 | ghidra switch table, 12 entries, jr 800537B0
+80011068-800110A0 | jumptable | FUN_80054000 | ghidra switch table, 14 entries, jr 80054098
+800110A0-800110D8 | jumptable | FUN_80054758 | ghidra switch table, 14 entries, jr 80054808
+80011178-80011198 | jumptable | SpuSetCommonAttr | ghidra switch table, 8 entries, jr 8005ABD8
+80011198-800111B8 | jumptable | S_SCA_OBJ_98 | ghidra switch table, 8 entries, jr 8005AC98
+80011588-800115A4 | jumptable | SpuSetVoiceAttr | ghidra switch table, 7 entries, jr 8005F22C
+800115A8-800115C4 | jumptable | S_SVA_OBJ_1A0 | ghidra switch table, 7 entries, jr 8005F30C
+80011A58-80011A6C | jumptable | BIOS_1_OBJ_64 | ghidra switch table, 5 entries, jr 800658A4
+80058944-80058A08 | libobj | 2MBYTE.OBJ/2MBYTE.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80058A08-80058BA8 | libobj | LIBSPU.LIB/S_CRWA.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80058BA8-800596E8 | libobj | LIBSPU.LIB/SPU.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+800596E8-80059848 | libobj | LIBSPU.LIB/S_INI.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80059878-80059988 | libobj | LIBSPU.LIB/S_M_UTIL.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80059988-80059A18 | libobj | LIBSPU.LIB/S_GKS.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80059A18-80059A48 | libobj | LIBSPU.LIB/S_STM.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80059A48-80059B18 | libobj | LIBSND.LIB/CC_7.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80059B18-80059B88 | libobj | LIBSND.LIB/CC_100.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80059B88-80059DB8 | libobj | LIBSND.LIB/MIDICC.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80059DB8-80059E98 | libobj | LIBSND.LIB/MIDINOTE.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80059E98-80059F08 | libobj | LIBSND.LIB/MIDIPROG.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80059F08-80059FB8 | libobj | LIBSND.LIB/MIDITIME.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80059FB8-8005A188 | libobj | LIBSND.LIB/SSCLOSE.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8005A188-8005A238 | libobj | LIBSND.LIB/SSEND.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8005A238-8005A2D8 | libobj | LIBSND.LIB/SSINIT.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8005A318-8005A338 | libobj | LIBSND.LIB/UT_ROFF.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8005A338-8005A378 | libobj | LIBSND.LIB/SSISEOS.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8005A378-8005A4A8 | libobj | LIBSND.LIB/SSOPENPJ.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8005A4A8-8005A888 | libobj | LIBSND.LIB/SEPINIT.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8005A888-8005A8C8 | libobj | LIBSND.LIB/SSPLAY.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8005A8C8-8005A908 | libobj | LIBSND.LIB/SSPLAY_2.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8005A9A8-8005AAC8 | libobj | LIBSND.LIB/PLAYMODE.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8005AAC8-8005AB88 | libobj | LIBSND.LIB/SSSATTR.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8005AB88-8005AF08 | libobj | LIBSPU.LIB/S_SCA.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8005AF08-8005AF58 | libobj | LIBSND.LIB/SSSMV.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8005AF58-8005B268 | libobj | LIBSND.LIB/SSSTART.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8005B268-8005B4D8 | libobj | LIBSND.LIB/SSCALL.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8005B4D8-8005B6E8 | libobj | LIBSND.LIB/CRES.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8005B6E8-8005B788 | libobj | LIBSND.LIB/PAUSE.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8005B788-8005B7B8 | libobj | LIBSND.LIB/PLAY.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8005B7B8-8005BEA8 | libobj | LIBSND.LIB/MIDIREAD.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8005BEA8-8005BFA8 | libobj | LIBSND.LIB/NEXT.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8005BFA8-8005C008 | libobj | LIBSND.LIB/REPLAY.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8005C008-8005C1E8 | libobj | LIBSND.LIB/SSSTOP.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8005C1E8-8005C2F8 | libobj | LIBSND.LIB/SSSV.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8005C2F8-8005C518 | libobj | LIBSND.LIB/SSTABLE.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8005C518-8005C668 | libobj | LIBSND.LIB/SSTICK.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8005C668-8005C7F8 | libobj | LIBSND.LIB/SSVOL.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8005C7F8-8005CA18 | libobj | LIBSND.LIB/TEMPO.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8005CA18-8005CA58 | libobj | LIBSND.LIB/DMYNOTE.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8005CD18-8005CD58 | libobj | LIBSND.LIB/DMYDE_0.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8005D218-8005D458 | libobj | LIBSND.LIB/UT_GVA.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8005D458-8005D838 | libobj | LIBSND.LIB/UT_KEYV.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8005D838-8005D8C8 | libobj | LIBSND.LIB/UT_RDEP.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8005D8C8-8005DDA8 | libobj | LIBSPU.LIB/S_SRMP.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8005DDA8-8005E278 | libobj | LIBSPU.LIB/S_SRA.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8005E278-8005E318 | libobj | LIBSND.LIB/UT_REV.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8005E318-8005E408 | libobj | LIBSPU.LIB/S_SR.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8005E448-8005E4D8 | libobj | LIBSND.LIB/UT_VVOL4.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8005E4D8-8005E6A8 | libobj | LIBSND.LIB/VM_ALOC2.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8005E6B8-8005EB88 | libobj | LIBSND.LIB/VM_F.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8005EBB8-8005EE78 | libobj | LIBSPU.LIB/S_SAV.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8005EEA8-8005EED8 | libobj | LIBSPU.LIB/S_GAV.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8005EF38-8005F0F8 | libobj | LIBSPU.LIB/S_SK.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8005F0F8-8005F6F8 | libobj | LIBSPU.LIB/S_SVA.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8005F6F8-8005F8F8 | libobj | LIBSPU.LIB/S_N2P.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8005F8F8-8005F918 | libobj | LIBSPU.LIB/S_GVEX.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8005F918-8005FC68 | libobj | LIBSND.LIB/VM_INIT.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8005FC68-8005FCC8 | libobj | LIBSPU.LIB/S_M_INIT.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8005FD08-800604A8 | libobj | LIBSND.LIB/VM_KEY.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+800604A8-80060718 | libobj | LIBSND.LIB/VM_ALOC1.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80060718-800608F8 | libobj | LIBSND.LIB/VM_N2P.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+800608F8-80060E68 | libobj | LIBSND.LIB/VM_NO1.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80060E68-80060EB8 | libobj | LIBSPU.LIB/S_SNC.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80060EB8-80060EF8 | libobj | LIBSND.LIB/VM_NOFF.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80060EF8-80060FB8 | libobj | LIBSND.LIB/VM_NOWOF.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80060FB8-80061488 | libobj | LIBSND.LIB/VM_NOWON.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80061488-80061B08 | libobj | LIBSND.LIB/VM_SEQ.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80061B08-80061BD8 | libobj | LIBSND.LIB/VM_STAV.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80061BD8-80062178 | libobj | LIBSND.LIB/VM_VOL.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80062178-80062238 | libobj | LIBSND.LIB/VM_VSU.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80062258-80062308 | libobj | LIBSND.LIB/VS_VAB.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80062308-80062388 | libobj | LIBSPU.LIB/S_M_F.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80062388-80062688 | libobj | LIBSPU.LIB/S_M_INT.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80062688-80062AE8 | libobj | LIBSND.LIB/VS_VH.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80062AE8-80062C78 | libobj | LIBSND.LIB/VS_VTBP.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80062C78-80062CD8 | libobj | LIBSPU.LIB/S_STSA.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80062CD8-80062D68 | libobj | LIBSPU.LIB/S_WP.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80062D68-80062D98 | libobj | LIBSND.LIB/VS_VTC.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80062D98-80062E48 | libobj | LIBSPU.LIB/S_ITC.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80062E48-80063058 | libobj | LIBETC.LIB/VSYNC.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80063058-80063718 | libobj | LIBETC.LIB/INTR.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80063718-80063838 | libobj | LIBETC.LIB/INTR_VB.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80063838-80063AD8 | libobj | LIBETC.LIB/INTR_DMA.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80063B08-80063B38 | libobj | LIBCD.LIB/CDROM.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80063B38-80063C88 | libobj | LIBCD.LIB/EVENT.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80063C88-80063D08 | libobj | LIBCD.LIB/SYS.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80063D08-80064678 | libobj | LIBCD.LIB/ISO9660.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80064678-80064728 | libobj | LIBCD.LIB/CDREAD2.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80064728-80064788 | libobj | LIBCD.LIB/C_002.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80064808-800648F8 | libobj | LIBCD.LIB/C_004.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+800648F8-80064988 | libobj | LIBCD.LIB/C_005.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80064988-80064A38 | libobj | LIBCD.LIB/C_007.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80064A38-80064A78 | libobj | LIBCD.LIB/C_008.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80064A78-80064B38 | libobj | LIBCD.LIB/C_009.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80064B58-80065648 | libobj | LIBCD.LIB/C_011.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80065648-80066BC8 | libobj | LIBCD.LIB/BIOS_1.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80066BC8-80066CD8 | libobj | LIBCD.LIB/S_002.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80066CE8-80066D58 | libobj | LIBCD.LIB/S_007.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80066DB8-80067178 | libobj | LIBCD.LIB/S_016.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80067178-80067198 | libobj | LIBCD.LIB/S_020.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80067198-800671B8 | libobj | LIBCD.LIB/S_021.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+800671B8-800672B8 | libobj | LIBCD.LIB/BIOS_2.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+800672E8-80067C88 | libobj | LIBCD.LIB/CDR_1.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80067D18-80067E08 | libobj | LIBCD.LIB/BIOS_3.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80067E28-80067EF8 | libobj | LIBGTE.LIB/GEO_00.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80067EF8-80067F98 | libobj | LIBGTE.LIB/GEO_01.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80067F98-80068028 | libobj | LIBGTE.LIB/MSC00.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+80068058-800681D8 | libobj | LIBGTE.LIB/RATAN.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+800681D8-800682B8 | libobj | LIBGTE.LIB/PATCHGTE.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+800682B8-8006B1B8 | libobj | LIBGPU.LIB/SYS.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006B1B8-8006B278 | libobj | LIBGPU.LIB/E03.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006B278-8006B2B8 | libobj | LIBGPU.LIB/E04.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006B2B8-8006B2F8 | libobj | LIBGPU.LIB/P00.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006B2F8-8006B398 | libobj | LIBGPU.LIB/P41.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006B398-8006BA28 | libobj | LIBPRESS.LIB/LIBPRESS.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006BA28-8006BDA8 | libobj | LIBPRESS.LIB/VLC.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006BDA8-8006BDB8 | libobj | LIBAPI.LIB/C112.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006BDA8-8006BDB8 | libobj | LIBCARD.LIB/C112.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006BDB8-8006BDC8 | libobj | LIBCARD.LIB/C171.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006BDC8-8006BDD8 | libobj | LIBCARD.LIB/C172.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006BDD8-8006BE18 | libobj | LIBCARD.LIB/CARD.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006BE18-8006BE28 | libobj | LIBCARD.LIB/A78.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006BE28-8006BE38 | libobj | LIBCARD.LIB/A80.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006BE38-8006BF38 | libobj | LIBCARD.LIB/INIT.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006BF38-8006BF48 | libobj | LIBCARD.LIB/A74.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006BF48-8006BF58 | libobj | LIBCARD.LIB/A75.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006BF58-8006BF68 | libobj | LIBCARD.LIB/A76.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006BF68-8006C188 | libobj | LIBCARD.LIB/PATCH.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006C228-8006C238 | libobj | LIBC.LIB/C19.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006C238-8006C248 | libobj | LIBC.LIB/C23.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006C248-8006C258 | libobj | LIBC.LIB/C24.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006C258-8006C268 | libobj | LIBC.LIB/C25.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006C268-8006C278 | libobj | LIBC.LIB/C42.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006C278-8006C288 | libobj | LIBC.LIB/C43.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006C288-8006C298 | libobj | LIBC.LIB/C63.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006C298-8006C2A8 | libobj | LIBAPI.LIB/C57.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006C2A8-8006C2B8 | libobj | LIBAPI.LIB/C68.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006C2B8-8006C2C8 | libobj | LIBAPI.LIB/C73.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006C2E8-8006C2F8 | libobj | LIBAPI.LIB/A07.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006C2F8-8006C308 | libobj | LIBAPI.LIB/A08.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006C308-8006C318 | libobj | LIBAPI.LIB/A09.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006C318-8006C328 | libobj | LIBAPI.LIB/A10.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006C328-8006C338 | libobj | LIBAPI.LIB/A11.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006C338-8006C348 | libobj | LIBAPI.LIB/A12.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006C348-8006C358 | libobj | LIBAPI.LIB/A13.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006C358-8006C368 | libobj | LIBAPI.LIB/A14.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006C368-8006C378 | libobj | LIBAPI.LIB/A15.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006C378-8006C388 | libobj | LIBAPI.LIB/A16.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006C388-8006C398 | libobj | LIBAPI.LIB/A23.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006C398-8006C3A8 | libobj | LIBAPI.LIB/A24.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006C3A8-8006C3B8 | libobj | LIBAPI.LIB/A25.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006C3D8-8006C3E8 | libobj | LIBAPI.LIB/A50.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006C3E8-8006C3F8 | libobj | LIBAPI.LIB/A52.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006C3F8-8006C408 | libobj | LIBAPI.LIB/A53.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006C408-8006C418 | libobj | LIBAPI.LIB/A54.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006C418-8006C428 | libobj | LIBAPI.LIB/A65.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006C428-8006C438 | libobj | LIBAPI.LIB/A67.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006C438-8006C448 | libobj | LIBAPI.LIB/A91.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006C448-8006C458 | libobj | LIBAPI.LIB/L10.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006C458-8006C5C8 | libobj | LIBAPI.LIB/COUNTER.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006C5C8-8006C868 | libobj | LIBAPI.LIB/FIRST.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006C868-8006C878 | libobj | LIBAPI.LIB/A66.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006C878-8006CB08 | libobj | LIBAPI.LIB/PAD.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006CB08-8006CB18 | libobj | LIBAPI.LIB/A18.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006CB18-8006CB28 | libobj | LIBAPI.LIB/A19.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006CB28-8006CB38 | libobj | LIBAPI.LIB/A21.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006CB38-8006CB48 | libobj | LIBAPI.LIB/L02.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006CB48-8006CB58 | libobj | LIBAPI.LIB/L03.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006CB58-8006CBF8 | libobj | LIBAPI.LIB/PATCH.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006CBF8-8006CC68 | libobj | LIBAPI.LIB/CHCLRPAD.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006CCB8-8006CCF8 | libobj | LIBPAD.LIB/PDCMD1.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006CCF8-8006CE68 | libobj | LIBPAD.LIB/PDCMD2.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006CE68-8006CF38 | libobj | LIBPAD.LIB/PDENT2.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006CF38-8006D038 | libobj | LIBPAD.LIB/PDENT3.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006D038-8006D148 | libobj | LIBPAD.LIB/PDMAIINI.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006D148-8006D1F8 | libobj | LIBPAD.LIB/PDDIRINI.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006D1F8-8006DC38 | libobj | LIBPAD.LIB/PDDIRRES.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006DC38-8006DC48 | libobj | LIBC.LIB/C40.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+8006DC48-8006FAB8 | libobj | LIBPAD.LIB/PDRESRES.OBJ | psx_ldr psyq470 obj sig, symbol-anchored, masked match re-verified
+ovl00:800EE974-800EE9B8 | jumptable | FUN_ovl00__800eeca4 | ghidra switch table, 17 entries, jr 800EED98
+ovl00:800EEA00-800EEA14 | jumptable | FUN_ovl00__800f47d0 | ghidra switch table, 5 entries, jr 800F4844
+ovl00:800EEA14-800EEA50 | jumptable | FUN_ovl00__800f50d0 | ghidra switch table, 15 entries, jr 800F5120
+ovl00:800EEA50-800EEA58 | jumptable | FUN_ovl00__800f5fe8 | ghidra switch table, 2 entries, jr 800F6098
+ovl00:800EEA58-800EEA60 | jumptable | FUN_ovl00__800f5fe8 | ghidra switch table, 2 entries, jr 800F6098
+ovl00:800EEA60-800EEA68 | jumptable | FUN_ovl00__800f5fe8 | ghidra switch table, 2 entries, jr 800F6098
+ovl00:800EEA68-800EEA70 | jumptable | FUN_ovl00__800f5fe8 | ghidra switch table, 2 entries, jr 800F6098
+ovl00:800EEA70-800EEA78 | jumptable | FUN_ovl00__800f5fe8 | ghidra switch table, 2 entries, jr 800F6098
+ovl00:800EEA78-800EEA80 | jumptable | FUN_ovl00__800f5fe8 | ghidra switch table, 2 entries, jr 800F6098
+ovl00:800EEA80-800EEA88 | jumptable | FUN_ovl00__800f5fe8 | ghidra switch table, 2 entries, jr 800F6098
+ovl00:800EEA88-800EEA90 | jumptable | FUN_ovl00__800f5fe8 | ghidra switch table, 2 entries, jr 800F6098
+ovl00:800EEA90-800EEA98 | jumptable | FUN_ovl00__800f5fe8 | ghidra switch table, 2 entries, jr 800F6098
+ovl00:800EEA98-800EEAA0 | jumptable | FUN_ovl00__800f5fe8 | ghidra switch table, 2 entries, jr 800F6098
+ovl00:800EEAA0-800EEAA8 | jumptable | FUN_ovl00__800f5fe8 | ghidra switch table, 2 entries, jr 800F6098
+ovl00:800EEAA8-800EEAB0 | jumptable | FUN_ovl00__800f5fe8 | ghidra switch table, 2 entries, jr 800F6098
+ovl00:800EEAB0-800EEAB8 | jumptable | FUN_ovl00__800f5fe8 | ghidra switch table, 2 entries, jr 800F6098
+ovl00:800EEAB8-800EEAC0 | jumptable | FUN_ovl00__800f5fe8 | ghidra switch table, 2 entries, jr 800F6098
+ovl00:800EEAC0-800EEAC4 | jumptable | FUN_ovl00__800f5fe8 | ghidra switch table, 1 entries, jr 800F6098
+ovl00:800EEAC4-800EEAD8 | jumptable | FUN_ovl00__800f9b4c | ghidra switch table, 5 entries, jr 800F9BAC
+ovl01:800EE974-800EE988 | jumptable | FUN_ovl01__800efd44 | ghidra switch table, 5 entries, jr 800EFE20
+ovl01:800EE988-800EE98C | jumptable | FUN_ovl01__800f0b1c | ghidra switch table, 1 entries, jr 800F0BF8
+ovl01:800EE990-800EE994 | jumptable | FUN_ovl01__800f0b1c | ghidra switch table, 1 entries, jr 800F0BF8
+ovl01:800EE998-800EE99C | jumptable | FUN_ovl01__800f0b1c | ghidra switch table, 1 entries, jr 800F0BF8
+ovl01:800EE9A0-800EE9A4 | jumptable | FUN_ovl01__800f0b1c | ghidra switch table, 1 entries, jr 800F0BF8
+ovl01:800EE9A8-800EE9AC | jumptable | FUN_ovl01__800f0b1c | ghidra switch table, 1 entries, jr 800F0BF8
+ovl01:800EE9B0-800EE9B4 | jumptable | FUN_ovl01__800f0b1c | ghidra switch table, 1 entries, jr 800F0BF8
+ovl01:800EE9B8-800EE9BC | jumptable | FUN_ovl01__800f0b1c | ghidra switch table, 1 entries, jr 800F0BF8
+ovl01:800EE9C0-800EE9C4 | jumptable | FUN_ovl01__800f0b1c | ghidra switch table, 1 entries, jr 800F0BF8
+ovl01:800EE9C8-800EE9CC | jumptable | FUN_ovl01__800f0b1c | ghidra switch table, 1 entries, jr 800F0BF8
+ovl01:800EE9D0-800EE9D4 | jumptable | FUN_ovl01__800f0b1c | ghidra switch table, 1 entries, jr 800F0BF8
+ovl01:800EE9D8-800EE9DC | jumptable | FUN_ovl01__800f0b1c | ghidra switch table, 1 entries, jr 800F0BF8
+ovl01:800EE9E0-800EE9E4 | jumptable | FUN_ovl01__800f0b1c | ghidra switch table, 1 entries, jr 800F0BF8
+ovl01:800EE9E8-800EE9EC | jumptable | FUN_ovl01__800f0b1c | ghidra switch table, 1 entries, jr 800F0BF8
+ovl01:800EE9F0-800EE9F4 | jumptable | FUN_ovl01__800f0b1c | ghidra switch table, 1 entries, jr 800F0BF8
+ovl01:800EE9F8-800EE9FC | jumptable | FUN_ovl01__800f0b1c | ghidra switch table, 1 entries, jr 800F0BF8
+ovl01:800EEA00-800EEA04 | jumptable | FUN_ovl01__800f0b1c | ghidra switch table, 1 entries, jr 800F0BF8
+ovl01:800EEA08-800EEA0C | jumptable | FUN_ovl01__800f0e88 | ghidra switch table, 1 entries, jr 800F0EF4
+ovl01:800EEA10-800EEA14 | jumptable | FUN_ovl01__800f0e88 | ghidra switch table, 1 entries, jr 800F0EF4
+ovl01:800EEA18-800EEA1C | jumptable | FUN_ovl01__800f0e88 | ghidra switch table, 1 entries, jr 800F0EF4
+ovl01:800EEA20-800EEA24 | jumptable | FUN_ovl01__800f0e88 | ghidra switch table, 1 entries, jr 800F0EF4
+ovl01:800EEA28-800EEA2C | jumptable | FUN_ovl01__800f0e88 | ghidra switch table, 1 entries, jr 800F0EF4
+ovl01:800EEA30-800EEA34 | jumptable | FUN_ovl01__800f0e88 | ghidra switch table, 1 entries, jr 800F0EF4
+ovl01:800EEA38-800EEA3C | jumptable | FUN_ovl01__800f0e88 | ghidra switch table, 1 entries, jr 800F0EF4
+ovl01:800EEA40-800EEA44 | jumptable | FUN_ovl01__800f0e88 | ghidra switch table, 1 entries, jr 800F0EF4
+ovl01:800EEA48-800EEA4C | jumptable | FUN_ovl01__800f0e88 | ghidra switch table, 1 entries, jr 800F0EF4
+ovl01:800EEA50-800EEA54 | jumptable | FUN_ovl01__800f0e88 | ghidra switch table, 1 entries, jr 800F0EF4
+ovl01:800EEA58-800EEA5C | jumptable | FUN_ovl01__800f0e88 | ghidra switch table, 1 entries, jr 800F0EF4
+ovl01:800EEA60-800EEA64 | jumptable | FUN_ovl01__800f0e88 | ghidra switch table, 1 entries, jr 800F0EF4
+ovl01:800EEA68-800EEA6C | jumptable | FUN_ovl01__800f0e88 | ghidra switch table, 1 entries, jr 800F0EF4
+ovl01:800EEA70-800EEA74 | jumptable | FUN_ovl01__800f0e88 | ghidra switch table, 1 entries, jr 800F0EF4
+ovl01:800EEA78-800EEA7C | jumptable | FUN_ovl01__800f0e88 | ghidra switch table, 1 entries, jr 800F0EF4
+ovl01:800EEA80-800EEA84 | jumptable | FUN_ovl01__800f0e88 | ghidra switch table, 1 entries, jr 800F0EF4
+ovl01:800EEA88-800EEA8C | jumptable | FUN_ovl01__800f1090 | ghidra switch table, 1 entries, jr 800F10E4
+ovl01:800EEA90-800EEA94 | jumptable | FUN_ovl01__800f1090 | ghidra switch table, 1 entries, jr 800F10E4
+ovl01:800EEA98-800EEA9C | jumptable | FUN_ovl01__800f1090 | ghidra switch table, 1 entries, jr 800F10E4
+ovl01:800EEAA0-800EEAA4 | jumptable | FUN_ovl01__800f1090 | ghidra switch table, 1 entries, jr 800F10E4
+ovl01:800EEAA8-800EEAAC | jumptable | FUN_ovl01__800f1090 | ghidra switch table, 1 entries, jr 800F10E4
+ovl01:800EEAB0-800EEAB4 | jumptable | FUN_ovl01__800f1090 | ghidra switch table, 1 entries, jr 800F10E4
+ovl01:800EEAB8-800EEABC | jumptable | FUN_ovl01__800f1090 | ghidra switch table, 1 entries, jr 800F10E4
+ovl01:800EEAC0-800EEAC4 | jumptable | FUN_ovl01__800f1090 | ghidra switch table, 1 entries, jr 800F10E4
+ovl01:800EEAC8-800EEACC | jumptable | FUN_ovl01__800f1090 | ghidra switch table, 1 entries, jr 800F10E4
+ovl01:800EEAD0-800EEAD4 | jumptable | FUN_ovl01__800f1090 | ghidra switch table, 1 entries, jr 800F10E4
+ovl01:800EEAD8-800EEADC | jumptable | FUN_ovl01__800f1090 | ghidra switch table, 1 entries, jr 800F10E4
+ovl01:800EEAE0-800EEAE4 | jumptable | FUN_ovl01__800f1090 | ghidra switch table, 1 entries, jr 800F10E4
+ovl01:800EEAE8-800EEAEC | jumptable | FUN_ovl01__800f1090 | ghidra switch table, 1 entries, jr 800F10E4
+ovl01:800EEAF0-800EEAF4 | jumptable | FUN_ovl01__800f1090 | ghidra switch table, 1 entries, jr 800F10E4
+ovl01:800EEAF8-800EEAFC | jumptable | FUN_ovl01__800f1090 | ghidra switch table, 1 entries, jr 800F10E4
+ovl01:800EEB00-800EEB04 | jumptable | FUN_ovl01__800f1090 | ghidra switch table, 1 entries, jr 800F10E4
+ovl01:800EEB08-800EEB28 | jumptable | FUN_ovl01__800f1210 | ghidra switch table, 8 entries, jr 800F1250
+ovl01:800EEB28-800EEB30 | jumptable | FUN_ovl01__800f1d74 | ghidra switch table, 2 entries, jr 800F1E68
+ovl01:800EEB30-800EEB38 | jumptable | FUN_ovl01__800f1d74 | ghidra switch table, 2 entries, jr 800F1E68
+ovl01:800EEB38-800EEB40 | jumptable | FUN_ovl01__800f1d74 | ghidra switch table, 2 entries, jr 800F1E68
+ovl01:800EEB40-800EEB48 | jumptable | FUN_ovl01__800f1d74 | ghidra switch table, 2 entries, jr 800F1E68
+ovl01:800EEB48-800EEB50 | jumptable | FUN_ovl01__800f1d74 | ghidra switch table, 2 entries, jr 800F1E68
+ovl01:800EEB50-800EEB58 | jumptable | FUN_ovl01__800f1d74 | ghidra switch table, 2 entries, jr 800F1E68
+ovl01:800EEB58-800EEB60 | jumptable | FUN_ovl01__800f1d74 | ghidra switch table, 2 entries, jr 800F1E68
+ovl01:800EEB60-800EEB68 | jumptable | FUN_ovl01__800f1d74 | ghidra switch table, 2 entries, jr 800F1E68
+ovl01:800EEB68-800EEB70 | jumptable | FUN_ovl01__800f1d74 | ghidra switch table, 2 entries, jr 800F1E68
+ovl01:800EEB70-800EEB78 | jumptable | FUN_ovl01__800f1d74 | ghidra switch table, 2 entries, jr 800F1E68
+ovl01:800EEB78-800EEB80 | jumptable | FUN_ovl01__800f1d74 | ghidra switch table, 2 entries, jr 800F1E68
+ovl01:800EEB80-800EEB88 | jumptable | FUN_ovl01__800f1d74 | ghidra switch table, 2 entries, jr 800F1E68
+ovl01:800EEB88-800EEB90 | jumptable | FUN_ovl01__800f1d74 | ghidra switch table, 2 entries, jr 800F1E68
+ovl01:800EEB90-800EEB98 | jumptable | FUN_ovl01__800f1d74 | ghidra switch table, 2 entries, jr 800F1E68
+ovl01:800EEB98-800EEB9C | jumptable | FUN_ovl01__800f1d74 | ghidra switch table, 1 entries, jr 800F1E68
+ovl01:800EEB9C-800EEBA4 | jumptable | FUN_ovl01__800f2170 | ghidra switch table, 2 entries, jr 800F2220
+ovl01:800EEBA4-800EEBAC | jumptable | FUN_ovl01__800f2170 | ghidra switch table, 2 entries, jr 800F2220
+ovl01:800EEBAC-800EEBB4 | jumptable | FUN_ovl01__800f2170 | ghidra switch table, 2 entries, jr 800F2220
+ovl01:800EEBB4-800EEBBC | jumptable | FUN_ovl01__800f2170 | ghidra switch table, 2 entries, jr 800F2220
+ovl01:800EEBBC-800EEBC4 | jumptable | FUN_ovl01__800f2170 | ghidra switch table, 2 entries, jr 800F2220
+ovl01:800EEBC4-800EEBCC | jumptable | FUN_ovl01__800f2170 | ghidra switch table, 2 entries, jr 800F2220
+ovl01:800EEBCC-800EEBD4 | jumptable | FUN_ovl01__800f2170 | ghidra switch table, 2 entries, jr 800F2220
+ovl01:800EEBD4-800EEBDC | jumptable | FUN_ovl01__800f2170 | ghidra switch table, 2 entries, jr 800F2220
+ovl01:800EEBDC-800EEBE4 | jumptable | FUN_ovl01__800f2170 | ghidra switch table, 2 entries, jr 800F2220
+ovl01:800EEBE4-800EEBEC | jumptable | FUN_ovl01__800f2170 | ghidra switch table, 2 entries, jr 800F2220
+ovl01:800EEBEC-800EEBF4 | jumptable | FUN_ovl01__800f2170 | ghidra switch table, 2 entries, jr 800F2220
+ovl01:800EEBF4-800EEBFC | jumptable | FUN_ovl01__800f2170 | ghidra switch table, 2 entries, jr 800F2220
+ovl01:800EEBFC-800EEC04 | jumptable | FUN_ovl01__800f2170 | ghidra switch table, 2 entries, jr 800F2220
+ovl01:800EEC04-800EEC0C | jumptable | FUN_ovl01__800f2170 | ghidra switch table, 2 entries, jr 800F2220
+ovl01:800EEC0C-800EEC10 | jumptable | FUN_ovl01__800f2170 | ghidra switch table, 1 entries, jr 800F2220
+ovl01:800EEC10-800EEC58 | jumptable | FUN_ovl01__800f312c | ghidra switch table, 18 entries, jr 800F31C4
+ovl01:800EEC58-800EEC70 | jumptable | FUN_ovl01__800f5298 | ghidra switch table, 6 entries, jr 800F5540
+ovl01:800EEC70-800EEC88 | jumptable | FUN_ovl01__800f5b38 | ghidra switch table, 6 entries, jr 800F5E94
+ovl01:800EEC88-800EECA0 | jumptable | FUN_ovl01__800f8c2c | ghidra switch table, 6 entries, jr 800F8D6C
+ovl01:800EECA0-800EECF8 | jumptable | FUN_ovl01__800f918c | ghidra switch table, 22 entries, jr 800F9340
+ovl01:800EECF8-800EED0C | jumptable | FUN_ovl01__800f93ec | ghidra switch table, 5 entries, jr 800F9500
+ovl01:800EED10-800EED44 | jumptable | FUN_ovl01__800f9694 | ghidra switch table, 13 entries, jr 800F96F4
+ovl01:800EED48-800EED70 | jumptable | FUN_ovl01__800f9938 | ghidra switch table, 10 entries, jr 800F99F0
+ovl01:800EED70-800EED98 | jumptable | FUN_ovl01__800fa7a0 | ghidra switch table, 10 entries, jr 800FA7E0
+ovl01:800EED98-800EEDD8 | jumptable | FUN_ovl01__800fa934 | ghidra switch table, 16 entries, jr 800FA9A0
+ovl01:800EEDD8-800EEDEC | jumptable | FUN_ovl01__800fb624 | ghidra switch table, 5 entries, jr 800FB6E8
+ovl02:800EE974-800EE988 | jumptable | FUN_ovl02__800efa30 | ghidra switch table, 5 entries, jr 800EFAA4
+ovl03:800EE974-800EE988 | jumptable | FUN_ovl03__800f0c68 | ghidra switch table, 5 entries, jr 800F0CBC
+ovl03:800EE98C-800EE9A0 | jumptable | FUN_ovl03__800f0de0 | ghidra switch table, 5 entries, jr 800F0E34
+ovl03:800EE9A0-800EE9DC | jumptable | FUN_ovl03__800f1b68 | ghidra switch table, 15 entries, jr 800F1BB8
+ovl03:800EEB4C-800EEB64 | jumptable | FUN_ovl03__800f7240 | ghidra switch table, 6 entries, jr 800F7328
+ovl04:800EE974-800EEA00 | jumptable | FUN_ovl04__800f04ac | ghidra switch table, 35 entries, jr 800F0570
+ovl04:800EEA04-800EEA50 | jumptable | FUN_ovl04__800f1190 | ghidra switch table, 19 entries, jr 800F11C8
+ovl04:800EEA50-800EEA78 | jumptable | FUN_ovl04__800f5e5c | ghidra switch table, 10 entries, jr 800F5EB4
+ovl04:800EEA78-800EEABC | jumptable | FUN_ovl04__800f6e78 | ghidra switch table, 17 entries, jr 800F711C
+ovl04:800EEAC0-800EEB2C | jumptable | FUN_ovl04__800f6e78 | ghidra switch table, 27 entries, jr 800F7220
+ovl04:800EEB2C-800EEB5C | jumptable | FUN_ovl04__800f7b40 | ghidra switch table, 12 entries, jr 800F7C38
+ovl04:800EEB5C-800EEBBC | jumptable | FUN_ovl04__800f80cc | ghidra switch table, 24 entries, jr 800F810C
+ovl04:800EEBBC-800EEBD0 | jumptable | FUN_ovl04__800ff5b8 | ghidra switch table, 5 entries, jr 800FF648
+ovl04:800EEBD0-800EEBE4 | jumptable | FUN_ovl04__801005c4 | ghidra switch table, 5 entries, jr 80100600
+ovl05:800EE974-800EE9B0 | jumptable | FUN_ovl05__800ef078 | ghidra switch table, 15 entries, jr 800EF0C8
+ovl05:800EE9B0-800EE9B8 | jumptable | FUN_ovl05__800ef680 | ghidra switch table, 2 entries, jr 800EF730
+ovl05:800EE9B8-800EE9C0 | jumptable | FUN_ovl05__800ef680 | ghidra switch table, 2 entries, jr 800EF730
+ovl05:800EE9C0-800EE9C8 | jumptable | FUN_ovl05__800ef680 | ghidra switch table, 2 entries, jr 800EF730
+ovl05:800EE9C8-800EE9D0 | jumptable | FUN_ovl05__800ef680 | ghidra switch table, 2 entries, jr 800EF730
+ovl05:800EE9D0-800EE9D8 | jumptable | FUN_ovl05__800ef680 | ghidra switch table, 2 entries, jr 800EF730
+ovl05:800EE9D8-800EE9E0 | jumptable | FUN_ovl05__800ef680 | ghidra switch table, 2 entries, jr 800EF730
+ovl05:800EE9E0-800EE9E8 | jumptable | FUN_ovl05__800ef680 | ghidra switch table, 2 entries, jr 800EF730
+ovl05:800EE9E8-800EE9F0 | jumptable | FUN_ovl05__800ef680 | ghidra switch table, 2 entries, jr 800EF730
+ovl05:800EE9F0-800EE9F8 | jumptable | FUN_ovl05__800ef680 | ghidra switch table, 2 entries, jr 800EF730
+ovl05:800EE9F8-800EEA00 | jumptable | FUN_ovl05__800ef680 | ghidra switch table, 2 entries, jr 800EF730
+ovl05:800EEA00-800EEA08 | jumptable | FUN_ovl05__800ef680 | ghidra switch table, 2 entries, jr 800EF730
+ovl05:800EEA08-800EEA10 | jumptable | FUN_ovl05__800ef680 | ghidra switch table, 2 entries, jr 800EF730
+ovl05:800EEA10-800EEA18 | jumptable | FUN_ovl05__800ef680 | ghidra switch table, 2 entries, jr 800EF730
+ovl05:800EEA18-800EEA20 | jumptable | FUN_ovl05__800ef680 | ghidra switch table, 2 entries, jr 800EF730
+ovl05:800EEA20-800EEA24 | jumptable | FUN_ovl05__800ef680 | ghidra switch table, 1 entries, jr 800EF730
+ovl05:800EEA24-800EEA38 | jumptable | FUN_ovl05__800f0688 | ghidra switch table, 5 entries, jr 800F06DC
+ovl05:800EEA3C-800EEA50 | jumptable | FUN_ovl05__800f0800 | ghidra switch table, 5 entries, jr 800F0854
+ovl05:800EEA50-800EEA68 | jumptable | FUN_ovl05__800f1418 | ghidra switch table, 6 entries, jr 800F14B8
+ovl06:800EE974-800EE988 | jumptable | FUN_ovl06__800fd2b8 | ghidra switch table, 5 entries, jr 800FD32C
+ovl07:800EE974-800EE988 | jumptable | FUN_ovl07__800ef2c8 | ghidra switch table, 5 entries, jr 800EF340
+ovl07:800EE98C-800EE9A8 | jumptable | FUN_ovl07__800ef6c4 | ghidra switch table, 7 entries, jr 800EF728
+ovl07:800EE9A8-800EE9D8 | jumptable | FUN_ovl07__800f1b98 | ghidra switch table, 12 entries, jr 800F1D00
+ovl07:800EE9D8-800EEA08 | jumptable | FUN_ovl07__800f1b98 | ghidra switch table, 12 entries, jr 800F1FB8
+ovl07:800EEA08-800EEA50 | jumptable | FUN_ovl07__800f5814 | ghidra switch table, 18 entries, jr 800F58AC
+ovl07:800EEA50-800EEA64 | jumptable | FUN_ovl07__800f7b80 | ghidra switch table, 5 entries, jr 800F7BF4
+ovl07:800EEA64-800EEA88 | jumptable | FUN_ovl07__800fd23c | ghidra switch table, 9 entries, jr 800FD2C8
+ovl08:800EE974-800EE9BC | jumptable | FUN_ovl08__800ef878 | ghidra switch table, 18 entries, jr 800EF910
+ovl09:800EE974-800EE988 | jumptable | FUN_ovl09__800efddc | ghidra switch table, 5 entries, jr 800EFEB8
+ovl09:800EE988-800EE9AC | jumptable | FUN_ovl09__800f3160 | ghidra switch table, 9 entries, jr 800F32CC
+ovl09:800EE9B0-800EE9EC | jumptable | FUN_ovl09__800f4354 | ghidra switch table, 15 entries, jr 800F43C4
+ovl09:800EE9F0-800EEA10 | jumptable | FUN_ovl09__800f48b0 | ghidra switch table, 8 entries, jr 800F497C
+ovl09:800EEA10-800EEA30 | jumptable | FUN_ovl09__800f48b0 | ghidra switch table, 8 entries, jr 800F4B14
+ovl09:800EEA54-800EEA68 | jumptable | FUN_ovl09__800f981c | ghidra switch table, 5 entries, jr 800F9858
+ovl10:800EE988-800EE99C | jumptable | FUN_ovl10__800f1fa0 | ghidra switch table, 5 entries, jr 800F2058
+ovl10:800EE99C-800EEA54 | jumptable | FUN_ovl10__800f62dc | ghidra switch table, 46 entries, jr 800F632C
+ovl10:800EEA54-800EEA58 | jumptable | FUN_ovl10__800f77b8 | ghidra switch table, 1 entries, jr 800F7894
+ovl10:800EEA5C-800EEA60 | jumptable | FUN_ovl10__800f77b8 | ghidra switch table, 1 entries, jr 800F7894
+ovl10:800EEA64-800EEA68 | jumptable | FUN_ovl10__800f77b8 | ghidra switch table, 1 entries, jr 800F7894
+ovl10:800EEA6C-800EEA70 | jumptable | FUN_ovl10__800f77b8 | ghidra switch table, 1 entries, jr 800F7894
+ovl10:800EEA74-800EEA78 | jumptable | FUN_ovl10__800f77b8 | ghidra switch table, 1 entries, jr 800F7894
+ovl10:800EEA7C-800EEA80 | jumptable | FUN_ovl10__800f77b8 | ghidra switch table, 1 entries, jr 800F7894
+ovl10:800EEA84-800EEA88 | jumptable | FUN_ovl10__800f77b8 | ghidra switch table, 1 entries, jr 800F7894
+ovl10:800EEA8C-800EEA90 | jumptable | FUN_ovl10__800f77b8 | ghidra switch table, 1 entries, jr 800F7894
+ovl10:800EEA94-800EEA98 | jumptable | FUN_ovl10__800f77b8 | ghidra switch table, 1 entries, jr 800F7894
+ovl10:800EEA9C-800EEAA0 | jumptable | FUN_ovl10__800f77b8 | ghidra switch table, 1 entries, jr 800F7894
+ovl10:800EEAA4-800EEAA8 | jumptable | FUN_ovl10__800f77b8 | ghidra switch table, 1 entries, jr 800F7894
+ovl10:800EEAAC-800EEAB0 | jumptable | FUN_ovl10__800f77b8 | ghidra switch table, 1 entries, jr 800F7894
+ovl10:800EEAB4-800EEAB8 | jumptable | FUN_ovl10__800f77b8 | ghidra switch table, 1 entries, jr 800F7894
+ovl10:800EEABC-800EEAC0 | jumptable | FUN_ovl10__800f77b8 | ghidra switch table, 1 entries, jr 800F7894
+ovl10:800EEAC4-800EEAC8 | jumptable | FUN_ovl10__800f77b8 | ghidra switch table, 1 entries, jr 800F7894
+ovl10:800EEACC-800EEAD0 | jumptable | FUN_ovl10__800f77b8 | ghidra switch table, 1 entries, jr 800F7894
+ovl10:800EEAD4-800EEAD8 | jumptable | FUN_ovl10__800f7b24 | ghidra switch table, 1 entries, jr 800F7B90
+ovl10:800EEADC-800EEAE0 | jumptable | FUN_ovl10__800f7b24 | ghidra switch table, 1 entries, jr 800F7B90
+ovl10:800EEAE4-800EEAE8 | jumptable | FUN_ovl10__800f7b24 | ghidra switch table, 1 entries, jr 800F7B90
+ovl10:800EEAEC-800EEAF0 | jumptable | FUN_ovl10__800f7b24 | ghidra switch table, 1 entries, jr 800F7B90
+ovl10:800EEAF4-800EEAF8 | jumptable | FUN_ovl10__800f7b24 | ghidra switch table, 1 entries, jr 800F7B90
+ovl10:800EEAFC-800EEB00 | jumptable | FUN_ovl10__800f7b24 | ghidra switch table, 1 entries, jr 800F7B90
+ovl10:800EEB04-800EEB08 | jumptable | FUN_ovl10__800f7b24 | ghidra switch table, 1 entries, jr 800F7B90
+ovl10:800EEB0C-800EEB10 | jumptable | FUN_ovl10__800f7b24 | ghidra switch table, 1 entries, jr 800F7B90
+ovl10:800EEB14-800EEB18 | jumptable | FUN_ovl10__800f7b24 | ghidra switch table, 1 entries, jr 800F7B90
+ovl10:800EEB1C-800EEB20 | jumptable | FUN_ovl10__800f7b24 | ghidra switch table, 1 entries, jr 800F7B90
+ovl10:800EEB24-800EEB28 | jumptable | FUN_ovl10__800f7b24 | ghidra switch table, 1 entries, jr 800F7B90
+ovl10:800EEB2C-800EEB30 | jumptable | FUN_ovl10__800f7b24 | ghidra switch table, 1 entries, jr 800F7B90
+ovl10:800EEB34-800EEB38 | jumptable | FUN_ovl10__800f7b24 | ghidra switch table, 1 entries, jr 800F7B90
+ovl10:800EEB3C-800EEB40 | jumptable | FUN_ovl10__800f7b24 | ghidra switch table, 1 entries, jr 800F7B90
+ovl10:800EEB44-800EEB48 | jumptable | FUN_ovl10__800f7b24 | ghidra switch table, 1 entries, jr 800F7B90
+ovl10:800EEB4C-800EEB50 | jumptable | FUN_ovl10__800f7b24 | ghidra switch table, 1 entries, jr 800F7B90
+ovl10:800EEB54-800EEB58 | jumptable | FUN_ovl10__800f7d2c | ghidra switch table, 1 entries, jr 800F7D80
+ovl10:800EEB5C-800EEB60 | jumptable | FUN_ovl10__800f7d2c | ghidra switch table, 1 entries, jr 800F7D80
+ovl10:800EEB64-800EEB68 | jumptable | FUN_ovl10__800f7d2c | ghidra switch table, 1 entries, jr 800F7D80
+ovl10:800EEB6C-800EEB70 | jumptable | FUN_ovl10__800f7d2c | ghidra switch table, 1 entries, jr 800F7D80
+ovl10:800EEB74-800EEB78 | jumptable | FUN_ovl10__800f7d2c | ghidra switch table, 1 entries, jr 800F7D80
+ovl10:800EEB7C-800EEB80 | jumptable | FUN_ovl10__800f7d2c | ghidra switch table, 1 entries, jr 800F7D80
+ovl10:800EEB84-800EEB88 | jumptable | FUN_ovl10__800f7d2c | ghidra switch table, 1 entries, jr 800F7D80
+ovl10:800EEB8C-800EEB90 | jumptable | FUN_ovl10__800f7d2c | ghidra switch table, 1 entries, jr 800F7D80
+ovl10:800EEB94-800EEB98 | jumptable | FUN_ovl10__800f7d2c | ghidra switch table, 1 entries, jr 800F7D80
+ovl10:800EEB9C-800EEBA0 | jumptable | FUN_ovl10__800f7d2c | ghidra switch table, 1 entries, jr 800F7D80
+ovl10:800EEBA4-800EEBA8 | jumptable | FUN_ovl10__800f7d2c | ghidra switch table, 1 entries, jr 800F7D80
+ovl10:800EEBAC-800EEBB0 | jumptable | FUN_ovl10__800f7d2c | ghidra switch table, 1 entries, jr 800F7D80
+ovl10:800EEBB4-800EEBB8 | jumptable | FUN_ovl10__800f7d2c | ghidra switch table, 1 entries, jr 800F7D80
+ovl10:800EEBBC-800EEBC0 | jumptable | FUN_ovl10__800f7d2c | ghidra switch table, 1 entries, jr 800F7D80
+ovl10:800EEBC4-800EEBC8 | jumptable | FUN_ovl10__800f7d2c | ghidra switch table, 1 entries, jr 800F7D80
+ovl10:800EEBCC-800EEBD0 | jumptable | FUN_ovl10__800f7d2c | ghidra switch table, 1 entries, jr 800F7D80
+ovl10:800EEBD4-800EEBF4 | jumptable | FUN_ovl10__800f7eac | ghidra switch table, 8 entries, jr 800F7EEC
+ovl10:800EEBF4-800EEBFC | jumptable | FUN_ovl10__800f8a10 | ghidra switch table, 2 entries, jr 800F8B04
+ovl10:800EEBFC-800EEC04 | jumptable | FUN_ovl10__800f8a10 | ghidra switch table, 2 entries, jr 800F8B04
+ovl10:800EEC04-800EEC0C | jumptable | FUN_ovl10__800f8a10 | ghidra switch table, 2 entries, jr 800F8B04
+ovl10:800EEC0C-800EEC14 | jumptable | FUN_ovl10__800f8a10 | ghidra switch table, 2 entries, jr 800F8B04
+ovl10:800EEC14-800EEC1C | jumptable | FUN_ovl10__800f8a10 | ghidra switch table, 2 entries, jr 800F8B04
+ovl10:800EEC1C-800EEC24 | jumptable | FUN_ovl10__800f8a10 | ghidra switch table, 2 entries, jr 800F8B04
+ovl10:800EEC24-800EEC2C | jumptable | FUN_ovl10__800f8a10 | ghidra switch table, 2 entries, jr 800F8B04
+ovl10:800EEC2C-800EEC34 | jumptable | FUN_ovl10__800f8a10 | ghidra switch table, 2 entries, jr 800F8B04
+ovl10:800EEC34-800EEC3C | jumptable | FUN_ovl10__800f8a10 | ghidra switch table, 2 entries, jr 800F8B04
+ovl10:800EEC3C-800EEC44 | jumptable | FUN_ovl10__800f8a10 | ghidra switch table, 2 entries, jr 800F8B04
+ovl10:800EEC44-800EEC4C | jumptable | FUN_ovl10__800f8a10 | ghidra switch table, 2 entries, jr 800F8B04
+ovl10:800EEC4C-800EEC54 | jumptable | FUN_ovl10__800f8a10 | ghidra switch table, 2 entries, jr 800F8B04
+ovl10:800EEC54-800EEC5C | jumptable | FUN_ovl10__800f8a10 | ghidra switch table, 2 entries, jr 800F8B04
+ovl10:800EEC5C-800EEC64 | jumptable | FUN_ovl10__800f8a10 | ghidra switch table, 2 entries, jr 800F8B04
+ovl10:800EEC64-800EEC68 | jumptable | FUN_ovl10__800f8a10 | ghidra switch table, 1 entries, jr 800F8B04
+ovl10:800EEC68-800EEC70 | jumptable | FUN_ovl10__800f8e14 | ghidra switch table, 2 entries, jr 800F8EC4
+ovl10:800EEC70-800EEC78 | jumptable | FUN_ovl10__800f8e14 | ghidra switch table, 2 entries, jr 800F8EC4
+ovl10:800EEC78-800EEC80 | jumptable | FUN_ovl10__800f8e14 | ghidra switch table, 2 entries, jr 800F8EC4
+ovl10:800EEC80-800EEC88 | jumptable | FUN_ovl10__800f8e14 | ghidra switch table, 2 entries, jr 800F8EC4
+ovl10:800EEC88-800EEC90 | jumptable | FUN_ovl10__800f8e14 | ghidra switch table, 2 entries, jr 800F8EC4
+ovl10:800EEC90-800EEC98 | jumptable | FUN_ovl10__800f8e14 | ghidra switch table, 2 entries, jr 800F8EC4
+ovl10:800EEC98-800EECA0 | jumptable | FUN_ovl10__800f8e14 | ghidra switch table, 2 entries, jr 800F8EC4
+ovl10:800EECA0-800EECA8 | jumptable | FUN_ovl10__800f8e14 | ghidra switch table, 2 entries, jr 800F8EC4
+ovl10:800EECA8-800EECB0 | jumptable | FUN_ovl10__800f8e14 | ghidra switch table, 2 entries, jr 800F8EC4
+ovl10:800EECB0-800EECB8 | jumptable | FUN_ovl10__800f8e14 | ghidra switch table, 2 entries, jr 800F8EC4
+ovl10:800EECB8-800EECC0 | jumptable | FUN_ovl10__800f8e14 | ghidra switch table, 2 entries, jr 800F8EC4
+ovl10:800EECC0-800EECC8 | jumptable | FUN_ovl10__800f8e14 | ghidra switch table, 2 entries, jr 800F8EC4
+ovl10:800EECC8-800EECD0 | jumptable | FUN_ovl10__800f8e14 | ghidra switch table, 2 entries, jr 800F8EC4
+ovl10:800EECD0-800EECD8 | jumptable | FUN_ovl10__800f8e14 | ghidra switch table, 2 entries, jr 800F8EC4
+ovl10:800EECD8-800EECDC | jumptable | FUN_ovl10__800f8e14 | ghidra switch table, 1 entries, jr 800F8EC4
+ovl11:800EE974-800EE98C | jumptable | FUN_ovl11__800f33e8 | ghidra switch table, 6 entries, jr 800F3540
+ovl11:800EE98C-800EE9A0 | jumptable | FUN_ovl11__800f4d44 | ghidra switch table, 5 entries, jr 800F4D80
+ovl12:800EE994-800EE9A8 | jumptable | FUN_ovl12__800f1078 | ghidra switch table, 5 entries, jr 800F10DC
+ovl14:800EE994-800EE9A8 | jumptable | FUN_ovl14__800f1078 | ghidra switch table, 5 entries, jr 800F10DC
+ovl16:800EE974-800EE994 | jumptable | FUN_ovl16__800ee994 | ghidra switch table, 8 entries, jr 800EEA5C
+ovl18:800EE974-800EEA00 | jumptable | FUN_ovl18__800f0cdc | ghidra switch table, 35 entries, jr 800F0DA0
+ovl18:800EEA04-800EEA50 | jumptable | FUN_ovl18__800f19c0 | ghidra switch table, 19 entries, jr 800F19F8
+ovl21:800EE974-800EE988 | jumptable | FUN_ovl21__800ee994 | ghidra switch table, 5 entries, jr 800EEA98
+ovl24:800EE9B4-800EEB30 | jumptable | FUN_ovl24__800f3abc | ghidra switch table, 95 entries, jr 800F3C0C
+ovl25:800EE974-800EE99C | jumptable | FUN_ovl25__800efa84 | ghidra switch table, 10 entries, jr 800EFB18
+ovl26:800EE974-800EE988 | jumptable | FUN_ovl26__800effec | ghidra switch table, 5 entries, jr 800F0060
+ovl26:800EE988-800EE9A8 | jumptable | FUN_ovl26__800f2074 | ghidra switch table, 8 entries, jr 800F218C
+ovl26:800EEA08-800EEA28 | jumptable | FUN_ovl26__800f4900 | ghidra switch table, 8 entries, jr 800F4960
+ovl26:800EEA28-800EEA48 | jumptable | FUN_ovl26__800f4a74 | ghidra switch table, 8 entries, jr 800F4AD8
+ovl26:800EEA48-800EEA64 | jumptable | FUN_ovl26__800f6864 | ghidra switch table, 7 entries, jr 800F6928
+ovl26:800EEA68-800EEA84 | jumptable | FUN_ovl26__800f6a48 | ghidra switch table, 7 entries, jr 800F6AAC
+ovl26:800EEA88-800EEAD8 | jumptable | FUN_ovl26__800f6e48 | ghidra switch table, 20 entries, jr 800F6E8C
+ovl27:800EE974-800EE9B8 | jumptable | FUN_ovl27__800efac8 | ghidra switch table, 17 entries, jr 800EFBBC
+ovl27:800EE9B8-800EE9FC | jumptable | FUN_ovl27__800f20b4 | ghidra switch table, 17 entries, jr 800F2120
+ovl27:800EEA00-800EEA80 | jumptable | FUN_ovl27__800f20b4 | ghidra switch table, 32 entries, jr 800F2168
+ovl27:800EEA80-800EEA84 | jumptable | FUN_ovl27__800f2bc0 | ghidra switch table, 1 entries, jr 800F2C9C
+ovl27:800EEA88-800EEA8C | jumptable | FUN_ovl27__800f2bc0 | ghidra switch table, 1 entries, jr 800F2C9C
+ovl27:800EEA90-800EEA94 | jumptable | FUN_ovl27__800f2bc0 | ghidra switch table, 1 entries, jr 800F2C9C
+ovl27:800EEA98-800EEA9C | jumptable | FUN_ovl27__800f2bc0 | ghidra switch table, 1 entries, jr 800F2C9C
+ovl27:800EEAA0-800EEAA4 | jumptable | FUN_ovl27__800f2bc0 | ghidra switch table, 1 entries, jr 800F2C9C
+ovl27:800EEAA8-800EEAAC | jumptable | FUN_ovl27__800f2bc0 | ghidra switch table, 1 entries, jr 800F2C9C
+ovl27:800EEAB0-800EEAB4 | jumptable | FUN_ovl27__800f2bc0 | ghidra switch table, 1 entries, jr 800F2C9C
+ovl27:800EEAB8-800EEABC | jumptable | FUN_ovl27__800f2bc0 | ghidra switch table, 1 entries, jr 800F2C9C
+ovl27:800EEAC0-800EEAC4 | jumptable | FUN_ovl27__800f2bc0 | ghidra switch table, 1 entries, jr 800F2C9C
+ovl27:800EEAC8-800EEACC | jumptable | FUN_ovl27__800f2bc0 | ghidra switch table, 1 entries, jr 800F2C9C
+ovl27:800EEAD0-800EEAD4 | jumptable | FUN_ovl27__800f2bc0 | ghidra switch table, 1 entries, jr 800F2C9C
+ovl27:800EEAD8-800EEADC | jumptable | FUN_ovl27__800f2bc0 | ghidra switch table, 1 entries, jr 800F2C9C
+ovl27:800EEAE0-800EEAE4 | jumptable | FUN_ovl27__800f2bc0 | ghidra switch table, 1 entries, jr 800F2C9C
+ovl27:800EEAE8-800EEAEC | jumptable | FUN_ovl27__800f2bc0 | ghidra switch table, 1 entries, jr 800F2C9C
+ovl27:800EEAF0-800EEAF4 | jumptable | FUN_ovl27__800f2bc0 | ghidra switch table, 1 entries, jr 800F2C9C
+ovl27:800EEAF8-800EEAFC | jumptable | FUN_ovl27__800f2bc0 | ghidra switch table, 1 entries, jr 800F2C9C
+ovl27:800EEB00-800EEB04 | jumptable | FUN_ovl27__800f2f2c | ghidra switch table, 1 entries, jr 800F2F98
+ovl27:800EEB08-800EEB0C | jumptable | FUN_ovl27__800f2f2c | ghidra switch table, 1 entries, jr 800F2F98
+ovl27:800EEB10-800EEB14 | jumptable | FUN_ovl27__800f2f2c | ghidra switch table, 1 entries, jr 800F2F98
+ovl27:800EEB18-800EEB1C | jumptable | FUN_ovl27__800f2f2c | ghidra switch table, 1 entries, jr 800F2F98
+ovl27:800EEB20-800EEB24 | jumptable | FUN_ovl27__800f2f2c | ghidra switch table, 1 entries, jr 800F2F98
+ovl27:800EEB28-800EEB2C | jumptable | FUN_ovl27__800f2f2c | ghidra switch table, 1 entries, jr 800F2F98
+ovl27:800EEB30-800EEB34 | jumptable | FUN_ovl27__800f2f2c | ghidra switch table, 1 entries, jr 800F2F98
+ovl27:800EEB38-800EEB3C | jumptable | FUN_ovl27__800f2f2c | ghidra switch table, 1 entries, jr 800F2F98
+ovl27:800EEB40-800EEB44 | jumptable | FUN_ovl27__800f2f2c | ghidra switch table, 1 entries, jr 800F2F98
+ovl27:800EEB48-800EEB4C | jumptable | FUN_ovl27__800f2f2c | ghidra switch table, 1 entries, jr 800F2F98
+ovl27:800EEB50-800EEB54 | jumptable | FUN_ovl27__800f2f2c | ghidra switch table, 1 entries, jr 800F2F98
+ovl27:800EEB58-800EEB5C | jumptable | FUN_ovl27__800f2f2c | ghidra switch table, 1 entries, jr 800F2F98
+ovl27:800EEB60-800EEB64 | jumptable | FUN_ovl27__800f2f2c | ghidra switch table, 1 entries, jr 800F2F98
+ovl27:800EEB68-800EEB6C | jumptable | FUN_ovl27__800f2f2c | ghidra switch table, 1 entries, jr 800F2F98
+ovl27:800EEB70-800EEB74 | jumptable | FUN_ovl27__800f2f2c | ghidra switch table, 1 entries, jr 800F2F98
+ovl27:800EEB78-800EEB7C | jumptable | FUN_ovl27__800f2f2c | ghidra switch table, 1 entries, jr 800F2F98
+ovl27:800EEB80-800EEB84 | jumptable | FUN_ovl27__800f3134 | ghidra switch table, 1 entries, jr 800F3188
+ovl27:800EEB88-800EEB8C | jumptable | FUN_ovl27__800f3134 | ghidra switch table, 1 entries, jr 800F3188
+ovl27:800EEB90-800EEB94 | jumptable | FUN_ovl27__800f3134 | ghidra switch table, 1 entries, jr 800F3188
+ovl27:800EEB98-800EEB9C | jumptable | FUN_ovl27__800f3134 | ghidra switch table, 1 entries, jr 800F3188
+ovl27:800EEBA0-800EEBA4 | jumptable | FUN_ovl27__800f3134 | ghidra switch table, 1 entries, jr 800F3188
+ovl27:800EEBA8-800EEBAC | jumptable | FUN_ovl27__800f3134 | ghidra switch table, 1 entries, jr 800F3188
+ovl27:800EEBB0-800EEBB4 | jumptable | FUN_ovl27__800f3134 | ghidra switch table, 1 entries, jr 800F3188
+ovl27:800EEBB8-800EEBBC | jumptable | FUN_ovl27__800f3134 | ghidra switch table, 1 entries, jr 800F3188
+ovl27:800EEBC0-800EEBC4 | jumptable | FUN_ovl27__800f3134 | ghidra switch table, 1 entries, jr 800F3188
+ovl27:800EEBC8-800EEBCC | jumptable | FUN_ovl27__800f3134 | ghidra switch table, 1 entries, jr 800F3188
+ovl27:800EEBD0-800EEBD4 | jumptable | FUN_ovl27__800f3134 | ghidra switch table, 1 entries, jr 800F3188
+ovl27:800EEBD8-800EEBDC | jumptable | FUN_ovl27__800f3134 | ghidra switch table, 1 entries, jr 800F3188
+ovl27:800EEBE0-800EEBE4 | jumptable | FUN_ovl27__800f3134 | ghidra switch table, 1 entries, jr 800F3188
+ovl27:800EEBE8-800EEBEC | jumptable | FUN_ovl27__800f3134 | ghidra switch table, 1 entries, jr 800F3188
+ovl27:800EEBF0-800EEBF4 | jumptable | FUN_ovl27__800f3134 | ghidra switch table, 1 entries, jr 800F3188
+ovl27:800EEBF8-800EEBFC | jumptable | FUN_ovl27__800f3134 | ghidra switch table, 1 entries, jr 800F3188
+ovl27:800EEC00-800EEC20 | jumptable | FUN_ovl27__800f32b4 | ghidra switch table, 8 entries, jr 800F32F4
+ovl27:800EEC20-800EEC5C | jumptable | FUN_ovl27__800f42a4 | ghidra switch table, 15 entries, jr 800F42F4
+ovl27:800EEC5C-800EEC64 | jumptable | FUN_ovl27__800f60f0 | ghidra switch table, 2 entries, jr 800F61A0
+ovl27:800EEC64-800EEC6C | jumptable | FUN_ovl27__800f60f0 | ghidra switch table, 2 entries, jr 800F61A0
+ovl27:800EEC6C-800EEC74 | jumptable | FUN_ovl27__800f60f0 | ghidra switch table, 2 entries, jr 800F61A0
+ovl27:800EEC74-800EEC7C | jumptable | FUN_ovl27__800f60f0 | ghidra switch table, 2 entries, jr 800F61A0
+ovl27:800EEC7C-800EEC84 | jumptable | FUN_ovl27__800f60f0 | ghidra switch table, 2 entries, jr 800F61A0
+ovl27:800EEC84-800EEC8C | jumptable | FUN_ovl27__800f60f0 | ghidra switch table, 2 entries, jr 800F61A0
+ovl27:800EEC8C-800EEC94 | jumptable | FUN_ovl27__800f60f0 | ghidra switch table, 2 entries, jr 800F61A0
+ovl27:800EEC94-800EEC9C | jumptable | FUN_ovl27__800f60f0 | ghidra switch table, 2 entries, jr 800F61A0
+ovl27:800EEC9C-800EECA4 | jumptable | FUN_ovl27__800f60f0 | ghidra switch table, 2 entries, jr 800F61A0
+ovl27:800EECA4-800EECAC | jumptable | FUN_ovl27__800f60f0 | ghidra switch table, 2 entries, jr 800F61A0
+ovl27:800EECAC-800EECB4 | jumptable | FUN_ovl27__800f60f0 | ghidra switch table, 2 entries, jr 800F61A0
+ovl27:800EECB4-800EECBC | jumptable | FUN_ovl27__800f60f0 | ghidra switch table, 2 entries, jr 800F61A0
+ovl27:800EECBC-800EECC4 | jumptable | FUN_ovl27__800f60f0 | ghidra switch table, 2 entries, jr 800F61A0
+ovl27:800EECC4-800EECCC | jumptable | FUN_ovl27__800f60f0 | ghidra switch table, 2 entries, jr 800F61A0
+ovl27:800EECCC-800EECD0 | jumptable | FUN_ovl27__800f60f0 | ghidra switch table, 1 entries, jr 800F61A0
+ovl27:800EECD0-800EECD8 | jumptable | FUN_ovl27__800f6674 | ghidra switch table, 2 entries, jr 800F6768
+ovl27:800EECD8-800EECE0 | jumptable | FUN_ovl27__800f6674 | ghidra switch table, 2 entries, jr 800F6768
+ovl27:800EECE0-800EECE8 | jumptable | FUN_ovl27__800f6674 | ghidra switch table, 2 entries, jr 800F6768
+ovl27:800EECE8-800EECF0 | jumptable | FUN_ovl27__800f6674 | ghidra switch table, 2 entries, jr 800F6768
+ovl27:800EECF0-800EECF8 | jumptable | FUN_ovl27__800f6674 | ghidra switch table, 2 entries, jr 800F6768
+ovl27:800EECF8-800EED00 | jumptable | FUN_ovl27__800f6674 | ghidra switch table, 2 entries, jr 800F6768
+ovl27:800EED00-800EED08 | jumptable | FUN_ovl27__800f6674 | ghidra switch table, 2 entries, jr 800F6768
+ovl27:800EED08-800EED10 | jumptable | FUN_ovl27__800f6674 | ghidra switch table, 2 entries, jr 800F6768
+ovl27:800EED10-800EED18 | jumptable | FUN_ovl27__800f6674 | ghidra switch table, 2 entries, jr 800F6768
+ovl27:800EED18-800EED20 | jumptable | FUN_ovl27__800f6674 | ghidra switch table, 2 entries, jr 800F6768
+ovl27:800EED20-800EED28 | jumptable | FUN_ovl27__800f6674 | ghidra switch table, 2 entries, jr 800F6768
+ovl27:800EED28-800EED30 | jumptable | FUN_ovl27__800f6674 | ghidra switch table, 2 entries, jr 800F6768
+ovl27:800EED30-800EED38 | jumptable | FUN_ovl27__800f6674 | ghidra switch table, 2 entries, jr 800F6768
+ovl27:800EED38-800EED40 | jumptable | FUN_ovl27__800f6674 | ghidra switch table, 2 entries, jr 800F6768
+ovl27:800EED40-800EED44 | jumptable | FUN_ovl27__800f6674 | ghidra switch table, 1 entries, jr 800F6768
+ovl27:800EED44-800EED58 | jumptable | FUN_ovl27__800f78f4 | ghidra switch table, 5 entries, jr 800F7968
+ovl27:800EED58-800EED6C | jumptable | FUN_ovl27__800f7d68 | ghidra switch table, 5 entries, jr 800F7DA4
+ovl27:800EED70-800EED74 | jumptable | FUN_ovl27__800f7fe8 | ghidra switch table, 1 entries, jr 800F805C
+ovl27:800EED78-800EED7C | jumptable | FUN_ovl27__800f7fe8 | ghidra switch table, 1 entries, jr 800F805C
+ovl27:800EED80-800EED84 | jumptable | FUN_ovl27__800f7fe8 | ghidra switch table, 1 entries, jr 800F805C
+ovl27:800EED88-800EED8C | jumptable | FUN_ovl27__800f7fe8 | ghidra switch table, 1 entries, jr 800F805C
+ovl27:800EED90-800EED94 | jumptable | FUN_ovl27__800f7fe8 | ghidra switch table, 1 entries, jr 800F805C
+ovl27:800EED98-800EED9C | jumptable | FUN_ovl27__800f7fe8 | ghidra switch table, 1 entries, jr 800F805C
+ovl27:800EEDA0-800EEDA4 | jumptable | FUN_ovl27__800f7fe8 | ghidra switch table, 1 entries, jr 800F805C
+ovl27:800EEDA8-800EEDAC | jumptable | FUN_ovl27__800f7fe8 | ghidra switch table, 1 entries, jr 800F805C
+ovl27:800EEDB0-800EEDB8 | jumptable | FUN_ovl27__800f81a4 | ghidra switch table, 2 entries, jr 800F8208
+ovl27:800EEDB8-800EEDC0 | jumptable | FUN_ovl27__800f81a4 | ghidra switch table, 2 entries, jr 800F8208
+ovl27:800EEDC0-800EEDC8 | jumptable | FUN_ovl27__800f81a4 | ghidra switch table, 2 entries, jr 800F8208
+ovl27:800EEDC8-800EEDD0 | jumptable | FUN_ovl27__800f81a4 | ghidra switch table, 2 entries, jr 800F8208
+ovl27:800EEDD0-800EEDD8 | jumptable | FUN_ovl27__800f81a4 | ghidra switch table, 2 entries, jr 800F8208
+ovl27:800EEDD8-800EEDE0 | jumptable | FUN_ovl27__800f81a4 | ghidra switch table, 2 entries, jr 800F8208
+ovl27:800EEDE0-800EEDE8 | jumptable | FUN_ovl27__800f81a4 | ghidra switch table, 2 entries, jr 800F8208
+ovl27:800EEDE8-800EEDEC | jumptable | FUN_ovl27__800f81a4 | ghidra switch table, 1 entries, jr 800F8208
+ovl27:800EEDF0-800EEE04 | jumptable | FUN_ovl27__800f9400 | ghidra switch table, 5 entries, jr 800F9454
+ovl27:800EEE08-800EEE24 | jumptable | FUN_ovl27__800fb82c | ghidra switch table, 7 entries, jr 800FB864
+ovl28:800EE974-800EE978 | jumptable | FUN_ovl28__800f047c | ghidra switch table, 1 entries, jr 800F0558
+ovl28:800EE97C-800EE980 | jumptable | FUN_ovl28__800f047c | ghidra switch table, 1 entries, jr 800F0558
+ovl28:800EE984-800EE988 | jumptable | FUN_ovl28__800f047c | ghidra switch table, 1 entries, jr 800F0558
+ovl28:800EE98C-800EE990 | jumptable | FUN_ovl28__800f047c | ghidra switch table, 1 entries, jr 800F0558
+ovl28:800EE994-800EE998 | jumptable | FUN_ovl28__800f047c | ghidra switch table, 1 entries, jr 800F0558
+ovl28:800EE99C-800EE9A0 | jumptable | FUN_ovl28__800f047c | ghidra switch table, 1 entries, jr 800F0558
+ovl28:800EE9A4-800EE9A8 | jumptable | FUN_ovl28__800f047c | ghidra switch table, 1 entries, jr 800F0558
+ovl28:800EE9AC-800EE9B0 | jumptable | FUN_ovl28__800f047c | ghidra switch table, 1 entries, jr 800F0558
+ovl28:800EE9B4-800EE9B8 | jumptable | FUN_ovl28__800f047c | ghidra switch table, 1 entries, jr 800F0558
+ovl28:800EE9BC-800EE9C0 | jumptable | FUN_ovl28__800f047c | ghidra switch table, 1 entries, jr 800F0558
+ovl28:800EE9C4-800EE9C8 | jumptable | FUN_ovl28__800f047c | ghidra switch table, 1 entries, jr 800F0558
+ovl28:800EE9CC-800EE9D0 | jumptable | FUN_ovl28__800f047c | ghidra switch table, 1 entries, jr 800F0558
+ovl28:800EE9D4-800EE9D8 | jumptable | FUN_ovl28__800f047c | ghidra switch table, 1 entries, jr 800F0558
+ovl28:800EE9DC-800EE9E0 | jumptable | FUN_ovl28__800f047c | ghidra switch table, 1 entries, jr 800F0558
+ovl28:800EE9E4-800EE9E8 | jumptable | FUN_ovl28__800f047c | ghidra switch table, 1 entries, jr 800F0558
+ovl28:800EE9EC-800EE9F0 | jumptable | FUN_ovl28__800f047c | ghidra switch table, 1 entries, jr 800F0558
+ovl28:800EE9F4-800EE9F8 | jumptable | FUN_ovl28__800f07e8 | ghidra switch table, 1 entries, jr 800F0854
+ovl28:800EE9FC-800EEA00 | jumptable | FUN_ovl28__800f07e8 | ghidra switch table, 1 entries, jr 800F0854
+ovl28:800EEA04-800EEA08 | jumptable | FUN_ovl28__800f07e8 | ghidra switch table, 1 entries, jr 800F0854
+ovl28:800EEA0C-800EEA10 | jumptable | FUN_ovl28__800f07e8 | ghidra switch table, 1 entries, jr 800F0854
+ovl28:800EEA14-800EEA18 | jumptable | FUN_ovl28__800f07e8 | ghidra switch table, 1 entries, jr 800F0854
+ovl28:800EEA1C-800EEA20 | jumptable | FUN_ovl28__800f07e8 | ghidra switch table, 1 entries, jr 800F0854
+ovl28:800EEA24-800EEA28 | jumptable | FUN_ovl28__800f07e8 | ghidra switch table, 1 entries, jr 800F0854
+ovl28:800EEA2C-800EEA30 | jumptable | FUN_ovl28__800f07e8 | ghidra switch table, 1 entries, jr 800F0854
+ovl28:800EEA34-800EEA38 | jumptable | FUN_ovl28__800f07e8 | ghidra switch table, 1 entries, jr 800F0854
+ovl28:800EEA3C-800EEA40 | jumptable | FUN_ovl28__800f07e8 | ghidra switch table, 1 entries, jr 800F0854
+ovl28:800EEA44-800EEA48 | jumptable | FUN_ovl28__800f07e8 | ghidra switch table, 1 entries, jr 800F0854
+ovl28:800EEA4C-800EEA50 | jumptable | FUN_ovl28__800f07e8 | ghidra switch table, 1 entries, jr 800F0854
+ovl28:800EEA54-800EEA58 | jumptable | FUN_ovl28__800f07e8 | ghidra switch table, 1 entries, jr 800F0854
+ovl28:800EEA5C-800EEA60 | jumptable | FUN_ovl28__800f07e8 | ghidra switch table, 1 entries, jr 800F0854
+ovl28:800EEA64-800EEA68 | jumptable | FUN_ovl28__800f07e8 | ghidra switch table, 1 entries, jr 800F0854
+ovl28:800EEA6C-800EEA70 | jumptable | FUN_ovl28__800f07e8 | ghidra switch table, 1 entries, jr 800F0854
+ovl28:800EEA74-800EEA78 | jumptable | FUN_ovl28__800f09f0 | ghidra switch table, 1 entries, jr 800F0A44
+ovl28:800EEA7C-800EEA80 | jumptable | FUN_ovl28__800f09f0 | ghidra switch table, 1 entries, jr 800F0A44
+ovl28:800EEA84-800EEA88 | jumptable | FUN_ovl28__800f09f0 | ghidra switch table, 1 entries, jr 800F0A44
+ovl28:800EEA8C-800EEA90 | jumptable | FUN_ovl28__800f09f0 | ghidra switch table, 1 entries, jr 800F0A44
+ovl28:800EEA94-800EEA98 | jumptable | FUN_ovl28__800f09f0 | ghidra switch table, 1 entries, jr 800F0A44
+ovl28:800EEA9C-800EEAA0 | jumptable | FUN_ovl28__800f09f0 | ghidra switch table, 1 entries, jr 800F0A44
+ovl28:800EEAA4-800EEAA8 | jumptable | FUN_ovl28__800f09f0 | ghidra switch table, 1 entries, jr 800F0A44
+ovl28:800EEAAC-800EEAB0 | jumptable | FUN_ovl28__800f09f0 | ghidra switch table, 1 entries, jr 800F0A44
+ovl28:800EEAB4-800EEAB8 | jumptable | FUN_ovl28__800f09f0 | ghidra switch table, 1 entries, jr 800F0A44
+ovl28:800EEABC-800EEAC0 | jumptable | FUN_ovl28__800f09f0 | ghidra switch table, 1 entries, jr 800F0A44
+ovl28:800EEAC4-800EEAC8 | jumptable | FUN_ovl28__800f09f0 | ghidra switch table, 1 entries, jr 800F0A44
+ovl28:800EEACC-800EEAD0 | jumptable | FUN_ovl28__800f09f0 | ghidra switch table, 1 entries, jr 800F0A44
+ovl28:800EEAD4-800EEAD8 | jumptable | FUN_ovl28__800f09f0 | ghidra switch table, 1 entries, jr 800F0A44
+ovl28:800EEADC-800EEAE0 | jumptable | FUN_ovl28__800f09f0 | ghidra switch table, 1 entries, jr 800F0A44
+ovl28:800EEAE4-800EEAE8 | jumptable | FUN_ovl28__800f09f0 | ghidra switch table, 1 entries, jr 800F0A44
+ovl28:800EEAEC-800EEAF0 | jumptable | FUN_ovl28__800f09f0 | ghidra switch table, 1 entries, jr 800F0A44
+ovl28:800EEAF4-800EEB14 | jumptable | FUN_ovl28__800f0b70 | ghidra switch table, 8 entries, jr 800F0BB0
+ovl28:800EEB24-800EEB50 | jumptable | FUN_ovl28__800f3bf0 | ghidra switch table, 11 entries, jr 800F3C58
+ovl28:800EEB54-800EEB74 | jumptable | FUN_ovl28__800f4434 | ghidra switch table, 8 entries, jr 800F448C
+ovl28:800EEB74-800EEBA4 | jumptable | FUN_ovl28__800f7be4 | ghidra switch table, 12 entries, jr 800F7C24
+ovl28:800EEBA4-800EEBC4 | jumptable | FUN_ovl28__800f84d0 | ghidra switch table, 8 entries, jr 800F8588
+ovl28:800EEBC4-800EEBCC | jumptable | FUN_ovl28__800fb514 | ghidra switch table, 2 entries, jr 800FB608
+ovl28:800EEBCC-800EEBD4 | jumptable | FUN_ovl28__800fb514 | ghidra switch table, 2 entries, jr 800FB608
+ovl28:800EEBD4-800EEBDC | jumptable | FUN_ovl28__800fb514 | ghidra switch table, 2 entries, jr 800FB608
+ovl28:800EEBDC-800EEBE4 | jumptable | FUN_ovl28__800fb514 | ghidra switch table, 2 entries, jr 800FB608
+ovl28:800EEBE4-800EEBEC | jumptable | FUN_ovl28__800fb514 | ghidra switch table, 2 entries, jr 800FB608
+ovl28:800EEBEC-800EEBF4 | jumptable | FUN_ovl28__800fb514 | ghidra switch table, 2 entries, jr 800FB608
+ovl28:800EEBF4-800EEBFC | jumptable | FUN_ovl28__800fb514 | ghidra switch table, 2 entries, jr 800FB608
+ovl28:800EEBFC-800EEC04 | jumptable | FUN_ovl28__800fb514 | ghidra switch table, 2 entries, jr 800FB608
+ovl28:800EEC04-800EEC0C | jumptable | FUN_ovl28__800fb514 | ghidra switch table, 2 entries, jr 800FB608
+ovl28:800EEC0C-800EEC14 | jumptable | FUN_ovl28__800fb514 | ghidra switch table, 2 entries, jr 800FB608
+ovl28:800EEC14-800EEC1C | jumptable | FUN_ovl28__800fb514 | ghidra switch table, 2 entries, jr 800FB608
+ovl28:800EEC1C-800EEC24 | jumptable | FUN_ovl28__800fb514 | ghidra switch table, 2 entries, jr 800FB608
+ovl28:800EEC24-800EEC2C | jumptable | FUN_ovl28__800fb514 | ghidra switch table, 2 entries, jr 800FB608
+ovl28:800EEC2C-800EEC34 | jumptable | FUN_ovl28__800fb514 | ghidra switch table, 2 entries, jr 800FB608
+ovl28:800EEC34-800EEC38 | jumptable | FUN_ovl28__800fb514 | ghidra switch table, 1 entries, jr 800FB608
+ovl28:800EEC38-800EEC40 | jumptable | FUN_ovl28__800fb918 | ghidra switch table, 2 entries, jr 800FB9C8
+ovl28:800EEC40-800EEC48 | jumptable | FUN_ovl28__800fb918 | ghidra switch table, 2 entries, jr 800FB9C8
+ovl28:800EEC48-800EEC50 | jumptable | FUN_ovl28__800fb918 | ghidra switch table, 2 entries, jr 800FB9C8
+ovl28:800EEC50-800EEC58 | jumptable | FUN_ovl28__800fb918 | ghidra switch table, 2 entries, jr 800FB9C8
+ovl28:800EEC58-800EEC60 | jumptable | FUN_ovl28__800fb918 | ghidra switch table, 2 entries, jr 800FB9C8
+ovl28:800EEC60-800EEC68 | jumptable | FUN_ovl28__800fb918 | ghidra switch table, 2 entries, jr 800FB9C8
+ovl28:800EEC68-800EEC70 | jumptable | FUN_ovl28__800fb918 | ghidra switch table, 2 entries, jr 800FB9C8
+ovl28:800EEC70-800EEC78 | jumptable | FUN_ovl28__800fb918 | ghidra switch table, 2 entries, jr 800FB9C8
+ovl28:800EEC78-800EEC80 | jumptable | FUN_ovl28__800fb918 | ghidra switch table, 2 entries, jr 800FB9C8
+ovl28:800EEC80-800EEC88 | jumptable | FUN_ovl28__800fb918 | ghidra switch table, 2 entries, jr 800FB9C8
+ovl28:800EEC88-800EEC90 | jumptable | FUN_ovl28__800fb918 | ghidra switch table, 2 entries, jr 800FB9C8
+ovl28:800EEC90-800EEC98 | jumptable | FUN_ovl28__800fb918 | ghidra switch table, 2 entries, jr 800FB9C8
+ovl28:800EEC98-800EECA0 | jumptable | FUN_ovl28__800fb918 | ghidra switch table, 2 entries, jr 800FB9C8
+ovl28:800EECA0-800EECA8 | jumptable | FUN_ovl28__800fb918 | ghidra switch table, 2 entries, jr 800FB9C8
+ovl28:800EECA8-800EECAC | jumptable | FUN_ovl28__800fb918 | ghidra switch table, 1 entries, jr 800FB9C8
+ovl28:800EECAC-800EECC0 | jumptable | FUN_ovl28__800fc850 | ghidra switch table, 5 entries, jr 800FC8C4
+ovl29:800EE974-800EE9B8 | jumptable | FUN_ovl29__800f017c | ghidra switch table, 17 entries, jr 800F01E8
+ovl29:800EE9BC-800EEA3C | jumptable | FUN_ovl29__800f017c | ghidra switch table, 32 entries, jr 800F0230
+ovl29:800EEA3C-800EEA40 | jumptable | FUN_ovl29__800f0c88 | ghidra switch table, 1 entries, jr 800F0D64
+ovl29:800EEA44-800EEA48 | jumptable | FUN_ovl29__800f0c88 | ghidra switch table, 1 entries, jr 800F0D64
+ovl29:800EEA4C-800EEA50 | jumptable | FUN_ovl29__800f0c88 | ghidra switch table, 1 entries, jr 800F0D64
+ovl29:800EEA54-800EEA58 | jumptable | FUN_ovl29__800f0c88 | ghidra switch table, 1 entries, jr 800F0D64
+ovl29:800EEA5C-800EEA60 | jumptable | FUN_ovl29__800f0c88 | ghidra switch table, 1 entries, jr 800F0D64
+ovl29:800EEA64-800EEA68 | jumptable | FUN_ovl29__800f0c88 | ghidra switch table, 1 entries, jr 800F0D64
+ovl29:800EEA6C-800EEA70 | jumptable | FUN_ovl29__800f0c88 | ghidra switch table, 1 entries, jr 800F0D64
+ovl29:800EEA74-800EEA78 | jumptable | FUN_ovl29__800f0c88 | ghidra switch table, 1 entries, jr 800F0D64
+ovl29:800EEA7C-800EEA80 | jumptable | FUN_ovl29__800f0c88 | ghidra switch table, 1 entries, jr 800F0D64
+ovl29:800EEA84-800EEA88 | jumptable | FUN_ovl29__800f0c88 | ghidra switch table, 1 entries, jr 800F0D64
+ovl29:800EEA8C-800EEA90 | jumptable | FUN_ovl29__800f0c88 | ghidra switch table, 1 entries, jr 800F0D64
+ovl29:800EEA94-800EEA98 | jumptable | FUN_ovl29__800f0c88 | ghidra switch table, 1 entries, jr 800F0D64
+ovl29:800EEA9C-800EEAA0 | jumptable | FUN_ovl29__800f0c88 | ghidra switch table, 1 entries, jr 800F0D64
+ovl29:800EEAA4-800EEAA8 | jumptable | FUN_ovl29__800f0c88 | ghidra switch table, 1 entries, jr 800F0D64
+ovl29:800EEAAC-800EEAB0 | jumptable | FUN_ovl29__800f0c88 | ghidra switch table, 1 entries, jr 800F0D64
+ovl29:800EEAB4-800EEAB8 | jumptable | FUN_ovl29__800f0c88 | ghidra switch table, 1 entries, jr 800F0D64
+ovl29:800EEABC-800EEAC0 | jumptable | FUN_ovl29__800f0ff4 | ghidra switch table, 1 entries, jr 800F1060
+ovl29:800EEAC4-800EEAC8 | jumptable | FUN_ovl29__800f0ff4 | ghidra switch table, 1 entries, jr 800F1060
+ovl29:800EEACC-800EEAD0 | jumptable | FUN_ovl29__800f0ff4 | ghidra switch table, 1 entries, jr 800F1060
+ovl29:800EEAD4-800EEAD8 | jumptable | FUN_ovl29__800f0ff4 | ghidra switch table, 1 entries, jr 800F1060
+ovl29:800EEADC-800EEAE0 | jumptable | FUN_ovl29__800f0ff4 | ghidra switch table, 1 entries, jr 800F1060
+ovl29:800EEAE4-800EEAE8 | jumptable | FUN_ovl29__800f0ff4 | ghidra switch table, 1 entries, jr 800F1060
+ovl29:800EEAEC-800EEAF0 | jumptable | FUN_ovl29__800f0ff4 | ghidra switch table, 1 entries, jr 800F1060
+ovl29:800EEAF4-800EEAF8 | jumptable | FUN_ovl29__800f0ff4 | ghidra switch table, 1 entries, jr 800F1060
+ovl29:800EEAFC-800EEB00 | jumptable | FUN_ovl29__800f0ff4 | ghidra switch table, 1 entries, jr 800F1060
+ovl29:800EEB04-800EEB08 | jumptable | FUN_ovl29__800f0ff4 | ghidra switch table, 1 entries, jr 800F1060
+ovl29:800EEB0C-800EEB10 | jumptable | FUN_ovl29__800f0ff4 | ghidra switch table, 1 entries, jr 800F1060
+ovl29:800EEB14-800EEB18 | jumptable | FUN_ovl29__800f0ff4 | ghidra switch table, 1 entries, jr 800F1060
+ovl29:800EEB1C-800EEB20 | jumptable | FUN_ovl29__800f0ff4 | ghidra switch table, 1 entries, jr 800F1060
+ovl29:800EEB24-800EEB28 | jumptable | FUN_ovl29__800f0ff4 | ghidra switch table, 1 entries, jr 800F1060
+ovl29:800EEB2C-800EEB30 | jumptable | FUN_ovl29__800f0ff4 | ghidra switch table, 1 entries, jr 800F1060
+ovl29:800EEB34-800EEB38 | jumptable | FUN_ovl29__800f0ff4 | ghidra switch table, 1 entries, jr 800F1060
+ovl29:800EEB3C-800EEB40 | jumptable | FUN_ovl29__800f11fc | ghidra switch table, 1 entries, jr 800F1250
+ovl29:800EEB44-800EEB48 | jumptable | FUN_ovl29__800f11fc | ghidra switch table, 1 entries, jr 800F1250
+ovl29:800EEB4C-800EEB50 | jumptable | FUN_ovl29__800f11fc | ghidra switch table, 1 entries, jr 800F1250
+ovl29:800EEB54-800EEB58 | jumptable | FUN_ovl29__800f11fc | ghidra switch table, 1 entries, jr 800F1250
+ovl29:800EEB5C-800EEB60 | jumptable | FUN_ovl29__800f11fc | ghidra switch table, 1 entries, jr 800F1250
+ovl29:800EEB64-800EEB68 | jumptable | FUN_ovl29__800f11fc | ghidra switch table, 1 entries, jr 800F1250
+ovl29:800EEB6C-800EEB70 | jumptable | FUN_ovl29__800f11fc | ghidra switch table, 1 entries, jr 800F1250
+ovl29:800EEB74-800EEB78 | jumptable | FUN_ovl29__800f11fc | ghidra switch table, 1 entries, jr 800F1250
+ovl29:800EEB7C-800EEB80 | jumptable | FUN_ovl29__800f11fc | ghidra switch table, 1 entries, jr 800F1250
+ovl29:800EEB84-800EEB88 | jumptable | FUN_ovl29__800f11fc | ghidra switch table, 1 entries, jr 800F1250
+ovl29:800EEB8C-800EEB90 | jumptable | FUN_ovl29__800f11fc | ghidra switch table, 1 entries, jr 800F1250
+ovl29:800EEB94-800EEB98 | jumptable | FUN_ovl29__800f11fc | ghidra switch table, 1 entries, jr 800F1250
+ovl29:800EEB9C-800EEBA0 | jumptable | FUN_ovl29__800f11fc | ghidra switch table, 1 entries, jr 800F1250
+ovl29:800EEBA4-800EEBA8 | jumptable | FUN_ovl29__800f11fc | ghidra switch table, 1 entries, jr 800F1250
+ovl29:800EEBAC-800EEBB0 | jumptable | FUN_ovl29__800f11fc | ghidra switch table, 1 entries, jr 800F1250
+ovl29:800EEBB4-800EEBB8 | jumptable | FUN_ovl29__800f11fc | ghidra switch table, 1 entries, jr 800F1250
+ovl29:800EEBBC-800EEBDC | jumptable | FUN_ovl29__800f137c | ghidra switch table, 8 entries, jr 800F13BC
+ovl29:800EEBDC-800EEBF8 | jumptable | FUN_ovl29__800f1ee0 | ghidra switch table, 7 entries, jr 800F1F98
+ovl29:800EEBF8-800EEC00 | jumptable | FUN_ovl29__800f5b9c | ghidra switch table, 2 entries, jr 800F5C90
+ovl29:800EEC00-800EEC08 | jumptable | FUN_ovl29__800f5b9c | ghidra switch table, 2 entries, jr 800F5C90
+ovl29:800EEC08-800EEC10 | jumptable | FUN_ovl29__800f5b9c | ghidra switch table, 2 entries, jr 800F5C90
+ovl29:800EEC10-800EEC18 | jumptable | FUN_ovl29__800f5b9c | ghidra switch table, 2 entries, jr 800F5C90
+ovl29:800EEC18-800EEC20 | jumptable | FUN_ovl29__800f5b9c | ghidra switch table, 2 entries, jr 800F5C90
+ovl29:800EEC20-800EEC28 | jumptable | FUN_ovl29__800f5b9c | ghidra switch table, 2 entries, jr 800F5C90
+ovl29:800EEC28-800EEC30 | jumptable | FUN_ovl29__800f5b9c | ghidra switch table, 2 entries, jr 800F5C90
+ovl29:800EEC30-800EEC38 | jumptable | FUN_ovl29__800f5b9c | ghidra switch table, 2 entries, jr 800F5C90
+ovl29:800EEC38-800EEC40 | jumptable | FUN_ovl29__800f5b9c | ghidra switch table, 2 entries, jr 800F5C90
+ovl29:800EEC40-800EEC48 | jumptable | FUN_ovl29__800f5b9c | ghidra switch table, 2 entries, jr 800F5C90
+ovl29:800EEC48-800EEC50 | jumptable | FUN_ovl29__800f5b9c | ghidra switch table, 2 entries, jr 800F5C90
+ovl29:800EEC50-800EEC58 | jumptable | FUN_ovl29__800f5b9c | ghidra switch table, 2 entries, jr 800F5C90
+ovl29:800EEC58-800EEC60 | jumptable | FUN_ovl29__800f5b9c | ghidra switch table, 2 entries, jr 800F5C90
+ovl29:800EEC60-800EEC68 | jumptable | FUN_ovl29__800f5b9c | ghidra switch table, 2 entries, jr 800F5C90
+ovl29:800EEC68-800EEC6C | jumptable | FUN_ovl29__800f5b9c | ghidra switch table, 1 entries, jr 800F5C90
+ovl29:800EEC6C-800EEC74 | jumptable | FUN_ovl29__800f8018 | ghidra switch table, 2 entries, jr 800F80C8
+ovl29:800EEC74-800EEC7C | jumptable | FUN_ovl29__800f8018 | ghidra switch table, 2 entries, jr 800F80C8
+ovl29:800EEC7C-800EEC84 | jumptable | FUN_ovl29__800f8018 | ghidra switch table, 2 entries, jr 800F80C8
+ovl29:800EEC84-800EEC8C | jumptable | FUN_ovl29__800f8018 | ghidra switch table, 2 entries, jr 800F80C8
+ovl29:800EEC8C-800EEC94 | jumptable | FUN_ovl29__800f8018 | ghidra switch table, 2 entries, jr 800F80C8
+ovl29:800EEC94-800EEC9C | jumptable | FUN_ovl29__800f8018 | ghidra switch table, 2 entries, jr 800F80C8
+ovl29:800EEC9C-800EECA4 | jumptable | FUN_ovl29__800f8018 | ghidra switch table, 2 entries, jr 800F80C8
+ovl29:800EECA4-800EECAC | jumptable | FUN_ovl29__800f8018 | ghidra switch table, 2 entries, jr 800F80C8
+ovl29:800EECAC-800EECB4 | jumptable | FUN_ovl29__800f8018 | ghidra switch table, 2 entries, jr 800F80C8
+ovl29:800EECB4-800EECBC | jumptable | FUN_ovl29__800f8018 | ghidra switch table, 2 entries, jr 800F80C8
+ovl29:800EECBC-800EECC4 | jumptable | FUN_ovl29__800f8018 | ghidra switch table, 2 entries, jr 800F80C8
+ovl29:800EECC4-800EECCC | jumptable | FUN_ovl29__800f8018 | ghidra switch table, 2 entries, jr 800F80C8
+ovl29:800EECCC-800EECD4 | jumptable | FUN_ovl29__800f8018 | ghidra switch table, 2 entries, jr 800F80C8
+ovl29:800EECD4-800EECDC | jumptable | FUN_ovl29__800f8018 | ghidra switch table, 2 entries, jr 800F80C8
+ovl29:800EECDC-800EECE0 | jumptable | FUN_ovl29__800f8018 | ghidra switch table, 1 entries, jr 800F80C8
+ovl29:800EECE0-800EECF8 | jumptable | FUN_ovl29__800f8330 | ghidra switch table, 6 entries, jr 800F83C0
+ovl30:800FA004-800FA01C | jumptable | FUN_ovl30__800fa864 | ghidra switch table, 6 entries, jr 800FA9A4
+ovl30:800FA01C-800FA074 | jumptable | FUN_ovl30__800fadc4 | ghidra switch table, 22 entries, jr 800FAF78
+ovl30:800FA074-800FA088 | jumptable | FUN_ovl30__800fb024 | ghidra switch table, 5 entries, jr 800FB138
+ovl30:800FA08C-800FA0C0 | jumptable | FUN_ovl30__800fb2cc | ghidra switch table, 13 entries, jr 800FB32C
+ovl30:800FA0EC-800FA114 | jumptable | FUN_ovl30__800fc3d8 | ghidra switch table, 10 entries, jr 800FC418
+ovl30:800FA114-800FA154 | jumptable | FUN_ovl30__800fc56c | ghidra switch table, 16 entries, jr 800FC5D8
+ovl30:800FA154-800FA168 | jumptable | FUN_ovl30__800fd25c | ghidra switch table, 5 entries, jr 800FD320
+ovl31:800FA174-800FA18C | jumptable | FUN_ovl31__800fe22c | ghidra switch table, 6 entries, jr 800FE314
+ovl32:800FA004-800FA048 | jumptable | FUN_ovl32__800fcaac | ghidra switch table, 17 entries, jr 800FCD50
+ovl32:800FA04C-800FA0B8 | jumptable | FUN_ovl32__800fcaac | ghidra switch table, 27 entries, jr 800FCE54
+ovl34:800FA004-800FA028 | jumptable | FUN_ovl34__800fd604 | ghidra switch table, 9 entries, jr 800FD690
+ovl35:800FA004-800FA028 | jumptable | FUN_ovl35__800fb66c | ghidra switch table, 9 entries, jr 800FB7D8
+ovl35:800FA06C-800FA08C | jumptable | FUN_ovl35__800fcdbc | ghidra switch table, 8 entries, jr 800FCE88
+ovl35:800FA08C-800FA0AC | jumptable | FUN_ovl35__800fcdbc | ghidra switch table, 8 entries, jr 800FD020
+ovl36:800FA004-800FA0BC | jumptable | FUN_ovl36__800fd4a8 | ghidra switch table, 46 entries, jr 800FD4F8

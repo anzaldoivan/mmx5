@@ -1,0 +1,12 @@
+{"alias": "slus", "module": "slus/seg", "kind": "game", "name": "fa", "vram": "80001000", "insns": 4, "status": "asm"}
+{"alias": "slus", "module": "slus/seg", "kind": "game", "name": "fb_c", "vram": "80001100", "insns": 4, "status": "c"}
+{"alias": "slus", "module": "slus/seg", "kind": "game", "name": "fc_noasm", "vram": "80001200", "insns": 4, "status": "asm"}
+{"alias": "slus", "module": "slus/seg", "kind": "game", "name": "fd", "vram": "80001300", "insns": 4, "status": "asm"}
+{"alias": "slus", "module": "slus/seg", "kind": "game", "name": "fe_twin", "vram": "80001400", "insns": 4, "status": "asm"}
+{"alias": "slus", "module": "slus/seg", "kind": "game", "name": "ff", "vram": "80001500", "insns": 3, "status": "asm"}
+{"alias": "rockx5", "module": "rockx5/ovl00_80100000", "kind": "game", "name": "ra", "vram": "80001600", "insns": 2, "status": "asm"}
+{"alias": "rockx5", "module": "rockx5/ovl00_80100000", "kind": "game", "name": "rb", "vram": "80001700", "insns": 2, "status": "asm"}
+{"alias": "slus", "module": "slus/seg", "kind": "game", "name": "fg", "vram": "80001800", "insns": 2, "status": "asm"}
+{"alias": "slus", "module": "slus/seg", "kind": "game", "name": "big", "vram": "80001900", "insns": 30, "status": "asm"}
+{"alias": "slus", "module": "slus/seg", "kind": "game", "name": "rod", "vram": "80001A00", "insns": 5, "status": "asm"}
+{"alias": "slus", "module": "slus/seg", "kind": "game", "name": "fbank", "vram": "80001B00", "insns": 3, "status": "c"}

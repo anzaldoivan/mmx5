@@ -1,0 +1,22 @@
+{
+ "_comment": "draw.py --selftest: synthetic rows (no game bytes); alias fx vrams plan against tools/dedup/fixtures/carve",
+ "rows": [
+  {"alias": "fx", "module": "fx/main_80001000", "kind": "game", "name": "game_80001000", "vram": "80001000", "insns": 4, "status": "asm"},
+  {"alias": "fx", "module": "fx/main_80001000", "kind": "game", "name": "game_80001010", "vram": "80001010", "insns": 4, "status": "asm"},
+  {"alias": "fx", "module": "fx/main_80001000", "kind": "game", "name": "game_80001020", "vram": "80001020", "insns": 4, "status": "asm"},
+  {"alias": "fx", "module": "fx/main_80001000", "kind": "game", "name": "game_80001030", "vram": "80001030", "insns": 4, "status": "asm"},
+  {"alias": "fx", "module": "fx/main_80001000", "kind": "game", "name": "c_80001100", "vram": "80001100", "insns": 4, "status": "c"},
+  {"alias": "fx", "module": "fx/lib_80002000", "kind": "libobj", "name": "lib_80002000", "vram": "80002000", "insns": 4, "status": "asm"},
+  {"alias": "fx", "module": "fx/ovl99_80003000", "kind": "game", "name": "func_80003000_ovl99", "vram": "80003000", "insns": 4, "status": "asm"}
+ ],
+ "groups": [
+  {"group": "dup0001", "kind": "dup", "members": [{"alias": "fx", "name": "game_80001010", "vram": "80001010"}, {"alias": "fx", "name": "c_80001100", "vram": "80001100"}]}
+ ],
+ "twins": [],
+ "excluded_modules": [["fx", "ovl99"]],
+ "miss": [],
+ "want": {"game_80001000": "draw", "game_80001010": "dup-member", "game_80001020": "exclude-list",
+          "game_80001030": "uncarveable", "c_80001100": "already-c", "lib_80002000": "vendor",
+          "func_80003000_ovl99": "excluded-module"},
+ "want_rank": ["game_80001000"]
+}

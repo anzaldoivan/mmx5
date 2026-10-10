@@ -1,0 +1,52 @@
+# config/psxdecomp.toml — how this repository was bootstrapped. Read by /psxdecomp:doctor and :upgrade;
+# the repository works without the plugin. Written once by psxdecomp's S10; upgrades rewrite it.
+
+[psxdecomp]
+version = "0.4.0"
+profile = "psx"
+bootstrapped = "2026-10-03"
+
+[pa3]
+tag = "v3.14.2"
+sha = "0ccf0dfaf95e36435ec1b7e58f3be3f863acb19b"
+version = "3.14.2"
+
+[kit]
+digest = "sha256:581f5ec0553b8c9119fca08ebb3b863caeb3bb2c1e5039402aa67f403ce6e748"
+repo = "https://github.com/anzaldoivan/BFM-decomp.git"
+sha = "898aeb324d557ae3c5c672ef08bdbbc3db080962"
+
+[refs]
+file = "config/refs.toml"
+index = "docs/ops/refs.md"
+
+[host]
+recipe = "linux-amd64"
+
+[deviations]
+list = ["none"]
+
+# [psyq]: the PsyQ release the game links, from psxdecomp's psyq.toml (seen 2026-10-01). A lead for phase 1.4;
+# the pin is phase 1.4's finding and lives in the repo's compiler-pin record.
+[psyq]
+stamp = "470"
+version = "4.7"
+ships_compiler = "no"
+cc1_banner = "GNU C version 2.95.2 19991024 (release) (mips-sony-psx) compiled by GNU C version 9.4.0."
+aspsx = "2.86"
+old_gcc = "0.17 gcc-2.95.2-psx.tar.gz sha256 932ed3669710a82b12570c29c46ff42989b6505b2af10db84d4551d55dfc0b1c"
+confidence = "measured"
+status = "lead — never the pin"
+
+# [public]: split mode (psxdecomp docs/PUBLISHING.md). The public anzaldoivan/mmx5 gets the files
+# config/public-paths.txt lists; this repository (-dev) stays private; the game files live in -private.
+[public]
+repo = "anzaldoivan/mmx5"
+dev_branch = "main"
+checks = ["build SLUS_013.34", "public-clean audit (no game bytes)", "compile-only (pinned cc1 + maspsx + binutils, no game bytes)"]
+private_repo = "anzaldoivan/mmx5-private"
+private_rev = "71bf87c23a3ea48b5ad0efdd96d688cbbdc8a908"   # the -private commit CI reads
+image = "ghcr.io/anzaldoivan/mmx5-toolchain@sha256:7653d6d8b35c14458798bb160ad1a93ef99faf9da7591e3542c412cd0ff85c3f"
+land_check = ["bash", "tools/land_check.sh", "{tree}"]
+# never public, beyond the agent files: the agents' wave drafts and the flip-era records
+deny = ["waves/", "docs/publish/visibility.md", "docs/publish/facts.md", "docs/routing.md", "docs/ledger.md"]

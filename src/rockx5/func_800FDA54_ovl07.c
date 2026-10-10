@@ -1,0 +1,15 @@
+#include "types.h"
+
+extern void (*D_80101E80_ovl07[])(Ovl07Ent*);
+
+void func_800FDA54_ovl07(Ovl07Ent* e) {
+    if (e->unk8E != 0 && ((Ovl07Ent*)e->unk7C)->unk8E == 2) {
+        e->unk24 = 0x18000;
+        e->unk20 = 0;
+        e->unk8E = 0;
+        e->unk5 = 4;
+        e->unk6 = 0;
+        return;
+    }
+    D_80101E80_ovl07[e->unk6](e);
+}

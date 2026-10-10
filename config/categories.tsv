@@ -1,0 +1,5 @@
+# config/categories.tsv -- from tools/gen_objdiff.py. id parent name status
+id	parent	name	status
+game		Game code	active
+sdk		PsyQ SDK libraries	active
+main		SLUS_013.34 (boot executable)	active

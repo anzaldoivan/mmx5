@@ -1,0 +1,18 @@
+{"kind": "system", "lba": 0, "mode": "mixed", "path": "@system/area", "sectors": 16, "sha1": "d3747dcbb63a8b4293c37ca9ba57458828748b55", "size": 37632}
+{"kind": "system", "lba": 16, "mode": "form1", "path": "@system/descriptors", "sectors": 2, "sha1": "7ea13ec8fb90b5af8cebba4e6ba8ff63043e2325", "size": 4704}
+{"kind": "system", "lba": 18, "mode": "form1", "path": "@system/pathtable_l", "sectors": 1, "sha1": "f807e6ab16342c0ecfd97a22a127de83726e0c0d", "size": 2352}
+{"kind": "system", "lba": 19, "mode": "form1", "path": "@system/pathtable_l2", "sectors": 1, "sha1": "06bad3696e0f3784a1aa047196595240e750404f", "size": 2352}
+{"kind": "system", "lba": 20, "mode": "form1", "path": "@system/pathtable_m", "sectors": 1, "sha1": "30fde9fd94c3d86176647983e0ff575e2838971e", "size": 2352}
+{"kind": "system", "lba": 21, "mode": "form1", "path": "@system/pathtable_m2", "sectors": 1, "sha1": "561b74962a2fcbdf344afafa590ac3119ea70ab3", "size": 2352}
+{"kind": "dir", "lba": 22, "mode": "form1", "path": "/", "sectors": 1, "sha1": "796fde658290e93626c6670ddd7a9ceadf143af9", "size": 2048}
+{"kind": "dir", "lba": 23, "mode": "form1", "path": "STR", "sectors": 1, "sha1": "1a59fddb611c216f8ad02472b880ff94636138ed", "size": 2048}
+{"kind": "dir", "lba": 24, "mode": "form1", "path": "XA", "sectors": 1, "sha1": "a3f84b4d2556a6b54e4c5f8b3068332fc99575c1", "size": 2048}
+{"kind": "file", "lba": 25, "mode": "form1", "path": "SYSTEM.CNF", "sectors": 1, "sha1": "c2681aa55aa449f5b0f8e44dea8718c10ef5db0d", "size": 68}
+{"kind": "file", "lba": 26, "mode": "form1", "path": "ROCK_X5.DAT", "sectors": 23406, "sha1": "1678d8289aed878e93f99d2488dbc56c495006ca", "size": 47935488}
+{"kind": "file", "lba": 23432, "mode": "form1", "path": "SLUS_013.34", "sectors": 261, "sha1": "476e55ff4ac698a1ee0654c0f08804a5837bd2f3", "size": 534528}
+{"kind": "file", "lba": 23693, "mode": "form1", "path": "ROCK_X5.BIN", "sectors": 676, "sha1": "3ab6c9cf7532d9702699b655d761c0dc0c2a7fab", "size": 1384448}
+{"kind": "file", "lba": 24369, "mode": "mixed", "path": "STR/CAPLOGO.STR", "sectors": 936, "sha1": "7bc35ac7a4be10c192eab1263a1ee09bc53b5adb", "size": 1916928}
+{"kind": "file", "lba": 25305, "mode": "mixed", "path": "STR/X5OP.STR", "sectors": 9984, "sha1": "7979db9c1254383c8589e02b85685c79f864d002", "size": 20447232}
+{"kind": "file", "lba": 35289, "mode": "mixed", "path": "XA/BGM.XA", "sectors": 194328, "sha1": "6e498487697abf93a5356f72d652a4be6a2aa5d2", "size": 397983744}
+{"content_sha1": "6b7d3dda0242e62c7bc1d32bd898e6f2b6bb0530", "kind": "file", "lba": 229617, "mode": "form1", "path": "ZNULL.DAT", "sectors": 18088, "size": 37044000, "trivial": true}
+{"kind": "coverage", "sectors_accounted": 247705, "sectors_total": 247855}

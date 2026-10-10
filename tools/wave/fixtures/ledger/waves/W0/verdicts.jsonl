@@ -1,0 +1,5 @@
+{"alias": "slus", "module": "slus/game_80001000", "name": "fa", "vram": "80001000", "verdict": "banked", "rung": "r1", "reason": "", "date": "2026-10-05"}
+{"alias": "slus", "module": "slus/game_80001000", "name": "fb", "vram": "80001010", "verdict": "failed", "rung": "r1", "reason": "word 2 (+0x8) differs", "date": "2026-10-05"}
+{"alias": "slus", "module": "slus/game_80001000", "name": "fc", "vram": "80001020", "verdict": "failed", "rung": "r1", "reason": "word 5 (+0x14) differs", "date": "2026-10-05"}
+{"alias": "slus", "module": "slus/game_80001000", "name": "fd", "vram": "80001030", "verdict": "failed", "rung": "r1", "reason": "word 0 (+0x0) differs", "date": "2026-10-05"}
+{"alias": "slus", "module": "slus/game_80001000", "name": "fe", "vram": "80001040", "verdict": "no-verdict", "rung": null, "reason": "refused c-exists", "date": "2026-10-05"}

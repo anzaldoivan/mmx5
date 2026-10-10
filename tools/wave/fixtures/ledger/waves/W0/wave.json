@@ -1,0 +1,6 @@
+{"wave": "W0", "date": "2026-10-05", "buckets": [20], "targets": [
+ {"alias": "slus", "module": "slus/game_80001000", "name": "fa", "vram": "80001000", "insns": 4, "bucket": "A", "rank": 1, "reach": 0},
+ {"alias": "slus", "module": "slus/game_80001000", "name": "fb", "vram": "80001010", "insns": 4, "bucket": "A", "rank": 2, "reach": 0},
+ {"alias": "slus", "module": "slus/game_80001000", "name": "fc", "vram": "80001020", "insns": 8, "bucket": "A", "rank": 3, "reach": 0},
+ {"alias": "slus", "module": "slus/game_80001000", "name": "fd", "vram": "80001030", "insns": 4, "bucket": "A", "rank": 4, "reach": 0},
+ {"alias": "slus", "module": "slus/game_80001000", "name": "fe", "vram": "80001040", "insns": 6, "bucket": "A", "rank": 5, "reach": 0}]}
