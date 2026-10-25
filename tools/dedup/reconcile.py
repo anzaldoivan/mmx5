@@ -161,7 +161,8 @@ class Job:
         self.defs, self.root, self.fixture = list(defs), Path(root), fixture
         self.plain, self.externs = plain, []
         self.cx = carve.Ctx(self.root, alias, asm_root=None if fixture else ROOT)
-        self.plan = carve.plan(self.cx, vram, module)  # r2's probe: refuses c-exists (already carved: revert first)
+        # r2's probe: refuses c-exists (already carved: revert first); the body's extern rodata stays in the region
+        self.plan = carve.plan(self.cx, vram, module, ctext=self.body.read_text() if self.body.is_file() else None)
         self.name = self.plan[5]
         self._target = target
         self.rec = rec_path(alias, vram, module, fixture)

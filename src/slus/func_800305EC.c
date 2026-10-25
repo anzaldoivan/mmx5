@@ -1,7 +1,5 @@
 #include "types.h"
-
-#define D_1F800008 (*(u8**)0x1F800008)
-#define D_1F80000C (*(u8**)0x1F80000C)
+#include "addr.h"
 
 extern s32 func_80028FF0(s32 a, s32 x, s32 y);
 

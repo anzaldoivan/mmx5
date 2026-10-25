@@ -31,6 +31,12 @@ CALLS = (
     ("ori", 0x8001369C, 0x800136B8, 0x8006FD80, 19),
     ("ori", 0x80013528, 0x8001356C, 0x8006FC5C, 8),
 )
+# Live dests (no static CALLS row reaches these indices): index -> (dest, Ovl_Load ra, source).
+LIVE_SRC = "phase 2.2 T4 live Redux run, prove.py ovl3839, Ovl_Load a1 (ovl18), commit fe7bbd6"
+LIVE = {
+    38: (0x800FA000, 0x800F6B38, LIVE_SRC),
+    39: (0x800FA000, 0x800F6C38, LIVE_SRC),
+}
 
 
 def h8(v):
@@ -104,6 +110,9 @@ def derive():
             o.update(dest=h8(val), dest_source=h8(src))
             if via:
                 o["dest_via"] = via
+        elif i in LIVE:
+            val, ra, src = LIVE[i]
+            o.update(dest=h8(val), dest_source=h8(ra), dest_via="live: " + src)
         overlays.append(o)
 
     addr_keys = {"pc0", "gp0", "t_addr", "d_addr", "b_addr", "s_addr"}

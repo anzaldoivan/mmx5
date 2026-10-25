@@ -1,11 +1,6 @@
 /* Shared body (DK-5), from the banked draft of func_800FA4F8_ovl50 by tools/wave/gate.py rescan. */
 #include "types.h"
 
-typedef struct {
-    u8 pad0[0x60];
-    s32 unk60;
-} D_8009A1F8_60_t;
-
 extern D_8009A1F8_60_t D_8009A1F8;
 void DEDUP_CALLEE(s32, s32, s32);
 

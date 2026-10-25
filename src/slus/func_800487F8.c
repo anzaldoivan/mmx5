@@ -1,31 +1,5 @@
 #include "types.h"
 
-typedef struct {
-    u8 pad0[5];
-    u8 unk5;
-    u8 pad6[4];
-    s16 unkA;
-    u8 padC[2];
-    s16 unkE;
-    u8 pad10[5];
-    u8 unk15;
-    u8 pad16[10];
-    s32 unk20;
-    s32 unk24;
-    u8 pad28[0x1D];
-    u8 unk45;
-    u8 pad46[0xA];
-    s32* unk50;
-    u8 pad54[0x14];
-    Unk800770CC* unk68;
-    u8 pad6C[0x23];
-    u8 unk8F;
-    s16 unk90;
-    s16 unk92;
-    u8 unk94;
-    u8 unk95;
-} Ent487F8;
-
 extern Unk800770CC D_800770CC[];
 extern s32 D_800770B0[];
 

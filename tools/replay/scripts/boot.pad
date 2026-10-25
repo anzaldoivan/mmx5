@@ -1,0 +1,13 @@
+# boot.pad -- boot -> title -> START (menu) -> GAME START (player select). Frames picked from the PNGs (T1 phase 2.2).
+# 320-380: black pre-FMV screen; 400-4500: intro FMV (24-bit, no PNG); 5000: title, = title.lua's pin.
+360 cp boot
+5000 cp title
+5000 press START
+5006 release START
+# 5090+: GAME START / CONTINUE / OPTION / TRAINING menu (blinking prompt)
+5120 cp menu
+5150 press START
+5156 release START
+# 5240: stage/sub 14/1; 5420+: PLAYER SELECT, static
+5480 cp player_select
+5500 end

@@ -8,6 +8,7 @@
 | `$s0`/`$s1` swapped, equal density | C0046 | regalloc_decl_tie |
 | `$s0`/`$s1` swapped, unequal use counts | C0047 | regalloc_density_order |
 | `bgez`+`addiu` bias vs plain `sra` | C0057 | div_pow2_signed |
+| `lui %hi(D_x)` in `$v0` then `lw` into another reg, where the target's lui reuses the lw dest | C0130 | regalloc_abs_const_lw |
 | a beq/beq/j compare chain with the case body inline where the target falls through `bne r,K` tests | C0072 | switch_case_source_order |
 | a branch's arms swapped | C0049 | dbr_branch_polarity |
 | a cross-jumped tail merged or not merged | C0050 | xjump_tail_merge |
@@ -26,6 +27,7 @@
 | latency-1 insns permuted among ties | C0051 | sched_stmt_order |
 | one `addu` with its two source registers swapped, everything else equal | C0073 | expr_commutative_rtl_order |
 | ours adds `-1` to the global where the target adds `+1` to the field before a subtract | C0075 | fold_assoc_temp_block |
+| prologue `lui %hi(sym)` of a byte load in `$v1`/an a-reg where the target uses `$v0`, next to a tied hi/lo pair | C0129 | sched_zero_store_spacer |
 | recompute where target reuses, no label/call between | C0058 | cse_volatile_asm_flush |
 | s16 field negated in place: ours `lhu` load then `negu`/`sh`; target `lh` (sign-extending) load then `negu`/`sh` | C0089, C0093 | neg_mul_s16_load |
 | scratchpad pointer load shifted one register: target `lui $vN,0x1F80; lw $vN,0x4C($vN)` (same reg), ours `lui %hi(sym)` / `lw %lo(sym)` in two regs | C0077 | addr_const_scratchpad |

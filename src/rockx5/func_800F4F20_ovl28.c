@@ -1,4 +1,5 @@
 #include "types.h"
+#include "addr.h"
 
 extern void func_80017248(u8* obj);
 extern void func_8002DED4(u8* obj);
@@ -8,8 +9,7 @@ extern void func_8002D9EC(u8* obj, s32 a, s32 b);
 #define S16(p, o) (*(s16*)((p) + (o)))
 #define U16(p, o) (*(u16*)((p) + (o)))
 #define S8(p, o) (*(signed char*)((p) + (o)))
-#define G (*(u8**)0x1F80004C)
-
+#define G D_1F80004C.bytes
 void func_800F4F20_ovl28(u8* obj) {
     u8* child;
     s16 r;

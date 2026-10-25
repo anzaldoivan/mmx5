@@ -1,0 +1,10 @@
+# config/oracle.strnames.aliases.tsv -- written by hand from config/oracle.strnames.tsv: one lead per function, never a rename; checked by tools/psxd_img.py strnames --check
+# unit	vram	alias	keys	basis
+ovl24	0x800F0D3C	memcard_save_name	3ab5d2e89ded	string:config/oracle.strnames.tsv
+ovl24	0x800F2C4C	memcard_save_header	a5769a890c4a	string:config/oracle.strnames.tsv
+slus	0x80013EE8	cd_file_rock_x5_dat	87d5c102aa9f	string:config/oracle.strnames.tsv
+slus	0x80015DDC	cd_file_rock_x5_bin	4aa8a59562c2	string:config/oracle.strnames.tsv
+slus	0x8001B378	memcard_save_name	3ab5d2e89ded	string:config/oracle.strnames.tsv
+slus	0x8001D580	memcard_save_path	a5769a890c4a,b1bc6d9f1df7	string:config/oracle.strnames.tsv
+slus	0x8001D6BC	memcard_device	819caf376cb9	string:config/oracle.strnames.tsv
+slus	0x8001D8B4	memcard_device	819caf376cb9	string:config/oracle.strnames.tsv

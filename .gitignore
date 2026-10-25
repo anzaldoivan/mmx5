@@ -16,6 +16,16 @@ __pycache__/
 
 # 1. The disc / ROM dump — never committed; your own copy goes here
 /disks/
+# disc-image formats anywhere in the tree (mirrors config/firewall.txt globs; .bin covered by the paths above/below)
+*.cue
+*.iso
+*.img
+*.chd
+*.ecm
+*.pbp
+*.toc
+# PCSX-Redux savestates hold emulated RAM/VRAM (game bytes; T1 phase 2.2)
+*.sstate
 
 # 2. Extracted payloads — regenerated from YOUR dump by the extractor and verified against the
 #    committed manifest of hashes, the only thing tracked under extracted/
@@ -86,3 +96,4 @@ Thumbs.db
 
 # decomp-architect (the day-one kit's package folder — safe to delete after install)
 decomp-architect/
+/objdiff.json

@@ -1,0 +1,2 @@
+slus	0x80001300	fd	4	SLUS_013.95	0x80020000	func_80020000	src/shared/SLUS_013.95/func_80020000.c	func_80020000=fd;g_six=g_five;func_80020100=fbank
+ovl00	0x80001700	rb	2	rock_02	0x800EE9A0	func_800EE9A0	src/rock_02/E9860.c	func_800EE9A0=rb

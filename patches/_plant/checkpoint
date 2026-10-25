@@ -1,0 +1,7 @@
+# _plant: T2 mechanism test for PATCHES/replay-patch, not a patch set.
+# Edit: slus func_80053A4C (pickup HP refill tick, HP += 1 every 2 frames) -> HP += 2; same size (one immediate).
+# Basis: T1 Redux trace on intro.pad: first pickup refill (pc 80053AF8, in func_80053A4C) frame 11685 > stage_start 11010;
+# predicted mid_stage (HP 0x1F < cap 0x20); observed: mid_stage equal, first divergence clear (frame 29850, stage 0 vs 15:
+# the run no longer reaches the clear screen on schedule).
+# First divergent checkpoint observed (make replay-patch PATCHES=_plant):
+clear

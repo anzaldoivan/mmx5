@@ -1,4 +1,5 @@
-# propagate.py --selftest fixture: hand-written, no game bytes. Four dedup members at vram 0x80001000.
+# propagate.py --selftest fixture: hand-written, no game bytes. Four dedup members at vram 0x80001000;
+# three reloc-gating cases at 0x80001100 (rep, renamed member, foreign-object member).
 name: FX.BIN
 options:
   basename: FX.BIN
@@ -15,4 +16,6 @@ segments:
     subsegments:
       - [0x1000, asm, game_80001000]  # four members; func_80001030's target bytes are planted to differ
       - [0x1040, rodata, 1040]
+      - [0x1100, asm, game_80001100]  # reloc-gated: func_80001110 renames, func_80001120 refused (foreign)
+      - [0x1130, rodata, 1130]
   - [0x1200]

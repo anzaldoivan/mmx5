@@ -1,6 +1,7 @@
 # Pinned Python deps (T1.c1). Install: pip install --require-hashes -r requirements-python.txt
 # pycparser, toml (T5.c1): decomp-permuter; toml is its only non-stdlib import (it vendors perm_pycparser).
 # Hashes are for the files pip picked on Linux x86_64, CPython 3.14 (pyyaml, pygfxd: cp314 wheels; intervaltree, pylibyaml: sdists).
+# graphviz (Phase 3.2 T1.c1): m2c's only dep (pyproject ~=0.20.1; imported lazily for --visualize); m2c vendors its pycparser.
 # clang-format (T2.c1): make format/format-check; 18.1.x = ubuntu-24.04 apt major; py2.py3 manylinux x86_64 wheel.
 clang-format==18.1.8 \
     --hash=sha256:2de122b8aa78ba49e326f974131caab2c79f4ae877c227cd4e3e5d82a98d21e5
@@ -8,6 +9,8 @@ colorama==0.4.6 \
     --hash=sha256:4f1d9991f5acc0ca119f9d443620b77f9d6b33703e51011c16baf57afb285fc6
 crunch64==0.6.2 \
     --hash=sha256:b764cc500cb1cab9bcc6d5683e1adbce4eb857abf31218d311aed7d53bfc96ee
+graphviz==0.20.3 \
+    --hash=sha256:81f848f2904515d8cd359cc611faba817598d2feaac4027b266aa3eda7b3dde5
 intervaltree==3.1.0 \
     --hash=sha256:902b1b88936918f9b2a19e0e5eb7ccb430ae45cde4f39ea4b36932920d33952d
 n64img==0.3.3 \

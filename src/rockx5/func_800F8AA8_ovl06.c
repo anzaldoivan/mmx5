@@ -1,22 +1,5 @@
 #include "types.h"
 
-typedef struct Obj8AA8 {
-    /* 0x00 */ u8 pad0[6];
-    /* 0x06 */ u8 unk6;
-    /* 0x07 */ u8 pad7[3];
-    /* 0x0A */ s16 unkA;
-    /* 0x0C */ u8 padC[9];
-    /* 0x15 */ u8 unk15;
-    /* 0x16 */ u8 pad16[0xA];
-    /* 0x20 */ s32 unk20;
-    /* 0x24 */ s32 unk24;
-    /* 0x28 */ s32 unk28;
-    /* 0x2C */ s32 unk2C;
-    /* 0x30 */ u8 pad30[0x20];
-    /* 0x50 */ void* unk50;
-    /* 0x54 */ void* unk54;
-} Obj8AA8;
-
 extern void func_800171E8(Obj8AA8*, s32);
 extern s32 D_800FF1DC_ovl06[];
 extern s32 D_800FF1E0_ovl06[];

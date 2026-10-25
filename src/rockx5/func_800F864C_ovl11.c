@@ -1,0 +1,14 @@
+#include "types.h"
+
+extern void func_80017248(u8* obj);
+extern void func_8002DED4(u8* obj);
+extern void func_800171E8(u8* obj, s32 state);
+
+void func_800F864C_ovl11(u8* obj) {
+    func_80017248(obj);
+    func_8002DED4(obj);
+    if (obj[0x70] & 8) {
+        func_800171E8(obj, 0xB);
+        obj[5] = 2;
+    }
+}

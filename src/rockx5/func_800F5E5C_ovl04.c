@@ -1,27 +1,5 @@
 #include "types.h"
 
-typedef struct {
-    u8 pad0[2];
-    s8 unk2;
-    u8 unk3;
-    u8 unk4;
-    u8 pad5[2];
-    u8 unk7;
-    u8 pad8[2];
-    s16 unkA;
-    u8 padC[2];
-    s16 unkE;
-    u8 pad10[6];
-    u8 unk16;
-    u8 pad17[9];
-    s32 unk20;
-    s32 unk24;
-    s32 unk28;
-    s32 unk2C;
-    u8 pad30[0x17];
-    u8 unk47;
-} Obj5E5C;
-
 extern s32 func_8002DF78(void);
 extern s32 func_8002DFB0(void);
 extern s32 func_800171E8(Obj5E5C*, s32);

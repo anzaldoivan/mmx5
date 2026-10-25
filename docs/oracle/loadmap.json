@@ -386,7 +386,9 @@
   },
   {
    "bin_offset": 1230848,
-   "dest": null,
+   "dest": "800FA000",
+   "dest_source": "800F6B38",
+   "dest_via": "live: phase 2.2 T4 live Redux run, prove.py ovl3839, Ovl_Load a1 (ovl18), commit fe7bbd6",
    "index": 38,
    "kind": "code",
    "size": 14800,
@@ -394,7 +396,9 @@
   },
   {
    "bin_offset": 1247232,
-   "dest": null,
+   "dest": "800FA000",
+   "dest_source": "800F6C38",
+   "dest_via": "live: phase 2.2 T4 live Redux run, prove.py ovl3839, Ovl_Load a1 (ovl18), commit fe7bbd6",
    "index": 39,
    "kind": "code",
    "size": 19824,

@@ -1,12 +1,12 @@
 /* Shared body (DK-5), from the banked draft of func_800F0648_ovl28 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "addr.h"
 
 extern u8* func_8002D1A4();
 extern void func_8002E058();
 extern u8* func_8002D27C();
 
-#define G (*(u8**)0x1F80004C)
-
+#define G D_1F80004C.bytes
 void DEDUP_NAME(u8* arg0) {
     u8* p;
 
