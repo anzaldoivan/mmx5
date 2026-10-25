@@ -1,19 +1,53 @@
 # Memory map
 
-Static map from `tools/loadmap/loadmap.py derive` (`docs/oracle/loadmap.json`). Every claim below is `static`
-(decoded from SLUS_013.34 code/tables and the ROCK_X5.BIN TOC); T5 proves them live and appends `- datapoint` lines.
+This file is the static map from `tools/loadmap/loadmap.py derive` (`docs/oracle/loadmap.json`). Every claim below is
+`static` (decoded from SLUS_013.34 code/tables and the ROCK_X5.BIN TOC). T5 proves the claims live and appends
+`- datapoint` lines.
 
 ## Main executable (PS-X EXE header) `static`
 
-- entry pc0 8005894C; gp0 00000000; stack s_addr 801FFFF0 `static`
-- text 80010000..80092000 (size 0x82000; file offset 0x800) `static`
-- data/bss in header: d_size 0, b_size 0 (none declared) `static`
+- The entry pc0 is 8005894C. The gp0 is 00000000. The stack s_addr is 801FFFF0. `static`
+- The text is 80010000..80092000. Its size is 0x82000. Its file offset is 0x800. `static`
+- In the header, data/bss is d_size 0, b_size 0 (none declared). `static`
+
+## Exe shift range (2.3 T1) and overlay regions (2.4 T1)
+
+- The range is 80010000..800EE970 = image 80010000..80092000 + bss 80092000..800EE970 (`tools/shift/scan.py`, run
+  time). `static`
+- The header b_size is 0. So the bss end = the highest SHN_ABS symbol of the exe ELF below ovl00 vram 800EE970
+  (D_800EE96C), rounded up to 4, + 1 word. Thus bss runs up to the overlay vram (no slack for a shift pad). `static`
+- In 2.3 T2, the splat bss subsegment `[0x82800, bss]` at vram 80092000 with `bss_size: 0x5C970`
+  (config/splat.slus.yaml) gives the NOLOAD `.main_bss` 80092000..800EE970. The end = the __start clear-loop bound
+  D_800EE970. The bss D_ symbols are section-relative, not ABS. The script scan.py takes bss_end from the end of that
+  section. `static`
+- The baseline of 2.3 T1 is 37816 unsymbolized (exe 6283, rockx5 31533) (data 9140, hilo 54, gprel 0, jal 45,
+  abs 28577). `static`
+- 2.3 T5 pinned tail: 80091C30..80092000 (0x3D0, splat `[0x82430, data, 82430]`) never moves under SHIFT=1. `static`
+  - Why: the image has 0 bytes of free trailing fill. D_80091C10 is a null-terminated table that ends at 80091C2F.
+    From D_80091C30 (= _gp) the labels are zero, bss-like: D_80091D60 is a 2x6x0x44 = 0x330 buffer that runs to
+    80092090, inside `.main_bss` (asm/slus/game_80027514.s:583-640). So that range stays with bss.
+  - The shifted build moves every other address by reordering `.main` to text, data, rodata
+    (tools/shift/pad_ld.py). At SHIFT_PAD 0, the moves are text/data -0x1DC8 and rodata +0x7FE68.
+- 2.4 T1 overlay regions: `scan.py` reads rockx5 `ovlNN_VRAM`/`ovlNN_VRAM_END` and groups the overlays by vram.
+  Region A is 800EE970..8010309E (ovl00-29). Region B is 800FA000..80100172 (ovl30-58). A overlaps B. `static`
+  - `scan.py` also reports the targets in these regions, per direction: exe->exe, exe->ovl, ovl->exe, ovl->ovl.
+- The baseline of 2.4 T1 is 6605 unsymbolized (exe->exe 0, exe->ovl 362, ovl->exe 0, ovl->ovl 6243). `static`
+- 2.4 T2 region bounds (config/shift/regions.txt): `static`
+  - A starts at 800EE970. Its max end is 8010309E (ovl04). Its bound is 80105000. Its slack is 0x1F62.
+  - A.lo is the A members with a retail end <= 800FA000. They may be resident while B loads. Its max end is 800F80F8
+    (ovl18). Its bound is 800FA000. Its slack is 0x1F08.
+  - B starts at 800FA000. Its max end is 80100172 (ovl34). Its bound is 80105000. Its slack is 0x4E8E.
 
 ## Overlay table `static`
 
-- loader Ovl_ReadToc 80015DDC: BIN sector 0 TOC -> RAM table 800E6188, 59 rows of 8 bytes; row 59 all-zero `static`
-- Ovl_Load 80015EB4(a0=index, a1=dest); dest from call sites 800136EC (base `*80010000`, initial 800EE970), 800136B4 and 80013568 (800FA000) `static`
-- kind: `code` if the blob contains `jr ra` (03E00008), else `data`; `-` dest = index in no loader table `static`
+- The loader is Ovl_ReadToc 80015DDC: BIN sector 0 TOC -> RAM table 800E6188, 59 rows of 8 bytes. Row 59 is
+  all-zero. `static`
+- Ovl_Load is 80015EB4(a0=index, a1=dest). The dest comes from the call sites 800136EC (base `*80010000`, initial
+  800EE970), 800136B4 and 80013568 (800FA000). `static`
+- The region bounds are 80105000 for A and B (the base of the exe CD/image buffer) and 800FA000 for A.lo. See
+  config/shift/regions.txt. `static`
+- If the blob contains `jr ra` (03E00008), the kind is `code`. If not, the kind is `data`. A `-` dest means that the
+  index is in no loader table. `static`
 
 | index | bin_offset | size | dest | kind | status |
 |---|---|---|---|---|---|
@@ -77,22 +111,39 @@ Static map from `tools/loadmap/loadmap.py derive` (`docs/oracle/loadmap.json`). 
 | 57 | 0x14E000 | 0x17E8 | 800FA000 | code | static |
 | 58 | 0x14F800 | 0x2240 | 800FA000 | code | static |
 
+Hazard: 5 exe sites hold raw retail-valued pointers into overlay region A (`config/shift/not_pointers.txt`, T4.1.1).
+
+- `800710A4->800EEBB8` (mode 6)
+- `80071254->800F2E38` (type 59)
+- `80071258->800F33A8` (type 60)
+- `8007466C->800EEA88` (action 31)
+- `80074710->800EECC0` (action 72)
+
+SHIFT does not move them. make replay-shift (T6) arbitrates. A divergence at any of them reopens the word.
+
 ## Boundaries `static`
 
-- `docs/oracle/boundaries.txt` (`tools/ghidra/scripts/ExportBoundaries.java`, written by `tools/ghidra/import.sh`):
-  `<start>-<end> | jumptable|libobj|libobj? | <owner> | <evidence>`, end exclusive, overlay starts `ovlNN:` `static`
-- jumptable lines: 583 (exe 42, overlays 541); 452 owners `nofn@<jr>` (Ghidra made no function around the jr) `static`
-- libobj lines: 181 (psx_ldr PsyQ 4.7.0 obj sigs, owner `<lib>/<obj>`); libobj? lines: 0 `static`
-- unresolved computed jumps (jr non-ra, no recovered table): 8 `static`
-- overlays loaded as Ghidra blocks: 53 (code, dest known); skipped: 38, 39 (dest=null) `static`
-- 80014064 renamed Ovl_Load2 -> Cd_Unk_80014064 (calls CdReset/CdControlB/VSync; T5 saw a1=1F801110) `static`
+- `tools/ghidra/import.sh` writes `docs/oracle/boundaries.txt` (`tools/ghidra/scripts/ExportBoundaries.java`). Each
+  line is `<start>-<end> | jumptable|libobj|libobj? | <owner> | <evidence>`. The end is exclusive, overlay starts
+  `ovlNN:`. `static`
+- The jumptable lines are 583 (exe 42, overlays 541). 452 owners are `nofn@<jr>` (Ghidra made no function around the
+  jr). `static`
+- The libobj lines are 181 (psx_ldr PsyQ 4.7.0 obj sigs, owner `<lib>/<obj>`). The libobj? lines are 0. `static`
+- The unresolved computed jumps (jr non-ra, no recovered table) are 8. `static`
+- The overlays loaded as Ghidra blocks are 53 (code, dest known). The skipped overlays are 38, 39 (dest=null). `static`
+- 80014064 is renamed Ovl_Load2 -> Cd_Unk_80014064. It calls CdReset/CdControlB/VSync. T5 saw a1=1F801110. `static`
 
 ## Overlays 38/39 (T2, 1.8.3)
 
-- static: no 8006FD50/8006FD80/8006FC5C entry is 38 or 39; exe Ovl_Load call sites only 80013568/800136B4/800136EC. Loader is ovl18 (stage 12 sub 0, 8006FD50[24]): Ovl_Load(0x26, 800FA000) at 800F6B30, Ovl_Load(0x27, 800FA000) at 800F6C30, states 3/6 of an object state machine (dispatcher 800F5EA0, handler table 800F80D4) `static`
-- ovl38: blocked: live load needs ovl18's state-machine object spawned (real stage-12 progress or an object spawn/state poke); static dest 800FA000 unproven live -- tools/redux/prove_ovl3839.lua runs t2c1_pad2 (pad taps, 20000 frames: idx 22,23,40,16,0 only), t2c1_stage1/poke4/hold4 (REDUX_STAGE=12: idx18 loads, no further Ovl_Load, bp 800F5EA0 never fires); phase-ends/current/logs/T2.c1.md
-- ovl39: blocked: same as ovl38 (Ovl_Load(0x27) is state 6 of the same object, reached after state 3) -- same runs, no idx 39 hit
-- binding (1.8.3 T2): `docs/oracle/loadmap.json` dest for 38/39 is filled only from a live datapoint, never from the static 800FA000 (filling it flips harness p6 and makes 38/39 code segments in the rockx5 yaml/census); test: `PY tools/loadmap/loadmap.py check`
+- static: no 8006FD50/8006FD80/8006FC5C entry is 38 or 39. The exe Ovl_Load call sites are only
+  80013568/800136B4/800136EC. The loader is ovl18 (stage 12 sub 0, 8006FD50[24]). It calls Ovl_Load(0x26, 800FA000) at
+  800F6B30 and Ovl_Load(0x27, 800FA000) at 800F6C30. These calls are states 3/6 of an object state machine (dispatcher
+  800F5EA0, handler table 800F80D4). `static`
+- ovl38: dest 800FA000 proven live (phase 2.2 T4): Ovl_Load(0x26) a1=800FA000 ra=800F6B38 (ovl18), spawn-poke route `PY tools/loadmap/prove.py ovl3839`; 2026-10-12 .run/redux/prove_ovl3839.spawn.log
+- ovl39: dest 800FA000 proven live (phase 2.2 T4): Ovl_Load(0x27) a1=800FA000 ra=800F6C38 (ovl18), spawn-poke route `PY tools/loadmap/prove.py ovl3839`; 2026-10-12 .run/redux/prove_ovl3839.spawn.log
+- binding (1.8.3 T2): the `docs/oracle/loadmap.json` dest for 38/39 is filled only from a live datapoint, never from
+  the static 800FA000. Filling it flips harness p6 and makes 38/39 code segments in the rockx5 yaml/census. The test
+  is `PY tools/loadmap/loadmap.py check`.
 
 ## Datapoints
 

@@ -2,7 +2,7 @@
 #include "types.h"
 
 extern u8 D_800D1F3C;
-extern void func_8006859C(s32);
+extern void SetDispMask(s32);
 extern UnkSpawn* func_8002D27C(void);
 
 void DEDUP_NAME(UnkObj* obj) {
@@ -10,7 +10,7 @@ void DEDUP_NAME(UnkObj* obj) {
     UnkSpawn* s;
 
     if (v == 2) {
-        func_8006859C(1);
+        SetDispMask(1);
         s = func_8002D27C();
         if (s != 0) {
             s->unk0 = 0x41;

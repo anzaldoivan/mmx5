@@ -1,10 +1,5 @@
 #include "types.h"
 
-typedef struct {
-    u8 pad0[4];
-    s8 state;
-} Ent8004A364;
-
 extern u8 D_8009A0A0[];
 extern void (*D_800771A8[])(Ent8004A364*);
 

@@ -1,15 +1,8 @@
 /* Shared body (DK-5), from the banked draft of func_800F10C8_ovl28 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "addr.h"
 
-typedef struct Scr10C8 {
-    /* 0x00 */ u8 pad0[0x80];
-    /* 0x80 */ s8 unk80;
-    /* 0x81 */ u8 pad81[2];
-    /* 0x83 */ s8 unk83;
-} Scr10C8;
-
-#define SCR10C8 (*(Scr10C8**)0x1F80004C)
-
+#define SCR10C8 D_1F80004C.scr10c8
 void DEDUP_NAME(Ent08D8* e) {
     Scr10C8* s = SCR10C8;
 

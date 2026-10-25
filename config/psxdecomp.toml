@@ -2,7 +2,7 @@
 # the repository works without the plugin. Written once by psxdecomp's S10; upgrades rewrite it.
 
 [psxdecomp]
-version = "0.4.0"
+version = "0.6.0"
 profile = "psx"
 bootstrapped = "2026-10-03"
 
@@ -24,7 +24,7 @@ index = "docs/ops/refs.md"
 recipe = "linux-amd64"
 
 [deviations]
-list = ["none"]
+list = ["rule ids: the project rules G68 to G74 are in the range the kit keeps for itself (G68 to G100); the developer keeps the ids (2026-10-12)"]
 
 # [psyq]: the PsyQ release the game links, from psxdecomp's psyq.toml (seen 2026-10-01). A lead for phase 1.4;
 # the pin is phase 1.4's finding and lives in the repo's compiler-pin record.
@@ -50,3 +50,24 @@ image = "ghcr.io/anzaldoivan/mmx5-toolchain@sha256:7653d6d8b35c14458798bb160ad1a
 land_check = ["bash", "tools/land_check.sh", "{tree}"]
 # never public, beyond the agent files: the agents' wave drafts and the flip-era records
 deny = ["waves/", "docs/publish/visibility.md", "docs/publish/facts.md", "docs/routing.md", "docs/ledger.md"]
+
+# [own]: what this repository holds itself in place of a psxdecomp delivery. psxdecomp writes nothing for a key
+# set here; /psxdecomp:doctor checks that its path exists.
+[own]
+gate = "bash tools/docker/no_rom.sh"  # make no-rom in the build container: the pre-push hook runs it on the host
+debt = "tools/readability/scan.py"
+toolchain = "bash tools/toolchain/fetch.sh"
+campaign = "tools/wave/ledger.py"
+matcher = ".claude/skills/wave-draft-coders"
+
+# [delivered]: the sha256 of each owned file as psxdecomp last wrote it. A copy edited here since then is
+# never overwritten unasked (`/psxdecomp:upgrade apply --take <action>`).
+[delivered]
+"tools/psxd_publish.py" = "ffc994a9f00ca10dae1d7c17b9057efbbe915d805d2a7f03975cedde428119bf"
+".github/workflows/psxdecomp-readme.yml" = "e9d3f804fafd86930432b25af7c83f54f21fb81929750f5e84cec680585dfb35"
+"tools/psxd_floor.py" = "875b4815c8b3e21be9e261d554a36296f2d3a622962d1be7702364fef6f5379c"
+"docs/ops/psxdecomp-floor.md" = "bfd5940c243a61edf4995f2bb1ebbf3fcfbf6d666f2ebe158945885fc3d9ba6b"
+"docs/ops/psxdecomp-split.md" = "5b50214fdd44e691a0a5e7d4fa94eaec9d4b0fde67e414f057e9a860a5802fc9"
+"rules/STE1.md" = "3737fb8d58ec7aeca2f7278d5c8839f23797b558aac9e49fa9e455617d1666cc"
+"tools/psxd_img.py" = "bdf2bc1b413b99d74af2be75ecb7c18acda84dad7f7cb02eeb206cde8435ff46"
+"rules/NAME1.md" = "bba87e0d3bb5599686ba6e8d61f1a9fa28b11c4780e088c8d44f245e2e33df9b"

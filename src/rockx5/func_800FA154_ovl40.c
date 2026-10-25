@@ -1,11 +1,5 @@
 #include "types.h"
 
-/* D_8009A1F8 view: the word at 0xB0; its high half is also stored as the s16 at 0xB2 */
-typedef struct {
-    u8 pad0[0xB0];
-    s32 unkB0;
-} D_8009A1F8_B0_t;
-
 extern D_8009A1F8_B0_t D_8009A1F8;
 void func_8002385C(s32, s32, s32);
 

@@ -11,7 +11,9 @@ Rodata ownership by gaps, per code segment: region = a rodata/textbin/rodatabin 
   nonmatchings/); range = label .. next label (or region end): owned (one referencing function), shared (2+),
   unreferenced (none, incl. a region head before its first label). Refs outside the own segment's regions (resident
   segment, other binary, .data, a textbin after text) are externs. A function whose region refs all fall in ranges it
-  owns, forming one contiguous span, is plannable and carries that span.
+  owns, forming one contiguous span, is plannable and carries that span. With the C text (--body; gate/reconcile
+  pass the draft), a region label the body declares `extern` is an extern ref: its range stays in the region, is
+  not in the span and not refused as shared (G12: a C file never emits game strings; the region .s keeps them).
 plan prints the cut(s) it would write, or `carve: refused <reason> <alias> <vram>` (exit 1). Reasons:
   not-found (no asm function starts there), ambiguous (vram in several segments, no --module),
   outside-asm (start/end not inside one asm subsegment), rodata-shared (a region ref into a shared range or a
@@ -33,7 +35,8 @@ sample: a scratch `git worktree` at .run/carve/wt-<pid> (never the main tree, G1
   every game-lane asm function); exit 1 on any SHA fail. Needs a post-`make check` tree (asm/, build maps).
 --selftest: tools/dedup/fixtures/carve (hand-written yaml + asm, no game bytes): apply+revert byte-identical, an
   owned-rodata control (region split), a jtbl + 4-byte pad control (fx.bin, synthetic: remainder at the pad),
-  planted unresolved jump table and shared rodata refused.
+  planted unresolved jump table and shared rodata refused; extern-in-body controls (shared and owned label declared
+  `extern`: planned with no span, apply+revert byte-identical).
 Stdlib only.
 """
 
@@ -185,21 +188,29 @@ class Ctx:
                 for a, b in zip(cuts, cuts[1:] + [g[2]]):
                     ranges.append((g[0], a, b, frozenset(lab[a])))
                     at[(g, a)] = ranges[-1]
-            fns = {}
-            for rom, rs in refs.items():
-                sp = sorted(at[x] for x in rs)
-                ok = all(r[3] == {rom} for r in sp) and all(x[2] == y[1] for x, y in zip(sp, sp[1:]))
-                fns[rom] = {"span": (sp[0][0], sp[0][1], sp[-1][2]), "ok": ok}
+            fns = {rom: span_of(sorted(at[x] for x in rs), rom) for rom, rs in refs.items()}
             self._own = ranges, fns
         return self._own
+
+
+def span_of(sp, rom):
+    """Sorted referenced ranges of one function -> {"span", "ok", "sp"}: ok = every range owned by rom, contiguous."""
+    ok = all(r[3] == {rom} for r in sp) and all(x[2] == y[1] for x, y in zip(sp, sp[1:]))
+    return {"span": (sp[0][0], sp[0][1], sp[-1][2]), "ok": ok, "sp": sp}
+
+
+def externs(body):
+    """Names the C body declares `extern`: their bytes stay in the region (the object defines none of them)."""
+    return {n for d in re.findall(r"\bextern\b([^;{]*);", body or "") for n in re.findall(r"\b\w+\b", d)}
 
 
 def remainder_name(alias, seg, vram):
     return f"game_{vram:08X}" if alias == "slus" else f"{seg['name']}_{vram:08X}"
 
 
-def plan(cx, vram, module=None, name=None):
-    """-> (segment, sub, fn, rom, end, name) or raise Refused(reason)."""
+def plan(cx, vram, module=None, name=None, ctext=None):
+    """-> (segment, sub, fn, rom, end, name, span) or raise Refused(reason). ctext (the C body): a region label it
+    declares `extern` is an extern ref (range stays in the region; neither owned nor refused as shared)."""
     segs = [s for s in parse(cx.lines()) if s["end"] is not None and s["vram"] <= vram < s["vram"] + s["end"] - s["start"]
             and (module is None or s["name"] == module)]
     if not segs:
@@ -217,6 +228,10 @@ def plan(cx, vram, module=None, name=None):
         raise Refused("outside-asm")
     body = "\n".join(fn["body"])
     own = cx.own()[1].get(rom)
+    ext = {cx.addr(n) for n in externs(ctext)} - {None}
+    if own and ext:
+        sp = [r for r in own["sp"] if r[1] not in ext]
+        own = sp and span_of(sp, rom)
     if own and not own["ok"]:
         raise Refused("rodata-shared")
     jt = [r for r in REF.findall(body) if r.startswith("jtbl_")]
@@ -404,7 +419,10 @@ def make_wt(path=None):
     wt.parent.mkdir(parents=True, exist_ok=True)
     git("worktree", "add", "--detach", str(wt), "HEAD")
     for f in git("ls-files", "-m").split():  # carry the main tree's uncommitted tracked edits (mk/, tools/)
-        shutil.copy2(ROOT / f, wt / f)
+        if (ROOT / f).exists():
+            shutil.copy2(ROOT / f, wt / f)
+        else:  # deleted in the main tree (ls-files -m lists it): mirror the deletion
+            (wt / f).unlink(missing_ok=True)
     for x in LINKED:
         if (ROOT / x).exists():
             link(ROOT / x, wt / x)
@@ -507,8 +525,22 @@ def selftest():
             if str(e) != want:
                 print(f"carve: selftest FAIL -- {vram:08X} refused {e}, want {want}")
                 ok = False
+    for vram, lab in ((0x80001040, "D_80000FC0"), (0x80001010, "D_80000F80")):  # extern-in-body: no span, no refusal
+        try:
+            p = plan(cx, vram, ctext=f"extern u32 {lab};\nu32 f(void) {{ return {lab}; }}\n")
+            apply(cx, p, "/* body */\n")
+            if p[6] or ".rodata" in cx.yaml.read_text():
+                print(f"carve: selftest FAIL -- {vram:08X} extern {lab} still carries a .rodata span")
+                ok = False
+            revert(cx, vram)
+        except Refused as e:
+            print(f"carve: selftest FAIL -- {vram:08X} extern {lab} refused {e}")
+            ok = False
+    if cx.yaml.read_bytes() != before:
+        print("carve: selftest FAIL -- extern controls not reverted byte-identical")
+        ok = False
     print("carve: control OK -- apply+revert byte-identical, owned rodata split, planted jump table and shared rodata "
-          "refused" if ok else "carve: selftest FAIL")
+          "refused, extern-in-body rodata left in the region" if ok else "carve: selftest FAIL")
     return 0 if ok else 1
 
 
@@ -534,12 +566,13 @@ def main(argv):
         if cmd == "revert":
             print(f"carve: reverted {alias} {revert(cx, vram, opt.get('--module'))}")
             return 0
-        p = plan(cx, vram, opt.get("--module"), opt.get("--name"))
+        body = Path(opt["--body"]).read_text() if "--body" in opt else None
+        p = plan(cx, vram, opt.get("--module"), opt.get("--name"), body)
         for i, nrep, new in filter(None, (ro_lines(cx, p), cut_lines(cx, p))):
             for j, ln in enumerate(new):
                 print(f"carve: {cmd} {cx.yaml.relative_to(ROOT)}:{i + 1 + j} {ln.strip()}")
         if cmd == "apply":
-            apply(cx, p, Path(opt["--body"]).read_text() if "--body" in opt else None)
+            apply(cx, p, body)
             print(f"carve: wrote src/{alias}/{p[5]}.c")
         return 0
     except Refused as e:

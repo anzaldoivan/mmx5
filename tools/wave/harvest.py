@@ -4,9 +4,10 @@
   harvest.py rider <banked.c> <stripped.c> --target <alias>_<name>
   harvest.py --selftest
 
-check: waves/W<k>/harvest.jsonl rows {name, [alias], idiom: C<nnnn>|covered:C<nnnn>|none,
-  rider: load-bearing|inert|n/a}. Every `banked` row of waves/W<k>/verdicts.jsonl has exactly one harvest row (matched
-  by alias+name when the row gives alias, else by name). A C id must exist as cookbook/C<nnnn>.md; a bad id or a rider
+check: waves/W<k>/harvest.jsonl rows {name, [alias], [vram], [module], idiom: C<nnnn>|covered:C<nnnn>|none,
+  rider: load-bearing|inert|n/a}. Every `banked` row of waves/W<k>/verdicts.jsonl has exactly one harvest row: a row
+  with vram matches by ledger.key (alias, ovl, vram; alias defaults to the verdict's), so a rename keeps it; a row
+  without vram (W2-W14) matches by alias+name when the row gives alias, else by name. A C id must exist as cookbook/C<nnnn>.md; a bad id or a rider
   `inert` is open. Prints `harvest: W<k> <h> of <b> banked harvested, <o> open`; exit 1 unless h == b and o == 0.
   W<k> omitted: every waves/W<k>/ dir (wave.wave_dirs, k ascending), one line each; exit 1 if any fails or no wave.
 rider: compiles both files through waves.py try's compile path (wave.compile_func; scratch
@@ -31,8 +32,16 @@ ROOT = Path(__file__).resolve().parents[2]
 FIX = Path(__file__).resolve().parent / "fixtures" / "harvest"
 sys.path.insert(0, str(ROOT / "tools/wave"))
 import waves as wave  # noqa: E402  (tools/wave/waves.py)
+from ledger import key  # noqa: E402  (tools/wave/ledger.py: (alias, ovl, vram) target key)
 
 IDIOM = re.compile(r"^(?:covered:)?(C\d{4})$")
+
+
+def hits(r, v):  # harvest row r <-> banked verdict v: keyed when r has vram, else the old alias+name match
+    a = r.get("alias", v["alias"])
+    if r.get("vram") is not None:
+        return key({**r, "alias": a}) == key(v)
+    return r["name"] == v["name"] and a == v["alias"]
 
 
 def cmd_check(waves, wk, cookbook=ROOT / "cookbook"):
@@ -44,7 +53,7 @@ def cmd_check(waves, wk, cookbook=ROOT / "cookbook"):
     rows = wave.jsonl(wdir / "harvest.jsonl") if (wdir / "harvest.jsonl").exists() else []
     h = o = 0
     for v in banked:
-        hit = [r for r in rows if r["name"] == v["name"] and r.get("alias", v["alias"]) == v["alias"]]
+        hit = [r for r in rows if hits(r, v)]
         if len(hit) != 1:
             print(f"harvest: {v['alias']}_{v['name']} has {len(hit)} rows")
             continue
@@ -101,6 +110,16 @@ def selftest():
     assert rc == 0 and [x.split()[1] for x in o.splitlines()] == ["W0", "W10"], o
     assert call(cmd_check, tmp / "none", None, cook)[0] == 1
     p = waves / "W0/harvest.jsonl"
+    vp, keep = waves / "W0/verdicts.jsonl", p.read_text()  # rename control: keyed row follows vram, not name
+    p.write_text(keep.replace('"name": "fa", "alias": "slus"', '"name": "fa_old", "alias": "slus", "vram": "80001000"'))
+    vp.write_text(vp.read_text().replace('"fa"', '"fa_renamed"'))
+    rc, o = call(cmd_check, waves, "W0", cook)
+    assert rc == 0 and "W0 2 of 2 banked harvested, 0 open" in o, o
+    p.write_text(keep.replace('"name": "fa", "alias": "slus"', '"name": "fa_renamed", "alias": "slus", "vram": "80001040"'))
+    rc, o = call(cmd_check, waves, "W0", cook)  # right name, wrong vram: not harvested
+    assert rc == 1 and "slus_fa_renamed has 0 rows" in o and "1 of 2 banked harvested" in o, o
+    p.write_text(keep)
+    vp.write_text(vp.read_text().replace('"fa_renamed"', '"fa"'))
     p.write_text(p.read_text().replace('"load-bearing"', '"inert"'))
     rc, o = call(cmd_check, waves, "W0", cook)
     assert rc == 1 and "rider inert" in o and "2 of 2 banked harvested, 1 open" in o, o

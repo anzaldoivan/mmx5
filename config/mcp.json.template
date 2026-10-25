@@ -2,7 +2,7 @@
   "mcpServers": {
     "disassembler": {
       "type": "sse",
-      "url": "TODO(phase-2)"
+      "url": "<Ghidra MCP server SSE url; docs/ops/disassembler-mcp.md>"
     }
   }
 }

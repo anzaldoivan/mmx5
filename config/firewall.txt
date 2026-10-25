@@ -14,6 +14,17 @@
 
 # ---- purge rules: the nine classes of the ROM firewall (mirror .gitignore's paths) ----
 purge: disks/
+# Disc-image formats are forbidden anywhere (fnmatch `*` crosses `/`). `*.bin` is NOT globbed: tracked fixtures, tests
+# and build contracts use .bin names; the hash rule and the disks/, build/, dumps/**/*.bin rules cover real dumps.
+glob:  *.cue
+glob:  *.iso
+glob:  *.img
+glob:  *.chd
+glob:  *.ecm
+glob:  *.pbp
+glob:  *.toc
+# PCSX-Redux savestates (emulated RAM/VRAM = game bytes; tools/replay/README.md)
+glob:  *.sstate
 purge: SLUS_013.34
 # extracted/: every path is forbidden except extracted/retail/manifest.jsonl and manifest.sha1 (tracked, hashes only).
 # fnmatchcase has no negation and `*` crosses `/`, so the exception is a divergence chain: each line forbids the paths
@@ -65,6 +76,15 @@ required: extracted/retail/manifest.jsonl
 required: config/medium.sha1
 required: config/check.slus.sha                   # per-binary contracts: one line each (a glob is satisfied by any match)
 required: config/check.rockx5.sha
+# optional: assets/retail/manifest.jsonl          # exported DAT entries; loaded by audit_public.py when present (no rule kind)
 
 # ---- psxdecomp: the reference library (upstream clones; never tracked) ----
 purge: refs/
+
+# ---- psxdecomp: a debug file of any build (a symbol file, a linker's debug executable) ----
+# A link map (.MAP) has no line here: a game tracks text files of that name. The checksum file
+# (config/oracle.<id>.sha1, written by psxdecomp's `oracle add`) covers a supplied copy.
+glob:  *.[Ss][Yy][Mm]
+glob:  *.[Cc][Pp][Ee]
+glob:  *.[Pp][Dd][Bb]
+glob:  *.[Dd][Bb][Gg]

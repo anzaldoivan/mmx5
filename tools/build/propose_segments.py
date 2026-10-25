@@ -23,7 +23,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)
 ORACLE = os.path.join(ROOT, "docs/oracle")
 SEGMENTS = os.path.join(ORACLE, "segments.txt")
 EXE_RODATA = (0x80010000, 0x80011DC8)  # config/splat.slus.yaml: rodata 0x800, text 0x25C8
-EXCLUDED_DOC = "38/39 (null dest), data overlays 13/15/17/19"
+EXCLUDED_DOC = "data overlays 13/15/17/19"
 INSN = re.compile(r"^\s*/\*\s+([0-9A-F]+)\s+([0-9A-F]{8})\s+[0-9A-F]{8}\s+\*/\s+(\S+)\s*(.*)$")
 GLABEL = re.compile(r"^\s*glabel\s+(\S+)")
 OWNER = re.compile(r"^FUN_(?:ovl(\d\d)__)?([0-9a-fA-F]{8})$")
@@ -109,7 +109,8 @@ def padding_sites(ins, starts):
     out = {}
     for va in starts:
         i = idx.get(va)
-        if i is None or i == 0:
+        if i is None or i == 0:  # no decoded insn there (annotation/owner start in code typed as .word): no indicator
+            out[va] = (False, None)
             continue
         n = 0
         while n < i and ins[i - 1 - n][1] == "nop":
@@ -272,7 +273,8 @@ def propose():
         dest = int(o["dest"], 16)
         ins = r_ins[k]
         fst = sorted({va for va, nm in r_gl.get(k, {}).items() if is_fn(nm)} | {a for o2, a in ann.values() if o2 == k}
-                     | {j["os"] for j in jts if j["ovl"] == k})  # owner = Ghidra fn start (code typed as .word)
+                     | {j["os"] for j in jts if j["ovl"] == k}  # owner = Ghidra fn start (code typed as .word)
+                     | {va for key, va, typ, _ in r_subs if key == k and typ == "c"})  # carved: no glabel in asm
         fst = [a for a in fst if in_tb(tb, k, a) is None]  # yaml textbin (header/tail data) holds no function
         if not fst:
             die(f"ovl{k:02d}: no function glabel")

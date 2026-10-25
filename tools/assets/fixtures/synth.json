@@ -1,0 +1,10 @@
+{"_doc": "Synthetic ROCK_X5.DAT for assets.py --selftest; no game bytes. Member: raw {size, seed} | pack {entries: [{type, size, seed}]}; seed null = all-zero bytes.",
+ "members": [
+  {"raw": {"size": 300, "seed": 7}},
+  {"pack": [
+    {"type": 3, "size": 2100, "seed": 1},
+    {"type": 65537, "size": 4096, "seed": 2},
+    {"type": 131074, "size": 513, "seed": 3},
+    {"type": 5, "size": 100, "seed": null}
+  ]}
+ ]}

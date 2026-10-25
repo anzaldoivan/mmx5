@@ -23,8 +23,9 @@ recover: each `failed` row at r1: r1 again with r3 externs (reconcile.extern_for
   Prints `recover: <p> plumbing banked, <b> body`.
 rescan (R6, G46): refused on a dirty src/config. Refreshes census/inventory.py -> census/census.py dup -> sig/sig.py
   band (full), logs .run/wave/rescan.<step>.log. Per `banked` row: open members = its exact twins (.run/sig/twins.jsonl)
-  ∪ its census dup group, inventory status asm, kept only when a byte twin in place (propagate.twin; jal free when the
-  rep takes DEDUP_CALLEE; masked-only members are counted `gate: <a>_<name> <k> masked-only skipped`) (t = their
+  ∪ its census dup group, inventory status asm, kept only when propagate.members() admits it (a byte twin in place, jal
+  free when the rep takes DEDUP_CALLEE, or reloc-gated; the refused masked-only members are counted
+  `gate: <a>_<name> <k> masked-only skipped`) (t = their
   count). A banked function with >= 1 open member becomes a dedup rep (src/shared/<name>.c = its C file, name ->
   DEDUP_NAME; when its words have one jal target and its body calls one function, that callee -> DEDUP_CALLEE; refused
   when no `DEDUP_NAME(...) {` definition; its own C file -> reconcile.member_text; its r1
@@ -41,6 +42,7 @@ import argparse
 import contextlib
 import datetime
 import fcntl
+import functools
 import io
 import json
 import os
@@ -187,7 +189,7 @@ def plumb(w, alias, greens):
             applied.discard(n)
         for n in sorted(want - applied):
             j = cands[n][0]
-            carve.apply(wcx, carve.plan(wcx, j.vram, j.module), cands[n][1])
+            carve.apply(wcx, carve.plan(wcx, j.vram, j.module, ctext=cands[n][1]), cands[n][1])
             applied.add(n)
 
     def ok(want):
@@ -205,7 +207,7 @@ def plumb(w, alias, greens):
     for n in good:
         j = cands[n][0]
         try:
-            carve.apply(cx, carve.plan(cx, j.vram, j.module), cands[n][1])
+            carve.apply(cx, carve.plan(cx, j.vram, j.module, ctext=cands[n][1]), cands[n][1])
             adopted.append(n)
         except carve.Refused as e:
             w.put(alias, n, "no-verdict", None, f"refused {e} (adopt)")
@@ -213,7 +215,7 @@ def plumb(w, alias, greens):
         return []
     mlog = RUN / f"{alias}.main.build.log"
     if make(ROOT, mlog, "split", "build", f"BINARY={alias}"):
-        for n in adopted:
+        for n in reversed(adopted):  # LIFO: FIFO reverts of carves sharing a sub left `# carve` remainders (T10.c13)
             carve.revert(cx, cands[n][0].vram, cands[n][0].module)
             w.put(alias, n, "no-verdict", None, f"adopt build red ({mlog.relative_to(ROOT)}), reverted")
         rebuild(alias)
@@ -348,31 +350,7 @@ def open_twins(banked):
     return {k: sorted(m for m in v if m != k and status.get(m) == "asm") for k, v in out.items()}
 
 
-CALL = re.compile(r"\b([A-Za-z_]\w*)\s*\(")
-NOTCALL = {"if", "while", "for", "switch", "return", "sizeof"}
-
-
-def rep_callee(name, cfile, words):
-    """The banked fn's sole callee when its words have one jal target and its body calls one function, else None."""
-    if len({w for w in words if w >> 26 == 3}) != 1:
-        return None
-    s = cfile.read_text()
-    m = re.search(rf"\b{name}\s*\([^;{{}}]*\)\s*\{{", s)
-    macros = set(re.findall(r"^\s*#\s*define\s+(\w+)", s, re.M))
-    calls = {c for c in CALL.findall(s[m.end():]) if c not in NOTCALL | macros} if m else set()
-    return calls.pop() if len(calls) == 1 else None
-
-
-def rep_text(name, cfile, callee=None):
-    """The banked plain C file as a shared body (DEDUP_NAME, callee -> DEDUP_CALLEE), or None without its definition."""
-    s = re.sub(rf"\b{name}\b", "DEDUP_NAME", cfile.read_text())
-    if callee:
-        s = re.sub(rf"\b{callee}\b", "DEDUP_CALLEE", s)
-    if not re.search(r"\bDEDUP_NAME\s*\([^;{}]*\)\s*\{", s):
-        return None
-    if '#include "types.h"' not in s:
-        s = '#include "types.h"\n' + s
-    return f"/* Shared body (DK-5), from the banked draft of {name} by tools/wave/gate.py rescan. */\n" + s
+from propagate import rep_callee, rep_text  # noqa: E402 -- moved to propagate.py (T2: the sweep makes reps too)
 
 
 def propagate_rep(alias, name, members, callee=None):
@@ -435,13 +413,20 @@ def main_rescan(waves, wk):
         print(f"rescan: refused -- refresh failed: {bad}")
         return 1
     twins = open_twins(banked) if banked else {}
-    words = {(f["alias"], f["name"]): f["words"] for f in propagate.fresh_fns()} if banked else {}
+    fns = propagate.fresh_fns() if banked else []
+    words = {(f["alias"], f["name"]): f["words"] for f in fns}
+    relocs_of = propagate.reloc_source(functools.cache(lambda a: carve.Ctx(ROOT, a)))
     callees = {}
     for (a, name), ms in twins.items():
-        shared = ROOT / f"src/shared/{name}.c"
+        shared, cfile = ROOT / f"src/shared/{name}.c", ROOT / f"src/{a}/{name}.c"
         callees[a, name] = (("DEDUP_CALLEE" in shared.read_text()) if shared.exists()
-                            else rep_callee(name, ROOT / f"src/{a}/{name}.c", words[a, name]))
-        tw = [m for m in ms if propagate.twin(words[m], words[a, name], callees[a, name])]
+                            else rep_callee(name, cfile, words[a, name]))
+        text = shared.read_text() if shared.exists() else rep_text(name, cfile, callees[a, name] or None) or ""
+        try:  # byte twins + reloc-gated members (T2), as propagate.py run admits them
+            keep = {(f["alias"], f["name"]) for f in propagate.members(fns, name, callees[a, name], relocs_of, text)[1]}
+        except SystemExit:
+            keep = set()
+        tw = [m for m in ms if m in keep]
         if len(tw) < len(ms):
             print(f"gate: {a}_{name} {len(ms) - len(tw)} masked-only skipped")
         twins[a, name] = tw

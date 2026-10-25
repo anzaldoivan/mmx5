@@ -388,8 +388,10 @@
 {"addr":"80010014","kind":"label","name":"s_ROCK_X5_BIN","type":"/string"}
 {"addr":"80011dc8","kind":"function","name":"main","sig":"undefined main()"}
 {"addr":"80011eb8","ctype":"pre","kind":"comment","text":"Probable PsyQ macro: addPrim()."}
+{"addr":"80011fd4","kind":"function","name":"func_80011FD4","sig":"undefined func_80011FD4()"}
 {"addr":"800121f8","ctype":"pre","kind":"comment","text":"Probable PsyQ macro: addPrim()."}
 {"addr":"80012320","ctype":"pre","kind":"comment","text":"Probable PsyQ macro: addPrim()."}
+{"addr":"80013288","kind":"function","name":"func_80013288","sig":"undefined func_80013288()"}
 {"addr":"80013ca0","ctype":"pre","kind":"comment","text":"Probable PsyQ macro: setSprt()"}
 {"addr":"80013ce4","ctype":"pre","kind":"comment","text":"Probable PsyQ macro: setSprt() + setShadeTex(sprt, 1)"}
 {"addr":"80013d50","ctype":"pre","kind":"comment","text":"Probable PsyQ macro: addPrim()."}
@@ -3156,6 +3158,7 @@
 {"addr":"ovl06::800fc098","ctype":"plate","kind":"comment","text":"Possible op_vnew.obj/__builtin_vec_new\nPossible op_vdel.obj/__builtin_vec_delete"}
 {"addr":"ovl06::800fc670","ctype":"plate","kind":"comment","text":"Possible op_vnew.obj/__builtin_vec_new\nPossible op_vdel.obj/__builtin_vec_delete"}
 {"addr":"ovl06::800fd854","ctype":"plate","kind":"comment","text":"Possible op_vnew.obj/__builtin_vec_new\nPossible op_vdel.obj/__builtin_vec_delete"}
+{"addr":"ovl07::800eefcc","kind":"function","name":"L_800EEFCC_ovl07","sig":"undefined L_800EEFCC_ovl07()"}
 {"addr":"ovl07::800f0444","ctype":"plate","kind":"comment","text":"Possible op_vnew.obj/__builtin_vec_new\nPossible op_vdel.obj/__builtin_vec_delete"}
 {"addr":"ovl07::800f1584","ctype":"plate","kind":"comment","text":"Possible op_vnew.obj/__builtin_vec_new\nPossible op_vdel.obj/__builtin_vec_delete"}
 {"addr":"ovl07::800f1738","ctype":"plate","kind":"comment","text":"Possible op_vnew.obj/__builtin_vec_new\nPossible op_vdel.obj/__builtin_vec_delete"}

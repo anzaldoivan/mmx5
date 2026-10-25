@@ -45,7 +45,7 @@ fi
 # 2b) mipsel binutils (as/ld/objcopy). Preferred: `sudo apt-get install binutils-mipsel-linux-gnu`. Without sudo:
 #     extract the pinned Ubuntu noble deb (sha256 in tools/bin/*.sha256, docs/ops/toolchain.md) and wrap it.
 say "mipsel binutils — preferred system route: sudo apt-get install binutils-mipsel-linux-gnu"
-if command -v mipsel-linux-gnu-as >/dev/null 2>&1; then
+if command -v mipsel-linux-gnu-as >/dev/null 2>&1 && command -v mipsel-linux-gnu-objdump >/dev/null 2>&1; then
     say "mipsel binutils: present ($(command -v mipsel-linux-gnu-as))"
     # mk/slus.mk:9-11 calls tools/bin/mipsel-linux-gnu-*: link the PATH ones there (fresh clone, T10.c1)
     for t in as ld objcopy; do
@@ -67,7 +67,7 @@ else
         printf '#!/bin/sh\nLD_LIBRARY_PATH="%s/usr/lib/x86_64-linux-gnu${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}" exec "%s/usr/bin/mipsel-linux-gnu-%s" "$@"\n' \
             "$REPO/$BU" "$REPO/$BU" "$t" > "$w"
         chmod +x "$w"
-        ln -sf "$w" "$HOME/.local/bin/mipsel-linux-gnu-$t"
+        [ -e "$HOME/.local/bin/mipsel-linux-gnu-$t" ] || ln -s "$w" "$HOME/.local/bin/mipsel-linux-gnu-$t"  # never repoint the host's links
     done
     "$HOME/.local/bin/mipsel-linux-gnu-as" --version | head -1
 fi
@@ -85,6 +85,16 @@ fi
 #    never vendor a compiler whose license forbids it (keep a fetch step + checksum instead).
 say "vintage compiler candidates (tools/toolchain/fetch.sh)"
 bash tools/toolchain/fetch.sh
+
+# 4b) mkpsxiso/dumpsxiso v2.30 (GPL-2.0, sha256-pinned; docs/ops/reference-extractor.md) -> .run/tools/ for `make disc`
+MK=.run/tools/mkpsxiso-2.30
+if [ ! -x "$MK/mkpsxiso-2.30-Linux/bin/mkpsxiso" ]; then
+    say "fetching mkpsxiso v2.30"
+    mkdir -p .run/tools
+    curl -fsSL -o "$MK-Linux.zip" https://github.com/Lameguy64/mkpsxiso/releases/download/v2.30/mkpsxiso-2.30-Linux.zip
+    echo "8e387e6db51dee3eb7cb08f4d59293a24c48f58bd541631acf9301d78015a1fc  $MK-Linux.zip" | sha256sum --quiet -c
+    rm -rf "$MK" && python3 -m zipfile -e "$MK-Linux.zip" "$MK" && chmod +x "$MK"/mkpsxiso-2.30-Linux/bin/*
+fi
 
 # 5) the preflight (its exit status is ours) — runs only if a `check-env` target exists (none today).
 if grep -q '^check-env:' Makefile 2>/dev/null; then

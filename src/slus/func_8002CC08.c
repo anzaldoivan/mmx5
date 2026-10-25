@@ -1,15 +1,5 @@
 #include "types.h"
 
-typedef struct {
-    s8 active;
-    u8 pad1[0x4F];
-    s32 unk50;
-    s32 unk54;
-    u8 pad58[0x10];
-    s32 unk68;
-    u8 pad6C[0x30];
-} Obj8002CC08;
-
 extern Obj8002CC08 D_80098120[];
 extern Obj8002CC08 D_80099404[];
 extern Obj8002CC08 D_800994A0[];

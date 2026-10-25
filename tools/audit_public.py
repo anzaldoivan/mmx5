@@ -33,7 +33,8 @@ import sys
 REPO = pathlib.Path(__file__).resolve().parent.parent
 CONFIG = REPO / "config" / "firewall.txt"
 SIZE_CAP = 50 * 1024 * 1024
-RUN_CAP = 64                      # contiguous disassembly-shaped lines that make a text file an offender
+OPTIONAL_ASSETS = "assets/retail/manifest.jsonl"   # optional hash source: used when present, silently skipped when absent
+RUN_CAP = 64                     # contiguous disassembly-shaped lines that make a text file an offender
 DISASM_RES = [
     # asm-differ-style: `12: addiu      $sp, $sp, -0x40`, `44: nop`, `50: j          .Llabel` — an operand-less mnemonic
     # and a `.L` label operand both continue the run
@@ -121,6 +122,9 @@ def rom_hashes(required, pending, fixtures):
                     sys.exit(f"audit_public: {kind} hash source {rel} holds no hashes — refusing to pass on an empty source")
                 hashes.update(found)
                 n_sources += 1
+    if (REPO / OPTIONAL_ASSETS).is_file():   # present on a game host only (T2's `assets.py export`); absent in CI
+        hashes.update(load_hash_source(OPTIONAL_ASSETS))
+        n_sources += 1
     if n_sources == 0:
         sys.exit("audit_public: zero resolvable hash sources — refusing to pass vacuously")
     return hashes, n_sources

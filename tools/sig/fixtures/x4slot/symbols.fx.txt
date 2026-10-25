@@ -1,0 +1,1 @@
+fx_callee = 0x80018000; // type:func

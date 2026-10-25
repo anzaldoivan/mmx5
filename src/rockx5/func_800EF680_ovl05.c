@@ -1,32 +1,5 @@
 #include "types.h"
 
-typedef struct {
-    /* 0x00 */ u8 pad0[2];
-    /* 0x02 */ s8 unk2;
-    /* 0x03 */ u8 unk3;
-    /* 0x04 */ u8 unk4;
-    /* 0x05 */ u8 pad5[5];
-    /* 0x0A */ s16 unkA;
-    /* 0x0C */ u8 padC[2];
-    /* 0x0E */ s16 unkE;
-    /* 0x10 */ u8 pad10[4];
-    /* 0x14 */ u8 unk14;
-    /* 0x15 */ u8 unk15;
-    /* 0x16 */ u8 unk16;
-    /* 0x17 */ u8 pad17[9];
-    /* 0x20 */ s32 unk20;
-    /* 0x24 */ s32 unk24;
-    /* 0x28 */ s32 unk28;
-    /* 0x2C */ s32 unk2C;
-    /* 0x30 */ s32 unk30;
-    /* 0x34 */ u8 pad34[8];
-    /* 0x3C */ s32 unk3C;
-    /* 0x40 */ u16 unk40;
-    /* 0x42 */ u16 unk42;
-    /* 0x44 */ u8 pad44[0xC];
-    /* 0x50 */ void* unk50; /* same ObjEF680 shape */
-} ObjEF680;
-
 extern s32 func_800171E8(ObjEF680*, s32);
 extern u8 D_800F5018_ovl05[];
 

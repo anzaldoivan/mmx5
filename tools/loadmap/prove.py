@@ -52,7 +52,36 @@ def kv(line):
     return dict(re.findall(r"(\S+?)=(\S+)", line))
 
 
+def ovl3839(frames=12000, spawn=600, state6=300):
+    """Spawn-poke route to ovl38/39 (T4). Prints hit/after/poke lines; never writes the oracle (loadmap.py LIVE does).
+    Exit 0 iff an idx 38|39 hit has dest 800FA000 and ra in ovl18 (38: 800F6B38, 39: 800F6C38); then regenerates the
+    `- ovl38:`/`- ovl39:` lines of docs/memory-map.md from the hits."""
+    rc, lines, log = redux("prove_ovl3839.lua", "prove_ovl3839.spawn.log",
+                           {"REDUX_STAGE": "12", "REDUX_POKE_HIT": "4", "REDUX_FRAMES": str(frames),
+                            "REDUX_SPAWN_DELAY": str(spawn), "REDUX_STATE6_DELAY": str(state6)},
+                           "-interpreter", "-debugger", timeout=frames // 30 + 60)
+    ok, proven = False, {}
+    for l in lines:
+        if l.startswith(("redux: hit", "redux: ovl after", "redux: poke", "redux: pause", "redux: done")):
+            print(l)
+        d = kv(l)
+        if l.startswith("redux: hit Ovl_Load ") and d["idx"] in ("38", "39") and int(d["dest"], 16) == 0x800FA000 \
+                and int(d["ra"], 16) == {"38": 0x800F6B38, "39": 0x800F6C38}[d["idx"]]:
+            ok = True
+            proven.setdefault(d["idx"], f"- ovl{d['idx']}: dest {d['dest']} proven live (phase 2.2 T4): Ovl_Load(0x{int(d['idx']):X}) "
+                                        f"a1={d['dest']} ra={d['ra']} (ovl18), spawn-poke route `PY tools/loadmap/prove.py ovl3839`; "
+                                        f"{datetime.date.today().isoformat()} {log}")
+    if ok:
+        text = MAP.read_text().splitlines()
+        MAP.write_text("\n".join(proven.get(l[5:7], l) if l.startswith(("- ovl38:", "- ovl39:")) else l
+                                 for l in text) + "\n")
+    print(f"prove ovl3839: {'OK' if ok else 'FAIL'} rc={rc} log={log}")
+    return 0 if ok else 1
+
+
 def main():
+    if sys.argv[1:] == ["ovl3839"]:
+        return ovl3839()
     claimed = json.loads((ROOT / "docs/oracle/loadmap.json").read_text())
     hdr = psexe.parse(EXE)
     t_addr = int(os.environ.get("PROVE_T_ADDR", "0"), 16) or hdr["t_addr"]

@@ -194,5 +194,19 @@
    "after": "docs/codegen-map/levers/neg_mul_s16_load.after.c",
    "fn": "lever_negmul",
    "cite": "gcc/convert.c:329 NEGATE_EXPR",
-   "cookbook": "C0089", "proven_on": "rockx5_func_800EF078_ovl05"}
+   "cookbook": "C0089", "proven_on": "rockx5_func_800EF078_ovl05"},
+  {"id": "sched_zero_store_spacer", "group": "regalloc",
+   "tell": "^\\s*lui\\s+\\$3,%hi\\(D_g\\)",
+   "before": "docs/codegen-map/levers/sched_zero_store_spacer.before.c",
+   "after": "docs/codegen-map/levers/sched_zero_store_spacer.after.c",
+   "fn": "lever_spacer",
+   "cite": "gcc/local-alloc.c:1433 fake_birth",
+   "cookbook": "C0129", "proven_on": "rockx5_func_800F5308_ovl27"},
+  {"id": "regalloc_abs_const_lw", "group": "regalloc",
+   "tell": "%hi\\(D_801F3004\\)",
+   "before": "docs/codegen-map/levers/regalloc_abs_const_lw.before.c",
+   "after": "docs/codegen-map/levers/regalloc_abs_const_lw.after.c",
+   "fn": "lever_abslw",
+   "cite": "gcc/config/mips/mips.c:1191 mips_check_split",
+   "cookbook": "C0130", "proven_on": "slus_func_8001F950"}
 ]

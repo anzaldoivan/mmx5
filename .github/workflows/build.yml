@@ -120,7 +120,7 @@ jobs:
           set -euo pipefail
           tr '\0' '\n' < "$RUNNER_TEMP/tracked.z" > "$RUNNER_TEMP/work/.psxd-tracked"
           id=$(docker run -d --network none -e EXE -v "$RUNNER_TEMP/work:/work" -w /work "$IMAGE" sh -c \
-            '{ xargs python3 tools/audit_public.py --paths < .psxd-tracked && make split build BINARY=slus SPLAT="python3 -m splat" AS=mipsel-linux-gnu-as LD=mipsel-linux-gnu-ld OBJCOPY=mipsel-linux-gnu-objcopy MASPSX="python3 /opt/maspsx/maspsx.py --aspsx-version=2.86"; } > build.log 2>&1')
+            '{ xargs python3 tools/audit_public.py --paths < .psxd-tracked && make split build BINARY=slus SPLAT="python3 -m splat" AS=mipsel-linux-gnu-as LD=mipsel-linux-gnu-ld OBJCOPY=mipsel-linux-gnu-objcopy MASPSX="python3 /opt/maspsx/maspsx.py --aspsx-version=2.86" && make split build BINARY=rockx5 SPLAT="python3 -m splat" AS=mipsel-linux-gnu-as LD=mipsel-linux-gnu-ld OBJCOPY=mipsel-linux-gnu-objcopy MASPSX="python3 /opt/maspsx/maspsx.py --aspsx-version=2.86" AS_MARCH=mips4; } > build.log 2>&1')
           rc=$(docker wait "$id"); docker rm "$id" > /dev/null
           python3 -I "$RUNNER_TEMP/psxd_publish.py" ci-log "$RUNNER_TEMP/work/build.log"
           exit "$rc"
@@ -128,7 +128,9 @@ jobs:
       # Against the private repository's list, never the PR's copy
       - name: Byte check
         working-directory: ${{ runner.temp }}/work
-        run: sha1sum --strict --quiet -c "$RUNNER_TEMP/private/check/$EXE.sha1"
+        run: |
+          sha1sum --strict --quiet -c "$RUNNER_TEMP/private/check/$EXE.sha1"
+          sha1sum --strict --quiet -c "$RUNNER_TEMP/private/check/ROCK_X5.BIN.sha1"
 
       # Phase 9 decides the generator. The report steps start with config/categories.tsv; before it the job is the byte
       # check alone. The report is validated by the base's tools (no game bytes, the arithmetic, the artifact name).
