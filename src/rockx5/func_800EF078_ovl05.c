@@ -1,15 +1,7 @@
 #include "types.h"
+#include "addr.h"
 
-typedef struct Scr80 {
-    /* 0x00 */ u8 pad0[0x80];
-    /* 0x80 */ s16 unk80;
-    /* 0x82 */ s16 unk82;
-    /* 0x84 */ u8 pad84[2];
-    /* 0x86 */ s8 unk86;
-} Scr80;
-
-#define SCR (*(Scr80**)0x1F80004C)
-
+#define SCR D_1F80004C.scr80
 extern s8 D_800F4EC0_ovl05[][32];
 
 void func_800EF078_ovl05(Ent2* e) {

@@ -11,4 +11,5 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN git config --global --add safe.directory '*'
 WORKDIR /work
 # Build:  docker build --platform linux/amd64 -t <project>-build .
-# TODO(phase-4): add the pinned compiler's own packages when the pin needs them.
+# The pinned cc1 (gcc 2.95.2-psx, decompals/old-gcc 0.17) is fetched into the tree by bootstrap
+# (tools/toolchain/fetch.sh), not by apt (docs/ops/compiler-pin.md).

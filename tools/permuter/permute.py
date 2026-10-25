@@ -32,6 +32,8 @@ CPP = ROOT / "tools/bin/cc/gcc-2.95.2-psx/cpp"
 BINUTILS = ROOT / "tools/bin/binutils/usr"
 # docs/ops/toolchain.md ## objdump: the deb's objdump needs its own lib dir; host objdump has no MIPS target.
 OBJDUMP = f"env LD_LIBRARY_PATH={BINUTILS}/lib/x86_64-linux-gnu {BINUTILS}/bin/mipsel-linux-gnu-objdump -drz"
+if not BINUTILS.is_dir():  # system binutils (tools/bootstrap.sh system route; undef_by_name.py likewise)
+    OBJDUMP = "mipsel-linux-gnu-objdump -drz"
 
 
 def sh(cmd, **kw):

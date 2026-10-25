@@ -5,18 +5,21 @@
   ledger.py --selftest
 
 Inputs waves/W<k>/{wave.json, verdicts.jsonl, attempts.jsonl, drafts/<alias>_<name>.c} for every W<k>, and
-.run/census/inventory.jsonl ({alias,name,vram,status:asm|c}; absent -> nothing is c). Row:
+.run/census/inventory.jsonl ({alias,module,name,vram,status:asm|c}; absent -> nothing is c). Row:
   {alias, name, vram, insns, wave, class, closeness, best_draft, blocker, tries, ctx_k, date}
-one per non-banked verdict row whose (alias,name) is not c; a target failed in several waves keeps one row, the closest
+one per non-banked verdict row whose target is not c; a target is keyed (alias, ovl, vram int) -- ovl the module's
+`ovl..` segment, else "" (rockx5 overlays share vram) -- so a rename keeps it matched; an attempts row
+resolves its vram through wave.json targets, then the wave's verdict rows, else stays keyed by name; a target failed in several waves keeps one row, the closest
 (fewest differing words / insns from `diff N of M`, tie -> later wave). insns from wave.json; best_draft the repo-relative draft
 path; closeness the attempts try_line (T4 rows) or best (T2 rows), verbatim; blocker/date from the verdict; tries,
 ctx_k from the last attempts row (ctx_k may be null). class: attempts plateau if in PLATEAUS, else verdict
 no-verdict -> no-verdict, else tries >= 30 -> capped, else plumbing.
 build: writes docs/ledger.md (header line + one table row per ledger row, sorted (alias, vram, name, wave)).
-check: rebuilds in memory; every attempted target (any (alias,name) in an attempts.jsonl or verdicts.jsonl) is c or
+check: rebuilds in memory; every attempted target (any target in an attempts.jsonl or verdicts.jsonl) is c or
   has exactly one ledger row (else unledgered); a row whose draft is missing, not .c, empty or holds asm
   (INCLUDE_ASM, __asm__, .word, glabel) or whose closeness is missing counts as without draft; docs/ledger.md must be
-  byte-current. Prints `ledger: <n> rows, <u> unledgered, <d> without draft`; exit 1 on any nonzero count or stale file.
+  byte-current; a row whose blocker is empty counts as without blocker. Prints
+  `ledger: <n> rows, <u> unledgered, <d> without draft, <e> without blocker`; exit 1 on any nonzero count or stale file.
 --selftest: tools/wave/fixtures/ledger (synthetic, ROM-free): `ledger: control OK -- rumour refused`.
 Stdlib only.
 """
@@ -45,8 +48,21 @@ def jsonl(p):
     return [json.loads(x) for x in p.read_text().splitlines() if x.strip()] if p.exists() else []
 
 
-def key(r):  # T2 {alias,name,...} or T4 {target:"<alias>_<name>",...} -> (alias, name)
+def an(r):  # T2 {alias,name,...} or T4 {target:"<alias>_<name>",...} -> (alias, name)
     return (r["alias"], r["name"]) if "alias" in r else tuple(r["target"].split("_", 1))
+
+
+def tkey(alias, module, vram):  # -> (alias, ovl, vram int); rockx5 overlays share vram, so ovl disambiguates
+    seg = (module or "").split("/")[-1].split("_")[0]
+    return (alias, seg if seg.startswith("ovl") else "", int(str(vram).lower().removeprefix("0x"), 16))
+
+
+def key(r, where=None):  # -> target key; a row without vram resolves (alias,name) through `where`, else by name
+    if r.get("vram") is not None and "alias" in r:
+        return tkey(r["alias"], r.get("module"), r["vram"])
+    a, nm = an(r)
+    t = (where or {}).get((a, nm))
+    return tkey(a, t.get("module"), t["vram"]) if t else (a, "?", nm)
 
 
 def rel(p):
@@ -55,34 +71,39 @@ def rel(p):
 
 
 def collect(waves, inv):
-    """-> (ledger rows, attempted keys, c keys)."""
-    cs = {(r["alias"], r["name"]) for r in jsonl(inv) if r.get("status") == "c"}
-    rows, tried = [], set()
+    """-> (ledger rows, {attempted key: "<alias>_<name>"}, c keys)."""
+    cs = {key(r) for r in jsonl(inv) if r.get("status") == "c"}
+    rows, tried = [], {}
     for wdir in sorted(p for p in Path(waves).glob("W*") if p.is_dir()):
         wj = wdir / "wave.json"
-        insns = {(t["alias"], t["name"]): t["insns"] for t in json.loads(wj.read_text())["targets"]} if wj.exists() else {}
+        tg = json.loads(wj.read_text())["targets"] if wj.exists() else []
+        verd = jsonl(wdir / "verdicts.jsonl")
+        where = {(t["alias"], t["name"]): t for t in verd if t.get("vram") is not None}
+        where.update({(t["alias"], t["name"]): t for t in tg})  # wave.json first, verdict rows as fallback
+        insns = {key(t): t["insns"] for t in tg}
         att = {}
         for r in jsonl(wdir / "attempts.jsonl"):
-            att[key(r)] = r  # last row wins
-        verd = jsonl(wdir / "verdicts.jsonl")
-        tried |= set(att) | {key(v) for v in verd}
+            att[key(r, where)] = r  # last row wins
+            tried[key(r, where)] = "_".join(an(r))
         for v in verd:
-            k = key(v)
+            tried[key(v)] = "_".join(an(v))
+        for v in verd:
+            k, (al, nm) = key(v), an(v)
             if v["verdict"] == "banked" or k in cs:
                 continue
             a = att.get(k, {})
             tries = a.get("tries")
             cls = (a.get("plateau") if a.get("plateau") in PLATEAUS else "no-verdict" if v["verdict"] == "no-verdict"
                    else "capped" if (tries or 0) >= 30 else "plumbing")
-            rows.append({"alias": k[0], "name": k[1], "vram": v.get("vram"), "insns": insns.get(k), "wave": wdir.name,
+            rows.append({"alias": al, "name": nm, "vram": v.get("vram"), "insns": insns.get(k), "wave": wdir.name,
                          "class": cls, "closeness": a.get("try_line") or a.get("best"),
-                         "best_draft": rel(wdir / "drafts" / f"{k[0]}_{k[1]}.c"), "blocker": v.get("reason"),
-                         "tries": tries, "ctx_k": a.get("ctx_k"), "date": v.get("date")})
+                         "best_draft": rel(wdir / "drafts" / f"{al}_{nm}.c"), "blocker": v.get("reason"),
+                         "tries": tries, "ctx_k": a.get("ctx_k"), "date": v.get("date"), "key": k})
     best = {}  # a target re-drawn in a later wave keeps one row: fewest differing words, tie -> later wave
     for r in rows:
-        k, o = (r["alias"], r["name"]), best.get((r["alias"], r["name"]))
+        o = best.get(r["key"])
         if o is None or closeness(r) <= closeness(o):
-            best[k] = r
+            best[r["key"]] = r
     rows = sorted(best.values(), key=lambda r: (r["alias"], str(r["vram"]), r["name"], r["wave"]))
     return rows, tried, cs
 
@@ -122,18 +143,21 @@ def cmd_build(waves, out, inv=INV):
 
 def cmd_check(waves, out, inv=INV):
     rows, tried, cs = collect(waves, inv)
-    n = Counter((r["alias"], r["name"]) for r in rows)
-    unl = sorted(k for k in tried if k not in cs and n[k] != 1)
-    for a, nm in unl:
-        print(f"ledger: unledgered {a}_{nm} ({n[(a, nm)]} rows)")
+    n = Counter(r["key"] for r in rows)
+    unl = sorted((k for k in tried if k not in cs and n[k] != 1), key=str)
+    for k in unl:
+        print(f"ledger: unledgered {tried[k]} ({n[k]} rows)")
     bad = [(r, w) for r in rows if (w := no_draft(r))]
     for r, w in bad:
         print(f"ledger: refused {r['alias']}_{r['name']} {r['wave']} -- {w}")
+    nob = [r for r in rows if not r["blocker"]]
+    for r in nob:
+        print(f"ledger: refused {r['alias']}_{r['name']} {r['wave']} -- no blocker")
     stale = not Path(out).exists() or Path(out).read_text() != render(rows)
     if stale:
         print(f"ledger: {out} stale -- run ledger.py build")
-    print(f"ledger: {len(rows)} rows, {len(unl)} unledgered, {len(bad)} without draft")
-    return 1 if unl or bad or stale else 0
+    print(f"ledger: {len(rows)} rows, {len(unl)} unledgered, {len(bad)} without draft, {len(nob)} without blocker")
+    return 1 if unl or bad or nob or stale else 0
 
 
 def selftest():
@@ -156,6 +180,9 @@ def selftest():
     call(cmd_build, good, out, inv)
     rc, o = call(cmd_check, good, out, inv)
     assert rc == 0 and "ledger: 3 rows, 0 unledgered, 0 without draft" in o, o  # fa banked+c, fd c: not ledgered
+    inv.write_text(inv.read_text().replace('"fa"', '"fa_renamed"').replace('"fd"', '"fd_renamed"'))
+    rc, o = call(cmd_check, good, out, inv)  # planted rename: c rows renamed at banked/ledgered vram stay matched
+    assert rc == 0 and "ledger: 3 rows, 0 unledgered, 0 without draft, 0 without blocker" in o, o
     rows = {r["name"]: r for r in collect(good, inv)[0]}
     assert rows["fb"]["class"] == "wall" and rows["fb"]["ctx_k"] == 41, rows["fb"]
     assert rows["fc"]["class"] == "capped" and rows["fc"]["closeness"].startswith("try: fc diff"), rows["fc"]
@@ -185,11 +212,16 @@ def selftest():
     (w1 / "drafts").mkdir(parents=True)
     shutil.copy(good / "W0/drafts/slus_fc.c", w1 / "drafts/slus_fc.c")
     (w1 / "verdicts.jsonl").write_text(json.dumps({"alias": "slus", "name": "fc", "vram": "80001020",
-                                                   "verdict": "failed", "date": "2026-10-06"}) + "\n")
+                                                   "verdict": "failed", "reason": "word 5 (+0x14) differs",
+                                                   "date": "2026-10-06"}) + "\n")
     (w1 / "attempts.jsonl").write_text(json.dumps({"target": "slus_fc", "try_line": "try: fc diff 1 of 8 words",
                                                    "tries": 2}) + "\n")
     fc = [r for r in collect(good, inv)[0] if r["name"] == "fc"]
     assert len(fc) == 1 and fc[0]["wave"] == "W1", fc
+    with (w1 / "verdicts.jsonl").open("a") as f:  # planted: a failed row with an empty reason
+        f.write(json.dumps({"alias": "slus", "name": "fg", "vram": "80001050", "verdict": "failed", "reason": ""}) + "\n")
+    rc, o = call(cmd_check, good, out, inv)
+    assert rc == 1 and "refused slus_fg W1 -- no blocker" in o and "1 without blocker" in o, o
     print("ledger: control OK -- rumour refused")
     return 0
 

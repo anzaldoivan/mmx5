@@ -1,0 +1,5 @@
+# plants.txt -- negative controls for `replay.py check` (T3.1.c1 phase 2.2): `<hexaddr>:<hexword>@<frame> <declared cp>`.
+# Ovl_Load (0x80015EB4, main exe, always resident) first insn -> `jr ra` (03E00008), planted at vsync 6000: after
+# player_select (5480), before the first stage load (~7812). The intro stage overlay is never loaded, the CPU halts,
+# so stage_start (11010) is the first missing cp (probe .run/replay/c1_plant6000: 4 cps equal, then halt).
+80015EB4:03E00008@6000 stage_start

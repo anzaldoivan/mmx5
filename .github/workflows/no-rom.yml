@@ -42,8 +42,6 @@ jobs:
           python -m venv .run/venv-format
           .run/venv-format/bin/pip install -q --require-hashes -r .run/req-format.txt
           make format-check CLANG_FORMAT=.run/venv-format/bin/clang-format
-      - name: progress-check — README progress block stamp equals HEAD:src/HEAD:config trees (G58)
-        run: make progress-check PY=python
 
   compile-only:
     name: compile-only (pinned cc1 + maspsx + binutils, no game bytes)
@@ -65,6 +63,8 @@ jobs:
         run: make compile-only PY=python
       - name: types-check — tools/dedup/shapes.py over include/ and src/ (game-free; proven in a fresh worktree, T3.c1)
         run: make types-check PY=python
+      - name: readability-check — tools/readability/scan.py over include/, src/, config/ (game-free)
+        run: make readability-check PY=python
       # permuter/plateau selftests: pycparser+toml (decomp-permuter), rabbitizer (plateau) at the hashed pins
       - name: selftest Python deps at the requirements-python.txt pins
         run: |

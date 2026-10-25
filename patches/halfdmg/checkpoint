@@ -1,0 +1,6 @@
+# halfdmg: slus func_80031670 (player damage scaler) halve arm dmg/2 -> dmg>>2 (half of retail), min 1; other arm unchanged.
+# Basis (T1 Redux trace on intro.pad, logs/T1.md): first scaler-driven HP write frame 11145 (pc 80031B34, ra 80031A60
+# = return of jal func_80031670) > stage_start 11010 -> first checkpoint at/after = mid_stage 13000.
+# Predicted mid_stage HP 0x20 vs original 0x1F; if the vram hash does not show it (as for _plant), first divergence is later.
+# Observed (2.7/T1, T2 replay-patch on intro.pad): first divergence `clear` (>= declared, OK). Declared kept as the lower bound.
+mid_stage

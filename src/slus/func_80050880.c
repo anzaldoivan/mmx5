@@ -1,27 +1,5 @@
 #include "types.h"
 
-typedef struct {
-    u8 unk0;
-    u8 unk1;
-    u8 unk2;
-    u8 pad3;
-    u8 unk4;
-    u8 unk5;
-    u8 unk6;
-    u8 pad7;
-    s16 unk8;
-    s16 unkA;
-    s16 unkC;
-    s16 unkE;
-    u8 pad10[5];
-    u8 unk15;
-    u8 pad16[0xA];
-    s32 unk20;
-    s32 unk24;
-    u8 pad28[0x34];
-    u8 unk5C;
-} Obj80050880;
-
 extern Obj80050880* func_8002D0E4(void);
 extern s32 func_8002DF78(void);
 extern s32 D_8007B748[];

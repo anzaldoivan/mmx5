@@ -14,4 +14,4 @@ L7.code_with_dest | lead | len([o for o in ov if o['kind'] == 'code' and o['dest
 L7.dest_base | lead | set(o['dest'] for o in ov[0:30]) == {'800EE970'}
 L7.dest_fa000 | lead | set(o['dest'] for o in ov[30:38] + ov[40:59]) == {'800FA000'}
 L7.data | lead | sorted(o['index'] for o in ov if o['kind'] == 'data') == [13, 15, 17, 19]
-L7.dest_null | lead | [o['dest'] for o in ov[38:40]] == [None, None]
+P7.dest_live | positive | [(o['dest'], o['dest_source']) for o in ov[38:40]] == [('800FA000', '800F6B38'), ('800FA000', '800F6C38')] and all(o['dest_via'].startswith('live: ') for o in ov[38:40])

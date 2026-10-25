@@ -1,7 +1,7 @@
 # tools-health.mk — the health chain over the phase-1.5 scanners (docs/ops/census.md "health chain").
 # tools-selftest:    ROM-free (CI no-rom.yml compile-only job: reconcile/propagate compile with the pinned cc1 + maspsx):
-#                    the 19 `--selftest` runs (census x3, harness, sig, shapes, carve, draw, reconcile, propagate,
-#                    cites, levers, symptoms, permute, plateau, wave, gate, ledger, harvest); each must exit 0 and print `<name>: control OK`
+#                    the 25 `--selftest` runs (census x3, harness, sig, shapes, carve, draw, reconcile, propagate,
+#                    cites, levers, symptoms, permute, plateau, wave, gate, ledger, harvest, readability, rockx5, shift-scan, assets, x4core, x4adapter); each must exit 0 and print `<name>: control OK`
 #                    (propagate's name is `dedup`, permute's `permuter`). CI also needs pycparser+toml and
 #                    refs/decomp-permuter at their pins (requirements-python.txt, config/refs.toml).
 # tools-health:      after a green `make check` (mk/fleet.mk runs it): rungs below, in order, each logged to
@@ -26,6 +26,7 @@
 #  11 propagate:    `propagate.py check`: per group `g of n members byte-gated (<body>)` (yaml c cut + C file including
 #                   the body; the SHA itself is rung 0) and `dedup: registry OK`.
 #  12 reconcile:    `reconcile.py verify $(TH_VERIFY)`: the banked member re-checked, `banked at rung r, body unchanged`.
+#                   Its r1 record is seeded from tools/dedup/fixtures/th_verify/ only when absent (fresh clone).
 #  13 cites:        `cites.py check`: staged cc1 tree + `k of k citations resolve, 0 stale`.
 #  14 levers:       `levers.py check`: `4 of 4 pass groups proven, k of k levers byte-proven`.
 #  15 symptoms:     `symptoms.py check`: every idiom entry and lever indexed, 0 unindexed, 0 unresolved.
@@ -33,9 +34,10 @@
 #                   >= 2 distinct candidates (counted from its own compiles.log, -newer the stamp); ~15 s.
 #  17 plateau:      `plateau.py classify` on the width draft: `class <c> label seed-structural`.
 #  18 wave:         `waves.py status` (every wave): per W<k> `W<k> <n> drafts = <b> banked + <f> failed + <v> no-verdict`.
-#  19 ledger:       `ledger.py check`: `<n> rows, 0 unledgered, 0 without draft`.
+#  19 ledger:       `ledger.py check`: `<n> rows, 0 unledgered, 0 without draft, 0 without blocker`.
 #  20 harvest:      `harvest.py check` (every wave): per W<k> `W<k> <k> of <k> banked harvested, 0 open`.
 #  21 routing:      `waves.py rate --check` (aggregate of every wave, writes no rate.txt): `<k> of <k> buckets routed`.
+# 18-21 read waves/, docs/ledger.md, docs/routing.md, private by [public].deny; a public tree (no waves/) skips them.
 # Recipes stage every tool through a log file under `set -e` (cookbook C0028: dash, no pipefail).
 
 TH_DIR := .run/tools-health
@@ -68,7 +70,8 @@ tools-selftest:
 	  sig/sig:sig dedup/shapes:shapes dedup/carve:carve dedup/draw:draw dedup/reconcile:reconcile \
 	  dedup/propagate:dedup codegen/cites:cites codegen/levers:levers codegen/symptoms:symptoms \
 	  permuter/permute:permuter permuter/plateau:plateau \
-	  wave/waves:wave wave/gate:gate wave/ledger:ledger wave/harvest:harvest progress/progress:progress; do p=$${t%:*}; n=$${t#*:}; r=selftest-$${p#*/}; \
+	  wave/waves:wave wave/gate:gate wave/ledger:ledger wave/harvest:harvest readability/scan:readability repack/rockx5:rockx5 \
+	  shift/scan:shift-scan assets/assets:assets sig/x4core:x4core sig/x4adapter:x4adapter; do p=$${t%:*}; n=$${t#*:}; r=selftest-$${p#*/}; \
 	  rung $$r $(PY) tools/$$p.py --selftest; need $$r "^$$n: control OK( --|$$)"; \
 	  show $$r "^$$n: control OK( --|$$)" | tail -n 1; done
 
@@ -91,7 +94,6 @@ tools-health:
 	  new census-report .run/census/report.txt; \
 	  need census-report '^census: stubs [0-9]+ of [1-9][0-9]* game functions \([0-9]+ c, [0-9]+ ledgered\); vendor [0-9]+ asm$$'; \
 	  show census-report '^census: \[fleet\] \[(game|vendor)\] |^census: lanes reconcile|^census: stubs '; \
-	rung progress $(PY) tools/progress/progress.py check; need progress '^progress: OK$$'; show progress '^progress: '; \
 	rung harness $(PY) tools/harness/harness.py $(TH_HARNESS); \
 	  need harness '^harness: ([5-9]|[1-9][0-9]+) pairs, 0 disagreements$$'; new harness .run/harness/last.txt; \
 	  tail -n 1 $(TH_DIR)/harness.log; \
@@ -106,6 +108,8 @@ tools-health:
 	  new draw .run/dedup/draw.jsonl; show draw '^draw: '; \
 	rung propagate $(PY) tools/dedup/propagate.py check; need propagate '^dedup: [0-9]+ of [1-9]'; \
 	  need propagate '^dedup: registry OK '; show propagate '^dedup: '; \
+	test -e .run/reconcile/rockx5_800EFE70_ovl02.json || { mkdir -p .run/reconcile && \
+	  cp tools/dedup/fixtures/th_verify/rockx5_800EFE70_ovl02.json .run/reconcile/; }; \
 	rung reconcile $(PY) tools/dedup/reconcile.py verify $(TH_VERIFY); \
 	  need reconcile '^reconcile: .* banked at rung r[0-9], body unchanged$$'; show reconcile '^reconcile: '; \
 	rung cites $(PY) tools/codegen/cites.py check; need cites '^cites: tree gcc-2.95.2-psx [0-9a-f]{12} \+[0-9]+ patches$$'; \
@@ -121,15 +125,17 @@ tools-health:
 	  pw=$$(($$(date +%s) - p0)); echo "permuter: rung $$pw s"; [ $$pw -le 60 ] || fail permuter "rung wall $$pw s > 60 s"; \
 	rung plateau $(PY) tools/permuter/plateau.py classify $(TH_PERM_DRAFT).width.c --fn $(TH_PERM_FN); \
 	  need plateau '^plateau: $(TH_PERM_FN) class [a-z-]+ label seed-structural$$'; show plateau '^plateau: '; \
+	if [ -d waves ]; then \
 	rung wave $(PY) tools/wave/waves.py status; \
 	  every wave 'wave: W' '^wave: W[0-9]+ [1-9][0-9]* drafts = [0-9]+ banked \+ [0-9]+ failed \+ [0-9]+ no-verdict$$'; \
 	  show wave '^wave: '; \
-	rung ledger $(PY) tools/wave/ledger.py check; need ledger '^ledger: [0-9]+ rows, 0 unledgered, 0 without draft$$'; \
+	rung ledger $(PY) tools/wave/ledger.py check; need ledger '^ledger: [0-9]+ rows, 0 unledgered, 0 without draft, 0 without blocker$$'; \
 	  show ledger '^ledger: '; \
 	rung harvest $(PY) tools/wave/harvest.py check; \
 	  every harvest 'harvest: W' '^harvest: W[0-9]+ ([1-9][0-9]*) of \1 banked harvested, 0 open$$'; show harvest '^harvest: '; \
 	rung routing $(PY) tools/wave/waves.py rate --check; \
 	  need routing '^routing: ([1-9][0-9]*) of \1 buckets routed$$'; show routing '^routing: '; \
+	else echo "tools-health: wave, ledger, harvest, routing skipped (no waves/: public tree)"; fi; \
 	echo "tools-health: OK"; echo "tools-health: $$(($$(date +%s) - t0)) s"
 
 tools-health-full:

@@ -1,0 +1,20 @@
+/* Shared body (DK-5), from the banked draft of func_800F2C70_ovl02 by tools/wave/gate.py rescan. */
+#include "types.h"
+
+extern s16 D_8009A0AA;
+extern void DEDUP_CALLEE(Ent2BF8*);
+
+void DEDUP_NAME(Ent2BF8* a0) {
+    if (a0->unk70 & 4) {
+        *(s32*)((u8*)a0 + 0x2C) = 0;
+        *(s32*)((u8*)a0 + 0x24) = 0;
+        if (a0->unkA < D_8009A0AA) {
+            a0->unk20 = 0x38000;
+            a0->unk5 = 9;
+        } else {
+            a0->unk20 = -0x38000;
+            a0->unk5 = 5;
+        }
+    }
+    DEDUP_CALLEE(a0);
+}

@@ -1,16 +1,8 @@
 /* Shared body (DK-5), from the banked draft of func_800F0F18_ovl28 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "addr.h"
 
-typedef struct Ent0F18 {
-    u8 pad0[5];
-    u8 unk5;
-    u8 unk6;
-    u8 pad7[0x67 - 7];
-    signed char unk67;
-} Ent0F18;
-
-#define SCRATCH_CTX (*(Ctx0F18**)0x1F80004C)
-
+#define SCRATCH_CTX D_1F80004C.ctx0f18
 extern void func_80017248(Ent0F18*);
 extern void func_8002DF54(Ent0F18*);
 

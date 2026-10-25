@@ -1,18 +1,5 @@
 #include "types.h"
 
-// from rockx5 800F1818
-typedef struct {
-    u8 pad0[5];
-    u8 unk5;
-    u8 unk6;
-    u8 pad7[0xA - 7];
-    u16 unkA;
-    u8 padC[0x68 - 0xC];
-    u8* unk68;
-    u8 pad6C[0x8F - 0x6C];
-    u8 unk8F;
-} Ent1818;
-
 extern u8 D_800FAB34_ovl09[][8];
 
 extern void func_8002DF54(Ent1818*);

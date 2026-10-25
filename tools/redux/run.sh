@@ -4,16 +4,18 @@
 #   tools/redux/run.sh <script.lua> [extra emulator args]
 #
 # Env: REDUX_ADDR (default 0x80010000), REDUX_EXPECT_ADDR (file slice compared; default REDUX_ADDR),
-#      REDUX_FRAMES, REDUX_TIMEOUT (s, default 120). Exit = the script's PCSX.quit(code); 124 = timed out.
+#      REDUX_FRAMES, REDUX_TIMEOUT (s, default 120), REDUX_CUE (disc cue; default the retail disc; relative = repo root). Exit = the script's PCSX.quit(code); 124 = timed out.
 # Output (stdout of the emulator) goes to .run/redux/<script>.log. Pin: tools/bin/pcsx-redux.sha256.
 set -u
 ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
 APP="$ROOT/tools/bin/PCSX-Redux-ff4033ac-x86_64.AppImage"
-CUE="$ROOT/disks/Megaman X5 (U) [SLUS-01334].cue"
+CUE="${REDUX_CUE:-$ROOT/disks/Megaman X5 (U) [SLUS-01334].cue}"
+case "$CUE" in /*) ;; *) CUE="$ROOT/$CUE" ;; esac  # relative = repo root (we cd to .run/redux below)
 EXE="$ROOT/extracted/retail/SLUS_013.34"
 SCRIPT="$(realpath "${1:?usage: run.sh <script.lua> [args]}")"; shift
 OUT="$ROOT/.run/redux"; mkdir -p "$OUT"
 [ -x "$APP" ] || { echo "redux: missing $APP (fetch: docs/ops/oracles.md)"; exit 2; }
+[ -f "$SCRIPT" ] || { echo "redux: missing script $SCRIPT (a missing -dofile hangs to the timeout)"; exit 2; }
 
 export REDUX_ADDR="${REDUX_ADDR:-0x80010000}"
 # expected sha1 of the exe file slice at offset 0x800 + (addr - t_addr); hash only, never bytes
@@ -26,6 +28,8 @@ print(hashlib.sha1(data[off:off + 256]).hexdigest())
 EOF
 )"
 
+# a script whose header says it needs the interpreter gets it (title.lua: the dynarec stalls before the FMV)
+grep -q '^-- Needs `-interpreter`' "$SCRIPT" && set -- -interpreter "$@"
 LOG="$OUT/$(basename "$SCRIPT" .lua).log"
 cd "$OUT"
 # timeout signals its whole process group, so the AppImage runtime's child dies with it

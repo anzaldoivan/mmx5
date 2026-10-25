@@ -1,6 +1,6 @@
 # fleet.mk — fleet-wide targets over every alias (read first: mk/*.mk sorts fleet < rockx5 < slus).
 # clean:    rm build/ asm/ assets/ for every alias; never extracted/ (game data), never git clean.
-# check:    clean -> extract (once) -> per alias `split` then `build` in parallel; never stops early.
+# check:    clean -> extract (once) -> per alias `split` then `build` in parallel (rockx5 after slus); never stops early.
 #           One line per alias `check: <a> ok|FAIL` (output in build/<a>.check.log), last line
 #           `check: <k> of <n> green, <f> failed`; exit 0 iff f=0. After a green line it runs
 #           `make tools-health` (mk/tools-health.mk); its failure fails check.
@@ -13,15 +13,17 @@
 #           Negative control: a planted unit with a syntax error must fail cc1, else the target fails.
 # types-check: tools/dedup/shapes.py check -- refuses a duplicate struct shape, a second definition, a raw address
 #           cast in include/*.h and src/**/*.c; `types: <n> shapes, 0 duplicates, 0 raw casts` (tools/dedup/README.md).
-# progress-check: tools/progress/progress.py check -- README progress block/docs/progress.json stamp = HEAD:src/config.
-# no-rom:   firewall-check, format-check, compile-only, types-check, tools-selftest, progress-check (PY passed through), stop at the
-#           first failure (`no-rom: <t> FAIL`); last line `no-rom: OK`. Binding before every bank/propagate commit.
+# readability-check: tools/readability/scan.py -- six readability classes, one line per offender, then
+#           `readability: <p> unmarked pins, ... <u> unbased names`; exit 1 if any count > 0 (tools/readability/README.md).
+# no-rom:   firewall-check, format-check, compile-only, types-check, readability-check, tools-selftest
+#           (PY passed through), stop at the first failure (`no-rom: <t> FAIL`); last line `no-rom: OK`. Binding before every bank/propagate commit.
 
 ALIASES := slus rockx5
 COMPILE_SRC ?= $(shell find src -name '*.c')
 CO_DIR := .run/compile-only
+# the list goes through a file: inlined, ~4100 paths pass MAX_ARG_STRLEN (128 KiB per sh -c arg)
 
-.PHONY: check expected clean compile-only types-check progress-check no-rom $(addprefix check-,$(ALIASES))
+.PHONY: check expected clean compile-only types-check readability-check no-rom $(addprefix check-,$(ALIASES))
 
 clean:
 	rm -rf build asm assets
@@ -43,12 +45,15 @@ $(addprefix check-,$(ALIASES)): check-%:
 	@{ $(MAKE) --no-print-directory split BINARY=$* && $(MAKE) --no-print-directory build BINARY=$*; } \
 	  > build/$*.check.log 2>&1; echo $$? > build/$*.check.rc
 
+check-rockx5: check-slus  # rockx5 splits against the built exe ELF (mk/rockx5.mk)
+
 expected:
 	@for a in $(ALIASES); do n=$$(sed -n 's/^name: *//p' config/splat.$$a.yaml); \
 	  mkdir -p expected/build/$$a && cp build/$$a/$$n expected/build/$$a/ || exit 1; done
 
 compile-only:
-	@set -e; for c in $(COMPILE_SRC); do o=$(CO_DIR)/$${c%.c}.o; t=$${o%.o}; mkdir -p $$(dirname $$o); \
+	$(shell mkdir -p .run)$(file >$(CO_DIR).list,$(COMPILE_SRC))
+	@set -e; for c in $$(cat $(CO_DIR).list); do o=$(CO_DIR)/$${c%.c}.o; t=$${o%.o}; mkdir -p $$(dirname $$o); \
 	  $(CPP) $(CPPFLAGS) $$c > $$t.i; $(CC1) $(CFLAGS) < $$t.i > $$t.cc1.s; $(MASPSX) < $$t.cc1.s > $$t.maspsx.s; \
 	  if [ ! -d asm ] && grep -q '^\.include "asm/' $$t.maspsx.s; then \
 	    echo "$$t.maspsx.s (not assembled: it includes asm/, absent here)"; continue; fi; \
@@ -61,10 +66,10 @@ compile-only:
 types-check:
 	$(PY) tools/dedup/shapes.py check
 
-progress-check:
-	$(PY) tools/progress/progress.py check
+readability-check:
+	$(PY) tools/readability/scan.py
 
 # no-rom: the game-free gate, run before every commit that banks or propagates code; stops at the first failure.
 no-rom:
-	@for t in firewall-check format-check compile-only types-check tools-selftest progress-check; do \
+	@for t in firewall-check format-check compile-only types-check readability-check tools-selftest; do \
 	  $(MAKE) --no-print-directory $$t PY="$(PY)" || { echo "no-rom: $$t FAIL"; exit 1; }; done; echo "no-rom: OK"

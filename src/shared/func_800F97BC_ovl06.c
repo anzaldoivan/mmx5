@@ -1,8 +1,8 @@
 /* Shared body (DK-5), from the banked draft of func_800F97BC_ovl06 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "addr.h"
 
-#define G (*(u8**)0x1F80004C)
-
+#define G D_1F80004C.bytes
 extern void func_8003D29C(s32, s32);
 extern u8* func_8002D144(void);
 extern signed char D_8009A0A5;

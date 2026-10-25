@@ -1,5 +1,6 @@
 /* Shared body (DK-5), from the banked draft of func_800F6B60_ovl11 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "addr.h"
 
 extern u8* func_8002D144(void);
 extern void func_8002D9EC(u8* obj, s32 a, s32 b);
@@ -7,8 +8,6 @@ extern void func_8002D9EC(u8* obj, s32 a, s32 b);
 #define S16(p, o) (*(s16*)((p) + (o)))
 #define U16(p, o) (*(u16*)((p) + (o)))
 #define S8(p, o) (*(signed char*)((p) + (o)))
-#define D_1F80004C (*(u8**)0x1F80004C)
-
 void DEDUP_NAME(u8* obj) {
     u8* child;
     s16 r;
@@ -22,7 +21,7 @@ void DEDUP_NAME(u8* obj) {
             child[1] = 0x1A;
             U16(child, 0xA) = U16(obj, 0xA);
             U16(child, 0xE) = U16(obj, 0xE);
-            *(u8**)(D_1F80004C + 0x84) = child;
+            *(u8**)(D_1F80004C.bytes + 0x84) = child;
         }
     }
     func_8002D9EC(obj, 0x60, 0x60);

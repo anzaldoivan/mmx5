@@ -1,13 +1,6 @@
 /* Shared body (DK-5), from the banked draft of func_800F150C_ovl28 by tools/wave/gate.py rescan. */
 #include "types.h"
 
-typedef struct {
-    /* 0x00 */ Obj4FE0 b;
-    /* 0x30 */ u8 pad30[0x7C - 0x30];
-    /* 0x7C */ s16 unk7C;
-    /* 0x7E */ s16 unk7E;
-} Obj150C;
-
 extern s16 D_8009A0AA;
 extern void func_800171E8(Obj150C*, s32);
 extern void func_80017248(Obj150C*);

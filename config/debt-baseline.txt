@@ -1,0 +1,37 @@
+# config/debt-baseline.txt: the count of readability debt of the tracked source, one total per kind (`python3 tools/psxd_floor.py --help` lists the kinds).
+# `python3 tools/psxd_floor.py debt` fails when a total of the tree is over its row, and when a row is over its total.
+# After a change, run `python3 tools/psxd_floor.py debt --update`, or bank with `gate --bank`, which writes the totals.
+# A policy line gives each kind its mode: `count` (counted and shown) or `down` (the total of the tree never rises).
+# A mode only gets stronger. A `raise` line is the developer's: `python3 tools/psxd_floor.py debt --raise <kind> <n> --reason <text>`.
+# A `skip` line names files that the checker does not read. A change cannot add one.
+mode pin count
+mode pin-unmarked down
+mode goto count
+mode goto-unmarked down
+mode barrier count
+mode barrier-unmarked down
+mode offset count
+mode address count
+mode cast count
+mode field count
+mode asm down
+mode placeholder count
+mode placeholder-use count
+mode struct count
+mode extern count
+mode filename count
+raise protected 1 2026-10-14 psxdecomp 0.6.0: the guard hook fails closed (upgrade from the first build of the floor)
+raise protected 1 2026-10-14 [own] gate runs make no-rom in the build container: the host has no toolchain
+48 pin
+83 goto
+21 goto-unmarked
+6929 offset
+25 address
+3 cast
+8443 field
+2 asm
+1894 placeholder
+17778 placeholder-use
+6 struct
+7815 extern
+6525 filename

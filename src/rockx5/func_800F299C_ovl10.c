@@ -1,18 +1,5 @@
 #include "types.h"
 
-// from rockx5 800F299C (twin of rockx5 800F1818)
-typedef struct {
-    u8 pad0[5];
-    u8 unk5;
-    u8 unk6;
-    u8 pad7[0xA - 7];
-    u16 unkA;
-    u8 padC[0x68 - 0xC];
-    u8* unk68;
-    u8 pad6C[0x90 - 0x6C];
-    u8 unk90;
-} Ent299C;
-
 extern u8 D_800FB75C_ovl10[][8];
 
 extern void func_8002DF54(Ent299C*);

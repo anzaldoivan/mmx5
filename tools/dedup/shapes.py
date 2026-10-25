@@ -8,7 +8,8 @@ sources is one definition. Supported subset: tools/dedup/README.md. Unsupported 
 Refusals (exit 1, one line each, `types: refused <file>:<line>: <why>`):
   - a struct/union whose member (type, offset) sequence equals an earlier one's under a different name;
   - a second definition of a typedef name or struct/union tag;
-  - a raw address cast: a nonzero integer literal cast to a pointer, `(T *)0x8...` (`T *p = 0;` is allowed).
+  - a raw address cast: a nonzero integer literal cast to a pointer, `(T *)0x8...` (`T *p = 0;` is allowed);
+  - a struct member whose leading `/* 0xNN */` comment differs from its computed offset.
 Plain char is unsigned char (-D__CHAR_UNSIGNED__). Offsets use psx sizes: char 1, short 2, int/long/pointer 4, natural alignment, arrays.
 Success prints `types: <n> shapes, 0 duplicates, 0 raw casts`, exit 0.
 --selftest: tools/dedup/fixtures/{clean,dup,cast}; prints `shapes: control OK -- planted duplicate refused`.
@@ -55,6 +56,7 @@ class Checker:
         self.where = {}   # name -> "file:line" of its definition
         self.shapes = {}  # member sequence -> (name, file:line)
         self.errors = []
+        self.at, self.notes = "", {}  # current file; line -> the offset its leading `/* 0xNN */` comment names
 
     def refuse(self, at, why):
         self.errors.append(f"types: refused {at}: {why}")
@@ -129,12 +131,16 @@ class Checker:
         i += 1
         members, off, size, align = [], 0, 0, 1
         while toks[i][0] != "}":
+            line = toks[i][1]
             base = self.base(toks, i)
             i = base[3]
             while True:
                 _, canon, msize, malign, i = self.declarator(toks, i, base[:3])
                 if kind == "struct":
                     off = (off + malign - 1) // malign * malign
+                    note = self.notes.pop(line, off)
+                    if note != off:
+                        self.refuse(f"{self.at}:{line}", f"member offset 0x{off:X}, comment says 0x{note:X}")
                     members.append((canon, off))
                     off += msize
                     size = off
@@ -174,6 +180,9 @@ class Checker:
 
     def file(self, path, text):
         clean = strip(text)
+        self.at = path
+        self.notes = {n: int(m[1], 16) for n, ln in enumerate(text.splitlines(), 1)
+                      if (m := re.match(r"\s*/\*\s*0x([0-9A-Fa-f]+)\s*\*/", ln))}
         for n, line in enumerate(clean.splitlines(), 1):
             for m in CAST.finditer(line):
                 if int(m.group(1), 0) != 0:
@@ -247,7 +256,8 @@ def run(files, root):
 
 def sources(root):
     src = sorted((root / "src").rglob("*.c"))  # includes src/shared/ when present
-    return sorted((root / "include").glob("*.h")) + src
+    # types.h first: other headers (addr.h) use its typedefs
+    return sorted((root / "include").glob("*.h"), key=lambda p: (p.name != "types.h", p.name)) + src
 
 
 def check(root=ROOT):

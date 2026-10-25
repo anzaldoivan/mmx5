@@ -1,12 +1,5 @@
 #include "types.h"
 
-typedef struct {
-    s16 unk0;
-    s16 unk2;
-    s16 unk4;
-    s16 unk6;
-} Ovl50Pos;
-
 extern u8 D_80091C44;
 extern Ovl50Pos D_800FB3C8_ovl50;
 extern u8 D_800FB3E0_ovl50[];

@@ -1,0 +1,15 @@
+# config/shift/regions.txt — ROCK_X5.BIN overlay regions and their RAM bounds (2.4 T2). Addresses only (G12).
+# One line per region: `<name> vram=<hex> members=<ovl list> max_end=<hex>(<ovl>) bound=<hex> slack=<hex> verified=<static|live|no> source=<evidence>`
+# max_end = retail vram + file size of the largest member; bound = first address a member image must not reach;
+# slack = bound - max_end. Overlays have no bss past their file image (highest overlay-held target 8010309C < ovl04 end).
+# Bound 80105000: lowest fixed exe RAM user above the regions = CD sector / image buffer base, lui/ori 0x80105000 at
+#   exe 80015DE4, 80015E34 (Ovl_ReadToc CdRead dest), 80013EF0, 80013F4C (CdRead dest), 80014798, 8001E814,
+#   8001A310 (with 80109000, 80117000, 80125000). No exe or overlay constant lies in [8010309E, 80105000);
+#   highest exe-held overlay pointer 80101348, highest overlay constant 8010309C. PsyQ heap (InitHeap 800589D8, base 800EE974) covers the
+#   regions but has no malloc/calloc caller (unused). Next users above: 801F3004.. (exe), stack 801F8000..801FFFF0.
+# Co-residency: an A member whose retail end > 800FA000 (ovl00,01,03,04,06,07,09,10,11,26,27,28,29) already
+#   overlaps B in retail, so it is never resident with a B member: bound 80105000. Any other A member may be
+#   resident while B loads (ovl18 loads ovl38/39 at 800F6B30/800F6C30; exe B dests 8001369C, 80014310): bound 800FA000 (row A.lo).
+A vram=800EE970 members=ovl00-29 max_end=8010309E(ovl04) bound=80105000 slack=1F62 verified=static source=exe buffer 80105000 (sites above)
+A.lo vram=800EE970 members=ovl02,05,08,12-25 max_end=800F80F8(ovl18) bound=800FA000 slack=1F08 verified=static source=B load dest 800FA000 (ovl18 800F6B30, exe 8001369C, 80014310)
+B vram=800FA000 members=ovl30-58 max_end=80100172(ovl34) bound=80105000 slack=4E8E verified=static source=exe buffer 80105000 (sites above)

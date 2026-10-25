@@ -1,4 +1,5 @@
 #include "types.h"
+#include "addr.h"
 
 extern void func_8002C50C(void);
 extern void func_8002D004(void);
@@ -13,8 +14,6 @@ extern u8 D_800D50DC;
 extern u8 D_8009A1F8[];
 extern Blk200 D_800FB488_ovl50;
 extern Blk200 D_800FB888_ovl50;
-
-#define D_1F800028 (*(u8**)0x1F800028)
 
 void func_800FA1C0_ovl50(u8* arg0) {
     Blk200* s;

@@ -1,14 +1,7 @@
 #include "types.h"
+#include "addr.h"
 
-typedef struct {
-    u8 pad0[0x82];
-    u8 flags82;
-    u8 pad83;
-    Unk800770CC box;
-} Scr82;
-
-#define SCR (*(Scr82**)0x1F80004C)
-
+#define SCR D_1F80004C.scr82
 extern s32 func_8003157C(Ent14C8*, s32, s32);
 extern void func_800171E8(Ent14C8*, s32);
 extern void func_8002DF54(Ent14C8*);
