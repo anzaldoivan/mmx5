@@ -4792,6 +4792,56 @@ typedef struct {
     /* 0x61 */ u8 pad61[0x1B];
     /* 0x7C */ void* unk7C; /* an Obj2230 */
 } Obj2230;
+
+/* src/rockx5/func_800F3EA0_ovl04.c */
+typedef struct {
+    u8 pad0[0xC];
+    s8 unkC;
+    u8 padD[2];
+    s8 unkF;
+    u8 pad10[0x10];
+    void* unk20;
+    s8 unk24;
+    s8 unk25;
+    u8 pad26[0xA2 - 0x26];
+    s8 unkA2;
+} Glb800F3EA0;
+
+/* src/rockx5/func_800F3EA0_ovl04.c */
+typedef struct {
+    u8 pad0[0x24];
+    s16 unk24;
+    s16 unk26;
+    u8 pad28[0x57 - 0x28];
+    s8 unk57;
+    u8 pad58[0xAB - 0x58];
+    s8 unkAB;
+} Bg800F3EA0;
+
+/* src/rockx5/func_800F8128_ovl07.c */
+/* 0xA4-byte object image copied whole */
+typedef struct {
+    s32 d[0x29];
+} Blk0A4;
+
+/* src/rockx5/func_800F8128_ovl07.c */
+/* 4-byte unaligned record */
+typedef struct {
+    u8 d[4];
+} Blk4;
+
+/* src/rockx5/func_800F26B4_ovl10.c */
+typedef struct {
+    u8 pad0[5];
+    u8 unk5;
+    u8 unk6;
+    u8 pad7[0xE - 7];
+    u16 unkE;
+    u8 pad10[0x68 - 0x10];
+    u8* unk68;
+    u8 pad6C[0x90 - 0x6C];
+    u8 unk90;
+} Ent26B4;
 /* lift: end */
 
 /* X4 object views shared by the W15 X6 ports (adapted from mmx6 x4.h, AGPL-3.0, THIRD_PARTY.md); fields only where

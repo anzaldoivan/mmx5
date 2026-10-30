@@ -26,7 +26,7 @@
 Then **recover** before re-drawing. Triage the gate's failures into body and plumbing. Bank the plumbing rejects through
 the reconcile ladder without a redraft. The gate number is not the close rate until recovery has run.
 
-## Per-wave numbers (W1-W64)
+## Per-wave numbers (W1-W68)
 The numbers come from `waves/W*/{wave.json,attempts.jsonl,verdicts.jsonl}` (T16). The first fields are drafts / banked /
 failed / twins propagated / coder ctx k / k per banked insn. The next fields are banked insns of all insns / max min per
 target (wall proxy) / sum min (coder-minutes) / tries.
@@ -103,6 +103,15 @@ target (wall proxy) / sum min (coder-minutes) / tries.
 - W64 3 / 3 / 0 / 6 / 86k / 2.32 / 37 of 37 / 1.0 / 2 / 4
 - W24-W64: 1793 drafts, 1702 banked (94.9%), 91 failed, 442 twins, 4037 tries. Draft ctx 64679k (~36.1k per
   draft, 1.31 k per banked insn). Banked 49416 of 52260 insns. W60-W64 are the pool-exhausted tail (44, 10, 5, 3, 3 drawn).
+- W65-W68 (3.3, T46-T49): same fields. These are the A/B tail waves, drawn with `--per-cluster 48` (T45).
+- W65 48 / 48 / 0 / 28 / 1501k / 1.45 / 1037 of 1037 / 1.5 / 49 / 51
+- W66 48 / 48 / 0 / 36 / 1288k / 1.45 / 889 of 889 / 1.6 / 45 / 44
+- W67 48 / 48 / 0 / 12 / 1414k / 1.97 / 719 of 719 / 1.5 / 52 / 49
+- W68 21 / 21 / 0 / 0 / 540k / 2.05 / 264 of 264 / 1.3 / 15 / 18
+- W65-W68: 165 drafts, 165 banked (100%), 0 failed, 76 twins, 162 tries. Draft ctx 4743k (~28.7k per draft,
+  1.63 k per banked insn). Bucket A 128 of 128 at 1.76 k/insn (seed). Bucket B 37 of 37 at 1.34 k/insn (fresh).
+- W24-W68: 1958 drafts, 1867 banked (95.4%), 91 failed, 518 twins, 4199 tries. Draft ctx 69422k (~35.5k per
+  draft, 1.33 k per banked insn). Banked 52325 of 55169 insns.
 
 ## Lanes (W1, counts from the W1 draw, R1.8.1-003. Opening the excluded lanes is 1.8.2's)
 - drafter — one coder per target (W1: 24), and gater — `gate.py` + recover (W1: 22 banked, 2 failed)
@@ -114,8 +123,8 @@ target (wall proxy) / sum min (coder-minutes) / tries.
 
 ## Routing
 The route and the cap per bucket are in docs/routing.md. The routes come from waves/W1/rate.txt + W2 for >200.
-`waves.py rate --check`, with no wave arg, checks the aggregate of every closed wave (now W1-W64). See docs/routing.md
-`## Aggregate rate (W1-W64, 3.3 T43)`.
+`waves.py rate --check`, with no wave arg, checks the aggregate of every closed wave (now W1-W68). See docs/routing.md
+`## Aggregate rate (W1-W68, 3.3 T51)`.
 
 ## Remaining campaign (for the next planner, 2.8 close, T11, 2026-10-17)
 - census: `stubs 5519 of 7647 game functions (2109 c, 19 ledgered); vendor 475 asm` (2.8 start 5936, G1 close 5738)
@@ -171,13 +180,14 @@ The route and the cap per bucket are in docs/routing.md. The routes come from wa
 The 3.3 close is T43 (2026-10-25). Inputs were refreshed (step 0): `draw: 1587 of 8124 drawable, 6537 refused` (vendor 477 ·
 already-c 5604 · exclude-list 10 · dup-member 446).
 - census: `stubs 1940 of 7647 game functions (5604 c, 103 ledgered); vendor 475 asm` (3.3 start 4211, 3424 c)
-- `open: A 128 open, 151 drawable, 23 ledgered`
-- `open: B 37 open, 105 drawable, 68 ledgered`
+  - after W65-W68 (T51 re-run, 2026-10-30): `stubs 1699 of 7647 game functions (5845 c, 103 ledgered); vendor 475 asm`
+  - T51 refresh: `draw: 1422 of 8124 drawable, 6702 refused` (already-c 5845, dup-member 370)
+- `open: A 128 open, 151 drawable, 23 ledgered`. After W68 (T51): `open: A 0 open, 23 drawable, 23 ledgered`
+- `open: B 37 open, 105 drawable, 68 ledgered`. After W68 (T51): `open: B 0 open, 68 drawable, 68 ledgered`
 - `open: C 870 open, 870 drawable, 0 ledgered`
 - `open: D 360 open, 361 drawable, 1 ledgered`
-- `open: >200 0 open, 0 drawable, 0 ledgered`. This line is a tool gap. `bucket_of` returns None above 200, so
-  `open` never counts that bucket. draw.jsonl counted by a scratch script gives 100 drawable, 98 open, 29250 insns.
-- open insns: A 2015 · B 894 · C 60660 · D 48690 · >200 29250
+- `open: >200 98 open, 100 drawable, 2 ledgered` (T51, the tool line since T45). The T43 line read 0 because of a tool gap.
+- open insns: A 2015 · B 894 · C 60660 · D 48690 · >200 29250. After W68: A 0 · B 0.
 - ledger: `ledger: 104 rows, 0 unledgered, 0 without draft, 0 without blocker` (3.3 start 13)
 - the A/B pool did not close. The leverage draw takes one target per dup cluster. Almost all of the 165 open A/B
   rows are in one cluster, so W61-W64 drew 10, 5, 3 and 3 targets. A draw that takes several targets per cluster
@@ -186,6 +196,7 @@ already-c 5604 · exclude-list 10 · dup-member 446).
     default is 1. Use it for the A/B tail only, when the draw falls far short of `--size`.
   - 162 of the 165 open A/B rows are in one cluster. A dry draw with N 1 takes 2 targets. With N 48 it takes 48.
   - `open '>200'` now counts that bucket: `open: >200 98 open, 100 drawable, 2 ledgered`.
+  - W65-W68 drew the 165 rows with `--per-cluster 48` and banked all of them. `open --check A,B` exits 0 (T51).
 - per-bucket cost, W24-W64 draft coders only. The fields are drafts/banked, insns banked of drawn, ctx, k per bank,
   k per banked insn and tries:
   - bucket A 426/403 5801 of 6121 13417k 33.3 2.31 666
@@ -209,3 +220,7 @@ already-c 5604 · exclude-list 10 · dup-member 446).
   - seed: the pilot (W23, n=12) found C worse seeded (0.91 vs 0.67) and D better (0.42 vs 0.88). Recommended: split
     the first C and D waves into seed and fresh arms, as W24-W25 did, and bind the verdict for the later waves.
   - draw: `--only C` or `--only D` (T1). Set the caps per docs/routing.md (C 20, D 30).
+- 3.4 T3 (2026-10-31): the W65 twin rockx5 func_800F6348_ovl28 is banked as its own C. Its rename was a swap, and cpp
+  does not re-expand a macro inside its own expansion. `propagate.py` now refuses a swap as `cyclic rename`.
+  - `propagate.py sweep --dry-run` refuses 24 more members as `cyclic rename` (21 rockx5, 3 slus). For the
+    remainder lane, bank each one as its own C from the head body with the calls swapped (C0264).

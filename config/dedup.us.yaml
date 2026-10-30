@@ -6321,3 +6321,326 @@ groups:
     members:
       - {alias: rockx5, module: rockx5/ovl06_800FABAC, vram: 0x800FAD30, name: func_800FAD30_ovl06}
       - {alias: rockx5, module: rockx5/ovl33_800FD07C, vram: 0x800FD2F4, name: func_800FD2F4_ovl33}
+  - group: 4620f47dc6c6ff7e3f8ab53b1b40918459483f03
+    body: src/shared/func_800EEC94_ovl21.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl21_800EEC44, vram: 0x800EEC94, name: func_800EEC94_ovl21}
+      - {alias: rockx5, module: rockx5/ovl21_800EEC44, vram: 0x800EF1AC, name: func_800EF1AC_ovl21}
+      - {alias: rockx5, module: rockx5/ovl50_800FA38C, vram: 0x800FA38C, name: func_800FA38C_ovl50}
+      - {alias: rockx5, module: rockx5/ovl49_800FA13C, vram: 0x800FA6E0, name: func_800FA6E0_ovl49}
+  - group: c21d8b683171bb3abb52a614f4c9ba83e700a7ab
+    body: src/shared/func_800EF4C0_ovl03.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl03_800EF478, vram: 0x800EF4C0, name: func_800EF4C0_ovl03}
+      - {alias: rockx5, module: rockx5/ovl02_800F0288, vram: 0x800F02D0, name: func_800F02D0_ovl02}
+      - {alias: rockx5, module: rockx5/ovl06_800F7108, vram: 0x800F7150, name: func_800F7150_ovl06}
+  - group: d30fe08bc41ab7f891146c5d378ad5e0236879fd
+    body: src/shared/func_800EF5C8_ovl29.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl29_800EEF84, vram: 0x800EF5C8, name: func_800EF5C8_ovl29}
+      - {alias: rockx5, module: rockx5/ovl18_800EFCD4, vram: 0x800F05A4, name: func_800F05A4_ovl18}
+      - {alias: rockx5, module: rockx5/ovl26_800F0460, vram: 0x800F0D30, name: func_800F0D30_ovl26}
+  - group: ae2a686d6a39d5213f495315f9c7268aa828e0fa
+    body: src/shared/func_800EF6A4_ovl29.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl29_800EEF84, vram: 0x800EF6A4, name: func_800EF6A4_ovl29}
+      - {alias: rockx5, module: rockx5/ovl18_800EFCD4, vram: 0x800F0680, name: func_800F0680_ovl18}
+      - {alias: rockx5, module: rockx5/ovl26_800F0460, vram: 0x800F0E0C, name: func_800F0E0C_ovl26}
+  - group: 551fe75c1ef02f5c219c50b96f81769024476729
+    body: src/shared/func_800EFA00_ovl03.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl03_800EF79C, vram: 0x800EFA00, name: func_800EFA00_ovl03}
+      - {alias: rockx5, module: rockx5/ovl02_800F0288, vram: 0x800F0810, name: func_800F0810_ovl02}
+      - {alias: rockx5, module: rockx5/ovl06_800F7108, vram: 0x800F7690, name: func_800F7690_ovl06}
+  - group: 2c3c088533a1936e9590eaa170220aad0f7982fb
+    body: src/shared/func_800EFA38_ovl03.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl03_800EF79C, vram: 0x800EFA38, name: func_800EFA38_ovl03}
+      - {alias: rockx5, module: rockx5/ovl02_800F0288, vram: 0x800F0848, name: func_800F0848_ovl02}
+      - {alias: rockx5, module: rockx5/ovl06_800F7108, vram: 0x800F76C8, name: func_800F76C8_ovl06}
+  - group: b6712b1058adb3624cfe3731a0126e1aff619c56
+    body: src/shared/func_800EFA9C_ovl29.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl29_800EEF84, vram: 0x800EFA9C, name: func_800EFA9C_ovl29}
+      - {alias: rockx5, module: rockx5/ovl18_800EFCD4, vram: 0x800F0A78, name: func_800F0A78_ovl18}
+      - {alias: rockx5, module: rockx5/ovl26_800F0460, vram: 0x800F1204, name: func_800F1204_ovl26}
+  - group: 800c51f0f914936d97ecd6f6c0d884056d4ce8ba
+    body: src/shared/func_800F0324_ovl01.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl01_800F0280, vram: 0x800F0324, name: func_800F0324_ovl01}
+      - {alias: rockx5, module: rockx5/ovl09_800EFBB4, vram: 0x800F03BC, name: func_800F03BC_ovl09}
+  - group: 43aaeeb95a7b6b83f53fbd56bc78700cc7285e2d
+    body: src/shared/func_800F0334_ovl12.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl12_800F0258, vram: 0x800F0334, name: func_800F0334_ovl12}
+      - {alias: rockx5, module: rockx5/ovl14_800F0258, vram: 0x800F0334, name: func_800F0334_ovl14}
+  - group: df4d6848fe8aa6f94f6933f374b2174dd693861a
+    body: src/shared/func_800F0810_ovl29.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl29_800F03E8, vram: 0x800F0810, name: func_800F0810_ovl29}
+      - {alias: rockx5, module: rockx5/ovl27_800F17DC, vram: 0x800F2748, name: func_800F2748_ovl27}
+  - group: d7066014f099789b125c1d66f63ffd33c813dbf3
+    body: src/shared/func_800F0820_ovl24.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl24_800EFFF8, vram: 0x800F0820, name: func_800F0820_ovl24}
+      - {alias: rockx5, module: rockx5/ovl24_800EFFF8, vram: 0x800F08EC, name: func_800F08EC_ovl24}
+      - {alias: rockx5, module: rockx5/ovl20_800F0CF4, vram: 0x800F0FE8, name: func_800F0FE8_ovl20}
+      - {alias: rockx5, module: rockx5/ovl20_800F0CF4, vram: 0x800F1784, name: func_800F1784_ovl20}
+  - group: 85632241a1341e1d6bb878701fcdd80363fc1162
+    body: src/shared/func_800F0D2C_ovl04.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl04_800F0CB0, vram: 0x800F0D2C, name: func_800F0D2C_ovl04}
+      - {alias: rockx5, module: rockx5/ovl18_800F0CD0, vram: 0x800F155C, name: func_800F155C_ovl18}
+  - group: e62f58c62475f07f8ec5e740a63596cb6e412f55
+    body: src/shared/func_800F0E34_ovl11.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl11_800F0994, vram: 0x800F0E34, name: func_800F0E34_ovl11}
+      - {alias: rockx5, module: rockx5/ovl29_800F2B34, vram: 0x800F2FD4, name: func_800F2FD4_ovl29}
+  - group: 30d8b1733ac0b697bfcb57f601655c8091d14a75
+    body: src/shared/func_800F0EFC_ovl05.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl05_800F0E40, vram: 0x800F0EFC, name: func_800F0EFC_ovl05}
+      - {alias: rockx5, module: rockx5/ovl03_800F1420, vram: 0x800F14DC, name: func_800F14DC_ovl03}
+  - group: 279c45e7b72f57fc7624c0046387b21002f03222
+    body: src/shared/func_800F0FB0_ovl05.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl05_800F0E40, vram: 0x800F0FB0, name: func_800F0FB0_ovl05}
+      - {alias: rockx5, module: rockx5/ovl03_800F1420, vram: 0x800F1590, name: func_800F1590_ovl03}
+  - group: b90785090d316d77178695fdaecbaacebec16499
+    body: src/shared/func_800F2330_ovl00.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl00_800F22E4, vram: 0x800F2330, name: func_800F2330_ovl00}
+      - {alias: rockx5, module: rockx5/ovl01_800F3D48, vram: 0x800F3D94, name: func_800F3D94_ovl01}
+  - group: c4df7cc2125e9774bfa3a72b9250d6113fba5ca1
+    body: src/shared/func_800F2850_ovl02.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl02_800F2724, vram: 0x800F2850, name: func_800F2850_ovl02}
+      - {alias: rockx5, module: rockx5/ovl18_800F3994, vram: 0x800F3AC0, name: func_800F3AC0_ovl18}
+      - {alias: rockx5, module: rockx5/ovl07_800F5184, vram: 0x800F52B0, name: func_800F52B0_ovl07}
+      - {alias: rockx5, module: rockx5/ovl28_800F6498, vram: 0x800F64D4, name: func_800F64D4_ovl28}
+  - group: cb47d1ded758f5a9b2944af59d0c64ac805e5019
+    body: src/shared/func_800F2974_ovl02.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl02_800F2938, vram: 0x800F2974, name: func_800F2974_ovl02}
+      - {alias: rockx5, module: rockx5/ovl18_800F3994, vram: 0x800F3BE4, name: func_800F3BE4_ovl18}
+      - {alias: rockx5, module: rockx5/ovl07_800F5184, vram: 0x800F53D4, name: func_800F53D4_ovl07}
+  - group: be3dc7a6ffcfadbfa6084401d1ed5b9576f6a0b3
+    body: src/shared/func_800F51C0_ovl10.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl10_800F5130, vram: 0x800F51C0, name: func_800F51C0_ovl10}
+      - {alias: rockx5, module: rockx5/ovl36_800FBFDC, vram: 0x800FC38C, name: func_800FC38C_ovl36}
+  - group: 448ce312e52c16d09fefcc8419b73ac56e908400
+    body: src/shared/func_800F8338_ovl03.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl03_800F8338, vram: 0x800F8338, name: func_800F8338_ovl03}
+      - {alias: rockx5, module: rockx5/ovl31_800FF324, vram: 0x800FF324, name: func_800FF324_ovl31}
+  - group: b886b1a187673e0077d7f10097ca9f68dafa4085
+    body: src/shared/func_800F864C_ovl11.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl11_800F8610, vram: 0x800F864C, name: func_800F864C_ovl11}
+      - {alias: rockx5, module: rockx5/ovl37_800FD648, vram: 0x800FD684, name: func_800FD684_ovl37}
+  - group: d4c9da3ee48c49790acf7e08c67642de641c4bb7
+    body: src/shared/func_800FA4D8_ovl06.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl06_800FA400, vram: 0x800FA4D8, name: func_800FA4D8_ovl06}
+      - {alias: rockx5, module: rockx5/ovl33_800FC9C4, vram: 0x800FCA9C, name: func_800FCA9C_ovl33}
+  - group: d24ab091974a6306cfced5e2849ad7d1cb8c3b41
+    body: src/shared/func_800FA8D8_ovl06.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl06_800FA858, vram: 0x800FA8D8, name: func_800FA8D8_ovl06}
+      - {alias: rockx5, module: rockx5/ovl33_800FCD30, vram: 0x800FCE9C, name: func_800FCE9C_ovl33}
+  - group: 0d9382c25cfac80bf4899c6334751c552cc34cb4
+    body: src/shared/func_800EFDF8_ovl12.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl12_800EFDF8, vram: 0x800EFDF8, name: func_800EFDF8_ovl12}
+      - {alias: rockx5, module: rockx5/ovl14_800EFC90, vram: 0x800EFDF8, name: func_800EFDF8_ovl14}
+  - group: 1fd57d15cefa3d9bea383658fc308248ea987905
+    body: src/shared/func_800F0280_ovl01.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl01_800F0280, vram: 0x800F0280, name: func_800F0280_ovl01}
+      - {alias: rockx5, module: rockx5/ovl09_800EFBB4, vram: 0x800F0318, name: func_800F0318_ovl09}
+  - group: f4a4a3dff824b87301e887271ebb51e386ee4887
+    body: src/shared/func_800F2B28_ovl00.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl00_800F2AEC, vram: 0x800F2B28, name: func_800F2B28_ovl00}
+      - {alias: rockx5, module: rockx5/ovl01_800F4550, vram: 0x800F458C, name: func_800F458C_ovl01}
+  - group: 077a4da2f6169ae362c883a4b9723c2ae67db2ec
+    body: src/shared/func_800F5918_ovl09.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl09_800F58B4, vram: 0x800F5918, name: func_800F5918_ovl09}
+      - {alias: rockx5, module: rockx5/ovl35_800FDCC0, vram: 0x800FDE24, name: func_800FDE24_ovl35}
+  - group: 3c5bc20320033806fa0ff49fb40a56c2c6498c16
+    body: src/shared/func_800F5C40_ovl18.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl18_800F5B98, vram: 0x800F5C40, name: func_800F5C40_ovl18}
+      - {alias: rockx5, module: rockx5/ovl03_800F8878, vram: 0x800F8978, name: func_800F8978_ovl03}
+  - group: f6344a06920563acb02097b543e59d5db0224d56
+    body: src/shared/func_800F5FC0_ovl10.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl10_800F5D5C, vram: 0x800F5FC0, name: func_800F5FC0_ovl10}
+      - {alias: rockx5, module: rockx5/ovl36_800FCF28, vram: 0x800FD18C, name: func_800FD18C_ovl36}
+  - group: 5fdeb12f95b24efb331ca0b23bf7b5a99e5dc6ab
+    body: src/shared/func_800F67E4_ovl28.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl28_800F6738, vram: 0x800F67E4, name: func_800F67E4_ovl28}
+      - {alias: rockx5, module: rockx5/ovl01_800F65E8, vram: 0x800F687C, name: func_800F687C_ovl01}
+  - group: a572f0d5ebcdd503d0be55fe6913f876a5e26ba1
+    body: src/shared/func_800F79B4_ovl03.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl03_800F7950, vram: 0x800F79B4, name: func_800F79B4_ovl03}
+      - {alias: rockx5, module: rockx5/ovl31_800FE844, vram: 0x800FE9A0, name: func_800FE9A0_ovl31}
+  - group: a407f8611d67b7c998fb9570874361122a5520de
+    body: src/shared/func_800F8584_ovl11.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl11_800F8430, vram: 0x800F8584, name: func_800F8584_ovl11}
+      - {alias: rockx5, module: rockx5/ovl37_800FD468, vram: 0x800FD5BC, name: func_800FD5BC_ovl37}
+  - group: 92efef3cee80b887bbbc12fb267d0e047160edba
+    body: src/shared/func_800FA4C4_ovl47.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl47_800FA4C4, vram: 0x800FA4C4, name: func_800FA4C4_ovl47}
+      - {alias: rockx5, module: rockx5/ovl44_800FA7A0, vram: 0x800FA7A0, name: func_800FA7A0_ovl44}
+  - group: e0ce67fdb9373b1803c92b135ab3f83c040ddb43
+    body: src/shared/func_800FAA00_ovl06.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl06_800FA858, vram: 0x800FAA00, name: func_800FAA00_ovl06}
+      - {alias: rockx5, module: rockx5/ovl33_800FCD30, vram: 0x800FCFC4, name: func_800FCFC4_ovl33}
+  - group: a53e7cd20124bdb327c5879ea303d45f86bd3446
+    body: src/shared/func_800FC398_ovl07.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl07_800FC350, vram: 0x800FC398, name: func_800FC398_ovl07}
+      - {alias: rockx5, module: rockx5/ovl34_800FCCA8, vram: 0x800FCCF0, name: func_800FCCF0_ovl34}
+  - group: 3949de3c2d4cfcbb338d2febe3efc546743b551c
+    body: src/shared/func_800EE9A8_ovl12.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl12_800EE9A8, vram: 0x800EE9A8, name: func_800EE9A8_ovl12}
+      - {alias: rockx5, module: rockx5/ovl14_800EE9A8, vram: 0x800EE9A8, name: func_800EE9A8_ovl14}
+  - group: a679612a044f051da81d710997a2c4e5b7d71ca7
+    body: src/shared/func_800EEC98_ovl08.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl08_800EE9BC, vram: 0x800EEC98, name: func_800EEC98_ovl08}
+      - {alias: rockx5, module: rockx5/ovl28_800EF35C, vram: 0x800EF7B4, name: func_800EF7B4_ovl28}
+  - group: a29f0c6491a819b0e18583f2a2fbd07287a9fc92
+    body: src/shared/func_800EF204_ovl00.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl00_800EEC68, vram: 0x800EF204, name: func_800EF204_ovl00}
+      - {alias: rockx5, module: rockx5/ovl27_800EF9CC, vram: 0x800F0028, name: func_800F0028_ovl27}
+  - group: d1352e876e24cb68eebc022d28a65e2fa926b168
+    body: src/shared/func_800EF5E8_ovl12.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl12_800EEFE0, vram: 0x800EF5E8, name: func_800EF5E8_ovl12}
+      - {alias: rockx5, module: rockx5/ovl14_800EEC38, vram: 0x800EF5E8, name: func_800EF5E8_ovl14}
+  - group: 066702873469f5eb3d19aefdbb86c415b318b518
+    body: src/shared/func_800EFC54_ovl08.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl08_800EF878, vram: 0x800EFC54, name: func_800EFC54_ovl08}
+      - {alias: rockx5, module: rockx5/ovl07_800F5814, vram: 0x800F5BF0, name: func_800F5BF0_ovl07}
+  - group: fa5a7beeb830fb25bb7e641dc9acfe6fba8ce339
+    body: src/shared/func_800F09C8_ovl05.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl05_800F09C8, vram: 0x800F09C8, name: func_800F09C8_ovl05}
+      - {alias: rockx5, module: rockx5/ovl03_800F0FA8, vram: 0x800F0FA8, name: func_800F0FA8_ovl03}
+  - group: 4b494cf33dea0566963b4691f9864083bad90750
+    body: src/shared/func_800F3014_ovl00.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl00_800F2F40, vram: 0x800F3014, name: func_800F3014_ovl00}
+      - {alias: rockx5, module: rockx5/ovl01_800F4788, vram: 0x800F4A78, name: func_800F4A78_ovl01}
+  - group: 1ba82260a84458d04a05b189499a1034e7134b32
+    body: src/shared/func_800F3418_ovl09.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl09_800F1BC4, vram: 0x800F3418, name: func_800F3418_ovl09}
+      - {alias: rockx5, module: rockx5/ovl35_800FA258, vram: 0x800FB924, name: func_800FB924_ovl35}
+  - group: efe195fe447f81a03c32b861f63bcb113b2d79b2
+    body: src/shared/func_800F3B18_ovl03.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl03_800F37F0, vram: 0x800F3B18, name: func_800F3B18_ovl03}
+      - {alias: rockx5, module: rockx5/ovl31_800FA400, vram: 0x800FAB04, name: func_800FAB04_ovl31}
+  - group: 5dbd847f7f364dc482220851b98386128584192f
+    body: src/shared/func_800F3C90_ovl10.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl10_800F3670, vram: 0x800F3C90, name: func_800F3C90_ovl10}
+      - {alias: rockx5, module: rockx5/ovl36_800FA3D8, vram: 0x800FAE5C, name: func_800FAE5C_ovl36}
+  - group: f19736e2a3efbb19f4c10c9f1c20fb60f0610102
+    body: src/shared/func_800F3EA0_ovl04.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl04_800F3CBC, vram: 0x800F3EA0, name: func_800F3EA0_ovl04}
+      - {alias: rockx5, module: rockx5/ovl32_800FA2C4, vram: 0x800FA2C4, name: func_800FA2C4_ovl32}
+  - group: a474b7cc25db4f7b5f2d9b39a88f3ed15db3e94a
+    body: src/shared/func_800F3EB8_ovl09.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl09_800F3DBC, vram: 0x800F3EB8, name: func_800F3EB8_ovl09}
+      - {alias: rockx5, module: rockx5/ovl35_800FA258, vram: 0x800FC3C4, name: func_800FC3C4_ovl35}
+  - group: 127695b867b058b0cf875a927c506c6a411da3c5
+    body: src/shared/func_800F4390_ovl04.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl04_800F3CBC, vram: 0x800F4390, name: func_800F4390_ovl04}
+      - {alias: rockx5, module: rockx5/ovl32_800FA2C4, vram: 0x800FA7B4, name: func_800FA7B4_ovl32}
+  - group: da2160d7592ccf05cf9cbe1155aaaa0893b38bdf
+    body: src/shared/func_800F45B8_ovl04.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl04_800F3CBC, vram: 0x800F45B8, name: func_800F45B8_ovl04}
+      - {alias: rockx5, module: rockx5/ovl32_800FA2C4, vram: 0x800FA9DC, name: func_800FA9DC_ovl32}
+  - group: d78744c494fcf11a31dfd81076645c98f70a6528
+    body: src/shared/func_800F46E0_ovl03.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl03_800F46E0, vram: 0x800F46E0, name: func_800F46E0_ovl03}
+      - {alias: rockx5, module: rockx5/ovl31_800FA400, vram: 0x800FB6CC, name: func_800FB6CC_ovl31}
+  - group: 2d743f6fb505f0b50145ff4a3a3436e3dae1fc91
+    body: src/shared/func_800F48D4_ovl03.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl03_800F46E0, vram: 0x800F48D4, name: func_800F48D4_ovl03}
+      - {alias: rockx5, module: rockx5/ovl31_800FA400, vram: 0x800FB8C0, name: func_800FB8C0_ovl31}
+  - group: b7a4f153de95466852dbb5f97a67593e682351d4
+    body: src/shared/func_800F4C10_ovl03.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl03_800F46E0, vram: 0x800F4C10, name: func_800F4C10_ovl03}
+      - {alias: rockx5, module: rockx5/ovl31_800FA400, vram: 0x800FBBFC, name: func_800FBBFC_ovl31}
+  - group: 767d026f0a802479cc4bddc640ba0673fcb619ec
+    body: src/shared/func_800F4CDC_ovl04.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl04_800F3CBC, vram: 0x800F4CDC, name: func_800F4CDC_ovl04}
+      - {alias: rockx5, module: rockx5/ovl32_800FA2C4, vram: 0x800FB100, name: func_800FB100_ovl32}
+  - group: 2b98a6e34d453cb7c7e93404e3219fde7b73b903
+    body: src/shared/func_800F6AAC_ovl10.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl10_800F62DC, vram: 0x800F6AAC, name: func_800F6AAC_ovl10}
+      - {alias: rockx5, module: rockx5/ovl36_800FD4A8, vram: 0x800FDC78, name: func_800FDC78_ovl36}
+  - group: d7088189b8ac08dfa25c19816d971e8363df62a7
+    body: src/shared/func_800F6CC8_ovl10.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl10_800F62DC, vram: 0x800F6CC8, name: func_800F6CC8_ovl10}
+      - {alias: rockx5, module: rockx5/ovl36_800FD4A8, vram: 0x800FDE94, name: func_800FDE94_ovl36}
+  - group: 416cd89da7e102578c465f1885275491c97dad01
+    body: src/shared/func_800F8128_ovl07.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl07_800F7FF4, vram: 0x800F8128, name: func_800F8128_ovl07}
+      - {alias: rockx5, module: rockx5/ovl10_800F912C, vram: 0x800F9260, name: func_800F9260_ovl10}
+  - group: 88d1a2e55cb3d937484c199d0ee38dc83dc25010
+    body: src/shared/func_800F8330_ovl07.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl07_800F7FF4, vram: 0x800F8330, name: func_800F8330_ovl07}
+      - {alias: rockx5, module: rockx5/ovl10_800F912C, vram: 0x800F9468, name: func_800F9468_ovl10}
+  - group: b079b9ed902e1c0c3e27279a98f094a897ec9b80
+    body: src/shared/func_800F86D8_ovl01.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl01_800F8530, vram: 0x800F86D8, name: func_800F86D8_ovl01}
+      - {alias: rockx5, module: rockx5/ovl30_800FA310, vram: 0x800FA310, name: func_800FA310_ovl30}
+  - group: e3fef8edfe4a1e62dbaa22a90edc469ccc6c0423
+    body: src/shared/func_800F8A40_ovl01.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl01_800F8A40, vram: 0x800F8A40, name: func_800F8A40_ovl01}
+      - {alias: rockx5, module: rockx5/ovl30_800FA310, vram: 0x800FA678, name: func_800FA678_ovl30}
+  - group: a13cb45a4c8c81a152cc460f448bd8275ed1804b
+    body: src/shared/func_800F8CE8_ovl06.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl06_800F8BC8, vram: 0x800F8CE8, name: func_800F8CE8_ovl06}
+      - {alias: rockx5, module: rockx5/ovl33_800FA004, vram: 0x800FB2AC, name: func_800FB2AC_ovl33}
+  - group: 5c0b12917876768a83b3ae39a8f4fa48f01050b9
+    body: src/shared/func_800F8E6C_ovl01.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl01_800F8A40, vram: 0x800F8E6C, name: func_800F8E6C_ovl01}
+      - {alias: rockx5, module: rockx5/ovl30_800FA310, vram: 0x800FAAA4, name: func_800FAAA4_ovl30}
+  - group: c5658e8ef41d6cd730e77282810b4599b7eb580e
+    body: src/shared/func_800F96D0_ovl07.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl07_800F95C0, vram: 0x800F96D0, name: func_800F96D0_ovl07}
+      - {alias: rockx5, module: rockx5/ovl34_800FA028, vram: 0x800FA028, name: func_800FA028_ovl34}

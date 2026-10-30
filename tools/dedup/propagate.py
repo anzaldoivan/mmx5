@@ -14,7 +14,8 @@ takes DEDUP_CALLEE. A masked-only member M (a %hi/%lo or jal relocation differs)
 relocations of the rep's and M's built objects, x4core.Elf; rep = build/<a>/src/<a>/<name>.o, M = its asm file's
 build/<a>/asm/<a>/<file>.o) when, slot by slot, types and in-place addends (C0039, HI16/LO16 paired) agree, the map
 sym_R -> sym_M is a function, every sym_M is in M's own object (an `_ovlNN` suffix = M's own overlay; none = the main
-exe), no renamed sym_R is a struct field (.x/->x), param or local in the body, and raw words are equal outside the
+exe), no renamed sym_R is a struct field (.x/->x), param or local in the body, no rename target is itself a renamed
+source (a swap: cpp does not re-expand a macro inside its own expansion), and raw words are equal outside the
 relocated fields; it is then instantiated with `#define sym_R sym_M` per differing symbol (jal symbols excepted when
 the body takes DEDUP_CALLEE). Else refused: `dedup: FAIL <alias> <name> -- <why>` (exit code unchanged). Printed
 `dedup: <m> masked-only: <a> reloc-gated, <k> refused`. The byte gate below stays the arbiter (C0071).
@@ -181,6 +182,8 @@ def reloc_gate(r, f, relocs_of, callee, text):
         if ren.setdefault(sr, sm) != sm:
             return f"non-functional map {sr} -> {ren[sr]} | {sm}", None
     ren = {a: b for a, b in ren.items() if a != b}
+    for sr in sorted(set(ren) & set(ren.values())):
+        return f"cyclic rename {sr} -> {ren[sr]}: cpp does not re-expand a macro inside its own expansion", None
     for sr in sorted(ren):
         if u := misuse(text, sr):
             return f"{sr} is a {u} in the body, not a symbol", None
@@ -696,6 +699,10 @@ def selftest():
         (work / "src/fx/func_80001020.c").unlink()
         ok &= check(work, fns[:3] + fns[4:]) == 1  # ungated
         ok &= reloc_control(work)
+        sw = {"rep": [(0, 4, "fx_a", 0), (1, 4, "fx_b", 0)], "m": [(0, 4, "fx_b", 0), (1, 4, "fx_a", 0)]}
+        ok &= reloc_gate({"name": "rep", "words": (0x0C000000, 0x0C000000)}, {"name": "m", "words": (0x0C000000,) * 2},
+                         lambda f: sw[f["name"]], False, "")[0] == ("cyclic rename fx_a -> fx_b: cpp does not "
+                                                                   "re-expand a macro inside its own expansion")
     lines = out.getvalue().splitlines()
     want = ["dedup: FAIL fx func_80001030 -- word 0 (+0x0) differs", "dedup: 3 of 4 members byte-gated",
             "dedup: unregistered fx func_80001030",

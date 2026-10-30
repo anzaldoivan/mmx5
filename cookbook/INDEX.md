@@ -259,6 +259,12 @@ C0256 | m2c seed passes a1 that only feeds a store: not an argument, drop it fro
 C0257 | Two loop invariants hoisted in the wrong order: read the first one into a local, in target order | codegen,loop,invariant,hoist,prologue,saved-reg,local,table-call | 2026-10-25 | 3.3/T34 | W56 slus 80020904
 C0258 | Table call sets up the table address before the argument addresses: read each argument into a local first | codegen,table-call,jalr,argument,lui,local,sched,order | 2026-10-25 | 3.3/T35 | W57 slus 80054BB8
 C0259 | Table index ending in +1 folds into the lbu offset: compute the index in its own s32 local | codegen,index,table,local,s32,lbu,offset,fold,addiu | 2026-10-25 | 3.3/T36 | W58 slus 8002AA7C
-C0260 | u16 field incremented then compared ==N: pre-increment inside the compare, not a temp local | codegen,u16,increment,pre-increment,sh,andi,compare,delay-slot,store-order | 2026-10-25 | 3.3/T37 | W59 F796C_ovl09
+C0260 | u16 field incremented then compared ==N: pre-increment inside the compare, not a temp local | codegen,u16,increment,pre-increment,sh,andi,compare,delay-slot,store-order,s16,u8,pre-decrement | 2026-10-25 | 3.3/T37 | W59 F796C_ovl09
 C0261 | Hand-asm signs in the target ($sp write, lone break, old-pointer loop compare): ledger at once, no C form | codegen,hand-asm,include_asm,ledger,sp,break,loop,m2c | 2026-10-25 | 3.3/T38 | W60 slus 80013348 8001336C 80013438 8001344C
 C0262 | Long list in a make recipe hits MAX_ARG_STRLEN (128 KiB per sh -c arg): pass it through a file | make,shell,argv,e2big,max_arg_strlen,recipe,build | 2026-10-26 | 3.3/T4 | T4 generalizable (c49 no-rom compile-only)
+C0263 | Find why a red CI floor gate passed the local hooks | ci,hooks,style,gate,psxdecomp | 2026-10-31 | 3.4/T1 | psxdecomp-readme red 10-24..10-25
+C0264 | Swap reloc rename is a cpp no-op: refuse it, bank the twin as its own C | dedup,propagate,reloc,rename,cpp,cyclic,sha | 2026-10-31 | 3.4/T3 | generalizable
+C0265 | Two-constant select from a masked test lands in v1: write the test into the join variable | codegen,select,andi,bnez,join-variable,v0-v1,jump,if-else | 2026-10-31 | 3.4/T4 | W69 slus 80025240
+C0266 | Global minus local swaps v0 and v1: read the global into an s32 local in each arm | codegen,global,local,v0-v1,regalloc,per-arm,subtract,if-else | 2026-10-31 | 3.4/T4 | W69 F3B18_ovl03
+C0267 | Abs test as bgez, nop, negu with the constant hoisted: write __builtin_abs(x) > C | codegen,abs,abssi2,builtin,bgez,negu,compare | 2026-10-31 | 3.4/T5 | W70 F1958_ovl11
+C0268 | Pointer tested for zero twice after an init: put the alloc and init in a static inline helper | codegen,inline,helper,null-test,beqz,jump-thread,spawn | 2026-10-31 | 3.4/T5 | W70 F9AE0_ovl04
