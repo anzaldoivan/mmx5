@@ -15,6 +15,7 @@ mode address count
 mode cast count
 mode field count
 mode asm down
+mode gte count
 mode placeholder count
 mode placeholder-use count
 mode struct count
@@ -25,15 +26,15 @@ raise protected 1 2026-10-14 [own] gate runs make no-rom in the build container:
 raise asm 2 2026-10-26 first public release with the floor: header.s and game_80013348.s were already counted in dev's baseline
 raise asm 2 2026-10-26 first public release with the floor: header.s and game_80013348.s were already counted in dev's baseline
 50 pin
-83 goto
+95 goto
 21 goto-unmarked
-6990 offset
+8332 offset
 25 address
 3 cast
-8447 field
+8623 field
 2 asm
-1942 placeholder
-17980 placeholder-use
+2039 placeholder
+19860 placeholder-use
 6 struct
-7915 extern
-6573 filename
+8692 extern
+6865 filename

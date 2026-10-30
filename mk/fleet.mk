@@ -1,6 +1,9 @@
 # fleet.mk — fleet-wide targets over every alias (read first: mk/*.mk sorts fleet < rockx5 < slus).
 # clean:    rm build/ asm/ assets/ for every alias; never extracted/ (game data), never git clean.
-# check:    clean -> extract (once) -> per alias `split` then `build` in parallel (rockx5 after slus); never stops early.
+# style-check: the psxdecomp-readme job's verdict, locally: tools/psxd_{floor,publish}.py copied from STYLE_BASE
+#           (default origin/main, the last pushed head = the job's BASE), then `gate --ci STYLE_BASE..HEAD` (style,
+#           README lint, categories, debt). Commits only, not the work tree. Last line `style-check: OK|FAIL ...`.
+# check:    style-check, then clean -> extract (once) -> per alias `split` then `build` in parallel (rockx5 after slus); never stops early.
 #           One line per alias `check: <a> ok|FAIL` (output in build/<a>.check.log), last line
 #           `check: <k> of <n> green, <f> failed`; exit 0 iff f=0. After a green line it runs
 #           `make tools-health` (mk/tools-health.mk); its failure fails check.
@@ -23,12 +26,23 @@ COMPILE_SRC ?= $(shell find src -name '*.c')
 CO_DIR := .run/compile-only
 # the list goes through a file: inlined, ~4100 paths pass MAX_ARG_STRLEN (128 KiB per sh -c arg)
 
-.PHONY: check expected clean compile-only types-check readability-check no-rom $(addprefix check-,$(ALIASES))
+.PHONY: check style-check expected clean compile-only types-check readability-check no-rom $(addprefix check-,$(ALIASES))
 
 clean:
 	rm -rf build asm assets
 
+STYLE_BASE ?= origin/main
+SC_DIR := .run/style-check
+# the judge is BASE's copy of the kit tools, as in .github/workflows/psxdecomp-readme.yml: a change never judges itself
+style-check:
+	@b=$$(git rev-parse -q --verify '$(STYLE_BASE)^{commit}') || { echo "style-check: FAIL no base $(STYLE_BASE)"; exit 2; }; \
+	  rm -rf $(SC_DIR) && mkdir -p $(SC_DIR) && git show $$b:tools/psxd_floor.py > $(SC_DIR)/psxd_floor.py \
+	  && git show $$b:tools/psxd_publish.py > $(SC_DIR)/psxd_publish.py || { echo "style-check: FAIL no tools at $$b"; exit 2; }; \
+	  $(PY) -I $(SC_DIR)/psxd_floor.py gate --ci $$b..HEAD; rc=$$?; rm -rf $(SC_DIR); \
+	  if [ $$rc = 0 ]; then r=OK; else r=FAIL; fi; echo "style-check: $$r (gate --ci, base $$(git rev-parse --short $$b))"; exit $$rc
+
 check:
+	@$(MAKE) --no-print-directory style-check PY="$(PY)"
 	@$(MAKE) --no-print-directory clean
 	@$(MAKE) --no-print-directory extract
 	@mkdir -p build
