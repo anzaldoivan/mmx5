@@ -103,7 +103,7 @@
    "after": "docs/codegen-map/levers/alias_struct_grant.after.c",
    "fn": "lever_alias",
    "cite": "gcc/alias.c:1174 fixed_scalar_and_varying_struct_p",
-   "cookbook": "C0060", "proven_on": null},
+   "cookbook": "C0060", "proven_on": "rockx5_func_800F9D38_ovl07"},
   {"id": "expr_byte_ptr_scale", "group": "cse_expr",
    "tell": "^\\s*sll\\s+\\$\\d+,\\$\\d+,4$",
    "before": "docs/codegen-map/levers/expr_byte_ptr_scale.before.c",

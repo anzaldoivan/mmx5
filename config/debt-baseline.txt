@@ -26,15 +26,15 @@ raise protected 1 2026-10-14 [own] gate runs make no-rom in the build container:
 raise asm 2 2026-10-26 first public release with the floor: header.s and game_80013348.s were already counted in dev's baseline
 raise asm 2 2026-10-26 first public release with the floor: header.s and game_80013348.s were already counted in dev's baseline
 50 pin
-95 goto
+115 goto
 21 goto-unmarked
-8332 offset
-25 address
+10308 offset
+27 address
 3 cast
-8623 field
+8793 field
 2 asm
-2039 placeholder
-19860 placeholder-use
+2108 placeholder
+22524 placeholder-use
 6 struct
-8692 extern
-6865 filename
+9772 extern
+7263 filename

@@ -4842,6 +4842,57 @@ typedef struct {
     u8 pad6C[0x90 - 0x6C];
     u8 unk90;
 } Ent26B4;
+
+/* src/rockx5/func_800F306C_ovl11.c */
+typedef struct {
+    s8 f0;
+    u8 f1[1];
+} Tbl9B8C;
+
+/* src/rockx5/func_800F306C_ovl11.c */
+typedef struct {
+    /* 0x00 */ u8 pad0[2];
+    /* 0x02 */ u8 unk2;
+    /* 0x03 */ u8 unk3;
+    /* 0x04 */ u8 unk4;
+    /* 0x05 */ u8 pad5[5];
+    /* 0x0A */ s16 unkA;
+    /* 0x0C */ u8 padC[2];
+    /* 0x0E */ s16 unkE;
+    /* 0x10 */ u8 pad10[5];
+    /* 0x15 */ u8 unk15;
+    /* 0x16 */ u8 unk16;
+    /* 0x17 */ u8 pad17[9];
+    /* 0x20 */ s32 unk20;
+    /* 0x24 */ s32 unk24;
+    /* 0x28 */ s32 unk28;
+    /* 0x2C */ s32 unk2C;
+    /* 0x30 */ u8 pad30[0x20];
+    /* 0x50 */ u8* unk50;
+    /* 0x54 */ u8* unk54;
+    /* 0x58 */ u8 pad58[8];
+    /* 0x60 */ u8 unk60;
+    /* 0x61 */ u8 pad61[6];
+    /* 0x67 */ u8 unk67;
+    /* 0x68 */ u8* unk68;
+} Obj306C;
+
+/* src/rockx5/func_800F69FC_ovl03.c */
+typedef struct {
+    u16 v[3];
+} Tbl800EEB44;
+
+/* src/rockx5/func_800EE974_ovl20.c */
+typedef struct {
+    u8 pad[0xC6];
+    s8 c6[4];
+    s8 ca;
+} D_800D1C00_t;
+
+/* src/slus/func_8003EC00.c */
+typedef struct {
+    u8 b;
+} QByte;
 /* lift: end */
 
 /* X4 object views shared by the W15 X6 ports (adapted from mmx6 x4.h, AGPL-3.0, THIRD_PARTY.md); fields only where
