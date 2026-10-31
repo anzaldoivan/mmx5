@@ -268,3 +268,14 @@ C0265 | Two-constant select from a masked test lands in v1: write the test into 
 C0266 | Global minus local swaps v0 and v1: read the global into an s32 local in each arm | codegen,global,local,v0-v1,regalloc,per-arm,subtract,if-else | 2026-10-31 | 3.4/T4 | W69 F3B18_ovl03
 C0267 | Abs test as bgez, nop, negu with the constant hoisted: write __builtin_abs(x) > C | codegen,abs,abssi2,builtin,bgez,negu,compare | 2026-10-31 | 3.4/T5 | W70 F1958_ovl11
 C0268 | Pointer tested for zero twice after an init: put the alloc and init in a static inline helper | codegen,inline,helper,null-test,beqz,jump-thread,spawn | 2026-10-31 | 3.4/T5 | W70 F9AE0_ovl04
+C0269 | Callee-saved register stored but never set: store an uninitialised local | codegen,regalloc,uninit,local,callee-saved,s-reg,store | 2026-10-31 | 3.4/T5 | W70 FAEC4_ovl07
+C0270 | Byte counter decremented as addiu 0xFF: store u8 t + 0xFF, not t - 1 | codegen,u8,decrement,addiu,0xff,sb,spelling | 2026-10-31 | 3.4/T6 | W71 F52D4_ovl11 F3414_ovl03
+C0271 | Remainder after a divide copies the quotient: write n - q * 100, not n % 100 | codegen,modulo,divide,quotient,move,copy,regalloc | 2026-10-31 | 3.4/T6 | W71 F428C_ovl24
+C0272 | Pointer loses s0 to a shared constant: set a local to the constant, compare against it | codegen,regalloc,s0-s1-swap,density,constant,local,compare,callee-saved | 2026-10-31 | 3.4/T6 | W71 F3EF4_ovl10
+C0273 | Range test of a byte local loses andi 0xFF: reuse the s32 local for a full-width value | codegen,andi,0xff,u8,s32,local,reuse,combine,nonzero-bits | 2026-10-31 | 3.4/T7 | W72 F0004_ovl08
+C0274 | Table byte +2 folds into %hi(D+2), no hoist: read the word and shift, (u8)(*(u32*)&D[k] >> 16) | codegen,loop,hoist,address,word-read,shift,table,lbu,offset,fold | 2026-10-31 | 3.4/T7 | W72 F7738_ovl04
+C0275 | Shared far tail with a magic divide: goto after the duplicated divide store stops sched1 hoist | codegen,goto,FAKE,magic,divide,sched,cross-jump,jump2,regalloc,block-layout | 2026-10-31 | 3.4/T7 | W72 EEFE0_ovl12
+C0276 | Identical global RMW tails merged across arms: write the RMW first in one arm | codegen,cross-jump,tail-merge,jump2,rmw,global,statement-order,if-else,regalloc | 2026-10-31 | 3.4/T7 | W72 F56D8_ovl03
+C0277 | Word RMW pair loads in the wrong order: move the byte store below the pair | codegen,sched,store-order,rmw,sb,v0-v1,load-order,statement-order | 2026-10-31 | 3.4/T7 | W72 F5FA0_ovl29
+C0278 | Byte table column loses andi 0xFF: post-increment the column field inside the index | codegen,andi,0xff,u8,post-increment,index,table,combine | 2026-10-31 | 3.4/T8 | W73 EED30_ovl12
+C0279 | Byte zero test folds to beq, no lone sll 24: hold the byte in a one-byte struct local | codegen,u8,s8,sll,sign-extend,struct,QImode,promote,local,FAKE | 2026-10-31 | 3.4/T8 | W73 slus 8003EC00
