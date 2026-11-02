@@ -4893,6 +4893,148 @@ typedef struct {
 typedef struct {
     u8 b;
 } QByte;
+
+/* src/rockx5/func_800EEE24_ovl27.c */
+/* 0x80-byte block copied from the scratchpad buffer */
+typedef struct {
+    u8 d[0x80];
+} Blk80;
+
+/* src/rockx5/func_800EEE24_ovl27.c */
+/* 0x20-byte block copied from the scratchpad buffer */
+typedef struct {
+    u8 d[0x20];
+} Blk20;
+
+/* src/rockx5/func_800F2970_ovl24.c */
+typedef struct {
+    s32 w[86];
+} Blk158;
+
+/* src/rockx5/func_800F2970_ovl24.c */
+typedef struct {
+    u8 pad0[0x26];
+    u16 a26[16];
+    u8 pad46[5];
+    u8 u4B[7];
+    u8 u52[6];
+    u8 pad58[8];
+    s32 a60[32];
+    u8 padE0[8];
+    u8 uE8[4];
+    u8 uEC[4];
+    u8 padF0[2];
+    u8 uF2[32];
+    u8 u112[32];
+    u8 u132[32];
+    u8 u152[2];
+    s16 sum;
+} Rec2970;
+
+/* src/slus/func_8001AAE8.c */
+typedef struct {
+    /* 0x00 */ s32 unk0;
+    /* 0x04 */ s32 unk4;
+    /* 0x08 */ u32 unk8;
+    /* 0x0C */ s32 unkC;
+    /* 0x10 */ u16 unk10;
+    /* 0x12 */ u16 unk12;
+    /* 0x14 */ s32 unk14;
+    /* 0x18 */ s32 unk18;
+    /* 0x1C */ s32 unk1C;
+} StHdr8130; /* 0x20 */
+
+/* src/slus/func_80014DEC.c, src/slus/func_80015068.c */
+typedef struct Rec5A58 {
+    /* 0x00 */ u8 unk0;
+    /* 0x01 */ u8 unk1;
+    /* 0x02 */ u8 pad2[2];
+    /* 0x04 */ s32 unk4;
+    /* 0x08 */ u16 unk8;
+    /* 0x0A */ u8 padA[2];
+} Rec5A58;
+
+/* src/rockx5/func_800F38F4_ovl26.c */
+typedef struct {
+    u8 b[3][16];
+} Tbl800EE9A8;
+
+/* src/rockx5/func_800F39A8_ovl28.c */
+typedef struct {
+    u8 b[3][3];
+} Tbl39A8;
+
+/* src/rockx5/func_800EEF88_ovl07.c */
+typedef struct {
+    u8 pad[0x5C];
+    s8 f5C;
+} V5C;
+
+/* src/rockx5/func_800F24C4_ovl07.c */
+typedef struct {
+    u8 pad[4];
+    u16 f4[1];
+} D1030;
+
+/* src/slus/func_8003C20C.c */
+typedef struct {
+    u8 pad[0x88];
+    s32 f88[1];
+} D_800D1C00_f88_t;
+
+/* src/slus/func_8001D580.c */
+typedef struct {
+    u8 b[18];
+} Str18;
+
+/* src/slus/func_8001D580.c */
+typedef struct {
+    Str18 s;
+    u8 pad[2];
+} Name20;
+
+/* src/rockx5/func_800EF9D0_ovl24.c */
+typedef struct {
+    u8 pad[0x114];
+    s32 w[1];
+} Obj114;
+
+/* src/rockx5/func_800F3444_ovl29.c */
+typedef struct {
+    /* 0x00 */ u8 pad0[4];
+    /* 0x04 */ u8 unk4;
+    /* 0x05 */ u8 unk5;
+    /* 0x06 */ u8 pad6[4];
+    /* 0x0A */ s16 unkA;
+    /* 0x0C */ u8 padC[2];
+    /* 0x0E */ s16 unkE;
+    /* 0x10 */ u8 pad10[4];
+    /* 0x14 */ u8 unk14;
+    /* 0x15 */ u8 pad15;
+    /* 0x16 */ u8 unk16;
+    /* 0x17 */ u8 pad17[9];
+    /* 0x20 */ s32 unk20;
+    /* 0x24 */ s32 unk24;
+    /* 0x28 */ s32 unk28;
+    /* 0x2C */ s32 unk2C;
+    /* 0x30 */ u8* unk30;
+    /* 0x34 */ u8 pad34[0xC];
+    /* 0x40 */ u16 unk40;
+    /* 0x42 */ u8 pad42[0xE];
+    /* 0x50 */ u8* unk50;
+    /* 0x54 */ s32 unk54;
+    /* 0x58 */ u8* unk58;
+    /* 0x5C */ u8 unk5C;
+    /* 0x5D */ u8 pad5D[3];
+    /* 0x60 */ u8 unk60;
+    /* 0x61 */ u8 unk61;
+    /* 0x62 */ u8 unk62;
+    /* 0x63 */ u8 pad63[4];
+    /* 0x67 */ u8 unk67;
+    /* 0x68 */ s32 unk68;
+    /* 0x6C */ u8 pad6C[0x1E];
+    /* 0x8A */ u8 unk8A;
+} ObjF3444;
 /* lift: end */
 
 /* X4 object views shared by the W15 X6 ports (adapted from mmx6 x4.h, AGPL-3.0, THIRD_PARTY.md); fields only where
