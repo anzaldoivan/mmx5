@@ -26,7 +26,7 @@
 Then **recover** before re-drawing. Triage the gate's failures into body and plumbing. Bank the plumbing rejects through
 the reconcile ladder without a redraft. The gate number is not the close rate until recovery has run.
 
-## Per-wave numbers (W1-W68)
+## Per-wave numbers (W1-W94)
 The numbers come from `waves/W*/{wave.json,attempts.jsonl,verdicts.jsonl}` (T16). The first fields are drafts / banked /
 failed / twins propagated / coder ctx k / k per banked insn. The next fields are banked insns of all insns / max min per
 target (wall proxy) / sum min (coder-minutes) / tries.
@@ -112,6 +112,38 @@ target (wall proxy) / sum min (coder-minutes) / tries.
   1.63 k per banked insn). Bucket A 128 of 128 at 1.76 k/insn (seed). Bucket B 37 of 37 at 1.34 k/insn (fresh).
 - W24-W68: 1958 drafts, 1867 banked (95.4%), 91 failed, 518 twins, 4199 tries. Draft ctx 69422k (~35.5k per
   draft, 1.33 k per banked insn). Banked 52325 of 55169 insns.
+
+- W69-W94 (3.4, T4-T29): same fields. These are the C/D waves (leverage draw, `--only C,D`). W69 drew D, W70 C
+  (the arm pilot), W71-W94 drew C,D on seed with a 1-in-8 fresh holdout. W78 has 1 no-verdict (48 = 42 + 5 + 1).
+- W69 48 / 42 / 6 / 27 / 3138k / 0.52 / 6007 of 6935 / 22.0 / 244 / 408
+- W70 48 / 43 / 5 / 23 / 2458k / 0.67 / 3646 of 4123 / 9.8 / 132 / 271
+- W71 48 / 46 / 2 / 29 / 2815k / 0.54 / 5170 of 5376 / 18.0 / 187 / 370
+- W72 48 / 43 / 5 / 34 / 2527k / 0.69 / 3637 of 4067 / 14.3 / 158 / 314
+- W73 48 / 43 / 5 / 24 / 2510k / 0.79 / 3187 of 3545 / 8.7 / 153 / 367
+- W74 48 / 46 / 2 / 27 / 2202k / 0.74 / 2996 of 3126 / 12.3 / 109 / 194
+- W75 48 / 38 / 10 / 25 / 2333k / 1.05 / 2232 of 2811 / 12.9 / 142 / 321
+- W76 48 / 42 / 6 / 26 / 2217k / 0.93 / 2373 of 2690 / 17.0 / 128 / 240
+- W77 48 / 35 / 13 / 0 / 4660k / 0.76 / 6106 of 8446 / 27.1 / 461 / 737
+- W78 48 / 42 / 5 / 0 / 3883k / 0.59 / 6551 of 7479 / 23.5 / 334 / 594
+- W79 48 / 43 / 5 / 0 / 3422k / 0.58 / 5869 of 6566 / 23.6 / 270 / 483
+- W80 48 / 43 / 5 / 0 / 3178k / 0.62 / 5145 of 5757 / 18.1 / 232 / 422
+- W81 48 / 41 / 7 / 0 / 3188k / 0.72 / 4456 of 5224 / 19.9 / 232 / 512
+- W82 48 / 47 / 1 / 0 / 2579k / 0.55 / 4732 of 4835 / 18.3 / 157 / 299
+- W83 48 / 39 / 9 / 0 / 2824k / 0.78 / 3639 of 4478 / 15.7 / 178 / 344
+- W84 48 / 42 / 6 / 0 / 3301k / 0.91 / 3608 of 4136 / 14.6 / 183 / 372
+- W85 48 / 42 / 6 / 0 / 2660k / 0.79 / 3383 of 3871 / 10.3 / 157 / 345
+- W86 48 / 47 / 1 / 0 / 2574k / 0.73 / 3530 of 3607 / 24.0 / 139 / 236
+- W87 48 / 43 / 5 / 0 / 2500k / 0.81 / 3071 of 3425 / 12.6 / 131 / 272
+- W88 48 / 48 / 0 / 0 / 2381k / 0.73 / 3279 of 3279 / 18.7 / 117 / 247
+- W89 48 / 48 / 0 / 0 / 2372k / 0.77 / 3096 of 3096 / 8.1 / 93 / 246
+- W90 48 / 45 / 3 / 0 / 2439k / 0.89 / 2745 of 2927 / 13.4 / 104 / 212
+- W91 48 / 45 / 3 / 0 / 2637k / 1.01 / 2612 of 2786 / 8.1 / 116 / 287
+- W92 48 / 47 / 1 / 0 / 2310k / 0.88 / 2618 of 2674 / 8.0 / 90 / 197
+- W93 48 / 47 / 1 / 0 / 2433k / 0.97 / 2498 of 2552 / 11.0 / 102 / 210
+- W94 30 / 28 / 2 / 0 / 1479k / 1.03 / 1437 of 1539 / 11.4 / 76 / 149
+- W69-W94: 1230 drafts, 1115 banked (90.7%), 114 failed, 1 no-verdict, 215 twins (all in W69-W76), 8649 tries.
+  Draft ctx 71020k (~57.7k per draft, 0.73 k per banked insn). Banked 97623 of 109350 insns.
+  Bucket C 800 of 870 at 0.81 k/insn. Bucket D 315 of 360 at 0.61 k/insn.
 
 ## Lanes (W1, counts from the W1 draw, R1.8.1-003. Opening the excluded lanes is 1.8.2's)
 - drafter — one coder per target (W1: 24), and gater — `gate.py` + recover (W1: 22 banked, 2 failed)
@@ -224,3 +256,54 @@ already-c 5604 · exclude-list 10 · dup-member 446).
   does not re-expand a macro inside its own expansion. `propagate.py` now refuses a swap as `cyclic rename`.
   - `propagate.py sweep --dry-run` refuses 24 more members as `cyclic rename` (21 rockx5, 3 slus). For the
     remainder lane, bank each one as its own C from the head body with the calls swapped (C0264).
+
+## Remaining campaign (3.4 close)
+The 3.4 close is T30 (2026-11-07). Inputs were refreshed (step 1): `draw: 307 of 8124 drawable, 7817 refused` (already-c
+7176 · exclude-list 10 · dup-member 154).
+- census: `stubs 253 of 7647 game functions (7176 c, 218 ledgered); vendor 475 asm` (3.4 start 1699, 5845 c, 103 ledgered)
+- `open: C 0 open, 70 drawable, 70 ledgered` and `open: D 0 open, 46 drawable, 46 ledgered` (`open --check C,D` exit 0)
+- `open: >200 98 open, 100 drawable, 2 ledgered` (unchanged, 3.5's). Open insns >200: 29250 (3.3 close figure).
+- ledger: `ledger: 219 rows, 0 unledgered, 0 without draft, 0 without blocker` (3.4 start 104)
+- per-bucket cost, W69-W94 draft coders only (`.run/3.4/t30/perwave.py` over waves/W*/). The fields are drafts/banked,
+  insns banked of drawn, ctx, k per bank, k per banked insn and tries:
+  - bucket C 870/800 55534 of 60660 45168k 56.5 0.81 4882
+  - bucket D 360/315 42089 of 48690 25852k 82.1 0.61 3767
+  - against the 3.4 estimate: C 45.2M (estimate 33-41M, +10% over the top), D 25.9M (estimate 20-27M, in range).
+    C+D 71.0M against 53-68M. Head rates C 92.0%, D 87.5%. Ledger growth C 70, D 46 rows (expected ~35 and ~40).
+  - k per banked insn rose over the waves, as in 3.3: C 0.67 at W70, 0.97-1.07 at W91-W94.
+- seeded against holdout, the same waves (`.run/3.4/seedcheck/seedcheck.py`):
+  - pilot W69-W70 (half arms): `C seed 23/24 heads 0.59 k/insn, fresh 20/24 heads 0.79 k/insn; D seed 24/24 heads
+    0.40 k/insn, fresh 18/24 heads 0.69 k/insn; verdict C seed, D seed`
+  - W71-W94 (1-in-8 holdout): `C seed 659/717 heads 0.83 k/insn, fresh 98/105 heads 0.78 k/insn; D seed 235/270 heads
+    0.63 k/insn, fresh 38/42 heads 0.60 k/insn; verdict C fresh, D fresh`
+  - the pilot gain did not hold at scale in either bucket. The holdout was cheaper per insn and banked a larger share
+    of heads (C 93% against 92%, D 90% against 87%). It is the same result as A in 3.3. The holdout read fresh in
+    each of W89-W94.
+- wall per step, minutes, from the wave summaries (T4-T29 `wall:` lines, W71-W76 partial):
+  - drafts: 13-36 (W69 29, W77-W78 34-36, W89-W94 9-15)
+  - gate slus 2-4 · gate rockx5 10-17 (W81 16, else 10-11) · recover <1
+  - rescan: 141-203 in W69-W76 (23-34 twins each), 1-1.4 from W77 (0 twins in every wave after W76)
+  - no-rom: ~10 per run (the 3.3 figure was ~4), 3-4 runs per wave, 20-43 in total
+  - make check: 19-25, from W85 overlapped with the harvest coder
+  - total: 4.7 h at W69 (rescan 165), ~57-129 from W77, ~90 in W91-W94
+- faster-gate options (R3.4-003 4a-4c) sized on these numbers. Recommended: build none for 3.5, and apply the two free
+  changes.
+  - (a) parallel alias gates: saves the slus gate, 2-4 min per wave. It needs gate.py:289 and the shared adopt changed
+    and GENERATION_PLAN.md:35 amended. Not worth it.
+  - (b) draft W<k+1> during the gate: saves the drafts, 9-36 min per wave. Stale-input refusal (G31) and twins can
+    void drafts. For >200 the whole bucket is 2-3 waves, so the saving is under 1 h. Not worth it.
+  - (c) rescan: now 1 min when no twins are found. Nothing to gain unless twins return.
+  - free: no-rom is now the largest fixed step (20-43 min). Skip the rescan no-rom when the rescan prints `0
+    propagated` (it makes no commit), saving ~10 min per wave. Run make check beside the harvest coder (W85 on).
+- failed twins: T3's sweep `propagate.py sweep --dry-run` refused 24 members as `cyclic rename` (21 rockx5, 3 slus).
+  They need standalone C from the head body (C0264). One W71 twin (rockx5 func_800FD9E8_ovl31 of head
+  func_800F69FC_ovl03) failed `make split build exit 2` at the rescan and stays open (T6). That makes 25.
+- >200 estimate for the 3.5 planner: 98 heads, 29250 insns, cap 30, `draft`.
+  - at the bucket's own W1-W68 rate (0.36 k/insn, diluted by port waves), ~10.5M. At the W1-W10 rate 0.50, ~14.6M.
+  - at the 3.4 D rate (0.61 k/insn, the nearest fresh measure), ~17.8M. At the late-3.4 drift (x1.3), ~23M.
+    Plan on ~18M, with ~23M as the ceiling.
+  - waves: 98 / 48 = 3 waves (48, 48, 2), or 2 waves with W<last> taking the remainder. At 0.61 k/insn and ~300 insns per
+    head, a wave of 48 costs ~8.7M.
+  - head rate: 81% in W1-W68 (17 of 21), D 87.5% in 3.4. Expect ~13-19 ledger rows.
+  - seed: draft fresh. Seed lost to the holdout in A (3.3) and in C and D (3.4).
+  - after >200, the remainder lane is the 219 ledgered rows and the 25 failed twins.
