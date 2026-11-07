@@ -215,6 +215,7 @@ segments:
       - [0x7540, c, func_800F56B0_ovl00]  # carve
       - [0x7560, c, func_800F56D0_ovl00]  # carve
       - [0x7568, asm, ovl00_800F56D8]  # carve
+      - [0x771C, c, func_800F588C_ovl00]  # carve
       - [0x7818, c, func_800F5988_ovl00]  # carve
       - [0x7A74, c, func_800F5BE4_ovl00]  # carve
       - [0x7AC0, c, func_800F5C30_ovl00]  # carve was: - [0x7AC0, asm, ovl00_800F5C30]  # carve
@@ -222,7 +223,7 @@ segments:
       - [0x7C00, c, func_800F5D70_ovl00]  # carve
       - [0x7C20, c, func_800F5D90_ovl00]  # carve was: - [0x7C20, asm, ovl00_800F5D90]  # carve
       - [0x7CE8, c, func_800F5E58_ovl00]  # carve
-      - [0x7D28, asm, ovl00_800F5E98]  # carve
+      - [0x7D28, c, func_800F5E98_ovl00]  # carve was: - [0x7D28, asm, ovl00_800F5E98]  # carve
       - [0x7E18, c, func_800F5F88_ovl00]  # carve
       - [0x7E78, asm, ovl00_800F5FE8]  # carve
       - [0x80C4, c, func_800F6234_ovl00]  # carve
@@ -237,13 +238,16 @@ segments:
       - [0x8BE8, c, func_800F6D58_ovl00]  # carve was: - [0x8BE8, asm, ovl00_800F6D58]  # carve
       - [0x8E00, c, func_800F6F70_ovl00]  # carve was: - [0x8E00, asm, ovl00_800F6F70]  # carve
       - [0x8FAC, c, func_800F711C_ovl00]  # carve
-      - [0x92AC, asm, ovl00_800F741C]  # carve
+      - [0x92AC, c, func_800F741C_ovl00]  # carve was: - [0x92AC, asm, ovl00_800F741C]  # carve
       - [0x938C, c, func_800F74FC_ovl00]  # carve
       - [0x94B0, c, func_800F7620_ovl00]  # carve
       - [0x960C, c, func_800F777C_ovl00]  # carve
       - [0x97C8, c, func_800F7938_ovl00]  # carve was: - [0x97C8, asm, ovl00_800F7938]  # carve
       - [0x9958, c, func_800F7AC8_ovl00]  # carve
       - [0x9B0C, asm, ovl00_800F7C7C]  # carve
+      - [0x9C70, c, func_800F7DE0_ovl00]  # carve
+      - [0x9D80, c, func_800F7EF0_ovl00]  # carve was: - [0x9D80, asm, ovl00_800F7EF0]  # carve
+      - [0x9E54, c, func_800F7FC4_ovl00]  # carve
       - [0x9F40, c, func_800F80B0_ovl00]  # carve
       - [0x9F48, c, func_800F80B8_ovl00]  # carve was: - [0x9F48, asm, ovl00_800F80B8]  # carve
       - [0x9F84, c, func_800F80F4_ovl00]  # carve
@@ -252,13 +256,13 @@ segments:
       - [0xA130, c, func_800F82A0_ovl00]  # carve was: - [0xA130, asm, ovl00_800F82A0]  # carve
       - [0xA178, c, func_800F82E8_ovl00]  # carve
       - [0xA22C, c, func_800F839C_ovl00]  # carve was: - [0xA22C, asm, ovl00_800F839C]  # carve
-      - [0xA2B0, asm, ovl00_800F8420]  # carve
+      - [0xA2B0, c, func_800F8420_ovl00]  # carve was: - [0xA2B0, asm, ovl00_800F8420]  # carve
       - [0xA384, c, func_800F84F4_ovl00]  # carve
       - [0xA40C, c, func_800F857C_ovl00]  # carve
       - [0xA4D0, c, func_800F8640_ovl00]  # carve
       - [0xA524, c, func_800F8694_ovl00]  # carve was: - [0xA524, asm, ovl00_800F8694]  # carve
       - [0xA560, c, func_800F86D0_ovl00]  # carve
-      - [0xA5BC, asm, ovl00_800F872C]  # carve
+      - [0xA5BC, c, func_800F872C_ovl00]  # carve was: - [0xA5BC, asm, ovl00_800F872C]  # carve
       - [0xA688, c, func_800F87F8_ovl00]  # carve
       - [0xA72C, c, func_800F889C_ovl00]  # carve was: - [0xA72C, asm, ovl00_800F889C]  # carve
       - [0xA770, c, func_800F88E0_ovl00]  # carve
@@ -280,12 +284,12 @@ segments:
       - [0xAFB8, c, func_800F9128_ovl00]  # carve
       - [0xB05C, c, func_800F91CC_ovl00]  # carve was: - [0xB05C, asm, ovl00_800F91CC]  # carve
       - [0xB090, c, func_800F9200_ovl00]  # carve
-      - [0xB0E4, asm, ovl00_800F9254]  # carve
+      - [0xB0E4, c, func_800F9254_ovl00]  # carve was: - [0xB0E4, asm, ovl00_800F9254]  # carve
       - [0xB1F4, c, func_800F9364_ovl00]  # carve
       - [0xB278, c, func_800F93E8_ovl00]  # carve was: - [0xB278, asm, ovl00_800F93E8]  # carve
       - [0xB31C, c, func_800F948C_ovl00]  # carve was: - [0xB31C, asm, ovl00_800F948C]  # carve
       - [0xB360, c, func_800F94D0_ovl00]  # carve was: - [0xB360, asm, ovl00_800F94D0]  # carve
-      - [0xB3B0, asm, ovl00_800F9520]  # carve
+      - [0xB3B0, c, func_800F9520_ovl00]  # carve was: - [0xB3B0, asm, ovl00_800F9520]  # carve
       - [0xB490, c, func_800F9600_ovl00]  # carve
       - [0xB50C, c, func_800F967C_ovl00]  # carve
       - [0xB594, c, func_800F9704_ovl00]  # carve was: - [0xB594, asm, ovl00_800F9704]  # carve
@@ -313,7 +317,8 @@ segments:
       - [0xBE28, c, func_800F9F98_ovl00]  # carve
       - [0xBE48, c, func_800F9FB8_ovl00]  # carve
       - [0xBE50, c, func_800F9FC0_ovl00]  # carve was: - [0xBE50, asm, ovl00_800F9FC0]  # carve
-      - [0xBED4, asm, ovl00_800FA044]  # carve
+      - [0xBED4, c, func_800FA044_ovl00]  # carve was: - [0xBED4, asm, ovl00_800FA044]  # carve
+      - [0xBFA8, c, func_800FA118_ovl00]  # carve
       - [0xC08C, data]  # gen:rockx5_splits  # T4: was textbin; exe pointer words -> .word <exe name>
   - {name: pad01, type: bin, start: 0xD52C}
   - name: ovl01
@@ -345,18 +350,18 @@ segments:
       - [0xDC68, .rodata, func_800FB624_ovl01]  # carve
       - [0xDC7C, c, func_800EEDEC_ovl01]  # carve was: - [0xDC7C, asm]  # gen:rockx5_splits
       - [0xDDB8, c, func_800EEF28_ovl01]  # carve was: - [0xDDB8, asm, ovl01_800EEF28]
-      - [0xDEE4, asm, ovl01_800EF054]  # carve
+      - [0xDEE4, c, func_800EF054_ovl01]  # carve was: - [0xDEE4, asm, ovl01_800EF054]  # carve
       - [0xDFE8, c, func_800EF158_ovl01]  # carve
       - [0xE23C, c, func_800EF3AC_ovl01]  # carve
       - [0xE278, c, func_800EF3E8_ovl01]  # carve was: - [0xE278, asm, ovl01_800EF3E8]  # carve
       - [0xE2B4, asm, ovl01_800EF424]  # carve
       - [0xE360, c, func_800EF4D0_ovl01]  # carve
-      - [0xE394, asm, ovl01_800EF504]  # carve
+      - [0xE394, c, func_800EF504_ovl01]  # carve was: - [0xE394, asm, ovl01_800EF504]  # carve
       - [0xE494, c, func_800EF604_ovl01]  # carve
       - [0xE550, c, func_800EF6C0_ovl01]  # carve
       - [0xE570, c, func_800EF6E0_ovl01]  # carve was: - [0xE570, asm, ovl01_800EF6E0]  # carve
       - [0xE620, c, func_800EF790_ovl01]  # carve was: - [0xE620, asm, ovl01_800EF790]  # carve
-      - [0xE6C8, asm, ovl01_800EF838]  # carve
+      - [0xE6C8, c, func_800EF838_ovl01]  # carve was: - [0xE6C8, asm, ovl01_800EF838]  # carve
       - [0xE7B0, c, func_800EF920_ovl01]  # carve
       - [0xE858, c, func_800EF9C8_ovl01]  # carve was: - [0xE858, asm, ovl01_800EF9C8]  # carve
       - [0xE8BC, c, func_800EFA2C_ovl01]  # carve
@@ -366,7 +371,8 @@ segments:
       - [0xEA2C, c, func_800EFB9C_ovl01]  # carve was: - [0xEA2C, asm, ovl01_800EFB9C]  # carve
       - [0xEA44, c, func_800EFBB4_ovl01]  # carve
       - [0xEAB0, c, func_800EFC20_ovl01]  # carve
-      - [0xEAD0, asm, ovl01_800EFC40]  # carve
+      - [0xEAD0, c, func_800EFC40_ovl01]  # carve was: - [0xEAD0, asm, ovl01_800EFC40]  # carve
+      - [0xEBD4, asm, ovl01_800EFD44]  # carve
       - [0xEDC4, c, func_800EFF34_ovl01]  # carve
       - [0xEF3C, c, func_800F00AC_ovl01]  # carve was: - [0xEF3C, asm, ovl01_800F00AC]  # carve
       - [0xF094, c, func_800F0204_ovl01]  # carve
@@ -560,18 +566,18 @@ segments:
       - [0x15A28, c, func_800F6B98_ovl01]  # carve
       - [0x15A6C, c, func_800F6BDC_ovl01]  # carve was: - [0x15A6C, asm, ovl01_800F6BDC]  # carve
       - [0x15AD8, c, func_800F6C48_ovl01]  # carve was: - [0x15AD8, asm, ovl01_800F6C48]  # carve
-      - [0x15B04, asm, ovl01_800F6C74]  # carve
+      - [0x15B04, c, func_800F6C74_ovl01]  # carve was: - [0x15B04, asm, ovl01_800F6C74]  # carve
       - [0x15BD8, c, func_800F6D48_ovl01]  # carve
-      - [0x15C84, asm, ovl01_800F6DF4]  # carve
+      - [0x15C84, c, func_800F6DF4_ovl01]  # carve was: - [0x15C84, asm, ovl01_800F6DF4]  # carve
       - [0x15D78, c, func_800F6EE8_ovl01]  # carve
       - [0x15DB8, c, func_800F6F28_ovl01]  # carve
       - [0x15E34, c, func_800F6FA4_ovl01]  # carve
       - [0x15EB4, c, func_800F7024_ovl01]  # carve was: - [0x15EB4, asm, ovl01_800F7024]  # carve
       - [0x16078, asm, ovl01_800F71E8]  # carve
       - [0x160C8, c, func_800F7238_ovl01]  # carve
-      - [0x16270, asm, ovl01_800F73E0]  # carve
+      - [0x16270, c, func_800F73E0_ovl01]  # carve was: - [0x16270, asm, ovl01_800F73E0]  # carve
       - [0x16358, c, func_800F74C8_ovl01]  # carve
-      - [0x16394, asm, ovl01_800F7504]  # carve
+      - [0x16394, c, func_800F7504_ovl01]  # carve was: - [0x16394, asm, ovl01_800F7504]  # carve
       - [0x1648C, c, func_800F75FC_ovl01]  # carve
       - [0x164AC, c, func_800F761C_ovl01]  # carve was: - [0x164AC, asm, ovl01_800F761C]  # carve
       - [0x16508, c, func_800F7678_ovl01]  # carve
@@ -582,14 +588,15 @@ segments:
       - [0x16640, c, func_800F77B0_ovl01]  # carve
       - [0x16694, c, func_800F7804_ovl01]  # carve
       - [0x166E0, c, func_800F7850_ovl01]  # carve was: - [0x166E0, asm, ovl01_800F7850]  # carve
-      - [0x16750, asm, ovl01_800F78C0]  # carve
+      - [0x16750, c, func_800F78C0_ovl01]  # carve was: - [0x16750, asm, ovl01_800F78C0]  # carve
+      - [0x16850, asm, ovl01_800F79C0]  # carve
       - [0x16924, c, func_800F7A94_ovl01]  # carve
       - [0x169A4, c, func_800F7B14_ovl01]  # carve
       - [0x169E0, c, func_800F7B50_ovl01]  # carve was: - [0x169E0, asm, ovl01_800F7B50]  # carve
       - [0x16A7C, c, func_800F7BEC_ovl01]  # carve
       - [0x16B30, c, func_800F7CA0_ovl01]  # carve was: - [0x16B30, asm, ovl01_800F7CA0]  # carve
       - [0x16D40, c, func_800F7EB0_ovl01]  # carve was: - [0x16D40, asm, ovl01_800F7EB0]  # carve
-      - [0x16E80, asm, ovl01_800F7FF0]  # carve
+      - [0x16E80, c, func_800F7FF0_ovl01]  # carve was: - [0x16E80, asm, ovl01_800F7FF0]  # carve
       - [0x16F54, c, func_800F80C4_ovl01]  # carve
       - [0x17000, c, func_800F8170_ovl01]  # carve
       - [0x1703C, c, func_800F81AC_ovl01]  # carve was: - [0x1703C, asm, ovl01_800F81AC]  # carve
@@ -785,6 +792,7 @@ segments:
       - [0x21548, c, func_800F2EB8_ovl02]  # carve
       - [0x21568, c, func_800F2ED8_ovl02]  # carve was: - [0x21568, asm, ovl02_800F2ED8]  # carve
       - [0x215B4, asm, ovl02_800F2F24]  # carve
+      - [0x21654, c, func_800F2FC4_ovl02]  # carve
       - [0x21728, c, func_800F3098_ovl02]  # carve
       - [0x21748, c, func_800F30B8_ovl02]  # carve was: - [0x21748, asm, ovl02_800F30B8]  # carve
       - [0x21754, c, func_800F30C4_ovl02]  # carve was: - [0x21754, asm, ovl02_800F30C4]  # carve
@@ -942,7 +950,7 @@ segments:
       - [0x26EBC, c, func_800F282C_ovl03]  # carve
       - [0x27170, c, func_800F2AE0_ovl03]  # carve
       - [0x27228, c, func_800F2B98_ovl03]  # carve
-      - [0x27264, asm, ovl03_800F2BD4]  # carve
+      - [0x27264, c, func_800F2BD4_ovl03]  # carve was: - [0x27264, asm, ovl03_800F2BD4]  # carve
       - [0x27334, c, func_800F2CA4_ovl03]  # carve
       - [0x27354, c, func_800F2CC4_ovl03]  # carve was: - [0x27354, asm, ovl03_800F2CC4]  # carve
       - [0x27374, c, func_800F2CE4_ovl03]  # carve
@@ -1057,14 +1065,14 @@ segments:
       - [0x2F24C, .rodata, func_800FF5B8_ovl04]  # carve
       - [0x2F260, rodata, 2F260]  # carve
       - [0x2F274, c, func_800EEBE4_ovl04]  # carve was: - [0x2F274, asm]  # gen:rockx5_splits
-      - [0x2F38C, asm, ovl04_800EECFC]
+      - [0x2F38C, c, func_800EECFC_ovl04]  # carve was: - [0x2F38C, asm, ovl04_800EECFC]
       - [0x2F490, c, func_800EEE00_ovl04]  # carve
       - [0x2F69C, c, func_800EF00C_ovl04]  # carve was: - [0x2F69C, asm, ovl04_800EF00C]  # carve
       - [0x2F814, c, func_800EF184_ovl04]  # carve
       - [0x2F8E8, c, func_800EF258_ovl04]  # carve was: - [0x2F8E8, asm, ovl04_800EF258]  # carve
       - [0x2FA20, c, func_800EF390_ovl04]  # carve was: - [0x2FA20, asm, ovl04_800EF390]  # carve
       - [0x2FB48, c, func_800EF4B8_ovl04]  # carve
-      - [0x2FC14, asm, ovl04_800EF584]  # carve
+      - [0x2FC14, c, func_800EF584_ovl04]  # carve was: - [0x2FC14, asm, ovl04_800EF584]  # carve
       - [0x2FCF8, c, func_800EF668_ovl04]  # carve
       - [0x2FD34, c, func_800EF6A4_ovl04]  # carve was: - [0x2FD34, asm, ovl04_800EF6A4]  # carve
       - [0x2FDFC, c, func_800EF76C_ovl04]  # carve
@@ -1073,7 +1081,8 @@ segments:
       - [0x2FE7C, c, func_800EF7EC_ovl04]  # carve was: - [0x2FE7C, asm, ovl04_800EF7EC]  # carve
       - [0x2FEFC, c, func_800EF86C_ovl04]  # carve was: - [0x2FEFC, asm, ovl04_800EF86C]  # carve
       - [0x2FF5C, c, func_800EF8CC_ovl04]  # carve
-      - [0x2FF98, asm, ovl04_800EF908]  # carve
+      - [0x2FF98, c, func_800EF908_ovl04]  # carve was: - [0x2FF98, asm, ovl04_800EF908]  # carve
+      - [0x30068, c, func_800EF9D8_ovl04]  # carve
       - [0x30158, c, func_800EFAC8_ovl04]  # carve
       - [0x301E0, c, func_800EFB50_ovl04]  # carve
       - [0x30288, c, func_800EFBF8_ovl04]  # carve
@@ -1142,6 +1151,7 @@ segments:
       - [0x31E5C, c, func_800F17CC_ovl04]  # carve
       - [0x31E7C, c, func_800F17EC_ovl04]  # carve was: - [0x31E7C, asm, ovl04_800F17EC]  # carve
       - [0x31EB8, asm, ovl04_800F1828]  # carve
+      - [0x31F6C, c, func_800F18DC_ovl04]  # carve
       - [0x32038, c, func_800F19A8_ovl04]  # carve
       - [0x32058, c, func_800F19C8_ovl04]  # carve was: - [0x32058, asm, ovl04_800F19C8]  # carve
       - [0x32068, c, func_800F19D8_ovl04]  # carve was: - [0x32068, asm, ovl04_800F19D8]  # carve
@@ -1269,6 +1279,8 @@ segments:
       - [0x380BC, c, func_800F7A2C_ovl04]  # carve
       - [0x380C4, c, func_800F7A34_ovl04]  # carve was: - [0x380C4, asm, ovl04_800F7A34]  # carve
       - [0x381D0, asm, ovl04_800F7B40]  # carve
+      - [0x3864C, c, func_800F7FBC_ovl04]  # carve
+      - [0x3875C, asm, ovl04_800F80CC]  # carve
       - [0x39D54, c, func_800F96C4_ovl04]  # carve
       - [0x39EDC, c, func_800F984C_ovl04]  # carve
       - [0x3A170, c, func_800F9AE0_ovl04]  # carve
@@ -1289,7 +1301,8 @@ segments:
       - [0x3BF68, c, func_800FB8D8_ovl04]  # carve was: - [0x3BF68, asm, ovl04_800FB8D8]  # carve
       - [0x3C104, asm, ovl04_800FBA74]  # carve
       - [0x3C588, c, func_800FBEF8_ovl04]  # carve
-      - [0x3C6C0, asm, ovl04_800FC030]  # carve
+      - [0x3C6C0, c, func_800FC030_ovl04]  # carve was: - [0x3C6C0, asm, ovl04_800FC030]  # carve
+      - [0x3C7D4, asm, ovl04_800FC144]  # carve
       - [0x3CD30, c, func_800FC6A0_ovl04]  # carve
       - [0x3CEC4, c, func_800FC834_ovl04]  # carve was: - [0x3CEC4, asm, ovl04_800FC834]  # carve
       - [0x3D03C, c, func_800FC9AC_ovl04]  # carve was: - [0x3D03C, asm, ovl04_800FC9AC]  # carve
@@ -1317,7 +1330,7 @@ segments:
       - [0x3E2B0, c, func_800FDC20_ovl04]  # carve
       - [0x3E2D0, c, func_800FDC40_ovl04]  # carve was: - [0x3E2D0, asm, ovl04_800FDC40]  # carve
       - [0x3E3E8, c, func_800FDD58_ovl04]  # carve
-      - [0x3E46C, asm, ovl04_800FDDDC]  # carve
+      - [0x3E46C, c, func_800FDDDC_ovl04]  # carve was: - [0x3E46C, asm, ovl04_800FDDDC]  # carve
       - [0x3E564, c, func_800FDED4_ovl04]  # carve
       - [0x3E614, c, func_800FDF84_ovl04]  # carve was: - [0x3E614, asm, ovl04_800FDF84]  # carve
       - [0x3E694, c, func_800FE004_ovl04]  # carve
@@ -1331,7 +1344,7 @@ segments:
       - [0x3EA7C, c, func_800FE3EC_ovl04]  # carve was: - [0x3EA7C, asm, ovl04_800FE3EC]  # carve
       - [0x3EAB4, c, func_800FE424_ovl04]  # carve
       - [0x3EABC, c, func_800FE42C_ovl04]  # carve was: - [0x3EABC, asm, ovl04_800FE42C]  # carve
-      - [0x3EB54, asm, ovl04_800FE4C4]  # carve
+      - [0x3EB54, c, func_800FE4C4_ovl04]  # carve was: - [0x3EB54, asm, ovl04_800FE4C4]  # carve
       - [0x3EC4C, c, func_800FE5BC_ovl04]  # carve
       - [0x3ECFC, c, func_800FE66C_ovl04]  # carve
       - [0x3EDB0, c, func_800FE720_ovl04]  # carve
@@ -1352,7 +1365,7 @@ segments:
       - [0x3F580, c, func_800FEEF0_ovl04]  # carve was: - [0x3F580, asm, ovl04_800FEEF0]  # carve
       - [0x3F5D0, c, func_800FEF40_ovl04]  # carve
       - [0x3F638, c, func_800FEFA8_ovl04]  # carve was: - [0x3F638, asm, ovl04_800FEFA8]  # carve
-      - [0x3F65C, asm, ovl04_800FEFCC]  # carve
+      - [0x3F65C, c, func_800FEFCC_ovl04]  # carve was: - [0x3F65C, asm, ovl04_800FEFCC]  # carve
       - [0x3F744, c, func_800FF0B4_ovl04]  # T5 probe (tools/probe/probes.toml)
       - [0x3F780, c, func_800FF0F0_ovl04]  # carve was: - [0x3F780, asm, ovl04_800FF0F0]
       - [0x3F818, c, func_800FF188_ovl04]  # carve was: - [0x3F818, asm, ovl04_800FF188]  # carve
@@ -1360,17 +1373,17 @@ segments:
       - [0x3F8F0, c, func_800FF260_ovl04]  # carve
       - [0x3F8F8, c, func_800FF268_ovl04]  # carve
       - [0x3F988, c, func_800FF2F8_ovl04]  # carve was: - [0x3F988, asm, ovl04_800FF2F8]  # carve
-      - [0x3FA04, asm, ovl04_800FF374]  # carve
+      - [0x3FA04, c, func_800FF374_ovl04]  # carve was: - [0x3FA04, asm, ovl04_800FF374]  # carve
       - [0x3FAF0, c, func_800FF460_ovl04]  # carve
       - [0x3FB24, c, func_800FF494_ovl04]  # carve
-      - [0x3FB60, asm, ovl04_800FF4D0]  # carve
+      - [0x3FB60, c, func_800FF4D0_ovl04]  # carve was: - [0x3FB60, asm, ovl04_800FF4D0]  # carve
       - [0x3FC48, c, func_800FF5B8_ovl04]  # carve
       - [0x3FF48, c, func_800FF8B8_ovl04]  # carve was: - [0x3FF48, asm, ovl04_800FF8B8]  # carve
       - [0x400E0, c, func_800FFA50_ovl04]  # carve was: - [0x400E0, asm, ovl04_800FFA50]  # carve
       - [0x401F8, c, func_800FFB68_ovl04]  # carve
       - [0x40244, c, func_800FFBB4_ovl04]  # carve was: - [0x40244, asm, ovl04_800FFBB4]  # carve
       - [0x40290, c, func_800FFC00_ovl04]  # carve was: - [0x40290, asm, ovl04_800FFC00]  # carve
-      - [0x40328, asm, ovl04_800FFC98]  # carve
+      - [0x40328, c, func_800FFC98_ovl04]  # carve was: - [0x40328, asm, ovl04_800FFC98]  # carve
       - [0x403F8, c, func_800FFD68_ovl04]  # carve
       - [0x40484, c, func_800FFDF4_ovl04]  # carve
       - [0x404C0, c, func_800FFE30_ovl04]  # carve
@@ -1387,7 +1400,7 @@ segments:
       - [0x40A00, c, func_80100370_ovl04]  # carve
       - [0x40A3C, c, func_801003AC_ovl04]  # carve was: - [0x40A3C, asm, ovl04_801003AC]  # carve
       - [0x40B00, c, func_80100470_ovl04]  # carve
-      - [0x40B20, asm, ovl04_80100490]  # carve
+      - [0x40B20, c, func_80100490_ovl04]  # carve was: - [0x40B20, asm, ovl04_80100490]  # carve
       - [0x40C34, c, func_801005A4_ovl04]  # carve
       - [0x40C54, asm, ovl04_801005C4]  # carve
       - [0x40E24, c, func_80100794_ovl04]  # carve
@@ -1412,7 +1425,7 @@ segments:
       - [0x438F8, .rodata, func_800F188C_ovl05]  # carve
       - [0x43910, c, func_800EEA80_ovl05]  # carve was: - [0x43910, asm]  # gen:rockx5_splits
       - [0x4394C, c, func_800EEABC_ovl05]  # carve was: - [0x4394C, asm, ovl05_800EEABC]
-      - [0x43980, asm, ovl05_800EEAF0]  # carve
+      - [0x43980, c, func_800EEAF0_ovl05]  # carve was: - [0x43980, asm, ovl05_800EEAF0]  # carve
       - [0x43A5C, c, func_800EEBCC_ovl05]  # carve
       - [0x43A7C, c, func_800EEBEC_ovl05]  # carve was: - [0x43A7C, asm, ovl05_800EEBEC]  # carve
       - [0x43BC4, c, func_800EED34_ovl05]  # carve was: - [0x43BC4, asm, ovl05_800EED34]  # carve
@@ -1492,7 +1505,7 @@ segments:
       - [0x461C4, c, func_800F1334_ovl05]  # carve was: - [0x461C4, asm, ovl05_800F1334]  # carve
       - [0x462A8, c, func_800F1418_ovl05]  # carve was: - [0x462A8, asm, ovl05_800F1418]  # carve
       - [0x46404, c, func_800F1574_ovl05]  # carve
-      - [0x46440, asm, ovl05_800F15B0]  # carve
+      - [0x46440, c, func_800F15B0_ovl05]  # carve was: - [0x46440, asm, ovl05_800F15B0]  # carve
       - [0x46534, c, func_800F16A4_ovl05]  # carve
       - [0x46554, c, func_800F16C4_ovl05]  # carve was: - [0x46554, asm, ovl05_800F16C4]  # carve
       - [0x46590, c, func_800F1700_ovl05]  # carve
@@ -1540,12 +1553,12 @@ segments:
       - [0x48910, c, func_800F3A80_ovl05]  # carve was: - [0x48910, asm, ovl05_800F3A80]  # carve
       - [0x48978, c, func_800F3AE8_ovl05]  # carve
       - [0x489C4, c, func_800F3B34_ovl05]  # carve
-      - [0x489E4, asm, ovl05_800F3B54]  # carve
+      - [0x489E4, c, func_800F3B54_ovl05]  # carve was: - [0x489E4, asm, ovl05_800F3B54]  # carve
       - [0x48AB4, c, func_800F3C24_ovl05]  # carve
       - [0x48AD4, c, func_800F3C44_ovl05]  # carve was: - [0x48AD4, asm, ovl05_800F3C44]  # carve
-      - [0x48B9C, asm, ovl05_800F3D0C]  # carve
+      - [0x48B9C, c, func_800F3D0C_ovl05]  # carve was: - [0x48B9C, asm, ovl05_800F3D0C]  # carve
       - [0x48C6C, c, func_800F3DDC_ovl05]  # carve
-      - [0x48D0C, asm, ovl05_800F3E7C]  # carve
+      - [0x48D0C, c, func_800F3E7C_ovl05]  # carve was: - [0x48D0C, asm, ovl05_800F3E7C]  # carve
       - [0x48DF4, c, func_800F3F64_ovl05]  # carve
       - [0x48E30, c, func_800F3FA0_ovl05]  # carve
       - [0x48E6C, c, func_800F3FDC_ovl05]  # carve
@@ -1592,17 +1605,19 @@ segments:
       - [0x4DA9C, c, func_800F1C0C_ovl06]  # carve
       - [0x4DC68, asm, ovl06_800F1DD8]  # carve
       - [0x4E268, c, func_800F23D8_ovl06]  # carve
-      - [0x4E390, asm, ovl06_800F2500]  # carve
+      - [0x4E390, c, func_800F2500_ovl06]  # carve was: - [0x4E390, asm, ovl06_800F2500]  # carve
+      - [0x4E498, asm, ovl06_800F2608]  # carve
+      - [0x4E8DC, c, func_800F2A4C_ovl06]  # carve
       - [0x4E9B0, c, func_800F2B20_ovl06]  # carve
       - [0x4E9E4, c, func_800F2B54_ovl06]  # carve
       - [0x4EA20, c, func_800F2B90_ovl06]  # carve
       - [0x4EB5C, c, func_800F2CCC_ovl06]  # carve was: - [0x4EB5C, asm, ovl06_800F2CCC]  # carve
       - [0x4EB7C, c, func_800F2CEC_ovl06]  # carve
-      - [0x4EBC8, asm, ovl06_800F2D38]  # carve
+      - [0x4EBC8, c, func_800F2D38_ovl06]  # carve was: - [0x4EBC8, asm, ovl06_800F2D38]  # carve
       - [0x4ECC8, c, func_800F2E38_ovl06]  # carve
       - [0x4ED04, c, func_800F2E74_ovl06]  # carve was: - [0x4ED04, asm, ovl06_800F2E74]  # carve
       - [0x4ED7C, c, func_800F2EEC_ovl06]  # carve was: - [0x4ED7C, asm, ovl06_800F2EEC]  # carve
-      - [0x4EDB8, asm, ovl06_800F2F28]  # carve
+      - [0x4EDB8, c, func_800F2F28_ovl06]  # carve was: - [0x4EDB8, asm, ovl06_800F2F28]  # carve
       - [0x4EEBC, c, func_800F302C_ovl06]  # carve
       - [0x4F028, c, func_800F3198_ovl06]  # carve
       - [0x4F238, c, func_800F33A8_ovl06]  # carve
@@ -1619,7 +1634,7 @@ segments:
       - [0x4F7B0, c, func_800F3920_ovl06]  # carve
       - [0x4F8DC, c, func_800F3A4C_ovl06]  # carve was: - [0x4F8DC, asm, ovl06_800F3A4C]  # carve
       - [0x4FA0C, c, func_800F3B7C_ovl06]  # carve
-      - [0x4FB98, asm, ovl06_800F3D08]  # carve
+      - [0x4FB98, c, func_800F3D08_ovl06]  # carve was: - [0x4FB98, asm, ovl06_800F3D08]  # carve
       - [0x4FC84, c, func_800F3DF4_ovl06]  # carve
       - [0x4FE58, asm, ovl06_800F3FC8]  # carve
       - [0x50278, c, func_800F43E8_ovl06]  # carve
@@ -1629,7 +1644,7 @@ segments:
       - [0x5041C, c, func_800F458C_ovl06]  # carve
       - [0x50490, c, func_800F4600_ovl06]  # carve
       - [0x50530, c, func_800F46A0_ovl06]  # carve was: - [0x50530, asm, ovl06_800F46A0]  # carve
-      - [0x505C8, asm, ovl06_800F4738]  # carve
+      - [0x505C8, c, func_800F4738_ovl06]  # carve was: - [0x505C8, asm, ovl06_800F4738]  # carve
       - [0x506A8, c, func_800F4818_ovl06]  # carve
       - [0x50718, c, func_800F4888_ovl06]  # carve was: - [0x50718, asm, ovl06_800F4888]  # carve
       - [0x50784, c, func_800F48F4_ovl06]  # carve
@@ -1650,7 +1665,7 @@ segments:
       - [0x51AA0, asm, ovl06_800F5C10]  # carve
       - [0x51B58, c, func_800F5CC8_ovl06]  # carve
       - [0x51C20, c, func_800F5D90_ovl06]  # carve was: - [0x51C20, asm, ovl06_800F5D90]  # carve
-      - [0x51D40, asm, ovl06_800F5EB0]  # carve
+      - [0x51D40, c, func_800F5EB0_ovl06]  # carve was: - [0x51D40, asm, ovl06_800F5EB0]  # carve
       - [0x51E3C, c, func_800F5FAC_ovl06]  # carve
       - [0x51E78, c, func_800F5FE8_ovl06]  # carve
       - [0x51EC4, c, func_800F6034_ovl06]  # carve
@@ -1658,7 +1673,7 @@ segments:
       - [0x51ED4, c, func_800F6044_ovl06]  # carve was: - [0x51ED4, asm, ovl06_800F6044]  # carve
       - [0x51F10, c, func_800F6080_ovl06]  # carve was: - [0x51F10, asm, ovl06_800F6080]  # carve
       - [0x52090, c, func_800F6200_ovl06]  # carve
-      - [0x520EC, asm, ovl06_800F625C]  # carve
+      - [0x520EC, c, func_800F625C_ovl06]  # carve was: - [0x520EC, asm, ovl06_800F625C]  # carve
       - [0x521E8, c, func_800F6358_ovl06]  # carve
       - [0x52208, c, func_800F6378_ovl06]  # carve was: - [0x52208, asm, ovl06_800F6378]  # carve
       - [0x523BC, c, func_800F652C_ovl06]  # carve was: - [0x523BC, asm, ovl06_800F652C]  # carve
@@ -1669,7 +1684,7 @@ segments:
       - [0x52798, c, func_800F6908_ovl06]  # carve
       - [0x527D8, c, func_800F6948_ovl06]  # carve was: - [0x527D8, asm, ovl06_800F6948]  # carve
       - [0x5289C, c, func_800F6A0C_ovl06]  # carve was: - [0x5289C, asm, ovl06_800F6A0C]  # carve
-      - [0x5290C, asm, ovl06_800F6A7C]  # carve
+      - [0x5290C, c, func_800F6A7C_ovl06]  # carve was: - [0x5290C, asm, ovl06_800F6A7C]  # carve
       - [0x529F0, c, func_800F6B60_ovl06]  # carve
       - [0x52BB4, c, func_800F6D24_ovl06]  # carve
       - [0x52D40, c, func_800F6EB0_ovl06]  # carve was: - [0x52D40, asm, ovl06_800F6EB0]  # carve
@@ -1863,14 +1878,14 @@ segments:
       - [0x5C554, asm, ovl07_800EF6C4]  # carve
       - [0x5CAC0, c, func_800EFC30_ovl07]  # carve
       - [0x5CB74, c, func_800EFCE4_ovl07]  # carve was: - [0x5CB74, asm, ovl07_800EFCE4]  # carve
-      - [0x5CDA8, asm, ovl07_800EFF18]  # carve
+      - [0x5CDA8, c, func_800EFF18_ovl07]  # carve was: - [0x5CDA8, asm, ovl07_800EFF18]  # carve
       - [0x5CE98, c, func_800F0008_ovl07]  # carve
       - [0x5D078, c, func_800F01E8_ovl07]  # carve was: - [0x5D078, asm, ovl07_800F01E8]  # carve
       - [0x5D1E0, c, func_800F0350_ovl07]  # carve
       - [0x5D298, c, func_800F0408_ovl07]  # carve
       - [0x5D2D4, c, func_800F0444_ovl07]  # carve
       - [0x5D2F4, c, func_800F0464_ovl07]  # carve was: - [0x5D2F4, asm, ovl07_800F0464]  # carve
-      - [0x5D378, asm, ovl07_800F04E8]  # carve
+      - [0x5D378, c, func_800F04E8_ovl07]  # carve was: - [0x5D378, asm, ovl07_800F04E8]  # carve
       - [0x5D468, c, func_800F05D8_ovl07]  # carve
       - [0x5D500, asm, ovl07_800F0670]  # carve
       - [0x5D5AC, c, func_800F071C_ovl07]  # carve
@@ -1888,13 +1903,13 @@ segments:
       - [0x5DC1C, c, func_800F0D8C_ovl07]  # carve
       - [0x5DC60, c, func_800F0DD0_ovl07]  # carve
       - [0x5DCFC, c, func_800F0E6C_ovl07]  # carve
-      - [0x5DDA0, asm, ovl07_800F0F10]  # carve
+      - [0x5DDA0, c, func_800F0F10_ovl07]  # carve was: - [0x5DDA0, asm, ovl07_800F0F10]  # carve
       - [0x5DE78, c, func_800F0FE8_ovl07]  # carve
       - [0x5DF08, c, func_800F1078_ovl07]  # carve was: - [0x5DF08, asm, ovl07_800F1078]  # carve
       - [0x5DF78, c, func_800F10E8_ovl07]  # carve
       - [0x5DFF4, c, func_800F1164_ovl07]  # carve
       - [0x5E020, c, func_800F1190_ovl07]  # carve was: - [0x5E020, asm, ovl07_800F1190]  # carve
-      - [0x5E054, asm, ovl07_800F11C4]  # carve
+      - [0x5E054, c, func_800F11C4_ovl07]  # carve was: - [0x5E054, asm, ovl07_800F11C4]  # carve
       - [0x5E15C, c, func_800F12CC_ovl07]  # carve
       - [0x5E198, c, func_800F1308_ovl07]  # carve was: - [0x5E198, asm, ovl07_800F1308]  # carve
       - [0x5E1E8, c, func_800F1358_ovl07]  # carve
@@ -1937,7 +1952,7 @@ segments:
       - [0x5F980, c, func_800F2AF0_ovl07]  # carve
       - [0x5F9BC, asm, ovl07_800F2B2C]  # carve
       - [0x5FA64, c, func_800F2BD4_ovl07]  # carve
-      - [0x5FAA8, asm, ovl07_800F2C18]  # carve
+      - [0x5FAA8, c, func_800F2C18_ovl07]  # carve was: - [0x5FAA8, asm, ovl07_800F2C18]  # carve
       - [0x5FB88, c, func_800F2CF8_ovl07]  # carve
       - [0x5FC3C, c, func_800F2DAC_ovl07]  # carve was: - [0x5FC3C, asm, ovl07_800F2DAC]  # carve
       - [0x5FCC0, c, func_800F2E30_ovl07]  # carve was: - [0x5FCC0, asm, ovl07_800F2E30]  # carve
@@ -1947,7 +1962,7 @@ segments:
       - [0x5FE98, c, func_800F3008_ovl07]  # carve was: - [0x5FE98, asm, ovl07_800F3008]  # carve
       - [0x5FF3C, c, func_800F30AC_ovl07]  # carve was: - [0x5FF3C, asm, ovl07_800F30AC]  # carve
       - [0x60078, c, func_800F31E8_ovl07]  # carve
-      - [0x600CC, asm, ovl07_800F323C]  # carve
+      - [0x600CC, c, func_800F323C_ovl07]  # carve was: - [0x600CC, asm, ovl07_800F323C]  # carve
       - [0x6019C, c, func_800F330C_ovl07]  # carve
       - [0x601BC, c, func_800F332C_ovl07]  # carve was: - [0x601BC, asm, ovl07_800F332C]  # carve
       - [0x602FC, c, func_800F346C_ovl07]  # carve
@@ -2195,9 +2210,10 @@ segments:
       - [0x6C2F0, c, func_800FF460_ovl07]  # carve was: - [0x6C2F0, asm, ovl07_800FF460]  # carve
       - [0x6C454, c, func_800FF5C4_ovl07]  # carve
       - [0x6C4A0, c, func_800FF610_ovl07]  # carve
-      - [0x6C4C0, asm, ovl07_800FF630]  # carve
+      - [0x6C4C0, c, func_800FF630_ovl07]  # carve was: - [0x6C4C0, asm, ovl07_800FF630]  # carve
       - [0x6C5CC, c, func_800FF73C_ovl07]  # carve
-      - [0x6C608, asm, ovl07_800FF778]  # carve
+      - [0x6C608, c, func_800FF778_ovl07]  # carve was: - [0x6C608, asm, ovl07_800FF778]  # carve
+      - [0x6C6EC, c, func_800FF85C_ovl07]  # carve
       - [0x6C7E8, c, func_800FF958_ovl07]  # carve
       - [0x6C834, c, func_800FF9A4_ovl07]  # carve was: - [0x6C834, asm, ovl07_800FF9A4]  # carve
       - [0x6C870, c, func_800FF9E0_ovl07]  # carve
@@ -2303,10 +2319,10 @@ segments:
       - [0x72CC4, c, func_800F2634_ovl08]  # carve was: - [0x72CC4, asm, ovl08_800F2634]  # carve
       - [0x72D58, c, func_800F26C8_ovl08]  # carve was: - [0x72D58, asm, ovl08_800F26C8]  # carve
       - [0x72D90, c, func_800F2700_ovl08]  # carve
-      - [0x72E50, asm, ovl08_800F27C0]  # carve
+      - [0x72E50, c, func_800F27C0_ovl08]  # carve was: - [0x72E50, asm, ovl08_800F27C0]  # carve
       - [0x72F38, c, func_800F28A8_ovl08]  # carve
       - [0x72F58, c, func_800F28C8_ovl08]  # carve was: - [0x72F58, asm, ovl08_800F28C8]  # carve
-      - [0x72F78, asm, ovl08_800F28E8]  # carve
+      - [0x72F78, c, func_800F28E8_ovl08]  # carve was: - [0x72F78, asm, ovl08_800F28E8]  # carve
       - [0x73080, c, func_800F29F0_ovl08]  # carve
       - [0x730D0, c, func_800F2A40_ovl08]  # carve
       - [0x7310C, c, func_800F2A7C_ovl08]  # carve was: - [0x7310C, asm, ovl08_800F2A7C]  # carve
@@ -2399,17 +2415,17 @@ segments:
       - [0x76770, asm, ovl09_800F08E0]  # carve
       - [0x76E28, c, func_800F0F98_ovl09]  # carve
       - [0x76FA4, c, func_800F1114_ovl09]  # carve
-      - [0x76FF0, asm, ovl09_800F1160]  # carve
+      - [0x76FF0, c, func_800F1160_ovl09]  # carve was: - [0x76FF0, asm, ovl09_800F1160]  # carve
       - [0x770E4, c, func_800F1254_ovl09]  # carve
       - [0x77104, c, func_800F1274_ovl09]  # carve
       - [0x7710C, c, func_800F127C_ovl09]  # carve was: - [0x7710C, asm, ovl09_800F127C]  # carve
       - [0x77148, c, func_800F12B8_ovl09]  # carve was: - [0x77148, asm, ovl09_800F12B8]  # carve
       - [0x77184, c, func_800F12F4_ovl09]  # carve
       - [0x771C0, c, func_800F1330_ovl09]  # carve was: - [0x771C0, asm, ovl09_800F1330]  # carve
-      - [0x771FC, asm, ovl09_800F136C]  # carve
+      - [0x771FC, c, func_800F136C_ovl09]  # carve was: - [0x771FC, asm, ovl09_800F136C]  # carve
       - [0x772EC, c, func_800F145C_ovl09]  # carve
       - [0x772F4, c, func_800F1464_ovl09]  # carve was: - [0x772F4, asm, ovl09_800F1464]  # carve
-      - [0x77330, asm, ovl09_800F14A0]  # carve
+      - [0x77330, c, func_800F14A0_ovl09]  # carve was: - [0x77330, asm, ovl09_800F14A0]  # carve
       - [0x77414, c, func_800F1584_ovl09]  # carve
       - [0x77434, c, func_800F15A4_ovl09]  # carve was: - [0x77434, asm, ovl09_800F15A4]  # carve
       - [0x77470, c, func_800F15E0_ovl09]  # carve was: - [0x77470, asm, ovl09_800F15E0]  # carve
@@ -2539,13 +2555,13 @@ segments:
       - [0x7E154, c, func_800F82C4_ovl09]  # carve
       - [0x7E190, c, func_800F8300_ovl09]  # carve was: - [0x7E190, asm, ovl09_800F8300]  # carve
       - [0x7E218, c, func_800F8388_ovl09]  # carve
-      - [0x7E254, asm, ovl09_800F83C4]  # carve
+      - [0x7E254, c, func_800F83C4_ovl09]  # carve was: - [0x7E254, asm, ovl09_800F83C4]  # carve
       - [0x7E348, c, func_800F84B8_ovl09]  # carve
       - [0x7E3F0, c, func_800F8560_ovl09]  # carve was: - [0x7E3F0, asm, ovl09_800F8560]  # carve
       - [0x7E464, c, func_800F85D4_ovl09]  # carve
       - [0x7E4FC, c, func_800F866C_ovl09]  # carve was: - [0x7E4FC, asm, ovl09_800F866C]  # carve
       - [0x7E530, c, func_800F86A0_ovl09]  # carve
-      - [0x7E56C, asm, ovl09_800F86DC]  # carve
+      - [0x7E56C, c, func_800F86DC_ovl09]  # carve was: - [0x7E56C, asm, ovl09_800F86DC]  # carve
       - [0x7E64C, c, func_800F87BC_ovl09]  # carve
       - [0x7E688, c, func_800F87F8_ovl09]  # carve
       - [0x7E69C, c, func_800F880C_ovl09]  # carve was: - [0x7E69C, asm, ovl09_800F880C]  # carve
@@ -2555,7 +2571,7 @@ segments:
       - [0x7E764, c, func_800F88D4_ovl09]  # carve was: - [0x7E764, asm, ovl09_800F88D4]  # carve
       - [0x7E774, c, func_800F88E4_ovl09]  # carve was: - [0x7E774, asm, ovl09_800F88E4]  # carve
       - [0x7E7B0, c, func_800F8920_ovl09]  # carve was: - [0x7E7B0, asm, ovl09_800F8920]  # carve
-      - [0x7E828, asm, ovl09_800F8998]  # carve
+      - [0x7E828, c, func_800F8998_ovl09]  # carve was: - [0x7E828, asm, ovl09_800F8998]  # carve
       - [0x7E8F8, c, func_800F8A68_ovl09]  # carve
       - [0x7E948, c, func_800F8AB8_ovl09]  # carve was: - [0x7E948, asm, ovl09_800F8AB8]  # carve
       - [0x7E960, c, func_800F8AD0_ovl09]  # carve
@@ -2567,7 +2583,7 @@ segments:
       - [0x7EBA0, c, func_800F8D10_ovl09]  # carve was: - [0x7EBA0, asm, ovl09_800F8D10]  # carve
       - [0x7EBE4, c, func_800F8D54_ovl09]  # carve
       - [0x7EC48, c, func_800F8DB8_ovl09]  # carve was: - [0x7EC48, asm, ovl09_800F8DB8]  # carve
-      - [0x7EC8C, asm, ovl09_800F8DFC]  # carve
+      - [0x7EC8C, c, func_800F8DFC_ovl09]  # carve was: - [0x7EC8C, asm, ovl09_800F8DFC]  # carve
       - [0x7ED60, c, func_800F8ED0_ovl09]  # carve
       - [0x7EE10, c, func_800F8F80_ovl09]  # carve was: - [0x7EE10, asm, ovl09_800F8F80]  # carve
       - [0x7EE74, c, func_800F8FE4_ovl09]  # carve
@@ -2607,20 +2623,20 @@ segments:
       - [0x8182C, .rodata, func_800F62DC_ovl10]  # carve
       - [0x818E4, rodata, 818E4]  # carve
       - [0x81B6C, c, func_800EECDC_ovl10]  # carve was: - [0x81B6C, asm]  # gen:rockx5_splits
-      - [0x81D0C, asm, ovl10_800EEE7C]
+      - [0x81D0C, c, func_800EEE7C_ovl10]  # carve was: - [0x81D0C, asm, ovl10_800EEE7C]
       - [0x81E20, c, func_800EEF90_ovl10]  # carve
       - [0x81E5C, c, func_800EEFCC_ovl10]  # carve
       - [0x81ED0, c, func_800EF040_ovl10]  # carve was: - [0x81ED0, asm, ovl10_800EF040]  # carve
       - [0x81F10, c, func_800EF080_ovl10]  # carve
       - [0x81F30, c, func_800EF0A0_ovl10]  # carve was: - [0x81F30, asm, ovl10_800EF0A0]  # carve
-      - [0x81F74, asm, ovl10_800EF0E4]  # carve
+      - [0x81F74, c, func_800EF0E4_ovl10]  # carve was: - [0x81F74, asm, ovl10_800EF0E4]  # carve
       - [0x82064, c, func_800EF1D4_ovl10]  # carve
       - [0x82160, c, func_800EF2D0_ovl10]  # carve was: - [0x82160, asm, ovl10_800EF2D0]  # carve
       - [0x821DC, c, func_800EF34C_ovl10]  # carve
       - [0x82260, c, func_800EF3D0_ovl10]  # carve was: - [0x82260, asm, ovl10_800EF3D0]  # carve
       - [0x822E0, c, func_800EF450_ovl10]  # carve was: - [0x822E0, asm, ovl10_800EF450]  # carve
       - [0x82324, c, func_800EF494_ovl10]  # carve
-      - [0x82368, asm, ovl10_800EF4D8]  # carve
+      - [0x82368, c, func_800EF4D8_ovl10]  # carve was: - [0x82368, asm, ovl10_800EF4D8]  # carve
       - [0x8245C, c, func_800EF5CC_ovl10]  # carve
       - [0x826D8, c, func_800EF848_ovl10]  # carve
       - [0x8299C, c, func_800EFB0C_ovl10]  # carve
@@ -2703,7 +2719,7 @@ segments:
       - [0x85ADC, c, func_800F2C4C_ovl10]  # carve
       - [0x85B60, c, func_800F2CD0_ovl10]  # carve was: - [0x85B60, asm, ovl10_800F2CD0]  # carve
       - [0x85B9C, c, func_800F2D0C_ovl10]  # carve was: - [0x85B9C, asm, ovl10_800F2D0C]  # carve
-      - [0x85BCC, asm, ovl10_800F2D3C]  # carve
+      - [0x85BCC, c, func_800F2D3C_ovl10]  # carve was: - [0x85BCC, asm, ovl10_800F2D3C]  # carve
       - [0x85CD0, c, func_800F2E40_ovl10]  # carve
       - [0x85D20, c, func_800F2E90_ovl10]  # carve
       - [0x85D78, c, func_800F2EE8_ovl10]  # carve
@@ -2871,9 +2887,9 @@ segments:
       - [0x8FA80, c, func_800EEBF0_ovl11]  # carve was: - [0x8FA80, asm, ovl11_800EEBF0]  # carve
       - [0x8FBC8, asm, ovl11_800EED38]  # carve
       - [0x90044, c, func_800EF1B4_ovl11]  # carve
-      - [0x90080, asm, ovl11_800EF1F0]  # carve
+      - [0x90080, c, func_800EF1F0_ovl11]  # carve was: - [0x90080, asm, ovl11_800EF1F0]  # carve
       - [0x90154, c, func_800EF2C4_ovl11]  # carve
-      - [0x90198, asm, ovl11_800EF308]  # carve
+      - [0x90198, c, func_800EF308_ovl11]  # carve was: - [0x90198, asm, ovl11_800EF308]  # carve
       - [0x90298, c, func_800EF408_ovl11]  # carve
       - [0x902A0, c, func_800EF410_ovl11]  # carve was: - [0x902A0, asm, ovl11_800EF410]  # carve
       - [0x902E0, c, func_800EF450_ovl11]  # carve was: - [0x902E0, asm, ovl11_800EF450]  # carve
@@ -2886,6 +2902,7 @@ segments:
       - [0x905C4, c, func_800EF734_ovl11]  # carve
       - [0x90600, c, func_800EF770_ovl11]  # carve was: - [0x90600, asm, ovl11_800EF770]  # carve
       - [0x90654, asm, ovl11_800EF7C4]  # carve
+      - [0x90720, c, func_800EF890_ovl11]  # carve
       - [0x90808, c, func_800EF978_ovl11]  # carve
       - [0x90888, c, func_800EF9F8_ovl11]  # carve was: - [0x90888, asm, ovl11_800EF9F8]  # carve
       - [0x909A4, c, func_800EFB14_ovl11]  # carve
@@ -2958,7 +2975,7 @@ segments:
       - [0x93378, asm, ovl11_800F24E8]  # carve
       - [0x934F4, c, func_800F2664_ovl11]  # carve
       - [0x9357C, c, func_800F26EC_ovl11]  # carve
-      - [0x93610, asm, ovl11_800F2780]  # carve
+      - [0x93610, c, func_800F2780_ovl11]  # carve was: - [0x93610, asm, ovl11_800F2780]  # carve
       - [0x936E8, c, func_800F2858_ovl11]  # carve
       - [0x936F0, c, func_800F2860_ovl11]  # carve was: - [0x936F0, asm, ovl11_800F2860]  # carve
       - [0x9372C, c, func_800F289C_ovl11]  # carve was: - [0x9372C, asm, ovl11_800F289C]  # carve
@@ -2974,7 +2991,8 @@ segments:
       - [0x93AC0, c, func_800F2C30_ovl11]  # carve was: - [0x93AC0, asm, ovl11_800F2C30]  # carve
       - [0x93B38, c, func_800F2CA8_ovl11]  # carve was: - [0x93B38, asm, ovl11_800F2CA8]  # carve
       - [0x93B9C, c, func_800F2D0C_ovl11]  # carve
-      - [0x93BD8, asm, ovl11_800F2D48]  # carve
+      - [0x93BD8, c, func_800F2D48_ovl11]  # carve was: - [0x93BD8, asm, ovl11_800F2D48]  # carve
+      - [0x93CB0, c, func_800F2E20_ovl11]  # carve
       - [0x93D8C, c, func_800F2EFC_ovl11]  # carve
       - [0x93DD8, c, func_800F2F48_ovl11]  # carve
       - [0x93E80, c, func_800F2FF0_ovl11]  # carve was: - [0x93E80, asm, ovl11_800F2FF0]  # carve
@@ -3272,6 +3290,7 @@ segments:
       - [0xA3024, c, func_800EE994_ovl16]  # carve was: - [0xA3024, asm, ovl16_800EE994]
       - [0xA3238, c, func_800EEBA8_ovl16]  # carve was: - [0xA3238, asm, ovl16_800EEBA8]  # carve
       - [0xA334C, asm, ovl16_800EECBC]  # carve
+      - [0xA34B0, c, func_800EEE20_ovl16]  # carve
       - [0xA358C, c, func_800EEEFC_ovl16]  # carve
       - [0xA35C8, c, func_800EEF38_ovl16]  # carve was: - [0xA35C8, asm, ovl16_800EEF38]  # carve
       - [0xA3604, c, func_800EEF74_ovl16]  # carve was: - [0xA3604, asm, ovl16_800EEF74]  # carve
@@ -3329,7 +3348,7 @@ segments:
       - [0xA8750, c, func_800EF8C0_ovl18]  # carve
       - [0xA87D8, c, func_800EF948_ovl18]  # carve
       - [0xA87E0, c, func_800EF950_ovl18]  # carve was: - [0xA87E0, asm, ovl18_800EF950]  # carve
-      - [0xA8800, asm, ovl18_800EF970]  # carve
+      - [0xA8800, c, func_800EF970_ovl18]  # carve was: - [0xA8800, asm, ovl18_800EF970]  # carve
       - [0xA88EC, c, func_800EFA5C_ovl18]  # carve
       - [0xA8988, c, func_800EFAF8_ovl18]  # carve was: - [0xA8988, asm, ovl18_800EFAF8]  # carve
       - [0xA89DC, c, func_800EFB4C_ovl18]  # carve
@@ -3478,9 +3497,10 @@ segments:
       - [0xAE02C, c, func_800F519C_ovl18]  # carve was: - [0xAE02C, asm, ovl18_800F519C]  # carve
       - [0xAE174, c, func_800F52E4_ovl18]  # carve
       - [0xAE1B0, asm, ovl18_800F5320]  # carve
+      - [0xAE27C, c, func_800F53EC_ovl18]  # carve
       - [0xAE350, c, func_800F54C0_ovl18]  # carve
       - [0xAE370, c, func_800F54E0_ovl18]  # carve was: - [0xAE370, asm, ovl18_800F54E0]  # carve
-      - [0xAE390, asm, ovl18_800F5500]  # carve
+      - [0xAE390, c, func_800F5500_ovl18]  # carve was: - [0xAE390, asm, ovl18_800F5500]  # carve
       - [0xAE46C, c, func_800F55DC_ovl18]  # carve
       - [0xAE498, c, func_800F5608_ovl18]  # carve was: - [0xAE498, asm, ovl18_800F5608]  # carve
       - [0xAE4D4, c, func_800F5644_ovl18]  # carve was: - [0xAE4D4, asm, ovl18_800F5644]  # carve
@@ -3529,7 +3549,7 @@ segments:
       - [0xAF808, c, func_800F6978_ovl18]  # carve was: - [0xAF808, asm, ovl18_800F6978]  # carve
       - [0xAF8C8, c, func_800F6A38_ovl18]  # carve
       - [0xAF8E8, c, func_800F6A58_ovl18]  # carve was: - [0xAF8E8, asm, ovl18_800F6A58]  # carve
-      - [0xAF924, asm, ovl18_800F6A94]  # carve
+      - [0xAF924, c, func_800F6A94_ovl18]  # carve was: - [0xAF924, asm, ovl18_800F6A94]  # carve
       - [0xAF9F4, c, func_800F6B64_ovl18]  # carve
       - [0xAFA30, c, func_800F6BA0_ovl18]  # carve
       - [0xAFA88, c, func_800F6BF8_ovl18]  # carve was: - [0xAFA88, asm, ovl18_800F6BF8]  # carve
@@ -3566,10 +3586,11 @@ segments:
       - [0xB30A0, c, func_800F0210_ovl20]  # carve
       - [0xB3254, c, func_800F03C4_ovl20]  # carve
       - [0xB3430, asm, ovl20_800F05A0]  # carve
+      - [0xB3768, c, func_800F08D8_ovl20]  # carve
       - [0xB3868, c, func_800F09D8_ovl20]  # carve
       - [0xB3980, c, func_800F0AF0_ovl20]  # carve
       - [0xB3B10, c, func_800F0C80_ovl20]  # carve
-      - [0xB3B84, asm, ovl20_800F0CF4]  # carve
+      - [0xB3B84, c, func_800F0CF4_ovl20]  # carve was: - [0xB3B84, asm, ovl20_800F0CF4]  # carve
       - [0xB3C50, c, func_800F0DC0_ovl20]  # carve
       - [0xB3CDC, c, func_800F0E4C_ovl20]  # carve
       - [0xB3D18, c, func_800F0E88_ovl20]  # carve was: - [0xB3D18, asm, ovl20_800F0E88]  # carve
@@ -3633,6 +3654,7 @@ segments:
       - [0xB537C, c, func_800F24EC_ovl20]  # carve
       - [0xB53B8, c, func_800F2528_ovl20]  # carve was: - [0xB53B8, asm, ovl20_800F2528]  # carve
       - [0xB53F0, asm, ovl20_800F2560]  # carve
+      - [0xB56A4, c, func_800F2814_ovl20]  # carve
       - [0xB579C, c, func_800F290C_ovl20]  # carve
       - [0xB57D8, c, func_800F2948_ovl20]  # carve was: - [0xB57D8, asm, ovl20_800F2948]  # carve
       - [0xB5830, c, func_800F29A0_ovl20]  # carve
@@ -3648,7 +3670,7 @@ segments:
       - [0xB5BB0, c, func_800F2D20_ovl20]  # carve was: - [0xB5BB0, asm, ovl20_800F2D20]  # carve
       - [0xB5BD4, c, func_800F2D44_ovl20]  # carve was: - [0xB5BD4, asm, ovl20_800F2D44]  # carve
       - [0xB5CF0, c, func_800F2E60_ovl20]  # carve
-      - [0xB5D2C, asm, ovl20_800F2E9C]  # carve
+      - [0xB5D2C, c, func_800F2E9C_ovl20]  # carve was: - [0xB5D2C, asm, ovl20_800F2E9C]  # carve
       - [0xB5E04, c, func_800F2F74_ovl20]  # carve
       - [0xB5E40, c, func_800F2FB0_ovl20]  # carve
       - [0xB5E60, c, func_800F2FD0_ovl20]  # carve was: - [0xB5E60, asm, ovl20_800F2FD0]  # carve
@@ -3673,7 +3695,7 @@ segments:
       - [0xB66C4, c, func_800F3834_ovl20]  # carve
       - [0xB674C, c, func_800F38BC_ovl20]  # carve was: - [0xB674C, asm, ovl20_800F38BC]  # carve
       - [0xB678C, c, func_800F38FC_ovl20]  # carve
-      - [0xB67C8, asm, ovl20_800F3938]  # carve
+      - [0xB67C8, c, func_800F3938_ovl20]  # carve was: - [0xB67C8, asm, ovl20_800F3938]  # carve
       - [0xB6894, c, func_800F3A04_ovl20]  # carve
       - [0xB68B8, c, func_800F3A28_ovl20]  # carve was: - [0xB68B8, asm, ovl20_800F3A28]  # carve
       - [0xB6B68, c, func_800F3CD8_ovl20]  # carve
@@ -3687,6 +3709,7 @@ segments:
       - [0xB7080, c, func_800F41F0_ovl20]  # carve
       - [0xB70F0, c, func_800F4260_ovl20]  # carve was: - [0xB70F0, asm, ovl20_800F4260]  # carve
       - [0xB7128, asm, ovl20_800F4298]  # carve
+      - [0xB74E8, c, func_800F4658_ovl20]  # carve
       - [0xB75BC, c, func_800F472C_ovl20]  # carve
       - [0xB75F8, c, func_800F4768_ovl20]  # carve was: - [0xB75F8, asm, ovl20_800F4768]  # carve
       - [0xB76C0, c, func_800F4830_ovl20]  # carve was: - [0xB76C0, asm, ovl20_800F4830]  # carve
@@ -3729,9 +3752,9 @@ segments:
       - [0xBA83C, c, func_800EF1AC_ovl21]  # carve was: - [0xBA83C, asm, ovl21_800EF1AC]  # carve
       - [0xBA870, c, func_800EF1E0_ovl21]  # carve
       - [0xBA8FC, c, func_800EF26C_ovl21]  # carve
-      - [0xBA948, asm, ovl21_800EF2B8]  # carve
+      - [0xBA948, c, func_800EF2B8_ovl21]  # carve was: - [0xBA948, asm, ovl21_800EF2B8]  # carve
       - [0xBAA24, c, func_800EF394_ovl21]  # carve
-      - [0xBAA2C, asm, ovl21_800EF39C]  # carve
+      - [0xBAA2C, c, func_800EF39C_ovl21]  # carve was: - [0xBAA2C, asm, ovl21_800EF39C]  # carve
       - [0xBAB0C, c, func_800EF47C_ovl21]  # carve
       - [0xBAB54, c, func_800EF4C4_ovl21]  # carve
       - [0xBABA0, c, func_800EF510_ovl21]  # carve was: - [0xBABA0, asm, ovl21_800EF510]  # carve
@@ -3751,7 +3774,7 @@ segments:
     exclusive_ram_id: ovlA
     subsegments:
       - [0xBC000, textbin]  # gen:rockx5_splits
-      - [0xBC004, asm]  # gen:rockx5_splits
+      - [0xBC004, c, func_800EE974_ovl22]  # carve was: - [0xBC004, asm]  # gen:rockx5_splits
       - [0xBC0D0, c, func_800EEA40_ovl22]  # carve
       - [0xBC1F4, c, func_800EEB64_ovl22]  # carve
       - [0xBC230, c, func_800EEBA0_ovl22]  # carve
@@ -3773,7 +3796,7 @@ segments:
       - [0xBD504, c, func_800EEE74_ovl23]  # carve
       - [0xBD59C, c, func_800EEF0C_ovl23]  # carve was: - [0xBD59C, asm, ovl23_800EEF0C]  # carve
       - [0xBD608, c, func_800EEF78_ovl23]  # carve
-      - [0xBD690, asm, ovl23_800EF000]  # carve
+      - [0xBD690, c, func_800EF000_ovl23]  # carve was: - [0xBD690, asm, ovl23_800EF000]  # carve
       - [0xBD788, c, func_800EF0F8_ovl23]  # carve
       - [0xBD7C4, c, func_800EF134_ovl23]  # carve
       - [0xBD800, c, func_800EF170_ovl23]  # carve was: - [0xBD800, asm, ovl23_800EF170]  # carve
@@ -3794,7 +3817,7 @@ segments:
     subsegments:
       - [0xBE000, rodata]  # T3: was asm; all jtbl/data words
       - [0xBE044, .rodata, func_800F3ABC_ovl24]  # carve
-      - [0xBE1C0, asm, ovl24_800EEB30]
+      - [0xBE1C0, c, func_800EEB30_ovl24]  # carve was: - [0xBE1C0, asm, ovl24_800EEB30]
       - [0xBE29C, c, func_800EEC0C_ovl24]  # carve
       - [0xBE4CC, c, func_800EEE3C_ovl24]  # carve
       - [0xBE5A0, c, func_800EEF10_ovl24]  # carve was: - [0xBE5A0, asm, ovl24_800EEF10]  # carve
@@ -3828,11 +3851,11 @@ segments:
       - [0xBFAA0, c, func_800F0410_ovl24]  # carve
       - [0xBFB30, c, func_800F04A0_ovl24]  # carve was: - [0xBFB30, asm, ovl24_800F04A0]  # carve
       - [0xBFB7C, c, func_800F04EC_ovl24]  # carve
-      - [0xBFBB8, asm, ovl24_800F0528]  # carve
+      - [0xBFBB8, c, func_800F0528_ovl24]  # carve was: - [0xBFBB8, asm, ovl24_800F0528]  # carve
       - [0xBFC8C, c, func_800F05FC_ovl24]  # carve
       - [0xBFCB8, c, func_800F0628_ovl24]  # carve was: - [0xBFCB8, asm, ovl24_800F0628]  # carve
       - [0xBFD38, c, func_800F06A8_ovl24]  # carve
-      - [0xBFD74, asm, ovl24_800F06E4]  # carve
+      - [0xBFD74, c, func_800F06E4_ovl24]  # carve was: - [0xBFD74, asm, ovl24_800F06E4]  # carve
       - [0xBFE54, c, func_800F07C4_ovl24]  # carve
       - [0xBFE74, c, func_800F07E4_ovl24]  # carve was: - [0xBFE74, asm, ovl24_800F07E4]  # carve
       - [0xBFEB0, c, func_800F0820_ovl24]  # carve was: - [0xBFEB0, asm, ovl24_800F0820]  # carve
@@ -3862,7 +3885,7 @@ segments:
       - [0xC2000, c, func_800F2970_ovl24]  # carve
       - [0xC22DC, c, func_800F2C4C_ovl24]  # carve
       - [0xC2510, c, func_800F2E80_ovl24]  # carve was: - [0xC2510, asm, ovl24_800F2E80]  # carve
-      - [0xC256C, asm, ovl24_800F2EDC]  # carve
+      - [0xC256C, c, func_800F2EDC_ovl24]  # carve was: - [0xC256C, asm, ovl24_800F2EDC]  # carve
       - [0xC264C, c, func_800F2FBC_ovl24]  # carve
       - [0xC2688, asm, ovl24_800F2FF8]  # carve
       - [0xC2768, c, func_800F30D8_ovl24]  # carve
@@ -3872,14 +3895,14 @@ segments:
       - [0xC2890, c, func_800F3200_ovl24]  # carve was: - [0xC2890, asm, ovl24_800F3200]  # carve
       - [0xC28F0, c, func_800F3260_ovl24]  # carve
       - [0xC2984, c, func_800F32F4_ovl24]  # carve was: - [0xC2984, asm, ovl24_800F32F4]  # carve
-      - [0xC2A6C, asm, ovl24_800F33DC]  # carve
+      - [0xC2A6C, c, func_800F33DC_ovl24]  # carve was: - [0xC2A6C, asm, ovl24_800F33DC]  # carve
       - [0xC2B3C, c, func_800F34AC_ovl24]  # carve
       - [0xC2C18, c, func_800F3588_ovl24]  # carve
       - [0xC2CDC, c, func_800F364C_ovl24]  # carve was: - [0xC2CDC, asm, ovl24_800F364C]  # carve
       - [0xC2D24, c, func_800F3694_ovl24]  # carve
       - [0xC2DE4, c, func_800F3754_ovl24]  # carve was: - [0xC2DE4, asm, ovl24_800F3754]  # carve
       - [0xC2E7C, c, func_800F37EC_ovl24]  # carve was: - [0xC2E7C, asm, ovl24_800F37EC]  # carve
-      - [0xC2F14, asm, ovl24_800F3884]  # carve
+      - [0xC2F14, c, func_800F3884_ovl24]  # carve was: - [0xC2F14, asm, ovl24_800F3884]  # carve
       - [0xC2FF8, c, func_800F3968_ovl24]  # carve
       - [0xC3018, c, func_800F3988_ovl24]  # carve was: - [0xC3018, asm, ovl24_800F3988]  # carve
       - [0xC314C, c, func_800F3ABC_ovl24]  # carve was: - [0xC314C, asm, ovl24_800F3ABC]  # carve
@@ -3932,9 +3955,10 @@ segments:
       - [0xC7004, c, func_800F0174_ovl25]  # carve was: - [0xC7004, asm, ovl25_800F0174]  # carve
       - [0xC705C, asm, ovl25_800F01CC]  # carve
       - [0xC70B8, c, func_800F0228_ovl25]  # carve
-      - [0xC70F4, asm, ovl25_800F0264]  # carve
+      - [0xC70F4, c, func_800F0264_ovl25]  # carve was: - [0xC70F4, asm, ovl25_800F0264]  # carve
       - [0xC71EC, c, func_800F035C_ovl25]  # carve
-      - [0xC7254, asm, ovl25_800F03C4]  # carve
+      - [0xC7254, c, func_800F03C4_ovl25]  # carve was: - [0xC7254, asm, ovl25_800F03C4]  # carve
+      - [0xC732C, c, func_800F049C_ovl25]  # carve was: - [0xC732C, asm, ovl25_800F049C]  # carve
       - [0xC73FC, c, func_800F056C_ovl25]  # carve
       - [0xC7470, c, func_800F05E0_ovl25]  # carve was: - [0xC7470, asm, ovl25_800F05E0]  # carve
       - [0xC74E0, c, func_800F0650_ovl25]  # carve
@@ -3966,7 +3990,7 @@ segments:
       - [0xC9AB0, c, func_800EEC20_ovl26]  # carve
       - [0xC9BE8, c, func_800EED58_ovl26]  # carve
       - [0xC9C24, c, func_800EED94_ovl26]  # carve was: - [0xC9C24, asm, ovl26_800EED94]  # carve
-      - [0xC9CC4, asm, ovl26_800EEE34]
+      - [0xC9CC4, c, func_800EEE34_ovl26]  # carve was: - [0xC9CC4, asm, ovl26_800EEE34]
       - [0xC9DA4, c, func_800EEF14_ovl26]  # carve
       - [0xC9DC4, c, func_800EEF34_ovl26]  # carve was: - [0xC9DC4, asm, ovl26_800EEF34]  # carve
       - [0xC9DF0, c, func_800EEF60_ovl26]  # carve was: - [0xC9DF0, asm, ovl26_800EEF60]  # carve
@@ -4049,7 +4073,7 @@ segments:
       - [0xCD264, asm, ovl26_800F23D4]  # carve
       - [0xCD738, c, func_800F28A8_ovl26]  # carve
       - [0xCD8D8, c, func_800F2A48_ovl26]  # carve was: - [0xCD8D8, asm, ovl26_800F2A48]  # carve
-      - [0xCDA48, asm, ovl26_800F2BB8]  # carve
+      - [0xCDA48, c, func_800F2BB8_ovl26]  # carve was: - [0xCDA48, asm, ovl26_800F2BB8]  # carve
       - [0xCDB4C, c, func_800F2CBC_ovl26]  # carve
       - [0xCDD20, c, func_800F2E90_ovl26]  # carve was: - [0xCDD20, asm, ovl26_800F2E90]  # carve
       - [0xCDEF4, c, func_800F3064_ovl26]  # carve
@@ -4135,7 +4159,7 @@ segments:
       - [0xD07C8, c, func_800F5938_ovl26]  # carve
       - [0xD081C, c, func_800F598C_ovl26]  # carve was: - [0xD081C, asm, ovl26_800F598C]  # carve
       - [0xD0950, c, func_800F5AC0_ovl26]  # carve
-      - [0xD09D8, asm, ovl26_800F5B48]  # carve
+      - [0xD09D8, c, func_800F5B48_ovl26]  # carve was: - [0xD09D8, asm, ovl26_800F5B48]  # carve
       - [0xD0AA8, c, func_800F5C18_ovl26]  # carve
       - [0xD0AE4, c, func_800F5C54_ovl26]  # carve
       - [0xD0AEC, c, func_800F5C5C_ovl26]  # carve was: - [0xD0AEC, asm, ovl26_800F5C5C]  # carve
@@ -4154,7 +4178,7 @@ segments:
       - [0xD0E54, c, func_800F5FC4_ovl26]  # carve
       - [0xD0EE4, c, func_800F6054_ovl26]  # carve
       - [0xD0F2C, c, func_800F609C_ovl26]  # carve was: - [0xD0F2C, asm, ovl26_800F609C]  # carve
-      - [0xD0FB4, asm, ovl26_800F6124]  # carve
+      - [0xD0FB4, c, func_800F6124_ovl26]  # carve was: - [0xD0FB4, asm, ovl26_800F6124]  # carve
       - [0xD108C, c, func_800F61FC_ovl26]  # carve
       - [0xD10C8, c, func_800F6238_ovl26]  # carve was: - [0xD10C8, asm, ovl26_800F6238]  # carve
       - [0xD1108, c, func_800F6278_ovl26]  # carve
@@ -4169,7 +4193,7 @@ segments:
       - [0xD14CC, c, func_800F663C_ovl26]  # carve was: - [0xD14CC, asm, ovl26_800F663C]  # carve
       - [0xD152C, c, func_800F669C_ovl26]  # carve
       - [0xD154C, c, func_800F66BC_ovl26]  # carve was: - [0xD154C, asm, ovl26_800F66BC]  # carve
-      - [0xD1588, asm, ovl26_800F66F8]  # carve
+      - [0xD1588, c, func_800F66F8_ovl26]  # carve was: - [0xD1588, asm, ovl26_800F66F8]  # carve
       - [0xD1658, c, func_800F67C8_ovl26]  # carve
       - [0xD16D4, c, func_800F6844_ovl26]  # carve
       - [0xD16F4, c, func_800F6864_ovl26]  # carve was: - [0xD16F4, asm, ovl26_800F6864]  # carve
@@ -4179,7 +4203,7 @@ segments:
       - [0xD1CD8, c, func_800F6E48_ovl26]  # carve
       - [0xD1E28, c, func_800F6F98_ovl26]  # carve was: - [0xD1E28, asm, ovl26_800F6F98]  # carve
       - [0xD1F78, c, func_800F70E8_ovl26]  # carve
-      - [0xD1FB4, asm, ovl26_800F7124]  # carve
+      - [0xD1FB4, c, func_800F7124_ovl26]  # carve was: - [0xD1FB4, asm, ovl26_800F7124]  # carve
       - [0xD209C, c, func_800F720C_ovl26]  # carve
       - [0xD20BC, c, func_800F722C_ovl26]  # carve was: - [0xD20BC, asm, ovl26_800F722C]  # carve
       - [0xD20F8, c, func_800F7268_ovl26]  # carve was: - [0xD20F8, asm, ovl26_800F7268]  # carve
@@ -4242,8 +4266,9 @@ segments:
       - [0xD5C3C, rodata, D5C3C]  # carve
       - [0xD5C40, .rodata, func_800F81A4_ovl27]  # carve
       - [0xD5C7C, rodata, D5C7C]  # carve
+      - [0xD5C98, .rodata, func_800FB82C_ovl27]  # carve
       - [0xD5CB4, c, func_800EEE24_ovl27]  # carve was: - [0xD5CB4, asm]  # gen:rockx5_splits
-      - [0xD5FD0, asm, ovl27_800EF140]
+      - [0xD5FD0, c, func_800EF140_ovl27]  # carve was: - [0xD5FD0, asm, ovl27_800EF140]
       - [0xD60C4, c, func_800EF234_ovl27]  # carve
       - [0xD61F0, c, func_800EF360_ovl27]  # carve
       - [0xD63A4, c, func_800EF514_ovl27]  # carve
@@ -4254,7 +4279,7 @@ segments:
       - [0xD6534, c, func_800EF6A4_ovl27]  # carve
       - [0xD65D0, c, func_800EF740_ovl27]  # carve was: - [0xD65D0, asm, ovl27_800EF740]  # carve
       - [0xD66A4, c, func_800EF814_ovl27]  # carve was: - [0xD66A4, asm, ovl27_800EF814]  # carve
-      - [0xD673C, asm, ovl27_800EF8AC]  # carve
+      - [0xD673C, c, func_800EF8AC_ovl27]  # carve was: - [0xD673C, asm, ovl27_800EF8AC]  # carve
       - [0xD6834, c, func_800EF9A4_ovl27]  # carve
       - [0xD6854, c, func_800EF9C4_ovl27]  # carve
       - [0xD685C, c, func_800EF9CC_ovl27]  # carve was: - [0xD685C, asm, ovl27_800EF9CC]  # carve
@@ -4463,7 +4488,8 @@ segments:
       - [0xDF034, c, func_800F81A4_ovl27]  # carve was: - [0xDF034, asm, ovl27_800F81A4]  # carve
       - [0xDF1B8, asm, ovl27_800F8328]  # carve
       - [0xDF668, c, func_800F87D8_ovl27]  # carve
-      - [0xDF938, asm, ovl27_800F8AA8]  # carve
+      - [0xDF938, c, func_800F8AA8_ovl27]  # carve was: - [0xDF938, asm, ovl27_800F8AA8]  # carve
+      - [0xDFA28, c, func_800F8B98_ovl27]  # carve was: - [0xDFA28, asm, ovl27_800F8B98]  # carve
       - [0xDFB20, c, func_800F8C90_ovl27]  # carve
       - [0xDFC60, c, func_800F8DD0_ovl27]  # carve
       - [0xDFDAC, asm, ovl27_800F8F1C]  # carve
@@ -4491,7 +4517,7 @@ segments:
       - [0xE0EA0, c, func_800FA010_ovl27]  # carve was: - [0xE0EA0, asm, ovl27_800FA010]  # carve
       - [0xE0EE0, c, func_800FA050_ovl27]  # carve
       - [0xE0F2C, c, func_800FA09C_ovl27]  # carve
-      - [0xE0FBC, asm, ovl27_800FA12C]  # carve
+      - [0xE0FBC, c, func_800FA12C_ovl27]  # carve was: - [0xE0FBC, asm, ovl27_800FA12C]  # carve
       - [0xE1094, c, func_800FA204_ovl27]  # carve
       - [0xE10D0, c, func_800FA240_ovl27]  # carve was: - [0xE10D0, asm, ovl27_800FA240]  # carve
       - [0xE10E8, c, func_800FA258_ovl27]  # carve
@@ -4511,7 +4537,7 @@ segments:
       - [0xE15F4, c, func_800FA764_ovl27]  # carve
       - [0xE1630, c, func_800FA7A0_ovl27]  # carve was: - [0xE1630, asm, ovl27_800FA7A0]  # carve
       - [0xE16B8, c, func_800FA828_ovl27]  # carve was: - [0xE16B8, asm, ovl27_800FA828]  # carve
-      - [0xE1740, asm, ovl27_800FA8B0]  # carve
+      - [0xE1740, c, func_800FA8B0_ovl27]  # carve was: - [0xE1740, asm, ovl27_800FA8B0]  # carve
       - [0xE1810, c, func_800FA980_ovl27]  # carve
       - [0xE1854, c, func_800FA9C4_ovl27]  # carve
       - [0xE1890, c, func_800FAA00_ovl27]  # carve was: - [0xE1890, asm, ovl27_800FAA00]  # carve
@@ -4530,7 +4556,7 @@ segments:
       - [0xE2100, c, func_800FB270_ovl27]  # carve was: - [0xE2100, asm, ovl27_800FB270]  # carve
       - [0xE2198, c, func_800FB308_ovl27]  # carve
       - [0xE2208, c, func_800FB378_ovl27]  # carve was: - [0xE2208, asm, ovl27_800FB378]  # carve
-      - [0xE2260, asm, ovl27_800FB3D0]  # carve
+      - [0xE2260, c, func_800FB3D0_ovl27]  # carve was: - [0xE2260, asm, ovl27_800FB3D0]  # carve
       - [0xE2364, c, func_800FB4D4_ovl27]  # carve
       - [0xE2384, c, func_800FB4F4_ovl27]  # carve was: - [0xE2384, asm, ovl27_800FB4F4]  # carve
       - [0xE23B0, c, func_800FB520_ovl27]  # carve was: - [0xE23B0, asm, ovl27_800FB520]  # carve
@@ -4540,7 +4566,7 @@ segments:
       - [0xE253C, c, func_800FB6AC_ovl27]  # carve was: - [0xE253C, asm, ovl27_800FB6AC]  # carve
       - [0xE25D0, c, func_800FB740_ovl27]  # carve
       - [0xE2668, c, func_800FB7D8_ovl27]  # carve was: - [0xE2668, asm, ovl27_800FB7D8]  # carve
-      - [0xE26BC, asm, ovl27_800FB82C]  # carve
+      - [0xE26BC, c, func_800FB82C_ovl27]  # carve was: - [0xE26BC, asm, ovl27_800FB82C]  # carve
       - [0xE27B0, c, func_800FB920_ovl27]  # carve
       - [0xE2860, c, func_800FB9D0_ovl27]  # carve
       - [0xE2880, c, func_800FB9F0_ovl27]  # carve was: - [0xE2880, asm, ovl27_800FB9F0]  # carve
@@ -4553,7 +4579,7 @@ segments:
       - [0xE2B18, c, func_800FBC88_ovl27]  # carve was: - [0xE2B18, asm, ovl27_800FBC88]  # carve
       - [0xE2B40, c, func_800FBCB0_ovl27]  # carve
       - [0xE2B7C, c, func_800FBCEC_ovl27]  # carve was: - [0xE2B7C, asm, ovl27_800FBCEC]  # carve
-      - [0xE2BFC, asm, ovl27_800FBD6C]  # carve
+      - [0xE2BFC, c, func_800FBD6C_ovl27]  # carve was: - [0xE2BFC, asm, ovl27_800FBD6C]  # carve
       - [0xE2CDC, c, func_800FBE4C_ovl27]  # carve
       - [0xE2D00, c, func_800FBE70_ovl27]  # carve
       - [0xE2D08, c, func_800FBE78_ovl27]  # carve was: - [0xE2D08, asm, ovl27_800FBE78]  # carve
@@ -4692,16 +4718,17 @@ segments:
       - [0xEBAE0, c, func_800F4C50_ovl28]  # carve
       - [0xEBC0C, c, func_800F4D7C_ovl28]  # carve
       - [0xEBC84, c, func_800F4DF4_ovl28]  # carve
-      - [0xEBCC0, asm, ovl28_800F4E30]  # carve
+      - [0xEBCC0, c, func_800F4E30_ovl28]  # carve was: - [0xEBCC0, asm, ovl28_800F4E30]  # carve
       - [0xEBDB0, c, func_800F4F20_ovl28]  # carve
       - [0xEBED0, c, func_800F5040_ovl28]  # carve was: - [0xEBED0, asm, ovl28_800F5040]  # carve
       - [0xEBF38, c, func_800F50A8_ovl28]  # carve was: - [0xEBF38, asm, ovl28_800F50A8]  # carve
       - [0xEBFA0, c, func_800F5110_ovl28]  # carve was: - [0xEBFA0, asm, ovl28_800F5110]  # carve
       - [0xEBFE0, c, func_800F5150_ovl28]  # carve
       - [0xEC01C, c, func_800F518C_ovl28]  # carve
-      - [0xEC054, asm, ovl28_800F51C4]  # carve
+      - [0xEC054, c, func_800F51C4_ovl28]  # carve was: - [0xEC054, asm, ovl28_800F51C4]  # carve
+      - [0xEC120, c, func_800F5290_ovl28]  # carve
       - [0xEC200, c, func_800F5370_ovl28]  # carve
-      - [0xEC2A4, asm, ovl28_800F5414]  # carve
+      - [0xEC2A4, c, func_800F5414_ovl28]  # carve was: - [0xEC2A4, asm, ovl28_800F5414]  # carve
       - [0xEC3B0, c, func_800F5520_ovl28]  # carve
       - [0xEC41C, c, func_800F558C_ovl28]  # carve
       - [0xEC470, c, func_800F55E0_ovl28]  # carve was: - [0xEC470, asm, ovl28_800F55E0]  # carve
@@ -4711,20 +4738,21 @@ segments:
       - [0xEC68C, c, func_800F57FC_ovl28]  # carve was: - [0xEC68C, asm, ovl28_800F57FC]  # carve
       - [0xEC714, c, func_800F5884_ovl28]  # carve was: - [0xEC714, asm, ovl28_800F5884]  # carve
       - [0xEC83C, c, func_800F59AC_ovl28]  # carve
-      - [0xEC8DC, asm, ovl28_800F5A4C]  # carve
+      - [0xEC8DC, c, func_800F5A4C_ovl28]  # carve was: - [0xEC8DC, asm, ovl28_800F5A4C]  # carve
+      - [0xEC9E8, c, func_800F5B58_ovl28]  # carve was: - [0xEC9E8, asm, ovl28_800F5B58]  # carve
       - [0xECAE8, c, func_800F5C58_ovl28]  # carve
       - [0xECB28, c, func_800F5C98_ovl28]  # carve
       - [0xECB64, c, func_800F5CD4_ovl28]  # carve was: - [0xECB64, asm, ovl28_800F5CD4]  # carve
       - [0xECBA8, c, func_800F5D18_ovl28]  # carve
       - [0xECC38, c, func_800F5DA8_ovl28]  # carve was: - [0xECC38, asm, ovl28_800F5DA8]  # carve
       - [0xECC74, c, func_800F5DE4_ovl28]  # carve was: - [0xECC74, asm, ovl28_800F5DE4]  # carve
-      - [0xECCD0, asm, ovl28_800F5E40]  # carve
+      - [0xECCD0, c, func_800F5E40_ovl28]  # carve was: - [0xECCD0, asm, ovl28_800F5E40]  # carve
       - [0xECDAC, c, func_800F5F1C_ovl28]  # carve
       - [0xECDDC, c, func_800F5F4C_ovl28]  # carve
       - [0xECE5C, c, func_800F5FCC_ovl28]  # carve was: - [0xECE5C, asm, ovl28_800F5FCC]  # carve
-      - [0xECE98, asm, ovl28_800F6008]  # carve
+      - [0xECE98, c, func_800F6008_ovl28]  # carve was: - [0xECE98, asm, ovl28_800F6008]  # carve
       - [0xECFA4, c, func_800F6114_ovl28]  # carve
-      - [0xECFFC, asm, ovl28_800F616C]  # carve
+      - [0xECFFC, c, func_800F616C_ovl28]  # carve was: - [0xECFFC, asm, ovl28_800F616C]  # carve
       - [0xED0C8, c, func_800F6238_ovl28]  # carve
       - [0xED150, c, func_800F62C0_ovl28]  # carve was: - [0xED150, asm, ovl28_800F62C0]  # carve
       - [0xED18C, c, func_800F62FC_ovl28]  # carve was: - [0xED18C, asm, ovl28_800F62FC]  # carve
@@ -4784,18 +4812,18 @@ segments:
       - [0xEF150, c, func_800F82C0_ovl28]  # carve
       - [0xEF360, c, func_800F84D0_ovl28]  # carve
       - [0xEF564, c, func_800F86D4_ovl28]  # carve was: - [0xEF564, asm, ovl28_800F86D4]  # carve
-      - [0xEF6F4, asm, ovl28_800F8864]  # carve
+      - [0xEF6F4, c, func_800F8864_ovl28]  # carve was: - [0xEF6F4, asm, ovl28_800F8864]  # carve
       - [0xEF808, c, func_800F8978_ovl28]  # carve
       - [0xEF8B0, asm, ovl28_800F8A20]  # carve
       - [0xEF9F0, c, func_800F8B60_ovl28]  # carve
-      - [0xEFA50, asm, ovl28_800F8BC0]  # carve
+      - [0xEFA50, c, func_800F8BC0_ovl28]  # carve was: - [0xEFA50, asm, ovl28_800F8BC0]  # carve
       - [0xEFB54, c, func_800F8CC4_ovl28]  # carve
       - [0xEFB5C, c, func_800F8CCC_ovl28]  # carve was: - [0xEFB5C, asm, ovl28_800F8CCC]  # carve
       - [0xEFB98, c, func_800F8D08_ovl28]  # carve was: - [0xEFB98, asm, ovl28_800F8D08]  # carve
       - [0xEFC5C, c, func_800F8DCC_ovl28]  # carve was: - [0xEFC5C, asm, ovl28_800F8DCC]  # carve
       - [0xEFD24, c, func_800F8E94_ovl28]  # carve
       - [0xEFD80, c, func_800F8EF0_ovl28]  # carve
-      - [0xEFE80, asm, ovl28_800F8FF0]  # carve
+      - [0xEFE80, c, func_800F8FF0_ovl28]  # carve was: - [0xEFE80, asm, ovl28_800F8FF0]  # carve
       - [0xEFF4C, c, func_800F90BC_ovl28]  # carve
       - [0xEFFE0, c, func_800F9150_ovl28]  # carve was: - [0xEFFE0, asm, ovl28_800F9150]  # carve
       - [0xF0068, c, func_800F91D8_ovl28]  # carve was: - [0xF0068, asm, ovl28_800F91D8]  # carve
@@ -4813,15 +4841,15 @@ segments:
       - [0xF07C4, c, func_800F9934_ovl28]  # carve
       - [0xF0854, c, func_800F99C4_ovl28]  # carve
       - [0xF08A8, c, func_800F9A18_ovl28]  # carve
-      - [0xF092C, asm, ovl28_800F9A9C]  # carve
+      - [0xF092C, c, func_800F9A9C_ovl28]  # carve was: - [0xF092C, asm, ovl28_800F9A9C]  # carve
       - [0xF0A04, c, func_800F9B74_ovl28]  # carve
       - [0xF0AC0, c, func_800F9C30_ovl28]  # carve was: - [0xF0AC0, asm, ovl28_800F9C30]  # carve
       - [0xF0B24, c, func_800F9C94_ovl28]  # carve
       - [0xF0B88, c, func_800F9CF8_ovl28]  # carve
-      - [0xF0BE4, asm, ovl28_800F9D54]  # carve
+      - [0xF0BE4, c, func_800F9D54_ovl28]  # carve was: - [0xF0BE4, asm, ovl28_800F9D54]  # carve
       - [0xF0CBC, c, func_800F9E2C_ovl28]  # carve
       - [0xF0D20, c, func_800F9E90_ovl28]  # carve
-      - [0xF0D84, asm, ovl28_800F9EF4]  # carve
+      - [0xF0D84, c, func_800F9EF4_ovl28]  # carve was: - [0xF0D84, asm, ovl28_800F9EF4]  # carve
       - [0xF0E90, c, func_800FA000_ovl28]  # carve
       - [0xF0ECC, c, func_800FA03C_ovl28]  # carve was: - [0xF0ECC, asm, ovl28_800FA03C]  # carve
       - [0xF0F6C, c, func_800FA0DC_ovl28]  # carve
@@ -4832,13 +4860,13 @@ segments:
       - [0xF1288, c, func_800FA3F8_ovl28]  # carve
       - [0xF1334, asm, ovl28_800FA4A4]  # carve
       - [0xF1428, c, func_800FA598_ovl28]  # carve
-      - [0xF1448, asm, ovl28_800FA5B8]  # carve
+      - [0xF1448, c, func_800FA5B8_ovl28]  # carve was: - [0xF1448, asm, ovl28_800FA5B8]  # carve
       - [0xF1520, c, func_800FA690_ovl28]  # carve
       - [0xF1540, c, func_800FA6B0_ovl28]  # carve was: - [0xF1540, asm, ovl28_800FA6B0]  # carve
       - [0xF1628, c, func_800FA798_ovl28]  # carve
       - [0xF1698, c, func_800FA808_ovl28]  # carve
       - [0xF16B8, c, func_800FA828_ovl28]  # carve was: - [0xF16B8, asm, ovl28_800FA828]  # carve
-      - [0xF16D8, asm, ovl28_800FA848]  # carve
+      - [0xF16D8, c, func_800FA848_ovl28]  # carve was: - [0xF16D8, asm, ovl28_800FA848]  # carve
       - [0xF17A4, c, func_800FA914_ovl28]  # carve
       - [0xF17C4, c, func_800FA934_ovl28]  # carve was: - [0xF17C4, asm, ovl28_800FA934]  # carve
       - [0xF17E4, c, func_800FA954_ovl28]  # carve was: - [0xF17E4, asm, ovl28_800FA954]  # carve
@@ -4994,7 +5022,7 @@ segments:
       - [0xF94FC, c, func_800F1E6C_ovl29]  # carve was: - [0xF94FC, asm, ovl29_800F1E6C]  # carve
       - [0xF9570, c, func_800F1EE0_ovl29]  # carve was: - [0xF9570, asm, ovl29_800F1EE0]  # carve
       - [0xF97D4, c, func_800F2144_ovl29]  # carve was: - [0xF97D4, asm, ovl29_800F2144]  # carve
-      - [0xF9924, asm, ovl29_800F2294]  # carve
+      - [0xF9924, c, func_800F2294_ovl29]  # carve was: - [0xF9924, asm, ovl29_800F2294]  # carve
       - [0xF9A0C, c, func_800F237C_ovl29]  # carve
       - [0xF9B7C, c, func_800F24EC_ovl29]  # carve
       - [0xF9BB8, c, func_800F2528_ovl29]  # carve was: - [0xF9BB8, asm, ovl29_800F2528]  # carve
@@ -5031,18 +5059,21 @@ segments:
       - [0xFA978, c, func_800F32E8_ovl29]  # carve
       - [0xFAA40, asm, ovl29_800F33B0]  # carve
       - [0xFAAD4, c, func_800F3444_ovl29]  # carve
-      - [0xFAC00, asm, ovl29_800F3570]  # carve
+      - [0xFAC00, c, func_800F3570_ovl29]  # carve was: - [0xFAC00, asm, ovl29_800F3570]  # carve
+      - [0xFAD0C, c, func_800F367C_ovl29]  # carve was: - [0xFAD0C, asm, ovl29_800F367C]  # carve
+      - [0xFAE20, c, func_800F3790_ovl29]  # carve was: - [0xFAE20, asm, ovl29_800F3790]  # carve
       - [0xFAF2C, c, func_800F389C_ovl29]  # carve
-      - [0xFB06C, asm, ovl29_800F39DC]  # carve
+      - [0xFB06C, c, func_800F39DC_ovl29]  # carve was: - [0xFB06C, asm, ovl29_800F39DC]  # carve
       - [0xFB174, c, func_800F3AE4_ovl29]  # carve
       - [0xFB29C, asm, ovl29_800F3C0C]  # carve
+      - [0xFB448, c, func_800F3DB8_ovl29]  # carve
       - [0xFB548, c, func_800F3EB8_ovl29]  # carve
       - [0xFB6A0, c, func_800F4010_ovl29]  # carve
       - [0xFB6FC, c, func_800F406C_ovl29]  # carve
-      - [0xFB78C, asm, ovl29_800F40FC]  # carve
+      - [0xFB78C, c, func_800F40FC_ovl29]  # carve was: - [0xFB78C, asm, ovl29_800F40FC]  # carve
       - [0xFB86C, c, func_800F41DC_ovl29]  # carve
       - [0xFB8D4, c, func_800F4244_ovl29]  # carve
-      - [0xFB960, asm, ovl29_800F42D0]  # carve
+      - [0xFB960, c, func_800F42D0_ovl29]  # carve was: - [0xFB960, asm, ovl29_800F42D0]  # carve
       - [0xFBA4C, c, func_800F43BC_ovl29]  # carve
       - [0xFBA88, c, func_800F43F8_ovl29]  # carve
       - [0xFBAF0, c, func_800F4460_ovl29]  # carve
@@ -5051,14 +5082,14 @@ segments:
       - [0xFBC28, c, func_800F4598_ovl29]  # carve was: - [0xFBC28, asm, ovl29_800F4598]  # carve
       - [0xFBC94, c, func_800F4604_ovl29]  # carve
       - [0xFBCE8, c, func_800F4658_ovl29]  # carve
-      - [0xFBD48, asm, ovl29_800F46B8]  # carve
+      - [0xFBD48, c, func_800F46B8_ovl29]  # carve was: - [0xFBD48, asm, ovl29_800F46B8]  # carve
       - [0xFBE28, c, func_800F4798_ovl29]  # carve
       - [0xFBE7C, c, func_800F47EC_ovl29]  # carve
-      - [0xFBEDC, asm, ovl29_800F484C]  # carve
+      - [0xFBEDC, c, func_800F484C_ovl29]  # carve was: - [0xFBEDC, asm, ovl29_800F484C]  # carve
       - [0xFBFC0, c, func_800F4930_ovl29]  # carve
       - [0xFC038, c, func_800F49A8_ovl29]  # carve
       - [0xFC08C, c, func_800F49FC_ovl29]  # carve was: - [0xFC08C, asm, ovl29_800F49FC]  # carve
-      - [0xFC0EC, asm, ovl29_800F4A5C]  # carve
+      - [0xFC0EC, c, func_800F4A5C_ovl29]  # carve was: - [0xFC0EC, asm, ovl29_800F4A5C]  # carve
       - [0xFC1D4, c, func_800F4B44_ovl29]  # carve
       - [0xFC228, c, func_800F4B98_ovl29]  # carve was: - [0xFC228, asm, ovl29_800F4B98]  # carve
       - [0xFC2D8, c, func_800F4C48_ovl29]  # carve
@@ -5118,15 +5149,17 @@ segments:
       - [0xFE270, asm, ovl29_800F6BE0]  # carve
       - [0xFE55C, c, func_800F6ECC_ovl29]  # carve
       - [0xFE5D8, c, func_800F6F48_ovl29]  # carve
-      - [0xFE674, asm, ovl29_800F6FE4]  # carve
+      - [0xFE674, c, func_800F6FE4_ovl29]  # carve was: - [0xFE674, asm, ovl29_800F6FE4]  # carve
+      - [0xFE770, c, func_800F70E0_ovl29]  # carve was: - [0xFE770, asm, ovl29_800F70E0]  # carve
       - [0xFE850, c, func_800F71C0_ovl29]  # carve
       - [0xFE8DC, c, func_800F724C_ovl29]  # carve
       - [0xFE930, c, func_800F72A0_ovl29]  # carve was: - [0xFE930, asm, ovl29_800F72A0]  # carve
       - [0xFE9A0, c, func_800F7310_ovl29]  # carve was: - [0xFE9A0, asm, ovl29_800F7310]  # carve
       - [0xFEA10, asm, ovl29_800F7380]  # carve
+      - [0xFEAFC, c, func_800F746C_ovl29]  # carve
       - [0xFEBD4, c, func_800F7544_ovl29]  # carve
       - [0xFEC3C, c, func_800F75AC_ovl29]  # carve
-      - [0xFEC78, asm, ovl29_800F75E8]  # carve
+      - [0xFEC78, c, func_800F75E8_ovl29]  # carve was: - [0xFEC78, asm, ovl29_800F75E8]  # carve
       - [0xFED88, c, func_800F76F8_ovl29]  # carve
       - [0xFEDF0, c, func_800F7760_ovl29]  # carve
       - [0xFEE10, c, func_800F7780_ovl29]  # carve
@@ -6017,7 +6050,7 @@ segments:
       - [0x12E750, c, func_800FBF50_ovl38]  # carve
       - [0x12E798, c, func_800FBF98_ovl38]  # carve was: - [0x12E798, asm, ovl38_800FBF98]  # carve
       - [0x12E848, c, func_800FC048_ovl38]  # carve was: - [0x12E848, asm, ovl38_800FC048]  # carve
-      - [0x12E8E8, asm, ovl38_800FC0E8]  # carve
+      - [0x12E8E8, c, func_800FC0E8_ovl38]  # carve was: - [0x12E8E8, asm, ovl38_800FC0E8]  # carve
       - [0x12E9BC, c, func_800FC1BC_ovl38]  # carve
       - [0x12E9DC, c, func_800FC1DC_ovl38]  # carve was: - [0x12E9DC, asm, ovl38_800FC1DC]  # carve
       - [0x12EA40, c, func_800FC240_ovl38]  # carve was: - [0x12EA40, asm, ovl38_800FC240]  # carve
@@ -6044,7 +6077,7 @@ segments:
       - [0x12F2D0, c, func_800FCAD0_ovl38]  # carve was: - [0x12F2D0, asm, ovl38_800FCAD0]  # carve
       - [0x12F2E0, c, func_800FCAE0_ovl38]  # carve was: - [0x12F2E0, asm, ovl38_800FCAE0]  # carve
       - [0x12F374, c, func_800FCB74_ovl38]  # carve
-      - [0x12F424, asm, ovl38_800FCC24]  # carve
+      - [0x12F424, c, func_800FCC24_ovl38]  # carve was: - [0x12F424, asm, ovl38_800FCC24]  # carve
       - [0x12F504, c, func_800FCD04_ovl38]  # carve
       - [0x12F5B8, c, func_800FCDB8_ovl38]  # carve was: - [0x12F5B8, asm, ovl38_800FCDB8]  # carve
       - [0x12F66C, c, func_800FCE6C_ovl38]  # carve was: - [0x12F66C, asm, ovl38_800FCE6C]  # carve
@@ -6057,7 +6090,7 @@ segments:
       - [0x12F9B0, c, func_800FD1B0_ovl38]  # carve was: - [0x12F9B0, asm, ovl38_800FD1B0]  # carve
       - [0x12F9EC, c, func_800FD1EC_ovl38]  # carve was: - [0x12F9EC, asm, ovl38_800FD1EC]  # carve
       - [0x12FA30, c, func_800FD230_ovl38]  # carve
-      - [0x12FA90, asm, ovl38_800FD290]  # carve
+      - [0x12FA90, c, func_800FD290_ovl38]  # carve was: - [0x12FA90, asm, ovl38_800FD290]  # carve
       - [0x12FB9C, c, func_800FD39C_ovl38]  # carve
       - [0x12FBD8, c, func_800FD3D8_ovl38]  # carve
       - [0x12FBF8, c, func_800FD3F8_ovl38]  # carve was: - [0x12FBF8, asm, ovl38_800FD3F8]  # carve
@@ -6076,16 +6109,19 @@ segments:
       - [0x130858, asm]  # gen:rockx5_splits
       - [0x1309D4, c, func_800FA1D4_ovl39]  # carve
       - [0x130C90, c, func_800FA490_ovl39]  # carve was: - [0x130C90, asm, ovl39_800FA490]  # carve
-      - [0x130E0C, asm, ovl39_800FA60C]  # carve
+      - [0x130E0C, c, func_800FA60C_ovl39]  # carve was: - [0x130E0C, asm, ovl39_800FA60C]  # carve
+      - [0x130F1C, c, func_800FA71C_ovl39]  # carve was: - [0x130F1C, asm, ovl39_800FA71C]  # carve
       - [0x131028, c, func_800FA828_ovl39]  # carve
       - [0x13125C, c, func_800FAA5C_ovl39]  # carve was: - [0x13125C, asm, ovl39_800FAA5C]  # carve
-      - [0x131418, asm, ovl39_800FAC18]  # carve
+      - [0x131418, c, func_800FAC18_ovl39]  # carve was: - [0x131418, asm, ovl39_800FAC18]  # carve
+      - [0x131528, c, func_800FAD28_ovl39]  # carve was: - [0x131528, asm, ovl39_800FAD28]  # carve
+      - [0x13162C, c, func_800FAE2C_ovl39]  # carve was: - [0x13162C, asm, ovl39_800FAE2C]  # carve
       - [0x131708, c, func_800FAF08_ovl39]  # carve
       - [0x13187C, c, func_800FB07C_ovl39]  # carve was: - [0x13187C, asm, ovl39_800FB07C]  # carve
       - [0x1319DC, c, func_800FB1DC_ovl39]  # carve
       - [0x131C98, asm, ovl39_800FB498]  # carve
       - [0x1320A0, c, func_800FB8A0_ovl39]  # carve
-      - [0x1321E8, asm, ovl39_800FB9E8]  # carve
+      - [0x1321E8, c, func_800FB9E8_ovl39]  # carve was: - [0x1321E8, asm, ovl39_800FB9E8]  # carve
       - [0x1322F8, c, func_800FBAF8_ovl39]  # carve
       - [0x1324BC, c, func_800FBCBC_ovl39]  # carve
       - [0x1326E0, c, func_800FBEE0_ovl39]  # carve was: - [0x1326E0, asm, ovl39_800FBEE0]  # carve
@@ -6113,7 +6149,7 @@ segments:
       - [0x133064, c, func_800FC864_ovl39]  # carve was: - [0x133064, asm, ovl39_800FC864]  # carve
       - [0x13306C, c, func_800FC86C_ovl39]  # carve was: - [0x13306C, asm, ovl39_800FC86C]  # carve
       - [0x1330A8, c, func_800FC8A8_ovl39]  # carve was: - [0x1330A8, asm, ovl39_800FC8A8]  # carve
-      - [0x13313C, asm, ovl39_800FC93C]  # carve
+      - [0x13313C, c, func_800FC93C_ovl39]  # carve was: - [0x13313C, asm, ovl39_800FC93C]  # carve
       - [0x13320C, c, func_800FCA0C_ovl39]  # carve
       - [0x133214, c, func_800FCA14_ovl39]  # carve was: - [0x133214, asm, ovl39_800FCA14]  # carve
       - [0x133250, c, func_800FCA50_ovl39]  # carve was: - [0x133250, asm, ovl39_800FCA50]  # carve
@@ -6138,12 +6174,13 @@ segments:
       - [0x13395C, c, func_800FD15C_ovl39]  # carve
       - [0x133964, c, func_800FD164_ovl39]  # carve was: - [0x133964, asm, ovl39_800FD164]  # carve
       - [0x1339A0, c, func_800FD1A0_ovl39]  # carve was: - [0x1339A0, asm, ovl39_800FD1A0]  # carve
-      - [0x1339D4, asm, ovl39_800FD1D4]  # carve
+      - [0x1339D4, c, func_800FD1D4_ovl39]  # carve was: - [0x1339D4, asm, ovl39_800FD1D4]  # carve
+      - [0x133AB4, c, func_800FD2B4_ovl39]  # carve
       - [0x133B98, c, func_800FD398_ovl39]  # carve
       - [0x133C04, c, func_800FD404_ovl39]  # carve
       - [0x133CC8, c, func_800FD4C8_ovl39]  # carve
       - [0x133D04, c, func_800FD504_ovl39]  # carve was: - [0x133D04, asm, ovl39_800FD504]  # carve
-      - [0x133D58, asm, ovl39_800FD558]  # carve
+      - [0x133D58, c, func_800FD558_ovl39]  # carve was: - [0x133D58, asm, ovl39_800FD558]  # carve
       - [0x133E3C, c, func_800FD63C_ovl39]  # carve
       - [0x133EF4, c, func_800FD6F4_ovl39]  # carve was: - [0x133EF4, asm, ovl39_800FD6F4]  # carve
       - [0x133F58, c, func_800FD758_ovl39]  # carve was: - [0x133F58, asm, ovl39_800FD758]  # carve
@@ -6151,7 +6188,7 @@ segments:
       - [0x1340F4, c, func_800FD8F4_ovl39]  # carve
       - [0x134144, c, func_800FD944_ovl39]  # carve was: - [0x134144, asm, ovl39_800FD944]  # carve
       - [0x1341BC, c, func_800FD9BC_ovl39]  # carve
-      - [0x134218, asm, ovl39_800FDA18]  # carve
+      - [0x134218, c, func_800FDA18_ovl39]  # carve was: - [0x134218, asm, ovl39_800FDA18]  # carve
       - [0x134300, c, func_800FDB00_ovl39]  # carve
       - [0x134320, c, func_800FDB20_ovl39]  # carve was: - [0x134320, asm, ovl39_800FDB20]  # carve
       - [0x134374, c, func_800FDB74_ovl39]  # carve was: - [0x134374, asm, ovl39_800FDB74]  # carve
@@ -6201,7 +6238,8 @@ segments:
       - [0x135928, c, func_800FA128_ovl40]  # carve was: - [0x135928, asm, ovl40_800FA128]  # carve
       - [0x135954, c, func_800FA154_ovl40]  # carve
       - [0x1359DC, c, func_800FA1DC_ovl40]  # carve was: - [0x1359DC, asm, ovl40_800FA1DC]  # carve
-      - [0x135A44, asm, ovl40_800FA244]  # carve
+      - [0x135A44, c, func_800FA244_ovl40]  # carve was: - [0x135A44, asm, ovl40_800FA244]  # carve
+      - [0x135B10, asm, ovl40_800FA310]  # carve
       - [0x135C64, c, func_800FA464_ovl40]  # carve
       - [0x135CD0, c, func_800FA4D0_ovl40]  # carve
       - [0x135D94, c, func_800FA594_ovl40]  # carve
@@ -6216,7 +6254,7 @@ segments:
     exclusive_ram_id: ovlB
     subsegments:
       - [0x136000, textbin]  # gen:rockx5_splits
-      - [0x136004, asm]  # gen:rockx5_splits
+      - [0x136004, c, func_800FA004_ovl41]  # carve was: - [0x136004, asm]  # gen:rockx5_splits
       - [0x136104, c, func_800FA104_ovl41]  # carve
       - [0x136244, c, func_800FA244_ovl41]  # carve
       - [0x1363C0, c, func_800FA3C0_ovl41]  # carve was: - [0x1363C0, asm, ovl41_800FA3C0]  # carve
@@ -6239,7 +6277,7 @@ segments:
       - [0x1373D8, c, func_800FB3D8_ovl41]  # carve
       - [0x137450, c, func_800FB450_ovl41]  # carve was: - [0x137450, asm, ovl41_800FB450]  # carve
       - [0x13750C, c, func_800FB50C_ovl41]  # carve was: - [0x13750C, asm, ovl41_800FB50C]  # carve
-      - [0x13757C, asm, ovl41_800FB57C]  # carve
+      - [0x13757C, c, func_800FB57C_ovl41]  # carve was: - [0x13757C, asm, ovl41_800FB57C]  # carve
       - [0x137658, c, func_800FB658_ovl41]  # carve
       - [0x1376FC, c, func_800FB6FC_ovl41]  # carve
       - [0x137780, data]  # gen:rockx5_splits  # T3: was textbin; ovl pointer words -> symbols
@@ -6313,13 +6351,14 @@ segments:
     exclusive_ram_id: ovlB
     subsegments:
       - [0x13A000, textbin]  # gen:rockx5_splits
-      - [0x13A004, asm]  # gen:rockx5_splits
+      - [0x13A004, c, func_800FA004_ovl45]  # carve was: - [0x13A004, asm]  # gen:rockx5_splits
+      - [0x13A0DC, asm, ovl45_800FA0DC]  # carve
       - [0x13A150, c, func_800FA150_ovl45]  # carve
       - [0x13A1BC, c, func_800FA1BC_ovl45]  # carve was: - [0x13A1BC, asm, ovl45_800FA1BC]  # carve
       - [0x13A200, c, func_800FA200_ovl45]  # carve was: - [0x13A200, asm, ovl45_800FA200]  # carve
       - [0x13A22C, c, func_800FA22C_ovl45]  # carve was: - [0x13A22C, asm, ovl45_800FA22C]  # carve
       - [0x13A2A4, c, func_800FA2A4_ovl45]  # carve
-      - [0x13A344, asm, ovl45_800FA344]  # carve
+      - [0x13A344, c, func_800FA344_ovl45]  # carve was: - [0x13A344, asm, ovl45_800FA344]  # carve
       - [0x13A410, c, func_800FA410_ovl45]  # carve
       - [0x13A494, c, func_800FA494_ovl45]  # carve
       - [0x13A4C4, c, func_800FA4C4_ovl45]  # carve was: - [0x13A4C4, asm, ovl45_800FA4C4]  # carve
@@ -6337,12 +6376,13 @@ segments:
     exclusive_ram_id: ovlB
     subsegments:
       - [0x13A800, textbin]  # gen:rockx5_splits
-      - [0x13A804, asm]  # gen:rockx5_splits
+      - [0x13A804, c, func_800FA004_ovl46]  # carve was: - [0x13A804, asm]  # gen:rockx5_splits
+      - [0x13A918, asm, ovl46_800FA118]  # carve
       - [0x13A98C, c, func_800FA18C_ovl46]  # carve
       - [0x13AA00, c, func_800FA200_ovl46]  # carve was: - [0x13AA00, asm, ovl46_800FA200]  # carve
       - [0x13AA48, c, func_800FA248_ovl46]  # carve
       - [0x13AAD8, c, func_800FA2D8_ovl46]  # carve
-      - [0x13AB68, asm, ovl46_800FA368]  # carve
+      - [0x13AB68, c, func_800FA368_ovl46]  # carve was: - [0x13AB68, asm, ovl46_800FA368]  # carve
       - [0x13AC3C, c, func_800FA43C_ovl46]  # carve
       - [0x13ACA4, c, func_800FA4A4_ovl46]  # carve was: - [0x13ACA4, asm, ovl46_800FA4A4]  # carve
       - [0x13AD04, c, func_800FA504_ovl46]  # carve
@@ -6438,7 +6478,7 @@ segments:
       - [0x13D690, c, func_800FAE90_ovl49]  # carve was: - [0x13D690, asm, ovl49_800FAE90]  # carve
       - [0x13D728, c, func_800FAF28_ovl49]  # carve was: - [0x13D728, asm, ovl49_800FAF28]  # carve
       - [0x13D790, c, func_800FAF90_ovl49]  # carve
-      - [0x13D800, asm, ovl49_800FB000]  # carve
+      - [0x13D800, c, func_800FB000_ovl49]  # carve was: - [0x13D800, asm, ovl49_800FB000]  # carve
       - [0x13D8EC, c, func_800FB0EC_ovl49]  # carve
       - [0x13D95C, c, func_800FB15C_ovl49]  # carve
       - [0x13D9D4, c, func_800FB1D4_ovl49]  # carve
@@ -6486,11 +6526,11 @@ segments:
       - [0x13F8E0, c, func_800FA8E0_ovl50]  # carve was: - [0x13F8E0, asm, ovl50_800FA8E0]  # carve
       - [0x13F944, c, func_800FA944_ovl50]  # carve was: - [0x13F944, asm, ovl50_800FA944]  # carve
       - [0x13F990, c, func_800FA990_ovl50]  # carve
-      - [0x13FA38, asm, ovl50_800FAA38]  # carve
+      - [0x13FA38, c, func_800FAA38_ovl50]  # carve was: - [0x13FA38, asm, ovl50_800FAA38]  # carve
       - [0x13FB4C, c, func_800FAB4C_ovl50]  # carve
       - [0x13FB78, c, func_800FAB78_ovl50]  # carve was: - [0x13FB78, asm, ovl50_800FAB78]  # carve
       - [0x13FBD4, c, func_800FABD4_ovl50]  # carve
-      - [0x13FC60, asm, ovl50_800FAC60]  # carve
+      - [0x13FC60, c, func_800FAC60_ovl50]  # carve was: - [0x13FC60, asm, ovl50_800FAC60]  # carve
       - [0x13FD30, c, func_800FAD30_ovl50]  # carve
       - [0x13FD9C, c, func_800FAD9C_ovl50]  # carve
       - [0x13FE18, c, func_800FAE18_ovl50]  # carve
@@ -6498,6 +6538,8 @@ segments:
       - [0x13FEF8, c, func_800FAEF8_ovl50]  # carve was: - [0x13FEF8, asm, ovl50_800FAEF8]  # carve
       - [0x13FF70, c, func_800FAF70_ovl50]  # carve was: - [0x13FF70, asm, ovl50_800FAF70]  # carve
       - [0x13FFE8, asm, ovl50_800FAFE8]  # carve
+      - [0x140074, c, func_800FB074_ovl50]  # carve
+      - [0x140184, asm, ovl50_800FB184]  # carve
       - [0x140224, c, func_800FB224_ovl50]  # carve
       - [0x140294, c, func_800FB294_ovl50]  # carve
       - [0x140318, c, func_800FB318_ovl50]  # carve
@@ -6533,7 +6575,7 @@ segments:
     subsegments:
       - [0x141800, textbin]  # gen:rockx5_splits
       - [0x141804, c, func_800FA004_ovl52]  # carve was: - [0x141804, asm]  # gen:rockx5_splits
-      - [0x1419EC, asm, ovl52_800FA1EC]  # carve
+      - [0x1419EC, c, func_800FA1EC_ovl52]  # carve was: - [0x1419EC, asm, ovl52_800FA1EC]  # carve
       - [0x141ADC, c, func_800FA2DC_ovl52]  # carve
       - [0x141C04, c, func_800FA404_ovl52]  # carve was: - [0x141C04, asm, ovl52_800FA404]  # carve
       - [0x141D20, c, func_800FA520_ovl52]  # carve
@@ -6635,7 +6677,7 @@ segments:
       - [0x146804, asm]  # gen:rockx5_splits
       - [0x146C78, c, func_800FA478_ovl55]  # carve
       - [0x146E60, c, func_800FA660_ovl55]  # carve
-      - [0x146F88, asm, ovl55_800FA788]  # carve
+      - [0x146F88, c, func_800FA788_ovl55]  # carve was: - [0x146F88, asm, ovl55_800FA788]  # carve
       - [0x147064, c, func_800FA864_ovl55]  # carve
       - [0x147134, asm, ovl55_800FA934]  # carve
       - [0x1471A8, c, func_800FA9A8_ovl55]  # carve
@@ -6644,7 +6686,8 @@ segments:
       - [0x147284, c, func_800FAA84_ovl55]  # carve was: - [0x147284, asm, ovl55_800FAA84]  # carve
       - [0x147308, c, func_800FAB08_ovl55]  # carve
       - [0x14737C, c, func_800FAB7C_ovl55]  # carve was: - [0x14737C, asm, ovl55_800FAB7C]  # carve
-      - [0x147434, asm, ovl55_800FAC34]  # carve
+      - [0x147434, c, func_800FAC34_ovl55]  # carve was: - [0x147434, asm, ovl55_800FAC34]  # carve
+      - [0x147538, asm, ovl55_800FAD38]  # carve
       - [0x1475D8, c, func_800FADD8_ovl55]  # carve
       - [0x147658, asm, ovl55_800FAE58]  # carve
       - [0x1476A4, c, func_800FAEA4_ovl55]  # carve
@@ -6721,7 +6764,7 @@ segments:
       - [0x14B9D8, c, func_800FB9D8_ovl56]  # carve was: - [0x14B9D8, asm, ovl56_800FB9D8]  # carve
       - [0x14BA4C, c, func_800FBA4C_ovl56]  # carve
       - [0x14BAE8, c, func_800FBAE8_ovl56]  # carve was: - [0x14BAE8, asm, ovl56_800FBAE8]  # carve
-      - [0x14BB74, asm, ovl56_800FBB74]  # carve
+      - [0x14BB74, c, func_800FBB74_ovl56]  # carve was: - [0x14BB74, asm, ovl56_800FBB74]  # carve
       - [0x14BC4C, c, func_800FBC4C_ovl56]  # carve
       - [0x14BCFC, c, func_800FBCFC_ovl56]  # carve
       - [0x14BD48, c, func_800FBD48_ovl56]  # carve was: - [0x14BD48, asm, ovl56_800FBD48]  # carve
@@ -6737,7 +6780,7 @@ segments:
     subsegments:
       - [0x14E000, textbin]  # gen:rockx5_splits
       - [0x14E004, c, func_800FA004_ovl57]  # carve was: - [0x14E004, asm]  # gen:rockx5_splits
-      - [0x14E25C, asm, ovl57_800FA25C]
+      - [0x14E25C, c, func_800FA25C_ovl57]  # carve was: - [0x14E25C, asm, ovl57_800FA25C]
       - [0x14E34C, c, func_800FA34C_ovl57]  # carve
       - [0x14E464, asm, ovl57_800FA464]  # carve
       - [0x14E4D8, c, func_800FA4D8_ovl57]  # carve
@@ -6767,11 +6810,12 @@ segments:
     subsegments:
       - [0x14F800, textbin]  # gen:rockx5_splits
       - [0x14F804, c, func_800FA004_ovl58]  # carve was: - [0x14F804, asm]  # gen:rockx5_splits
-      - [0x14FAF8, asm, ovl58_800FA2F8]  # carve
+      - [0x14FAF8, c, func_800FA2F8_ovl58]  # carve was: - [0x14FAF8, asm, ovl58_800FA2F8]  # carve
+      - [0x14FBE0, asm, ovl58_800FA3E0]  # carve
       - [0x14FC54, c, func_800FA454_ovl58]  # carve
       - [0x14FCC8, c, func_800FA4C8_ovl58]  # carve
       - [0x14FD10, c, func_800FA510_ovl58]  # carve was: - [0x14FD10, asm, ovl58_800FA510]  # carve
-      - [0x14FD58, asm, ovl58_800FA558]  # carve
+      - [0x14FD58, c, func_800FA558_ovl58]  # carve was: - [0x14FD58, asm, ovl58_800FA558]  # carve
       - [0x14FE28, c, func_800FA628_ovl58]  # carve
       - [0x14FE80, c, func_800FA680_ovl58]  # carve was: - [0x14FE80, asm, ovl58_800FA680]  # carve
       - [0x14FF5C, c, func_800FA75C_ovl58]  # carve

@@ -29,7 +29,7 @@
 | ours adds `-1` to the global where the target adds `+1` to the field before a subtract | C0075 | fold_assoc_temp_block |
 | prologue `lui %hi(sym)` of a byte load in `$v1`/an a-reg where the target uses `$v0`, next to a tied hi/lo pair | C0129 | sched_zero_store_spacer |
 | recompute where target reuses, no label/call between | C0058 | cse_volatile_asm_flush |
-| s16 field negated in place: ours `lhu` load then `negu`/`sh`; target `lh` (sign-extending) load then `negu`/`sh` | C0089, C0093 | neg_mul_s16_load |
+| s16 field negated in place: ours `lhu` load then `negu`/`sh`. Target `lh` (sign-extending) load then `negu`/`sh` | C0089, C0093 | neg_mul_s16_load |
 | scratchpad pointer load shifted one register: target `lui $vN,0x1F80; lw $vN,0x4C($vN)` (same reg), ours `lui %hi(sym)` / `lw %lo(sym)` in two regs | C0077 | addr_const_scratchpad |
 | table lookup `addu` with base and scaled-index registers swapped (12-byte entry, non-power-of-2 stride) | C0078 | expr_ptr_plus_index |
 | the two loads feeding an `slt` issued in the opposite order (or slt operands / branch sense flipped) | C0074 | expr_compare_load_order |

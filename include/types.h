@@ -5035,6 +5035,42 @@ typedef struct {
     /* 0x6C */ u8 pad6C[0x1E];
     /* 0x8A */ u8 unk8A;
 } ObjF3444;
+
+/* src/rockx5/func_800F3884_ovl24.c */
+typedef struct Rgb800F3884 {
+    s8 c[3];
+} Rgb800F3884;
+
+/* src/rockx5/func_800FB000_ovl49.c */
+typedef struct {
+    /* 0x00 */ u8 unk0;
+    /* 0x01 */ u8 unk1;
+    /* 0x02 */ u8 unk2;
+    /* 0x03 */ u8 pad3[0x34 - 0x3];
+    /* 0x34 */ s16 unk34;
+    /* 0x36 */ u8 unk36;
+    /* 0x37 */ u8 pad37;
+    /* 0x38 */ s32 unk38;
+} Spawn800FB000;
+
+/* src/rockx5/func_800FF4D0_ovl04.c */
+typedef struct {
+    u8 pad0[0x5E];
+    s16 unk5E;
+    u8 pad60[2];
+    s16 unk62;
+} D_8009A1F8_5E_t;
+
+/* src/rockx5/func_800EF2B8_ovl21.c */
+typedef struct {
+    u8 b[10];
+} Buf800EF2B8;
+
+/* src/rockx5/func_800F6A94_ovl18.c */
+typedef struct {
+    u8 pad0[0x26];
+    s8 f26[16];
+} D1C00_800F6A94;
 /* lift: end */
 
 /* X4 object views shared by the W15 X6 ports (adapted from mmx6 x4.h, AGPL-3.0, THIRD_PARTY.md); fields only where
