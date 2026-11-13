@@ -263,7 +263,7 @@ C0260 | u16 field incremented then compared ==N: pre-increment inside the compar
 C0261 | Hand-asm signs in the target ($sp write, lone break, old-pointer loop compare): ledger at once, no C form | codegen,hand-asm,include_asm,ledger,sp,break,loop,m2c | 2026-10-25 | 3.3/T38 | W60 slus 80013348 8001336C 80013438 8001344C
 C0262 | Long list in a make recipe hits MAX_ARG_STRLEN (128 KiB per sh -c arg): pass it through a file | make,shell,argv,e2big,max_arg_strlen,recipe,build | 2026-10-26 | 3.3/T4 | T4 generalizable (c49 no-rom compile-only)
 C0263 | Find why a red CI floor gate passed the local hooks | ci,hooks,style,gate,psxdecomp | 2026-10-31 | 3.4/T1 | psxdecomp-readme red 10-24..10-25
-C0264 | Swap reloc rename is a cpp no-op: refuse it, bank the twin as its own C | dedup,propagate,reloc,rename,cpp,cyclic,sha | 2026-10-31 | 3.4/T3 | generalizable
+C0264 | Swap reloc rename is a cpp no-op: propagate inlines the body (3.5/T4) | dedup,propagate,reloc,rename,cpp,cyclic,sha | 2026-10-31 | 3.4/T3 | generalizable
 C0265 | Two-constant select from a masked test lands in v1: write the test into the join variable | codegen,select,andi,bnez,join-variable,v0-v1,jump,if-else | 2026-10-31 | 3.4/T4 | W69 slus 80025240
 C0266 | Global minus local swaps v0 and v1: read the global into an s32 local in each arm | codegen,global,local,v0-v1,regalloc,per-arm,subtract,if-else | 2026-10-31 | 3.4/T4 | W69 F3B18_ovl03
 C0267 | Abs test as bgez, nop, negu with the constant hoisted: write __builtin_abs(x) > C | codegen,abs,abssi2,builtin,bgez,negu,compare | 2026-10-31 | 3.4/T5 | W70 F1958_ovl11
@@ -333,3 +333,21 @@ C0330 | Partial sum per arm off its load reg: declare the temp block-scoped in e
 C0331 | Loop constant hoisted into a saved reg, target keeps li in the loop: a dead second set of the local | codegen,loop,invariant,hoist,constant,li,saved-reg,local,FAKE,consec-sets | 2026-11-07 | 3.4/T28 | W93 slus 8003D9A8
 C0332 | Nested loop step and index in the wrong saved regs: step in the for-increment, index at the body end | codegen,loop,for,increment,step,index,regalloc,saved-reg,statement-order | 2026-11-07 | 3.4/T28 | W93 slus 80028C10
 C0333 | Table byte loaded after a zero store: read it into a u8 local before both stores | codegen,sched,u8,local,load,store,table,store-order,lbu | 2026-11-07 | 3.4/T29 | W94 FC93C_ovl39 F872C_ovl00
+C0334 | Constant-row table read flat adds in the wrong order: declare D[][N], index D[k][i] | codegen,array,2d,row,table,index,u8,add-order,giv | 2026-11-07 | 3.5/T1 | W95 FB030_ovl07 EF124_ovl12 F9180_ovl06
+C0335 | Abs window joins at one beqz: assign the bool to the same local per arm, then if (d) | codegen,abs,window,bool,slti,beqz,bgez,if-else,join,local | 2026-11-07 | 3.5/T1 | W95 F2F14_ovl28
+C0336 | Low-bit flag gives xori, target sltiu: an if/else on f() & 1 setting t | codegen,sltiu,xori,flag,bool,if-else,call-value,scc | 2026-11-07 | 3.5/T1 | W95 F3F88_ovl11
+C0337 | Fold moves the constant out of b - (a + K): write -(a + K) + b | codegen,fold,associate,reassociate,subtract,constant,negate,spelling | 2026-11-07 | 3.5/T1 | W95 F4D20_ovl09
+C0338 | Inline helper with a table pointer param shares one addu: index the global at every use | codegen,inline,helper,macro,table,2d,cse,address,addu | 2026-11-07 | 3.5/T1 | W95 FCDD0_ovl07
+C0339 | Global base plus offset folds to lo(D+n) after an if/else: set the base in both arms | codegen,gcse,fold,global,base,lui,addiu,if-else,FAKE | 2026-11-07 | 3.5/T1 | W95 F486C_ovl04
+C0340 | Tested value copied in the beqz delay slot: test into its own s32 local first, reuse the source | codegen,delay-slot,copy,coalesce,cse,combine,local,compare,sltiu,regalloc | 2026-11-14 | 3.5/T2 | W96 slus 8002B070
+C0341 | 2-D strided row loop strength-reduced to an offset: give it its own loop index | codegen,loop,index,strength-reduction,giv,biv,multiply,stride,2-d | 2026-11-14 | 3.5/T2 | W96 slus 8002C50C
+C0342 | Param in s0, target s1, beside a call-saved value: a block-local save temp takes s0 first | codegen,regalloc,s0-s1-swap,callee-saved,local-alloc,global-alloc,block-local,param | 2026-11-14 | 3.5/T2 | W96 slus 80042B18
+C0343 | Epilogue restore hoisted into the last load slot: per-arm stores, then x++ and a bare return | codegen,sched2,epilogue,return,fence,cross-jump,jump2,store,per-arm | 2026-11-14 | 3.5/T2 | W96 slus 8004B49C
+C0344 | Target has a move copy of an address: compute obj+off twice, gcse makes the copy | codegen,gcse,PRE,move,copy,address,recompute,local | 2026-11-14 | 3.5/T2 | W96 F05A0_ovl20
+C0345 | Two identical block copies merged by jump2: write the tail's first statement in every arm | codegen,cross-jump,jump2,tail,duplicate,block-copy,label,uid | 2026-11-14 | 3.5/T2 | W96 F0D3C_ovl24
+C0346 | Timer split shares one subu for t/60: write t/60 twice with sec reassigned | codegen,cse,divide,magic,subu,modulo,statement-split,recompute,timer | 2026-11-14 | 3.5/T2 | W96 F3EEC_ovl24
+C0347 | Card lists a banked twin of the same size: port its C with the globals remapped, try 1 | port,twin,card,seed,rename,remap,draft,workflow | 2026-11-14 | 3.5/T2 | W96 c1 c25 c29
+C0348 | propagate member text hides body externs from carve: rodata cut, SHA red | dedup,propagate,carve,rodata,extern,sha | 2026-11-14 | 3.5/T4 | generalizable
+C0349 | propagate addend/raw-word refused twin: copy the mate C (jtbl, shifted data, constants) | dedup,propagate,reloc,jtbl,own-c,sha | 2026-11-14 | 3.5/T4 | generalizable
+C0350 | Dedup registry keyed (sig, body): two byte-twin sub-clusters per census group | dedup,propagate,registry | 2026-11-14 | 3.5/T4 | T4.c10/c11
+C0351 | debt --update undercounts untracked new files: stage first | debt,commit,gate | 2026-11-14 | 3.5/T4 | T4.c11

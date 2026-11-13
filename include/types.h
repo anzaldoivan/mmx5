@@ -5071,6 +5071,139 @@ typedef struct {
     u8 pad0[0x26];
     s8 f26[16];
 } D1C00_800F6A94;
+
+/* src/rockx5/func_800EF124_ovl12.c */
+typedef struct {
+    s16 a[3][5];
+} Tbl800EE974;
+
+/* src/rockx5/func_800F6160_ovl03.c */
+typedef struct {
+    s16 v[25];
+} Tbl6160A;
+
+/* src/rockx5/func_800F73B4_ovl04.c */
+typedef struct {
+    u8 pad0[3];
+    u8 x3;
+    s32 x4;
+} Ent73B4;
+
+/* src/slus/func_8003322C.c */
+typedef struct {
+    u8 pad0[0xAA];
+    u8 unkAA[1];
+} D1C00_8003322C;
+
+/* src/rockx5/func_800EEA98_ovl20.c */
+/* 0x100-byte block copied from the scratchpad buffer */
+typedef struct {
+    u8 d[0x100];
+} Blk100;
+
+/* src/rockx5/func_800F4990_ovl20.c */
+typedef struct {
+    u8 pad[0xC2];
+    s8 c2[4];
+    s8 c6[4];
+    u8 ca;
+    u8 cb;
+} View800F4990;
+
+/* src/slus/func_8001C904.c */
+typedef struct {
+    u8 pad0[0x44];
+    u8 f44;
+    u8 f45;
+    u8 pad46;
+    u8 f47;
+    u8 f48;
+    u8 pad49;
+    u8 f4A;
+    u8 f4B;
+    u8 f4C;
+    u8 a4D[6];
+    u8 f53;
+    u8 f54;
+    u8 pad55[0x21];
+    u8 f76;
+    u8 f77;
+    u8 f78;
+    u8 f79;
+    u8 pad7A[4];
+    u16 f7E;
+    u32 f80;
+    u32 f84;
+    u32 a88[6];
+    u8 fA0;
+    u8 fA1;
+    u8 padA2;
+    u8 aA3[6];
+    u8 fA9;
+    u8 fAA;
+    u8 fAB;
+    u32 fAC;
+    u8 padB0[0x12];
+    u8 aC2[4];
+    u8 aC6[4];
+    u8 fCA;
+    u8 fCB;
+    u8 padCC;
+    u8 aCD[32];
+    u8 aED[32];
+    u8 pad10D[2];
+    u8 f10F;
+    u8 f110;
+    u8 pad111[3];
+    u32 a114[32];
+    u8 a194[32];
+    u32 f1B4;
+    s8 f1B8;
+    s8 f1B9;
+    u8 f1BA;
+    u8 pad1BB;
+} D_800D1C00_t8001C904;
+
+/* src/slus/func_8001C904.c */
+typedef struct {
+    u8 pad0;
+    u8 f1;
+    u8 f2;
+    u8 pad3;
+    u32 f4;
+    u32 a8[6];
+    u32 f20;
+    u16 f24;
+    u16 a26[16];
+    u8 f46;
+    u8 f47;
+    u8 f48;
+    u8 f49;
+    u8 f4A;
+    u8 a4B[6];
+    u8 f51;
+    u8 a52[6];
+    u8 f58;
+    u8 f59;
+    u8 f5A;
+    u8 f5B;
+    u8 f5C;
+    u8 f5D;
+    u8 f5E;
+    u8 f5F;
+    u32 a60[32];
+    u32 fE0;
+    u32 fE4;
+    u8 aE8[4];
+    u8 aEC[4];
+    u8 fF0;
+    u8 fF1;
+    u8 aF2[32];
+    u8 a112[32];
+    u8 a132[32];
+    u8 f152;
+    u8 f153;
+} D_800E81E4_t8001C904;
 /* lift: end */
 
 /* X4 object views shared by the W15 X6 ports (adapted from mmx6 x4.h, AGPL-3.0, THIRD_PARTY.md); fields only where
@@ -5079,6 +5212,11 @@ typedef struct {
     s16 lo;
     s16 hi;
 } X4_S16Pair;
+
+/* src/rockx5/func_800F6160_ovl03.c (after X4_S16Pair, W95) */
+typedef struct {
+    X4_S16Pair p[30];
+} Tbl6160B;
 
 typedef union {
     s32 val;

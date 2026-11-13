@@ -15,7 +15,6 @@ entries:
   - {"alias": "rockx5", "vram": "800FDB00", "name": "func_800FDB00_ovl07", "reason": "ledgered failure W3+W4 (diff 2/48); docs/ledger.md", "date": "2026-10-06", "reprobe": "test -f src/rockx5/func_800FDB00_ovl07.c"}
   - {"alias": "rockx5", "vram": "800FDEC8", "name": "func_800FDEC8_ovl34", "reason": "ledgered failure W5 (diff 2/48); docs/ledger.md", "date": "2026-10-06", "reprobe": "test -f src/rockx5/func_800FDEC8_ovl34.c"}
   - {"alias": "rockx5", "vram": "800EECA4", "name": "D_800EECA4_ovl00", "reason": "ledgered failure W2 (SHA red in worktree); docs/ledger.md", "date": "2026-10-06", "reprobe": "test -f src/rockx5/D_800EECA4_ovl00.c"}
-  - {"alias": "rockx5", "vram": "800F16C8", "name": "func_800F16C8_ovl00", "reason": "ledgered failure W2 (diff 284/369); docs/ledger.md", "date": "2026-10-06", "reprobe": "test -f src/rockx5/func_800F16C8_ovl00.c"}
   - {"alias": "rockx5", "vram": "800F19F0", "name": "func_800F19F0_ovl24", "reason": "ledgered failure W2 (diff 7/992); docs/ledger.md", "date": "2026-10-06", "reprobe": "test -f src/rockx5/func_800F19F0_ovl24.c"}
   - {"alias": "rockx5", "vram": "800FDDD4", "name": "func_800FDDD4_ovl07", "reason": "ledgered failure W7 (diff 8/48); docs/ledger.md", "date": "2026-10-06", "reprobe": "test -f src/rockx5/func_800FDDD4_ovl07.c"}
   - {"alias": "rockx5", "vram": "800FE19C", "name": "func_800FE19C_ovl34", "reason": "ledgered failure W8 (diff 8/48); docs/ledger.md", "date": "2026-10-07", "reprobe": "test -f src/rockx5/func_800FE19C_ovl34.c"}

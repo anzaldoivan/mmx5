@@ -144,6 +144,13 @@ and its mutated body must fail verify.
   No renamed sym_R is a struct field, param or local in the body. Raw words are equal outside relocated fields.
 - A reloc-gated member text gets `#define sym_R sym_M` per differing symbol. Otherwise run refuses the member
   (`dedup: FAIL ...`, exit code unchanged). run prints `dedup: <m> masked-only: <a> reloc-gated, <k> refused`.
+- A cyclic map has a target that is also a renamed source, for example a swap of two calls.
+  The C preprocessor does not re-expand a macro inside its own expansion. So `#define` cannot express it (C0264).
+- For a cyclic map, the member text inlines the body (`inline_text()`). It keeps DEDUP_NAME, `DEDUP_CALLEE` and
+  the externs, with no rename `#define`. One regex pass replaces every sym_R with its sym_M at once.
+  The marker lines are `// dedup-inline ../shared/<body>` and one `// dedup-rename <R> <M>` per pair.
+  `includes()` re-derives that text from the body and compares it.
+- If a renamed name is not in the body text, for example in a header macro, the gate refuses `cyclic rename`.
 - run compiles `reconcile.member_text` per member in `.run/dedup/propagate/cc` and masked-compares it with the target.
   The member text carries DEDUP_NAME, `DEDUP_CALLEE` and the r3 externs. `DEDUP_CALLEE` = the member's single asm `jal`
   target when the body uses it. The command carves the passing members (`carve.apply`). It runs
@@ -162,6 +169,8 @@ and its mutated body must fail verify.
   (`build/<a>.check.rc`), so the line is byte-gated only on a tree whose `make check` is green.
 - A registry entry has `- group: <sig>`, `body: src/shared/<f>.c` and `members:` lines
   `- {alias, module (inventory), vram, name}`.
+- The registry keys an entry by (group sig, body). A second block of one sig with another body is its own entry.
+  register() adds members to the block whose sig and body match. If no block matches, it adds a new block.
 
 ### sweep --dry-run (T2)
 - First the reloc control (`fixtures/propagate/reloc`, scratch `.run/dedup/propagate/sweep_control`) runs
@@ -195,6 +204,11 @@ and its mutated body must fail verify.
 The fixture `fixtures/propagate/` (yaml + asm, 4 members, hand-written) uses reconcile's body/callee/target C.
 The fixture `fixtures/propagate/reloc/` (body + one C object: rep, renamed member, foreign-overlay member) drives
 reloc gating. The scratch is `.run/dedup/propagate/selftest`. There is no build there.
+
+The selftest's swap control (`swap_control()`, scratch `.run/dedup/propagate/selftest_swap`) compiles a rep and a member.
+The member calls the rep's two calls in reverse order. The control gates the member through the inline text.
+It then checks the calls compile in the member's order, `check` is OK, and a re-run counts it as gated.
+A unit case keeps one renamed name only in a macro, and that case still refuses `cyclic rename`.
 
 ## Health (mk/tools-health.mk)
 `make tools-selftest` runs every tool's `--selftest` (types, carve, draw, reconcile, propagate's line is `dedup: control
