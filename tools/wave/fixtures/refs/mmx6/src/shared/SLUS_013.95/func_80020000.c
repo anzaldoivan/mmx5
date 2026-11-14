@@ -22,3 +22,11 @@ void func_80020000(void* o) {
 out:
     func_80020100(v);
 }
+
+extern s32 D_80039999;
+
+s32 func_80020180(void) {
+    return D_80039999;
+}
+
+INCLUDE_ASM("asm/fixture/nonmatchings", func_800201C0);

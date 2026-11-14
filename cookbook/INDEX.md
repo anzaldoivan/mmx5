@@ -351,3 +351,12 @@ C0348 | propagate member text hides body externs from carve: rodata cut, SHA red
 C0349 | propagate addend/raw-word refused twin: copy the mate C (jtbl, shifted data, constants) | dedup,propagate,reloc,jtbl,own-c,sha | 2026-11-14 | 3.5/T4 | generalizable
 C0350 | Dedup registry keyed (sig, body): two byte-twin sub-clusters per census group | dedup,propagate,registry | 2026-11-14 | 3.5/T4 | T4.c10/c11
 C0351 | debt --update undercounts untracked new files: stage first | debt,commit,gate | 2026-11-14 | 3.5/T4 | T4.c11
+C0352 | Editing an [own] file (ledger.py etc.) needs the developer's debt --raise protected | gate,protected,commit,ledger | 2026-11-14 | 3.5/T5 | T5.c1 commit refused
+C0353 | Ledgered head with a matched X6 twin: port the donor C, drop X6-only headers, try 1 | port,x6,twin,ledger,targets,seed,pins,workflow | 2026-11-14 | 3.6/T1 | W98-W100
+C0354 | Permuter target.o from linked bytes: carry our relocs via .reloc | permuter,relocs,reloc,gas,overlay,rockx5 | 2026-11-14 | 3.6/T2 | generalizable
+C0355 | Reloc mask from our object garbles a shifted target word: mask only on equal major opcode | plateau,classify,mask,reloc,rabbitizer,unknown | 2026-11-14 | 3.6/T3 | generalizable
+C0356 | addu operand order C cannot move: negate one operand, subtract (a - (-b)) | codegen,addu,operand-order,regalloc | 2026-11-14 | 3.6/T4 | W101 slus func_8002E408
+C0357 | Cross-jump merged an arm: opposite-polarity arms with gotos keep the target's branch form | codegen,branch,cross-jump,jump,goto | 2026-11-14 | 3.6/T4 | W101 rockx5 func_800EFF90_ovl29
+C0358 | Two arm locals in swapped v0/v1: return the one the target keeps in v0 | codegen,regalloc,global-alloc,v0-v1,return-type,if-else | 2026-11-15 | 3.6/T5 | W102 rockx5 func_800F3668_ovl00
+C0359 | A zero store pinned above a global load: declare the global extern const | codegen,sched2,alias,const,global,store-order,spacer | 2026-11-15 | 3.6/T5 | W102 rockx5 func_800F03F4_ovl04
+C0360 | Saved-register order of two constants: a do-while(0) fence weights a use | codegen,regalloc,global-alloc,callee-saved,fence,loop-depth,refs | 2026-11-15 | 3.6/T5 | W102 slus func_8001B984

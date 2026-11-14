@@ -2,4 +2,8 @@
 {"alias": "slus", "name": "fb", "vram": "80001010", "status": "asm"}
 {"alias": "slus", "name": "fc", "vram": "80001020", "status": "asm"}
 {"alias": "slus", "name": "fd", "vram": "80001030", "status": "c"}
-{"alias": "slus", "name": "fe", "vram": "80001040", "status": "asm"}
+{"alias": "slus", "name": "fe_inv", "vram": "80001040", "status": "asm"}
+{"alias": "slus", "module": "slus/game_80001000", "kind": "game", "name": "fh", "vram": "80001060", "insns": 4, "status": "asm"}
+{"alias": "slus", "module": "slus/game_80001000", "kind": "game", "name": "fi", "vram": "80001070", "insns": 6, "status": "asm"}
+{"alias": "slus", "module": "slus/game_80001000", "kind": "game", "name": "fk", "vram": "800010A0", "insns": 8, "status": "asm"}
+{"alias": "slus", "module": "slus/game_80001000", "kind": "game", "name": "fl", "vram": "800010B0", "insns": 8, "status": "c"}

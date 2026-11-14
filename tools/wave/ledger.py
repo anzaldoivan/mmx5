@@ -14,6 +14,11 @@ resolves its vram through wave.json targets, then the wave's verdict rows, else 
 path; closeness the attempts try_line (T4 rows) or best (T2 rows), verbatim; blocker/date from the verdict; tries,
 ctx_k from the last attempts row (ctx_k may be null). class: attempts plateau if in PLATEAUS, else verdict
 no-verdict -> no-verdict, else tries >= 30 -> capped, else plumbing.
+Plus one dup-member row per member of a .run/census/groups.jsonl dup group (beside the inventory; absent -> none),
+members resolved (alias, name) through the inventory: a group with a c member is skipped; heads = rows keyed by a
+member's tkey (the closest by closeness() if several); each kind-game asm member without its own row gets {alias,
+name, vram, insns} of the member, {wave, closeness, best_draft, date} of the head, blocker `head <a>_<name>: <head
+blocker>`, class dup-member, tries/ctx_k None.
 build: writes docs/ledger.md (header line + one table row per ledger row, sorted (alias, vram, name, wave)).
 check: rebuilds in memory; every attempted target (any target in an attempts.jsonl or verdicts.jsonl) is c or
   has exactly one ledger row (else unledgered); a row whose draft is missing, not .c, empty or holds asm
@@ -104,8 +109,33 @@ def collect(waves, inv):
         o = best.get(r["key"])
         if o is None or closeness(r) <= closeness(o):
             best[r["key"]] = r
-    rows = sorted(best.values(), key=lambda r: (r["alias"], str(r["vram"]), r["name"], r["wave"]))
+    rows = list(best.values()) + members(best, jsonl(inv), Path(inv).parent / "groups.jsonl")
+    rows = sorted(rows, key=lambda r: (r["alias"], str(r["vram"]), r["name"], r["wave"]))
     return rows, tried, cs
+
+
+def members(best, inv, groups):  # -> dup-member rows: game asm members of a no-c dup group with a ledgered head
+    by = {(r["alias"], r["name"]): r for r in inv}
+    out = []
+    for g in jsonl(groups):
+        if g.get("kind") != "dup":
+            continue
+        ms = [m for x in g["members"] if (m := by.get((x["alias"], x["name"])))]
+        if any(m.get("status") == "c" for m in ms):
+            continue
+        heads = [best[k] for m in ms if (k := tkey(m["alias"], m.get("module"), m["vram"])) in best]
+        if not heads:
+            continue
+        h = min(heads, key=closeness)  # several ledgered heads: the closest, first on a tie
+        for m in ms:
+            k = tkey(m["alias"], m.get("module"), m["vram"])
+            if m.get("kind") != "game" or m.get("status") != "asm" or k in best:
+                continue
+            out.append({"alias": m["alias"], "name": m["name"], "vram": m["vram"], "insns": m.get("insns"),
+                        "wave": h["wave"], "class": "dup-member", "closeness": h["closeness"],
+                        "best_draft": h["best_draft"], "blocker": f"head {h['alias']}_{h['name']}: {h['blocker']}",
+                        "tries": None, "ctx_k": None, "date": h["date"], "key": k})
+    return out
 
 
 def closeness(r):  # -> (diff ratio, -wave number); unparsed closeness sorts last
@@ -179,11 +209,17 @@ def selftest():
     good = tmp / "waves"
     call(cmd_build, good, out, inv)
     rc, o = call(cmd_check, good, out, inv)
-    assert rc == 0 and "ledger: 3 rows, 0 unledgered, 0 without draft" in o, o  # fa banked+c, fd c: not ledgered
+    assert rc == 0 and "ledger: 5 rows, 0 unledgered, 0 without draft" in o, o  # fa banked+c, fd c: not ledgered
     inv.write_text(inv.read_text().replace('"fa"', '"fa_renamed"').replace('"fd"', '"fd_renamed"'))
     rc, o = call(cmd_check, good, out, inv)  # planted rename: c rows renamed at banked/ledgered vram stay matched
-    assert rc == 0 and "ledger: 3 rows, 0 unledgered, 0 without draft, 0 without blocker" in o, o
+    assert rc == 0 and "ledger: 5 rows, 0 unledgered, 0 without draft, 0 without blocker" in o, o
     rows = {r["name"]: r for r in collect(good, inv)[0]}
+    fh, fb = rows["fh"], rows["fb"]  # dup-member of ledgered head fb
+    assert fh["class"] == "dup-member" and fh["blocker"] == "head slus_fb: word 2 (+0x8) differs", fh
+    assert (fh["best_draft"], fh["wave"], fh["closeness"], fh["insns"]) == (
+        fb["best_draft"], "W0", fb["closeness"], 4) and fh["tries"] is None, fh
+    assert rows["fi"]["blocker"].startswith("head slus_fe:"), rows["fi"]  # head named fe in W0, fe_inv in inventory
+    assert "fk" not in rows, rows["fk"]  # planted: group with c member fl stays unledgered
     assert rows["fb"]["class"] == "wall" and rows["fb"]["ctx_k"] == 41, rows["fb"]
     assert rows["fc"]["class"] == "capped" and rows["fc"]["closeness"].startswith("try: fc diff"), rows["fc"]
     assert rows["fe"]["class"] == "no-verdict", rows["fe"]

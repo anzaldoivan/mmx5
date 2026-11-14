@@ -2,14 +2,15 @@
 """Plateau classifier: name the residual a stalled permuter run left, and the label that routes it.
 
   plateau.py classify <draft.c> --fn <sym> [--iters N] [--expect-class C] [--no-permute]
-  plateau.py --selftest     ROM-free: planted u16->s16 plateau, and a target-vs-itself control
+  plateau.py --selftest     ROM-free: planted u16->s16 plateau, a target-vs-itself control, rockx5 reloc fixture
 
 classify: runs `permute.py run` (N iterations, default 100) unless --no-permute, takes its lowest-score
-output-*/source.c (else the draft), compiles it at the pin (tools/dedup/reconcile.py triple()), masks both streams
-with our object's relocs, decodes them with rabbitizer, aligns them (difflib on opcode+operand text), emits one
+output-*/source.c (else the draft), compiles it with tools/permuter/compile.sh (BINARY=<alias>, scratch
+.run/permuter/<fn>/, flock'd), masks both streams with our object's relocs, decodes them with rabbitizer, aligns them (difflib on opcode+operand text), emits one
 class of docs/codegen-map/README.md ## Residual classes and one plateau label:
   plateau: <fn> class <class> label <missing-transform|mis-classified|seed-structural|wall|none>
-Target bytes come from expected/build/slus/ (permute.fn_span), are never printed or written (G12).
+Target bytes: the .run/census/inventory.jsonl row's span (permute.span_bytes, slus or rockx5), never printed or
+written (G12).
 Not a gate: the byte gate decides a match (G61).
 """
 import argparse
@@ -25,10 +26,8 @@ import rabbitizer
 ROOT = Path(__file__).resolve().parents[2]
 HERE = ROOT / "tools/permuter"
 sys.path.insert(0, str(HERE))
-sys.path.insert(0, str(ROOT / "tools/dedup"))
 import permute  # noqa: E402
 import probe  # noqa: E402  (permute puts tools/probe on sys.path)
-from reconcile import triple  # noqa: E402
 
 STRUCTURAL = {"WIDTH", "BRANCH-POLARITY", "ADDRESSING", "STRENGTH", "IMM-OFFSET", "SHIFT-DRIFT",
               "SIZE-MISMATCH"}
@@ -181,31 +180,43 @@ def label(klass, nm, nt, expect=None, outcome=None):
     return "missing-transform" if best == base or best > 0 else "wall"
 
 
-def words(src, fn, target):
+def words(src, fn, alias, target, scratch):
     """Masked (ours, target) word streams; our object's relocs mask both (target has none)."""
-    obj, stage = probe.compile_obj(src, "plateau-" + fn, triple())
-    if obj is None:
-        raise SystemExit(f"plateau: {fn} compile failed at {stage} ({src})")
+    obj = scratch / "plateau.o"
+    try:
+        permute.compile_c(src, obj, alias)
+    except subprocess.CalledProcessError:
+        raise SystemExit(f"plateau: {fn} compile failed ({src})")
     ours, masks = probe.read_func(obj, fn)
-    if len(target) > len(ours) and not any(target[len(ours):]):
-        target = target[:len(ours)]  # the carved span runs to the next subsegment: zero alignment padding
-    return probe.masked(ours, masks), probe.masked(target, masks)
+    mine = probe.masked(ours, masks)
+    # a reloc mask applies to the target word only when its major opcode is ours there: a mask over a shifted
+    # R-type clears its funct and leaves an undecodable word (3.6 T3: 25 heads read UNKNOWN from that alone)
+    keep = {o: m for o, m in masks.items()
+            if o + 4 <= min(len(ours), len(target)) and target[o + 3] >> 2 == ours[o + 3] >> 2}
+    return mine, probe.masked(target, keep)
 
 
 def classify(draft, fn, iters, expect, no_permute):
     src, outcome = Path(draft).resolve(), None
+    row = permute.inv_row(fn)
+    fn = row["name"]
+    scratch = ROOT / ".run/permuter" / fn
     if not no_permute:
         r = subprocess.run([sys.executable, str(HERE / "permute.py"), "run", str(src), "--fn", fn,
                             "--iters", str(iters)], capture_output=True, text=True)
+        if r.returncode == 2:  # same-fn run in flight: permute's one refusal line
+            print(r.stdout.strip())
+            return 2
         m = re.search(r"base (\d+) best (\d+)", r.stdout)
         if m:
             outcome = int(m.group(1)), int(m.group(2))
-        outs = sorted(ROOT.glob(f".run/permuter/{fn}/output-*/source.c"),
+            print(next(x for x in r.stdout.splitlines() if x.startswith("permuter:")))  # base/best for routing
+        outs = sorted(scratch.glob("output-*/source.c"),
                       key=lambda q: (int(q.parent.name.split("-")[1]), q.parent.name))
         if outs:
             src = outs[0]
-    vram, size = permute.fn_span(fn)
-    mine, tgt = words(src, fn, probe.target_bytes({"alias": "slus", "vram": vram, "size": size}))
+    with permute.locked(scratch, fn):
+        mine, tgt = words(src, fn, row["alias"], permute.span_bytes(row), scratch)
     k = classify_words(mine, tgt)
     print(f"plateau: {fn} class {k.lower()} label {label(k, len(mine), len(tgt), expect, outcome)}")
     return 0
@@ -217,18 +228,23 @@ def selftest():
     tdir.mkdir(parents=True, exist_ok=True)
     tgt_c = tdir / "target.c"
     tgt_c.write_text(fix.read_text().replace("s16 *p", "u16 *p"))
-    obj, stage = probe.compile_obj(tgt_c, "plateau-selftest-target", triple())
-    if obj is None:
-        print(f"plateau: control FAILED -- target compile {stage}")
+    try:
+        permute.compile_c(tgt_c, tdir / "target.o", "slus")
+    except subprocess.CalledProcessError:
+        print("plateau: control FAILED -- target compile")
         return 1
-    tbytes = probe.read_func(obj, "fixture_fn")[0]
-    plant = classify_words(*words(fix, "fixture_fn", tbytes))
-    ctrl = classify_words(*words(tgt_c, "fixture_fn", tbytes))
+    tbytes = probe.read_func(tdir / "target.o", "fixture_fn")[0]
+    plant = classify_words(*words(fix, "fixture_fn", "slus", tbytes, tdir))
+    ctrl = classify_words(*words(tgt_c, "fixture_fn", "slus", tbytes, tdir))
     pl, cl = label(plant, 1, 1), label(ctrl, 1, 1)
-    if plant == "WIDTH" and pl == "seed-structural" and ctrl == "MATCH" and cl == "none":
+    # rockx5 fixture: our own C against its synthetic BIN (fake-linked reloc fields) is a match
+    _, row = permute.fixture_root(tdir / "rockx5")
+    rx = classify_words(*words(HERE / "fixtures/reloc.c", row["name"], "rockx5",
+                               permute.span_bytes(row, tdir / "rockx5"), tdir))
+    if plant == "WIDTH" and pl == "seed-structural" and ctrl == "MATCH" and cl == "none" and rx == "MATCH":
         print("plateau: control OK -- planted plateau labelled seed-structural")
         return 0
-    print(f"plateau: control FAILED -- plant {plant}/{pl}, control {ctrl}/{cl}")
+    print(f"plateau: control FAILED -- plant {plant}/{pl}, control {ctrl}/{cl}, rockx5 {rx}")
     return 1
 
 

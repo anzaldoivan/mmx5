@@ -58,6 +58,7 @@ typedef union {
 #define D_1F800030 (*(u8**)0x1F800030)
 #define D_1F800038 (*(void**)0x1F800038)
 #define D_1F800044 (*(void**)0x1F800044)
+#define D_1F800048 (*(u8**)0x1F800048)
 #define D_1F80004C (*(D_1F80004C_t*)0x1F80004C)
 #define D_1F800050 (*(u8**)0x1F800050)
 #define D_1F800054 (*(s8**)0x1F800054)
