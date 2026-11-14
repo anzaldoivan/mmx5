@@ -382,7 +382,7 @@ checked  = "2026-10-12"
 [[ref]]
 name     = "mmx6"
 url      = "https://github.com/anzaldoivan/mmx6"
-ref      = "c1c892dc301cfb2f1752b06854cbc02778e1404a"
+ref      = "a8f96d1d6377e8566e77089dcd25ceac877893f2"
 licence  = "AGPL-3.0"
 class    = "copyleft"
 tier     = "optional"
@@ -390,8 +390,8 @@ when     = "a wave target with a row in docs/oracle/x6-leads.tsv (its card's `##
 covers   = "Mega Man X6 (SLUS_013.95 US) decompilation, the developer's own: its C at this commit; X6's addresses, not X5's; X6 builds with -msoft-float -funsigned-char"
 topics   = ["sibling", "capcom-engine", "twin-c", "port-x6", "gcc-2.95.2", "aspsx-2.86"]
 paths    = ["LICENSE", "include", "src"]
-used_by  = "2026-10-13 tools/sig/imgtab.py x6 (docs/oracle/x6-twins.tsv, facts); 2026-10-14 imgtab.py x6 --leads (docs/oracle/x6-leads.tsv: names, addresses and paths only); a drafter adapts the C a card names (THIRD_PARTY.md)"
-checked  = "2026-10-14"
+used_by  = "2026-10-13 tools/sig/imgtab.py x6 (docs/oracle/x6-twins.tsv, facts); 2026-10-14 imgtab.py x6 --leads (docs/oracle/x6-leads.tsv: names, addresses and paths only); a drafter adapts the C a card names (THIRD_PARTY.md); 2026-11-14 repinned from c1c892dc to a8f96d1d for the 3.6 port lane (R36, R38)"
+checked  = "2026-11-14"
 
 [[ref]]
 name     = "megamanx5recomp"

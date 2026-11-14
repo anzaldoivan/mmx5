@@ -4,6 +4,7 @@
   propagate.py run <body> [--dry-run]
   propagate.py check
   propagate.py sweep [--dry-run] [--binary <alias>]
+  propagate.py rep <alias> <name>
   propagate.py --selftest
 
 Members (keyed (alias, name), C0019) = the fresh census dup group (census.load + census.group in-process) whose
@@ -32,6 +33,8 @@ run: per member, the member file = reconcile.member_text (DEDUP_NAME; DEDUP_CALL
   block: the registry keys an entry by (signature, body), so one signature may have several bodies. Last line `dedup: <g> of <n> members byte-gated`.
   --dry-run: the same in the scratch worktree .run/carve/wt-<pid> (carve.make_wt; body and registry copied in); the main
   tree is untouched.
+rep <alias> <name>: the sweep's rep step in the main tree: banked src/<alias>/<name>.c -> src/shared/<name>.c (rep_text/
+  rep_callee) and the C file -> member_text; refused (exit 2) when the body exists. Then `run src/shared/<name>.c` (C0350).
 check: exit 1 on a C-banked function (yaml `c` cut) whose dup group has a member not in the registry that is a
   byte twin in place of a C-banked member other than itself (twin(); jal free when that member's registered body
   takes DEDUP_CALLEE) (unregistered), or a registry member without its yaml `c` cut or a C file including the body
@@ -538,6 +541,26 @@ def rep_text(name, cfile, callee=None):
     return f"/* Shared body (DK-5), from the banked draft of {name} by tools/wave/gate.py rescan. */\n" + s
 
 
+def make_rep(alias, name):
+    """rep: the sweep's rep step in the main tree (remainder procedure step 5, C0350); refused when the body exists."""
+    cf, b = ROOT / f"src/{alias}/{name}.c", ROOT / f"src/shared/{name}.c"
+    words = {(f["alias"], f["name"]): f["words"] for f in fresh_fns()}
+    if b.exists() or not cf.exists() or (alias, name) not in words:
+        print(f"dedup: refused -- rep needs src/{alias}/{name}.c, its census row, and no src/shared/{name}.c")
+        return 2
+    callee = rep_callee(name, cf, words[alias, name])
+    text = rep_text(name, cf, callee)
+    if text is None:
+        print("dedup: refused -- rep: no DEDUP_NAME(...) { definition")
+        return 2
+    b.write_text(text)
+    reconcile.fmt(b)
+    cf.write_text(reconcile.member_text(name, b, [("DEDUP_CALLEE", callee)] if callee else []))
+    reconcile.fmt(cf)
+    print(f"dedup: rep {name} callee={callee}")
+    return 0
+
+
 # ---- sweep ----
 FAIL_RE = re.compile(r"^dedup: FAIL (\w+) (\w+) -- (.*)$", re.M)
 
@@ -835,6 +858,8 @@ def main(argv):
             print(f"dedup: refused -- body must be src/shared/<rep>.c: {argv[1]}")
             return 2
         return dry_run(body) if "--dry-run" in argv[2:] else run(body)
+    if len(argv) == 3 and argv[0] == "rep":  # the rep step alone: banked src/<a>/<name>.c -> src/shared/<name>.c
+        return make_rep(argv[1], argv[2])
     if argv[:1] == ["sweep"]:
         rest, only = [x for x in argv[1:] if x != "--dry-run"], None
         if rest[:1] == ["--binary"] and len(rest) == 2 and (ROOT / f"config/splat.{rest[1]}.yaml").exists():

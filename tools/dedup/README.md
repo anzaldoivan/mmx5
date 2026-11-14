@@ -133,7 +133,7 @@ scratch `.run/reconcile/selftest`. The selftest does not run r6 there. The selft
 and its mutated body must fail verify.
 
 ## propagate.py (propagation and the dedup registry)
-`propagate.py run src/shared/<rep>.c [--dry-run]`, `check`, `sweep [--dry-run] [--binary <alias>]`, `--selftest`.
+`propagate.py run src/shared/<rep>.c [--dry-run]`, `check`, `sweep [--dry-run] [--binary <alias>]`, `rep <alias> <name>` (the sweep's rep step alone, main tree: banked C -> src/shared/<name>.c), `--selftest`.
 - The members, keyed (alias, name) (C0019), are the fresh census dup group (`census.load` + `census.group` in-process)
   with the body's signature, unioned with sig.py's exact cluster. The signature = sha1 hex of `dup_key` words (LE u32).
   The body's signature = that of the function named by its stem.

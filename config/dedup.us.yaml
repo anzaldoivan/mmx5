@@ -7707,3 +7707,23 @@ groups:
     members:
       - {alias: rockx5, module: rockx5/ovl07_800FDF20, vram: 0x800FDF20, name: func_800FDF20_ovl07}
       - {alias: rockx5, module: rockx5/ovl34_800FDEC8, vram: 0x800FE2E8, name: func_800FE2E8_ovl34}
+  - group: 13eadbb18aec7e36f42f1206f58c78d8baebe327
+    body: src/shared/func_8002A960.c
+    members:
+      - {alias: slus, module: slus/game_8002A944, vram: 0x8002A960, name: func_8002A960}
+      - {alias: slus, module: slus/game_8002AB20, vram: 0x8002AB64, name: func_8002AB64}
+  - group: 558a1fc14a5c79ac58c75b27ef0182f651f25b26
+    body: src/shared/func_8002A980.c
+    members:
+      - {alias: slus, module: slus/game_8002A944, vram: 0x8002A980, name: func_8002A980}
+      - {alias: slus, module: slus/game_8002AB20, vram: 0x8002AB84, name: func_8002AB84}
+  - group: dffb28377ece2f4c65ef96b1aaaeeead0d3f18c2
+    body: src/shared/func_800EFF90_ovl29.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl29_800EFCF4, vram: 0x800EFF90, name: func_800EFF90_ovl29}
+      - {alias: rockx5, module: rockx5/ovl27_800F17DC, vram: 0x800F1EC8, name: func_800F1EC8_ovl27}
+  - group: 9e2400ac73385af0498ec74d62840da9fbe7307c
+    body: src/shared/func_800F9BB0_ovl07.c
+    members:
+      - {alias: rockx5, module: rockx5/ovl07_800F9AB0, vram: 0x800F9BB0, name: func_800F9BB0_ovl07}
+      - {alias: rockx5, module: rockx5/ovl34_800FA274, vram: 0x800FA508, name: func_800FA508_ovl34}

@@ -5204,6 +5204,134 @@ typedef struct {
     u8 f152;
     u8 f153;
 } D_800E81E4_t8001C904;
+
+/* src/rockx5/func_800EECA4_ovl00.c */
+/* local views; fields by offset from this function's accesses only */
+typedef struct {
+    u8 pad0[0x80];
+    Ent2* sub;     /* 0x80 */
+    u8 f84;
+    u8 f85;
+    u8 pad86;
+    u8 f87;
+    s32 f88;
+    u8 pad8C[4];
+    u8 f90;
+    u8 f91;
+    u8 f92;
+    u8 f93;
+    s16 f94;
+    s16 f96;
+} X5Scr;
+
+/* src/rockx5/func_800EECA4_ovl00.c */
+typedef struct {
+    u8 pad0;
+    s8 f1;
+    s8 f2;
+    u8 pad3;
+    u8 f4;
+    u8 f5;
+    u8 f6;
+    u8 pad7;
+    s32 f8;
+    s32 fC;
+    u8 pad10[4];
+    u8 f14;
+    u8 f15;
+    u8 f16;
+    u8 pad17;
+    s32 f18;
+    s32 f1C;
+    s32 f20;
+    s32 f24;
+    s32 f28;
+    s32 f2C;
+    void* f30;
+    u8 pad34[0xE];
+    s16 f42;
+    u8 pad44[0xC];
+    void* f50;
+    void* f54;
+    void* f58;
+    u8 f5C;
+    u8 pad5D[3];
+    u8 f60;
+    u8 f61;
+    u8 pad62[5];
+    u8 f67;
+    void* f68;
+    u8 pad6C[4];
+    u8 f70;
+} X5Ent;
+
+/* src/rockx5/func_800EF48C_ovl11.c */
+typedef struct {
+    /* 0x00 */ u8 pad0[3];
+    /* 0x03 */ u8 unk3;
+    /* 0x04 */ u8 unk4;
+    /* 0x05 */ u8 pad5[0x50 - 0x05];
+    /* 0x50 */ void* unk50;
+    /* 0x54 */ u8 pad54[0x60 - 0x54];
+    /* 0x60 */ u8 unk60;
+} Obj800EF48C;
+
+/* src/rockx5/func_800F3D58_ovl20.c */
+typedef struct {
+    u8 pad0[0x2A];
+    s8 idx;
+    u8 pad2B[0x88 - 0x2B];
+    s32 mask[1];
+} D1C00_800F3D58;
+
+/* src/rockx5/func_800F9630_ovl09.c */
+typedef struct Obj9630 {
+    u8 pad0[2];
+    s8 unk2;
+    u8 unk3;
+    u8 unk4;
+    u8 unk5;
+    u8 unk6;
+    u8 unk7;
+    u8 pad8[2];
+    s16 unkA;
+    u8 padC[2];
+    s16 unkE;
+    u8 pad10[5];
+    u8 unk15;
+    u8 unk16;
+    u8 pad17[9];
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+    u8 pad30[0x20];
+    s32 unk50;
+    s32 unk54;
+    u8 pad58[4];
+    u8 unk5C;
+    u8 pad5D[3];
+    u8 unk60;
+    u8 pad61[6];
+    u8 unk67;
+    s32 unk68;
+} Obj9630;
+
+/* src/rockx5/func_800FB500_ovl49.c */
+/* D_8009A1F8 view: the flags at 0x3/0x57/0xA0/0xAB and the words at 0x5C/0x60 */
+typedef struct {
+    u8 pad0[3];
+    u8 unk3;
+    u8 pad4[0x57 - 0x4];
+    u8 unk57;
+    u8 pad58[0x5C - 0x58];
+    s32 unk5C;
+    s32 unk60;
+    u8 pad64[0xA0 - 0x64];
+    u8 unkA0;
+    u8 padA1[0xAB - 0xA1];
+    u8 unkAB;
+} D_8009A1F8_5C_t;
 /* lift: end */
 
 /* X4 object views shared by the W15 X6 ports (adapted from mmx6 x4.h, AGPL-3.0, THIRD_PARTY.md); fields only where

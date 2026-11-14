@@ -78,7 +78,7 @@ pointer.
 | frame offsets ±8 / out of decl order | frame layout (cse_expr.md K§5) | temp population, or decl order | — |
 
 ## Residual classes
-This table is the vocabulary that T6's `plateau.py classify` emits as `class <c>`. The names come from the kit's
+This table is the vocabulary that T6's `plateau.py classify` emits as `class <c>`, on slus and rockx5 functions alike (3.6 T2). The names come from the kit's
 residual classifier (decision order, first match wins). The table routes the names to our pin's groups. Bytes
 decide the class. The byte gate decides the match.
 
@@ -114,3 +114,25 @@ route of the class is its key:
   waste.
 - `wall` — none of the above applies after a walk of the triage rows and the lever ladder. The label requires
   evidence (G61), never a closeness number.
+
+### Routes (3.6 T3)
+`.run/3.6/plateau/run.py` gives each ledger head one route from its `waves.py try` band and its classify result.
+The first rule that applies gives the route:
+1. If classify fails, the route is `failed`, with its reason.
+2. If the band is `try-match` or the class is `match`, the route is `reconcile`.
+3. If the class is IMM-VALUE, IMM-OFFSET or REGALLOC-PERM, the route is `lever`.
+4. If the label is `seed-structural`, the route is `structural`.
+5. If the label is `wall`, the route is `wall`. If the run lowered the score (best < base), the route is `long-permute`.
+6. Else (`missing-transform`), the route is `long-permute`.
+
+The rules come from the M15 survey R3.6-005.
+- Adopted: the stock scorer weights (regalloc 5, reorder 60, insert or delete 100) are the score that `base` and `best` show.
+- Adopted: a structural redraft comes before the permuter, because the permuter README and two -O2 guides fix reorders first.
+- Adopted: the classifier gives an opcode change precedence over an operand change, as the objdiff code does.
+- Adapted: a plateau is a 100-iteration run with best equal to base. The permuter has no plateau rule of its own.
+- Adapted: immediates go to a named lever. The permuter scores them as regalloc, but no randomizer pass targets them.
+- Adapted: REGALLOC-PERM goes to a named lever (C0129, C0046, C0047), because it is a saved-register order.
+- Adapted: `wall` is our own rule with recorded evidence. No surveyed tool defines a wall.
+- Rejected: decomp.me scores as ground truth, because their penalty values were not read.
+- Rejected: a claim that the permuter fixes a class, until the 3.6 waves measure it on our heads.
+

@@ -10,13 +10,16 @@ code adapted from a third-party source.
 An entry gives the name, the URL, the pinned ref, the licence and the tracked path that holds the adapted code. Its
 class is `adapt`, or `copyleft` when licence-compatible with AGPL-3.0.
 
-- mmx6 — https://github.com/anzaldoivan/mmx6 — `c1c892dc301cfb2f1752b06854cbc02778e1404a` — AGPL-3.0
+- mmx6 — https://github.com/anzaldoivan/mmx6 — `a8f96d1d6377e8566e77089dcd25ceac877893f2` — AGPL-3.0
   (copyleft), the developer's own Mega Man X6 decompilation under this repository's licence, path `src/`. A function
   drafted from a card's `## Twin in X6` adapts its X6 twin's C from `refs/mmx6/src/`, with X5's symbols and types.
   The leads are `docs/oracle/x6-leads.tsv` (`docs/prior-art.md` L8d). Some of those X6 files are adapted from
   sozud/mmx4 (AGPL-3.0), as their first line says, and a draft keeps that line.
   `waves.py port` writes the attribution line (`/* Adapted from mmx6 @<pin> <path>, AGPL-3.0 (THIRD_PARTY.md). */`)
   as each ported draft's first line.
+
+  The pin was `c1c892dc301cfb2f1752b06854cbc02778e1404a` until 2026-11-14. Drafts adapted before that date name
+  `c1c892dc` in their attribution line. Those drafts keep that pin.
 
 ## Used at build or analysis time, not included
 

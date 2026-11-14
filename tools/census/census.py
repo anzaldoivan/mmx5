@@ -185,7 +185,7 @@ def classify(fns, groups):
 
 def report_lines(rows, fns, groups, miss, m, led=frozenset()):
     """rows: every inventory row; fns: rows load() covered; miss: rows it could not; m: row count read independently;
-    led: (alias, name) keys of docs/ledger.md rows (ledger.collect). Returns (lines, ok)."""
+    led: ledger.tkey (alias, ovl, vram) keys of docs/ledger.md rows (ledger.collect). Returns (lines, ok)."""
     cl = classify(fns, groups)
     gid = {id(f): id(g) for g in groups if g["kind"] == "dup" for f in g["members"]}
     lines, fails, tot = [], [], None
@@ -231,8 +231,10 @@ def report_lines(rows, fns, groups, miss, m, led=frozenset()):
     lines.append(f"census: lanes reconcile {tot} = {m}")
     g = [r for r in rows if r["kind"] == "game"]  # R3: a stub is a game asm row with no ledger row
     c = sum(r.get("status") == "c" for r in g)
-    lg = sum(r.get("status") == "asm" and (r["alias"], r["name"]) in led for r in g)
-    s = sum(r.get("status") == "asm" and (r["alias"], r["name"]) not in led for r in g)
+    def tk(r):
+        return ledger.tkey(r["alias"], r.get("module"), r["vram"])
+    lg = sum(r.get("status") == "asm" and tk(r) in led for r in g)
+    s = sum(r.get("status") == "asm" and tk(r) not in led for r in g)
     v = sum(LANE.get(r["kind"]) == "vendor" and r.get("status") == "asm" for r in rows)
     lines.append(f"census: stubs {s} of {len(g)} game functions ({c} c, {lg} ledgered); vendor {v} asm")
     return lines, not fails and tot == m
@@ -245,7 +247,7 @@ def report():
     rows = [json.loads(x) for x in INV.read_text().splitlines()]
     pre = [f"excluded: {n} -- {why}" for a in aliases_of(ROOT)
            for n, why in excluded(ROOT, parse_yaml(ROOT / f"config/splat.{a}.yaml")[1])]
-    led = {(r["alias"], r["name"]) for r in ledger.collect(ROOT / "waves", INV)[0]}
+    led = {r["key"] for r in ledger.collect(ROOT / "waves", INV)[0]}
     lines, ok = report_lines(rows, fns, group(fns), miss, len(rows), led)
     text = "\n".join(pre + lines) + "\n"
     REPORT.parent.mkdir(parents=True, exist_ok=True)

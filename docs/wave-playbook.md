@@ -14,7 +14,7 @@
 | 2 | Cards | The banked twin found over the WHOLE world goes on the card. A card names only levers that the base contains. | W1: <1 s, 24 cards, 0 refused, 17.4k chars of card.md total |
 | 3 | Packs | Make one pack per target + the shared laws file, at the paths that the drafting prompt reads. | W1: 24 packs from the same `card` run |
 | 4 | Validate | Never hand-type a target. Assert that every target is still open at draw time. Send near-misses to the permuter first. | W1: 0 invalid of 24. 2 near-misses (diff 2 words) to permute/plateau: no gain (regalloc $v0/$v1). |
-| 5 | Draft | Before hand drafting, run `waves.py port W<k>`. A matched port goes to `waves/W<k>/drafts/` and the gate, and an unmatched one seeds its drafter (`.run/wave/W<k>/port/`). Ports reuse `include/types.h` shapes and `include/addr.h` names, mark pins and gotos `!FAKE`, inline pointer typedefs and stop at `port: <key> error symbol <name>`. From 3.5 every draft is fresh (3.4 T30: fresh beat seed, C 0.78 vs 0.83 and D 0.60 vs 0.63 k/insn). The scripts arms.py and seedcheck.py are gone (3.4 T31). Brief one streaming coder per target from the wave kit (`.claude/skills/wave-draft-coders/kit/`, per its SKILL.md). | W1: 24 coders streamed (20-concurrent cap), wall 15.4 min, 22 of 24 match, 137 tries, 998 k ctx |
+| 5 | Draft | Before hand drafting, run `waves.py port W<k>` (for ledger rows, `--targets <file>`, C0353). A matched port goes to `waves/W<k>/drafts/` and the gate, and an unmatched one seeds its drafter (`.run/wave/W<k>/port/`). Ports reuse `include/types.h` shapes and `include/addr.h` names, mark pins and gotos `!FAKE`, inline pointer typedefs and stop at `port: <key> error symbol <name>`. From 3.5 every draft is fresh (3.4 T30: fresh beat seed, C 0.78 vs 0.83 and D 0.60 vs 0.63 k/insn). The scripts arms.py and seedcheck.py are gone (3.4 T31). Brief one streaming coder per target from the wave kit (`.claude/skills/wave-draft-coders/kit/`, per its SKILL.md). | W1: 24 coders streamed (20-concurrent cap), wall 15.4 min, 22 of 24 match, 137 tries, 998 k ctx |
 | 5b | Try | Compare a draft before the gate: `waves.py try <draft.c> --target <alias>_<name>`. An error prints the first cc1 lines. A diff prints the differing word offsets. | — |
 | 6 | Gate | Run everything in parallel (worktrees, and the executable by a clean rebuild). Gate the DIRECTORY, never the verdict list. Assert banked + failed + no-verdict == drafts. Run `shapes.py check` on the worktree after the SHA bisect, with culprits bisected out as no-verdict `refused types`. | W1: slus 19 s, rockx5 26 s. 24 = 22 banked (r2) + 2 failed + 0 no-verdict. Finding: the gate banked a raw-cast draft that `shapes.py check` rejects (red only at tools-health) — now gated (R4). |
 | 6b | Reconcile | Make one deterministic pass over each gate group's slate BEFORE the rebuild. | W1: ~1 s. 0 plumbing, 2 body failures. |
@@ -26,7 +26,7 @@
 Then **recover** before re-drawing. Triage the gate's failures into body and plumbing. Bank the plumbing rejects through
 the reconcile ladder without a redraft. The gate number is not the close rate until recovery has run.
 
-## Per-wave numbers (W1-W94)
+## Per-wave numbers (W1-W97)
 The numbers come from `waves/W*/{wave.json,attempts.jsonl,verdicts.jsonl}` (T16). The first fields are drafts / banked /
 failed / twins propagated / coder ctx k / k per banked insn. The next fields are banked insns of all insns / max min per
 target (wall proxy) / sum min (coder-minutes) / tries.
@@ -144,6 +144,11 @@ target (wall proxy) / sum min (coder-minutes) / tries.
 - W69-W94: 1230 drafts, 1115 banked (90.7%), 114 failed, 1 no-verdict, 215 twins (all in W69-W76), 8649 tries.
   Draft ctx 71020k (~57.7k per draft, 0.73 k per banked insn). Banked 97623 of 109350 insns.
   Bucket C 800 of 870 at 0.81 k/insn. Bucket D 315 of 360 at 0.61 k/insn.
+- W95 48 / 39 / 9 / 11 / 5516k / 0.43 / 12745 of 16960 / 27.9 / 478 / 716
+- W96 48 / 37 / 11 / 0 / 4942k / 0.54 / 9205 of 11885 / 29.0 / 502 / 647
+- W97 2 / 1 / 1 / 0 / 187k / 0.93 / 202 of 405 / 15.0 / 16 / 30
+- W95-W97 (3.5, all >200, kit perwave.py 95 97): 98 drafts, 77 banked (78.6%), 21 failed, 11 twins (W95), 1393 tries.
+  Draft ctx 10645k (~108.6k per draft, 138.2k per bank, 0.48 k per banked insn). Banked 22152 of 29250 insns (75.7%).
 
 ## Lanes (W1, counts from the W1 draw, R1.8.1-003. Opening the excluded lanes is 1.8.2's)
 - drafter — one coder per target (W1: 24), and gater — `gate.py` + recover (W1: 22 banked, 2 failed)
@@ -308,6 +313,67 @@ The 3.4 close is T30 (2026-11-07). Inputs were refreshed (step 1): `draw: 307 of
   - seed: draft fresh. Seed lost to the holdout in A (3.3) and in C and D (3.4).
   - after >200, the remainder lane is the 219 ledgered rows and the 25 failed twins.
 
+## Remaining campaign (3.5 close)
+The 3.5 close is T6 (2026-11-14). Inputs were refreshed (step 1): `draw: 230 of 8124 drawable, 7894 refused` (already-c
+7357 · exclude-list 9 · dup-member 51 · vendor 477).
+- census: `census: stubs 0 of 7647 game functions (7357 c, 290 ledgered); vendor 475 asm` (3.5 start 253 stubs, 7176 c,
+  218 ledgered). Every game function is C or has a ledger row.
+- `open: >200 0 open, 23 drawable, 23 ledgered` (`open --check '>200'` exit 0). A-D read 0 open (T5).
+- ledger: `ledger: 290 rows, 0 unledgered, 0 without draft, 0 without blocker` (3.5 start 219).
+- ledger rows per class and binary (docs/ledger.md):
+  - capped: slus 36, rockx5 24 · plumbing: slus 56, rockx5 122 · no-verdict: slus 1 · dup-member: slus 3, rockx5 48
+  - heads (not dup-member): slus 93, rockx5 146 · all rows: slus 96, rockx5 194
+- rows by diff band, from the row's closeness (best `try` diff, positional words). These are the span wrapper's candidates
+  for 3.6 (R25). `try match` rows matched in `try` but the gate went red (SHA or link).
+  - heads rockx5: try match 4 · 1-2 words 10 · 3-8 words 54 · 9+ words 77 · unparsed 1 (func_800F3C0C_ovl29 `diff None`)
+  - heads slus: try match 2 · 1-2 words 16 · 3-8 words 24 · 9+ words 51
+  - dup-member rows carry their head's closeness: rockx5 try match 3 · 1-2 2 · 3-8 16 · 9+ 27. slus 3-8 2 · 9+ 1.
+    They close when their head banks and propagates.
+  - the rockx5 1-2 band is 10 heads: 800EFF90_ovl29, 800F0BA8_ovl24, 800F2F8C_ovl01, 800F9BB0_ovl07, 800FA1C0_ovl42,
+    800FA4A4_ovl28, 800FA550_ovl27, 800FAD38_ovl55, 800FDB00_ovl07, 800FDEC8_ovl34 (all plumbing, all 2 words).
+    The rockx5 try-match 4: D_800EECA4_ovl00 (W2 link), 800EEF88_ovl07, 800F04AC_ovl04, 800F81AC_ovl03.
+- >200 cost, W95-W97 (kit perwave.py 95 97): draft coders 10.6M, plus gate and harvest coders ~0.35M, so ~11.0M.
+  The estimate was ~18M (ceiling ~23M, floor ~10.5M): 61% of the plan, near the floor. 0.48 k per banked insn against
+  the 0.61 basis. Banked 77 of 98 heads (78.6%), 22152 of 29250 insns (75.7%). Ledger growth 21 rows (expected 13-19).
+- of the 21 >200 misses, 19 are slus (sprite emitters and menu handlers). 3.6 should take each family together.
+- T4, the twins propagate refused: 93 of 93 banked (25 by the wet sweep, 24 cyclic + 1 gated, and 68 as their own C).
+  0 exclude entries added. 1 stale entry dropped (func_800F16C8_ovl00, banked). 0 asm dup-members with a C mate remain.
+- T5: 51 new `dup-member` rows (slus 3, rockx5 48), ledger 238 -> 290 rows. 0 `twin-refused` rows (T4 left none).
+  The census now matches ledger rows by key, so the W2 row D_800EECA4_ovl00 counts.
+- wall per step, minutes (tasks/T1-T3 `wall:` lines):
+  - drafts: W95 31 · W96 40 · W97 15
+  - gate slus 1-6 · gate rockx5 14-17 (W97 0, no rockx5 target) · recover <1
+  - rescan: W95 121 (11 twins, 2 FAILs) · W96 2 · W97 2
+  - no-rom: 30-43 per wave (2-3 runs of 14-25) · make check: 36-47
+  - total: W95 334 (with a ~40 min permission stop) · W96 330 (with a ~2 h hung watcher) · W97 100
+- the remainder for 3.6 is the 290 ledger rows: 239 heads and 51 dup-members behind them.
+
+## Routing of the ledger heads (3.6 T3)
+The classifier ran on 218 heads, with 100 permuter iterations each and 8 runs at once. The run took 11 min.
+The table is `.run/3.6/plateau/routing.tsv`, and `docs/codegen-map/README.md` `### Routes (3.6 T3)` gives the rules.
+- routes: long-permute 53 · lever 27 · structural 37 · reconcile 6 · wall 95 · failed 0
+- classes: opcode-mixed 89 · regalloc-perm 27 · length-drift 25 · width 21 · regalloc-local 18 · addressing 12 ·
+  schedule-reorder 10 · mixed 6 · match 6 · delay-slot 3 · size-mismatch 1
+- rockx5 (146): try-match 4 · 1-2 words 12 · 3-8 words 66 · 9+ words 64. The wall routes are 2, 23 and 46 of the last three bands.
+- slus (72): try-match 2 · 1-2 words 10 · 3-8 words 20 · 9+ words 40. The wall routes are 0, 5 and 19 of the last three bands.
+- waves: T4 28 heads (26 coder rows) · T5 86 (58) · T6 64 (18) · T7 40 (21). The coder rows total 123.
+- dup-members behind the heads: wall 21 · long-permute 11 · lever 9 · structural 5 · reconcile 3
+- The 100-iteration run lowered the score on 3 heads only. The routes come from the class, not from a permuter gain.
+- Two best drafts needed a scratch copy. The W2 draft of func_800F19F0_ovl24 declares a `HudObj` that `include/types.h` now declares too.
+  The W2 row D_800EECA4_ovl00 has the inventory name func_800EECA4_ovl00.
+
+## Lever wave W101 (3.6 T4: try-match, 1-2 words, unparsed)
+The kit takes lever waves. `mkbriefs.py` writes a lever brief for each row of `routing.tsv`.
+The brief names the start draft, the route, the class, the label, the old closeness and the card levers.
+The start draft is the row's best draft, or the permuter output when it scores below the base.
+A `wall` row gets no coder. `attempts.py` writes the T3 label into `plateau`.
+- targets 29: rockx5 17, slus 12. Routes: reconcile 6, lever 5, long-permute 9, structural 7, wall 2.
+- banked 20 heads (slus 9, rockx5 11) and 3 twins. The ledger went from 267 to 244 rows.
+- by route: lever 5 of 5, long-permute 6 of 9, structural 6 of 7, reconcile 3 of 6, wall 0 of 2.
+- The permuter ran 2000 iterations on each of 9 long-permute rows. No run lowered the score. The coders banked 6 of the 9 by hand.
+- Three try-matched rows stay SHA-red at the gate: rockx5 func_800EEF88_ovl07, func_800F04AC_ovl04, func_800F81AC_ovl03.
+- Draft ctx 1626k for 27 coders (60.2k per coder, max 110.6k).
+
 ## Remainder procedure: twins that propagate refuses (3.5 T4, for 3.6's head banks)
 1. Refresh (step 1), then run `propagate.py sweep --dry-run` once on a clean tree, as a background shell (~18 min).
    Copy its output and `.run/dedup/propagate/sweep.*.build.log` to `.run/<phase>/logs/` at once: the next run overwrites them.
@@ -317,6 +383,6 @@ The 3.4 close is T30 (2026-11-07). Inputs were refreshed (step 1): `draw: 307 of
    Parallel draft coders only write drafts and run `waves.py try`. Each one checks relocations with objdump (docs/ops/toolchain.md:56-63).
 4. One gate coder runs `carve.py apply ... --body <draft>` for all of them, slus then rockx5. It runs `make split build`, bisects a red build by member (C0148), and reverts losers.
    A member that does not bank gets its config/dedup.exclude.yaml entry.
-5. Own-C byte twins of each other leave `propagate.py check` unregistered. Give each cluster a shared body: src/shared/<rep>.c.
+5. Own-C byte twins of each other leave `propagate.py check` unregistered. Give each cluster a shared body: `propagate.py rep <alias> <rep>` writes src/shared/<rep>.c.
    Then run `propagate.py run src/shared/<rep>.c`. The registry keeps one entry per (group, body) (C0350).
 6. A `sha` refusal from propagate is often a rodata cut: the member text hides the body's externs from carve (C0348).

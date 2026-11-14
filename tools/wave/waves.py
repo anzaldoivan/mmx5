@@ -311,7 +311,7 @@ def cmd_open(root, names, bounds, check=False):
     return int(rc)
 
 
-def cmd_draw(root, wave, per, bounds, order="strata", size=None, only=None, per_cluster=1):
+def cmd_draw(root, wave, per, bounds, order="strata", size=None, only=None, per_cluster=1, targets=None):
     bad = stale_inputs(root)
     if bad:
         print(f"wave: refused -- stale or missing input {bad[0]} (older than last src/config/splat commit; G31)")
@@ -320,6 +320,8 @@ def cmd_draw(root, wave, per, bounds, order="strata", size=None, only=None, per_
     if out.exists():
         print(f"wave: refused -- {out.relative_to(root)} exists")
         return 1
+    if targets:
+        return list_wave(root, wave, targets, bounds)
     w = World(root)
     if order in ("leverage", "port-x6"):
         targets = draw_leverage(w, size, bounds, order == "port-x6", only, per_cluster)
@@ -364,6 +366,35 @@ def write_wave(root, w, out, wave, bounds, targets, per_cluster=1):
     for k, v in sorted(lanes(w, bounds).items()):
         print(f"lane: {k} {v}")
     return 1 if n_bad else 0
+
+
+def target_keys(file):
+    """`<alias>_<name>` keys of a target list, one per line, in order; blank and `#` lines skipped."""
+    return [s for s in (x.strip() for x in Path(file).read_text().splitlines()) if s and not s.startswith("#")]
+
+
+def list_wave(root, wave, file, bounds, waves=None):
+    """Write <waves>/<wave>/wave.json from a target list, in list order. Every key must be asm in the inventory, else
+    nothing is written (rc 1). No invalid() check: a listed ledgered key is taken; the ledger keeps its row."""
+    w, keys = World(root), target_keys(file)
+    bad = [k for k in keys if w.inv.get(tuple(k.split("_", 1)), {}).get("status") != "asm"]
+    for k in bad:
+        print(f"wave: refused -- {k} not asm in {INV}")
+    if bad:
+        return 1
+    targets, n_led = [], 0
+    for k in keys:
+        r = w.inv[tuple(k.split("_", 1))]
+        d = w.dr.get((r["alias"], r["name"]), {})
+        targets.append(dict({x: r[x] for x in ("alias", "module", "name", "vram", "insns")},
+                            bucket=bucket_of(r["insns"], bounds), rank=d.get("rank"), reach=d.get("reach")))
+        n_led += ledger.tkey(r["alias"], r["module"], r["vram"]) in w.ledgered
+    out = Path(waves or root / "waves") / wave / "wave.json"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(json.dumps({"wave": wave, "date": datetime.date.today().isoformat(), "buckets": bounds,
+                               "targets": targets}, indent=1) + "\n")
+    print(f"wave: {wave} listed {len(targets)} targets from {file}, {n_led} ledgered")
+    return 0
 
 
 def norm_insn(s):
@@ -1246,14 +1277,61 @@ def inline_scalars(text):
     return text
 
 
+def lead_cut(src, name):
+    """src cut to the lead function: the preamble (lines before the first function or INCLUDE_ASM), the top-level
+    lines between the previous function/INCLUDE_ASM and the lead, the lead, and the #undef lines right after it.
+    src unchanged when name is not defined at column 0 (a lead reached through `#define` + `#include "<x>.c"`)."""
+    sl = src.splitlines()
+    blank = lambda m: re.sub(r"[^\n]", " ", m[0])  # noqa: E731 -- comments masked, line numbers kept
+    ml = re.sub(r"//[^\n]*", blank, re.sub(r"/\*.*?\*/", blank, src, flags=re.S)).splitlines()
+    items, i = [], 0  # (kind fn|asm, first line, last line, name)
+    while i < len(ml):
+        ln = ml[i]
+        if not ln.strip() or ln.lstrip().startswith("#"):
+            while ml[i].rstrip().endswith("\\") and i + 1 < len(ml):
+                i += 1
+            i += 1
+            continue
+        if re.match(r"\s*INCLUDE_\w+\s*\(.*\)\s*;?\s*$", ln):  # INCLUDE_ASM / INCLUDE_RODATA: one line each
+            if re.match(r"\s*INCLUDE_ASM\b", ln):
+                items.append(("asm", i, i, None))
+            i += 1
+            continue
+        s, depth, opened = i, 0, False
+        while i < len(ml):
+            depth += ml[i].count("{") - ml[i].count("}")
+            opened = opened or "{" in ml[i]
+            i += 1
+            if depth == 0 and (ml[i - 1].rstrip().endswith(";") or opened):
+                break
+        m = re.match(r"\s*[A-Za-z_][\w\s*]*?\b(\w+)\s*\([^;{]*\)\s*\{", "\n".join(ml[s:i]))
+        if m and not ml[i - 1].rstrip().endswith(";"):
+            items.append(("fn", s, i - 1, m[1]))
+    k = next((k for k, it in enumerate(items) if it[0] == "fn" and it[3] == name and re.match(
+        rf"[A-Za-z_][\w\s*]*\b{name}\s*\(", "\n".join(ml[it[1]:it[2] + 1]))), None)
+    if k is None:
+        return src
+    first, (_, s, e, _) = items[0][1], items[k]
+    prev = items[k - 1][2] + 1 if k else first
+    u = e + 1
+    while u < len(sl) and (not sl[u].strip() or re.match(r"\s*#\s*undef\b", sl[u])):
+        u += 1
+    tail = [x for x in sl[e + 1:u] if x.strip()]
+    return "\n".join(sl[:first] + sl[prev:s] + sl[s:e + 1] + tail) + "\n"
+
+
 def port_text(x6, lead, pin, x5types, lines):
-    """X6 lead file -> X5 draft text (None, 'map' when the map or the lead name is absent from the X6 file)."""
+    """X6 lead file -> X5 draft text (None, 'map' when the map or the lead name is absent from the X6 file).
+    The draft holds only the lead function and its preamble (lead_cut)."""
     src = (x6 / lead["path"]).read_text()
     code = uncomment(src)
     if not re.search(rf"^[A-Za-z_][\w\s*]*\b{lead['name']}\s*\([^;{{]*\)\s*\{{", code, re.M) or \
             any(not re.search(rf"\b{re.escape(k)}\b", code) for k, _ in lead["map"]):
         return None, "map"
-    ents = [e for h in X6_HDRS if (x6 / h).exists() for e in c_entities((x6 / h).read_text())]
+    src = lead_cut(src, lead["name"])
+    code = uncomment(src)
+    hdrs = list(X6_HDRS) + [f"include/{h}" for h in re.findall(r'^\s*#\s*include\s+"(mmx6/[^"]+\.h)"', src, re.M)]
+    ents = [e for h in dict.fromkeys(hdrs) if (x6 / h).exists() for e in c_entities((x6 / h).read_text())]
     ents5 = c_entities(x5types)
     x5 = {n for e in ents5 for n in e["names"]}
     lay6, lay5 = CTypes(ents), CTypes(ents5)
@@ -1278,7 +1356,7 @@ def port_text(x6, lead, pin, x5types, lines):
         inc = re.match(r'\s*#\s*include\s+"([^"]+)"', ln)
         if inc and inc[1] == "common.h":
             body += ['#include "types.h"'] + block
-        elif not (inc and inc[1] in X6_DROP):
+        elif not (inc and (inc[1] in X6_DROP or inc[1].startswith("mmx6/"))):  # every X6 header: closure above
             body.append(ln)
     text = "\n".join(body) + "\n"
     defs = set(re.findall(r"#\s*define\s+(\w+)", text)) | {n for e in ents for n in e["names"]} | x5
@@ -1377,8 +1455,11 @@ def remap_symbols(text, t, known, addrs):
     return text, None
 
 
-def cmd_port(root, waves, wave, target=None, pin=""):
+def cmd_port(root, waves, wave, target=None, pin="", targets=None, bounds=(20, 50, 100, 200)):
     wj = Path(waves) / wave / "wave.json"
+    if targets and not wj.exists() and list_wave(root, wave, targets, list(bounds), waves):
+        return 1
+    keep = set(target_keys(targets)) if targets else None
     if not wj.exists():
         print(f"port: refused -- {wj} missing")
         return 1
@@ -1387,7 +1468,7 @@ def cmd_port(root, waves, wave, target=None, pin=""):
     lines, n, m, known = src_lines(root), 0, 0, {}
     for t in json.loads(wj.read_text())["targets"]:
         key = f"{t['alias']}_{t['name']}"
-        if target and key != target:
+        if target and key != target or keep is not None and key not in keep:
             continue
         lead = w.lead(t)
         if not lead:
@@ -1716,6 +1797,8 @@ def selftest():
     print("wave: control OK -- raw scratchpad cast spelled through its addr.h name")
     assert "#define TWICE(a) ((a) + (a))\n" in pt and "\\\n" not in pt, pt  # planted `\` continued #define
     print("wave: control OK -- mmx6 continued #define joined onto one line")
+    assert not re.search(r"D_80039999|func_80020180|INCLUDE_ASM", pt), pt  # planted: other function, trailing asm
+    print("wave: control OK -- mmx6 seed cut to the lead function and its preamble")
     with (tmp / LEADS).open("a") as f:  # planted: fa's lead maps g_seven, absent from the X6 file
         f.write("slus\t0x80001000\tfa\t4\tSLUS_013.95\t0x80020000\tfunc_80020000\t"
                 "src/shared/SLUS_013.95/func_80020000.c\tfunc_80020000=fa;g_seven=g_x\n")
@@ -1772,6 +1855,19 @@ def selftest():
     rc, out = call(cmd_draw, tmp, "W13", 5, [20], "leverage", 6, {"A"}, 2)  # fe_twin shares fa's cluster
     assert rc == 0 and "fe_twin" in names("W13") and "0 invalid" in out, (out, names("W13"))
     print("wave: control OK -- open counts, --only filter, ledgered skipped, pool exhausted, >bound, per-cluster")
+    tl = tmp / "targets.txt"  # target list: fd is ledgered (W8) and has a lead; taken, ported
+    tl.write_text("# list\n\nslus_fd\n")
+    real, x5_addrs = x5_addrs, lambda seed, t: {}
+    try:
+        rc, out = call(cmd_port, tmp, tmp / "waves", "W14", None, "0123456789", tl)
+    finally:
+        x5_addrs = real
+    assert rc == 0 and f"wave: W14 listed 1 targets from {tl}, 1 ledgered" in out and names("W14") == ["fd"], out
+    assert re.search(r"^port: slus_fd (?!no-lead)\S", out, re.M), out
+    tl.write_text("slus_fd\nslus_nosuch\n")
+    rc, out = call(cmd_port, tmp, tmp / "waves", "W15", None, "0123456789", tl)
+    assert rc == 1 and out == f"wave: refused -- slus_nosuch not asm in {INV}\n" and not (tmp / "waves/W15").exists(), out
+    print("wave: control OK -- target list: ledgered key ported, key outside the inventory refused")
     return 0
 
 
@@ -1792,6 +1888,7 @@ def main(argv=None):
     d.add_argument("--per-cluster", type=int, default=1, metavar="N",
                    help="with --only: up to N targets per dup cluster (default 1); A/B tail only, when the open "
                         "rows sit in one cluster and a 1-per-cluster draw falls far short of --size")
+    d.add_argument("--targets", metavar="FILE", help="one <alias>_<name> per line; wave.json in list order")
     o = sp.add_parser("open")
     o.add_argument("names")
     o.add_argument("--check", action="store_true")
@@ -1810,6 +1907,7 @@ def main(argv=None):
     p = sp.add_parser("port")
     p.add_argument("wave")
     p.add_argument("--target")
+    p.add_argument("--targets", metavar="FILE", help="one <alias>_<name> per line; writes wave.json when absent")
     p.add_argument("--waves", default=str(ROOT / "waves"))
     e = sp.add_parser("seed")
     e.add_argument("wave")
@@ -1819,15 +1917,19 @@ def main(argv=None):
     if a.cmd == "seed":
         return cmd_seed(ROOT, a.waves, a.wave, a.target)
     if a.cmd == "port":
+        if a.target and a.targets:
+            ap.error("--targets and --target are exclusive")
         pin, head = x6_pin(ROOT)
         if pin != head:
             print(f"port: refused -- refs/mmx6 HEAD {head or 'missing'} != config/refs.toml mmx6 ref {pin} "
                   "(bash tools/refs_fetch.sh mmx6)")
             return 1
-        return cmd_port(ROOT, a.waves, a.wave, a.target, pin)
+        return cmd_port(ROOT, a.waves, a.wave, a.target, pin, a.targets)
     if a.cmd == "rate":
         return cmd_rate(ROOT / "waves", a.wave, a.check)
     if a.cmd == "draw":
+        if a.targets and (a.order != "strata" or a.only or a.size or a.per_cluster != 1):
+            ap.error("--targets takes no --order, --only, --size or --per-cluster")
         if a.order in ("leverage", "port-x6") and not a.size:
             ap.error(f"--order {a.order} needs --size N")
         if a.only and a.order == "strata":
@@ -1837,7 +1939,7 @@ def main(argv=None):
         if a.per_cluster < 1:
             ap.error("--per-cluster needs N >= 1")
         return cmd_draw(ROOT, a.wave, a.per, [int(x) for x in a.buckets.split(",")], a.order, a.size,
-                        set(a.only.split(",")) if a.only else None, a.per_cluster)
+                        set(a.only.split(",")) if a.only else None, a.per_cluster, a.targets)
     if a.cmd == "open":
         return cmd_open(ROOT, a.names.split(","), [int(x) for x in a.buckets.split(",")], a.check)
     if a.cmd == "card":

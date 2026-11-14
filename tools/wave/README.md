@@ -20,7 +20,7 @@ wave/ledger/harvest/routing (mk/tools-health.mk).
   its bucket's route. One target per cluster: the gate's `rescan` banks its exact twins (the other members of the
   X6 class) from the representative. The selftest plants a lead in a `defer` bucket, and the draw takes it first.
 
-  Every order skips the `ledger.py` targets (tried, not banked, not c) as invalid `ledgered`.
+  Every order skips the `ledger.py` targets (tried, not banked, not c, and their `dup-member` rows) as invalid `ledgered`.
   The `--only A,B` option (leverage/port-x6 only) keeps pool rows in the named buckets. When that pool cannot fill N,
   the draw drops the NEED floor and takes the whole valid pool. It prints
   `wave: pool exhausted, drew <n> of --size <N>` (n == 0: nothing written, exit 1). Without `--only` a short pool is still refused.
@@ -47,6 +47,29 @@ wave/ledger/harvest/routing (mk/tools-health.mk).
   A missing wave.json is refused (exit 1). A `refs/mmx6` HEAD that is
   not config/refs.toml's mmx6 `ref` is refused (exit 1). A match goes to `DIR/W<k>/drafts/<alias>_<name>.c` (DIR
   default `waves/`). A non-match seeds the drafter at `.run/wave/W<k>/port/<alias>_<name>.c`.
+  The seed holds only the lead function and the preamble of its file.
+
+  `--targets <file>` gives a target list: one `<alias>_<name>` per line. The list skips blank lines and `#` lines.
+  The alias is the text before the first `_`. Each key resolves through `.run/census/inventory.jsonl` to (alias,
+  module, vram).
+
+  When wave.json is absent, the command writes it from the list, in list order. Then the command ports only the
+  listed keys. The pin refusal comes first. The command refuses `--targets` with `--target`.
+
+  If a key is absent from the inventory or its status is not `asm`, the command writes nothing. It prints
+  `wave: refused -- <key> not asm in <inventory>` for each such key, exit 1. A listed `ledgered` key is taken.
+  The command prints `wave: W<k> listed <n> targets from <file>, <l> ledgered`.
+
+  Each target gets {alias, module, name, vram, insns, bucket, rank, reach}. The rank and reach come from
+  draw.jsonl, else null. `draw W<k> --targets <file>` writes the same wave.json and refuses as `draw` does. It takes
+  no `--order`, `--only`, `--size` or `--per-cluster`.
+
+  Design (survey R3.6-006). We adopted a result row per target: one `port:` line for each key. We adapted the target
+  key. The inventory gives (binary, overlay, vram) for each key, and the name is only the lookup.
+
+  We rejected fuzzy or opcode similarity as a match. Only `waves.py try` and the byte compare of the gate mark a
+  match. The tool does not edit the ledger. A listed ledgered key is ported, and the ledger keeps its row until the
+  key banks.
 
   The transform is `port_text`:
   - line 1 is the attribution (`Adapted from mmx6 @<pin7> <path>`). The X6 file's sozud/mmx4 line stays.
@@ -80,7 +103,8 @@ wave/ledger/harvest/routing (mk/tools-health.mk).
 - `--selftest` -> `wave: control OK -- invalid target refused`, then `wave: control OK -- mmx6 lead ported (includes
   rewritten), wrong map refused`, plus `mmx6 closure rewritten to the types.h shape` and `unmapped mmx6 data symbol
   refused`, `mmx6 goto emitted marked !FAKE` `mmx6 function-pointer typedef inlined`, `raw scratchpad cast spelled through its
-  addr.h name` and `mmx6 continued #define joined onto one line`, `seed asm prepped for m2c[, m2c emits it]`. The fixtures are synthetic (fixtures/, with a fake `fixtures/refs/mmx6/` tree). The
+  addr.h name` and `mmx6 continued #define joined onto one line`, `mmx6 seed cut to the lead function and its
+  preamble`, `seed asm prepped for m2c[, m2c emits it]`, `target list: ledgered key ported, key outside the inventory refused`. The fixtures are synthetic (fixtures/, with a fake `fixtures/refs/mmx6/` tree). The
   scratch is .run/wave/selftest.
 - `status W<k> [--drafts-only] [--waves DIR]` -> `wave: W<k> <d> drafts = <b> banked + <f> failed + <n> no-verdict`.
   The exit is 1 when the counts are unequal or a draft has no verdicts.jsonl row.
@@ -145,6 +169,10 @@ The command is `PY tools/wave/ledger.py build|check [--waves DIR] [--out F]` (R7
 target is still asm in `.run/census/inventory.jsonl`. The row is `{alias, name, vram, insns, wave, class, closeness, best_draft, blocker, tries, ctx_k,
 date}`, and the rows are sorted (alias, vram). A target failed in several waves keeps its closest row (lowest diff,
 tie → later wave).
+
+The build also adds one `dup-member` row per game asm member of a `.run/census/groups.jsonl` dup group with a ledgered head.
+The row takes the head's wave, closeness, draft and date. Its blocker is `head <alias>_<name>: <head blocker>`.
+A group with a c member gets no rows. With several ledgered heads, the closest head is used.
 
 `check` rebuilds in memory. It checks that every attempted target is `c` or has exactly one row. It checks that no
 row lacks a real draft or closeness, and that the file is byte-current. It prints

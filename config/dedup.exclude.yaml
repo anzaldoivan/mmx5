@@ -12,9 +12,6 @@
 #   - {"alias": "slus", "vram": "80012E0C", "name": "game_80012E0C", "reason": "...", "date": "2026-10-05", "reprobe": "python3 tools/dedup/carve.py plan slus 80012E0C"}
 entries:
   - {"alias": "rockx5", "vram": "800EFD5C", "name": "func_800EFD5C_ovl02", "reason": "ledgered failure W3+W4 (diff 10/50); docs/ledger.md", "date": "2026-10-06", "reprobe": "test -f src/rockx5/func_800EFD5C_ovl02.c"}
-  - {"alias": "rockx5", "vram": "800FDB00", "name": "func_800FDB00_ovl07", "reason": "ledgered failure W3+W4 (diff 2/48); docs/ledger.md", "date": "2026-10-06", "reprobe": "test -f src/rockx5/func_800FDB00_ovl07.c"}
-  - {"alias": "rockx5", "vram": "800FDEC8", "name": "func_800FDEC8_ovl34", "reason": "ledgered failure W5 (diff 2/48); docs/ledger.md", "date": "2026-10-06", "reprobe": "test -f src/rockx5/func_800FDEC8_ovl34.c"}
-  - {"alias": "rockx5", "vram": "800EECA4", "name": "D_800EECA4_ovl00", "reason": "ledgered failure W2 (SHA red in worktree); docs/ledger.md", "date": "2026-10-06", "reprobe": "test -f src/rockx5/D_800EECA4_ovl00.c"}
   - {"alias": "rockx5", "vram": "800F19F0", "name": "func_800F19F0_ovl24", "reason": "ledgered failure W2 (diff 7/992); docs/ledger.md", "date": "2026-10-06", "reprobe": "test -f src/rockx5/func_800F19F0_ovl24.c"}
   - {"alias": "rockx5", "vram": "800FDDD4", "name": "func_800FDDD4_ovl07", "reason": "ledgered failure W7 (diff 8/48); docs/ledger.md", "date": "2026-10-06", "reprobe": "test -f src/rockx5/func_800FDDD4_ovl07.c"}
   - {"alias": "rockx5", "vram": "800FE19C", "name": "func_800FE19C_ovl34", "reason": "ledgered failure W8 (diff 8/48); docs/ledger.md", "date": "2026-10-07", "reprobe": "test -f src/rockx5/func_800FE19C_ovl34.c"}
