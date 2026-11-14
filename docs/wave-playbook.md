@@ -14,7 +14,7 @@
 | 2 | Cards | The banked twin found over the WHOLE world goes on the card. A card names only levers that the base contains. | W1: <1 s, 24 cards, 0 refused, 17.4k chars of card.md total |
 | 3 | Packs | Make one pack per target + the shared laws file, at the paths that the drafting prompt reads. | W1: 24 packs from the same `card` run |
 | 4 | Validate | Never hand-type a target. Assert that every target is still open at draw time. Send near-misses to the permuter first. | W1: 0 invalid of 24. 2 near-misses (diff 2 words) to permute/plateau: no gain (regalloc $v0/$v1). |
-| 5 | Draft | Before hand drafting, run `waves.py port W<k>`, then `waves.py seed W<k>` (opt-in, no-lead targets: an m2c draft to keep in part and type before `try`). From W71, seed per the T5 verdict (seed if k/insn <= 0.9 x fresh, heads down at most 2): `seedcheck: W69-W70 C seed 23/24 heads 0.59 k/insn, fresh 20/24 heads 0.79 k/insn; D seed 24/24 heads 0.40 k/insn, fresh 18/24 heads 0.69 k/insn; verdict C seed, D seed`, with `arms.py W<k> <seed> <m2c> --verdict C=seed,D=seed` (1 in 8 fresh). A matched port is written to `waves/W<k>/drafts/` and goes straight to the gate. An unmatched port seeds its drafter (`.run/wave/W<k>/port/`). Ports reuse `include/types.h` shapes and `include/addr.h` names, mark pins and gotos `!FAKE`, inline pointer typedefs, refuse an unnamed X6 data symbol (`port: <key> error symbol <name>`: hand-draft it). Use one agent per target, the model by measured size, streaming not batched, with the wave's difficulty set at draw time. | W1: 24 coders streamed (20-concurrent cap), wall 15.4 min, 22 of 24 match, 137 tries, 998 k ctx |
+| 5 | Draft | Before hand drafting, run `waves.py port W<k>`. A matched port goes to `waves/W<k>/drafts/` and the gate, and an unmatched one seeds its drafter (`.run/wave/W<k>/port/`). Ports reuse `include/types.h` shapes and `include/addr.h` names, mark pins and gotos `!FAKE`, inline pointer typedefs and stop at `port: <key> error symbol <name>`. From 3.5 every draft is fresh (3.4 T30: fresh beat seed, C 0.78 vs 0.83 and D 0.60 vs 0.63 k/insn). The scripts arms.py and seedcheck.py are gone (3.4 T31). Brief one streaming coder per target from the wave kit (`.claude/skills/wave-draft-coders/kit/`, per its SKILL.md). | W1: 24 coders streamed (20-concurrent cap), wall 15.4 min, 22 of 24 match, 137 tries, 998 k ctx |
 | 5b | Try | Compare a draft before the gate: `waves.py try <draft.c> --target <alias>_<name>`. An error prints the first cc1 lines. A diff prints the differing word offsets. | — |
 | 6 | Gate | Run everything in parallel (worktrees, and the executable by a clean rebuild). Gate the DIRECTORY, never the verdict list. Assert banked + failed + no-verdict == drafts. Run `shapes.py check` on the worktree after the SHA bisect, with culprits bisected out as no-verdict `refused types`. | W1: slus 19 s, rockx5 26 s. 24 = 22 banked (r2) + 2 failed + 0 no-verdict. Finding: the gate banked a raw-cast draft that `shapes.py check` rejects (red only at tools-health) — now gated (R4). |
 | 6b | Reconcile | Make one deterministic pass over each gate group's slate BEFORE the rebuild. | W1: ~1 s. 0 plumbing, 2 body failures. |
@@ -307,3 +307,16 @@ The 3.4 close is T30 (2026-11-07). Inputs were refreshed (step 1): `draw: 307 of
   - head rate: 81% in W1-W68 (17 of 21), D 87.5% in 3.4. Expect ~13-19 ledger rows.
   - seed: draft fresh. Seed lost to the holdout in A (3.3) and in C and D (3.4).
   - after >200, the remainder lane is the 219 ledgered rows and the 25 failed twins.
+
+## Remainder procedure: twins that propagate refuses (3.5 T4, for 3.6's head banks)
+1. Refresh (step 1), then run `propagate.py sweep --dry-run` once on a clean tree, as a background shell (~18 min).
+   Copy its output and `.run/dedup/propagate/sweep.*.build.log` to `.run/<phase>/logs/` at once: the next run overwrites them.
+   The refused member lines are the lane. Tally them by class.
+2. Run the wet sweep, `--binary slus` then `--binary rockx5`. It banks the gated members, and since 3.5 T4 that includes cyclic renames (inline body, C0264).
+3. For each refused member, draft its own C from its C mate's body (C0349). Map members to mates through `.run/census/groups.jsonl`.
+   Parallel draft coders only write drafts and run `waves.py try`. Each one checks relocations with objdump (docs/ops/toolchain.md:56-63).
+4. One gate coder runs `carve.py apply ... --body <draft>` for all of them, slus then rockx5. It runs `make split build`, bisects a red build by member (C0148), and reverts losers.
+   A member that does not bank gets its config/dedup.exclude.yaml entry.
+5. Own-C byte twins of each other leave `propagate.py check` unregistered. Give each cluster a shared body: src/shared/<rep>.c.
+   Then run `propagate.py run src/shared/<rep>.c`. The registry keeps one entry per (group, body) (C0350).
+6. A `sha` refusal from propagate is often a rodata cut: the member text hides the body's externs from carve (C0348).

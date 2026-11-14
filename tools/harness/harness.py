@@ -221,7 +221,8 @@ def p8(r):
     a = {(m.group(1), m.group(2)) for line in need(r / "config/dedup.us.yaml").read_text().splitlines()
          if (m := re.match(r"^\s*- \{alias: (\w+), .*name: (\w+)\}", line))}
     b = {(al, n) for al in aliases(r) for n in yaml_c(r, al)
-         if (c := r / "src" / al / f"{n}.c").exists() and '#include "../shared/' in c.read_text()}
+         if (c := r / "src" / al / f"{n}.c").exists()
+         and re.search(r'^(#include "|// dedup-inline )\.\./shared/', c.read_text(), re.M)}  # inline: cyclic rename
     return "registry", a, "shared cuts", b
 
 

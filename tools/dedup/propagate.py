@@ -14,10 +14,13 @@ takes DEDUP_CALLEE. A masked-only member M (a %hi/%lo or jal relocation differs)
 relocations of the rep's and M's built objects, x4core.Elf; rep = build/<a>/src/<a>/<name>.o, M = its asm file's
 build/<a>/asm/<a>/<file>.o) when, slot by slot, types and in-place addends (C0039, HI16/LO16 paired) agree, the map
 sym_R -> sym_M is a function, every sym_M is in M's own object (an `_ovlNN` suffix = M's own overlay; none = the main
-exe), no renamed sym_R is a struct field (.x/->x), param or local in the body, no rename target is itself a renamed
-source (a swap: cpp does not re-expand a macro inside its own expansion), and raw words are equal outside the
+exe), no renamed sym_R is a struct field (.x/->x), param or local in the body, and raw words are equal outside the
 relocated fields; it is then instantiated with `#define sym_R sym_M` per differing symbol (jal symbols excepted when
-the body takes DEDUP_CALLEE). Else refused: `dedup: FAIL <alias> <name> -- <why>` (exit code unchanged). Printed
+the body takes DEDUP_CALLEE). A cyclic map (a rename target is itself a renamed source, e.g. a swap: cpp does not
+re-expand a macro inside its own expansion, C0264) is instantiated inline instead (inline_text(): the body text with
+every sym_R -> sym_M in one regex pass, no rename #defines, marked `// dedup-inline ../shared/<body>` + one
+`// dedup-rename <R> <M>` per pair; includes() re-derives it); refused `cyclic rename` only when a renamed name is
+not in the body text (carried by a header macro). Else refused: `dedup: FAIL <alias> <name> -- <why>` (exit code unchanged). Printed
 `dedup: <m> masked-only: <a> reloc-gated, <k> refused`. The byte gate below stays the arbiter (C0071).
 run: per member, the member file = reconcile.member_text (DEDUP_NAME; DEDUP_CALLEE = the member's own jal target when
   the body uses it; the reloc-gated renames; r3's externs for implicitly declared callees), compiled standalone in .run/dedup/propagate/cc and
@@ -25,7 +28,8 @@ run: per member, the member file = reconcile.member_text (DEDUP_NAME; DEDUP_CALL
   `make split build BINARY=<a>` per touched binary (whole-binary SHA). A member already carved whose C file includes
   the body counts as gated. A failing member is not carved (a failing binary: all its new carves reverted), printed
   `dedup: FAIL <alias> <name> -- <why>`, exit 1. Gated members are registered in config/dedup.us.yaml by line inserts
-  (no YAML round trip, comments kept, DK-77). Last line `dedup: <g> of <n> members byte-gated`.
+  (no YAML round trip, comments kept, DK-77), into the block whose group signature and body both match, else a new
+  block: the registry keys an entry by (signature, body), so one signature may have several bodies. Last line `dedup: <g> of <n> members byte-gated`.
   --dry-run: the same in the scratch worktree .run/carve/wt-<pid> (carve.make_wt; body and registry copied in); the main
   tree is untouched.
 check: exit 1 on a C-banked function (yaml `c` cut) whose dup group has a member not in the registry that is a
@@ -82,7 +86,7 @@ import x4core  # noqa: E402
 RUN = ROOT / ".run/dedup/propagate"
 FIX = Path(__file__).resolve().parent / "fixtures" / "propagate"
 REGISTRY = "config/dedup.us.yaml"
-HEADER = ("# Dedup registry, version USA SLUS-01334 (the one target). One entry per propagated group.\n"
+HEADER = ("# Dedup registry, version USA SLUS-01334 (the one target). One entry per propagated (group, body).\n"
           "# group = the body's signature hex (sha1 of census dup_key words, LE u32); census group ids are not stable.\n"
           "# members: every site the body is instantiated at (src/<alias>/<name>.c includes it), each byte-gated.\n"
           "# Edited by tools/dedup/propagate.py through line inserts only (DK-77): hand comments survive.\n"
@@ -182,8 +186,11 @@ def reloc_gate(r, f, relocs_of, callee, text):
         if ren.setdefault(sr, sm) != sm:
             return f"non-functional map {sr} -> {ren[sr]} | {sm}", None
     ren = {a: b for a, b in ren.items() if a != b}
-    for sr in sorted(set(ren) & set(ren.values())):
-        return f"cyclic rename {sr} -> {ren[sr]}: cpp does not re-expand a macro inside its own expansion", None
+    for sr in sorted(set(ren) & set(ren.values())):  # a swap/chain: gate() inlines the renamed body (C0264)
+        for x in sorted(ren):
+            if not re.search(rf"\b{re.escape(x)}\b", text):  # carried by a header macro: no body text to rename
+                return f"cyclic rename {sr} -> {ren[sr]}: {x} not in the body text, inline cannot rename it", None
+        break
     for sr in sorted(ren):
         if u := misuse(text, sr):
             return f"{sr} is a {u} in the body, not a symbol", None
@@ -233,18 +240,26 @@ def fresh_fns():
 
 # ---- registry: line-level read and insert ----
 def registry(root):
-    """-> {group: {"body", "members": [(alias, name)], "last": line index}}, lines."""
+    """-> {(group, body): {"sig", "body", "members": [(alias, name)], "last": line index}}, lines. One entry per
+    (signature, body): a second `- group:` block of a signature with another body is its own entry; a repeated
+    (signature, body) block adds its members to the first block's entry."""
     p = root / REGISTRY
     lines = p.read_text().splitlines(keepends=True) if p.exists() else []
-    reg, cur = {}, None
+    blocks, cur = [], None
     for i, ln in enumerate(lines):
         if m := G_RE.match(ln):
-            cur = reg.setdefault(m.group(1), {"body": None, "members": [], "last": i})
+            cur = {"sig": m.group(1), "body": None, "members": [], "last": i}
+            blocks.append(cur)
         elif cur and (m := B_RE.match(ln)):
             cur["body"], cur["last"] = m.group(1), i
         elif cur and (m := M_RE.match(ln)):
             cur["members"].append((m.group(1), m.group(4)))
             cur["last"] = i
+    reg = {}
+    for b in blocks:
+        e = reg.setdefault((b["sig"], b["body"]), b)
+        if e is not b:
+            e["members"] += b["members"]
     return reg, lines
 
 
@@ -255,9 +270,9 @@ def member_line(f):
 def register(root, sig, body, fs):
     reg, lines = registry(root)
     lines = lines or [HEADER]
-    if sig in reg:
-        have = set(reg[sig]["members"])
-        i = reg[sig]["last"] + 1
+    if (sig, body) in reg:  # the block whose signature and body both match; else a new block
+        have = set(reg[sig, body]["members"])
+        i = reg[sig, body]["last"] + 1
         lines[i:i] = [member_line(f) for f in fs if (f["alias"], f["name"]) not in have]
     else:
         if lines and not lines[-1].endswith("\n"):
@@ -271,9 +286,43 @@ def yaml_c(root, alias):
             if (m := re.match(r"^\s*- \[0x[0-9A-Fa-f]+, c, (\w+)\]", ln))}
 
 
+INL_RE = re.compile(r"^// dedup-inline \.\./shared/(\S+)$", re.M)
+REN_RE = re.compile(r"^// dedup-rename (\S+) (\S+)$", re.M)  # a reloc target may be `<fn>.NON_MATCHING`
+
+
+def cyclic(ren):
+    return bool(set(ren or {}) & set((ren or {}).values()))
+
+
+def renamed(text, ren):
+    """text with every sym_R -> sym_M at once (one regex pass: a swap stays a swap)."""
+    return re.sub(r"\b(" + "|".join(map(re.escape, sorted(ren, key=len, reverse=True))) + r")\b",
+                  lambda m: ren[m.group(1)], text) if ren else text
+
+
+def inline_text(name, body, defs, ren, externs=()):
+    """A cyclic-rename member: reconcile.member_text's defines and externs, then the body text inlined with ren
+    applied, named by `// dedup-inline ../shared/<body>` + one `// dedup-rename <R> <M>` per pair (includes())."""
+    head = reconcile.member_text(name, body, defs, externs).rsplit("#include", 1)[0].split("\n", 1)[1]
+    return ("/* Dedup member (tools/dedup/propagate.py): cyclic rename, body inlined. */\n" + head
+            + f"// dedup-inline ../shared/{Path(body).name}\n"
+            + "".join(f"// dedup-rename {a} {b}\n" for a, b in sorted(ren.items())) + "\n"
+            + renamed(Path(body).read_text(), ren))
+
+
 def includes(root, alias, name, body_name):
+    """C file includes the body, or is its inline form (marker + map re-derived from src/shared/<body>, compared
+    whitespace-free with the file's tail)."""
     c = root / f"src/{alias}/{name}.c"
-    return c.exists() and f'#include "../shared/{body_name}"' in c.read_text()
+    if not c.exists():
+        return False
+    s = c.read_text()
+    if f'#include "../shared/{body_name}"' in s:
+        return True
+    b, ren = root / "src/shared" / body_name, dict(REN_RE.findall(s))
+    if body_name not in INL_RE.findall(s) or not ren or not b.exists():
+        return False
+    return "".join(s.split()).endswith("".join(renamed(b.read_text(), ren).split()))
 
 
 # ---- run ----
@@ -294,7 +343,10 @@ def gate(root, cx, f, body, target, ren=None):
         if len(jals) != 1:
             return "fail", f"{len(jals)} jal targets for DEDUP_CALLEE (want 1)"
         defs = [("DEDUP_CALLEE", jals[0])]
-    defs += sorted((ren or {}).items())
+    inl = cyclic(ren)  # a swap: #defines would be a cpp no-op (C0264), the body is inlined renamed
+    defs += [] if inl else sorted((ren or {}).items())
+    mk = (lambda *e: inline_text(name, body, defs, ren, *e)) if inl else (
+        lambda *e: reconcile.member_text(name, body, defs, *e))
     cc = RUN / "cc/src"
     (cc / alias).mkdir(parents=True, exist_ok=True)
     link = cc / "shared"
@@ -302,7 +354,7 @@ def gate(root, cx, f, body, target, ren=None):
         link.unlink()
     link.symlink_to(body.resolve().parent)
     src = cc / alias / f"{name}.c"
-    src.write_text(reconcile.member_text(name, body, defs))
+    src.write_text(mk())
     reconcile.fmt(src)
     tgt = target(f, p)
     why, err = reconcile.compare(src, name, tgt, f"propagate_{name}", warn=True)
@@ -312,7 +364,7 @@ def gate(root, cx, f, body, target, ren=None):
     externs = [reconcile.extern_for(x, root, alias) for x in implicit]
     if None in externs:
         return "fail", f"no declaration source for {implicit[externs.index(None)]}"
-    src.write_text(reconcile.member_text(name, body, defs, externs))
+    src.write_text(mk(externs))
     reconcile.fmt(src)
     text = src.read_text()  # formatted: the member text the tree gets
     why, _ = reconcile.compare(src, name, tgt, f"propagate_{name}")
@@ -673,6 +725,56 @@ def reloc_control(work):
     return ok and not (work / "src/fx/func_80001120.c").exists()
 
 
+SWAP_BODY = ('/* Selftest swap body (hand-written, not game-derived). */\n#include "types.h"\n\n'
+             "void fx_a(void);\nvoid fx_b(void);\n\nvoid DEDUP_NAME(void) {\n    fx_a();\n    fx_b();\n}\n")
+
+
+def swap_control(work):
+    """A W65-shaped member (the rep's two calls in reverse order, map {fx_a: fx_b, fx_b: fx_a}) gated through the inline
+    text: its compiled calls in the member's order, includes() true, check OK, a re-run "have" -> ok."""
+    rb = work / "src/shared/func_80001100.c"
+    rb.write_text(SWAP_BODY)
+    objs = work / "swap_objs.c"  # the rep and the member, one object
+    objs.write_text('#include "types.h"\nvoid fx_a(void);\nvoid fx_b(void);\n'
+                    "void func_80001100(void) {\n    fx_a();\n    fx_b();\n}\n"
+                    "void func_80001110(void) {\n    fx_b();\n    fx_a();\n}\n")
+    sobj, _ = probe.compile_obj(objs, "propagate_selftest_swap", reconcile.triple())
+    tb = {n: probe.read_func(sobj, n)[0] for n in ("func_80001100", "func_80001110")}
+    rw = struct.unpack(f"<{len(tb['func_80001100']) // 4}I", tb["func_80001100"])
+    k = relocs(sobj, "func_80001100")[0][0]  # the first jal: in a linked binary the targets differ
+    sf = [{"alias": "fx", "module": "fx/main", "kind": "game", "name": f"func_{v:08X}", "vram": f"{v:08X}",
+           "insns": len(rw), "words": w} for v, w in ((0x80001100, rw), (0x80001110, rw[:k] + (rw[k] ^ 1,) + rw[k + 1:]))]
+    go = lambda: run(rb, root=work, fns=sf, target=lambda f, p: tb[f["name"]], build=False, asm_root=work,  # noqa: E731
+                     obj=lambda f, cx: sobj) == 0
+    ok = go()
+    mc = work / "src/fx/func_80001110.c"
+    ok &= mc.exists() and "// dedup-rename fx_a fx_b" in mc.read_text() and '#include "../shared/' not in mc.read_text()
+    if ok:
+        mo, _ = probe.compile_obj(mc, "propagate_selftest_swap_m", reconcile.triple())
+        ok &= [x[2] for x in relocs(mo, "func_80001110")] == [x[2] for x in relocs(sobj, "func_80001110")]
+    ok &= includes(work, "fx", "func_80001110", rb.name) and check(work, sf) == 0
+    return ok and go()  # re-run: both "have"
+
+
+def two_bodies_control(work):
+    """Two `- group:` blocks of one signature with different bodies: each reads back under its own body, and a
+    register() into each lands in its own block."""
+    shutil.rmtree(work, ignore_errors=True)
+    (work / "config").mkdir(parents=True)
+    f = lambda v: {"alias": "fx", "module": "fx/main", "vram": f"{v:08X}", "name": f"func_{v:08X}"}  # noqa: E731
+    blk = lambda b, v: [f"  - group: s1\n", f"    body: {b}\n", "    members:\n", member_line(f(v))]  # noqa: E731
+    (work / REGISTRY).write_text("".join([HEADER] + blk("a.c", 0x80001000) + blk("b.c", 0x80002000)))
+    register(work, "s1", "a.c", [f(0x80001010)])
+    register(work, "s1", "b.c", [f(0x80002010)])
+    register(work, "s1", "c.c", [f(0x80003000)])
+    reg, lines = registry(work)
+    shutil.rmtree(work, ignore_errors=True)
+    ok = {k: e["members"] for k, e in reg.items()} == {
+        ("s1", "a.c"): [("fx", "func_80001000"), ("fx", "func_80001010")],
+        ("s1", "b.c"): [("fx", "func_80002000"), ("fx", "func_80002010")], ("s1", "c.c"): [("fx", "func_80003000")]}
+    return ok and [ln for ln in lines if ln.startswith("  - group:")] == ["  - group: s1\n"] * 3
+
+
 def selftest():
     work = fixture_work("selftest")
     body = work / "src/shared/func_80001000.c"  # the rep's name: the stem names the body's signature
@@ -700,9 +802,13 @@ def selftest():
         ok &= check(work, fns[:3] + fns[4:]) == 1  # ungated
         ok &= reloc_control(work)
         sw = {"rep": [(0, 4, "fx_a", 0), (1, 4, "fx_b", 0)], "m": [(0, 4, "fx_b", 0), (1, 4, "fx_a", 0)]}
-        ok &= reloc_gate({"name": "rep", "words": (0x0C000000, 0x0C000000)}, {"name": "m", "words": (0x0C000000,) * 2},
-                         lambda f: sw[f["name"]], False, "")[0] == ("cyclic rename fx_a -> fx_b: cpp does not "
-                                                                   "re-expand a macro inside its own expansion")
+        rg = lambda t: reloc_gate({"name": "rep", "words": (0x0C000000, 0x0C000000)},  # noqa: E731
+                                  {"name": "m", "words": (0x0C000000,) * 2}, lambda f: sw[f["name"]], False, t)
+        ok &= rg(SWAP_BODY) == (None, {"fx_a": "fx_b", "fx_b": "fx_a"})  # a swap: gated, gate() inlines it
+        ok &= rg("void DEDUP_NAME(void) {\n    FX_A_B();\n    fx_a();\n}\n")[0] == (  # fx_b only via a macro
+            "cyclic rename fx_a -> fx_b: fx_b not in the body text, inline cannot rename it")
+        ok &= swap_control(fixture_work("selftest_swap"))
+        ok &= two_bodies_control(RUN / "selftest_reg")
     lines = out.getvalue().splitlines()
     want = ["dedup: FAIL fx func_80001030 -- word 0 (+0x0) differs", "dedup: 3 of 4 members byte-gated",
             "dedup: unregistered fx func_80001030",
@@ -712,7 +818,8 @@ def selftest():
     if not ok:
         print(out.getvalue(), end="")
     print("dedup: control OK -- fixture body 3 members gated, planted differing member refused, "
-          "unregistered member caught, reloc-gated member renamed, foreign-object member refused" if ok
+          "unregistered member caught, reloc-gated member renamed, foreign-object member refused, "
+          "swapped calls inlined, macro-carried cyclic rename refused, same-signature bodies kept apart" if ok
           else "dedup: selftest FAIL")
     return 0 if ok else 1
 

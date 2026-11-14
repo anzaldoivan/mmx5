@@ -398,8 +398,8 @@ def propagate_rep(alias, name, members, callee=None):
     print(f"gate: {alias}_{name} {last_line(log.read_text())}")
     if rc:
         return restore(f"propagate exit {rc} ({log.relative_to(ROOT)}), restored")
-    inc = f'#include "../shared/{shared.name}"'
-    return sum((c := ROOT / f"src/{a}/{n}.c").exists() and inc in c.read_text() for a, n in members), None
+    inc = (f'#include "../shared/{shared.name}"', f"// dedup-inline ../shared/{shared.name}\n")  # inline: cyclic rename
+    return sum((c := ROOT / f"src/{a}/{n}.c").exists() and any(i in c.read_text() for i in inc) for a, n in members), None
 
 
 def main_rescan(waves, wk):
