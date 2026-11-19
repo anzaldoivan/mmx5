@@ -1,8 +1,8 @@
 #include "types.h"
+#include "mmx5/object.h"
+#include "mmx5/globals.h"
 #include "addr.h"
 
-extern s32 func_8002C338(s32, void*, s32);
-extern u8* func_8002D53C(void);
 extern u8 D_80091C38[];
 extern u8* D_800E8514;
 extern u8* D_800E8518;
@@ -31,7 +31,10 @@ static inline void func_8002385C_tail(u8* g) {
     g[0xD] = 0;
 }
 
-void func_8002385C(u16 id, u8 arg1, u8 flag) {
+void func_8002385C(s32 a0, s32 a1, s32 a2) {
+    u16 id = a0;
+    u8 arg1 = a1;
+    u8 flag = a2;
     u8* g = D_80091C38;
     u8 st;
     u8* p;
@@ -150,7 +153,7 @@ void func_8002385C(u16 id, u8 arg1, u8 flag) {
     D_800E8538 = 0;
     if ((s8)D_800D1C00[0xC] != 0xB) {
         if ((s8)D_800D1C00[0xC] != 0xF) {
-            q = func_8002D53C();
+            q = alloc_class6_slot();
             if (q != 0) {
                 ((s8*)q)[0] = -0x65;
                 q[1] = 2;

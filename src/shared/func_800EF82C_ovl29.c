@@ -1,8 +1,7 @@
 /* Shared body (DK-5), from the banked draft of func_800EF82C_ovl29 by tools/wave/gate.py rescan. */
 #include "types.h"
-
-void func_8002DF54(ObjEF82C*);
-void func_80017248(ObjEF82C*);
+#include "mmx5/object.h"
+#include "mmx5/globals.h"
 
 extern s32 D_8009A0A8;
 
@@ -21,6 +20,6 @@ void DEDUP_NAME(ObjEF82C* self) {
         self->unk5 = 7;
         self->unk6 = 0;
     }
-    func_8002DF54(self);
-    func_80017248(self);
+    move_object(self);
+    animate_object(self);
 }

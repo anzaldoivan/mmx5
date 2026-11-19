@@ -1,11 +1,8 @@
 /* Shared body (DK-5), from the banked draft of func_800F320C_ovl10 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/object.h"
+#include "mmx5/globals.h"
 
-extern s32 func_80031DD0(u8* a0);
-extern s32 func_800317B8(u8* a0);
-extern void func_8002D9EC(u8* a0, s32 a1, s32 a2);
-extern void func_8002D6FC(u8* obj);
-extern signed char D_800D1CA2;
 extern void (*D_800FBE2C_ovl10[])(u8*);
 extern u8 D_8009A11A;
 extern u8 D_80074EE0[];
@@ -101,7 +98,7 @@ void DEDUP_NAME(u8* a0) {
         }
         if (a0[0x86] != 0 && ((s8*)a0)[5] == 6) {
             *(s32*)(*(u8**)(a0 + 0x80) + 0x94) = 0;
-            func_8002D6FC(a0);
+            clear_object_slot(a0);
         }
     } else if (a0[0x8F] != 0) {
         if (!(a0[0x8F] & 1)) {

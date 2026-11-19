@@ -2,8 +2,6 @@
 #include "types.h"
 #include "addr.h"
 
-extern void DEDUP_CALLEE(u8* obj);
-
 void DEDUP_NAME(u8* obj) {
     *(s32*)(obj + 0x20) = 0;
     *(s32*)(obj + 0x28) = 0;

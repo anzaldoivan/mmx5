@@ -1,21 +1,20 @@
 /* Adapted from mmx6 @c1c892d src/shared/rock_00/func_801EE14C.c, AGPL-3.0 (THIRD_PARTY.md). */
 /* Adapted from sozud/mmx4 @29b62af src/main/weapons/weapon_22_nova_strike_hitbox.c:nova_strike_hitbox_update, AGPL-3.0; proven shared with X6 by exact signature ab318e028ab5 (see THIRD_PARTY.md). */
 #include "types.h"
+#include "mmx5/object.h"
+#include "mmx5/globals.h"
 
-#define M2C_UNK s32
 #define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8*)(expr) + (offset)))
-extern M2C_UNK D_8009A0A0;
-#define D_8009A0A0 (*(X4_Obj*)&D_8009A0A0)
+#define g_Player_as_X4_Obj (*(X4_Obj*)&g_Player)
 extern Unk800770CC D_80076E50[];
-M2C_UNK func_8002D6FC();
-#define func_8002D6FC ((void (*)(X4_Obj * arg0)) func_8002D6FC)
+#define clear_object_slot ((void (*)(X4_Obj * arg0)) clear_object_slot)
 
 void func_80045ADC(X4_Obj* arg0) {
-    X4_Obj* player = &D_8009A0A0;
+    X4_Obj* player = &g_Player_as_X4_Obj;
     u8 temp_v0;
 
-    if (D_8009A0A0.unk5 != 0x23) {
-        func_8002D6FC(arg0);
+    if (g_Player_as_X4_Obj.unk5 != 0x23) {
+        clear_object_slot(arg0);
         return;
     }
     if (arg0->state == 0) {
@@ -36,5 +35,5 @@ void func_80045ADC(X4_Obj* arg0) {
     arg0->y_pos.val = player->y_pos.val;
     arg0->unk15 = player->unk15;
 }
-#undef D_8009A0A0
-#undef func_8002D6FC
+#undef g_Player_as_X4_Obj
+#undef clear_object_slot

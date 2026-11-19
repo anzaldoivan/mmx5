@@ -1,9 +1,9 @@
 #include "types.h"
+#include "mmx5/sound.h"
+#include "mmx5/graphics.h"
 #include "addr.h"
 
-extern void func_80016490(s32, s32, void*);
-extern u8* func_8002D0E4(void);
-extern void func_800171E8(u8* obj, s32 state);
+extern u8* find_free_visual_obj(void);
 extern u32* D_8007B2E8[];
 
 void func_800479F4(u8* obj) {
@@ -16,8 +16,8 @@ void func_800479F4(u8* obj) {
         m = 1;
     }
     if (obj[0x71] & m) {
-        func_80016490(0, 6, obj);
-        p = func_8002D0E4();
+        play_sound(0, 6, obj);
+        p = find_free_visual_obj();
         if (p != 0) {
             p[0] = 0x21;
             p[1] = 3;
@@ -39,7 +39,7 @@ void func_800479F4(u8* obj) {
             }
         }
     }
-    func_800171E8(obj, 3);
+    set_animation(obj, 3);
     *(s32*)(obj + 0x20) = 0;
     *(s32*)(obj + 0x24) = 0;
     *(s32*)(obj + 0x50) = 0;

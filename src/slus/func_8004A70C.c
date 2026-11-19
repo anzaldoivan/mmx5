@@ -1,9 +1,8 @@
 #include "types.h"
-
-extern u8 D_8009A0A0[];
+#include "mmx5/globals.h"
 
 void func_8004A70C(u8* e) {
-    u8* p = D_8009A0A0;
+    u8* p = g_Player;
 
     *(s16*)(e + 0xA) = *(s16*)(p + 0xA);
     *(s16*)(e + 0xE) = *(s16*)(p + 0xE);

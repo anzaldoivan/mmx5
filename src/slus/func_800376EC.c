@@ -1,6 +1,5 @@
 #include "types.h"
-
-extern void func_8002DED4(Obj76EC*);
+#include "mmx5/movement.h"
 
 void func_800376EC(Obj76EC* arg0) {
     if (arg0->unkD4 != 0) {
@@ -19,7 +18,7 @@ void func_800376EC(Obj76EC* arg0) {
             arg0->unk28 = 0;
         }
     }
-    func_8002DED4(arg0);
+    apply_object_motion(arg0);
     if (arg0->unk15 != 0) {
         if (arg0->unk20 > 0) {
             arg0->unk20 = 0;

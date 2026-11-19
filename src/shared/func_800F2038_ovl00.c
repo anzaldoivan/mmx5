@@ -1,8 +1,8 @@
 /* Shared body (DK-5), from the banked draft of func_800F2038_ovl00 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/system.h"
 #include "addr.h"
 
-extern s32 DEDUP_CALLEE(void);
 extern u8 D_800FAC90_ovl00[][5][5];
 
 void DEDUP_NAME(u8* arg0) {

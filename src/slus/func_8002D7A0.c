@@ -1,6 +1,5 @@
 #include "types.h"
-
-extern int func_8002D6FC();
+#include "mmx5/object.h"
 
 void func_8002D7A0(u8* arg0) {
     u8* p;
@@ -14,5 +13,5 @@ void func_8002D7A0(u8* arg0) {
             q[3] &= 0xF;
         }
     }
-    func_8002D6FC(arg0);
+    clear_object_slot(arg0);
 }

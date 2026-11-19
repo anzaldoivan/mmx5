@@ -1,9 +1,6 @@
 /* Shared body (DK-5), from the banked draft of func_800F3560_ovl00 by tools/wave/gate.py rescan. */
 #include "types.h"
-
-extern s32 func_800317B8(Obj3560*);
-extern void func_8002D89C(Obj3560*);
-extern void func_80017248(Obj3560*);
+#include "mmx5/globals.h"
 
 void DEDUP_NAME(Obj3560* obj) {
     s8 state = obj->unk7;
@@ -12,7 +9,7 @@ void DEDUP_NAME(Obj3560* obj) {
     if (state == 0) {
         func_800317B8(obj);
         func_8002D89C(obj);
-        func_80017248(obj);
+        animate_object(obj);
         t = obj->unk45;
         if (t == 1) {
             obj->unk50 = 0;
@@ -26,7 +23,7 @@ void DEDUP_NAME(Obj3560* obj) {
         if (t < 0) {
             obj->unk4 = 3;
         } else {
-            func_80017248(obj);
+            animate_object(obj);
         }
     }
 }

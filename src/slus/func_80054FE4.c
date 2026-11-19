@@ -1,14 +1,11 @@
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
 #include "addr.h"
 
-extern int func_8002D760();
 extern s32 func_8002B5B4(s32);
-extern void func_800171E8(u8* obj, s32 state);
-extern void func_8002FB58(u8* obj);
 extern u8* func_8002D210();
 extern void func_800556B0(u8* obj, s32 a, s32 b);
-extern void func_8002D9EC(u8* a0, s32 a1, s32 a2);
-extern u8 D_8009A0A0[];
 extern u8 D_800D1C4A;
 extern u8 D_800D1C00[];
 extern u8 D_8007C370[];
@@ -34,7 +31,7 @@ void func_80054FE4(u8* obj) {
     s8 t2;
 
     hit = 0;
-    g = D_8009A0A0;
+    g = g_Player;
     t = ((s8*)obj)[2];
     if (t == 8) {
         if (((s8*)g)[2] == 0) {
@@ -68,7 +65,7 @@ void func_80054FE4(u8* obj) {
     obj[0xA2] = 1;
     obj[3] = 1;
     *(u8**)(obj + 0x58) = D_800767E0;
-    g2 = D_8009A0A0;
+    g2 = g_Player;
     obj[0x14] = g2[0x14];
     *(u8**)(obj + 0x68) = D_8007C360;
     *(u8**)(obj + 0x54) = D_8007C368;
@@ -85,7 +82,7 @@ void func_80054FE4(u8* obj) {
     obj[0x15] = 0;
     obj[0x75] = 1;
     g2[0xF5] = 0;
-    func_800171E8(obj, 0);
+    set_animation(obj, 0);
     func_8002FB58(obj);
     while ((obj[0x70] & 8) == 0) {
         *(s16*)(obj + 0xE) += 0x10;
@@ -101,7 +98,7 @@ void func_80054FE4(u8* obj) {
     }
     t2 = ((s8*)obj)[2];
     if (t2 == 8) {
-        g3 = D_8009A0A0;
+        g3 = g_Player;
         if (((s8*)g3)[2] == 0) {
             func_800556B0(obj, 0x23, 0x10);
         } else {

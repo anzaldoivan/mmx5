@@ -1,9 +1,9 @@
 /* Shared body (DK-5), from the banked draft of func_800F6D9C_ovl03 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/system.h"
+#include "mmx5/sound.h"
 
-extern s32 func_8002DF78(void);
-extern void func_80017214(u8* a0, s32 a1, s32 a2);
-extern s32 func_80016490(s32, s32, void*);
+extern void set_animation_frame(u8* a0, s32 a1, s32 a2);
 
 extern u8 D_8009A0B4;
 extern u8 D_800F9E70_ovl03[];
@@ -45,8 +45,8 @@ void DEDUP_NAME(u8* obj) {
     *(s16*)(obj + 0xE) = x;
     *(s16*)(obj + 0x7C) = 0;
     *(s16*)(obj + 0x7E) = 0;
-    func_80017214(obj, 0xD, func_8002DF78() % 10);
-    func_80016490(2, 0xE, obj);
+    set_animation_frame(obj, 0xD, random_byte() % 10);
+    play_sound(2, 0xE, obj);
     obj[0x5] = 0;
     obj[0x4]++;
 }

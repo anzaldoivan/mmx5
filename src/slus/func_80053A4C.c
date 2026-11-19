@@ -1,8 +1,8 @@
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/sound.h"
 
-extern u8 D_8009A0A0[];
 extern u8 D_800D1C00[];
-s32 func_80016490(s32, s32, s32);
 void func_800545DC(s32);
 
 void func_80053A4C(u8* a0) {
@@ -20,7 +20,7 @@ void func_80053A4C(u8* a0) {
         p = q;
         if (q[4] == 0) {
             a0[0x84] = 2;
-            t = D_8009A0A0;
+            t = g_Player;
             v = t[0x5C];
             hi = v & 0x80;
             r = D_800D1C00;
@@ -32,7 +32,7 @@ void func_80053A4C(u8* a0) {
             } else {
                 t[0x5C] = hi | (v + 1);
             }
-            func_80016490(0, 0xD, 0);
+            play_sound(0, 0xD, 0);
             p[3] = a0[0x83] - 1;
             if (p[3] == 0) {
                 a0[6] = 1;

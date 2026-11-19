@@ -1,13 +1,14 @@
 /* Shared body (DK-5), from the banked draft of func_800FA2FC_ovl07 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/ovl07.h"
+#include "mmx5/object.h"
+#include "mmx5/globals.h"
 #include "addr.h"
+#define g_Player_as_Ent7C (*(Ent7C*)&g_Player)
 
-extern Ent7C D_8009A0A0;
 extern s32 ratan2(s32, s32);
 extern s32 rcos(s32);
 extern s32 rsin(s32);
-extern void func_8002DF54(Ent7C*);
-extern void func_800FC9E0_ovl07(Ent7C*);
 
 void DEDUP_NAME(Ent7C* e) {
     s32 dx;
@@ -24,8 +25,8 @@ void DEDUP_NAME(Ent7C* e) {
         e->unk6++;
         return;
     }
-    dx = D_8009A0A0.unkA - e->unkA;
-    dy = D_8009A0A0.unkE - e->unkE;
+    dx = g_Player_as_Ent7C.unkA - e->unkA;
+    dy = g_Player_as_Ent7C.unkE - e->unkE;
     if ((dx < 0 ? -dx : dx) < 5 && (dy < 0 ? -dy : dy) < 5) {
         return;
     }
@@ -50,7 +51,7 @@ void DEDUP_NAME(Ent7C* e) {
         e->unk24 = rsin(ang) << 5;
         break;
     }
-    func_8002DF54(e);
+    move_object(e);
     if (e->unk7C & 7) {
         func_800FC9E0_ovl07(e);
     }

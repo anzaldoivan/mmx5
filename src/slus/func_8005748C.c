@@ -1,7 +1,7 @@
 #include "types.h"
+#include "mmx5/object.h"
+#include "mmx5/system.h"
 
-extern u8* func_8002D53C(void);
-extern s32 func_8002DF78(void);
 extern s32 func_8002DFB0(void);
 extern void func_8004FE6C(u8* self, s32 a1, s32 a2, s32 a3, s32 a4);
 extern u16 D_80093F70;
@@ -23,11 +23,11 @@ void func_8005748C(u8* obj) {
             func_8004FE6C(obj, 1, 0x60, 0x60, 2);
         }
         if (!(func_8002DFB0() & 1)) {
-            p = func_8002D53C();
+            p = alloc_class6_slot();
             if (p != 0) {
                 p[0] = 1;
                 p[1] = 4;
-                func_8002DF78();
+                random_byte();
                 *(u16*)(p + 8) = D_80093F70 & 0xFFF;
                 *(u16*)(p + 0xA) = *(u16*)(obj + 0xA);
                 *(u16*)(p + 0xE) = *(u16*)(obj + 0xE);
@@ -37,7 +37,7 @@ void func_8005748C(u8* obj) {
     }
     i = 0;
     do {
-        q = func_8002D53C();
+        q = alloc_class6_slot();
         if (q != 0) {
             q[0] = 1;
             q[1] = 6;

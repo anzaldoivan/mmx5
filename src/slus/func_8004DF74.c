@@ -1,10 +1,10 @@
 /* Adapted from mmx6 @c1c892d src/shared/SLUS_013.95/func_80048268.c, AGPL-3.0 (THIRD_PARTY.md). */
 #include "types.h"
+#include "mmx5/sound.h"
 
 #define M2C_UNK s32
 #define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8*)(expr) + (offset)))
 
-M2C_UNK func_80016490(M2C_UNK, M2C_UNK, void*);
 M2C_UNK func_8004E2BC(void*, u8);
 extern u8 D_8007B50C[];
 
@@ -28,7 +28,7 @@ void func_8004DF74(void* arg0) {
         }
         M2C_FIELD(arg0, s32*, 0x20) = -0x4000;
         M2C_FIELD(arg0, s32*, 0x24) = 0x8000;
-        func_80016490(0, 0xA, 0);
+        play_sound(0, 0xA, 0);
         return;
     }
     if (M2C_FIELD(arg0, s8*, 2) == 0 && M2C_FIELD(arg0, u16*, 0x5C) == 0) {

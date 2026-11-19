@@ -214,3 +214,8 @@ slus 80071254 800F2E38 -- type 59: developer-accepted raw exe pointer, unreached
 slus 80071258 800F33A8 -- type 60: developer-accepted raw exe pointer, unreached by forced trace (T4.1.1)
 slus 8007466C 800EEA88 -- action 31: developer-accepted raw exe pointer, unreached by forced trace (T4.1.1)
 slus 80074710 800EECC0 -- action 72: developer-accepted raw exe pointer, unreached by forced trace (T4.1.1)
+slus 8001369C 800FA000 -- real pointer, region B base as a C constant (lui/ori), a symbol gives lui/addiu and loses the byte match, accepted under R96 (3.8 T2)
+slus 80014310 800FA000 -- real pointer, region B base as a C constant (lui/ori), a symbol gives lui/addiu and loses the byte match, accepted under R96 (3.8 T2)
+slus 80013528 800FA000 -- real pointer, region B base as a C constant (lui, ori at 8001356C past the scan window), a symbol loses the byte match, R96 (3.8 T2)
+rockx5 800F6B24 800FA000 -- ovl18 real pointer, region B base as a C constant (lui/ori), a symbol gives lui/addiu and loses the byte match, R96 (3.8 T2)
+rockx5 800F6C1C 800FA000 -- ovl18 real pointer, region B base as a C constant (lui/ori), a symbol gives lui/addiu and loses the byte match, R96 (3.8 T2)

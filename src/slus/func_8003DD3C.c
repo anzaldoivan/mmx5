@@ -1,7 +1,7 @@
 #include "types.h"
+#include "mmx5/sound.h"
 
-extern void func_8003F250(u8* p);
-extern void func_80016490(s32, s32, void*);
+extern void player_reset_charge(u8* p);
 extern s8 D_800D1C1C;
 extern s8 D_80074A1C[];
 extern s8 D_80074A28[];
@@ -39,8 +39,8 @@ void func_8003DD3C(u8* p) {
     if (a == 0x600 || m == 0x600) {
         if (*(s8*)(p + 0x93) != 0) {
             p[0x93] = 0;
-            func_8003F250(p);
-            func_80016490(0, 0xC, 0);
+            player_reset_charge(p);
+            play_sound(0, 0xC, 0);
         }
     } else if (m != 0) {
         i = D_80074A34[*(s8*)(p + 0x93)];
@@ -69,8 +69,8 @@ void func_8003DD3C(u8* p) {
         i = D_80074A28[i];
         if ((s8)p[0x93] != i) {
             p[0x93] = i;
-            func_8003F250(p);
-            func_80016490(0, 0xC, 0);
+            player_reset_charge(p);
+            play_sound(0, 0xC, 0);
         }
     }
 }

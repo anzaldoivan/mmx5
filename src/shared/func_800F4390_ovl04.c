@@ -1,8 +1,8 @@
 /* Shared body (DK-5), from the banked draft of func_800F4390_ovl04 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/globals.h"
 
 extern u8* func_8002D210();
-extern void func_80017248(u8* obj);
 extern signed char D_800D1C0C;
 extern u8 D_801017F0_ovl04[];
 
@@ -78,5 +78,5 @@ void DEDUP_NAME(u8* a0) {
         }
     }
     a0[6] = 1;
-    func_80017248(a0);
+    animate_object(a0);
 }

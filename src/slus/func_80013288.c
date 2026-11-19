@@ -1,8 +1,9 @@
 #include "types.h"
+#include "mmx5/globals.h"
+#define D_8009A420_as_Ctl (*(Ctl*)&D_8009A420)
 
 extern u8 D_800C9328[];
-extern Ctl D_8009A420;
-extern void func_80012E0C(s32, void (*)(void));
+extern void create_task(s32, void (*)(void));
 extern void func_8001303C(void);
 
 void func_80013288(s8 arg) {
@@ -14,9 +15,9 @@ void func_80013288(s8 arg) {
     p[0xDD] = 0;
     p[0xDE] = 0;
     p[0xDF] = 0;
-    if (D_8009A420.busy == 0) {
-        D_8009A420.busy = 1;
-        D_8009A420.arg = arg;
-        func_80012E0C(2, func_8001303C);
+    if (D_8009A420_as_Ctl.busy == 0) {
+        D_8009A420_as_Ctl.busy = 1;
+        D_8009A420_as_Ctl.arg = arg;
+        create_task(2, func_8001303C);
     }
 }

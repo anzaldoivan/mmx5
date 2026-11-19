@@ -1,13 +1,12 @@
 #include "types.h"
-
-extern void func_8002DED4(u8* obj);
+#include "mmx5/movement.h"
 
 void func_8003D120(u8* obj) {
     u16 f;
 
     if (*(s8*)(obj + 0xD3) != 0) {
         *(s32*)(obj + 0x20) = 0;
-        func_8002DED4(obj);
+        apply_object_motion(obj);
         return;
     }
     f = *(u16*)(obj + 0x7C);
@@ -32,5 +31,5 @@ void func_8003D120(u8* obj) {
             *(s32*)(obj + 0x20) = 0;
         }
     }
-    func_8002DED4(obj);
+    apply_object_motion(obj);
 }

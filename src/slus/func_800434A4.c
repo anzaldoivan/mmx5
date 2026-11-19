@@ -1,17 +1,17 @@
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/system.h"
+#include "mmx5/sound.h"
 
 extern s32 func_8003952C(u8* arg0);
 extern s32 func_80041C80(u8* p);
 extern s32 func_80044228(u8* p);
 extern s32 func_80041B84(u8* p);
 extern s32 func_80044328(u8*);
-extern void func_8003B33C(u8*, s32);
-extern void func_80016490(s32, s32, void*);
-extern s32 func_8002DF78(void);
 extern void func_8003CF74(u8*, s32);
 extern void func_80042090(u8*);
-extern s32 func_80039C80(u8* arg0);
-extern s32 func_80039588(u8* arg0);
+extern s32 try_enter_ladder(u8* arg0);
+extern s32 check_crouch_input(u8* arg0);
 extern s32 func_800395E8(u8* arg0);
 extern void func_8003A7E4(u8* arg0);
 extern void func_8003B1A8(u8* a0);
@@ -41,8 +41,8 @@ static inline s32 func_800434A4_reset(u8* p) {
         return 0;
     }
     func_8003B33C(p, 0x58);
-    func_80016490(1, 7, p);
-    if (func_8002DF78() & 4) {
+    play_sound(1, 7, p);
+    if (random_byte() & 4) {
         func_8003CF74(p, 3);
     }
     p[0x84] = 0;
@@ -54,10 +54,10 @@ static inline s32 func_800434A4_reset(u8* p) {
 }
 
 static inline s32 func_800434A4_check(u8* p) {
-    if (func_80039C80(p) != 0) {
+    if (try_enter_ladder(p) != 0) {
         return 1;
     }
-    if (func_80039588(p) != 0) {
+    if (check_crouch_input(p) != 0) {
         return 1;
     }
     if (func_800395E8(p) != 0) {

@@ -1,10 +1,10 @@
 /* Shared body (DK-5), from the banked draft of func_800F9810_ovl01 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/sound.h"
 
 extern s32 func_80044DE0();
-extern s32 func_80016490(s32, s32, void*);
 extern void func_800FB348_ovl01(u8* obj);
-extern void func_8003D2C4(void);
 extern u8 D_800D1C00[];
 extern u8 D_8009A1F8[];
 extern u8 D_800FD578_ovl01[];
@@ -33,7 +33,7 @@ void DEDUP_NAME(u8* obj) {
             return;
         }
         if (--*(s16*)(obj + 0x7E) == 0) {
-            func_80016490(0, 0xE, 0);
+            play_sound(0, 0xE, 0);
             *(s16*)(obj + 0x7E) = 3;
         }
         e = D_800D1C00;

@@ -1,15 +1,11 @@
 /* Shared body (DK-5), from the banked draft of func_800F1C8C_ovl00 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/title.h"
+#include "mmx5/globals.h"
 #include "addr.h"
 
-extern void func_80017248(u8* obj);
-extern s32 func_80031DD0(u8* a0);
-extern s32 func_800317B8(u8* a0);
 extern void func_80054440(u8* a0, s32 a1);
-extern s32 func_8002D938(u8* a0, s32 a1, s32 a2);
-extern void func_8002D9EC(u8* a0, s32 a1, s32 a2);
 extern void func_8004D4F4(s32 a0, void* a1, u8* a2);
-extern s32 func_8002FB58(u8* obj);
 extern u8 D_8009A197;
 extern void* D_800FAD10_ovl00[];
 extern u8 D_80074EE0[];
@@ -27,7 +23,7 @@ void DEDUP_NAME(u8* arg0) {
     if (D_8009A197 == 0) {
         *(s32*)(arg0 + 0x18) = *(s32*)(arg0 + 0x8);
         *(s32*)(arg0 + 0x1C) = *(s32*)(arg0 + 0xC);
-        func_80017248(arg0);
+        animate_object(arg0);
         ((void (*)(u8*))D_800FAD10_ovl00[(s8)arg0[5]])(arg0);
     }
     s = D_1F80004C.bytes;
@@ -52,7 +48,7 @@ void DEDUP_NAME(u8* arg0) {
         goto fail; // !FAKE: goto kept for the matching branch layout
     }
 test:
-    if (func_8002D938(arg0, 0x200, 0x200) != 0) {
+    if (is_off_screen(arg0, 0x200, 0x200) != 0) {
         *(s16*)(arg0 + 0x7C) = 4;
         D_1F80004C.bytes[0x87] = 0;
         D_1F80004C.bytes[0x86] = 1;

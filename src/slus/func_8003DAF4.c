@@ -1,6 +1,6 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
-extern u8* func_8002D27C(void);
 extern s8 D_800748B0[];
 
 void func_8003DAF4(s8 arg0) {

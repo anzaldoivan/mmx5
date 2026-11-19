@@ -1,7 +1,6 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
-extern s32 func_80043B88(u8* arg0);
-extern void func_80017248(u8* obj);
 extern s32 func_800306E0(u8* obj);
 extern void func_8003A874(u8* obj);
 extern void func_800443A8(u8* obj, s8 arg1);
@@ -13,7 +12,7 @@ void func_80043FA4(u8* obj) {
     if (((s8*)obj)[6] == 0) {
         obj[6]++;
     } else {
-        func_80017248(obj);
+        animate_object(obj);
         func_800443A8(obj, (obj[0x45] & 0x7F) + 0x26);
     }
     if (*(u16*)(obj + 0x80) & 2) {

@@ -5,7 +5,7 @@
 set -u
 doc="${1:-docs/modding.md}"
 [ -f "$doc" ] || { echo "modding-check: no file $doc"; exit 1; }
-toggles=("BINARY=" "SHIFT=1" "PATCHES=" "ASSET_EDIT=" "disc-assets" "replay-check" "contract.sh")
+toggles=("BINARY=" "SHIFT=1" "SHIFT_PAD=" "SHIFT_OVL_PAD=" "PATCHES=" "ASSET_EDIT=" "disc-assets" "replay-check" "replay-shift" "replay-patch" "replay-asset" "shift-scan" "shift-oversize" "assets.py")
 k=0
 for t in "${toggles[@]}"; do
   # In the first `## ` section whose heading contains $t, find $t on a line inside a ``` fence.

@@ -4,4 +4,5 @@
 #define DEDUP_NAME func_800532C0
 #define DEDUP_CALLEE func_8002D7A0
 
-#include "../shared/D_800EEBA0_ovl00.c"
+extern void func_8002D7A0();
+#include "shared/D_800EEBA0_ovl00.c"

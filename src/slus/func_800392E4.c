@@ -1,9 +1,9 @@
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/movement.h"
 
-extern void func_8003B33C(u8*, s32);
-extern u8* func_8002D0E4(void);
+extern u8* find_free_visual_obj(void);
 extern u8* func_8002D078();
-extern void func_8002DED4(u8* obj);
 extern void func_8003D344(void* arg0);
 extern s8 D_80074824[];
 extern u8 D_80074828[];
@@ -50,7 +50,7 @@ s32 func_800392E4(u8* obj) {
     if (hit) {
         func_8003B33C(obj, D_80074828[*(s8*)(obj + 2)]);
         if (*(s8*)(obj + 2) != 0) {
-            p = func_8002D0E4();
+            p = find_free_visual_obj();
             if (p != 0) {
                 p[0] = 1;
                 p[1] = 0x27;
@@ -77,7 +77,7 @@ s32 func_800392E4(u8* obj) {
             }
         }
     }
-    func_8002DED4(obj);
+    apply_object_motion(obj);
     func_8003D344(obj);
     return 0;
 }

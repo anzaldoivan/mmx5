@@ -1,18 +1,16 @@
 #include "types.h"
+#include "mmx5/sound.h"
+#include "mmx5/globals.h"
 
-extern s32 func_80043B88(u8* arg0);
 extern s32 func_8003EFE0(u8* arg0);
 extern s32 func_80043904(u8* arg0);
-extern void func_80017248(u8* obj);
-extern void func_80016490(s32, s32, void*);
-extern s32 func_80039D2C(u8* obj);
+extern s32 try_grab_ladder_from_air(u8* obj);
 extern s32 func_800390A4(u8* p);
-extern s32 func_80039AE0(void* self);
+extern s32 try_enter_wall_cling(void* self);
 extern s32 func_80038850(u8* self);
 extern void func_8003D120(u8*);
 extern void func_8003D344(void* arg0);
-extern void func_8003F294(u8* arg0, s32 arg1);
-extern void func_8003F2D8(u8* arg0, s32 arg1);
+extern void player_set_animation_shooting(u8* arg0, s32 arg1);
 
 void func_80035598(u8* arg0) {
     func_80043B88(arg0);
@@ -31,19 +29,19 @@ void func_80035598(u8* arg0) {
     if (func_80043904(arg0) != 0) {
         return;
     }
-    func_80017248(arg0);
+    animate_object(arg0);
     if (((s8*)arg0)[0x45] & 0x80) {
         arg0[0x45] &= 0x3F;
-        func_80016490(1, 1, arg0);
+        play_sound(1, 1, arg0);
     }
-    if (func_80039D2C(arg0) != 0) {
+    if (try_grab_ladder_from_air(arg0) != 0) {
         return;
     }
     if (func_800390A4(arg0) != 0) {
         return;
     }
     if (((s8*)arg0)[0x8B] == 0) {
-        if (func_80039AE0(arg0) != 0) {
+        if (try_enter_wall_cling(arg0) != 0) {
             return;
         }
     } else {
@@ -55,7 +53,7 @@ void func_80035598(u8* arg0) {
     func_8003D120(arg0);
     func_8003D344(arg0);
     if (*(s32*)(arg0 + 0x24) <= 0) {
-        func_8003F294(arg0, 0xB);
+        player_set_animation_shooting(arg0, 0xB);
         ((s8*)arg0)[0x67] = -1;
         arg0[5] = 7;
         arg0[6] = 0;

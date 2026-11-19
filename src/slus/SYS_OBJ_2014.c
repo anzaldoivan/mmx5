@@ -3,4 +3,4 @@
 
 #define DEDUP_NAME SYS_OBJ_2014
 
-#include "../shared/D_800EEC60_ovl00.c"
+#include "shared/D_800EEC60_ovl00.c"

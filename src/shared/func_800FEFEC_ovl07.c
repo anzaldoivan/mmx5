@@ -1,7 +1,6 @@
 /* Shared body (DK-5), from the banked draft of func_800FEFEC_ovl07 by tools/wave/gate.py rescan. */
 #include "types.h"
-
-extern void DEDUP_CALLEE(EntFEFEC*);
+#include "mmx5/globals.h"
 
 void DEDUP_NAME(EntFEFEC* self) {
     ParentFEFEC* parent = self->parent;

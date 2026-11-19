@@ -4,4 +4,4 @@
 #define DEDUP_NAME func_800459DC
 #define D_800F4844_ovl05 D_80076EAC
 
-#include "../shared/func_800EEA80_ovl05.c"
+#include "shared/func_800EEA80_ovl05.c"

@@ -1,11 +1,9 @@
 #include "types.h"
-
-extern void func_800171E8(u8* obj, s32 state);
-extern void func_8003D29C(s32, s32);
-extern u8 D_8009A0A0[];
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
 
 void func_80055798(u8* obj) {
-    u8* p = D_8009A0A0;
+    u8* p = g_Player;
     s16 d;
 
     d = *(u16*)(p + 0xA) - *(u16*)(obj + 0xA);
@@ -24,7 +22,7 @@ void func_80055798(u8* obj) {
                 return;
             }
         }
-        func_800171E8(obj, 0xA);
+        set_animation(obj, 0xA);
         if (*(s32*)(p + 8) - *(s32*)(obj + 8) > 0) {
             func_8003D29C(0x14, 0);
             obj[0x15] = 0x40;

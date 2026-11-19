@@ -1,7 +1,7 @@
 #include "types.h"
+#include "mmx5/system.h"
 
-extern Obj80050880* func_8002D0E4(void);
-extern s32 func_8002DF78(void);
+extern Obj80050880* find_free_visual_obj(void);
 
 void func_8005019C(u8 flags, u8 mode, u8* ent, s16 off, s16 count) {
     Obj80050880* obj;
@@ -76,15 +76,15 @@ void func_8005019C(u8 flags, u8 mode, u8* ent, s16 off, s16 count) {
     y1 = y1 + off;
 
     for (i = 0; i < count; i++) {
-        obj = func_8002D0E4();
+        obj = find_free_visual_obj();
         if (obj == 0) {
             continue;
         }
         obj->unk0 = 0x21;
         obj->unk1 = 9;
         obj->unk2 = 0;
-        rx = (func_8002DF78() << 8) + func_8002DF78() + 1;
-        ry = (func_8002DF78() << 8) + func_8002DF78() + 1;
+        rx = (random_byte() << 8) + random_byte() + 1;
+        ry = (random_byte() << 8) + random_byte() + 1;
         d = x1 - x0;
         if (d == 0) {
             obj->unkA = x0;

@@ -1,17 +1,17 @@
 /* Adapted from mmx6 @c1c892d src/shared/rock_18/func_800EAFF0.c, AGPL-3.0 (THIRD_PARTY.md). */
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/sound.h"
 
 #define M2C_UNK s32
+#define D_800E81D8_as_X4_Obj (*(X4_Obj*)&D_800E81D8)
 
 M2C_UNK func_800132F8(M2C_UNK);
-M2C_UNK func_80016490(M2C_UNK, M2C_UNK, M2C_UNK);
 s32 func_8001D7E8(u8);
 void func_8001B984(void);
 void func_8001C904(void);
 extern u8 D_8009A427;
-extern u16 D_800C931C[];
 extern X4_EngineObj D_800D1C00;
-extern X4_Obj D_800E81D8;
 extern void* D_800E81D4;
 
 #define AB_B(p, o) (*(u8*)((u8*)(p) + (o)))
@@ -25,11 +25,11 @@ void func_8001B818(u8* arg0) {
     s32 n;
 
     arg0 = 0;
-    if (D_800E81D8.x_pos.bytes[2] != 0) {
-        D_800E81D8.x_pos.bytes[2]--;
+    if (D_800E81D8_as_X4_Obj.x_pos.bytes[2] != 0) {
+        D_800E81D8_as_X4_Obj.x_pos.bytes[2]--;
         return;
     }
-    t = func_8001D7E8((u8)D_800E81D8.unk6);
+    t = func_8001D7E8((u8)D_800E81D8_as_X4_Obj.unk6);
     if (t != 0) {
         // !FAKE: pins one to $4; gcc 2.7.2 allocates another register without it (byte mismatch)
         register s32 one asm("$4") = 1;
@@ -37,10 +37,10 @@ void func_8001B818(u8* arg0) {
         register s32 two asm("$3") = 2;
         if (t == one) {
             AB_B(self, 1) = 5;
-            D_800E81D8.x_pos.bytes[0] = one;
+            D_800E81D8_as_X4_Obj.x_pos.bytes[0] = one;
         } else {
             AB_B(self, 1) = 5;
-            D_800E81D8.x_pos.bytes[0] = two;
+            D_800E81D8_as_X4_Obj.x_pos.bytes[0] = two;
         }
         AB_B(self, 3) = one;
         do {
@@ -54,11 +54,11 @@ void func_8001B818(u8* arg0) {
         return;
     }
     if (D_800C931C[2] & 0xA000) {
-        func_80016490(0, 0xC, 0);
+        play_sound(0, 0xC, 0);
         D_800D1C00.unkA ^= 1;
     }
     if (D_800C931C[2] & 0x40) {
-        func_80016490(0, 0x22, 0);
+        play_sound(0, 0x22, 0);
         p = D_800E81D4;
         n = 0x5F;
         do {

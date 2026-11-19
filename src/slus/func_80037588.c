@@ -1,7 +1,7 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
 extern void func_8003AA4C(u8* arg0);
-extern void func_8003B33C(u8*, s32);
 
 void func_80037588(u8* arg0) {
     s8 state;

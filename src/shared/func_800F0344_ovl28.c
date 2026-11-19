@@ -1,20 +1,15 @@
 /* Shared body (DK-5), from the banked draft of func_800F0344_ovl28 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/globals.h"
 #include "addr.h"
 
 #define SCR4C D_1F80004C.bytes
-extern u8 D_8009A0A0[];
 extern u8 D_800FD9D4_ovl28[];
 extern void (*D_800FDA10_ovl28[])(u8*);
-extern s32 func_80031DD0(u8* a0);
-extern s32 func_8004FD24(u8* a0);
 extern void func_80054440(u8* a0, s32 a1);
 extern void func_8004D4F4(s32 a0, void* a1, u8* a2);
 extern void func_800F092C_ovl28(u8* a0);
-extern void func_80017248(u8* obj);
-extern s32 func_800317B8(u8* a0);
 extern s32 func_8002D800(u8* a0);
-extern void func_8002D89C(u8* a0);
 
 void DEDUP_NAME(u8* obj) {
     u8 state;
@@ -28,7 +23,7 @@ void DEDUP_NAME(u8* obj) {
         func_8004D4F4(5, D_800FD9D4_ovl28, obj);
         state = 2;
     } else {
-        p = D_8009A0A0;
+        p = g_Player;
         if (p[0xF7] == 0) {
             if (*(signed char*)(obj + 2) == 3) {
                 if (*(s32*)(obj + 8) > *(s32*)(p + 8)) {
@@ -41,7 +36,7 @@ void DEDUP_NAME(u8* obj) {
             if (SCR4C[0x89] < 0x3C) {
                 D_800FDA10_ovl28[*(signed char*)(obj + 5)](obj);
             } else {
-                func_80017248(obj);
+                animate_object(obj);
             }
         }
         func_800317B8(obj);

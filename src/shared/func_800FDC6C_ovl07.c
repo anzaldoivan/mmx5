@@ -1,10 +1,10 @@
 /* Shared body (DK-5), from the banked draft of func_800FDC6C_ovl07 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/object.h"
+#include "mmx5/globals.h"
 
 extern u8 D_80101DE0_ovl07[][8];
 
-extern void func_80017248(EntFDC6C*);
-extern void func_8002DF54(EntFDC6C*);
 extern s32 func_800FEB48_ovl07(EntFDC6C*, s32);
 
 void DEDUP_NAME(EntFDC6C* e) {
@@ -13,8 +13,8 @@ void DEDUP_NAME(EntFDC6C* e) {
     u16 y;
     s32 t;
 
-    func_80017248(e);
-    func_8002DF54(e);
+    animate_object(e);
+    move_object(e);
     r = func_800FEB48_ovl07(e, 3);
     switch (r) {
     case 2:

@@ -6,4 +6,4 @@
 
 extern int func_80053A4C();
 
-#include "../shared/func_800EFE70_ovl02.c"
+#include "shared/func_800EFE70_ovl02.c"

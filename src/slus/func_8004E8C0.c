@@ -1,7 +1,7 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
 extern u8 D_800D1599;
-extern void func_8002D89C(u8*);
 
 void func_8004E8C0(u8* obj) {
     u8 v = D_800D1599;

@@ -1,10 +1,10 @@
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/system.h"
 
 extern void func_8003CE64(u8* obj);
-extern void func_8003D0A0(u8* obj);
-extern void func_8003B33C(u8*, s32);
+extern void set_stand_animation_by_hp(u8* obj);
 extern void func_80039F1C(u8* a0);
-extern s32 func_8002DF78(void);
 extern void func_8003CF74(u8*, s32);
 extern void func_8003CD08(u8* obj);
 extern void func_8003ED10(u8* obj);
@@ -17,7 +17,7 @@ void func_8003A418(u8* obj) {
     switch ((s8)obj[5]) {
     case 20:
         if ((u8)(obj[0x17] - 5) >= 2) {
-            func_8003D0A0(obj);
+            set_stand_animation_by_hp(obj);
         }
         *(s8*)(obj + 0xD0) = -1;
         obj[0x15] = obj[0xD2];
@@ -60,8 +60,7 @@ void func_8003A418(u8* obj) {
         *(s32*)(obj + 0x24) = 0x2E800;
         *(s32*)(obj + 0x2C) = 0x840;
         obj[6] = 0;
-        func_8003CF74(obj,
-                      D_8007482C[(func_8002DF78() & 3) + ((s8)obj[2]) * 4]);
+        func_8003CF74(obj, D_8007482C[(random_byte() & 3) + ((s8)obj[2]) * 4]);
         func_8003B33C(obj, 10);
         obj[0x15] = obj[0xD2];
         break;

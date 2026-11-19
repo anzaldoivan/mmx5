@@ -7,6 +7,7 @@ func_800EEB64_ovl03 = 0x800EEB64; // type:func rom:0x231F4
 func_800EEA68_ovl09 = 0x800EEA68; // type:func rom:0x748F8
 func_800EE9A8_ovl12 = 0x800EE9A8; // type:func rom:0x9B038
 func_800EE9A8_ovl14 = 0x800EE9A8; // type:func rom:0x9F038
+memcard_write_save_file_ovl24 = 0x800F2C4C; // type:func rom:0xC22DC
 func_800FA18C_ovl31 = 0x800FA18C; // type:func rom:0x10618C
 func_800FA0D0_ovl35 = 0x800FA0D0; // type:func rom:0x11D8D0
 func_800EEAD8_ovl26 = 0x800EEAD8; // type:func rom:0xC9968

@@ -1,10 +1,9 @@
 /* Adapted from mmx6 @c1c892d src/shared/SLUS_013.95/func_80053E44.c, AGPL-3.0 (THIRD_PARTY.md). */
 #include "types.h"
+#include "mmx5/object.h"
+#include "mmx5/system.h"
 #define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8*)(expr) + (offset)))
-#define M2C_UNK s32
 
-struct X4_QuadObj* func_8002D53C(void);
-s32 func_8002DF78();
 s32 func_8002DFB0();
 void func_8004FE6C();
 extern u16 D_80093F70;
@@ -26,11 +25,11 @@ void func_80057A08(X4_Obj* self) {
             func_8004FE6C(self, 1, 0x60, 0x60, 2);
         }
         if (!(func_8002DFB0() & 1)) {
-            q = func_8002D53C();
+            q = alloc_class6_slot();
             if (q != 0) {
                 M2C_FIELD(q, s8*, 0x0) = 1;
                 M2C_FIELD(q, s8*, 0x1) = 4;
-                func_8002DF78();
+                random_byte();
                 M2C_FIELD(q, u16*, 0x8) = D_80093F70 & 0xFFF;
                 M2C_FIELD(q, u16*, 0xA) = self->x_pos.u.hi;
                 M2C_FIELD(q, u16*, 0xE) = self->y_pos.u.hi;
@@ -38,7 +37,7 @@ void func_80057A08(X4_Obj* self) {
         }
     } else {
         self->state++;
-        q2 = func_8002D53C();
+        q2 = alloc_class6_slot();
         if (q2 != 0) {
             M2C_FIELD(q2, s8*, 0x0) = 1;
             M2C_FIELD(q2, s8*, 0x1) = 8;

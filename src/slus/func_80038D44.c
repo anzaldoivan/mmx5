@@ -1,12 +1,12 @@
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/system.h"
+#include "mmx5/sound.h"
 
 extern void func_8003CD08(u8* obj);
-extern void func_8001296C(s32);
-extern s32 func_8002DF78(void);
-extern void func_80016490(s32, s32, void*);
-extern void func_8003CE30(u8*);
+extern void start_pad_vibration(s32);
+extern void player_clear_attack(u8*);
 extern void func_8003CEA4(u8* obj);
-extern void func_8003B33C(u8*, s32);
 extern u8 D_8007476C[];
 extern s32 D_80074778[][4];
 extern u8 D_80074818[];
@@ -18,14 +18,14 @@ void func_80038D44(u8* obj) {
 
     func_8003CD08(obj);
     obj[0x5C] &= 0x7F;
-    func_8001296C(1);
-    func_80016490(3, (func_8002DF78() & 1) ^ 1, obj);
+    start_pad_vibration(1);
+    play_sound(3, (random_byte() & 1) ^ 1, obj);
     if (*(s8*)(obj + 5) != 0x11) {
         obj[0xA4] = 1;
         obj[0xCF] = 1;
         obj[0x84] = 0;
         obj[0x8C] = 0;
-        func_8003CE30(obj);
+        player_clear_attack(obj);
         func_8003CEA4(obj);
         kind = *(s8*)(obj + 0x63);
         obj[0x15] = obj[0xA5];

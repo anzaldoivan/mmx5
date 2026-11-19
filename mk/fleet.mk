@@ -6,7 +6,8 @@
 # check:    style-check, then clean -> extract (once) -> per alias `split` then `build` in parallel (rockx5 after slus); never stops early.
 #           One line per alias `check: <a> ok|FAIL` (output in build/<a>.check.log), last line
 #           `check: <k> of <n> green, <f> failed`; exit 0 iff f=0. After a green line it runs
-#           `make tools-health` (mk/tools-health.mk); its failure fails check.
+#           `make shift-scan` (mk/shift.mk, retail pair; a finding or a missed plant fails check). This public
+#           target runs no tools-health. The dev tier is `make dev-check` (mk/tools-dev.mk: check, then mk/tools-health.mk).
 # expected: copy build/<a>/<name> (config/splat.<a>.yaml name:) to expected/build/<a>/ (ignored).
 # compile-only: every COMPILE_SRC .c -> cpp, cc1, maspsx, as with mk/slus.mk's C vars -> .run/compile-only/<path>.o
 #           (one path printed per object). ROM-free: no split, no extracted/, expected/ or asm/ read (CI no-rom.yml).
@@ -14,19 +15,24 @@
 #           A unit whose maspsx output .includes asm/ (INCLUDE_ASM) is not assembled where asm/ is absent (CI): its
 #           path is printed as `<path>.maspsx.s (not assembled ...)`; with asm/ present it is assembled as before.
 #           Negative control: a planted unit with a syntax error must fail cc1, else the target fails.
-# types-check: tools/dedup/shapes.py check -- refuses a duplicate struct shape, a second definition, a raw address
-#           cast in include/*.h and src/**/*.c; `types: <n> shapes, 0 duplicates, 0 raw casts` (tools/dedup/README.md).
 # readability-check: tools/readability/scan.py -- six readability classes, one line per offender, then
-#           `readability: <p> unmarked pins, ... <u> unbased names`; exit 1 if any count > 0 (tools/readability/README.md).
-# no-rom:   firewall-check, format-check, compile-only, types-check, readability-check, tools-selftest
-#           (PY passed through), stop at the first failure (`no-rom: <t> FAIL`); last line `no-rom: OK`. Binding before every bank/propagate commit.
+#           `readability: <p> unmarked pins, ... <u> unbased names`; exit 1 if any count > 0 (CONTRIBUTING.md).
+# selftest: per `<tool>:<name>` of $(SELFTESTS_PUBLIC) $(SELFTESTS_DEV): `tools/<tool>.py --selftest` (log
+#           .run/selftest/<name>.log) must exit 0 and print `<name>: control OK`. The target prints its last such
+#           line. The first failure fails (`selftest: FAIL <name> (<log>)`). SELFTESTS_DEV comes from mk/tools-health.mk.
+# no-rom:   the $(NOROM_STEPS) in order, PY passed through. Public steps: firewall-check, format-check, compile-only,
+#           readability-check, selftest. mk/tools-dev.mk appends types-check. It stops at the first failure
+#           (`no-rom: <t> FAIL`). The last line is `no-rom: OK`. Binding before every bank/propagate commit.
 
 ALIASES := slus rockx5
 COMPILE_SRC ?= $(shell find src -name '*.c')
 CO_DIR := .run/compile-only
+ST_DIR := .run/selftest
+SELFTESTS_PUBLIC := readability/scan:readability repack/rockx5:rockx5 shift/scan:shift-scan assets/assets:assets replay/replay:replay
+NOROM_STEPS := firewall-check format-check compile-only readability-check selftest
 # the list goes through a file: inlined, ~4100 paths pass MAX_ARG_STRLEN (128 KiB per sh -c arg)
 
-.PHONY: check style-check expected clean compile-only types-check readability-check no-rom $(addprefix check-,$(ALIASES))
+.PHONY: check style-check expected clean compile-only readability-check selftest no-rom $(addprefix check-,$(ALIASES))
 
 clean:
 	rm -rf build asm assets
@@ -51,7 +57,7 @@ check:
 	  if [ "$$(cat build/$$a.check.rc 2>/dev/null)" = 0 ]; then echo "check: $$a ok"; \
 	  else f=$$((f+1)); echo "check: $$a FAIL (build/$$a.check.log)"; fi; done; \
 	echo "check: $$((n-f)) of $$n green, $$f failed"; [ $$f -eq 0 ]
-	@$(MAKE) --no-print-directory tools-health
+	@$(MAKE) --no-print-directory shift-scan PY="$(PY)" SHIFT= SCAN_FLAGS=
 
 # check-<a>: always succeeds so siblings run to the end; the result is build/<a>.check.rc.
 # split and build are separate sub-makes: one `split build` invocation could run them in parallel under -j.
@@ -77,13 +83,15 @@ compile-only:
 	    echo "compile-only: planted control compiled, want a cc1 error"; exit 1; fi; \
 	  echo "compile-only: OK (control caught)"
 
-types-check:
-	$(PY) tools/dedup/shapes.py check
-
 readability-check:
 	$(PY) tools/readability/scan.py
 
+selftest:
+	@set -e; mkdir -p $(ST_DIR); for t in $(SELFTESTS_PUBLIC) $(SELFTESTS_DEV); do p=$${t%:*}; n=$${t#*:}; \
+	  l=$(ST_DIR)/$$n.log; $(PY) tools/$$p.py --selftest > $$l 2>&1 || { echo "selftest: FAIL $$n ($$l)"; exit 1; }; \
+	  grep -E "^$$n: control OK( --|$$)" $$l | tail -n 1 | grep . || { echo "selftest: FAIL $$n ($$l)"; exit 1; }; done
+
 # no-rom: the game-free gate, run before every commit that banks or propagates code; stops at the first failure.
 no-rom:
-	@for t in firewall-check format-check compile-only types-check readability-check tools-selftest; do \
+	@for t in $(NOROM_STEPS); do \
 	  $(MAKE) --no-print-directory $$t PY="$(PY)" || { echo "no-rom: $$t FAIL"; exit 1; }; done; echo "no-rom: OK"

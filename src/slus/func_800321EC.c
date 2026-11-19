@@ -1,8 +1,8 @@
 #include "types.h"
+#include "mmx5/sound.h"
 #include "addr.h"
 
-extern void func_80016490(s32, s32, void*);
-extern u8* func_8002D0E4(void);
+extern u8* find_free_visual_obj(void);
 extern s8 D_800731D4[][5];
 extern u32* D_8007B2E8[];
 
@@ -21,7 +21,7 @@ void func_800321EC(u8* arg0, s32 arg1) {
         if (D_800731D4[id][2] != 0) {
             *(s8*)(arg0 + 0x98) = -1;
         }
-        func_80016490(0, 6, arg0);
+        play_sound(0, 6, arg0);
         id = 0;
     } else {
         if (D_800731D4[id][2] != 0) {
@@ -33,25 +33,25 @@ void func_800321EC(u8* arg0, s32 arg1) {
         }
         switch (D_800731D4[id][1]) {
         case 0:
-            func_80016490(1, (u8)D_800731D4[id][4], arg0);
+            play_sound(1, (u8)D_800731D4[id][4], arg0);
             break;
         case 1:
             if (arg1 == 0) {
-                func_80016490(1, 9, arg0);
+                play_sound(1, 9, arg0);
             } else {
-                func_80016490(1, 10, arg0);
+                play_sound(1, 10, arg0);
             }
             break;
         case 2:
         case 3:
-            func_80016490(5, (u8)D_800731D4[id][4], arg0);
+            play_sound(5, (u8)D_800731D4[id][4], arg0);
             break;
         case 4:
             break;
         }
         id = D_800731D4[id][0];
     }
-    p = func_8002D0E4();
+    p = find_free_visual_obj();
     if (p == 0) {
         return;
     }

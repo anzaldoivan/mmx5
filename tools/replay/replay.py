@@ -197,6 +197,7 @@ def selftest():
     assert verdict(patched('patch-nondet', late, c[:2] + [dict(c[2], vram_sha1='c' * 40)]), 'title') == 1
     shutil.rmtree(st)
     print('replay: selftest OK')
+    print('replay: control OK')
     return 0
 
 

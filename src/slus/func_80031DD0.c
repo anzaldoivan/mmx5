@@ -1,6 +1,6 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
-extern u8 D_8009A0A0[];
 extern u8 D_80074E40[];
 extern u8 D_800D1C4A;
 extern Obj8002CC08 D_80098120[];
@@ -15,7 +15,7 @@ s32 func_80031DD0(u8* arg0) {
     s32 ok;
     s32 v;
 
-    g = D_8009A0A0;
+    g = g_Player;
     if (*(s8*)(arg0 + 0x7A) == 0) {
         if (*(u8**)(arg0 + 0x58) == D_80074E40) {
             ok = 0;

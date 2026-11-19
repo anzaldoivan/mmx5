@@ -1,16 +1,15 @@
 /* Shared body (DK-5), from the banked draft of func_800F5A38_ovl04 by tools/wave/gate.py rescan. */
 #include "types.h"
-
-extern void func_800171E8(u8* obj, s32 state);
-extern s32 func_8002DF78(void);
+#include "mmx5/system.h"
+#include "mmx5/graphics.h"
 
 void DEDUP_NAME(u8* obj) {
     obj[0x8A] = 0x3C;
-    func_800171E8(obj, 3);
+    set_animation(obj, 3);
     obj[4] = 1;
     obj[7] = 0;
     if (*(s8*)(obj + 5) != 2) {
-        obj[0x91] = func_8002DF78() & 0xF;
+        obj[0x91] = random_byte() & 0xF;
         if (obj[0x91] < 5) {
             obj[0x91] = 0;
         } else if (obj[0x91] < 8) {

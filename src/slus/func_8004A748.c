@@ -1,8 +1,7 @@
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
 
-void func_800171E8(u8* obj, s32 state);
-void func_80017248(u8* obj);
-void func_8002D9EC(u8* a0, s32 a1, s32 a2);
 extern u8 D_8007718C[];
 extern u8 D_80077194[];
 extern void* D_80077198[];
@@ -19,14 +18,14 @@ void func_8004A748(u8* obj) {
             *(void**)(obj + 0x50) = 0;
             *(void**)(obj + 0x68) = 0;
             obj[4] = 2;
-            func_800171E8(obj, 1);
+            set_animation(obj, 1);
             return;
         }
         *(void**)(obj + 0x50) = 0;
         *(void**)(obj + 0x68) = 0;
         *(s16*)(obj + 0x90) = 4;
     }
-    func_80017248(obj);
+    animate_object(obj);
     c = *(u16*)(obj + 0x90);
     if (*(s16*)(obj + 0x90) != 0) {
         t = c - 1;

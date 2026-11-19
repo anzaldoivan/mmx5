@@ -1,7 +1,7 @@
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/sound.h"
 
-extern s32 func_80016490(s32, s32, u8*);
-extern void func_8003B33C(u8*, s32);
 extern void func_8003CF74(u8*, s32);
 extern void func_80043E30(u8*);
 
@@ -24,7 +24,7 @@ s32 func_80044138(u8* obj) {
     obj[0x8C] = 0;
     func_8003B33C(obj, 0x62);
     func_8003CF74(obj, 5);
-    func_80016490(1, 0x12, obj);
+    play_sound(1, 0x12, obj);
     if (*(u16*)(obj + 0x7C) & 2) {
         obj[0x15] = 0;
     }

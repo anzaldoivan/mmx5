@@ -1,5 +1,7 @@
 /* Shared body (DK-5), from the banked draft of func_800F01A8_ovl28 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/system.h"
+#include "mmx5/graphics.h"
 #include "addr.h"
 
 extern u8 D_8009A0B4;
@@ -7,8 +9,6 @@ extern u8 D_800FD98C_ovl28[];
 extern u8 D_800FD9C8_ovl28[];
 extern u8 D_800FD9C0_ovl28[];
 extern u8 D_800750C0[];
-extern s32 func_8002DF78(void);
-extern void func_800171E8(Ent01A8*, s32);
 
 void DEDUP_NAME(Ent01A8* e) {
     s32 t = D_8009A0B4;
@@ -31,17 +31,17 @@ void DEDUP_NAME(Ent01A8* e) {
     e->unk4 = 1;
     e->unk6 = 0;
     e->unk14 = t;
-    r = func_8002DF78() & 3;
+    r = random_byte() & 3;
     t = (s32)D_1F80004C.scr01a8;
     ((Scr01A8*)t)->unk81 = r;
     D_1F80004C.scr01a8->unk89 = 0;
     if (e->unk2 & 0x80) {
-        func_800171E8(e, 0);
+        set_animation(e, 0);
         e->unk5 = 2;
         e->unk67 = 1;
     } else {
         e->unk15 = 0;
-        func_800171E8(e, 0);
+        set_animation(e, 0);
         e->unk67 = 0;
         e->unk5 = 3;
     }
@@ -49,7 +49,7 @@ void DEDUP_NAME(Ent01A8* e) {
         e->unk4 = 3;
     }
     if (e->unk2 == 3) {
-        func_800171E8(e, 1);
+        set_animation(e, 1);
         D_1F80004C.scr01a8->unk8A = e->unk6;
         D_1F80004C.scr01a8->unk8B = e->unk7C;
         D_1F80004C.scr01a8->unk8E = e->unkE;

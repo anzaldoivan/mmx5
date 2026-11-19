@@ -1,11 +1,10 @@
 /* Shared body (DK-5), from the banked draft of func_800F41C4_ovl04 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/system.h"
+#include "mmx5/globals.h"
 
-extern u8* func_8002D27C(void);
 extern u8* func_8002D210();
-extern s32 func_8002DF78(void);
 extern s32 func_8002DFB0(void);
-extern u8 D_8009A0A0[];
 
 void DEDUP_NAME(u8* arg0) {
     u8* base;
@@ -13,14 +12,14 @@ void DEDUP_NAME(u8* arg0) {
     u8* p;
     u8* q;
 
-    base = D_8009A0A0;
+    base = g_Player;
     i = 5;
     do {
         p = func_8002D27C();
         if (p != 0) {
             p[0] = 0x41;
             p[1] = 0x1A;
-            p[0x15] = func_8002DF78() & 0x40;
+            p[0x15] = random_byte() & 0x40;
             p[2] = 8;
             *(s32*)(p + 0x20) = 0x40000;
             *(s32*)(p + 0x30) = *(s32*)(arg0 + 0x30);
@@ -51,6 +50,6 @@ void DEDUP_NAME(u8* arg0) {
         *(u8**)(q + 0x7C) = arg0;
         *(u16*)(q + 0x80) = *(u16*)(arg0 + 0xA) + 0x28;
     }
-    *(u16*)(arg0 + 0x7C) = (func_8002DF78() & 3) * 10 + 1;
+    *(u16*)(arg0 + 0x7C) = (random_byte() & 3) * 10 + 1;
     arg0[6]++;
 }

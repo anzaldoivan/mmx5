@@ -1,7 +1,7 @@
 # Third-party sources
 
 This file lists every third-party source that this repository uses, by how it is used. Pins come from
-`config/refs.toml`. Classes come from `docs/ops/refs.md` and `docs/prior-art.md`. The tracked tree (`git ls-files`)
+`config/refs.toml`. Classes come from `docs/prior-art.md`. The tracked tree (`git ls-files`)
 was checked on 2026-10-11. No `refs/` file is tracked. Only drafts from mmx6's C (below, from 2026-10-14) may carry
 code adapted from a third-party source.
 
@@ -10,16 +10,20 @@ code adapted from a third-party source.
 An entry gives the name, the URL, the pinned ref, the licence and the tracked path that holds the adapted code. Its
 class is `adapt`, or `copyleft` when licence-compatible with AGPL-3.0.
 
-- mmx6 — https://github.com/anzaldoivan/mmx6 — `a8f96d1d6377e8566e77089dcd25ceac877893f2` — AGPL-3.0
+- mmx6 — https://github.com/anzaldoivan/mmx6 — `93515c1f8546647b2a0aa03e3cae28fbd9f44670` — AGPL-3.0
   (copyleft), the developer's own Mega Man X6 decompilation under this repository's licence, path `src/`. A function
   drafted from a card's `## Twin in X6` adapts its X6 twin's C from `refs/mmx6/src/`, with X5's symbols and types.
-  The leads are `docs/oracle/x6-leads.tsv` (`docs/prior-art.md` L8d). Some of those X6 files are adapted from
+  `docs/prior-art.md` L8d describes the leads. Some of those X6 files are adapted from
   sozud/mmx4 (AGPL-3.0), as their first line says, and a draft keeps that line.
   `waves.py port` writes the attribution line (`/* Adapted from mmx6 @<pin> <path>, AGPL-3.0 (THIRD_PARTY.md). */`)
   as each ported draft's first line.
 
+  The rename tool of this project adapts code from `mmx6:tools/mmx6/rename.py` at `93515c1f`. Its header says so.
+
   The pin was `c1c892dc301cfb2f1752b06854cbc02778e1404a` until 2026-11-14. Drafts adapted before that date name
   `c1c892dc` in their attribution line. Those drafts keep that pin.
+  The pin was `a8f96d1d6377e8566e77089dcd25ceac877893f2` from 2026-11-14 to 2026-11-15. Drafts adapted in that time
+  name `a8f96d1d` in their attribution line. Those drafts keep that pin.
 
 ## Used at build or analysis time, not included
 
@@ -34,10 +38,10 @@ paths (`refs/`, `.venv/`, `.run/`). They are never committed. Our tools invoke t
 - spimdisasm — https://github.com/Decompollaborate/spimdisasm — `4b5d4c68eeb9f9eae14b3bb713971433ae2c3c43` — MIT.
   It is splat's disassembler backend, installed as `spimdisasm==1.42.4`.
 - decomp-permuter — https://github.com/simonlindholm/decomp-permuter — `059609d4aec73eb0650726772954e1ad575825f8` —
-  MIT. `tools/codegen/stage.sh --permuter` stages it into `refs/decomp-permuter/`. `tools/permuter/permute.py`
-  drives it. That file is our wrapper, with no permuter code in it.
-- mmx4 — https://github.com/sozud/mmx4 — `34f37a46f34a1180a7eac7d545fdfb6e0c7f533d` — AGPL-3.0 (copyleft).
-  `tools/sig/sig.py` (L8, `build-foreign`) compiles `refs/mmx4/src/main/**/*.c` into `.run/sig/mmx4/` only. It does
+  MIT. `tools/codegen/stage.sh --permuter` stages it into `refs/decomp-permuter/`. Our own
+  wrapper drives it. The wrapper has no permuter code in it.
+- mmx4 — https://github.com/sozud/mmx4 — `4e16dfc7c06597fd5719dd112654d8cf85d343c2` — AGPL-3.0 (copyleft).
+  The signature tool (L8, `build-foreign`) compiles `refs/mmx4/src/main/**/*.c` into `.run/sig/mmx4/` only. It does
   so to compare leaf-function signatures. It cites mmx4's build flags (`build.py` line references) and copies no
   mmx4 code (sig.py:276). Nothing from mmx4 is in a tracked file, so nothing is attributed as adapted.
 - psy-q-decomp — https://github.com/sozud/psy-q-decomp — `6edf9b24721ba02a53eb423b8a7497b82ba0768c` — MIT. It is an
@@ -65,7 +69,7 @@ are in this list:
 - psx-spx
 - the MMX5 Improvement Project addendum (acediez)
 
-The pins and the licences are in `config/refs.toml`, `docs/ops/refs.md` and `docs/prior-art.md`.
+The pins and the licences are in `config/refs.toml` and `docs/prior-art.md`.
 
 ## Bring your own, not included
 

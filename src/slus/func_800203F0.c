@@ -1,9 +1,10 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
 extern void func_80013288(s32);
 extern void func_80013524(void);
 extern void func_80014684(s32, s32, s32);
-extern void func_800157D4(void);
+extern void pump_file_loads(void);
 extern void func_80017668(void);
 extern void func_80020950(void);
 extern void func_80020A3C(void);
@@ -13,10 +14,9 @@ extern void func_8002906C(void);
 extern void func_8002A440(void);
 extern void func_8002A4E4(void);
 extern void func_8002A554(void);
-extern void func_8002ACC4(void);
+extern void init_checkpoint_positions(void);
 extern void func_8002B474(void);
 extern void func_8002B520(void);
-extern void func_8002C50C(void);
 extern void func_8002D004(void);
 extern void func_8003BAC8(void);
 extern u8 D_8006FADD;
@@ -39,7 +39,7 @@ void func_800203F0(u8* arg0) {
     if (*(s8*)(arg0 + 0xC) == 0xC) {
         if ((*(s32*)(arg0 + 0x1C) & 0xFFFF00) == 0xFF0A00) {
             func_80014684(0x57, 4, D_8009A758);
-            func_800157D4();
+            pump_file_loads();
         }
     }
     for (i = 0, q = arg0 + 0x26; i < 8; i++) {
@@ -52,7 +52,7 @@ void func_800203F0(u8* arg0) {
     func_8002D004();
     func_80017668();
     func_8002906C();
-    func_8002ACC4();
+    init_checkpoint_positions();
     func_8002A440();
     func_8002A4E4();
     func_8002A554();

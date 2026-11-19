@@ -29,8 +29,35 @@ a match with `// !FAKE:` and its reason. Mark an original bug with `//! @bug`.
 
 Define a struct or union once, in `include/types.h`, never in `src/`. Name an absolute address (e.g. scratchpad
 `0x1F80xxxx`) once in `include/addr.h` as `D_<ADDR>`. Several pointee views of one address are one union. Never cast an
-absolute address in `src/`. A symbol renamed in `config/symbols.*.txt` needs a row in `config/names.tsv`
-(`rules/NAME1.md`: kind, decision and evidence). `make readability-check` gates all of this and runs inside `make no-rom`, the public CI.
+absolute address in `src/`.
+
+Declare a function or data symbol that several files use once, in `include/mmx5/<system>.h`. Use the system where
+mmx6 declares the symbol. Otherwise use its system in `config/layout.tsv`. A `slus` symbol without a system goes in
+`include/mmx5/globals.h`.
+
+A header holds only prototypes, externs and enum constants. Its guard is `MMX5_<NAME>_H`.
+Include only the headers of the symbols the file uses. Never declare a header symbol again in `src/`.
+The declaration check of the unit map tool reports each local declaration of a header symbol.
+
+Write a header prototype with empty parameters, for example `void set_animation();`. Empty parameters accept every
+argument count. If a caller needs a different return type for its bytes, cast the function at the call:
+`((s32 (*)())set_animation)(obj, 2)`. The call stays a direct `jal`.
+
+If files index the bytes of a data symbol, declare it in the header as an unsized array, for example
+`extern u8 g_Player[];`. If a file reads it as a struct or scalar, define a view after the includes:
+`#define g_Player_as_X4_Obj (*(X4_Obj*)&g_Player)`. Then use the view in that file.
+
+A symbol renamed in `config/symbols.*.txt` needs one accepted row in `config/names.tsv`.
+The row has the columns kind, image, scope, old_name, new_name, decision, evidence and reason.
+`make readability-check` gates these rules and the type rules above, inside `make no-rom` and in the public CI
+(no-rom.yml).
+
+## Source layout
+
+Each function is one compile unit in its own file. A `slus` unit goes in `src/slus/<name>.c`. A `rockx5` unit goes in
+the folder of its overlay, `src/rockx5/ovlNN/<name>.c`. A shared body goes in `src/shared/<name>.c`. If you need the
+path of a unit, ask `tools/build/layout.py` `locate()` and do not write the path by hand.
+`python3 tools/build/layout.py check` reports each file that is not at its path.
 
 ## AI use — conduct
 
@@ -54,4 +81,9 @@ The rules that keep that honest, for every contributor and every agent:
 
 Submit small, per-function or per-family pull requests. The hash check must be green on every binary the change
 touches. Anything that touches a shared body, a shared header or the executable needs the clean fleet verification.
+
+Before you submit a change to a public file, build both binaries and run `python3 tools/gen_objdiff.py`.
+It writes `objdiff.json`, the unit list that the match report in CI reads.
+Before you submit a change to a public file, run `python3 tools/psxd_publish.py style <file>`.
+
 Write a commit message that names what was matched and how it was verified. Add no AI-attribution trailers.

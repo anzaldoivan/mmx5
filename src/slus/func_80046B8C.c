@@ -1,17 +1,15 @@
 #include "types.h"
-
-extern u8 D_8009A0A0[];
-extern s32 D_8009A420;
-extern void func_80017248(u8* obj);
+#include "mmx5/globals.h"
+#define D_8009A420_as_s32 (*(s32*)&D_8009A420)
 
 void func_80046B8C(u8* obj) {
-    u8* g = D_8009A0A0;
+    u8* g = g_Player;
     s32 t;
 
     *(u16*)(obj + 0xA) = *(u16*)(g + 0xA);
     *(u16*)(obj + 0xE) = *(u16*)(g + 0xE);
-    func_80017248(obj);
-    if ((D_8009A420 & 7) == 0) {
+    animate_object(obj);
+    if ((D_8009A420_as_s32 & 7) == 0) {
         obj[0x64]++;
     }
     t = *(u16*)(obj + 0x8C) + 1;

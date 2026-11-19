@@ -1,7 +1,6 @@
 /* Shared body (DK-5), from the banked draft of func_800F2B54_ovl02 by tools/wave/gate.py rescan. */
 #include "types.h"
-
-extern ObjFAF38* DEDUP_CALLEE();
+#include "mmx5/globals.h"
 
 void DEDUP_NAME(ObjFAF38* arg0) {
     ObjFAF38* obj = DEDUP_CALLEE(arg0);

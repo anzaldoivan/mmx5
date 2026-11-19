@@ -1,10 +1,8 @@
 #include "types.h"
+#include "mmx5/object.h"
+#include "mmx5/globals.h"
+#include "mmx5/sound.h"
 #include "addr.h"
-
-extern void func_80016490(s32, s32, void*);
-extern void func_8002D6FC(u8* obj);
-extern void func_8002D9EC(u8* a0, s32 a1, s32 a2);
-extern u8 D_8009A0A0[];
 
 void func_80051104(u8* obj) {
     u8* g;
@@ -12,9 +10,9 @@ void func_80051104(u8* obj) {
     u8 st;
     s32 off;
 
-    g = D_8009A0A0;
+    g = g_Player;
     if (((s8*)g)[5] != 0x23) {
-        func_8002D6FC(obj);
+        clear_object_slot(obj);
         return;
     }
     st = obj[4];
@@ -34,7 +32,7 @@ void func_80051104(u8* obj) {
     *(s32*)(obj + 0xC) = *(s32*)(g + 0xC);
     if (((s8*)obj)[0x5C] == 0) {
         obj[0x5C] = 8;
-        func_80016490(0, 0x1F, obj);
+        play_sound(0, 0x1F, obj);
     } else {
         obj[0x5C]--;
     }

@@ -1,8 +1,7 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
 extern u8* func_8002D078();
-extern void func_8002D9EC(u8* a0, s32 a1, s32 a2);
-extern u8 D_8009A0A0[];
 
 void func_8004F730(u8* p) {
     u8* o;
@@ -22,7 +21,7 @@ void func_8004F730(u8* p) {
                 *(u16*)(o + 0x40) = *(u16*)(p + 0x40);
                 *(u16*)(o + 0x42) = *(u16*)(p + 0x42);
                 o[0x16] = p[0x16];
-                D_8009A0A0[0x98]++;
+                g_Player[0x98]++;
             }
         }
         p[5]++;

@@ -1,12 +1,12 @@
 /* Shared body (DK-5), from the banked draft of func_800F17F0_ovl11 by tools/wave/gate.py rescan. */
 /* Adapted from mmx6 @c1c892d src/shared/rock_22/func_800F461C.c, AGPL-3.0 (THIRD_PARTY.md). */
 #include "types.h"
+#include "mmx5/graphics.h"
 
 #define M2C_UNK s32
 
 #define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8*)(expr) + (offset)))
 
-M2C_UNK func_800171E8(void*, M2C_UNK);
 void func_800F1B3C_ovl11(void*);
 
 extern M2C_UNK D_80074F80;
@@ -54,7 +54,7 @@ void DEDUP_NAME(X4_Obj* self) {
         }
         self->y_pos.i.hi = parent->y_pos.i.hi + 0x12;
     }
-    func_800171E8(self, 3);
+    set_animation(self, 3);
     func_800F1B3C_ovl11(self);
     M2C_FIELD(self, s32*, 0x84) = 0x10;
     M2C_FIELD(self, s32*, 0x8C) = 0;

@@ -1,6 +1,6 @@
 #include "types.h"
+#include "mmx5/system.h"
 
-extern s32 func_8002DF78(void);
 extern u8* func_8002C938();
 extern u8 D_800D1C00[];
 extern u8 D_8007C19C[];
@@ -16,7 +16,7 @@ void func_8005446C(u8* arg0, s8 arg1, s16 arg2, s16 arg3) {
 
     if ((((s8*)g)[0xC] != 5 || ((s8*)g)[0x1D] != 0) && g[0xA0] < 2) {
         row = arg1 * 6;
-        r = func_8002DF78();
+        r = random_byte();
         i = 0xFF;
         t = (s32)D_8007C19C;
         do {

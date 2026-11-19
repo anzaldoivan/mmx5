@@ -1,10 +1,9 @@
 /* Adapted from mmx6 @c1c892d src/shared/SLUS_013.95/func_80052300.c, AGPL-3.0 (THIRD_PARTY.md). */
 #include "types.h"
-#define M2C_UNK s32
+#include "mmx5/globals.h"
 
 #define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8*)(expr) + (offset)))
 
-M2C_UNK func_8002D760();
 extern u8* D_8007D54C[];
 extern s32 D_8007D554[][16];
 extern s32 D_80093DD0[];

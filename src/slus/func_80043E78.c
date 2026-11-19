@@ -1,10 +1,10 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
-extern void func_80017248(u8* obj);
 extern void (*D_80074D88[])(u8* obj);
 
 void func_80043E78(u8* obj) {
-    func_80017248(obj);
+    animate_object(obj);
     if (((s8*)obj)[6] != 0) {
         obj[0x4F]++;
     }

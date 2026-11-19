@@ -1,9 +1,8 @@
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
 
-extern void func_800171E8(u8* obj, s32 state);
-extern void func_80017214(u8* a0, s32 a1, s32 a2);
-extern void func_80017248(u8* obj);
-extern u8 D_8009A0A0[];
+extern void set_animation_frame(u8* a0, s32 a1, s32 a2);
 
 void func_80022AA0(u8* arg0) {
     u8* p;
@@ -11,7 +10,7 @@ void func_80022AA0(u8* arg0) {
     s32 want;
     s32 v;
 
-    p = D_8009A0A0;
+    p = g_Player;
     kind = *(s8*)(arg0 + 2);
     *(s32*)(arg0 + 0x8) = *(s32*)(p + 0x8);
     *(s32*)(arg0 + 0xC) = *(s32*)(p + 0xC);
@@ -19,10 +18,10 @@ void func_80022AA0(u8* arg0) {
         if (*(s8*)(p + 0x8C) != 0 && (*(s32*)(p + 4) & 0xFFFF00) == 0x10C00) {
             arg0[3] = 1;
             arg0[0x15] = p[0x15];
-            func_80017248(arg0);
+            animate_object(arg0);
             return;
         }
-        func_800171E8(arg0, 0x2A);
+        set_animation(arg0, 0x2A);
         arg0[3] = 0;
         return;
     }
@@ -32,16 +31,16 @@ void func_80022AA0(u8* arg0) {
             if (*(s8*)(arg0 + 6) != (v = *(s8*)(p + 6))) {
                 arg0[6] = p[6];
                 if (v == 1) {
-                    func_80017214(arg0, 0x2A, *(s8*)(arg0 + 0x45));
+                    set_animation_frame(arg0, 0x2A, *(s8*)(arg0 + 0x45));
                 } else {
-                    func_80017214(arg0, v + 0x28, *(s8*)(arg0 + 0x45));
+                    set_animation_frame(arg0, v + 0x28, *(s8*)(arg0 + 0x45));
                 }
             }
             arg0[0x15] = p[0x15];
-            func_80017248(arg0);
+            animate_object(arg0);
             return;
         }
-        func_800171E8(arg0, 0x2A);
+        set_animation(arg0, 0x2A);
         arg0[6] = 2;
         arg0[3] = 0;
         return;
@@ -53,7 +52,7 @@ void func_80022AA0(u8* arg0) {
         }
         if (*(s8*)(p + 0x9B) == want || *(s8*)(p + 0x9C) == want) {
             arg0[3] = 1;
-            func_800171E8(arg0, kind + 8);
+            set_animation(arg0, kind + 8);
             arg0[4]++;
         }
     } else {
@@ -62,6 +61,6 @@ void func_80022AA0(u8* arg0) {
             arg0[4] = 0;
             return;
         }
-        func_80017248(arg0);
+        animate_object(arg0);
     }
 }

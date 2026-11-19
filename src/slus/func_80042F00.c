@@ -1,14 +1,13 @@
 #include "types.h"
+#include "mmx5/weapon.h"
+#include "mmx5/system.h"
+#include "mmx5/sound.h"
+#include "mmx5/globals.h"
 
 extern s32 func_8003E6FC(void*, s8);
-extern u8* func_8003D3A8(s32, s32, s32, u8*);
 extern s32 func_80039E7C(u8*);
-extern void func_80017248(u8* obj);
 extern void func_800443A8(u8*, s8);
 extern s32 func_80044328(u8*);
-extern void func_8003B33C(u8*, s32);
-extern void func_80016490(s32, s32, void*);
-extern s32 func_8002DF78(void);
 extern void func_8003CF74(u8*, s32);
 extern void func_8003B4CC(u8* obj, s32 arg1, s32 arg2);
 extern void func_8003B0EC(u8* obj);
@@ -19,8 +18,8 @@ static inline s32 func_80042F00_land(u8* p) {
         return 0;
     }
     func_8003B33C(p, 0x5D);
-    func_80016490(1, 7, p);
-    if (func_8002DF78() & 4) {
+    play_sound(1, 7, p);
+    if (random_byte() & 4) {
         func_8003CF74(p, 8);
     }
     p[0x84] = 0;
@@ -37,7 +36,7 @@ void func_80042F00(u8* p) {
     if (*(s8*)(p + 0x2) != 0 && *(s8*)(p + 0xD3) == 0 &&
         *(s8*)(p + 0x93) == 3 && (*(u16*)(p + 0x80) & 0x20) &&
         *(s8*)(p + 0xA6) == 0 && func_8003E6FC(p, 3) <= *(s16*)(p + 0xAE)) {
-        q = func_8003D3A8(1, 0x2B, 0, p);
+        q = player_spawn_weapon(1, 0x2B, 0, p);
         if (q != 0) {
             *(s16*)(p + 0xAE) -= func_8003E6FC(p, 3);
             q[0x99] = 0;
@@ -50,7 +49,7 @@ void func_80042F00(u8* p) {
     if (*(s8*)(p + 0x6) == 0) {
         p[0x6] = p[0x6] + 1;
     } else {
-        func_80017248(p);
+        animate_object(p);
     }
     func_800443A8(p, 0x1E);
     if (p[0x45] & 0x40) {

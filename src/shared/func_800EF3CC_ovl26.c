@@ -1,19 +1,19 @@
 /* Shared body (DK-5), from the banked draft of func_800EF3CC_ovl26 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/ovl26.h"
+#include "mmx5/system.h"
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
 #include "addr.h"
+#define g_Player_as_Ent3CC_Src (*(Ent3CC_Src*)&g_Player)
 
 #define SCR20 D_1F800020.u32s
 extern s32 func_8002B5B4(s32);
-extern s32 func_8002DF78(void);
-extern void func_800171E8(Ent3CC*, s32);
-extern void func_800F0318_ovl26(Ent3CC*);
-extern Ent3CC_Src D_8009A0A0;
 extern u32* D_80098118;
 extern u8 D_800F923C_ovl26[];
 extern u8 D_800F9238_ovl26[];
 extern u8 D_800767E0[];
 extern u8 D_800F9214_ovl26[];
-extern Ent800F43E8 D_800F9240_ovl26[];
 extern Ent800F43E8 D_800F927C_ovl26[];
 
 void DEDUP_NAME(Ent3CC* o) {
@@ -33,7 +33,7 @@ void DEDUP_NAME(Ent3CC* o) {
     o->unk0 = 0x41;
     o->unk4++;
     o->unk6 = o->unk2;
-    src = &D_8009A0A0;
+    src = &g_Player_as_Ent3CC_Src;
     o->unk14 = src->unk14;
     o->unk40 = D_80098118[func_8002B5B4(0x80)] >> 7;
     a = func_8002B5B4(0x80);
@@ -63,18 +63,18 @@ void DEDUP_NAME(Ent3CC* o) {
     o->unk85 = 0;
     o->unk7C = o->x.h.hi;
     o->unk7E = o->y.h.hi;
-    o->unk86 = func_8002DF78() & 0x7F;
-    o->unk87 = func_8002DF78() & 0x1F;
-    o->unk89 = (func_8002DF78() & 0x7E) + 1;
+    o->unk86 = random_byte() & 0x7F;
+    o->unk87 = random_byte() & 0x1F;
+    o->unk89 = (random_byte() & 0x7E) + 1;
     o->unk8A = 1;
     o->unkA2 = 1;
     if (src->x < o->x.w) {
         o->unk20 = -o->unk20;
     }
     if (o->unk2 != 0) {
-        func_800171E8(o, 0);
+        set_animation(o, 0);
     } else {
-        func_800171E8(o, 1);
+        set_animation(o, 1);
     }
     k = o->unk2;
     if (k == 5) {

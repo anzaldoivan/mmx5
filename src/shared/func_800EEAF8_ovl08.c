@@ -1,11 +1,10 @@
 /* Shared body (DK-5), from the banked draft of func_800EEAF8_ovl08 by tools/wave/gate.py rescan. */
 /* Adapted from mmx6 @c1c892d src/shared/rock_06/func_800EA840.c, AGPL-3.0 (THIRD_PARTY.md). */
 #include "types.h"
-#define M2C_UNK s32
+#include "mmx5/graphics.h"
 
 #define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8*)(expr) + (offset)))
 
-M2C_UNK func_800171E8(void*, M2C_UNK);
 s32 func_8003157C(void*, s16, s16);
 
 void DEDUP_NAME(X4_Obj* self) {
@@ -15,7 +14,7 @@ void DEDUP_NAME(X4_Obj* self) {
         return;
     }
     if (!(M2C_FIELD(self, u8*, 0x70) & 8)) {
-        func_800171E8(self, 3);
+        ((s32(*)())set_animation)(self, 3);
         self->unk5 = 2;
         M2C_FIELD(self, s32*, 0x2C) = 0x4200;
         self->unk6 = 0;
@@ -48,7 +47,7 @@ void DEDUP_NAME(X4_Obj* self) {
     if (!(M2C_FIELD(self, u8*, 0x70) & 3)) {
         s32 v;
 
-        func_800171E8(self, 2);
+        ((s32(*)())set_animation)(self, 2);
         self->unk5 = 5;
         self->unk6 = 0;
         M2C_FIELD(self, s32*, 0x24) = 0x38000;

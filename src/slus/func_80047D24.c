@@ -1,14 +1,14 @@
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/movement.h"
+#include "mmx5/graphics.h"
 
-extern void func_800171E8(u8* obj, s32 state);
-extern void func_8002DED4(u8* obj);
-extern s32 func_8002FB58(u8* obj);
 extern u8 D_8007706C[];
 
 void func_80047D24(u8* obj) {
     u8 f;
 
-    func_8002DED4(obj);
+    apply_object_motion(obj);
     if (obj[0x15] != 0) {
         if (*(s32*)(obj + 0x20) < 0) {
             *(s32*)(obj + 0x28) = 0;
@@ -24,7 +24,7 @@ void func_80047D24(u8* obj) {
         obj[0x8E] = 0;
         obj[0x8F] = 0x14;
         obj[0x90] = 0;
-        func_800171E8(obj, 1);
+        set_animation(obj, 1);
         obj[5]++;
         if (*(s8*)(obj + 0x98) == 0 && (f = obj[0x70], (f & 0xF) != 0xF) &&
             !(f & 8)) {

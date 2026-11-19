@@ -1,8 +1,8 @@
 /* Shared body (DK-5), from the banked draft of func_800F6700_ovl09 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/object.h"
+#include "mmx5/globals.h"
 
-extern void func_8002D9EC();
-extern int func_8002D6FC();
 extern u8 D_800D1C00[];
 
 void DEDUP_NAME(u8* arg0) {
@@ -27,6 +27,6 @@ void DEDUP_NAME(u8* arg0) {
             d[*(signed char*)(d + 0x1D) + 0x2C] = 1;
             d[0x1D] += 9;
         }
-        func_8002D6FC(arg0);
+        clear_object_slot(arg0);
     }
 }

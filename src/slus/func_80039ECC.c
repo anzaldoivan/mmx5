@@ -1,4 +1,5 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
 extern void func_8003B1A8(u8* a0);
 extern void func_8003A418(u8* a0);

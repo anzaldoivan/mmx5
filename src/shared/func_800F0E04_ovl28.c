@@ -1,16 +1,16 @@
 /* Shared body (DK-5), from the banked draft of func_800F0E04_ovl28 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/object.h"
+#include "mmx5/globals.h"
 #include "addr.h"
 
 #define SCRATCH_CTX D_1F80004C.ctx0f18
-extern void func_80017248(Ent0E04*);
-extern s32 func_8002DF54(Ent0E04*);
 
 void DEDUP_NAME(Ent0E04* a0) {
     Ctx0F18* c;
 
-    func_80017248(a0);
-    func_8002DF54(a0);
+    animate_object(a0);
+    move_object(a0);
     c = SCRATCH_CTX;
     if (--c->unk80 == 0) {
         a0->unk5 = 3;

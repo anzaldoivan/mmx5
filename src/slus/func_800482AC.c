@@ -1,6 +1,6 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
-extern u8 D_8009A0A0[];
 extern void (*D_80077074[])(s8*);
 
 void func_800482AC(s8* e) {
@@ -8,14 +8,14 @@ void func_800482AC(s8* e) {
 
     ((s32*)e)[6] = ((s32*)e)[2];
     ((s32*)e)[7] = ((s32*)e)[3];
-    f = (s8)D_8009A0A0[0xD3] != 0;
-    if ((s8)D_8009A0A0[0xD4] != 0) {
+    f = (s8)g_Player[0xD3] != 0;
+    if ((s8)g_Player[0xD4] != 0) {
         f = 1;
     }
-    if ((s8)D_8009A0A0[0x93] != 4) {
+    if ((s8)g_Player[0x93] != 4) {
         f = 1;
     }
-    if ((s8)D_8009A0A0[0x96] == 0xD) {
+    if ((s8)g_Player[0x96] == 0xD) {
         f = 1;
     }
     if (f) {

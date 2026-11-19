@@ -1,8 +1,7 @@
 #include "types.h"
+#include "mmx5/globals.h"
 #include "addr.h"
 
-extern void func_8002C50C(void);
-extern u8* func_8002D27C(void);
 extern void LoadImage(void*, void*);
 extern void func_80013288(int);
 extern u8 D_80070C54;

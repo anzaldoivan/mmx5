@@ -1,19 +1,18 @@
 #include "types.h"
+#include "mmx5/weapon.h"
+#include "mmx5/system.h"
+#include "mmx5/sound.h"
+#include "mmx5/globals.h"
 
 extern s32 func_8003E6FC(void*, s8);
-extern u8* func_8003D3A8(s32, s32, s32, u8*);
-extern void func_80017248(u8* obj);
 extern void func_800443A8(u8*, s8);
 extern s32 func_80042494(u8*);
 extern s32 func_8003952C(u8* arg0);
-extern s32 func_80039588(u8* arg0);
+extern s32 check_crouch_input(u8* arg0);
 extern s32 func_80041C80(u8* p);
 extern s32 func_80044228(u8* p);
 extern s32 func_80041B84(u8* p);
 extern s32 func_80044328(u8*);
-extern void func_8003B33C(u8*, s32);
-extern void func_80016490(s32, s32, void*);
-extern s32 func_8002DF78(void);
 extern void func_8003CF74(u8*, s32);
 extern s32 func_8004445C(u8* arg0);
 extern void func_800444B4(u8* a0);
@@ -42,8 +41,8 @@ static inline s32 func_80042090_reset(u8* p) {
         return 0;
     }
     func_8003B33C(p, 0x58);
-    func_80016490(1, 7, p);
-    if (func_8002DF78() & 4) {
+    play_sound(1, 7, p);
+    if (random_byte() & 4) {
         func_8003CF74(p, 3);
     }
     p[0x84] = 0;
@@ -62,7 +61,7 @@ void func_80042090(u8* p) {
         (*(u16*)(p + 0x80) & 0x20) && *(s8*)(p + 0xA6) == 0) {
         r = func_8003E6FC(p, 3);
         if (!(*(s16*)(p + 0xAE) < r)) {
-            q = func_8003D3A8(1, 0x2B, 0, p);
+            q = player_spawn_weapon(1, 0x2B, 0, p);
             if (q != 0) {
                 *(s16*)(p + 0xAE) -= func_8003E6FC(p, 3);
                 q[0x99] = 0;
@@ -72,7 +71,7 @@ void func_80042090(u8* p) {
     if (*(s8*)(p + 6) == 0) {
         p[6]++;
     } else {
-        func_80017248(p);
+        animate_object(p);
         func_800443A8(p, 0x18);
         if (func_80042494(p) != 0) {
             return;
@@ -85,7 +84,7 @@ void func_80042090(u8* p) {
                 return;
             }
             if (*(s8*)(p + 0xCB) < 2) {
-                if (func_80039588(p) != 0) {
+                if (check_crouch_input(p) != 0) {
                     return;
                 }
                 if (p[0x45] & 0x40) {

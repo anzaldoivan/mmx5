@@ -1,8 +1,7 @@
 /* Shared body (DK-5), from the banked draft of func_800F274C_ovl00 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/graphics.h"
 #include "addr.h"
-
-extern void DEDUP_CALLEE(u8* obj, s32 state);
 
 void DEDUP_NAME(u8* obj) {
     D_1F80004C.s8s[0x89] = 1;

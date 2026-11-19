@@ -1,14 +1,13 @@
 /* Shared body (DK-5), from the banked draft of func_800EFBF8_ovl29 by tools/wave/gate.py rescan. */
 #include "types.h"
-
-extern void func_80017248(EntFBF8*);
-extern void func_8002DF54(EntFBF8*);
+#include "mmx5/object.h"
+#include "mmx5/globals.h"
 
 void DEDUP_NAME(EntFBF8* obj) {
     s32 v;
 
-    func_80017248(obj);
-    func_8002DF54(obj);
+    animate_object(obj);
+    move_object(obj);
     if (--obj->unk7C == 0) {
         v = -0x20000;
         if (obj->unk15 & 0x40) {

@@ -1,8 +1,7 @@
 /* Shared body (DK-5), from the banked draft of func_800F5524_ovl27 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/graphics.h"
 #include "addr.h"
-
-extern void DEDUP_CALLEE(Obj5524*, s32);
 
 void DEDUP_NAME(Obj5524* obj) {
     Scr5308* s = D_1F80004C.scr5308;

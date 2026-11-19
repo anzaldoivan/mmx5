@@ -1,15 +1,14 @@
 /* Shared body (DK-5), from the banked draft of func_800F8084_ovl06 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/ovl06.h"
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
 #include "addr.h"
 
-extern void func_8003D29C(s32, s32);
 extern void func_80024548(s32);
-extern void func_800171E8(u8* obj, s32 state);
 extern void func_800FAFFC_ovl06(u8*, s32, s32, s32);
 extern u8 D_8009A1F8[];
 extern u8 D_800D1C00[];
-extern u16 D_800FF94C_ovl06;
-extern u16 D_800FF94E_ovl06;
 
 void DEDUP_NAME(u8* arg0) {
     s16 t;
@@ -50,7 +49,7 @@ void DEDUP_NAME(u8* arg0) {
             *(s32*)(arg0 + 0x28) = 0;
             *(s32*)(arg0 + 0x24) = 0;
             *(s32*)(arg0 + 0x2C) = 0x1000;
-            func_800171E8(arg0, 0x14);
+            set_animation(arg0, 0x14);
             func_800FAFFC_ovl06(arg0, *(s16*)(arg0 + 0xA), *(s16*)(arg0 + 0xE),
                                 0x10);
             arg0[3] = 1;

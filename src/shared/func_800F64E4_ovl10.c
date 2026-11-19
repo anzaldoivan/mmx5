@@ -1,10 +1,10 @@
 /* Shared body (DK-5), from the banked draft of func_800F64E4_ovl10 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
 
-extern void func_800171E8(u8* obj, s32 state);
 extern s32 func_8002E198(void);
 extern void func_8003D010(s8 dmg);
-extern u8 D_8009A0A0[];
 
 void DEDUP_NAME(u8* obj) {
     u8 t;
@@ -14,12 +14,12 @@ void DEDUP_NAME(u8* obj) {
 
     t = (*(u8**)(obj + 0x7C))[0x47];
     if (t == 0x76 || t == 0x7F) {
-        func_800171E8(obj, 4);
+        set_animation(obj, 4);
     } else {
-        func_800171E8(obj, 0x18);
+        set_animation(obj, 0x18);
     }
-    func_800171E8(obj, 4);
-    if (D_8009A0A0[0x5C] & 0x7F) {
+    set_animation(obj, 4);
+    if (g_Player[0x5C] & 0x7F) {
         old = *(s16*)(obj + 0x90);
         *(s16*)(obj + 0x90) += func_8002E198();
         if (old != *(s16*)(obj + 0x90)) {
@@ -41,7 +41,7 @@ void DEDUP_NAME(u8* obj) {
     }
     if (*(s16*)(obj + 0x90) >= 30) {
         obj[0x62] = 0;
-        D_8009A0A0[0xCA] = 0;
+        g_Player[0xCA] = 0;
         obj[4] = 2;
     }
 }

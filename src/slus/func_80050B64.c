@@ -6,4 +6,6 @@
 #define func_800EF4FC_ovl11 func_80050BA4
 #define func_800EF534_ovl11 func_80050C60
 
-#include "../shared/func_800EF410_ovl11.c"
+void func_800EF4FC_ovl11(void* arg0);
+void func_800EF534_ovl11(void* arg0);
+#include "shared/func_800EF410_ovl11.c"

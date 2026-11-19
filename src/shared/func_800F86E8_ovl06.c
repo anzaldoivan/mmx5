@@ -1,17 +1,16 @@
 /* Shared body (DK-5), from the banked draft of func_800F86E8_ovl06 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/ovl06.h"
+#include "mmx5/object.h"
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
 
-extern void func_800171E8(u8* obj, s32 state);
-extern void func_80017248(u8* obj);
-extern void func_8002DF54(u8* a0);
 extern s32 ratan2(s32, s32);
 extern s32 rcos(s32);
 extern s32 rsin(s32);
 extern u8 D_800FF1E4_ovl06[];
 extern u8 D_800FF1E8_ovl06[];
 extern s16 D_800FF4F4_ovl06[][2];
-extern s16 D_800FF94C_ovl06;
-extern s16 D_800FF94E_ovl06;
 
 void DEDUP_NAME(u8* obj) {
     s32 i;
@@ -35,15 +34,15 @@ void DEDUP_NAME(u8* obj) {
     sn = rsin(ang);
     t2 = sn << 4;
     *(s32*)(obj + 0x24) = ((sn << 5) + t2) << 1;
-    func_80017248(obj);
-    func_8002DF54(obj);
+    animate_object(obj);
+    move_object(obj);
     v = *(s16*)(obj + 0xA);
     t = D_800FF4F4_ovl06[i][0] + D_800FF94C_ovl06;
     if (v >= t - 4 && t + 4 >= v) {
         v = *(s16*)(obj + 0xE);
         t = D_800FF4F4_ovl06[i][1] + D_800FF94E_ovl06;
         if (v >= t - 4 && t + 4 >= v) {
-            func_800171E8(obj, 0xE);
+            set_animation(obj, 0xE);
             *(u8**)(obj + 0x50) = D_800FF1E4_ovl06;
             *(u8**)(obj + 0x54) = D_800FF1E8_ovl06;
             *(s16*)(obj + 0x7C) = 0x32;

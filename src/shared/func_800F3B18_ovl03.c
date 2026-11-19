@@ -1,13 +1,12 @@
 /* Shared body (DK-5), from the banked draft of func_800F3B18_ovl03 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/movement.h"
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
 
-extern void func_800171E8(u8* obj, s32 state);
 extern s32 ratan2(s32, s32);
 extern s32 rcos(s32);
 extern s32 rsin(s32);
-extern void func_80017248(u8* obj);
-extern void func_8002DED4(u8* obj);
-extern u8 D_8009A0A0[];
 extern s16 D_800FA240_ovl03;
 extern s16 D_800FA242_ovl03;
 extern s16 D_800FA244_ovl03;
@@ -26,8 +25,8 @@ void DEDUP_NAME(u8* obj) {
     u8* q;
     s32 e;
 
-    func_800171E8(obj, 1);
-    p = D_8009A0A0;
+    set_animation(obj, 1);
+    p = g_Player;
     if (*(s16*)(p + 0xA) > *(s16*)(obj + 0xA)) {
         obj[0x15] = 0x40;
     } else {
@@ -47,7 +46,7 @@ void DEDUP_NAME(u8* obj) {
         *(s32*)(obj + 0x28) = 0;
         *(s32*)(obj + 0x2C) = 0;
         obj[6] += 1;
-    } else if (q = D_8009A0A0, ((s8*)q)[2] == 0) {
+    } else if (q = g_Player, ((s8*)q)[2] == 0) {
         if (*(s16*)(obj + 0xA) < D_800FA248_ovl03) {
             x = D_800FA240_ovl03 - 1;
         } else {
@@ -77,6 +76,6 @@ void DEDUP_NAME(u8* obj) {
         *(s32*)(obj + 0x2C) = 0;
         obj[6] += 5;
     }
-    func_80017248(obj);
-    func_8002DED4(obj);
+    animate_object(obj);
+    apply_object_motion(obj);
 }

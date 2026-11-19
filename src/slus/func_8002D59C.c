@@ -7,4 +7,4 @@
 #define D_800D4F40 D_800A11A0
 #define func_8002D33C func_8002D59C.NON_MATCHING
 
-#include "../shared/func_8002D33C.c"
+#include "shared/func_8002D33C.c"

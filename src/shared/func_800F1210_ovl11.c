@@ -1,11 +1,11 @@
 /* Shared body (DK-5), from the banked draft of func_800F1210_ovl11 by tools/wave/gate.py rescan. */
 /* Adapted from mmx6 @c1c892d src/shared/rock_15/func_800EBAAC.c, AGPL-3.0 (THIRD_PARTY.md). */
 #include "types.h"
+#include "mmx5/graphics.h"
 
 #define M2C_UNK s32
 #define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8*)(expr) + (offset)))
 
-M2C_UNK DEDUP_CALLEE(void*, M2C_UNK);
 extern M2C_UNK D_80074DA0;
 extern s32 D_800F98E8_ovl11;
 extern s32 D_800F98EC_ovl11;

@@ -1,6 +1,6 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
-extern u8 D_8009A420[];
 extern u16 D_800D1C7E;
 extern u8 D_800D1C27;
 

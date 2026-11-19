@@ -1,15 +1,15 @@
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
 #include "addr.h"
 
-extern void func_800171E8(u8* obj, s32 state);
 extern u8 D_8007B470[];
-extern u8 D_8009A0A0[];
 
 void func_8004AF30(u8* obj) {
     u8* p;
     u8* q;
     s32 o;
-    u8* d = D_8009A0A0;
+    u8* d = g_Player;
 
     if (((s8*)obj)[2] == 0) {
         if (((s8*)d)[5] != 0x29) {
@@ -31,7 +31,7 @@ void func_8004AF30(u8* obj) {
     *(u8**)(obj + 0x3C) = q + o;
     obj[0x15] = d[0x15];
     if (((s8*)obj)[2] != 0) {
-        func_800171E8(obj, 0);
+        set_animation(obj, 0);
         obj[5] = 2;
         obj[3] = 1;
     }

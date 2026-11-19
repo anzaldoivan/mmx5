@@ -2,6 +2,6 @@
 #include "types.h"
 
 #define DEDUP_NAME func_8004B328
-#define DEDUP_CALLEE func_8002D6FC
+#define DEDUP_CALLEE clear_object_slot
 
-#include "../shared/func_8004B1AC.c"
+#include "shared/func_8004B1AC.c"

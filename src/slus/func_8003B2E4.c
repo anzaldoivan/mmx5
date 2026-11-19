@@ -1,7 +1,5 @@
 #include "types.h"
-
-extern s32 func_80039ECC(u8* arg0);
-extern void func_8003B33C(u8*, s32);
+#include "mmx5/globals.h"
 
 void func_8003B2E4(u8* p) {
     if (func_80039ECC(p) == 0) {

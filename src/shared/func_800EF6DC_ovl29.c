@@ -1,7 +1,7 @@
 /* Shared body (DK-5), from the banked draft of func_800EF6DC_ovl29 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/globals.h"
 
-extern void DEDUP_CALLEE(Ent6DC*);
 extern u8 D_80074EE0[];
 extern u8 D_800F8FC0_ovl29[];
 extern u8 D_800F8FC4_ovl29[];

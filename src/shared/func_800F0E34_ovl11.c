@@ -1,14 +1,12 @@
 /* Shared body (DK-5), from the banked draft of func_800F0E34_ovl11 by tools/wave/gate.py rescan. */
 /* Adapted from mmx6 @c1c892d src/shared/rock_15/func_800EC334.c, AGPL-3.0 (THIRD_PARTY.md). */
 #include "types.h"
-#define M2C_UNK s32
-
-M2C_UNK func_800171E8(void*, M2C_UNK);
-M2C_UNK func_80017248();
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
 
 void DEDUP_NAME(u8* arg0) {
-    func_80017248();
-    func_800171E8(arg0, 6);
+    animate_object();
+    set_animation(arg0, 6);
     {
         // !FAKE: depin: dropping it breaks the match (12/17)
         register s32 t asm("$2") = arg0[6];

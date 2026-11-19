@@ -1,9 +1,9 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
 extern s32 CdControlB(s32, s32, u8*);
 extern void SsSepClose(s32);
 extern s32 SsSepOpenJ(u8*, s32, s32);
-extern s8 func_80014464(void);
 extern void* func_80066D98(void* func);
 extern s8 D_80093E60[];
 extern s8 D_80093E6C[];

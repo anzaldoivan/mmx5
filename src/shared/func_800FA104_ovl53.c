@@ -1,18 +1,17 @@
 /* Shared body (DK-5), from the banked draft of func_800FA104_ovl53 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/ovl53.h"
+#include "mmx5/object.h"
+#include "mmx5/globals.h"
 
 extern void func_8002C3CC(void*, void*, s32, s32, s32);
-extern s32 func_8002C338(s32, void*, s32);
-extern u8* func_8002D53C(void);
 extern void func_8002C1C8(void);
 extern u8 D_80091C44;
 extern u8 D_80093E66;
 extern u8 D_8009A42C;
 extern u8 D_800D50DC;
 extern u8 D_8009A1F8[];
-extern u8 D_800FAD9C_ovl53[];
 extern u8 D_800FAF9C_ovl53[];
-extern u8 D_800FB19C_ovl53[];
 extern u8 D_800FB39C_ovl53[];
 
 void DEDUP_NAME(u8* arg0) {
@@ -35,7 +34,7 @@ void DEDUP_NAME(u8* arg0) {
             func_8002C338(0x60, D_800FAF9C_ovl53, 0x10);
             func_8002C3CC(D_800FB39C_ovl53, D_800FB19C_ovl53, 0x100, 0, 0x3C);
             func_8002C338(0x70, D_800FB39C_ovl53, 0x10);
-            o = func_8002D53C();
+            o = alloc_class6_slot();
             if (o != 0) {
                 o[0] = 1;
                 o[1] = 9;

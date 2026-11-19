@@ -1,9 +1,9 @@
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/system.h"
 
 extern s32 func_8003E6FC(void*, s8);
-extern void func_8003CE10(u8*);
-extern void func_8003B33C(u8*, s32);
-extern s32 func_8002DF78(void);
+extern void player_clear_dash(u8*);
 extern void func_8003CF74(u8*, s32);
 extern void func_80041EF8(u8* obj);
 extern u8 D_800D1DBA;
@@ -41,9 +41,9 @@ s32 func_80041A54(u8* o) {
     }
     o[0x8E] = 1;
     o[0xCB] = 0;
-    func_8003CE10(o);
+    player_clear_dash(o);
     func_8003B33C(o, 0x6E);
-    if (func_8002DF78() & 4) {
+    if (random_byte() & 4) {
         func_8003CF74(o, 9);
     }
     *(s32*)(o + 0x20) = 0;

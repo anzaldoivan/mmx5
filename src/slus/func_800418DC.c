@@ -1,15 +1,13 @@
 #include "types.h"
+#include "mmx5/system.h"
+#include "mmx5/sound.h"
+#include "mmx5/globals.h"
 
 extern s32 func_80044328(u8*);
 extern s32 func_800306E0(u8*);
 extern s32 func_8003A134(u8*, s32);
-extern void func_8003B33C(u8*, s32);
-extern void func_80016490(s32, s32, void*);
-extern s32 func_8002DF78(void);
 extern void func_8003CF74(u8*, s32);
-extern void func_8003CE10(u8*);
-extern s32 func_80043B88(u8* arg0);
-extern void func_80017248(u8* obj);
+extern void player_clear_dash(u8*);
 extern void func_800443A8(u8*, s8);
 extern void func_8003A874(u8*);
 
@@ -18,18 +16,18 @@ s32 func_800418DC(u8* arg0) {
         return 0;
     }
     func_8003B33C(arg0, func_8003A134(arg0, func_800306E0(arg0) & 0xFF) + 0x6B);
-    func_80016490(1, 8, arg0);
-    if (func_8002DF78() & 4) {
+    play_sound(1, 8, arg0);
+    if (random_byte() & 4) {
         func_8003CF74(arg0, 8);
     }
-    func_8003CE10(arg0);
+    player_clear_dash(arg0);
     arg0[5] = 0x3D;
     arg0[6] = 0;
     func_80043B88(arg0);
     if (*(s8*)(arg0 + 6) == 0) {
         arg0[6]++;
     } else {
-        func_80017248(arg0);
+        animate_object(arg0);
         func_800443A8(arg0, (arg0[0x45] & 0x7F) + 0x26);
     }
     if (*(u16*)(arg0 + 0x80) & 2) {

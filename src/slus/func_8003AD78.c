@@ -1,14 +1,14 @@
 #include "types.h"
+#include "mmx5/sound.h"
 
-extern void func_8003F294(u8* arg0, s32 arg1);
-extern void func_80016490(s32, s32, void*);
+extern void player_set_animation_shooting(u8* arg0, s32 arg1);
 extern void func_8003CF74(u8*, s32);
-extern void func_8003CE10(u8*);
-extern void func_8003CA44(u8* obj);
+extern void player_clear_dash(u8*);
+extern void spawn_wall_jump_visual(u8* obj);
 
 void func_8003AD78(u8* arg0) {
-    func_8003F294(arg0, 0xE);
-    func_80016490(1, 3, arg0);
+    player_set_animation_shooting(arg0, 0xE);
+    play_sound(1, 3, arg0);
     func_8003CF74(arg0, 2);
     arg0[0x67] = 1;
     if (*(u16*)(arg0 + 0x7C) & 0x100) {
@@ -16,7 +16,7 @@ void func_8003AD78(u8* arg0) {
         arg0[0x86] = 1;
         arg0[0x8C] = 1;
     } else {
-        func_8003CE10(arg0);
+        player_clear_dash(arg0);
     }
     if (arg0[0x89] & 1) {
         arg0[0x15] = 0x40;
@@ -37,7 +37,7 @@ void func_8003AD78(u8* arg0) {
     arg0[0x8A] = 0xA;
     *(s32*)(arg0 + 0x24) = *(s32*)(arg0 + 0x124);
     *(s32*)(arg0 + 0x2C) = *(s32*)(arg0 + 0x144);
-    func_8003CA44(arg0);
+    spawn_wall_jump_visual(arg0);
     arg0[0x5] = 0xA;
     arg0[0x6] = 0;
 }

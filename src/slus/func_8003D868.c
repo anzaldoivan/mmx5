@@ -1,16 +1,16 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
-extern void func_80016D54(s32, s32);
-extern void func_8001296C(s32);
-extern void func_8003B33C(u8*, s32);
+extern void silence_sound(s32, s32);
+extern void start_pad_vibration(s32);
 extern u8 D_800D1C00[];
 
 void func_8003D868(u8* p) {
     u8* g;
 
-    func_80016D54(1, 5);
-    func_80016D54(1, 7);
-    func_8001296C(0);
+    silence_sound(1, 5);
+    silence_sound(1, 7);
+    start_pad_vibration(0);
     if (((s8*)p)[0xD5] != 0) {
         p[3] = 0;
         p[0xD7] = 1;

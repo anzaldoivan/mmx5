@@ -4,4 +4,4 @@
 #define DEDUP_NAME func_8004D914
 #define func_800F3A80_ovl05 func_8004D914.NON_MATCHING
 
-#include "../shared/func_800F3A80_ovl05.c"
+#include "shared/func_800F3A80_ovl05.c"

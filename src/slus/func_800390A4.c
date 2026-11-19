@@ -1,10 +1,10 @@
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/sound.h"
 
-extern s32 func_80016490(s32, s32, void*);
 extern s32 func_80030CBC(u8*);
-extern void func_80038F18(u8*, s32);
-extern void func_8003B33C(u8*, s32);
-extern void func_8003CE10(u8*);
+extern void snap_to_tile_slope(u8*, s32);
+extern void player_clear_dash(u8*);
 
 s32 func_800390A4(u8* p) {
     s32 r;
@@ -26,7 +26,7 @@ s32 func_800390A4(u8* p) {
         if (*(s8*)(p + 0x8E) != 0 && *(s8*)(p + 2) == 0) {
             func_8003B33C(p, 0x90);
         } else {
-            func_80016490(0, 0x26, p);
+            play_sound(0, 0x26, p);
             *(s8*)(p + 0x8E) = 0;
             func_8003B33C(p, 0xA0);
         }
@@ -36,7 +36,7 @@ s32 func_800390A4(u8* p) {
         p[0x6] = 0;
         *(s32*)(p + 0x20) = 0;
         *(u16*)(p + 0xA) = (*(u16*)(p + 0xA) & 0xFFF0) + 8;
-        func_8003CE10(p);
+        player_clear_dash(p);
         return 1;
     } else {
         if ((u8)(r - 0x25) >= 9) {
@@ -65,7 +65,7 @@ s32 func_800390A4(u8* p) {
             }
             func_8003B33C(p, a | 0x94);
         } else {
-            func_80016490(0, 0x26, p);
+            play_sound(0, 0x26, p);
             switch (r) {
             case 0x2D:
                 a = 0;
@@ -89,8 +89,8 @@ s32 func_800390A4(u8* p) {
         p[0x5] = 0x1C;
         p[0x6] = 0;
         *(s32*)(p + 0x24) = 0;
-        func_80038F18(p, r);
-        func_8003CE10(p);
+        snap_to_tile_slope(p, r);
+        player_clear_dash(p);
         return 1;
     }
 }

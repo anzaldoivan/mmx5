@@ -1,10 +1,10 @@
 /* Shared body (DK-5), from the banked draft of func_800F228C_ovl02 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/object.h"
 #include "addr.h"
 
 #define SCR D_1F80004C.scr4c
 extern s32 func_8003157C(Ent14C8*, s32, s32);
-extern void func_8002DF54(Ent14C8*);
 extern Unk800770CC D_800F463C_ovl02;
 extern u8 D_800F463E_ovl02;
 extern u8 D_800F463F_ovl02;
@@ -50,5 +50,5 @@ void DEDUP_NAME(Ent14C8* e) {
         SCR->box.d = D_800F463F_ovl02;
         SCR->flags83 &= ~0x10;
     }
-    func_8002DF54(e);
+    move_object(e);
 }

@@ -1,17 +1,13 @@
 /* Shared body (DK-5), from the banked draft of func_800F4CDC_ovl04 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
 
-extern s32 func_80031DD0(u8* a0);
-extern s32 func_800317B8(u8* a0);
-extern void func_800171E8(u8* obj, s32 state);
 extern void func_800F486C_ovl04(u8* a0);
-extern void func_8002D9EC(u8* a0, s32 a1, s32 a2);
-extern signed char D_800D1CA2;
 extern u8 D_80075CA0[];
 extern u8 D_8009A11A;
 extern u8 D_80074EE0[];
 extern void* D_80101C14_ovl04[];
-extern u8 D_8009A0A0[];
 
 void DEDUP_NAME(u8* p) {
     s32 r;
@@ -55,7 +51,7 @@ void DEDUP_NAME(u8* p) {
         }
         *(u8**)(p + 0x58) = D_80074EE0;
         if (r == 2 || r == 0xB || r == 0x21) {
-            func_800171E8(p, 6);
+            set_animation(p, 6);
             p[0x8D] = 0x3C;
             p[4] = 3;
             p[7] = 0;
@@ -63,7 +59,7 @@ void DEDUP_NAME(u8* p) {
         }
     }
     ((void (*)(u8*))D_80101C14_ovl04[*(s8*)(p + 5)])(p);
-    g = D_8009A0A0;
+    g = g_Player;
     if (*(s8*)(g + 0xF3) == 0) {
         if (*(s8*)(p + 5) == 5) {
             func_800F486C_ovl04(p);

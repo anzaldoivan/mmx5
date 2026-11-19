@@ -1,6 +1,6 @@
 #include "types.h"
 
-void func_8003F250(u8* p);
+void player_reset_charge(u8* p);
 void func_8003EE38(u8* p);
 void func_8003DF20(u8* p);
 
@@ -15,7 +15,7 @@ void func_8003ED10(u8* p) {
             }
         }
         p[0x93] = 0;
-        func_8003F250(p);
+        player_reset_charge(p);
         func_8003EE38(p);
         func_8003DF20(p);
     }

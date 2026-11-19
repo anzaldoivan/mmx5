@@ -1,10 +1,10 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
 extern s8 D_8009A424;
 extern u8 D_800D1C00[];
-extern void func_8002C50C(void);
 extern void func_8002002C(s32);
-extern void func_80012E0C(s32, void (*)(void));
+extern void create_task(s32, void (*)(void));
 extern void func_80012EAC(void);
 extern void func_80020904(void);
 
@@ -26,7 +26,7 @@ void func_8001DCC8(u8* a0) {
             p[3] = 0;
             p[0x1D] = v;
         }
-        func_80012E0C(1, func_80020904);
+        create_task(1, func_80020904);
         func_80012EAC();
     }
 }

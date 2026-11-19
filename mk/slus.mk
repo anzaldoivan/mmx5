@@ -30,11 +30,13 @@ CC_DIR := tools/bin/cc/gcc-2.95.2-psx
 CPP := $(CC_DIR)/cpp
 CC1 := $(CC_DIR)/cc1
 MASPSX := python3 refs/maspsx/maspsx.py --aspsx-version=2.86
-CPPFLAGS := -lang-c -D__GNUC__=2 -Dmips -D__mips__ -Dpsx -D__psx__ -D_MIPSEL -D__CHAR_UNSIGNED__ -D__OPTIMIZE__ -I include
+CPPFLAGS := -lang-c -D__GNUC__=2 -Dmips -D__mips__ -Dpsx -D__psx__ -D_MIPSEL -D__CHAR_UNSIGNED__ -D__OPTIMIZE__ -I include -I src
 CFLAGS := -O2 -G0 -quiet -w
 CC_ASFLAGS := -EL -march=r3000 -no-pad-sections -G0 -I asm/$(BINARY)/include
 B_C = $(shell find src/$(BINARY) -name '*.c' 2>/dev/null)
 B_OBJ += $(patsubst %.c,$(B_DIR)/%.o,$(B_C))
+# DEPFILE: a recipe line, run after cpp wrote $@.dt (also used by mk/patches.mk).
+DEPFILE = sed '1s|^[^:]*:|$@:|' $@.dt > $(@:.o=.d) && sed 's/^[^:]*://; s/\\$$//' $@.dt | tr -s ' ' '\n' | grep . | tail -n +2 | sed 's/$$/:/' >> $(@:.o=.d); rm -f $@.dt
 
 # SPLIT_DEPS / SPLIT_POST / JUST_SYMS: per-alias hooks (mk/rockx5.mk: exe symbols).
 # rm asm/<alias> first: splat never deletes a .s whose sub a yaml edit removed or retyped, and B_ASM globs asm/, so a
@@ -54,9 +56,12 @@ $(B_DIR)/asm/$(BINARY)/%.o: src/$(BINARY)/%.s
 	@mkdir -p $(dir $@)
 	$(AS) $(ASFLAGS) -o $@ $<
 
-$(B_DIR)/%.o: %.c $(wildcard include/*.h) $(wildcard src/shared/*.c)
+# Depfile: the pinned cpp takes only `-MMD <file>` (-MT/-MF exit 33; stdout stays cmp-equal) and names the target
+# `<basename>.o`; sed retargets it to $@ into $(@:.o=.d), plus one empty rule per header/shared body (what -MP gives).
+$(B_DIR)/%.o: %.c $(wildcard include/*.h)
 	@mkdir -p $(dir $@)
-	$(CPP) $(CPPFLAGS) $< | $(CC1) $(CFLAGS) | $(MASPSX) | $(AS) $(CC_ASFLAGS) -o $@
+	$(CPP) $(CPPFLAGS) -MMD $@.dt $< | $(CC1) $(CFLAGS) | $(MASPSX) | $(AS) $(CC_ASFLAGS) -o $@
+	@$(DEPFILE)
 
 $(B_DIR)/%.o: %.bin
 	@mkdir -p $(dir $@)
@@ -92,3 +97,6 @@ link: $(B_OBJ) $(JUST_SYMS) $(LINK_DEPS) $(LINK_SCRIPTS)
 	$(LINK_POST)
 
 # clean: fleet-wide, mk/fleet.mk
+
+# Compiler depfiles of every C object (patch objects share these paths under SHIFT, mk/patches.mk).
+-include $(patsubst %.c,$(B_DIR)/%.d,$(B_C))

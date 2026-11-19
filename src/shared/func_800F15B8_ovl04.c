@@ -3,7 +3,8 @@
 
 extern u8* DEDUP_CALLEE();
 
-void DEDUP_NAME(u8* o, u8 arg1) {
+void DEDUP_NAME(u8* o, s32 a1) {
+    u8 arg1 = a1;
     u8* c;
 
     c = DEDUP_CALLEE();

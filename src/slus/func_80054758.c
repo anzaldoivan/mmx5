@@ -1,7 +1,7 @@
 #include "types.h"
+#include "mmx5/sound.h"
+#include "mmx5/globals.h"
 
-extern void func_80017248(u8* obj);
-extern void func_80016490(s32, s32, void*);
 extern u8 D_8009A1F8[];
 extern signed char D_800D1C0C;
 
@@ -9,9 +9,9 @@ void func_80054758(u8* obj, u8* arg1) {
     u8* p;
 
     if (*(s8*)(obj + 0x45) < 2) {
-        func_80017248(obj);
+        animate_object(obj);
         if (*(s8*)(obj + 0x45) == 1) {
-            func_80016490(0, 0x11, obj);
+            play_sound(0, 0x11, obj);
             obj[0x45] = 0;
         }
         return;

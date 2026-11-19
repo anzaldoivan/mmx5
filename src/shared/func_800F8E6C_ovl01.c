@@ -1,15 +1,13 @@
 /* Shared body (DK-5), from the banked draft of func_800F8E6C_ovl01 by tools/wave/gate.py rescan. */
 #include "types.h"
-
-extern void func_800171E8(u8* obj, s32 state);
-extern void func_80017248(u8* obj);
-extern u8 D_800D1CA2;
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
 
 void DEDUP_NAME(u8* obj) {
     if (*(s8*)(obj + 0x45) == 1) {
         *(s32*)(obj + 0x20) = 0;
         *(s32*)(obj + 0x28) = 0;
-        func_800171E8(obj, 0xE);
+        set_animation(obj, 0xE);
         if (obj[0x96] == 0) {
             if (obj[0x15] != 0) {
                 if (obj[0x70] & 2) {
@@ -44,11 +42,11 @@ void DEDUP_NAME(u8* obj) {
         obj[6] = 1;
     }
     if (obj[0x96] != 0 && *(s8*)(obj + 0x92) != 3) {
-        func_800171E8(obj, 0);
+        set_animation(obj, 0);
         obj[5] = 3;
         obj[6] = 0;
         *(s16*)(obj + 0x7C) = 60;
     } else {
-        func_80017248(obj);
+        animate_object(obj);
     }
 }

@@ -1,7 +1,7 @@
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/movement.h"
 
-extern void func_8003B33C(u8*, s32);
-extern void func_8002DED4(u8* obj);
 extern void func_8003AA4C(u8* arg0);
 
 void func_80040654(u8* obj) {
@@ -14,7 +14,7 @@ void func_80040654(u8* obj) {
                 func_8003B33C(obj, 0x58);
             }
         } else {
-            func_8002DED4(obj);
+            apply_object_motion(obj);
         }
     } else if (obj[0x89] & 8) {
         *(s8*)(obj + 6) = 1;

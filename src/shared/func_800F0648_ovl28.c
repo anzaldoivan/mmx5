@@ -1,10 +1,9 @@
 /* Shared body (DK-5), from the banked draft of func_800F0648_ovl28 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/globals.h"
 #include "addr.h"
 
-extern u8* func_8002D1A4();
-extern void func_8002E058();
-extern u8* func_8002D27C();
+extern void set_velocity_from_angle();
 
 #define G D_1F80004C.bytes
 void DEDUP_NAME(u8* arg0) {
@@ -19,7 +18,7 @@ void DEDUP_NAME(u8* arg0) {
         p[2] = G[0x85];
         *(u8**)(p + 0x7C) = arg0;
         *(s32*)(p + 0x84) = 0;
-        func_8002E058(p, *(s8*)(G + 0x85) & 0xFE);
+        set_velocity_from_angle(p, *(s8*)(G + 0x85) & 0xFE);
         G[0x80] = 8;
         arg0[6]++;
         G[0x82]++;

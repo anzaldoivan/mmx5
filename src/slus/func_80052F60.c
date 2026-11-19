@@ -1,7 +1,7 @@
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
 
-extern void func_800171E8(u8* obj, s32 state);
-extern s16 D_8009A0AA;
 extern u8 D_8009A1F8[];
 
 void func_80052F60(u8* obj) {
@@ -36,9 +36,9 @@ void func_80052F60(u8* obj) {
                 obj[0x15] = 0x40;
             }
             if (((s8*)obj)[2] == 1) {
-                func_800171E8(obj, 5);
+                set_animation(obj, 5);
             } else {
-                func_800171E8(obj, 0);
+                set_animation(obj, 0);
             }
             obj[6]++;
         }

@@ -1,18 +1,15 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
 extern void func_8003CD08(u8* obj);
-extern s32 func_80043B88(u8* arg0);
-extern s32 func_80039ECC(u8* arg0);
 extern s32 func_8003F414(u8* arg0);
 extern s32 func_8003952C(u8* arg0);
 extern s32 func_80043C64(u8* arg0);
 extern s32 func_80041A54(u8* arg0);
 extern s32 func_800395E8(u8* arg0);
 extern void func_8003A7E4(u8* arg0);
-extern void func_80017248(u8* obj);
 extern void func_8003B4CC(u8* obj, s32 arg1, s32 arg2);
 extern void func_8003CD60(u8* obj);
-extern void func_8003B33C(u8* obj, s32 arg1);
 extern void func_8003A670(u8* arg0);
 
 void func_80035864(u8* obj) {
@@ -47,7 +44,7 @@ void func_80035864(u8* obj) {
         func_8003A7E4(obj);
         return;
     }
-    func_80017248(obj);
+    animate_object(obj);
     state = *(s8*)(obj + 0x6);
     if (state == 0) {
         if (*(s8*)(obj + 0x8F) != 0 && *(s8*)(obj + 0x2) == 0) {

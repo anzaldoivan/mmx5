@@ -1,10 +1,11 @@
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/sound.h"
+#include "mmx5/graphics.h"
+#define D_800D1C28_as_u8 (*(u8*)&D_800D1C28)
 
 extern void func_8003CD08(u8* obj);
-extern void func_800171E8(u8* obj, s32 state);
-extern void func_80016490(s32, s32, void*);
 extern u8 D_8009A1F8[];
-extern u8 D_800D1C28;
 extern s32 D_800E92F8;
 
 void func_80054D9C(u8* obj, s32 arg1, u8* other) {
@@ -21,13 +22,13 @@ void func_80054D9C(u8* obj, s32 arg1, u8* other) {
         other[0xD4] = 0;
         func_8003CD08(other);
         obj[5] = 4;
-        func_800171E8(obj, 1);
-        func_80016490(0, 0x11, obj);
+        set_animation(obj, 1);
+        play_sound(0, 0x11, obj);
         t = *(s8*)(obj + 2);
         if (t == 6 || t == 10) {
             D_800E92F8 = 1;
         } else if (t == 9) {
-            D_800D1C28 = 1;
+            D_800D1C28_as_u8 = 1;
         }
         {
             u8* r = D_8009A1F8;

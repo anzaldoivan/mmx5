@@ -1,13 +1,13 @@
 #include "types.h"
+#include "mmx5/globals.h"
+#define D_8009A420_as_s32 (*(s32*)&D_8009A420)
 
-extern void func_8003CEAC(s32 arg0, s32 arg1, s32 arg2);
+extern void load_buffered_palette(s32 arg0, s32 arg1, s32 arg2);
 extern u8 D_800774FC[];
-extern u8 D_8009A0A0[];
-extern s32 D_8009A420;
 extern s16 D_800E9560;
 
 void func_8004C10C(u8* arg0) {
-    u8* src = D_8009A0A0;
+    u8* src = g_Player;
 
     *(s32*)(arg0 + 0x38) = *(s32*)(src + 0x38);
     *(s32*)(arg0 + 0x3C) = *(s32*)(src + 0x3C);
@@ -32,8 +32,8 @@ void func_8004C10C(u8* arg0) {
     } else {
         *(s16*)(arg0 + 0xA) -= D_800E9560;
     }
-    if (D_8009A420 & 1) {
-        func_8003CEAC(D_800774FC[*(s8*)(arg0 + 0x8E)], 0x13, 1);
+    if (D_8009A420_as_s32 & 1) {
+        load_buffered_palette(D_800774FC[*(s8*)(arg0 + 0x8E)], 0x13, 1);
         if (++*(s8*)(arg0 + 0x8E) == 6) {
             arg0[0x8E] = 0;
         }

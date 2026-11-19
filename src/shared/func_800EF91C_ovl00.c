@@ -1,8 +1,8 @@
 /* Shared body (DK-5), from the banked draft of func_800EF91C_ovl00 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/system.h"
 
-extern Obj80050880* func_8002D0E4(void);
-extern s32 func_8002DF78(void);
+extern Obj80050880* find_free_visual_obj(void);
 extern s32 D_800FA948_ovl00[];
 extern s32 D_800FA928_ovl00[];
 
@@ -14,15 +14,15 @@ void DEDUP_NAME(u8 flags, s16 x0, s16 y0, s16 x1, s16 y1, s16 count) {
     s16 i;
 
     for (i = 0; i < count; i++) {
-        obj = func_8002D0E4();
+        obj = find_free_visual_obj();
         if (obj == 0) {
             continue;
         }
         obj->unk0 = 0x21;
         obj->unk1 = 9;
         obj->unk2 = 0;
-        rx = (func_8002DF78() << 8) + func_8002DF78() + 1;
-        ry = (func_8002DF78() << 8) + func_8002DF78() + 1;
+        rx = (random_byte() << 8) + random_byte() + 1;
+        ry = (random_byte() << 8) + random_byte() + 1;
         d = x1 - x0;
         if (d == 0) {
             obj->unkA = x0;
@@ -39,20 +39,20 @@ void DEDUP_NAME(u8 flags, s16 x0, s16 y0, s16 x1, s16 y1, s16 count) {
         obj->unkC = 0;
         switch (flags & 0xF) {
         case 1:
-            obj->unk20 = D_800FA948_ovl00[func_8002DF78() & 7] << 1;
-            obj->unk24 = D_800FA928_ovl00[func_8002DF78() & 3] << 1;
+            obj->unk20 = D_800FA948_ovl00[random_byte() & 7] << 1;
+            obj->unk24 = D_800FA928_ovl00[random_byte() & 3] << 1;
             break;
         case 2:
-            obj->unk20 = -(D_800FA948_ovl00[func_8002DF78() & 7] << 1);
-            obj->unk24 = D_800FA928_ovl00[func_8002DF78() & 3] << 1;
+            obj->unk20 = -(D_800FA948_ovl00[random_byte() & 7] << 1);
+            obj->unk24 = D_800FA928_ovl00[random_byte() & 3] << 1;
             break;
         case 4:
-            obj->unk20 = -(D_800FA948_ovl00[func_8002DF78() & 7] << 1);
-            obj->unk24 = -(D_800FA928_ovl00[func_8002DF78() & 3] << 1);
+            obj->unk20 = -(D_800FA948_ovl00[random_byte() & 7] << 1);
+            obj->unk24 = -(D_800FA928_ovl00[random_byte() & 3] << 1);
             break;
         case 8:
-            obj->unk20 = D_800FA948_ovl00[func_8002DF78() & 7] << 1;
-            obj->unk24 = -(D_800FA928_ovl00[func_8002DF78() & 3] << 1);
+            obj->unk20 = D_800FA948_ovl00[random_byte() & 7] << 1;
+            obj->unk24 = -(D_800FA928_ovl00[random_byte() & 3] << 1);
             break;
         default:
             obj->unk20 = 0;

@@ -1,16 +1,15 @@
 /* Shared body (DK-5), from the banked draft of func_800FA004_ovl53 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/ovl53.h"
+#include "mmx5/globals.h"
+#include "mmx5/sound.h"
 
 extern u8 D_80091C44;
 extern X4_BackgroundObj D_8009A1F8[3];
 extern u8 D_800FAF9C_ovl53[];
-extern u8 D_800FAD9C_ovl53[];
 extern u8 D_800FB39C_ovl53[];
-extern u8 D_800FB19C_ovl53[];
 
 void func_8002C3CC(void*, void*, s32, s32, s32);
-s32 func_8002C338(s32, void*, s32);
-s32 func_80016490(s32, s32, void*);
 
 void DEDUP_NAME(Ovl45State* arg0) {
     if (D_80091C44 == 0) {
@@ -28,7 +27,7 @@ void DEDUP_NAME(Ovl45State* arg0) {
         func_8002C3CC(D_800FB39C_ovl53, D_800FB19C_ovl53, 0x100,
                       0x1E - arg0->unk4, 0x1E);
         func_8002C338(0x70, D_800FB39C_ovl53, 0x10);
-        func_80016490(2, 0x54, 0);
+        play_sound(2, 0x54, 0);
         arg0->unk1++;
     }
 }

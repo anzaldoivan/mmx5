@@ -1,14 +1,15 @@
 #include "types.h"
+#include "mmx5/globals.h"
+#define D_8009A420_as_s32 (*(s32*)&D_8009A420)
 
 extern Blk1BC D_800D1C00;
-extern s32 D_8009A420;
 extern u16 D_80093F70;
 
 void func_80023500(void) {
     u8* p = 0x801F6000;
 
     *(s32*)(p + 0) = 0;
-    D_8009A420 = *(s32*)(p + 4);
+    D_8009A420_as_s32 = *(s32*)(p + 4);
     D_80093F70 = *(u16*)(p + 8);
     *(Blk1BC*)(p + 0x1C8) = D_800D1C00;
     D_800D1C00 = *(Blk1BC*)(p + 0xC);

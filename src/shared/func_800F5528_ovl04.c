@@ -1,9 +1,8 @@
 /* Shared body (DK-5), from the banked draft of func_800F5528_ovl04 by tools/wave/gate.py rescan. */
 #include "types.h"
-
-extern void func_800171E8(u8* o, s32 n);
-extern void func_80017248(u8* o);
-extern s32 func_8002DF78(void);
+#include "mmx5/system.h"
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
 
 void DEDUP_NAME(u8* o) {
     s32 base;
@@ -13,14 +12,14 @@ void DEDUP_NAME(u8* o) {
         *(s8*)(o + 0x90) *= -1;
         o[0x8F] ^= 1;
         if (o[0x8F] == 0) {
-            func_800171E8(o, 3);
+            set_animation(o, 3);
             base = 0;
             o[5] = 4;
             o[6] = 0;
         } else {
             base = 4;
         }
-        o[0x91] = func_8002DF78() & 0xF;
+        o[0x91] = random_byte() & 0xF;
         if (o[0x91] < 5) {
             o[0x91] = base;
         } else if (o[0x91] < 8) {
@@ -31,5 +30,5 @@ void DEDUP_NAME(u8* o) {
             o[0x91] = base + 3;
         }
     }
-    func_80017248(o);
+    animate_object(o);
 }

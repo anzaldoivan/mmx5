@@ -1,8 +1,8 @@
 #include "types.h"
+#include "mmx5/graphics.h"
 #include "addr.h"
 
-extern void func_800171E8(u8* obj, s32 state);
-extern void* func_8003D4C0(s8 arg0, s8 arg1, s8 arg2, s32 arg3);
+extern void* player_spawn_visual(s8 arg0, s8 arg1, s8 arg2, s32 arg3);
 extern int func_80045D44();
 extern u8 D_80076E60[];
 extern u8 D_80076E64[];
@@ -34,7 +34,7 @@ void func_80045660(u8* obj) {
         *(s16*)(obj + 0x92) = 0x50;
         *(s16*)(obj + 0x42) = 0x7842;
         *(u8**)(obj + 0x3C) = p;
-        func_8003D4C0(0x21, 2, 0, 0);
+        player_spawn_visual(0x21, 2, 0, 0);
     } else {
         *(u8**)(obj + 0x68) = D_80076E6C;
         *(u8**)(obj + 0x50) = D_80076E68;
@@ -55,6 +55,6 @@ void func_80045660(u8* obj) {
     *(s32*)(obj + 0x28) = 0;
     *(s32*)(obj + 0x24) = 0;
     *(s32*)(obj + 0x2C) = 0;
-    func_800171E8(obj, 0);
+    set_animation(obj, 0);
     obj[4]++;
 }

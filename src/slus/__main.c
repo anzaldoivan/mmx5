@@ -3,4 +3,4 @@
 
 #define DEDUP_NAME __main
 
-#include "../shared/D_800EEC60_ovl00.c"
+#include "shared/D_800EEC60_ovl00.c"

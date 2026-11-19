@@ -1,13 +1,10 @@
 #include "types.h"
-
-extern void func_80017248(u8* obj);
-extern void func_8002D6FC(u8* obj);
-extern void func_800171E8(u8* obj, s32 state);
-extern void func_8002D9EC(u8* a0, s32 a1, s32 a2);
-extern u8 D_8009A0A0[];
+#include "mmx5/object.h"
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
 
 void func_8004CD74(u8* obj) {
-    u8* g = D_8009A0A0;
+    u8* g = g_Player;
     s32 hit;
 
     hit = ((s8*)g)[0x5C] == 0;
@@ -24,12 +21,12 @@ void func_8004CD74(u8* obj) {
         goto fail; // !FAKE: goto kept for the matching branch layout
     }
     if (((s8*)obj)[4] != 0) {
-        func_80017248(obj);
+        animate_object(obj);
         if (((s8*)obj)[0x46] != 0) {
             goto tail; // !FAKE: goto kept for the matching branch layout
         }
     fail: // !FAKE: label kept for the matching branch layout
-        func_8002D6FC(obj);
+        clear_object_slot(obj);
         return;
     }
     obj[3] = 1;
@@ -38,7 +35,7 @@ void func_8004CD74(u8* obj) {
     *(u16*)(obj + 0x40) = *(u16*)(g + 0x40);
     *(u16*)(obj + 0x42) = 0x7801;
     obj[0x16] = 2;
-    func_800171E8(obj, 0x7C);
+    set_animation(obj, 0x7C);
     obj[4]++;
 tail: // !FAKE: label kept for the matching branch layout
     *(s32*)(obj + 8) = *(s32*)(g + 8);

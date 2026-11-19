@@ -3,7 +3,7 @@
 
 extern u8 D_80078C80[];
 extern u8 D_8007A0E4[];
-extern void func_80017214(u8* a0, s32 a1, s32 a2);
+extern void set_animation_frame(u8* a0, s32 a1, s32 a2);
 
 void func_8003B4CC(u8* p, s32 idx, s32 a2) {
     u8 t;
@@ -34,5 +34,5 @@ void func_8003B4CC(u8* p, s32 idx, s32 a2) {
                 D_1F80001C.bytes + *(s32*)(D_1F80001C.bytes + 0x1C);
         }
     }
-    func_80017214(p, idx, a2);
+    set_animation_frame(p, idx, a2);
 }

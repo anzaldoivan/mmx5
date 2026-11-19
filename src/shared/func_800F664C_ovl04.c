@@ -1,8 +1,8 @@
 /* Shared body (DK-5), from the banked draft of func_800F664C_ovl04 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
 
-extern void DEDUP_CALLEE(u8* obj, s32 state);
-extern u8 D_8009A0A0[];
 extern u8 D_80074DA0[];
 extern u8 D_80101CE8_ovl04[];
 extern u8 D_80101CEC_ovl04[];
@@ -22,7 +22,7 @@ void DEDUP_NAME(u8* obj) {
     *(s32*)(obj + 0x2C) = 0;
     *(s32*)(obj + 0x18) = x;
     *(s32*)(obj + 0x1C) = *(s32*)(obj + 0xC);
-    obj[0x14] = D_8009A0A0[0x14];
+    obj[0x14] = g_Player[0x14];
     obj[0x93] = 0;
     obj[0x71] = 0;
     switch (*(s8*)(obj + 2)) {
@@ -34,7 +34,7 @@ void DEDUP_NAME(u8* obj) {
         *(u8**)(obj + 0x54) = 0;
         *(u8**)(obj + 0x50) = D_80101CE8_ovl04;
         *(u8**)(obj + 0x68) = D_80101CEC_ovl04;
-        obj[0x15] = (x >= *(s32*)(D_8009A0A0 + 8)) << 6;
+        obj[0x15] = (x >= *(s32*)(g_Player + 8)) << 6;
         obj[0x91] = 7;
         *(s16*)(obj + 0x88) = 0;
         DEDUP_CALLEE(obj, 10);

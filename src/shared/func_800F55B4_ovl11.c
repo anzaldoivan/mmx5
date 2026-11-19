@@ -1,8 +1,8 @@
 /* Shared body (DK-5), from the banked draft of func_800F55B4_ovl11 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/globals.h"
 #include "addr.h"
 
-extern void func_8003D29C(s32, s32);
 extern void func_80024548(s32);
 extern u8 D_8009A1F8[];
 extern Glb800F3EA0 D_800D1C00;

@@ -1,12 +1,10 @@
 /* Shared body (DK-5), from the banked draft of func_800FCDD0_ovl07 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/globals.h"
 
-extern void func_80028B18(s32, s32, s32, void*);
 extern s32 func_80032F70(u8* a0);
 extern s32 func_8003240C(u8* a0);
 extern s32 func_800326BC(u8* a0);
-extern s32 func_800317B8(u8* a0);
-extern void func_80017248(u8* obj);
 
 extern signed char D_800D1C0C;
 extern u8 D_8009A244;
@@ -110,5 +108,5 @@ void DEDUP_NAME(u8* o) {
             func_800317B8(o);
         }
     }
-    func_80017248(o);
+    animate_object(o);
 }

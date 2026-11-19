@@ -1,16 +1,16 @@
 /* Shared body (DK-5), from the banked draft of func_800FA094_ovl07 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/movement.h"
+#include "mmx5/globals.h"
 #include "addr.h"
 
-extern void func_80017248(u8* obj);
-extern void func_8002DED4(u8* obj);
 extern s16 D_8009A0AE;
 
 void DEDUP_NAME(u8* obj) {
     u8* p;
     s32 v;
 
-    func_80017248(obj);
+    animate_object(obj);
     p = D_1F80004C.bytes;
     if (p[0x8F] == 0) {
         if (((*(s16*)(obj + 0xE) - *(s16*)(p + 0x84)) < 0
@@ -35,6 +35,6 @@ void DEDUP_NAME(u8* obj) {
     store:
         obj[6] = 3;
     } else {
-        func_8002DED4(obj);
+        apply_object_motion(obj);
     }
 }

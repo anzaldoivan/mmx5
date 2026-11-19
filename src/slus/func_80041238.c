@@ -1,14 +1,14 @@
 #include "types.h"
+#include "mmx5/weapon.h"
+#include "mmx5/globals.h"
+#include "mmx5/system.h"
 
-extern s32 func_8002DF78(void);
-extern u8* func_8003D3A8(s32, s32, s32, u8*);
-extern void func_8003B33C(u8*, s32);
 extern s8 D_800E9548;
 
 void func_80041238(u8* obj) {
     if (--obj[0xF4] == 0) {
-        obj[0xF4] = func_8002DF78() % 3 + 3;
-        func_8003D3A8(1, 0x31, D_800E9548, 0);
+        obj[0xF4] = random_byte() % 3 + 3;
+        player_spawn_weapon(1, 0x31, D_800E9548, 0);
         D_800E9548 ^= 1;
     }
     if (++((s8*)obj)[7] >= 0x79) {

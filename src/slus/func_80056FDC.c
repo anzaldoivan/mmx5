@@ -1,6 +1,6 @@
 #include "types.h"
 
-extern u8* func_8002D144(void);
+extern u8* alloc_class3_slot(void);
 extern u8 D_800D1C00[];
 
 void func_80056FDC(u8* a0) {
@@ -12,7 +12,7 @@ void func_80056FDC(u8* a0) {
         g[0xF] = 1;
         return;
     }
-    r = func_8002D144();
+    r = alloc_class3_slot();
     if (r != 0) {
         r[0] = 1;
         r[1] = 4;

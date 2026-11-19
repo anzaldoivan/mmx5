@@ -1,10 +1,10 @@
 /* Shared body (DK-5), from the banked draft of func_800FA528_ovl53 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/object.h"
 
 extern signed char D_8009A424;
 extern u8* D_800FB59C_ovl53;
 extern u8 D_8009A1F8[];
-extern u8* DEDUP_CALLEE(void);
 
 void DEDUP_NAME(Ovl45State* s) {
     u8* p;

@@ -1,8 +1,5 @@
 // T4.1.c1 (.run/t41c1/gen.py over logs/T4.1.owners.txt): exe->ovl refs -> symbol of the owning overlay at the target; region bases -> ovlA/B_VRAM
-rom:0x3E9C reloc:MIPS_HI16 symbol:ovlB_VRAM addend:-0x10000 // 8001369C lui -> region B
-rom:0x3EB8 reloc:MIPS_LO16 symbol:ovlB_VRAM // 800136B8 ori -> region B
-rom:0x4B10 reloc:MIPS_HI16 symbol:ovlB_VRAM addend:-0x10000 // 80014310 lui -> region B
-rom:0x4B14 reloc:MIPS_LO16 symbol:ovlB_VRAM // 80014314 ori -> region B
+// 3.8 T2: region B hi/lo rows for 8001369C and 80014310 removed. The code is C and holds the base as a constant (config/shift/not_pointers.txt).
 rom:0x4300 reloc:MIPS_HI16 symbol:D_800EF37C_ovl23 // 80013B00 -> ovl23 800EF37C
 rom:0x4308 reloc:MIPS_LO16 symbol:D_800EF37C_ovl23 // 80013B08 -> ovl23 800EF37C
 rom:0x19010 reloc:MIPS_HI16 symbol:D_800EF330_ovl23 // 80028810 -> ovl23 800EF330

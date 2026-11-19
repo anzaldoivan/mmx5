@@ -1,10 +1,9 @@
 /* Shared body (DK-5), from the banked draft of func_800F2A9C_ovl09 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/movement.h"
+#include "mmx5/globals.h"
 
-extern void func_80017248(u8* obj);
-extern u8* func_8002D144(void);
-extern void func_8002D9EC(u8* a0, s32 a1, s32 a2);
-extern void func_8002DED4(u8* obj);
+extern u8* alloc_class3_slot(void);
 extern s32 func_8002DFF8(u8* obj, s32 a1, s32 a2);
 extern void func_8002E0F8(s32* a0, s32* a1, u8 a2);
 extern u16 D_80093E68;
@@ -34,7 +33,7 @@ void DEDUP_NAME(u8* obj) {
             *(s32*)(obj + 0x24) *= 3;
             obj[6]++;
             if (D_800D1C0C != 0xC) {
-                slot = func_8002D144();
+                slot = alloc_class3_slot();
                 if (slot != 0) {
                     slot[0] = 1;
                     slot[1] = 2;
@@ -43,7 +42,7 @@ void DEDUP_NAME(u8* obj) {
             }
         }
     }
-    func_80017248(obj);
-    func_8002DED4(obj);
+    animate_object(obj);
+    apply_object_motion(obj);
     func_8002D9EC(obj, 0x40, 0x40);
 }

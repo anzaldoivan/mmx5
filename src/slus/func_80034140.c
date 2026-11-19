@@ -1,15 +1,15 @@
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/sound.h"
+#define D_8009A420_as_s32 (*(s32*)&D_8009A420)
 
-extern void func_80016490(s32, s32, void*);
-extern s32 D_8009A420;
 extern u8 D_800D1C00[];
-extern u8 D_8009A0A0[];
 
 void func_80034140(u8* obj) {
     s32 frame;
     s32 idx;
 
-    frame = D_8009A420;
+    frame = D_8009A420_as_s32;
     if (frame & 1) {
         return;
     }
@@ -22,7 +22,7 @@ void func_80034140(u8* obj) {
         p = q + idx;
         v = *p & 0x7F;
         if (v != 0) {
-            u8* x = D_8009A0A0;
+            u8* x = g_Player;
             s32 t = x[0x5C];
             s32 lim;
             idx = v - 1;
@@ -34,10 +34,10 @@ void func_80034140(u8* obj) {
             }
             x[0x5C] = idx;
             if (!(frame & 3)) {
-                func_80016490(0, 0x17, 0);
+                play_sound(0, 0x17, 0);
             }
         } else {
-            u8* x = D_8009A0A0;
+            u8* x = g_Player;
             s32 lim = ((D1C00*)base)->unk47[((s8*)x)[2]];
             if (((s8*)x)[0x5C] != lim) {
                 idx = (s8)((x[0x5C] & 0x7F) + 1);
@@ -46,7 +46,7 @@ void func_80034140(u8* obj) {
                 }
                 x[0x5C] = idx;
                 if (!(frame & 3)) {
-                    func_80016490(0, 0x17, 0);
+                    play_sound(0, 0x17, 0);
                 }
             } else {
                 obj[5] = 1;
@@ -68,7 +68,7 @@ void func_80034140(u8* obj) {
         p2 = q2 + idx;
         v2 = *p2 & 0x7F;
         if (v2 != 0) {
-            u8* x2 = D_8009A0A0;
+            u8* x2 = g_Player;
             s32 t2 = x2[0x5C];
             s32 lim2;
             s32 hi;
@@ -82,7 +82,7 @@ void func_80034140(u8* obj) {
             }
             x2[0x5C] = idx | hi;
             if (!(frame & 3)) {
-                func_80016490(0, 0x17, 0);
+                play_sound(0, 0x17, 0);
             }
         } else {
             obj[5] = 1;

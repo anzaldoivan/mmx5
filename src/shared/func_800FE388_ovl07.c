@@ -1,8 +1,8 @@
 /* Shared body (DK-5), from the banked draft of func_800FE388_ovl07 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
 
-extern void func_800171E8(ObjFE130*, s32);
-extern void func_80017248(ObjFE130*);
 extern u8 D_80101DD0_ovl07[];
 extern u8 D_80101DB8_ovl07[];
 extern u8 D_80101DC4_ovl07[];
@@ -13,7 +13,7 @@ void DEDUP_NAME(ObjFE130* o) {
     if (one == 1) {
         if (o->unk8D == 0) {
             o->unkE += 12;
-            func_800171E8(o, 14);
+            set_animation(o, 14);
         }
         o->unk68 = D_80101DD0_ovl07;
         o->unk50 = D_80101DB8_ovl07;
@@ -29,6 +29,6 @@ void DEDUP_NAME(ObjFE130* o) {
         }
         o->unk6 = 0;
     } else {
-        func_80017248(o);
+        animate_object(o);
     }
 }

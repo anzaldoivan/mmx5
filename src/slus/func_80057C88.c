@@ -1,10 +1,10 @@
 /* Adapted from mmx6 @c1c892d src/shared/SLUS_013.95/func_8005400C.c, AGPL-3.0 (THIRD_PARTY.md). */
 /* Adapted from sozud/mmx4 @29b62af src/main/effects/effect_27_teleport_intro.c:teleport_intro_spawn_quads, AGPL-3.0; proven shared with X6 by exact signature 6c6bde588dbe (see THIRD_PARTY.md). */
 #include "types.h"
+#include "mmx5/object.h"
+#include "mmx5/system.h"
 #define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8*)(expr) + (offset)))
-s32 func_8002DF78(void);
 #define NULL ((void*)0)
-struct X4_QuadObj* func_8002D53C(void);
 
 void func_80057C88(ObjEEBEC* self) {
     struct X4_QuadObj* X4_f32;
@@ -12,7 +12,7 @@ void func_80057C88(ObjEEBEC* self) {
 
     switch (self->unk5) {
     case 0:
-        X4_f32 = func_8002D53C();
+        X4_f32 = alloc_class6_slot();
         if (X4_f32 != NULL) {
             M2C_FIELD(X4_f32, s8*, 0x0) = 0x81;
             M2C_FIELD(X4_f32, s8*, 0x1) = 7;
@@ -28,7 +28,7 @@ void func_80057C88(ObjEEBEC* self) {
         if (self->unk14 == 0) {
             self->unk14 = 0;
             do {
-                X4_f32 = func_8002D53C();
+                X4_f32 = alloc_class6_slot();
                 if (X4_f32 != NULL) {
                     M2C_FIELD(X4_f32, s8*, 0x0) = 0x81;
                     M2C_FIELD(X4_f32, s8*, 0x1) = 7;
@@ -48,12 +48,12 @@ void func_80057C88(ObjEEBEC* self) {
         if (self->unk14 == 0) {
             self->unk14 = 0;
             do {
-                X4_f32 = func_8002D53C();
+                X4_f32 = alloc_class6_slot();
                 if (X4_f32 != NULL) {
                     M2C_FIELD(X4_f32, s8*, 0x0) = 0x81;
                     M2C_FIELD(X4_f32, s8*, 0x1) = 7;
                     X4_f32->unk2 = 2;
-                    M2C_FIELD(X4_f32, s8*, 0x7) = func_8002DF78() & 3;
+                    M2C_FIELD(X4_f32, s8*, 0x7) = random_byte() & 3;
                     M2C_FIELD(X4_f32, ObjEEBEC**, 0x58) = self;
                     self->unk14++;
                 }

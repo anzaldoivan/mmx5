@@ -1,4 +1,5 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
 extern Slot8002D0E4 D_80096D98[];
 extern s32 func_8002E408(u8* p, s32 a, u8* b, u8* c);

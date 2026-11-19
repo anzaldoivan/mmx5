@@ -1,4 +1,5 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
 extern void func_8003CD08(u8* obj);
 extern s32 func_8003EF28(u8* arg0);
@@ -11,7 +12,6 @@ extern s32 func_800398E8(u8* obj);
 extern void func_8003AB50(u8* arg0);
 extern void func_8003D200(u8* obj);
 extern void func_8003C8B8(void* arg0);
-extern void func_8003F2D8(u8* arg0, s32 arg1);
 extern void func_8003CD60(u8* obj);
 
 void func_80036B50(u8* obj) {

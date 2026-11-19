@@ -49,7 +49,7 @@ private_rev = "71bf87c23a3ea48b5ad0efdd96d688cbbdc8a908"   # the -private commit
 image = "ghcr.io/anzaldoivan/mmx5-toolchain@sha256:7653d6d8b35c14458798bb160ad1a93ef99faf9da7591e3542c412cd0ff85c3f"
 land_check = ["bash", "tools/land_check.sh", "{tree}"]
 # never public, beyond the agent files: the agents' wave drafts and the flip-era records
-deny = ["waves/", "docs/publish/visibility.md", "docs/publish/facts.md", "docs/routing.md", "docs/ledger.md"]
+deny = ["waves/", "docs/publish/visibility.md", "docs/publish/facts.md", "docs/routing.md", "docs/ledger.md", "cookbook/", "docs/README.md", "docs/decomp-architect.md", "docs/decomp-architect-install.md", "docs/decomp-kernels.md", "docs/inherited-record.md", "docs/knowledge-corpus.md", "docs/tools-manifest.md", "docs/wave-playbook.md"]
 
 # [own]: what this repository holds itself in place of a psxdecomp delivery. psxdecomp writes nothing for a key
 # set here; /psxdecomp:doctor checks that its path exists.

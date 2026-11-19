@@ -1,6 +1,6 @@
 #include "types.h"
-
-extern int func_8002D6FC();
+#include "mmx5/globals.h"
+#include "mmx5/object.h"
 
 void func_8002D760(u8* arg0) {
     u8* p;
@@ -9,5 +9,5 @@ void func_8002D760(u8* arg0) {
     if (p != 0) {
         *p &= 0x70;
     }
-    func_8002D6FC(arg0);
+    clear_object_slot(arg0);
 }

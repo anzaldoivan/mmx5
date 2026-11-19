@@ -1,8 +1,7 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
-extern void func_80017248(u8* obj);
 extern void func_8003A70C(u8* obj);
-extern void func_8003B33C(u8*, s32);
 extern void func_8003CD08(u8* obj);
 
 void func_800378C8(u8* obj) {
@@ -23,6 +22,6 @@ void func_800378C8(u8* obj) {
         obj[0x84] = 0;
         obj[0x86] = 0;
     } else if (((s8*)obj)[0x67] == 0) {
-        func_80017248(obj);
+        animate_object(obj);
     }
 }

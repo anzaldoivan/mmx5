@@ -5,4 +5,4 @@
 #define D_800748D0 D_800748D8
 #define D_800748D4 D_800748DC
 
-#include "../shared/func_8003CD08.c"
+#include "shared/func_8003CD08.c"

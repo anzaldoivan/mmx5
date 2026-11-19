@@ -1,8 +1,8 @@
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/sound.h"
 
-extern u8 D_8009A420[];
 extern u16 D_800C9320;
-extern s32 func_80016490(s32, s32, void*);
 extern void func_800132F8(s8 arg);
 extern void func_800211C4(void*, s32);
 
@@ -11,7 +11,7 @@ void func_80020164(u8* arg0) {
 
     if (((s8*)p)[4] == 0) {
         if (D_800C9320 & 0x40) {
-            func_80016490(0, 0x22, 0);
+            play_sound(0, 0x22, 0);
             if (p[7] != 1) {
                 func_800132F8(8);
             }

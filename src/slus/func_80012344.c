@@ -24,10 +24,10 @@ extern void SetDrawArea(u8*, s16*);
 extern void SetDrawOffset(u8*, s16*);
 extern void func_80012B70(u8* arg0);
 extern void func_80012D88(void);
-extern void func_80013EE8(void);
-extern void Ovl_ReadToc(void);
+extern void load_rock_dat_file_table(void);
+extern void read_rock_bin_toc(void);
 extern void func_80012BD8(void);
-extern void func_80012E0C(s32, void (*)(void));
+extern void create_task(s32, void (*)(void));
 extern void func_8001E048(void);
 
 extern u8 D_8006FB0C[];
@@ -93,10 +93,10 @@ void func_80012344(void) {
     D_8009E794 = disp0;
     D_1F800000 = 0;
     D_80093F70 = 0xD37;
-    func_80013EE8();
-    Ovl_ReadToc();
+    load_rock_dat_file_table();
+    read_rock_bin_toc();
     func_80012BD8();
     D_80091D54 = 0;
     D_8009A41A = 0x3C;
-    func_80012E0C(0, func_8001E048);
+    create_task(0, func_8001E048);
 }

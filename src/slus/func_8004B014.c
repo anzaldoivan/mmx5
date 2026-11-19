@@ -1,12 +1,12 @@
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
 
-extern void func_800171E8(u8* obj, s32 state);
 extern s32 D_800771C8[];
 extern s32 D_800771EC[];
-extern u8 D_8009A0A0[];
 
 void func_8004B014(u8* obj) {
-    u8* g = D_8009A0A0;
+    u8* g = g_Player;
     s32 v;
 
     if (*(s8*)(g + 5) != 0x29) {
@@ -14,7 +14,7 @@ void func_8004B014(u8* obj) {
         return;
     }
     if (++*(s16*)(obj + 0x8C) >= 4) {
-        func_800171E8(obj, 0);
+        set_animation(obj, 0);
         *(s32**)(obj + 0x50) = D_800771C8;
         *(s32**)(obj + 0x68) = D_800771EC;
         *(u16*)(obj + 0xA) = *(u16*)(g + 0xA);

@@ -1,16 +1,16 @@
 #include "types.h"
+#include "mmx5/object.h"
 
-extern s32 func_80040E98(u8* obj);
+extern s32 player_nova_strike_hit_wall(u8* obj);
 extern void func_8003C5D8(u8* obj);
 extern void func_8003AA4C(u8* arg0);
-extern void func_8002DF54(u8* a0);
 extern s8 D_800D1C1C;
 
 void func_80040E14(u8* obj) {
     s32 f;
     u8 t;
 
-    f = func_80040E98(obj) != 0;
+    f = player_nova_strike_hit_wall(obj) != 0;
     t = obj[0xF4];
     if (t == 0) {
         f = 1;
@@ -25,6 +25,6 @@ void func_80040E14(u8* obj) {
         func_8003AA4C(obj);
     } else {
         obj[0xF4] = t - 1;
-        func_8002DF54(obj);
+        move_object(obj);
     }
 }

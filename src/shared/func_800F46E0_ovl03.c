@@ -1,10 +1,9 @@
 /* Shared body (DK-5), from the banked draft of func_800F46E0_ovl03 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/movement.h"
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
 
-extern void func_800171E8(Obj3DD4*, s32);
-extern void func_80017248(Obj3DD4*);
-extern void func_8002DED4(Obj3DD4*);
-extern s16 D_8009A0AA;
 extern s16 D_800FA240_ovl03;
 extern s16 D_800FA242_ovl03;
 extern s16 D_800FA244_ovl03;
@@ -29,7 +28,7 @@ void DEDUP_NAME(Obj3DD4* obj) {
         obj->unk24 = 0;
     }
     if (obj->unk20 == 0 && obj->unk24 == 0) {
-        func_800171E8(obj, 3);
+        set_animation(obj, 3);
         ((u8*)obj)[0x62] = 3;
         if (obj->unk15 == 0) {
             d = D_8009A0AA - D_800FA242_ovl03;
@@ -54,6 +53,6 @@ void DEDUP_NAME(Obj3DD4* obj) {
         obj->unk6++;
         obj->unk20 = (d << 16) / 40;
     }
-    func_80017248(obj);
-    func_8002DED4(obj);
+    animate_object(obj);
+    apply_object_motion(obj);
 }

@@ -1,13 +1,12 @@
 #include "types.h"
+#include "mmx5/object.h"
+#include "mmx5/globals.h"
 
-extern void func_80017248(u8* obj);
-extern void func_8002D6FC(u8* obj);
 extern void func_8004B49C(u8* obj, u8* g);
 extern void func_8004B8E4(u8* obj, u8* g);
-extern u8 D_8009A0A0[];
 
 void func_8004B378(u8* obj) {
-    u8* g = D_8009A0A0;
+    u8* g = g_Player;
     s32 hit;
     u8 t;
 
@@ -32,12 +31,12 @@ void func_8004B378(u8* obj) {
         if (((s8*)obj)[4] == 0) {
             goto first; // !FAKE: goto kept for the matching branch layout
         }
-        func_80017248(obj);
+        animate_object(obj);
         if (((s8*)obj)[0x46] != 0) {
             goto second; // !FAKE: goto kept for the matching branch layout
         }
     }
-    func_8002D6FC(obj);
+    clear_object_slot(obj);
     return;
 first: // !FAKE: label kept for the matching branch layout
     func_8004B49C(obj, g);

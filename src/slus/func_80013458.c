@@ -1,7 +1,7 @@
 #include "types.h"
 
 extern void func_80014684(s32, s32, s32);
-extern void func_8001551C(s32, s32);
+extern void wait_for_file_load(s32, s32);
 extern void func_80013E14(void);
 extern void func_80016B64(void);
 extern u8 D_800D1C00[];
@@ -32,7 +32,7 @@ void func_80013458(void) {
     } else {
         func_80014684(0x5A, 0, 0);
     }
-    func_8001551C(0, 0);
+    wait_for_file_load(0, 0);
     func_80013E14();
     D_800D1F38 = D_800BE9A8;
     D_800C9314 = D_8009E790;

@@ -1,9 +1,10 @@
 /* Shared body (DK-5), from the banked draft of func_800F3CBC_ovl04 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/ovl04.h"
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
 #include "addr.h"
 
-extern void func_800171E8(u8* obj, s32 state);
-extern s32 func_8003D29C(s32, s32);
 extern u8 D_80075CA0[];
 extern u32* D_80098118;
 extern u8 D_8009A0B4;
@@ -13,7 +14,6 @@ extern u8 D_801017E8_ovl04[];
 extern u8 D_801017EC_ovl04[];
 extern u16 D_801017F8_ovl04[][20];
 extern u8 D_80101B38_ovl04[];
-extern u16 D_80102FEC_ovl04[][20];
 
 void DEDUP_NAME(u8* obj) {
     u8* p;
@@ -22,7 +22,7 @@ void DEDUP_NAME(u8* obj) {
     s32 i;
     s32 j;
 
-    func_8003D29C(0x14, 0x40);
+    ((s32(*)())func_8003D29C)(0x14, 0x40);
     *(u8**)(obj + 0x54) = D_801017EC_ovl04;
     *(u8**)(obj + 0x50) = D_801017E8_ovl04;
     obj[5]++;
@@ -67,5 +67,5 @@ void DEDUP_NAME(u8* obj) {
     *(s16*)(obj + 0x7E) = 0;
     obj[7] = 0;
     D_8009A1F8[0x48] = 1;
-    func_800171E8(obj, 3);
+    set_animation(obj, 3);
 }

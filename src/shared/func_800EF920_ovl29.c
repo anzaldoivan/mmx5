@@ -1,8 +1,7 @@
 /* Shared body (DK-5), from the banked draft of func_800EF920_ovl29 by tools/wave/gate.py rescan. */
 #include "types.h"
-
-extern void func_8002DED4(EntF920*);
-extern void func_80017248(EntF920*);
+#include "mmx5/movement.h"
+#include "mmx5/globals.h"
 
 void DEDUP_NAME(EntF920* obj) {
     s32 v = obj->velX;
@@ -14,6 +13,6 @@ void DEDUP_NAME(EntF920* obj) {
         obj->state = 7;
         obj->substate = 0;
     }
-    func_8002DED4(obj);
-    func_80017248(obj);
+    apply_object_motion(obj);
+    animate_object(obj);
 }

@@ -1,8 +1,7 @@
 /* Shared body (DK-5), from the banked draft of func_800F2BF8_ovl02 by tools/wave/gate.py rescan. */
 #include "types.h"
-
-extern s16 D_8009A0AA;
-extern void DEDUP_CALLEE(Ent2BF8*);
+#include "mmx5/globals.h"
+#include "mmx5/movement.h"
 
 void DEDUP_NAME(Ent2BF8* a0) {
     if (a0->unk70 & 8) {

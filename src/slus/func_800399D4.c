@@ -1,15 +1,15 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
-extern void func_8003CE30(void);
+extern void player_clear_attack(void);
 extern void func_8003A190(u8*);
-extern void func_8003B33C(u8*, s32);
 
 void func_800399D4(u8* a0) {
     s32 f;
     u8 t;
 
     if (*(s8*)(a0 + 0xD4) > 0 && *(s8*)(a0 + 0xA4) <= 0) {
-        func_8003CE30();
+        player_clear_attack();
         func_8003A190(a0);
         t = a0[0x17];
         f = (t == 5);

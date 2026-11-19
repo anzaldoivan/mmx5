@@ -1,10 +1,9 @@
 /* Adapted from mmx6 @c1c892d src/shared/SLUS_013.95/func_80028EBC.c, AGPL-3.0 (THIRD_PARTY.md). */
 #include "types.h"
+#include "mmx5/globals.h"
 #define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8*)(expr) + (offset)))
-#define M2C_UNK s32
 
-extern M2C_UNK D_8009A0A0;
-#define D_8009A0A0 (*(X4_Obj*)&D_8009A0A0)
+#define g_Player_as_X4_Obj (*(X4_Obj*)&g_Player)
 
 void func_8002A080(X4_BackgroundObj* arg0) {
     s32 spd1;
@@ -36,10 +35,11 @@ void func_8002A080(X4_BackgroundObj* arg0) {
                 M2C_FIELD(arg0, s16*, 0x1E) = t;
                 goto block2; // !FAKE: control flow kept from the mmx6 twin
             } else {
-                t = D_8009A0A0.x_pos.i.hi;
+                t = g_Player_as_X4_Obj.x_pos.i.hi;
                 t = t - pos1;
                 if ((s16)(t - M2C_FIELD(arg0, s16*, 0x30)) >= 0) {
-                    t = D_8009A0A0.x_pos.i.hi - D_8009A0A0.unk18.i.hi;
+                    t = g_Player_as_X4_Obj.x_pos.i.hi -
+                        g_Player_as_X4_Obj.unk18.i.hi;
                     if (t >= 0) {
                         t = 0;
                     }
@@ -78,12 +78,13 @@ block2:
                 }
                 goto store2; // !FAKE: control flow kept from the mmx6 twin
             }
-            t = D_8009A0A0.x_pos.i.hi;
+            t = g_Player_as_X4_Obj.x_pos.i.hi;
             t = t - pos2;
             t = t - M2C_FIELD(arg0, s16*, 0x32);
             t = t + 2;
             if (t < 4) {
-                t = D_8009A0A0.x_pos.i.hi - D_8009A0A0.unk18.i.hi;
+                t = g_Player_as_X4_Obj.x_pos.i.hi -
+                    g_Player_as_X4_Obj.unk18.i.hi;
                 if (t < 0) {
                     t = 0;
                 }
@@ -123,11 +124,11 @@ block3:
             }
             goto block4; // !FAKE: control flow kept from the mmx6 twin
         }
-        t = D_8009A0A0.y_pos.i.hi;
+        t = g_Player_as_X4_Obj.y_pos.i.hi;
         t = t - pos3;
         t = t - M2C_FIELD(arg0, s16*, 0x2C);
         if (t < 0) {
-            t = D_8009A0A0.y_pos.i.hi - D_8009A0A0.unk1C.i.hi;
+            t = g_Player_as_X4_Obj.y_pos.i.hi - g_Player_as_X4_Obj.unk1C.i.hi;
             if (t >= 0) {
                 t = 0;
             }
@@ -151,12 +152,12 @@ block4:
             M2C_FIELD(arg0, s16*, 0x20) = t;
             return;
         }
-        t = D_8009A0A0.y_pos.i.hi;
+        t = g_Player_as_X4_Obj.y_pos.i.hi;
         t = t - pos4;
         t = t - M2C_FIELD(arg0, s16*, 0x2E);
         t = t + 2;
         if (t < 4) {
-            t = D_8009A0A0.y_pos.i.hi - D_8009A0A0.unk1C.i.hi;
+            t = g_Player_as_X4_Obj.y_pos.i.hi - g_Player_as_X4_Obj.unk1C.i.hi;
             if (t < 0) {
                 t = 0;
             }
@@ -171,4 +172,4 @@ block4:
         M2C_FIELD(arg0, s16*, 0x20) = M2C_FIELD(arg0, s16*, 0x28);
     }
 }
-#undef D_8009A0A0
+#undef g_Player_as_X4_Obj

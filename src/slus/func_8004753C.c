@@ -1,14 +1,13 @@
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/sound.h"
+#include "mmx5/graphics.h"
 #include "addr.h"
 
 extern void func_80045D44();
-extern void func_800171E8(u8* obj, s32 state);
-extern void func_80016490(s32, s32, void*);
-extern void func_8002D9EC(u8* a0, s32 a1, s32 a2);
 extern u8 D_80076FC8[];
 extern u8 D_80076FD0[];
 extern u8 D_8007B414[];
-extern u8 D_8009A0A0[];
 
 void func_8004753C(u8* obj) {
     u8* s;
@@ -27,8 +26,8 @@ void func_8004753C(u8* obj) {
     *(s16*)(obj + 0x42) = 0x7801;
     obj[0x16] = 0;
     *(u8**)(obj + 0x3C) = s + t;
-    obj[0x15] = D_8009A0A0[0x15];
-    func_80045D44(obj, D_8009A0A0, *(s8*)(obj + 1), t);
+    obj[0x15] = g_Player[0x15];
+    func_80045D44(obj, g_Player, *(s8*)(obj + 1), t);
     one = 1;
     if (obj[0x15] == 0) {
         *(s32*)(obj + 0x20) = 0xFFFB0000;
@@ -39,8 +38,8 @@ void func_8004753C(u8* obj) {
     *(s32*)(obj + 0x28) = 0;
     *(s32*)(obj + 0x2C) = 0;
     obj[0x67] = one;
-    func_800171E8(obj, 0);
-    func_80016490(1, 0x14, obj);
+    set_animation(obj, 0);
+    play_sound(1, 0x14, obj);
     obj[5] = 0;
     obj[4]++;
     func_8002D9EC(obj, 0x2C, 0x20);

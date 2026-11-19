@@ -1,8 +1,8 @@
 /* Shared body (DK-5), from the banked draft of func_800FAEC4_ovl07 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/system.h"
 #include "addr.h"
 
-extern s32 func_8002DF78(void);
 extern void func_800FCA20_ovl07(u8* obj, s16 x, s16 y, u8 c);
 extern u8 D_80101B9C_ovl07[][2];
 extern u8 D_80101BBC_ovl07[][2];
@@ -20,16 +20,16 @@ void DEDUP_NAME(u8* a0) {
 
     if (*(s8*)(a0 + 0x45) != 0) {
         D_1F80004C.bytes[0x8E] = 0;
-        r = func_8002DF78();
+        r = random_byte();
         n = D_1F80004C.bytes[0x8A];
         if ((s32)(n * 2) / 3 < *(s8*)(a0 + 0x5C)) {
             i = r & 0xF;
             c = D_80101B9C_ovl07[i][0];
         } else if ((u8)(n / 3) < *(s8*)(a0 + 0x5C)) {
-            i = func_8002DF78() & 0xF;
+            i = random_byte() & 0xF;
             c = D_80101BBC_ovl07[i][0];
         } else {
-            i = func_8002DF78() & 0xF;
+            i = random_byte() & 0xF;
             c = D_80101BDC_ovl07[i][0];
         }
         D_1F80004C.bytes[0x93] = c;

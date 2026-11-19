@@ -1,15 +1,15 @@
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/sound.h"
+#include "mmx5/graphics.h"
 #include "addr.h"
 
-extern void func_80016490(s32, s32, void*);
-extern void func_800171E8(u8* obj, s32 state);
 extern void func_8003D430(s32, s32, s32, void*);
 extern s32 func_80045D44();
 extern u8 D_80077138[];
 extern u8 D_8007713C[];
 extern u8 D_80077140[];
 extern u8 D_8007B44C[];
-extern u8 D_8009A0A0[];
 
 void func_800498F4(u8* obj) {
     u8* p;
@@ -27,7 +27,7 @@ void func_800498F4(u8* obj) {
     *(u8**)(obj + 0x30) = D_8007B44C;
     *(s16*)(obj + 0x40) = 0x520;
     *(s16*)(obj + 0x42) = 0x7801;
-    base = D_8009A0A0;
+    base = g_Player;
     if (mode == 0) {
         obj[0x16] = 2;
         obj[0x15] = base[0x15];
@@ -43,8 +43,8 @@ void func_800498F4(u8* obj) {
         }
         *(s32*)(obj + 0x24) = 0;
         *(s16*)(obj + 0x8E) = 0xC;
-        func_800171E8(obj, 0);
-        func_80016490(1, 0xE, obj);
+        set_animation(obj, 0);
+        play_sound(1, 0xE, obj);
         func_8003D430(1, ((s8*)obj)[1], 1, obj);
     } else if (mode == 1) {
         src = *(u8**)(obj + 0x7C);
@@ -54,7 +54,7 @@ void func_800498F4(u8* obj) {
         obj[0x15] = src[0x15];
         obj[5] = mode;
         obj[6] = src[6];
-        func_800171E8(obj, 4);
+        set_animation(obj, 4);
     } else if (mode == 2) {
         src = *(u8**)(obj + 0x7C);
         obj[0x16] = mode;
@@ -63,7 +63,7 @@ void func_800498F4(u8* obj) {
         obj[0x15] = 0;
         obj[5] = mode;
         *(u8**)(obj + 0x50) = D_8007713C;
-        func_800171E8(obj, 3);
+        set_animation(obj, 3);
     }
     *(s16*)(obj + 0x8C) = 0;
     obj[4]++;

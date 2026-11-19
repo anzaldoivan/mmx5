@@ -1,8 +1,8 @@
 /* Adapted from mmx6 @c1c892d src/shared/SLUS_013.95/func_80018290.c, AGPL-3.0 (THIRD_PARTY.md). */
 #include "types.h"
+#include "mmx5/globals.h"
 #define M2C_UNK s32
 
-M2C_UNK func_80017B5C(u8);
 void func_80017D88();
 M2C_UNK CdMix(M2C_UNK*, u32);
 #define CdMix ((M2C_UNK(*)(M2C_UNK*, u8))CdMix)

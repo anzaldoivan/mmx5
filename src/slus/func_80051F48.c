@@ -1,9 +1,9 @@
 /* Adapted from mmx6 @c1c892d src/shared/SLUS_013.95/func_8004C41C.c, AGPL-3.0 (THIRD_PARTY.md). */
 #include "types.h"
+#include "mmx5/system.h"
 
 #define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8*)(expr) + (offset)))
 
-s32 func_8002DF78();
 extern s32 D_80073164[];
 extern s32 D_80073188[];
 
@@ -18,7 +18,7 @@ void func_80051F48(void* arg0) {
     M2C_FIELD(arg0, s16*, 0x34) = 1;
     M2C_FIELD(arg0, u8*, 0x37) = 0;
     M2C_FIELD(arg0, u8*, 0) |= 0x82;
-    M2C_FIELD(arg0, u8*, 0x38) = func_8002DF78() & 0x1F;
+    M2C_FIELD(arg0, u8*, 0x38) = random_byte() & 0x1F;
     if (M2C_FIELD(arg0, u8*, 0x38) < 0x10) {
         sy = -1;
         if (M2C_FIELD(arg0, u8*, 0x38) < 8) {

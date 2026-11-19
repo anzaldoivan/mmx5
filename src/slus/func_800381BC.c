@@ -1,10 +1,9 @@
 #include "types.h"
+#include "mmx5/object.h"
+#include "mmx5/globals.h"
 
-extern void func_80017248(u8* obj);
-extern void func_8002DF54(u8* a0);
 extern s32 func_800306E0(u8* a0);
 extern s32 func_80038008(u8* a0);
-extern void func_8003B33C(u8*, s32);
 extern void func_8003B4CC(u8* obj, s32 arg1, s32 arg2);
 
 void func_800381BC(u8* p) {
@@ -27,13 +26,13 @@ void func_800381BC(u8* p) {
                 s = 2;
                 *(s32*)(p + 0x24) = -*(s32*)(p + 0x138);
             }
-            func_8002DF54(p);
+            move_object(p);
             r = func_800306E0(p) ^ 0x2E;
             *(s32*)(p + 0xC) = *(s32*)(p + 0x1C);
             if (r) {
                 s = 0;
             } else {
-                func_8002DF54(p);
+                move_object(p);
             }
         }
         d = s;
@@ -66,7 +65,7 @@ void func_800381BC(u8* p) {
             func_8003B33C(p, id);
         }
     } else {
-        func_80017248(p);
+        animate_object(p);
     }
     if (((s8*)p)[0x46] == 0 && ((s8*)p)[0x8E] == 0) {
         if (((s8*)p)[2] == 0) {

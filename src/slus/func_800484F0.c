@@ -1,12 +1,11 @@
 #include "types.h"
-
-extern u8 D_8009A0A0[];
-extern int func_8002D6FC();
+#include "mmx5/object.h"
+#include "mmx5/globals.h"
 
 void func_800484F0(u8* e) {
     if ((e[2] & 0x3F) == 0) {
-        D_8009A0A0[0x98]--;
-        D_8009A0A0[0x99]--;
+        g_Player[0x98]--;
+        g_Player[0x99]--;
     }
-    func_8002D6FC(e);
+    clear_object_slot(e);
 }

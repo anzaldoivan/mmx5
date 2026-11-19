@@ -1,9 +1,9 @@
 /* Shared body (DK-5), from the banked draft of func_800FA128_ovl43 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/globals.h"
 
 extern u8 D_800D1F3C;
 extern void SetDispMask(s32);
-extern UnkSpawn* func_8002D27C(void);
 
 void DEDUP_NAME(UnkObj* obj) {
     u8 v = D_800D1F3C;

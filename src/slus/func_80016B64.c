@@ -3,8 +3,8 @@
 extern void SsSepClose(s32);
 extern s32 SsSepOpenJ(u8*, s32, s32);
 extern void SsSepSetVol(s32, s32, s32, s32);
-extern void func_80015A88(s32, s32);
-extern void func_800157D4(void);
+extern void read_dat_file(s32, s32);
+extern void pump_file_loads(void);
 
 extern u8 D_800703C8[];
 extern s8 D_80093E60[];
@@ -24,8 +24,8 @@ void func_80016B64(void) {
             *p = -1;
         }
     }
-    func_80015A88(D_800703C8[D_800D1C00[0x44]], (s32)&D_800A69A8);
-    func_800157D4();
+    read_dat_file(D_800703C8[D_800D1C00[0x44]], (s32)&D_800A69A8);
+    pump_file_loads();
     D_80093E6C[0] = SsSepOpenJ((u8*)&D_800A69A8 + D_800A69A8, D_80093E60[0], 8);
     for (i = 0; i < 8; i++) {
         SsSepSetVol(D_80093E6C[0], i, 0x7F, 0x7F);

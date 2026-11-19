@@ -1,8 +1,7 @@
 #include "types.h"
+#include "mmx5/sound.h"
+#include "mmx5/globals.h"
 
-extern void func_80016490(s32, s32, void*);
-extern void func_80017248(u8* obj);
-extern u8 D_8009A0A0[];
 extern s16 D_8009A220[];
 extern s8 D_800D1C1C;
 extern s8 D_800D1C1D;
@@ -14,9 +13,9 @@ void func_80054E84(u8* obj) {
     u8* p;
 
     if (((s8*)obj)[0x45] < 2) {
-        func_80017248(obj);
+        animate_object(obj);
         if (((s8*)obj)[0x45] == 1) {
-            func_80016490(0, 0x10, obj);
+            play_sound(0, 0x10, obj);
             obj[0x45] = 0;
         }
     } else {
@@ -31,7 +30,7 @@ void func_80054E84(u8* obj) {
         } else if (kind == 8) {
             D_800D1C27 = 1;
         }
-        p = D_8009A0A0;
+        p = g_Player;
         if (((s8*)p)[0xD0] == 0 && ((s8*)p)[0xD4] == 0) {
             D_800D1C1C = 0;
         }

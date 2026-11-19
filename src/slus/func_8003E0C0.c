@@ -1,8 +1,8 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
 extern s32 func_8003E1A8(u8*);
 extern void func_8003E414(u8*);
-extern void func_8003B33C(u8*, s32);
 extern void func_8003F548(u8*, s32);
 extern signed char D_80074968[];
 

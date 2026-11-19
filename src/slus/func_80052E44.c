@@ -1,10 +1,10 @@
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
 
 extern u8 D_80075520[];
 extern u8 D_8007BD08[];
-extern u8 D_8009A0A0[];
 extern u8 D_800D1C4A;
-extern void func_800171E8(u8* obj, s32 state);
 
 void func_80052E44(u8* o) {
     u8* g;
@@ -12,7 +12,7 @@ void func_80052E44(u8* o) {
     o[0x5C] = 0xF;
     ((s8*)o)[0x60] = -8;
     *(u8**)(o + 0x58) = D_80075520;
-    g = D_8009A0A0;
+    g = g_Player;
     o[0x61] = 0;
     o[0x14] = g[0x14];
     *(s32*)(o + 0x18) = *(s32*)(o + 0x8);
@@ -33,7 +33,7 @@ void func_80052E44(u8* o) {
     } else {
         o[0x85] = 0;
     }
-    func_800171E8(o, 4);
+    set_animation(o, 4);
     o[0x67] = 1;
     *(s32*)(o + 0x80) = 0xE10;
     *(s32*)(o + 0x20) = 0;

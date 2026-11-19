@@ -1,13 +1,12 @@
 /* Adapted from mmx6 @c1c892d src/shared/SLUS_013.95/func_80053D18.c, AGPL-3.0 (THIRD_PARTY.md). */
 #include "types.h"
+#include "mmx5/object.h"
+#include "mmx5/system.h"
 #define NULL ((void*)0)
 
 #define NULL ((void*)0)
-#define M2C_UNK s32
 #define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8*)(expr) + (offset)))
 
-struct X4_QuadObj* func_8002D53C(void); /* extern */
-s32 func_8002DF78();                    /* extern */
 extern u16 D_80093F70;
 
 void func_800578DC(void* arg0) {
@@ -15,9 +14,9 @@ void func_800578DC(void* arg0) {
     void* temp_v0_2;
     void* temp_v0_3;
 
-    func_8002DF78();
+    random_byte();
     M2C_FIELD(arg0, u16*, 0x1C) = (u16)(D_80093F70 & 0xFFF);
-    temp_v0 = ((void* (*)())func_8002D53C)();
+    temp_v0 = ((void* (*)())alloc_class6_slot)();
     if (temp_v0 != NULL) {
         M2C_FIELD(temp_v0, s8*, 0) = 1;
         M2C_FIELD(temp_v0, s8*, 1) = 4;
@@ -25,7 +24,7 @@ void func_800578DC(void* arg0) {
         M2C_FIELD(temp_v0, u16*, 0xA) = (u16)M2C_FIELD(arg0, u16*, 0xA);
         M2C_FIELD(temp_v0, u16*, 0xE) = (u16)M2C_FIELD(arg0, u16*, 0xE);
     }
-    temp_v0_2 = ((void* (*)())func_8002D53C)(temp_v0);
+    temp_v0_2 = ((void* (*)())alloc_class6_slot)(temp_v0);
     if (temp_v0_2 != NULL) {
         M2C_FIELD(temp_v0_2, s8*, 0) = 1;
         M2C_FIELD(temp_v0_2, s8*, 1) = 4;
@@ -34,7 +33,7 @@ void func_800578DC(void* arg0) {
         M2C_FIELD(temp_v0_2, u16*, 0xA) = (u16)M2C_FIELD(arg0, u16*, 0xA);
         M2C_FIELD(temp_v0_2, u16*, 0xE) = (u16)M2C_FIELD(arg0, u16*, 0xE);
     }
-    temp_v0_3 = ((void* (*)())func_8002D53C)(temp_v0_2);
+    temp_v0_3 = ((void* (*)())alloc_class6_slot)(temp_v0_2);
     if (temp_v0_3 != NULL) {
         M2C_FIELD(temp_v0_3, s8*, 0) = 1;
         M2C_FIELD(temp_v0_3, s8*, 1) = 4;

@@ -1,9 +1,9 @@
 /* Shared body (DK-5), from the banked draft of func_800F092C_ovl28 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/globals.h"
 #include "addr.h"
 
 extern s16 D_800FD9CC_ovl28[];
-extern s16 D_8009A0AA;
 
 void DEDUP_NAME(Obj092C* arg0) {
     Scr092C* s;

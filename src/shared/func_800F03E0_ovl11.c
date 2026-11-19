@@ -3,7 +3,9 @@
 
 extern u8 D_800D1C00[];
 
-void DEDUP_NAME(u8 a0) {
+void DEDUP_NAME(s32 b0) {
+    u8 a0 = b0;
+
     D_800D1C00[0x10] = a0;
     D_800D1C00[0x11] = a0;
     D_800D1C00[0x12] = a0;

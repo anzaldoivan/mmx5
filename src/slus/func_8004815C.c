@@ -1,20 +1,18 @@
 #include "types.h"
-
-extern void func_80017248(u8* obj);
-extern s32 func_8002D938(u8* a0, s32 a1, s32 a2);
-extern void func_8002D9EC(u8* a0, s32 a1, s32 a2);
-extern void func_8002DF54(u8* a0);
-extern u8* func_8003D3A8(s32, s32, s32, u8*);
+#include "mmx5/weapon.h"
+#include "mmx5/title.h"
+#include "mmx5/object.h"
+#include "mmx5/globals.h"
 
 void func_8004815C(u8* obj) {
     s8 v;
     s32 t;
     u8* p;
 
-    func_80017248(obj);
+    animate_object(obj);
     if (!(obj[2] & 0x3F)) {
-        if (func_8002D938(obj, 0xA0, 0xA0) == 0) {
-            func_8002DF54(obj);
+        if (is_off_screen(obj, 0xA0, 0xA0) == 0) {
+            move_object(obj);
             func_8002D9EC(obj, 0x20, 0x20);
         } else {
             obj[3] = 0;
@@ -27,7 +25,7 @@ void func_8004815C(u8* obj) {
             obj[3] = 0;
             obj[4] = v;
         } else {
-            func_8002DF54(obj);
+            move_object(obj);
         }
         func_8002D9EC(obj, 0x20, 0x20);
     }
@@ -38,7 +36,8 @@ void func_8004815C(u8* obj) {
         t = obj[2];
         obj[0x8C] = 1;
         if ((t & 0x3F) < 4) {
-            p = func_8003D3A8(((s8*)obj)[0], ((s8*)obj)[1], (s8)(t + 1), obj);
+            p = player_spawn_weapon(((s8*)obj)[0], ((s8*)obj)[1], (s8)(t + 1),
+                                    obj);
             if (p != 0) {
                 *(s32*)(p + 8) = *(s32*)(obj + 8);
                 *(s32*)(p + 0xC) = *(s32*)(obj + 0xC);

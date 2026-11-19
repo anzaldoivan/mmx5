@@ -1,7 +1,7 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
 extern s8 D_8009A424;
-extern u8 D_8009A0A0[];
 extern u8 D_800D1C00[];
 extern u8 D_8007337C[];
 extern u8 D_80073364[];
@@ -14,7 +14,7 @@ extern void func_800183B4(void);
 extern void func_80013288(s32);
 
 void func_8003322C(u8* a0) {
-    u8* g = D_8009A0A0;
+    u8* g = g_Player;
     u8 *d1, *d2, *d3, *d4, *d5, *d6;
     u8 *e1, *e2, *e3;
     u8* q;
@@ -103,7 +103,7 @@ void func_8003322C(u8* a0) {
     d5 = D_800D1C00;
     a0[2] = 0;
     if ((((s8*)d5)[0xC] == 5 && ((s8*)d5)[0x1D] == 0) ||
-        (e1 = D_8009A0A0, ((s8*)e1)[0xD5] < 0)) {
+        (e1 = g_Player, ((s8*)e1)[0xD5] < 0)) {
         a0[2] = 1;
     }
     if (((s8*)a0)[2] != 0) {
@@ -114,7 +114,7 @@ void func_8003322C(u8* a0) {
                 break;
             }
         }
-    } else if (e2 = D_8009A0A0, ((s8*)e2)[2] == 0) {
+    } else if (e2 = g_Player, ((s8*)e2)[2] == 0) {
         for (i = 0; i < 8; i++) {
             if (((s8*)g)[0x93] == D_80073370[i]) {
                 break;
@@ -166,7 +166,7 @@ void func_8003322C(u8* a0) {
         }
     }
     a0[0x2C] = ((D1C00_8003322C*)D_800D1C00)->unkAA[((s8*)g)[2]];
-    e3 = D_8009A0A0;
+    e3 = g_Player;
     D_800E9528 = e3[0x93];
     *(s32*)(a0 + 0x30) = 0;
     *(s32*)(a0 + 0x34) = 0;

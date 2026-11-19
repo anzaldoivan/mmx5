@@ -1,11 +1,11 @@
 #include "types.h"
+#include "mmx5/globals.h"
+#define D_8009A420_as_s32 (*(s32*)&D_8009A420)
 
 void func_800266D4(s16, s16, s16, s16, s32, s32, s32);
 extern s16 D_800718A8[][2];
 extern s8 D_8009A0A2;
-extern s32 D_8009A420;
 extern D1C00 D_800D1C00;
-extern s8 D_800D1CA2;
 
 void func_800262D8(u8* arg0, s32 arg1) {
     s32 w;
@@ -61,7 +61,7 @@ void func_800262D8(u8* arg0, s32 arg1) {
             arg0[0x5F]--;
             return;
         }
-        if (!(D_8009A420 & 3)) {
+        if (!(D_8009A420_as_s32 & 3)) {
             arg0[0x5D]--;
         }
     }

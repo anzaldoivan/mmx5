@@ -4,11 +4,11 @@
 
 #define M2C_UNK s32
 
-M2C_UNK func_80012E0C(M2C_UNK, M2C_UNK*); /* extern */
-M2C_UNK func_80012EAC();                  /* extern */
+M2C_UNK create_task(M2C_UNK, M2C_UNK*); /* extern */
+M2C_UNK func_80012EAC();                /* extern */
 extern M2C_UNK func_80020904;
 
 void DEDUP_NAME(void) {
-    func_80012E0C(1, &func_80020904);
+    create_task(1, &func_80020904);
     func_80012EAC();
 }

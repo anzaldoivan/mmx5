@@ -3,12 +3,12 @@
 
 #define M2C_UNK s32
 
-M2C_UNK func_8001296C(); /* extern */
+M2C_UNK start_pad_vibration(); /* extern */
 extern s32 D_8006FB14;
 extern s8 D_8009A426;
 
 void func_80012BF4(void) {
     if ((D_8009A426 == 0) && (D_8006FB14 == 0)) {
-        func_8001296C();
+        start_pad_vibration();
     }
 }

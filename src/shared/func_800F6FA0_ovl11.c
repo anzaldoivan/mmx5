@@ -1,10 +1,9 @@
 /* Shared body (DK-5), from the banked draft of func_800F6FA0_ovl11 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
 
-extern void func_800171E8(u8* obj, s32 state);
-extern void func_80017248(u8* obj);
 extern void func_800F81F4_ovl11(u8* obj);
-extern u8 D_8009A0A0[];
 extern s16 D_800FA056_ovl11;
 extern s16 D_800FA058_ovl11;
 
@@ -12,10 +11,10 @@ void DEDUP_NAME(u8* obj) {
     u8* p;
     s16 x;
 
-    func_800171E8(obj, 5);
-    func_80017248(obj);
+    set_animation(obj, 5);
+    animate_object(obj);
     obj[0x60] = 8;
-    p = D_8009A0A0;
+    p = g_Player;
     if (((s8*)p)[2] == 0 && p[0xFA] == 0) {
         obj[0x62] = 8;
     } else {

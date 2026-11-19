@@ -1,12 +1,12 @@
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
 #include "addr.h"
 
-extern u8* func_8002D0E4(void);
+extern u8* find_free_visual_obj(void);
 extern u8* func_8002CC08(s32 p, s32 backward);
-extern void func_80017214(u8* a0, s32 a1, s32 a2);
-extern void func_800171E8(u8* obj, s32 state);
-extern void func_8003CEAC(s32 arg0, s32 arg1, s32 arg2);
-extern u8 D_8009A0A0[];
+extern void set_animation_frame(u8* a0, s32 a1, s32 a2);
+extern void load_buffered_palette(s32 arg0, s32 arg1, s32 arg2);
 extern u8 D_80077498[][3];
 extern u8 D_8007B3D8[];
 extern u8 D_800D1C4A;
@@ -23,8 +23,8 @@ void func_8004B49C(u8* obj, u8* g) {
 
     obj[3] = 1;
     if (D_80077498[((s8*)obj)[1] - 0x18][2] != 0 && !(((s8*)obj)[0] & 0x80) &&
-        (b = D_8009A0A0, *(s32*)(b + 0xFC) & 0x8000)) {
-        p = func_8002D0E4();
+        (b = g_Player, *(s32*)(b + 0xFC) & 0x8000)) {
+        p = find_free_visual_obj();
         if (p != 0) {
             p[0] = 0x21;
             p[1] = 3;
@@ -49,7 +49,7 @@ void func_8004B49C(u8* obj, u8* g) {
         *(s16*)(obj + 0x42) = 0x7801;
         obj[0x16] = 2;
     }
-    q = D_8009A0A0;
+    q = g_Player;
     if (((s8*)q)[0xA6] != 0 && ((s8*)obj)[1] != 0x2C &&
         !(((s8*)obj)[0] & 0x80)) {
         p = func_8002CC08(0, 1);
@@ -73,11 +73,11 @@ void func_8004B49C(u8* obj, u8* g) {
         s32 k = ((s8*)obj)[1];
         snd = D_80077498[k - 0x18][0];
         if (k == 0x1C) {
-            u8* h = D_8009A0A0;
-            func_80017214(obj, 0x74, h[0x45] & 0x1F);
+            u8* h = g_Player;
+            set_animation_frame(obj, 0x74, h[0x45] & 0x1F);
             obj[0x44] = h[0x44];
         } else {
-            func_800171E8(obj, snd);
+            set_animation(obj, snd);
         }
         if (((s8*)obj)[1] == 0x23) {
             *(s32*)(obj + 0x8C) = 0;
@@ -118,15 +118,15 @@ void func_8004B49C(u8* obj, u8* g) {
             }
         }
         if (((s8*)obj)[1] == 0x1C) {
-            func_80017214(obj, 0x74, g[0x45] & 0x1F);
+            set_animation_frame(obj, 0x74, g[0x45] & 0x1F);
             obj[0x44] = g[0x44];
         } else {
-            func_800171E8(obj, snd);
+            set_animation(obj, snd);
         }
         if (((s8*)obj)[1] == 0x22) {
             *(s16*)(obj + 0x42) = 0x7802;
         } else {
-            func_8003CEAC(st, 1, 1);
+            load_buffered_palette(st, 1, 1);
         }
         if (((s8*)obj)[1] == 0x23) {
             *(s32*)(obj + 0x8C) = 0;

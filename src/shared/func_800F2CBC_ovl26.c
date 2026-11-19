@@ -1,14 +1,12 @@
 /* Shared body (DK-5), from the banked draft of func_800F2CBC_ovl26 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/globals.h"
 #include "addr.h"
 
-extern void func_80017248(u8* obj);
-extern u8* func_8002D1A4();
 extern s32 ratan2(s32, s32);
 extern s32 rcos(s32);
 extern s32 rsin(s32);
 extern u16 D_800FA0A4_ovl26[][2];
-extern u8 D_8009A0A0[];
 
 void DEDUP_NAME(u8* o) {
     u8* c;
@@ -18,7 +16,7 @@ void DEDUP_NAME(u8* o) {
     s32 w;
     s32 y;
 
-    func_80017248(o);
+    animate_object(o);
     if (--*(s16*)(o + 0x7C) != 0) {
         return;
     }
@@ -45,7 +43,7 @@ void DEDUP_NAME(u8* o) {
         *(s32*)(c + 0x20) = 0;
         *(s32*)(c + 0x24) = 0;
         *(u8**)(c + 0x7C) = o;
-        p = D_8009A0A0;
+        p = g_Player;
         a = ratan2(*(s16*)(p + 0xE) - *(s16*)(c + 0xE),
                    *(s16*)(p + 0xA) - *(s16*)(c + 0xA));
         *(s32*)(c + 0x20) = rcos(a) * 96;

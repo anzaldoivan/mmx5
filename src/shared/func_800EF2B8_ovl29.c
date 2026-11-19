@@ -1,7 +1,8 @@
 /* Shared body (DK-5), from the banked draft of func_800EF2B8_ovl29 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/globals.h"
+#define g_Player_as_X4_Obj (*(X4_Obj*)&g_Player)
 
-extern X4_Obj D_8009A0A0;
 extern s16 D_8009A0AE;
 
 void DEDUP_NAME(ObjEECF8* self) {
@@ -11,10 +12,11 @@ void DEDUP_NAME(ObjEECF8* self) {
         return;
     }
     if (self->unk88 == 0) {
-        d = D_8009A0A0.y_pos.i.hi - self->y.i.hi;
-        if (d >= 0 ? d < 0x20 : self->y.i.hi - D_8009A0A0.y_pos.i.hi < 0x20) {
-            if (self->unk15 == 0 ? D_8009A0A0.x_pos.val < self->x.val
-                                 : D_8009A0A0.x_pos.val > self->x.val) {
+        d = g_Player_as_X4_Obj.y_pos.i.hi - self->y.i.hi;
+        if (d >= 0 ? d < 0x20
+                   : self->y.i.hi - g_Player_as_X4_Obj.y_pos.i.hi < 0x20) {
+            if (self->unk15 == 0 ? g_Player_as_X4_Obj.x_pos.val < self->x.val
+                                 : g_Player_as_X4_Obj.x_pos.val > self->x.val) {
                 self->unk88 = 1;
             }
         }

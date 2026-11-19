@@ -1,7 +1,7 @@
 /* Shared body (DK-5), from the banked draft of func_800FB0C4_ovl06 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/graphics.h"
 
-extern void func_800171E8(u8* obj, s32 state);
 extern s32 ratan2(s32, s32);
 extern s32 rcos(s32);
 extern s32 rsin(s32);
@@ -43,7 +43,7 @@ void DEDUP_NAME(u8* obj) {
             *(u8**)(obj + 0x50) = D_800FF67C_ovl06;
             *(u8**)(obj + 0x54) = D_800FF680_ovl06;
             *(s16*)(obj + 0xE) -= 0x18;
-            func_800171E8(obj, 0);
+            set_animation(obj, 0);
             obj[5] = 0;
             break;
         case 1:
@@ -58,7 +58,7 @@ void DEDUP_NAME(u8* obj) {
             *(u8**)(obj + 0x50) = D_800FF67C_ovl06;
             *(u8**)(obj + 0x54) = D_800FF680_ovl06;
             *(s16*)(obj + 0xE) -= 0x10;
-            func_800171E8(obj, 0);
+            set_animation(obj, 0);
             obj[5] = 1;
             break;
         case 2:
@@ -68,7 +68,7 @@ void DEDUP_NAME(u8* obj) {
             obj[0x15] = 0;
             *(u8**)(obj + 0x50) = D_800FF690_ovl06;
             *(u8**)(obj + 0x54) = D_800FF694_ovl06;
-            func_800171E8(obj, 0x1F);
+            set_animation(obj, 0x1F);
             obj[5] = 3;
             break;
         case 3:
@@ -78,7 +78,7 @@ void DEDUP_NAME(u8* obj) {
             obj[0x60] = 3;
             *(u8**)(obj + 0x50) = D_800FF690_ovl06;
             *(u8**)(obj + 0x54) = D_800FF694_ovl06;
-            func_800171E8(obj, 0x1F);
+            set_animation(obj, 0x1F);
             obj[5] = 3;
             break;
         }
@@ -87,7 +87,7 @@ void DEDUP_NAME(u8* obj) {
         obj[0x60] = 3;
         *(u8**)(obj + 0x68) = 0;
         *(u8**)(obj + 0x50) = D_800FF6A8_ovl06;
-        func_800171E8(obj, 0x11);
+        set_animation(obj, 0x11);
         obj[5] = 2;
         *(s16*)(obj + 0x88) = (obj[2] & 0xF) * 10;
         break;
@@ -104,7 +104,7 @@ void DEDUP_NAME(u8* obj) {
         *(u8**)(obj + 0x50) = D_800FF67C_ovl06;
         *(s16*)(obj + 0xE) -= 0x18;
         *(s16*)(obj + 0x8C) = *(s16*)(obj + 0xE);
-        func_800171E8(obj, 0);
+        set_animation(obj, 0);
         obj[2] -= 0x20;
         if (obj[0x15] == 0) {
             t = *(s16*)(obj + 0xA) + 0x20;

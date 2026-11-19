@@ -1,4 +1,5 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
 extern s32 PadInfoMode(s32, s32, s32, s32);
 extern s32 PadGetState(s32);
@@ -7,7 +8,6 @@ extern s32 PadSetActAlign(s32, u8*);
 extern u8 D_8006FB18[];
 extern u8 D_8006FB20[];
 extern s32 D_8006FB24;
-extern u16 D_800C931C[];
 extern u16 D_800C9488[];
 extern u8 D_800D50F0[];
 extern u8 D_800D51A0[];

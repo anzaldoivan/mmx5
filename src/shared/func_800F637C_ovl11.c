@@ -1,10 +1,9 @@
 /* Shared body (DK-5), from the banked draft of func_800F637C_ovl11 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/object.h"
+#include "mmx5/globals.h"
 #include "addr.h"
 
-extern void func_80017248(Obj637C*);
-extern void func_8002DF54(Obj637C*);
-extern s16 D_8009A0AA;
 extern Row5C8C D_8009A1F8[];
 extern u8 D_800F9D10_ovl11[];
 extern u8 D_800F9D14_ovl11[];
@@ -36,8 +35,8 @@ void DEDUP_NAME(Obj637C* obj) {
         obj->unk50 = D_800F9D14_ovl11;
         obj->unk3 = 1;
         obj->unk62 = 0;
-        func_80017248(obj);
-        func_8002DF54(obj);
+        animate_object(obj);
+        move_object(obj);
         if (--obj->unk7C == 0) {
             obj->unk6++;
         }

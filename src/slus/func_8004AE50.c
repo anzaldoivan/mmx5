@@ -1,11 +1,10 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
-extern u8 D_8009A0A0[];
 extern void* D_8007722C[];
-extern void func_80017248(u8* obj);
 
 void func_8004AE50(u8* obj) {
-    s8* g = (s8*)D_8009A0A0;
+    s8* g = (s8*)g_Player;
     s32 flag;
     u8* p;
     s8 t;
@@ -18,7 +17,7 @@ void func_8004AE50(u8* obj) {
         flag = 1;
     }
     if (((s8*)obj)[2] != 0) {
-        func_80017248(obj);
+        animate_object(obj);
         p = *(u8**)(obj + 0x7C);
         *(u16*)(obj + 0xA) = *(u16*)(p + 0xA);
         *(u16*)(obj + 0xE) = *(u16*)(p + 0xE) + ((s8*)obj)[2] * 10;

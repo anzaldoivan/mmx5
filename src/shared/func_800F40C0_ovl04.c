@@ -1,14 +1,14 @@
 /* Shared body (DK-5), from the banked draft of func_800F40C0_ovl04 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/sound.h"
+#include "mmx5/globals.h"
 
-extern void func_80017248(u8* obj);
 extern s32 func_80044DE0();
-extern s32 func_80016490(s32, s32, void*);
 extern Bg800F3EA0 D_8009A1F8;
 extern Glb800F3EA0 D_800D1C00;
 
 void DEDUP_NAME(u8* obj) {
-    func_80017248(obj);
+    animate_object(obj);
     if (func_80044DE0() == 0 && *(s8*)(obj + 0x45) == 1) {
         if (D_800D1C00.unkC != 0xC) {
             D_8009A1F8.unk26 = 0x1550;
@@ -19,7 +19,7 @@ void DEDUP_NAME(u8* obj) {
         }
         if (*(s8*)(obj + 0x5C) < D_800D1C00.unkA2) {
             if (--*(s16*)(obj + 0x7C) == 0) {
-                func_80016490(0, 0xE, 0);
+                play_sound(0, 0xE, 0);
                 *(s16*)(obj + 0x7C) = 3;
             }
             obj[0x5C]++;

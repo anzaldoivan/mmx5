@@ -1,13 +1,11 @@
 #include "types.h"
+#include "mmx5/object.h"
+#include "mmx5/sound.h"
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
 #include "addr.h"
 
-extern void func_80016490(s32, s32, void*);
-extern void func_800171E8(u8* obj, s32 state);
-extern void func_80017248(u8* obj);
-extern void func_8002D6FC(u8* obj);
-extern void func_8002D9EC(u8* a0, s32 a1, s32 a2);
 extern u32* D_8007B2E8[];
-extern u8 D_8009A0A0[];
 
 void func_80050F58(u8* obj) {
     u8* g;
@@ -15,7 +13,7 @@ void func_80050F58(u8* obj) {
     u8* sp;
     s32 off;
 
-    g = D_8009A0A0;
+    g = g_Player;
     if (((s8*)obj)[4] == 0) {
         obj[3] = 1;
         ((s8*)obj)[2] = -1;
@@ -46,21 +44,21 @@ void func_80050F58(u8* obj) {
         sel = 4;
     }
     if (sel == -1) {
-        func_8002D6FC(obj);
+        clear_object_slot(obj);
         return;
     }
     if (sel != (s8)obj[2]) {
-        func_800171E8(obj, sel + 0x20);
+        set_animation(obj, sel + 0x20);
         obj[2] = sel;
     } else {
-        func_80017248(obj);
+        animate_object(obj);
     }
     obj[0x15] = g[0x15];
     *(s32*)(obj + 8) = *(s32*)(g + 8);
     *(s32*)(obj + 0xC) = *(s32*)(g + 0xC);
     if (((s8*)obj)[0x5C] == 0) {
         obj[0x5C] = 8;
-        func_80016490(0, 0x1F, obj);
+        play_sound(0, 0x1F, obj);
     } else {
         ((s8*)obj)[0x5C]--;
     }

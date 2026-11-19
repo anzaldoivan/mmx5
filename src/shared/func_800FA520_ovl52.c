@@ -1,11 +1,12 @@
 /* Shared body (DK-5), from the banked draft of func_800FA520_ovl52 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/sound.h"
+#define D_8009A420_as_s32 (*(s32*)&D_8009A420)
 
-extern void DEDUP_CALLEE(s32, s32, void*);
 extern u8 D_80091C44;
 extern u16 D_80093E68;
 extern u8 D_8009A1F8[];
-extern s32 D_8009A420;
 extern u16 D_8009A42E;
 extern u16 D_800D50DE;
 
@@ -14,7 +15,7 @@ void DEDUP_NAME(u8* arg0) {
 
     if (D_80091C44 == 0) {
         DEDUP_CALLEE(2, 0x6C, 0);
-        if (!(D_8009A420 & 1)) {
+        if (!(D_8009A420_as_s32 & 1)) {
             D_800D50DE++;
             D_8009A42E += 0x20;
             D_80093E68 += 0x400;

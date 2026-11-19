@@ -1,7 +1,6 @@
 /* Shared body (DK-5), from the banked draft of func_800F846C_ovl11 by tools/wave/gate.py rescan. */
 #include "types.h"
-
-extern void DEDUP_CALLEE(Ent846C*);
+#include "mmx5/object.h"
 
 void DEDUP_NAME(Ent846C* arg0) {
     s32 temp_v1;

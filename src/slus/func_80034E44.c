@@ -1,7 +1,7 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
 extern s8 D_8009A424;
-void func_800272DC(void);
 void func_800183E8(void);
 
 void func_80034E44(u8* arg0) {

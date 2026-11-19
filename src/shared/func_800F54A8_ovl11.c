@@ -1,9 +1,9 @@
 /* Shared body (DK-5), from the banked draft of func_800F54A8_ovl11 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/object.h"
+#include "mmx5/globals.h"
 #include "addr.h"
 
-extern void func_8002D9EC();
-extern int func_8002D6FC();
 extern u8 D_800D1C00[];
 extern D_8009A1F8_t D_8009A1F8;
 
@@ -34,6 +34,6 @@ void DEDUP_NAME(u8* arg0) {
         D_8009A1F8.unk2A = D_8009A1F8.unkE;
         D_800D1C00[0x24] = 0;
         *(s32*)(D_800D1C00 + 0x20) = 0;
-        func_8002D6FC(arg0);
+        clear_object_slot(arg0);
     }
 }

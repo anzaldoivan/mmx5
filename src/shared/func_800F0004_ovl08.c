@@ -1,16 +1,15 @@
 /* Shared body (DK-5), from the banked draft of func_800F0004_ovl08 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
 
-extern void func_80017248(u8* obj);
-extern void func_800171E8(u8* obj, s32 state);
-extern u8* func_8002D1A4();
-extern void func_8002E058(void* obj, s32 kind);
+extern void set_velocity_from_angle(void* obj, s32 kind);
 
 void DEDUP_NAME(u8* obj) {
     u8* p;
     s32 t;
 
-    func_80017248(obj);
+    animate_object(obj);
     t = obj[0x81];
     if ((u32)(t - 9) < 15) {
         if (obj[0x15] != 0) {
@@ -22,7 +21,7 @@ void DEDUP_NAME(u8* obj) {
         obj[6] = 3;
     }
     if (*(s8*)(obj + 6) != 3) {
-        func_800171E8(obj, 4);
+        set_animation(obj, 4);
         p = func_8002D1A4();
         if (p != 0) {
             p[0] = 0x41;
@@ -38,7 +37,7 @@ void DEDUP_NAME(u8* obj) {
             p[0x14] = obj[0x14];
             *(s32*)(p + 0x8) = *(s32*)(obj + 0x8);
             *(s32*)(p + 0xC) = *(s32*)(obj + 0xC);
-            func_8002E058(p, obj[0x81]);
+            set_velocity_from_angle(p, obj[0x81]);
             p[4] = 0;
             *(s32*)(p + 0x20) = *(s32*)(p + 0x20) * 3;
             *(s32*)(p + 0x24) = *(s32*)(p + 0x24) * 3;

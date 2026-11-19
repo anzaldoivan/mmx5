@@ -4,10 +4,10 @@
 
 #define M2C_UNK s32
 
-M2C_UNK func_80034A04(); /* extern */
-M2C_UNK func_8003CDB8(); /* extern */
+M2C_UNK func_80034A04();     /* extern */
+M2C_UNK read_player_input(); /* extern */
 
 void DEDUP_NAME(void) {
-    func_8003CDB8();
+    read_player_input();
     func_80034A04();
 }

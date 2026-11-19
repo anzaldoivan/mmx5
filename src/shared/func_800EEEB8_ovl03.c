@@ -1,10 +1,9 @@
 /* Shared body (DK-5), from the banked draft of func_800EEEB8_ovl03 by tools/wave/gate.py rescan. */
 #include "types.h"
-
-extern void func_80016490(s32, s32, void*);
-extern void func_80017248(u8* obj);
-extern void func_8002DED4(u8* obj);
-extern s32 D_8009A420;
+#include "mmx5/sound.h"
+#include "mmx5/movement.h"
+#include "mmx5/globals.h"
+#define D_8009A420_as_s32 (*(s32*)&D_8009A420)
 
 void DEDUP_NAME(u8* obj) {
     s32 lim;
@@ -33,9 +32,9 @@ void DEDUP_NAME(u8* obj) {
     if (over) {
         *(s32*)(obj + 0x20) = lim;
     }
-    if (D_8009A420 == D_8009A420 / 30 * 30) {
-        func_80016490(5, 9, obj);
+    if (D_8009A420_as_s32 == D_8009A420_as_s32 / 30 * 30) {
+        play_sound(5, 9, obj);
     }
-    func_8002DED4(obj);
-    func_80017248(obj);
+    apply_object_motion(obj);
+    animate_object(obj);
 }
