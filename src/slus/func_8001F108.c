@@ -1,12 +1,11 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
-extern void func_8001E668(void);
 extern void func_8002CF20(void);
 extern s32 func_80013674(void);
 extern void func_80017668(void);
-extern void func_8002C50C(void);
 extern void func_8002D004(void);
-extern void func_8002ACC4(void);
+extern void init_checkpoint_positions(void);
 extern void func_8002906C(void);
 extern s32 func_80027238(void);
 extern void func_80013288(s32);
@@ -27,7 +26,7 @@ void func_8001F108(u8* a0) {
     func_80017668();
     func_8002C50C();
     func_8002D004();
-    func_8002ACC4();
+    init_checkpoint_positions();
     func_8002906C();
     func_80027238();
     q = D_8009A1F8;

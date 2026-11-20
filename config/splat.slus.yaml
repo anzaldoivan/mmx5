@@ -54,9 +54,9 @@ segments:
       - [0x824, .rodata, func_80014684]  # carve
       - [0x838, rodata, 838]  # carve
       - [0x84C, .rodata, func_80014DEC]  # carve
-      - [0x860, .rodata, func_80019D24]  # carve
-      - [0x888, .rodata, func_8001A30C]  # carve
-      - [0x890, .rodata, func_8001B378]  # carve was: - [0x890, rodata, 890]  # carve
+      - [0x860, .rodata, func_80019D24]  # carve was: - [0x860, rodata, 860]  # carve
+      - [0x888, .rodata, func_8001A30C]  # carve was: - [0x888, rodata, 888]  # carve
+      - [0x890, rodata, 890]  # carve
       - [0x8A0, rodata, 8A0]  # carve
       - [0x8BC, .rodata, func_80023CC0]  # carve
       - [0x8D8, rodata, 8D8]  # carve
@@ -97,7 +97,7 @@ segments:
       - [0x2B44, c, func_80012344]  # carve was: - [0x2B44, asm, game_80012344]  # carve
       - [0x2D5C, c, func_8001255C]  # carve
       - [0x3024, c, func_80012824]  # carve was: - [0x3024, asm, game_80012824]  # carve
-      - [0x316C, c, func_8001296C]  # carve was: - [0x316C, asm, game_8001296C]  # carve
+      - [0x316C, c, start_pad_vibration]  # carve was: - [0x316C, asm, game_8001296C]  # carve
       - [0x3284, c, func_80012A84]  # carve was: - [0x3284, asm, game_80012A84]  # carve
       - [0x3370, c, func_80012B70]  # carve
       - [0x33B4, c, func_80012BB4]  # carve was: - [0x33B4, asm, game_80012BB4]  # carve
@@ -105,10 +105,10 @@ segments:
       - [0x33F4, c, func_80012BF4]  # carve
       - [0x3434, c, func_80012C34]  # carve
       - [0x3588, c, func_80012D88]  # T5 probes (tools/probe/probes.toml)
-      - [0x360C, c, func_80012E0C]  # carve was: - [0x360C, asm, game_80012E0C]
-      - [0x366C, c, func_80012E6C]  # carve was: - [0x366C, asm, game_80012E6C]  # carve
+      - [0x360C, c, create_task]  # carve was: - [0x360C, asm, game_80012E0C]
+      - [0x366C, c, task_yield]  # carve was: - [0x366C, asm, game_80012E6C]  # carve
       - [0x36AC, c, func_80012EAC]  # carve
-      - [0x3700, c, func_80012F00]  # carve
+      - [0x3700, c, end_task_slot]  # carve
       - [0x3758, c, func_80012F58]  # carve was: - [0x3758, asm, game_80012F58]  # carve
       - [0x378C, c, func_80012F8C]  # carve
       - [0x37B0, c, func_80012FB0]  # carve was: - [0x37B0, asm, game_80012FB0]  # carve
@@ -125,15 +125,15 @@ segments:
       - [0x3C38, asm, game_80013438]  # carve
       - [0x3C58, c, func_80013458]  # carve
       - [0x3D24, c, func_80013524]  # carve
-      - [0x3E74, asm, game_80013674]  # carve
+      - [0x3E74, c, func_80013674]  # carve was: - [0x3E74, asm, game_80013674]  # carve
       - [0x438C, c, func_80013B8C]  # carve
       - [0x43D4, c, func_80013BD4]  # carve
       - [0x4404, c, func_80013C04]  # carve was: - [0x4404, asm, game_80013C04]  # carve
       - [0x4594, c, func_80013D94]  # carve
       - [0x4614, c, func_80013E14]  # carve was: - [0x4614, asm, game_80013E14]  # carve
-      - [0x46E8, c, func_80013EE8]  # carve
-      - [0x4864, c, Cd_Unk_80014064]  # carve was: - [0x4864, asm, game_80014064]  # carve
-      - [0x4A90, c, Ovl_Load3]  # carve
+      - [0x46E8, c, load_rock_dat_file_table]  # carve
+      - [0x4864, c, wait_rock_bin_read]  # carve was: - [0x4864, asm, game_80014064]  # carve
+      - [0x4A90, c, poll_rock_bin_read]  # carve
       - [0x4C64, c, func_80014464]  # carve
       - [0x4D74, c, func_80014574]  # carve was: - [0x4D74, asm, game_80014574]  # carve
       - [0x4E84, c, func_80014684]  # carve
@@ -144,10 +144,10 @@ segments:
       - [0x5868, c, func_80015068]  # carve was: - [0x5868, asm, game_80015068]  # carve
       - [0x5AB8, c, func_800152B8]  # carve was: - [0x5AB8, asm, game_800152B8]  # carve
       - [0x5BFC, c, func_800153FC]  # carve was: - [0x5BFC, asm, game_800153FC]  # carve
-      - [0x5D1C, c, func_8001551C]  # carve was: - [0x5D1C, asm, game_8001551C]  # carve
-      - [0x5FD4, c, func_800157D4]  # carve
+      - [0x5D1C, c, wait_for_file_load]  # carve was: - [0x5D1C, asm, game_8001551C]  # carve
+      - [0x5FD4, c, pump_file_loads]  # carve
       - [0x6200, c, func_80015A00]  # carve was: - [0x6200, asm, game_80015A00]  # carve
-      - [0x6288, c, func_80015A88]  # carve was: - [0x6288, asm, game_80015A88]  # carve
+      - [0x6288, c, read_dat_file]  # carve was: - [0x6288, asm, game_80015A88]  # carve
       - [0x6378, c, func_80015B78]  # carve
       - [0x63A4, c, func_80015BA4]  # carve was: - [0x63A4, asm, game_80015BA4]  # carve
       - [0x63CC, c, func_80015BCC]  # carve
@@ -155,24 +155,24 @@ segments:
       - [0x64E8, c, func_80015CE8]  # carve
       - [0x6558, c, func_80015D58]  # carve
       - [0x6560, c, func_80015D60]  # carve was: - [0x6560, asm, game_80015D60]  # carve
-      - [0x65DC, c, Ovl_ReadToc]  # carve
-      - [0x66B4, c, Ovl_Load]  # carve
+      - [0x65DC, c, read_rock_bin_toc]  # carve
+      - [0x66B4, c, read_rock_bin_member]  # carve
       - [0x67AC, c, func_80015FAC]  # carve
       - [0x6A94, c, func_80016294]  # carve was: - [0x6A94, asm, game_80016294]  # carve
       - [0x6B84, c, func_80016384]  # carve
-      - [0x6C90, c, func_80016490]  # carve was: - [0x6C90, asm, game_80016490]  # carve
-      - [0x6D7C, c, func_8001657C]  # carve
+      - [0x6C90, c, play_sound]  # carve was: - [0x6C90, asm, game_80016490]  # carve
+      - [0x6D7C, c, key_on_sfx_voices]  # carve
       - [0x7050, asm, game_80016850]  # carve
       - [0x71C4, c, func_800169C4]  # carve
       - [0x7364, c, func_80016B64]  # carve was: - [0x7364, asm, game_80016B64]  # carve
       - [0x74D0, c, func_80016CD0]  # carve
       - [0x751C, c, func_80016D1C]  # carve was: - [0x751C, asm, game_80016D1C]  # carve
-      - [0x7554, c, func_80016D54]  # carve was: - [0x7554, asm, game_80016D54]  # carve
+      - [0x7554, c, silence_sound]  # carve was: - [0x7554, asm, game_80016D54]  # carve
       - [0x7638, c, func_80016E38]  # carve was: - [0x7638, asm, game_80016E38]  # carve
       - [0x7678, asm, game_80016E78]  # carve
-      - [0x79E8, c, func_800171E8]  # carve
-      - [0x7A14, c, func_80017214]  # carve
-      - [0x7A48, c, func_80017248]  # carve
+      - [0x79E8, c, set_animation]  # carve
+      - [0x7A14, c, set_animation_frame]  # carve
+      - [0x7A48, c, animate_object]  # carve
       - [0x7A8C, c, func_8001728C]  # carve
       - [0x7ACC, c, func_800172CC]  # carve was: - [0x7ACC, asm, game_800172CC]  # carve
       - [0x7B48, c, func_80017348]  # carve was: - [0x7B48, asm, game_80017348]  # carve
@@ -188,7 +188,7 @@ segments:
       - [0x8300, c, func_80017B00]  # carve
       - [0x832C, c, func_80017B2C]  # carve was: - [0x832C, asm, game_80017B2C]  # carve
       - [0x835C, c, func_80017B5C]  # carve was: - [0x835C, asm, game_80017B5C]  # carve
-      - [0x8384, asm, game_80017B84]  # carve
+      - [0x8384, c, func_80017B84]  # carve was: - [0x8384, asm, game_80017B84]  # carve
       - [0x83F4, c, func_80017BF4]  # carve
       - [0x8494, c, func_80017C94]  # carve was: - [0x8494, asm, game_80017C94]  # carve
       - [0x8588, c, func_80017D88]  # carve was: - [0x8588, asm, game_80017D88]  # carve
@@ -205,20 +205,21 @@ segments:
       - [0x8AD8, c, func_800182D8]  # carve was: - [0x8AD8, asm, game_800182D8]  # carve
       - [0x8BB4, c, func_800183B4]  # carve
       - [0x8BE8, c, func_800183E8]  # carve was: - [0x8BE8, asm, game_800183E8]  # carve
-      - [0x8C00, asm, game_80018400]  # carve
+      - [0x8C00, c, func_80018400]  # carve was: - [0x8C00, asm, game_80018400]  # carve
+      - [0x92EC, asm, game_80018AEC]  # carve
       - [0x96D0, c, func_80018ED0]  # carve
       - [0x9930, asm, game_80019130]  # carve
       - [0xA3D4, c, func_80019BD4]  # carve
       - [0xA44C, c, func_80019C4C]  # carve
-      - [0xA524, c, func_80019D24]  # carve
+      - [0xA524, c, func_80019D24]  # carve was: - [0xA524, asm, game_80019D24]  # carve
       - [0xA5F0, c, func_80019DF0]  # carve was: - [0xA5F0, asm, game_80019DF0]  # carve
       - [0xA658, asm, game_80019E58]  # carve
       - [0xA6CC, c, func_80019ECC]  # carve
       - [0xA754, c, func_80019F54]  # carve
       - [0xA760, c, func_80019F60]  # carve
       - [0xA7D0, c, func_80019FD0]  # carve
-      - [0xA828, asm, game_8001A028]  # carve
-      - [0xAB0C, c, func_8001A30C]  # carve
+      - [0xA828, c, func_8001A028]  # carve was: - [0xA828, asm, game_8001A028]  # carve
+      - [0xAB0C, c, func_8001A30C]  # carve was: - [0xAB0C, asm, game_8001A30C]  # carve
       - [0xAE28, c, func_8001A628]  # carve was: - [0xAE28, asm, game_8001A628]  # carve
       - [0xAFA8, c, func_8001A7A8]  # carve was: - [0xAFA8, asm, game_8001A7A8]  # carve
       - [0xB2E8, c, func_8001AAE8]  # carve
@@ -233,7 +234,7 @@ segments:
       - [0xBA68, c, func_8001B268]  # carve
       - [0xBAE0, c, func_8001B2E0]  # carve was: - [0xBAE0, asm, game_8001B2E0]  # carve
       - [0xBB60, c, func_8001B360]  # carve was: - [0xBB60, asm, game_8001B360]  # carve
-      - [0xBB78, c, func_8001B378]  # carve
+      - [0xBB78, c, func_8001B378]  # carve was: - [0xBB78, asm, game_8001B378]  # carve
       - [0xBDB8, c, func_8001B5B8]  # carve was: - [0xBDB8, asm, game_8001B5B8]  # carve
       - [0xC018, c, func_8001B818]  # carve
       - [0xC184, asm, game_8001B984]  # carve
@@ -242,10 +243,10 @@ segments:
       - [0xD75C, c, func_8001CF5C]  # carve
       - [0xDA20, c, func_8001D220]  # carve
       - [0xDBA8, c, func_8001D3A8]  # carve was: - [0xDBA8, asm, game_8001D3A8]  # carve
-      - [0xDD80, c, func_8001D580]  # carve was: - [0xDD80, asm, game_8001D580]  # carve
-      - [0xDEBC, c, func_8001D6BC]  # carve
+      - [0xDD80, c, memcard_read_save_file]  # carve was: - [0xDD80, asm, game_8001D580]  # carve
+      - [0xDEBC, c, memcard_list_files]  # carve
       - [0xDFE8, c, func_8001D7E8]  # carve was: - [0xDFE8, asm, game_8001D7E8]  # carve
-      - [0xE0B4, c, func_8001D8B4]  # carve
+      - [0xE0B4, c, memcard_format]  # carve
       - [0xE10C, c, func_8001D90C]  # carve was: - [0xE10C, asm, game_8001D90C]  # carve
       - [0xE218, c, func_8001DA18]  # carve
       - [0xE2B8, c, func_8001DAB8]  # carve was: - [0xE2B8, asm, game_8001DAB8]  # carve
@@ -263,7 +264,7 @@ segments:
       - [0xE904, asm, game_8001E104]  # carve
       - [0xEAE4, c, func_8001E2E4]  # carve
       - [0xEC40, c, func_8001E440]  # carve was: - [0xEC40, asm, game_8001E440]  # carve
-      - [0xED34, asm, game_8001E534]  # carve
+      - [0xED34, c, func_8001E534]  # carve was: - [0xED34, asm, game_8001E534]  # carve
       - [0xEE68, c, func_8001E668]  # carve
       - [0xEEAC, c, func_8001E6AC]  # carve was: - [0xEEAC, asm, game_8001E6AC]  # carve
       - [0xEEF0, c, func_8001E6F0]  # carve was: - [0xEEF0, asm, game_8001E6F0]  # carve
@@ -293,7 +294,7 @@ segments:
       - [0xF8D8, c, func_8001F0D8]  # carve was: - [0xF8D8, asm, game_8001F0D8]  # carve
       - [0xF908, c, func_8001F108]  # carve was: - [0xF908, asm, game_8001F108]  # carve
       - [0xF9B0, c, func_8001F1B0]  # carve was: - [0xF9B0, asm, game_8001F1B0]  # carve
-      - [0xFA4C, c, func_8001F24C]  # carve was: - [0xFA4C, asm, game_8001F24C]  # carve
+      - [0xFA4C, c, tick_title_demo_timer]  # carve was: - [0xFA4C, asm, game_8001F24C]  # carve
       - [0xFAA0, c, func_8001F2A0]  # carve
       - [0xFACC, c, func_8001F2CC]  # carve was: - [0xFACC, asm, game_8001F2CC]  # carve
       - [0xFB14, c, func_8001F314]  # carve
@@ -311,7 +312,7 @@ segments:
       - [0x10AEC, c, func_800202EC]  # carve was: - [0x10AEC, asm, game_800202EC]  # carve
       - [0x10B8C, c, func_8002038C]  # carve was: - [0x10B8C, asm, game_8002038C]  # carve
       - [0x10BF0, c, func_800203F0]  # carve
-      - [0x10DAC, asm, game_800205AC]  # carve
+      - [0x10DAC, c, func_800205AC]  # carve was: - [0x10DAC, asm, game_800205AC]  # carve
       - [0x11104, c, func_80020904]  # carve
       - [0x11150, c, func_80020950]  # carve was: - [0x11150, asm, game_80020950]  # carve
       - [0x1123C, c, func_80020A3C]  # carve
@@ -331,7 +332,7 @@ segments:
       - [0x1187C, c, func_8002107C]  # carve
       - [0x118B8, c, func_800210B8]  # carve
       - [0x118D8, c, func_800210D8]  # carve was: - [0x118D8, asm, game_800210D8]  # carve
-      - [0x11924, asm, game_80021124]  # carve
+      - [0x11924, c, func_80021124]  # carve was: - [0x11924, asm, game_80021124]  # carve
       - [0x119C4, c, func_800211C4]  # carve
       - [0x11A80, c, func_80021280]  # carve was: - [0x11A80, asm, game_80021280]  # carve
       - [0x11B18, c, func_80021318]  # carve
@@ -359,12 +360,12 @@ segments:
       - [0x12CF8, c, func_800224F8]  # carve
       - [0x12E18, c, func_80022618]  # carve
       - [0x12F2C, c, func_8002272C]  # carve
-      - [0x13044, c, func_80022844]  # carve was: - [0x13044, asm, game_80022844]  # carve
+      - [0x13044, c, update_layer_objects]  # carve was: - [0x13044, asm, game_80022844]  # carve
       - [0x13160, asm, game_80022960]  # carve
       - [0x132A0, c, func_80022AA0]  # carve
       - [0x13484, c, func_80022C84]  # carve
       - [0x13598, c, func_80022D98]  # carve was: - [0x13598, asm, game_80022D98]  # carve
-      - [0x13680, c, func_80022E80]  # carve
+      - [0x13680, c, run_text_box]  # carve
       - [0x136DC, c, func_80022EDC]  # carve was: - [0x136DC, asm, game_80022EDC]  # carve
       - [0x1373C, c, func_80022F3C]  # carve
       - [0x13790, c, func_80022F90]  # carve was: - [0x13790, asm, game_80022F90]  # carve
@@ -381,7 +382,7 @@ segments:
       - [0x13C4C, c, func_8002344C]  # carve was: - [0x13C4C, asm, game_8002344C]  # carve
       - [0x13CCC, c, func_800234CC]  # carve was: - [0x13CCC, asm, game_800234CC]  # carve
       - [0x13D00, c, func_80023500]  # carve was: - [0x13D00, asm, game_80023500]  # carve
-      - [0x13DDC, asm, game_800235DC]  # carve
+      - [0x13DDC, c, func_800235DC]  # carve was: - [0x13DDC, asm, game_800235DC]  # carve
       - [0x13F28, c, func_80023728]  # carve
       - [0x13F88, c, func_80023788]  # carve
       - [0x14008, c, func_80023808]  # carve was: - [0x14008, asm, game_80023808]  # carve
@@ -472,9 +473,9 @@ segments:
       - [0x1B320, c, func_8002AB20]  # carve was: - [0x1B320, asm, game_8002AB20]  # carve
       - [0x1B364, c, func_8002AB64]  # carve
       - [0x1B384, c, func_8002AB84]  # carve was: - [0x1B384, asm, game_8002AB84]  # carve
-      - [0x1B3A4, c, func_8002ABA4]  # carve
-      - [0x1B434, c, func_8002AC34]  # carve was: - [0x1B434, asm, game_8002AC34]  # carve
-      - [0x1B4C4, c, func_8002ACC4]  # carve was: - [0x1B4C4, asm, game_8002ACC4]  # carve
+      - [0x1B3A4, c, update_screen_shake_x]  # carve
+      - [0x1B434, c, update_screen_shake_y]  # carve was: - [0x1B434, asm, game_8002AC34]  # carve
+      - [0x1B4C4, c, init_checkpoint_positions]  # carve was: - [0x1B4C4, asm, game_8002ACC4]  # carve
       - [0x1B650, c, func_8002AE50]  # carve was: - [0x1B650, asm, game_8002AE50]  # carve
       - [0x1B7B4, c, func_8002AFB4]  # carve was: - [0x1B7B4, asm, game_8002AFB4]  # carve
       - [0x1B870, c, func_8002B070]  # carve
@@ -494,7 +495,7 @@ segments:
       - [0x1CA18, c, func_8002C218]  # carve
       - [0x1CA7C, c, func_8002C27C]  # carve was: - [0x1CA7C, asm, game_8002C27C]  # carve
       - [0x1CAC0, c, func_8002C2C0]  # carve
-      - [0x1CB38, asm, game_8002C338]  # carve
+      - [0x1CB38, c, func_8002C338]  # carve was: - [0x1CB38, asm, game_8002C338]  # carve
       - [0x1CBCC, c, func_8002C3CC]  # carve
       - [0x1CD0C, c, func_8002C50C]  # carve was: - [0x1CD0C, asm, game_8002C50C]  # carve
       - [0x1D138, asm, game_8002C938]  # carve
@@ -506,24 +507,24 @@ segments:
       - [0x1D770, c, func_8002CF70]  # carve
       - [0x1D804, c, func_8002D004]  # carve
       - [0x1D878, c, func_8002D078]  # carve was: - [0x1D878, asm, game_8002D078]  # carve
-      - [0x1D8E4, c, func_8002D0E4]  # carve
-      - [0x1D944, c, func_8002D144]  # carve was: - [0x1D944, asm, game_8002D144]  # carve
+      - [0x1D8E4, c, find_free_visual_obj]  # carve
+      - [0x1D944, c, alloc_class3_slot]  # carve was: - [0x1D944, asm, game_8002D144]  # carve
       - [0x1D9A4, c, func_8002D1A4]  # carve was: - [0x1D9A4, asm, game_8002D1A4]  # carve
       - [0x1DA10, c, func_8002D210]  # carve was: - [0x1DA10, asm, game_8002D210]  # carve
       - [0x1DA7C, c, func_8002D27C]  # carve
       - [0x1DADC, c, func_8002D2DC]  # carve was: - [0x1DADC, asm, game_8002D2DC]  # carve
       - [0x1DB3C, c, func_8002D33C]  # carve was: - [0x1DB3C, asm, game_8002D33C]  # carve
       - [0x1DC3C, c, func_8002D43C]  # carve was: - [0x1DC3C, asm, game_8002D43C]  # carve
-      - [0x1DD3C, c, func_8002D53C]  # carve was: - [0x1DD3C, asm, game_8002D53C]  # carve
+      - [0x1DD3C, c, alloc_class6_slot]  # carve was: - [0x1DD3C, asm, game_8002D53C]  # carve
       - [0x1DD9C, c, func_8002D59C]  # carve was: - [0x1DD9C, asm, game_8002D59C]  # carve
-      - [0x1DE9C, c, func_8002D69C]  # carve
-      - [0x1DEFC, c, func_8002D6FC]  # carve was: - [0x1DEFC, asm, game_8002D6FC]  # carve
+      - [0x1DE9C, c, alloc_class7_slot]  # carve
+      - [0x1DEFC, c, clear_object_slot]  # carve was: - [0x1DEFC, asm, game_8002D6FC]  # carve
       - [0x1DF20, c, func_8002D720]  # carve was: - [0x1DF20, asm, game_8002D720]  # carve
       - [0x1DF60, c, func_8002D760]  # carve was: - [0x1DF60, asm, game_8002D760]  # carve
       - [0x1DFA0, c, func_8002D7A0]  # carve was: - [0x1DFA0, asm, game_8002D7A0]  # carve
       - [0x1E000, c, func_8002D800]  # carve
       - [0x1E09C, c, func_8002D89C]  # carve
-      - [0x1E138, c, func_8002D938]  # carve
+      - [0x1E138, c, is_off_screen]  # carve
       - [0x1E1EC, c, func_8002D9EC]  # carve was: - [0x1E1EC, asm, game_8002D9EC]  # carve
       - [0x1E2A0, c, func_8002DAA0]  # carve was: - [0x1E2A0, asm, game_8002DAA0]  # carve
       - [0x1E33C, c, func_8002DB3C]  # carve
@@ -531,13 +532,13 @@ segments:
       - [0x1E444, c, func_8002DC44]  # carve
       - [0x1E4D8, asm, game_8002DCD8]  # carve
       - [0x1E57C, c, func_8002DD7C]  # carve
-      - [0x1E6D4, c, func_8002DED4]  # carve was: - [0x1E6D4, asm, game_8002DED4]  # carve
-      - [0x1E754, c, func_8002DF54]  # carve
-      - [0x1E778, c, func_8002DF78]  # carve was: - [0x1E778, asm, game_8002DF78]  # carve
+      - [0x1E6D4, c, apply_object_motion]  # carve was: - [0x1E6D4, asm, game_8002DED4]  # carve
+      - [0x1E754, c, move_object]  # carve
+      - [0x1E778, c, random_byte]  # carve was: - [0x1E778, asm, game_8002DF78]  # carve
       - [0x1E7B0, c, func_8002DFB0]  # carve was: - [0x1E7B0, asm, game_8002DFB0]  # carve
       - [0x1E7F8, c, func_8002DFF8]  # carve
       - [0x1E824, c, func_8002E024]  # carve
-      - [0x1E858, c, func_8002E058]  # carve
+      - [0x1E858, c, set_velocity_from_angle]  # carve
       - [0x1E8F8, c, func_8002E0F8]  # carve was: - [0x1E8F8, asm, game_8002E0F8]  # carve
       - [0x1E998, c, func_8002E198]  # carve was: - [0x1E998, asm, game_8002E198]  # carve
       - [0x1E9C0, c, func_8002E1C0]  # carve
@@ -547,7 +548,7 @@ segments:
       - [0x1F164, c, func_8002E964]  # carve was: - [0x1F164, asm, game_8002E964]  # carve
       - [0x1F2B0, c, func_8002EAB0]  # carve was: - [0x1F2B0, asm, game_8002EAB0]  # carve
       - [0x1F3EC, c, func_8002EBEC]  # carve was: - [0x1F3EC, asm, game_8002EBEC]  # carve
-      - [0x1F4B0, asm, game_8002ECB0]  # carve
+      - [0x1F4B0, c, func_8002ECB0]  # carve was: - [0x1F4B0, asm, game_8002ECB0]  # carve
       - [0x1F768, c, func_8002EF68]  # carve
       - [0x1F950, c, func_8002F150]  # carve was: - [0x1F950, asm, game_8002F150]  # carve
       - [0x1FB38, c, func_8002F338]  # carve was: - [0x1FB38, asm, game_8002F338]  # carve
@@ -560,11 +561,11 @@ segments:
       - [0x208F0, c, func_800300F0]  # carve
       - [0x20A8C, c, func_8003028C]  # carve was: - [0x20A8C, asm, game_8003028C]  # carve
       - [0x20C9C, c, func_8003049C]  # carve was: - [0x20C9C, asm, game_8003049C]  # carve
-      - [0x20DEC, c, func_800305EC]  # carve
+      - [0x20DEC, c, get_tile_attr_top]  # carve
       - [0x20EE0, c, func_800306E0]  # carve was: - [0x20EE0, asm, game_800306E0]  # carve
-      - [0x21020, c, func_80030820]  # carve
-      - [0x21118, c, func_80030918]  # carve was: - [0x21118, asm, game_80030918]  # carve
-      - [0x2120C, c, func_80030A0C]  # carve
+      - [0x21020, c, get_tile_attr_bottom]  # carve
+      - [0x21118, c, get_tile_attr_below]  # carve was: - [0x21118, asm, game_80030918]  # carve
+      - [0x2120C, c, get_tile_attr_origin]  # carve
       - [0x212E4, c, func_80030AE4]  # carve was: - [0x212E4, asm, game_80030AE4]  # carve
       - [0x213B4, c, func_80030BB4]  # carve was: - [0x213B4, asm, game_80030BB4]  # carve
       - [0x214BC, c, func_80030CBC]  # carve was: - [0x214BC, asm, game_80030CBC]  # carve
@@ -621,7 +622,7 @@ segments:
       - [0x25784, c, func_80034F84]  # carve
       - [0x25840, c, func_80035040]  # carve was: - [0x25840, asm, game_80035040]  # carve
       - [0x25AA8, c, func_800352A8]  # carve was: - [0x25AA8, asm, game_800352A8]  # carve
-      - [0x25C68, c, func_80035468]  # carve
+      - [0x25C68, c, update_stage_entry]  # carve
       - [0x25D98, c, func_80035598]  # carve was: - [0x25D98, asm, game_80035598]  # carve
       - [0x25EF4, c, func_800356F4]  # carve
       - [0x26064, c, func_80035864]  # carve
@@ -637,7 +638,7 @@ segments:
       - [0x26BB4, c, func_800363B4]  # carve
       - [0x26C88, c, func_80036488]  # carve was: - [0x26C88, asm, game_80036488]  # carve
       - [0x26DA4, c, func_800365A4]  # carve
-      - [0x26DF0, c, func_800365F0]  # carve was: - [0x26DF0, asm, game_800365F0]  # carve
+      - [0x26DF0, c, update_wall_jump_push]  # carve was: - [0x26DF0, asm, game_800365F0]  # carve
       - [0x26ED4, c, func_800366D4]  # carve
       - [0x26FE8, c, func_800367E8]  # carve
       - [0x27034, c, func_80036834]  # carve was: - [0x27034, asm, game_80036834]  # carve
@@ -652,12 +653,12 @@ segments:
       - [0x27720, c, func_80036F20]  # carve
       - [0x27768, c, func_80036F68]  # carve was: - [0x27768, asm, game_80036F68]  # carve
       - [0x277B8, c, func_80036FB8]  # carve
-      - [0x27828, c, func_80037028]  # carve
-      - [0x278B0, c, func_800370B0]  # carve was: - [0x278B0, asm, game_800370B0]  # carve
+      - [0x27828, c, player_ladder_climb_on_top]  # carve
+      - [0x278B0, c, player_ladder_step_off_bottom]  # carve was: - [0x278B0, asm, game_800370B0]  # carve
       - [0x278F0, c, func_800370F0]  # carve was: - [0x278F0, asm, game_800370F0]  # carve
       - [0x279CC, c, func_800371CC]  # carve
-      - [0x27AAC, c, func_800372AC]  # carve was: - [0x27AAC, asm, game_800372AC]  # carve
-      - [0x27AE8, c, func_800372E8]  # carve
+      - [0x27AAC, c, player_ladder_let_go]  # carve was: - [0x27AAC, asm, game_800372AC]  # carve
+      - [0x27AE8, c, player_hurt]  # carve
       - [0x27B30, c, func_80037330]  # carve was: - [0x27B30, asm, game_80037330]  # carve
       - [0x27BD0, c, func_800373D0]  # carve was: - [0x27BD0, asm, game_800373D0]  # carve
       - [0x27CFC, c, func_800374FC]  # carve
@@ -668,11 +669,11 @@ segments:
       - [0x28088, c, func_80037888]  # carve
       - [0x280C8, c, func_800378C8]  # carve was: - [0x280C8, asm, game_800378C8]  # carve
       - [0x2817C, c, func_8003797C]  # carve was: - [0x2817C, asm, game_8003797C]  # carve
-      - [0x281DC, c, func_800379DC]  # carve was: - [0x281DC, asm, game_800379DC]  # carve
+      - [0x281DC, c, update_control_lock]  # carve was: - [0x281DC, asm, game_800379DC]  # carve
       - [0x28234, c, func_80037A34]  # carve
       - [0x282A0, c, func_80037AA0]  # carve
       - [0x2834C, c, func_80037B4C]  # carve was: - [0x2834C, asm, game_80037B4C]  # carve
-      - [0x28388, c, func_80037B88]  # carve
+      - [0x28388, c, player_script_vanish]  # carve
       - [0x283EC, c, func_80037BEC]  # carve was: - [0x283EC, asm, game_80037BEC]  # carve
       - [0x284B4, c, func_80037CB4]  # carve
       - [0x28568, c, func_80037D68]  # carve was: - [0x28568, asm, game_80037D68]  # carve
@@ -684,37 +685,37 @@ segments:
       - [0x29050, c, func_80038850]  # carve was: - [0x29050, asm, game_80038850]  # carve
       - [0x291E8, c, func_800389E8]  # carve was: - [0x291E8, asm, game_800389E8]  # carve
       - [0x29544, c, func_80038D44]  # carve
-      - [0x29718, c, func_80038F18]  # carve
+      - [0x29718, c, snap_to_tile_slope]  # carve
       - [0x298A4, c, func_800390A4]  # carve was: - [0x298A4, asm, game_800390A4]  # carve
       - [0x29AE4, c, func_800392E4]  # carve was: - [0x29AE4, asm, game_800392E4]  # carve
-      - [0x29CB0, c, func_800394B0]  # carve
+      - [0x29CB0, c, player_check_dash_jump_walk]  # carve
       - [0x29D2C, c, func_8003952C]  # carve
-      - [0x29D88, c, func_80039588]  # carve was: - [0x29D88, asm, game_80039588]  # carve
+      - [0x29D88, c, check_crouch_input]  # carve was: - [0x29D88, asm, game_80039588]  # carve
       - [0x29DE8, c, func_800395E8]  # carve
       - [0x29E68, c, func_80039668]  # carve was: - [0x29E68, asm, game_80039668]  # carve
-      - [0x29EE8, c, func_800396E8]  # carve was: - [0x29EE8, asm, game_800396E8]  # carve
+      - [0x29EE8, c, check_floor_lost]  # carve was: - [0x29EE8, asm, game_800396E8]  # carve
       - [0x29F9C, c, func_8003979C]  # carve
-      - [0x2A064, c, func_80039864]  # carve
+      - [0x2A064, c, update_double_tap_dash]  # carve
       - [0x2A0E8, c, func_800398E8]  # carve was: - [0x2A0E8, asm, game_800398E8]  # carve
       - [0x2A1D4, c, func_800399D4]  # carve
       - [0x2A27C, c, func_80039A7C]  # carve
-      - [0x2A2E0, c, func_80039AE0]  # carve was: - [0x2A2E0, asm, game_80039AE0]  # carve
-      - [0x2A350, c, func_80039B50]  # carve
-      - [0x2A3A8, c, func_80039BA8]  # carve was: - [0x2A3A8, asm, game_80039BA8]  # carve
+      - [0x2A2E0, c, try_enter_wall_cling]  # carve was: - [0x2A2E0, asm, game_80039AE0]  # carve
+      - [0x2A350, c, try_wall_jump]  # carve
+      - [0x2A3A8, c, is_pressing_into_wall]  # carve was: - [0x2A3A8, asm, game_80039BA8]  # carve
       - [0x2A3F0, c, func_80039BF0]  # carve was: - [0x2A3F0, asm, game_80039BF0]  # carve
-      - [0x2A480, c, func_80039C80]  # carve
-      - [0x2A52C, c, func_80039D2C]  # carve was: - [0x2A52C, asm, game_80039D2C]  # carve
-      - [0x2A5B8, c, func_80039DB8]  # carve
+      - [0x2A480, c, try_enter_ladder]  # carve
+      - [0x2A52C, c, try_grab_ladder_from_air]  # carve was: - [0x2A52C, asm, game_80039D2C]  # carve
+      - [0x2A5B8, c, try_leave_ladder]  # carve
       - [0x2A67C, c, func_80039E7C]  # carve
       - [0x2A6CC, c, func_80039ECC]  # carve was: - [0x2A6CC, asm, game_80039ECC]  # carve
       - [0x2A71C, c, func_80039F1C]  # carve was: - [0x2A71C, asm, game_80039F1C]  # carve
       - [0x2A808, c, func_8003A008]  # carve
-      - [0x2A884, asm, game_8003A084]  # carve
+      - [0x2A884, c, func_8003A084]  # carve was: - [0x2A884, asm, game_8003A084]  # carve
       - [0x2A934, c, func_8003A134]  # carve
       - [0x2A990, c, func_8003A190]  # carve was: - [0x2A990, asm, game_8003A190]  # carve
       - [0x2A9C8, c, func_8003A1C8]  # carve was: - [0x2A9C8, asm, game_8003A1C8]  # carve
       - [0x2A9FC, c, func_8003A1FC]  # carve was: - [0x2A9FC, asm, game_8003A1FC]  # carve
-      - [0x2AAC8, c, func_8003A2C8]  # carve
+      - [0x2AAC8, c, cancel_player_attack]  # carve
       - [0x2AB04, c, func_8003A304]  # carve
       - [0x2AB0C, c, func_8003A30C]  # carve was: - [0x2AB0C, asm, game_8003A30C]  # carve
       - [0x2AC18, c, func_8003A418]  # carve
@@ -730,14 +731,14 @@ segments:
       - [0x2B3D0, c, func_8003ABD0]  # carve was: - [0x2B3D0, asm, game_8003ABD0]  # carve
       - [0x2B444, c, func_8003AC44]  # carve
       - [0x2B498, c, func_8003AC98]  # carve
-      - [0x2B4F0, c, func_8003ACF0]  # carve was: - [0x2B4F0, asm, game_8003ACF0]  # carve
+      - [0x2B4F0, c, player_enter_wall_cling]  # carve was: - [0x2B4F0, asm, game_8003ACF0]  # carve
       - [0x2B578, c, func_8003AD78]  # carve
       - [0x2B680, c, func_8003AE80]  # carve
       - [0x2B6F0, c, func_8003AEF0]  # carve
       - [0x2B774, c, func_8003AF74]  # carve was: - [0x2B774, asm, game_8003AF74]  # carve
-      - [0x2B7EC, c, func_8003AFEC]  # carve was: - [0x2B7EC, asm, game_8003AFEC]  # carve
-      - [0x2B840, c, func_8003B040]  # carve
-      - [0x2B8AC, c, func_8003B0AC]  # carve was: - [0x2B8AC, asm, game_8003B0AC]  # carve
+      - [0x2B7EC, c, reach_ladder_top]  # carve was: - [0x2B7EC, asm, game_8003AFEC]  # carve
+      - [0x2B840, c, player_enter_ladder_climb_on_top]  # carve
+      - [0x2B8AC, c, player_enter_ladder_step_off_bottom]  # carve was: - [0x2B8AC, asm, game_8003B0AC]  # carve
       - [0x2B8EC, c, func_8003B0EC]  # carve
       - [0x2B948, c, func_8003B148]  # carve
       - [0x2B9A8, c, func_8003B1A8]  # carve was: - [0x2B9A8, asm, game_8003B1A8]  # carve
@@ -747,44 +748,44 @@ segments:
       - [0x2BCCC, c, func_8003B4CC]  # carve was: - [0x2BCCC, asm, game_8003B4CC]  # carve
       - [0x2BE5C, c, func_8003B65C]  # carve was: - [0x2BE5C, asm, game_8003B65C]  # carve
       - [0x2C02C, c, func_8003B82C]  # carve
-      - [0x2C2C8, asm, game_8003BAC8]  # carve
+      - [0x2C2C8, c, func_8003BAC8]  # carve was: - [0x2C2C8, asm, game_8003BAC8]  # carve
       - [0x2C8EC, c, func_8003C0EC]  # carve
       - [0x2CA0C, c, func_8003C20C]  # carve
       - [0x2CBA8, c, func_8003C3A8]  # carve was: - [0x2CBA8, asm, game_8003C3A8]  # carve
       - [0x2CCC0, c, func_8003C4C0]  # carve was: - [0x2CCC0, asm, game_8003C4C0]  # carve
       - [0x2CDD8, c, func_8003C5D8]  # carve
-      - [0x2CF84, c, func_8003C784]  # carve
+      - [0x2CF84, c, player_spawn_dash_spark]  # carve
       - [0x2D0B8, c, func_8003C8B8]  # carve was: - [0x2D0B8, asm, game_8003C8B8]  # carve
-      - [0x2D244, c, func_8003CA44]  # carve
+      - [0x2D244, c, spawn_wall_jump_visual]  # carve
       - [0x2D350, c, func_8003CB50]  # carve was: - [0x2D350, asm, game_8003CB50]  # carve
       - [0x2D4C4, c, func_8003CCC4]  # carve
       - [0x2D500, c, func_8003CD00]  # carve
       - [0x2D508, c, func_8003CD08]  # carve was: - [0x2D508, asm, game_8003CD08]  # carve
       - [0x2D560, c, func_8003CD60]  # carve was: - [0x2D560, asm, game_8003CD60]  # carve
-      - [0x2D5B8, c, func_8003CDB8]  # carve was: - [0x2D5B8, asm, game_8003CDB8]  # carve
-      - [0x2D610, c, func_8003CE10]  # carve was: - [0x2D610, asm, game_8003CE10]  # carve
-      - [0x2D630, c, func_8003CE30]  # carve
+      - [0x2D5B8, c, read_player_input]  # carve was: - [0x2D5B8, asm, game_8003CDB8]  # carve
+      - [0x2D610, c, player_clear_dash]  # carve was: - [0x2D610, asm, game_8003CE10]  # carve
+      - [0x2D630, c, player_clear_attack]  # carve
       - [0x2D664, c, func_8003CE64]  # carve
       - [0x2D6A4, c, func_8003CEA4]  # carve was: - [0x2D6A4, asm, game_8003CEA4]  # carve
-      - [0x2D6AC, c, func_8003CEAC]  # carve
+      - [0x2D6AC, c, load_buffered_palette]  # carve
       - [0x2D6DC, c, func_8003CEDC]  # carve
       - [0x2D774, c, func_8003CF74]  # carve was: - [0x2D774, asm, game_8003CF74]  # carve
-      - [0x2D7A8, asm, game_8003CFA8]  # carve
+      - [0x2D7A8, c, func_8003CFA8]  # carve was: - [0x2D7A8, asm, game_8003CFA8]  # carve
       - [0x2D810, c, func_8003D010]  # carve
-      - [0x2D8A0, c, func_8003D0A0]  # carve was: - [0x2D8A0, asm, game_8003D0A0]  # carve
+      - [0x2D8A0, c, set_stand_animation_by_hp]  # carve was: - [0x2D8A0, asm, game_8003D0A0]  # carve
       - [0x2D920, c, func_8003D120]  # carve
       - [0x2DA00, c, func_8003D200]  # carve
-      - [0x2DA50, c, func_8003D250]  # carve
+      - [0x2DA50, c, spawn_dust]  # carve
       - [0x2DA9C, c, func_8003D29C]  # carve was: - [0x2DA9C, asm, game_8003D29C]  # carve
       - [0x2DAC4, c, func_8003D2C4]  # carve
       - [0x2DAFC, c, func_8003D2FC]  # carve
       - [0x2DB44, c, func_8003D344]  # carve
-      - [0x2DBA8, c, func_8003D3A8]  # carve
+      - [0x2DBA8, c, player_spawn_weapon]  # carve
       - [0x2DC30, c, func_8003D430]  # carve was: - [0x2DC30, asm, game_8003D430]  # carve
-      - [0x2DCC0, c, func_8003D4C0]  # carve was: - [0x2DCC0, asm, game_8003D4C0]  # carve
-      - [0x2DD48, asm, game_8003D548]  # carve
+      - [0x2DCC0, c, player_spawn_visual]  # carve was: - [0x2DCC0, asm, game_8003D4C0]  # carve
+      - [0x2DD48, c, func_8003D548]  # carve was: - [0x2DD48, asm, game_8003D548]  # carve
       - [0x2DDE0, c, func_8003D5E0]  # carve
-      - [0x2DE88, c, func_8003D688]  # carve was: - [0x2DE88, asm, game_8003D688]  # carve
+      - [0x2DE88, c, map_buttons]  # carve was: - [0x2DE88, asm, game_8003D688]  # carve
       - [0x2DF2C, c, func_8003D72C]  # carve
       - [0x2DF84, c, func_8003D784]  # carve was: - [0x2DF84, asm, game_8003D784]  # carve
       - [0x2E068, c, func_8003D868]  # carve
@@ -811,19 +812,19 @@ segments:
       - [0x2F7E0, c, func_8003EFE0]  # carve was: - [0x2F7E0, asm, game_8003EFE0]  # carve
       - [0x2F894, c, func_8003F094]  # carve
       - [0x2F954, c, func_8003F154]  # carve was: - [0x2F954, asm, game_8003F154]  # carve
-      - [0x2FA50, c, func_8003F250]  # carve
-      - [0x2FA94, c, func_8003F294]  # carve
+      - [0x2FA50, c, player_reset_charge]  # carve
+      - [0x2FA94, c, player_set_animation_shooting]  # carve
       - [0x2FAD8, c, func_8003F2D8]  # carve was: - [0x2FAD8, asm, game_8003F2D8]  # carve
       - [0x2FB5C, c, func_8003F35C]  # carve
       - [0x2FC14, c, func_8003F414]  # carve
-      - [0x2FCC4, asm, game_8003F4C4]  # carve
+      - [0x2FCC4, c, func_8003F4C4]  # carve was: - [0x2FCC4, asm, game_8003F4C4]  # carve
       - [0x2FD48, c, func_8003F548]  # carve
       - [0x2FE08, c, func_8003F608]  # carve was: - [0x2FE08, asm, game_8003F608]  # carve
       - [0x2FF0C, c, func_8003F70C]  # carve
       - [0x2FFA0, c, func_8003F7A0]  # carve was: - [0x2FFA0, asm, game_8003F7A0]  # carve
       - [0x2FFF8, c, func_8003F7F8]  # carve was: - [0x2FFF8, asm, game_8003F7F8]  # carve
       - [0x30040, c, func_8003F840]  # carve
-      - [0x30048, c, func_8003F848]  # carve was: - [0x30048, asm, game_8003F848]  # carve
+      - [0x30048, c, player_fire_weapon]  # carve was: - [0x30048, asm, game_8003F848]  # carve
       - [0x30074, c, func_8003F874]  # carve was: - [0x30074, asm, game_8003F874]  # carve
       - [0x300EC, c, func_8003F8EC]  # carve was: - [0x300EC, asm, game_8003F8EC]  # carve
       - [0x30144, c, func_8003F944]  # carve
@@ -832,14 +833,14 @@ segments:
       - [0x3034C, c, func_8003FB4C]  # carve
       - [0x303D0, c, func_8003FBD0]  # carve
       - [0x30490, c, func_8003FC90]  # carve was: - [0x30490, asm, game_8003FC90]  # carve
-      - [0x304C0, c, func_8003FCC0]  # carve
+      - [0x304C0, c, player_set_charge_flash]  # carve
       - [0x30524, c, func_8003FD24]  # carve was: - [0x30524, asm, game_8003FD24]  # carve
       - [0x30604, c, func_8003FE04]  # carve
       - [0x3066C, c, func_8003FE6C]  # carve was: - [0x3066C, asm, game_8003FE6C]  # carve
       - [0x308A4, c, func_800400A4]  # carve was: - [0x308A4, asm, game_800400A4]  # carve
-      - [0x30980, c, func_80040180]  # carve
-      - [0x309C8, c, func_800401C8]  # carve
-      - [0x30A60, c, func_80040260]  # carve was: - [0x30A60, asm, game_80040260]  # carve
+      - [0x30980, c, player_enter_ladder_shoot]  # carve
+      - [0x309C8, c, player_ladder_shoot]  # carve
+      - [0x30A60, c, update_hover]  # carve was: - [0x30A60, asm, game_80040260]  # carve
       - [0x30ADC, c, func_800402DC]  # carve was: - [0x30ADC, asm, game_800402DC]  # carve
       - [0x30B50, c, func_80040350]  # carve was: - [0x30B50, asm, game_80040350]  # carve
       - [0x30BD0, c, func_800403D0]  # carve
@@ -855,18 +856,18 @@ segments:
       - [0x30F6C, c, func_8004076C]  # carve
       - [0x30FCC, c, func_800407CC]  # carve was: - [0x30FCC, asm, game_800407CC]  # carve
       - [0x31030, c, func_80040830]  # carve
-      - [0x310D0, c, func_800408D0]  # carve
-      - [0x31134, c, func_80040934]  # carve
-      - [0x311C4, c, func_800409C4]  # carve was: - [0x311C4, asm, game_800409C4]  # carve
-      - [0x31250, c, func_80040A50]  # carve was: - [0x31250, asm, game_80040A50]  # carve
-      - [0x312E0, c, func_80040AE0]  # carve was: - [0x312E0, asm, game_80040AE0]  # carve
+      - [0x310D0, c, player_hover_hold]  # carve
+      - [0x31134, c, player_hover_forward]  # carve
+      - [0x311C4, c, player_hover_forward_stop]  # carve was: - [0x311C4, asm, game_800409C4]  # carve
+      - [0x31250, c, player_hover_back]  # carve was: - [0x31250, asm, game_80040A50]  # carve
+      - [0x312E0, c, player_hover_back_stop]  # carve was: - [0x312E0, asm, game_80040AE0]  # carve
       - [0x3136C, c, func_80040B6C]  # carve was: - [0x3136C, asm, game_80040B6C]  # carve
       - [0x313BC, c, func_80040BBC]  # carve was: - [0x313BC, asm, game_80040BBC]  # carve
-      - [0x31488, c, func_80040C88]  # carve
-      - [0x314D0, c, func_80040CD0]  # carve
+      - [0x31488, c, player_hover_set_direction]  # carve
+      - [0x314D0, c, player_nova_strike_windup]  # carve
       - [0x31524, c, func_80040D24]  # carve was: - [0x31524, asm, game_80040D24]  # carve
       - [0x31614, c, func_80040E14]  # carve
-      - [0x31698, c, func_80040E98]  # carve was: - [0x31698, asm, game_80040E98]  # carve
+      - [0x31698, c, player_nova_strike_hit_wall]  # carve was: - [0x31698, asm, game_80040E98]  # carve
       - [0x316F0, c, func_80040EF0]  # carve was: - [0x316F0, asm, game_80040EF0]  # carve
       - [0x31744, c, func_80040F44]  # carve
       - [0x31764, c, func_80040F64]  # carve was: - [0x31764, asm, game_80040F64]  # carve
@@ -935,7 +936,7 @@ segments:
       - [0x35198, c, func_80044998]  # carve was: - [0x35198, asm, game_80044998]  # carve
       - [0x3523C, c, func_80044A3C]  # carve
       - [0x353D8, c, func_80044BD8]  # carve was: - [0x353D8, asm, game_80044BD8]  # carve
-      - [0x3544C, c, func_80044C4C]  # carve
+      - [0x3544C, c, spike_crawler_hit_flash]  # carve
       - [0x354D0, c, func_80044CD0]  # carve was: - [0x354D0, asm, game_80044CD0]  # carve
       - [0x355D0, c, func_80044DD0]  # carve
       - [0x355E0, c, func_80044DE0]  # carve
@@ -956,7 +957,7 @@ segments:
       - [0x363A0, c, func_80045BA0]  # carve
       - [0x363DC, c, func_80045BDC]  # carve was: - [0x363DC, asm, game_80045BDC]  # carve
       - [0x36508, c, func_80045D08]  # carve
-      - [0x36544, asm, game_80045D44]  # carve
+      - [0x36544, c, func_80045D44]  # carve was: - [0x36544, asm, game_80045D44]  # carve
       - [0x3662C, c, func_80045E2C]  # carve
       - [0x36650, c, func_80045E50]  # carve
       - [0x366D4, c, func_80045ED4]  # carve was: - [0x366D4, asm, game_80045ED4]  # carve
@@ -990,7 +991,7 @@ segments:
       - [0x374AC, c, func_80046CAC]  # carve was: - [0x374AC, asm, game_80046CAC]  # carve
       - [0x375BC, asm, game_80046DBC]  # carve
       - [0x376D8, c, func_80046ED8]  # carve
-      - [0x37844, asm, game_80047044]  # carve
+      - [0x37844, c, func_80047044]  # carve was: - [0x37844, asm, game_80047044]  # carve
       - [0x378EC, c, func_800470EC]  # carve
       - [0x37938, c, func_80047138]  # carve
       - [0x37984, c, func_80047184]  # carve was: - [0x37984, asm, game_80047184]  # carve
@@ -1055,7 +1056,7 @@ segments:
       - [0x3AA14, asm, game_8004A214]  # carve
       - [0x3AB64, c, func_8004A364]  # carve
       - [0x3ABF4, c, func_8004A3F4]  # carve was: - [0x3ABF4, asm, game_8004A3F4]  # carve
-      - [0x3AC70, asm, game_8004A470]  # carve
+      - [0x3AC70, c, func_8004A470]  # carve was: - [0x3AC70, asm, game_8004A470]  # carve
       - [0x3AD7C, c, func_8004A57C]  # carve
       - [0x3ADD4, c, func_8004A5D4]  # carve was: - [0x3ADD4, asm, game_8004A5D4]  # carve
       - [0x3AE10, c, func_8004A610]  # carve was: - [0x3AE10, asm, game_8004A610]  # carve
@@ -1159,7 +1160,7 @@ segments:
       - [0x3F8B4, c, func_8004F0B4]  # carve was: - [0x3F8B4, asm, game_8004F0B4]  # carve
       - [0x3F9FC, c, func_8004F1FC]  # carve
       - [0x3FB8C, c, func_8004F38C]  # carve
-      - [0x3FBF4, c, func_8004F3F4]  # carve
+      - [0x3FBF4, c, update_buster_shot_visual]  # carve
       - [0x3FC58, c, func_8004F458]  # carve was: - [0x3FC58, asm, game_8004F458]  # carve
       - [0x3FCE0, c, func_8004F4E0]  # carve was: - [0x3FCE0, asm, game_8004F4E0]  # carve
       - [0x3FD7C, c, func_8004F57C]  # carve was: - [0x3FD7C, asm, game_8004F57C]  # carve
@@ -1337,7 +1338,7 @@ segments:
       - [0x48650, c, func_80057E50]  # carve was: - [0x48650, asm, game_80057E50]  # carve
       - [0x4868C, c, func_80057E8C]  # carve
       - [0x486BC, c, func_80057EBC]  # carve
-      - [0x486DC, asm, game_80057EDC]  # carve
+      - [0x486DC, c, func_80057EDC]  # carve was: - [0x486DC, asm, game_80057EDC]  # carve
       - [0x487B0, c, func_80057FB0]  # carve
       - [0x487EC, c, func_80057FEC]  # carve was: - [0x487EC, asm, game_80057FEC]  # carve
       - [0x48874, c, func_80058074]  # carve

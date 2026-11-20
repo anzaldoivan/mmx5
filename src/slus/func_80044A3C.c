@@ -1,8 +1,7 @@
 /* Adapted from mmx6 @c1c892d src/shared/SLUS_013.95/func_800400F4.c, AGPL-3.0 (THIRD_PARTY.md). */
 #include "types.h"
-#define M2C_UNK s32
+#include "mmx5/movement.h"
 
-M2C_UNK func_8002DED4();
 extern s32 D_80074D98[];
 extern s32 D_8009A0A8;
 
@@ -30,7 +29,7 @@ void func_80044A3C(void* arg0) {
             F_U8(arg0, 0x61) = 1;
         }
     }
-    func_8002DED4(arg0);
+    ((s32(*)())apply_object_motion)(arg0);
     v = F_S32(arg0, 0x20);
     if ((v < 0 ? -v : v) < 0x6000) {
         F_S32(arg0, 0x20) = 0;

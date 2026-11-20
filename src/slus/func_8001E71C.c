@@ -1,11 +1,11 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
 #define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8*)(expr) + (offset)))
 
-void func_80016D54(s32, s32); /* extern */
+void silence_sound(s32, s32); /* extern */
 void func_80017D88(void);     /* extern */
 void func_80027288(void);     /* extern */
-void func_8002C50C(void);     /* extern */
 void func_8002D004(void);     /* extern */
 extern s8 D_8009A424;
 
@@ -14,7 +14,7 @@ void func_8001E71C(void* arg0) {
         M2C_FIELD(arg0, s8*, 0xD) = 1;
         func_80027288();
         func_80017D88();
-        func_80016D54(0xFF, 0);
+        silence_sound(0xFF, 0);
         func_8002C50C();
         func_8002D004();
         M2C_FIELD(arg0, s8*, 1) = 0;

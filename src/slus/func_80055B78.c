@@ -1,7 +1,7 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
-extern u8* func_8002D0E4(void);
-extern u8 D_8009A0A0[];
+extern u8* find_free_visual_obj(void);
 
 void func_80055B78(u8* obj) {
     u8* g;
@@ -12,12 +12,12 @@ void func_80055B78(u8* obj) {
     u8 st;
     u8 id;
 
-    g = D_8009A0A0;
+    g = g_Player;
     st = g[0xF5];
     *(s32*)(g + 8) = *(s32*)(obj + 8);
     if (st == 2) {
         id = 0x25;
-        p = func_8002D0E4();
+        p = find_free_visual_obj();
         if (p != 0) {
             p[0] = 0x41;
             p[1] = id;
@@ -28,7 +28,7 @@ void func_80055B78(u8* obj) {
                 p[0x14] = t;
             }
         }
-        q = func_8002D0E4();
+        q = find_free_visual_obj();
         if (q != 0) {
             q[0] = 0x41;
             q[1] = id;
@@ -39,7 +39,7 @@ void func_80055B78(u8* obj) {
                 q[0x14] = t;
             }
         }
-        r = func_8002D0E4();
+        r = find_free_visual_obj();
         if (r != 0) {
             r[0] = 0x41;
             r[1] = id;
@@ -50,7 +50,7 @@ void func_80055B78(u8* obj) {
                 r[0x14] = t;
             }
         }
-        w = func_8002D0E4();
+        w = find_free_visual_obj();
         if (w != 0) {
             w[0] = 0x41;
             w[1] = id;

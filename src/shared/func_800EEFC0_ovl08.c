@@ -1,13 +1,14 @@
 /* Shared body (DK-5), from the banked draft of func_800EEFC0_ovl08 by tools/wave/gate.py rescan. */
 /* Adapted from mmx6 @c1c892d src/shared/rock_06/func_800EAD08.c, AGPL-3.0 (THIRD_PARTY.md). */
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
+#define g_Player_as_s32 (*(s32*)&g_Player)
 
 #define M2C_UNK s32
 #define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8*)(expr) + (offset)))
 
-M2C_UNK DEDUP_CALLEE(void*, M2C_UNK);
 extern M2C_UNK D_800750C0;
-extern M2C_UNK D_8009A0A0;
 extern M2C_UNK D_800F39D8_ovl08;
 extern M2C_UNK D_800F39DC_ovl08;
 extern M2C_UNK D_800F39E4_ovl08;
@@ -21,10 +22,10 @@ void DEDUP_NAME(void* arg0) {
     self->state++;
     self->unk5 = 1;
     x = self->x_pos.val;
-    self->bg_offset = (*(X4_Obj*)&D_8009A0A0).bg_offset;
+    self->bg_offset = (*(X4_Obj*)&g_Player_as_s32).bg_offset;
     self->unk18.val = x;
     self->unk1C.val = self->y_pos.val;
-    f = ((*(X4_Obj*)&D_8009A0A0).x_pos.val >= x) << 6;
+    f = ((*(X4_Obj*)&g_Player_as_s32).x_pos.val >= x) << 6;
     self->animation_table = (u32**)&D_800F3ADC_ovl08;
     self->unk16 = 6;
     M2C_FIELD(arg0, M2C_UNK**, 0x68) = &D_800F39D8_ovl08;

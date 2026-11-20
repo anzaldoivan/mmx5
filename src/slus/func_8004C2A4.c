@@ -1,18 +1,17 @@
 #include "types.h"
+#include "mmx5/object.h"
+#include "mmx5/globals.h"
 
 #define FX(p, type, off) (*(type*)((u8*)(p) + (off)))
 
-extern void func_80017248(u8* obj);
-extern void func_8002D6FC(u8* obj);
 extern void func_8004B378(u8* obj);
 extern void func_8004B49C(u8* obj, u8* g);
 extern void func_8004B8E4(u8* obj, u8* g);
 extern void* D_80077504[];
 extern u16 D_800E9560;
-extern u8 D_8009A0A0[];
 
 void func_8004C2A4(u8* obj) {
-    u8* g = D_8009A0A0;
+    u8* g = g_Player;
     s8 st;
     s32 f;
 
@@ -38,7 +37,7 @@ void func_8004C2A4(u8* obj) {
         return;
     }
     if (FX(g, s8, 0xA6) == 0) {
-        func_8002D6FC(obj);
+        clear_object_slot(obj);
         return;
     }
     FX(obj, u8, 0x1) = FX(obj, u8, 0x99);
@@ -60,16 +59,16 @@ void func_8004C2A4(u8* obj) {
         if (FX(obj, s8, 0x4) == 0) {
             func_8004B49C(obj, g);
         } else if (FX(obj, s8, 0x4) == 1) {
-            func_80017248(obj);
+            animate_object(obj);
             if (FX(g, s8, 0x6) != 3) {
                 goto keep; // !FAKE: goto kept for the matching branch layout
             }
             goto kill; // !FAKE: goto kept for the matching branch layout
         } else {
-            func_80017248(obj);
+            animate_object(obj);
             if (FX(obj, s8, 0x46) == 0) {
             kill: // !FAKE: label kept for the matching branch layout
-                func_8002D6FC(obj);
+                clear_object_slot(obj);
                 FX(obj, u8, 0x3) = 0;
                 goto tail; // !FAKE: goto kept for the matching branch layout
             }

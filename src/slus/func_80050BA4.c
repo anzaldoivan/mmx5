@@ -1,11 +1,11 @@
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/system.h"
+#include "mmx5/graphics.h"
 #include "addr.h"
 
 #define FX(p, type, off) (*(type*)((u8*)(p) + (off)))
 
-extern void func_800171E8(u8*, s32);
-extern s32 func_8002DF78(void);
-extern void func_8002D89C(u8*);
 extern s32 D_8007B804;
 extern u8 D_8009A0B4;
 
@@ -27,8 +27,8 @@ void func_80050BA4(u8* arg0) {
     if (FX(arg0, signed char, 0x7) == 0) {
         FX(arg0, u8, 0x16) = 1;
     }
-    func_800171E8(arg0, FX(arg0, signed char, 0x5C));
+    set_animation(arg0, FX(arg0, signed char, 0x5C));
     FX(arg0, u8, 0x4)++;
-    FX(arg0, signed char, 0x7) = func_8002DF78() & 1;
+    FX(arg0, signed char, 0x7) = random_byte() & 1;
     func_8002D89C(arg0);
 }

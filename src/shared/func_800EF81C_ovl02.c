@@ -1,11 +1,10 @@
 /* Shared body (DK-5), from the banked draft of func_800EF81C_ovl02 by tools/wave/gate.py rescan. */
 #include "types.h"
-
-extern Ent43AC D_800F43AC_ovl02[];
+#include "mmx5/ovl02.h"
+#include "mmx5/title.h"
+#include "mmx5/system.h"
 
 extern void func_8005019C(s32 a0, s32 a1, void* a2, s32 a3, s32 a4);
-extern s32 func_8002DF78(void);
-extern s32 func_8002D938(u8* a0, s32 a1, s32 a2);
 
 void DEDUP_NAME(Obj800EF81C* p) {
     p->unk86++;
@@ -42,10 +41,9 @@ void DEDUP_NAME(Obj800EF81C* p) {
     }
     if (p->unk87 == 0) {
         func_8005019C(1, 0, p, 0x18, 2);
-        p->unk89 = (func_8002DF78() & 0x3F) + 0x20;
+        p->unk89 = (random_byte() & 0x3F) + 0x20;
     }
-    if (func_8002D938((u8*)p, (p->unk2 + D_800F43AC_ovl02)->unk8 + 0xA0,
-                      0x30)) {
+    if (is_off_screen((u8*)p, (p->unk2 + D_800F43AC_ovl02)->x + 0xA0, 0x30)) {
         p->unk4++;
     }
 }

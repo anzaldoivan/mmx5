@@ -4,7 +4,8 @@
 extern u8* DEDUP_CALLEE();
 extern s32 D_800F46E8_ovl02;
 
-void DEDUP_NAME(u8* arg0, u8 arg1) {
+void DEDUP_NAME(u8* arg0, s32 a1) {
+    u8 arg1 = a1;
     u8* obj = DEDUP_CALLEE();
 
     if (obj != 0) {

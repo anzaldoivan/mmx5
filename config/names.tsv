@@ -1,11 +1,11 @@
 kind	image	scope	old_name	new_name	decision	evidence	reason
-data	slus		D_80010000	g_OvlBase	provisional	loadmap:docs/oracle/loadmap.json:19	
-data	slus		D_80010014	s_ROCK_X5_BIN	provisional	string:docs/oracle/annotations.jsonl:388	
+data	slus		D_80010000	g_OvlBase	rejected	loadmap:docs/oracle/loadmap.json:19	3.7 T4: replaced by g_ovl_base (R68 snake_case)
+data	slus		D_80010014	s_ROCK_X5_BIN	rejected	string:docs/oracle/annotations.jsonl:388	3.7 T4: replaced by g_rock_x5_bin_path (R68 snake_case)
 function	slus		func_80011DC8	main	accepted	psyq-sig:docs/oracle/annotations.jsonl:389	
-function	slus		func_80014064	Cd_Unk_80014064	provisional	xref:docs/memory-map.md:134	
-function	slus		func_80014290	Ovl_Load3	accepted	psyq-sig:docs/oracle/annotations.jsonl:397	
-function	slus		func_80015DDC	Ovl_ReadToc	accepted	psyq-sig:docs/oracle/annotations.jsonl:399	
-function	slus		func_80015EB4	Ovl_Load	accepted	psyq-sig:docs/oracle/annotations.jsonl:400	
+function	slus		func_80014064	Cd_Unk_80014064	rejected	xref:docs/memory-map.md:136	3.7 T1: line moved from :134; 3.7 T4: replaced by wait_rock_bin_read (R68 snake_case)
+function	slus		func_80014290	Ovl_Load3	rejected	loadmap:docs/memory-map.md:47	3.7 T1: one static source (reads the TOC table 800E6188); was psyq-sig:annotations.jsonl:397, a comment; 3.7 T4: replaced by poll_rock_bin_read (R68 snake_case)
+function	slus		func_80015DDC	Ovl_ReadToc	rejected	loadmap:docs/memory-map.md:43	3.7 T1: the T4 plate comment annotations.jsonl:400 agrees; was psyq-sig:annotations.jsonl:399, another function; 3.7 T4: replaced by read_rock_bin_toc (R68 snake_case)
+function	slus		func_80015EB4	Ovl_Load	rejected	loadmap:docs/memory-map.md:45	3.7 T1: live calls at memory-map.md:144-145 agree; was psyq-sig:annotations.jsonl:400, a comment; 3.7 T4: replaced by read_rock_bin_member (R68 snake_case)
 function	slus		func_80058944	__main	accepted	psyq-sig:docs/oracle/annotations.jsonl:783	
 function	slus		func_8005894C	__start	accepted	psyq-sig:docs/oracle/annotations.jsonl:786	
 function	slus		func_80058970	stup1	accepted	psyq-sig:docs/oracle/annotations.jsonl:788	
@@ -2082,8 +2082,110 @@ function	slus		func_8006FA08	PDRESRES_OBJ_1DC0	accepted	psyq-sig:docs/oracle/ann
 function	slus		func_8006FA28	PDRESRES_OBJ_1DE0	accepted	psyq-sig:docs/oracle/annotations.jsonl:3040	
 function	slus		func_8006FA34	PDRESRES_OBJ_1DEC	accepted	psyq-sig:docs/oracle/annotations.jsonl:3041	
 function	slus		func_8006FA88	PDRESRES_OBJ_1E40	accepted	psyq-sig:docs/oracle/annotations.jsonl:3042	
-data	slus		D_8006FC5C	g_OvlIdxStageB	provisional	loadmap:docs/oracle/loadmap.json:318	
-data	slus		D_8006FD50	g_OvlIdxStageSub	provisional	loadmap:docs/oracle/loadmap.json:18	
-data	slus		D_8006FD80	g_OvlIdxStageC	provisional	loadmap:docs/oracle/loadmap.json:406	
-data	slus		D_800EE970	ovlA_VRAM	provisional	loadmap:docs/oracle/loadmap.json:17	
-data	slus		D_800FA000	ovlB_VRAM	provisional	loadmap:docs/oracle/loadmap.json:317	
+data	slus		D_8006FC5C	g_OvlIdxStageB	rejected	loadmap:docs/oracle/loadmap.json:318	3.7 T4: replaced by g_ovl_idx_stage_b (R68 snake_case)
+data	slus		D_8006FD50	g_OvlIdxStageSub	rejected	loadmap:docs/oracle/loadmap.json:18	3.7 T4: replaced by g_ovl_idx_stage_sub (R68 snake_case)
+data	slus		D_8006FD80	g_OvlIdxStageC	rejected	loadmap:docs/oracle/loadmap.json:406	3.7 T4: replaced by g_ovl_idx_stage_c (R68 snake_case)
+data	slus		D_800EE970	ovlA_VRAM	rejected	loadmap:docs/oracle/loadmap.json:17	3.7 T4: replaced by g_ovl_a_vram (R68 snake_case)
+data	slus		D_800FA000	ovlB_VRAM	rejected	loadmap:docs/oracle/loadmap.json:317	3.7 T4: replaced by g_ovl_b_vram (R68 snake_case)
+function	slus		Ovl_Load	read_rock_bin_member	accepted	x6-twin:docs/oracle/x6-twins.tsv:3481	mmx6@93515c1f config/symbols/basis.tsv:16 oracle consistent-with-bytes
+function	slus		func_80014064	wait_rock_bin_read	provisional	xref:docs/memory-map.md:136	3.7 T4: R68 snake_case; calls CdReset/CdControlB/VSync
+function	slus		func_80014290	poll_rock_bin_read	provisional	loadmap:docs/memory-map.md:47	3.7 T4: R68 snake_case; reads a TOC row of 800E6188
+function	slus		func_80015DDC	read_rock_bin_toc	accepted	loadmap:docs/memory-map.md:43	3.7 T4: R68 snake_case; BIN sector 0 TOC -> 800E6188; 3.7 T8: second source string:config/oracle.strnames.tsv:25 (the path it opens)
+data	slus		D_80010000	g_ovl_base	provisional	loadmap:docs/oracle/loadmap.json:19	3.7 T4: R68 snake_case; dest_via *80010000
+data	slus		D_80010014	g_rock_x5_bin_path	provisional	xref:src/slus/read_rock_bin_toc.c:20	3.7 T4: R68 snake_case; the CdSearchFile name
+data	slus		D_8006FC5C	g_ovl_idx_stage_b	provisional	loadmap:docs/oracle/loadmap.json:318	3.7 T4: R68 snake_case; dest_source of 800FA000
+data	slus		D_8006FD50	g_ovl_idx_stage_sub	provisional	loadmap:docs/oracle/loadmap.json:18	3.7 T4: R68 snake_case; dest_source of 800EE970
+data	slus		D_8006FD80	g_ovl_idx_stage_c	provisional	loadmap:docs/oracle/loadmap.json:410	3.7 T4: R68 snake_case; dest_source
+data	slus		D_800EE970	g_ovl_a_vram	provisional	loadmap:docs/oracle/loadmap.json:17	
+data	slus		D_800FA000	g_ovl_b_vram	provisional	loadmap:docs/oracle/loadmap.json:317	
+function	slus		func_8001296C	start_pad_vibration	provisional	x6-twin:docs/oracle/x6-twins.tsv:3421	mmx6@93515c1f config/symbols/basis.tsv:4 code consistent-with-bytes
+function	slus		func_80012E0C	create_task	provisional	x6-twin:docs/oracle/x6-twins.tsv:3433	mmx6@93515c1f config/symbols/basis.tsv:5 code consistent-with-bytes
+function	slus		func_80012E6C	task_yield	provisional	x6-twin:docs/oracle/x6-twins.tsv:3435	mmx6@93515c1f config/symbols/basis.tsv:6 code consistent-with-bytes
+function	slus		func_80012F00	end_task_slot	provisional	x6-twin:docs/oracle/x6-twins.tsv:3439	mmx6@93515c1f config/symbols/basis.tsv:7 code consistent-with-bytes
+function	slus		func_8001551C	wait_for_file_load	provisional	x6-twin:docs/oracle/x6-twins.tsv:3463	mmx6@93515c1f config/symbols/basis.tsv:12 xref consistent-with-bytes
+function	slus		func_800157D4	pump_file_loads	provisional	x6-twin:docs/oracle/x6-twins.tsv:3465	mmx6@93515c1f config/symbols/basis.tsv:13 code consistent-with-bytes
+function	slus		func_80015A88	read_dat_file	accepted	x6-twin:docs/oracle/x6-twins.tsv:3469	mmx6@93515c1f config/symbols/basis.tsv:14 community consistent-with-bytes
+function	slus		func_80016490	play_sound	provisional	x6-twin:docs/oracle/x6-twins.tsv:3483	mmx6@93515c1f config/symbols/basis.tsv:17 community consistent-with-bytes
+function	slus		func_8001657C	key_on_sfx_voices	provisional	x6-twin:docs/oracle/x6-twins.tsv:3485	mmx6@93515c1f config/symbols/basis.tsv:18 xref consistent-with-bytes
+function	slus		func_80016D54	silence_sound	provisional	x6-twin:docs/oracle/x6-twins.tsv:3491	mmx6@93515c1f config/symbols/basis.tsv:21 code consistent-with-bytes
+function	slus		func_800171E8	set_animation	accepted	x6-twin:docs/oracle/x6-twins.tsv:3495	mmx6@93515c1f config/symbols/basis.tsv:22 community consistent-with-bytes
+function	slus		func_80017214	set_animation_frame	provisional	x6-twin:docs/oracle/x6-twins.tsv:3497	mmx6@93515c1f config/symbols/basis.tsv:23 code consistent-with-bytes
+function	slus		func_80017248	animate_object	accepted	x6-twin:docs/oracle/x6-twins.tsv:3499	mmx6@93515c1f config/symbols/basis.tsv:24 code consistent-with-bytes
+function	slus		func_8001D6BC	memcard_list_files	provisional	x6-twin:docs/oracle/x6-twins.tsv:3568	mmx6@93515c1f config/symbols/basis.tsv:31 string consistent-with-bytes
+function	slus		func_8001D8B4	memcard_format	provisional	x6-twin:docs/oracle/x6-twins.tsv:3570	mmx6@93515c1f config/symbols/basis.tsv:32 string consistent-with-bytes
+function	slus		func_8001F24C	tick_title_demo_timer	provisional	x6-twin:docs/oracle/x6-twins.tsv:3621	mmx6@93515c1f config/symbols/basis.tsv:34 community consistent-with-bytes
+function	slus		func_80022844	update_layer_objects	accepted	x6-twin:docs/oracle/x6-twins.tsv:3655	mmx6@93515c1f config/symbols/basis.tsv:37 x4 gate mmx4 sozud/mmx4@4e16dfc
+function	slus		func_80022E80	run_text_box	provisional	x6-twin:docs/oracle/x6-twins.tsv:3657	mmx6@93515c1f config/symbols/basis.tsv:38 xref consistent-with-bytes
+function	slus		func_8002ACC4	init_checkpoint_positions	provisional	x6-twin:docs/oracle/x6-twins.tsv:3780	mmx6@93515c1f config/symbols/basis.tsv:44 code consistent-with-bytes
+function	slus		func_8002D0E4	find_free_visual_obj	accepted	x6-twin:docs/oracle/x6-twins.tsv:3804	mmx6@93515c1f config/symbols/basis.tsv:49 code consistent-with-bytes
+function	slus		func_8002D144	alloc_class3_slot	provisional	x6-twin:docs/oracle/x6-twins.tsv:3806	mmx6@93515c1f config/symbols/basis.tsv:50 code consistent-with-bytes
+function	slus		func_8002D53C	alloc_class6_slot	provisional	x6-twin:docs/oracle/x6-twins.tsv:3816	mmx6@93515c1f config/symbols/basis.tsv:53 code consistent-with-bytes
+function	slus		func_8002D69C	alloc_class7_slot	provisional	x6-twin:docs/oracle/x6-twins.tsv:3818	mmx6@93515c1f config/symbols/basis.tsv:54 code consistent-with-bytes
+function	slus		func_8002D6FC	clear_object_slot	provisional	x6-twin:docs/oracle/x6-twins.tsv:3820	mmx6@93515c1f config/symbols/basis.tsv:55 code consistent-with-bytes
+function	slus		func_8002D938	is_off_screen	provisional	x6-twin:docs/oracle/x6-twins.tsv:3830	mmx6@93515c1f config/symbols/basis.tsv:56 code consistent-with-bytes
+function	slus		func_8002DED4	apply_object_motion	provisional	x6-twin:docs/oracle/x6-twins.tsv:3836	mmx6@93515c1f config/symbols/basis.tsv:58 code consistent-with-bytes
+function	slus		func_8002DF54	move_object	accepted	x6-twin:docs/oracle/x6-twins.tsv:3838	mmx6@93515c1f config/symbols/basis.tsv:59 x4 gate mmx4 sozud/mmx4@4e16dfc
+function	slus		func_8002DF78	random_byte	provisional	x6-twin:docs/oracle/x6-twins.tsv:3840	mmx6@93515c1f config/symbols/basis.tsv:60 code consistent-with-bytes
+function	slus		func_8002E058	set_velocity_from_angle	accepted	x6-twin:docs/oracle/x6-twins.tsv:3848	mmx6@93515c1f config/symbols/basis.tsv:61 x4 gate mmx4 sozud/mmx4@4e16dfc
+function	slus		func_800305EC	get_tile_attr_top	provisional	x6-twin:docs/oracle/x6-twins.tsv:3874	mmx6@93515c1f config/symbols/basis.tsv:65 code consistent-with-bytes
+function	slus		func_80030820	get_tile_attr_bottom	provisional	x6-twin:docs/oracle/x6-twins.tsv:3876	mmx6@93515c1f config/symbols/basis.tsv:67 code consistent-with-bytes
+function	slus		func_80030918	get_tile_attr_below	provisional	x6-twin:docs/oracle/x6-twins.tsv:3878	mmx6@93515c1f config/symbols/basis.tsv:68 code consistent-with-bytes
+function	slus		func_80030A0C	get_tile_attr_origin	provisional	x6-twin:docs/oracle/x6-twins.tsv:3880	mmx6@93515c1f config/symbols/basis.tsv:69 code consistent-with-bytes
+function	slus		func_80035468	update_stage_entry	provisional	x6-twin:docs/oracle/x6-twins.tsv:3928	mmx6@93515c1f config/symbols/basis.tsv:76 code consistent-with-bytes
+function	slus		func_800365F0	update_wall_jump_push	provisional	x6-twin:docs/oracle/x6-twins.tsv:3932	mmx6@93515c1f config/symbols/basis.tsv:87 code consistent-with-bytes
+function	slus		func_80037028	player_ladder_climb_on_top	accepted	x6-twin:docs/oracle/x6-twins.tsv:3936	mmx6@93515c1f config/symbols/basis.tsv:94 x4 gate mmx4 sozud/mmx4@4e16dfc
+function	slus		func_800370B0	player_ladder_step_off_bottom	accepted	x6-twin:docs/oracle/x6-twins.tsv:3938	mmx6@93515c1f config/symbols/basis.tsv:95 x4 gate mmx4 sozud/mmx4@4e16dfc
+function	slus		func_800372AC	player_ladder_let_go	accepted	x6-twin:docs/oracle/x6-twins.tsv:3940	mmx6@93515c1f config/symbols/basis.tsv:98 x4 gate mmx4 sozud/mmx4@4e16dfc
+function	slus		func_800372E8	player_hurt	accepted	x6-twin:docs/oracle/x6-twins.tsv:3942	mmx6@93515c1f config/symbols/basis.tsv:99 x4 gate mmx4 sozud/mmx4@4e16dfc
+function	slus		func_800379DC	update_control_lock	provisional	x6-twin:docs/oracle/x6-twins.tsv:3952	mmx6@93515c1f config/symbols/basis.tsv:102 oracle consistent-with-bytes
+function	slus		func_80037B88	player_script_vanish	accepted	x6-twin:docs/oracle/x6-twins.tsv:3958	mmx6@93515c1f config/symbols/basis.tsv:103 x4 gate mmx4 sozud/mmx4@4e16dfc
+function	slus		func_80038F18	snap_to_tile_slope	provisional	x6-twin:docs/oracle/x6-twins.tsv:3962	mmx6@93515c1f config/symbols/basis.tsv:109 code consistent-with-bytes
+function	slus		func_800394B0	player_check_dash_jump_walk	accepted	x6-twin:docs/oracle/x6-twins.tsv:3964	mmx6@93515c1f config/symbols/basis.tsv:110 x4 gate mmx4 sozud/mmx4@4e16dfc
+function	slus		func_80039588	check_crouch_input	provisional	x6-twin:docs/oracle/x6-twins.tsv:3968	mmx6@93515c1f config/symbols/basis.tsv:111 community consistent-with-bytes
+function	slus		func_800396E8	check_floor_lost	provisional	x6-twin:docs/oracle/x6-twins.tsv:3970	mmx6@93515c1f config/symbols/basis.tsv:114 code consistent-with-bytes
+function	slus		func_80039864	update_double_tap_dash	provisional	x6-twin:docs/oracle/x6-twins.tsv:3972	mmx6@93515c1f config/symbols/basis.tsv:116 code consistent-with-bytes
+function	slus		func_80039AE0	try_enter_wall_cling	provisional	x6-twin:docs/oracle/x6-twins.tsv:3976	mmx6@93515c1f config/symbols/basis.tsv:119 xref consistent-with-bytes
+function	slus		func_80039B50	try_wall_jump	provisional	x6-twin:docs/oracle/x6-twins.tsv:3978	mmx6@93515c1f config/symbols/basis.tsv:120 code consistent-with-bytes
+function	slus		func_80039BA8	is_pressing_into_wall	provisional	x6-twin:docs/oracle/x6-twins.tsv:3980	mmx6@93515c1f config/symbols/basis.tsv:121 xref consistent-with-bytes
+function	slus		func_80039C80	try_enter_ladder	provisional	x6-twin:docs/oracle/x6-twins.tsv:3982	mmx6@93515c1f config/symbols/basis.tsv:122 xref consistent-with-bytes
+function	slus		func_80039D2C	try_grab_ladder_from_air	provisional	x6-twin:docs/oracle/x6-twins.tsv:3984	mmx6@93515c1f config/symbols/basis.tsv:123 code consistent-with-bytes
+function	slus		func_80039DB8	try_leave_ladder	provisional	x6-twin:docs/oracle/x6-twins.tsv:3986	mmx6@93515c1f config/symbols/basis.tsv:124 xref consistent-with-bytes
+function	slus		func_8003A2C8	cancel_player_attack	provisional	x6-twin:docs/oracle/x6-twins.tsv:3994	mmx6@93515c1f config/symbols/basis.tsv:126 code consistent-with-bytes
+function	slus		func_8003ACF0	player_enter_wall_cling	accepted	x6-twin:docs/oracle/x6-twins.tsv:4000	mmx6@93515c1f config/symbols/basis.tsv:132 x4 gate mmx4 sozud/mmx4@4e16dfc
+function	slus		func_8003AFEC	reach_ladder_top	provisional	x6-twin:docs/oracle/x6-twins.tsv:4002	mmx6@93515c1f config/symbols/basis.tsv:136 xref consistent-with-bytes
+function	slus		func_8003B040	player_enter_ladder_climb_on_top	accepted	x6-twin:docs/oracle/x6-twins.tsv:4004	mmx6@93515c1f config/symbols/basis.tsv:137 x4 gate mmx4 sozud/mmx4@4e16dfc
+function	slus		func_8003B0AC	player_enter_ladder_step_off_bottom	accepted	x6-twin:docs/oracle/x6-twins.tsv:4006	mmx6@93515c1f config/symbols/basis.tsv:138 x4 gate mmx4 sozud/mmx4@4e16dfc
+function	slus		func_8003C784	player_spawn_dash_spark	accepted	x6-twin:docs/oracle/x6-twins.tsv:4012	mmx6@93515c1f config/symbols/basis.tsv:144 x4 gate mmx4 sozud/mmx4@4e16dfc
+function	slus		func_8003CA44	spawn_wall_jump_visual	provisional	x6-twin:docs/oracle/x6-twins.tsv:4014	mmx6@93515c1f config/symbols/basis.tsv:146 xref consistent-with-bytes
+function	slus		func_8003CDB8	read_player_input	provisional	x6-twin:docs/oracle/x6-twins.tsv:4016	mmx6@93515c1f config/symbols/basis.tsv:148 community consistent-with-bytes
+function	slus		func_8003CE10	player_clear_dash	accepted	x6-twin:docs/oracle/x6-twins.tsv:4018	mmx6@93515c1f config/symbols/basis.tsv:149 code consistent-with-bytes
+function	slus		func_8003CE30	player_clear_attack	accepted	x6-twin:docs/oracle/x6-twins.tsv:4020	mmx6@93515c1f config/symbols/basis.tsv:150 code consistent-with-bytes
+function	slus		func_8003CEAC	load_buffered_palette	provisional	x6-twin:docs/oracle/x6-twins.tsv:4024	mmx6@93515c1f config/symbols/basis.tsv:153 code consistent-with-bytes
+function	slus		func_8003D0A0	set_stand_animation_by_hp	provisional	x6-twin:docs/oracle/x6-twins.tsv:4028	mmx6@93515c1f config/symbols/basis.tsv:157 code consistent-with-bytes
+function	slus		func_8003D250	spawn_dust	provisional	x6-twin:docs/oracle/x6-twins.tsv:4032	mmx6@93515c1f config/symbols/basis.tsv:159 community consistent-with-bytes
+function	slus		func_8003D3A8	player_spawn_weapon	accepted	x6-twin:docs/oracle/x6-twins.tsv:4040	mmx6@93515c1f config/symbols/basis.tsv:160 x4 gate mmx4 sozud/mmx4@4e16dfc
+function	slus		func_8003D4C0	player_spawn_visual	accepted	x6-twin:docs/oracle/x6-twins.tsv:4044	mmx6@93515c1f config/symbols/basis.tsv:161 x4 gate mmx4 sozud/mmx4@4e16dfc
+function	slus		func_8003D688	map_buttons	provisional	x6-twin:docs/oracle/x6-twins.tsv:4046	mmx6@93515c1f config/symbols/basis.tsv:165 community consistent-with-bytes
+function	slus		func_8003F250	player_reset_charge	accepted	x6-twin:docs/oracle/x6-twins.tsv:4060	mmx6@93515c1f config/symbols/basis.tsv:182 code consistent-with-bytes
+function	slus		func_8003F294	player_set_animation_shooting	accepted	x6-twin:docs/oracle/x6-twins.tsv:4062	mmx6@93515c1f config/symbols/basis.tsv:183 x4 gate mmx4 sozud/mmx4@4e16dfc
+function	slus		func_8003F848	player_fire_weapon	accepted	x6-twin:docs/oracle/x6-twins.tsv:4070	mmx6@93515c1f config/symbols/basis.tsv:187 x4 gate mmx4 sozud/mmx4@4e16dfc
+function	slus		func_8003FCC0	player_set_charge_flash	provisional	x6-twin:docs/oracle/x6-twins.tsv:4072	mmx6@93515c1f config/symbols/basis.tsv:190 code consistent-with-bytes
+function	slus		func_80040180	player_enter_ladder_shoot	accepted	x6-twin:docs/oracle/x6-twins.tsv:4074	mmx6@93515c1f config/symbols/basis.tsv:633 xref consistent-with-bytes
+function	slus		func_800401C8	player_ladder_shoot	accepted	x6-twin:docs/oracle/x6-twins.tsv:4076	mmx6@93515c1f config/symbols/basis.tsv:634 x4 gate mmx4 sozud/mmx4@4e16dfc
+function	slus		func_80040260	update_hover	provisional	x6-twin:docs/oracle/x6-twins.tsv:4078	mmx6@93515c1f config/symbols/basis.tsv:635 oracle consistent-with-bytes
+function	slus		func_800408D0	player_hover_hold	accepted	x6-twin:docs/oracle/x6-twins.tsv:4086	mmx6@93515c1f config/symbols/basis.tsv:638 x4 gate mmx4 sozud/mmx4@4e16dfc
+function	slus		func_80040934	player_hover_forward	accepted	x6-twin:docs/oracle/x6-twins.tsv:4088	mmx6@93515c1f config/symbols/basis.tsv:639 x4 gate mmx4 sozud/mmx4@4e16dfc
+function	slus		func_800409C4	player_hover_forward_stop	accepted	x6-twin:docs/oracle/x6-twins.tsv:4090	mmx6@93515c1f config/symbols/basis.tsv:640 x4 gate mmx4 sozud/mmx4@4e16dfc
+function	slus		func_80040A50	player_hover_back	accepted	x6-twin:docs/oracle/x6-twins.tsv:4092	mmx6@93515c1f config/symbols/basis.tsv:641 x4 gate mmx4 sozud/mmx4@4e16dfc
+function	slus		func_80040AE0	player_hover_back_stop	accepted	x6-twin:docs/oracle/x6-twins.tsv:4094	mmx6@93515c1f config/symbols/basis.tsv:642 x4 gate mmx4 sozud/mmx4@4e16dfc
+function	slus		func_80040C88	player_hover_set_direction	accepted	x6-twin:docs/oracle/x6-twins.tsv:4096	mmx6@93515c1f config/symbols/basis.tsv:643 x4 gate mmx4 sozud/mmx4@4e16dfc
+function	slus		func_80040CD0	player_nova_strike_windup	accepted	x6-twin:docs/oracle/x6-twins.tsv:4098	mmx6@93515c1f config/symbols/basis.tsv:644 x4 gate mmx4 sozud/mmx4@4e16dfc
+function	slus		func_80044C4C	spike_crawler_hit_flash	accepted	x6-twin:docs/oracle/x6-twins.tsv:4124	mmx6@93515c1f config/symbols/basis.tsv:193 x4 gate mmx4 sozud/mmx4@4e16dfc
+function	slus		func_8004F3F4	update_buster_shot_visual	provisional	x6-twin:docs/oracle/x6-twins.tsv:4210	mmx6@93515c1f config/symbols/basis.tsv:201 xref consistent-with-bytes
+data	slus		D_8009A0A0	g_Player	provisional	x4:docs/oracle/x4-names.tsv:355	slot votes 12/0
+function	slus		func_80013EE8	load_rock_dat_file_table	provisional	string:config/oracle.strnames.tsv:24	
+function	slus		func_8001D580	memcard_read_save_file	provisional	string:config/oracle.strnames.tsv:27	
+function	ovl24		func_800F2C4C	memcard_write_save_file_ovl24	provisional	string:config/oracle.strnames.tsv:10	
+function	slus		func_8002ABA4	update_screen_shake_x	provisional	x4:docs/oracle/x4-names.tsv:232	lead proto proto-2000-05-01 config/oracle.proto-2000-05-01.map.tsv:88
+function	slus		func_8002AC34	update_screen_shake_y	provisional	x4:docs/oracle/x4-names.tsv:233	lead proto proto-2000-05-01 config/oracle.proto-2000-05-01.map.tsv:88
+function	slus		func_80040E98	player_nova_strike_hit_wall	provisional	x4:docs/oracle/x4-names.tsv:297	lead proto proto-2000-05-01 config/oracle.proto-2000-05-01.map.tsv:223

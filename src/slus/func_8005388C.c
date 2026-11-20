@@ -1,13 +1,12 @@
 #include "types.h"
+#include "mmx5/object.h"
+#include "mmx5/movement.h"
+#include "mmx5/globals.h"
+#define D_8009A420_as_s32 (*(s32*)&D_8009A420)
 
-extern void func_80017248(u8* obj);
-extern void func_8002D6FC(u8* obj);
 extern void func_8002D7A0(u8* obj);
 extern s32 func_8002D800(u8* a0);
-extern void func_8002D89C(u8* obj);
-extern void func_8002DED4();
 extern void func_80054000(u8* obj);
-extern s32 D_8009A420;
 
 void func_8005388C(u8* obj) {
     s32 v;
@@ -21,13 +20,13 @@ void func_8005388C(u8* obj) {
                     obj[0x6] = 1;
                     *(s32*)(obj + 0x2C) = 0x8000;
                     *(s32*)(obj + 0x24) = __builtin_abs(v) >> 1;
-                    func_8002DED4();
+                    apply_object_motion();
                 } else {
                     obj[0x6] = 0;
                     obj[0x67] = 0;
                 }
             } else {
-                func_8002DED4(obj);
+                apply_object_motion(obj);
             }
         } else {
             if (!(obj[0x70] & 8)) {
@@ -36,10 +35,10 @@ void func_8005388C(u8* obj) {
                 *(s32*)(obj + 0x2C) = 0x8000;
                 obj[0x67] = 1;
             }
-            func_80017248(obj);
+            animate_object(obj);
         }
     } else {
-        func_80017248(obj);
+        animate_object(obj);
     }
     if (*(s32*)(obj + 0x10) == 0) {
         t = *(u16*)(obj + 0x80) - 1;
@@ -53,7 +52,7 @@ void func_8005388C(u8* obj) {
     if (func_8002D800(obj) != 0) {
         if (*(s32*)(obj + 0x10) != 0) {
             if (*(s8*)(obj + 0x2) == 0x29) {
-                func_8002D6FC(obj);
+                clear_object_slot(obj);
                 return;
             }
             func_8002D7A0(obj);
@@ -64,7 +63,7 @@ void func_8005388C(u8* obj) {
         return;
     }
     obj[0x3] = 0;
-    if (*(u16*)(obj + 0x80) >= 0x3C || !(D_8009A420 & 1)) {
+    if (*(u16*)(obj + 0x80) >= 0x3C || !(D_8009A420_as_s32 & 1)) {
         func_8002D89C(obj);
     }
 }

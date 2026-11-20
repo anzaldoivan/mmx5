@@ -1,14 +1,15 @@
 #include "types.h"
+#include "mmx5/object.h"
+#include "mmx5/system.h"
+#include "mmx5/globals.h"
+#include "mmx5/sound.h"
+#define D_8009A420_as_u32 (*(u32*)&D_8009A420)
 
 extern void func_8004FE6C(u8* self, s32 a1, s32 a2, s32 a3, s32 a4);
 extern s32 func_8002DFB0(void);
-extern u8* func_8002D53C(void);
-extern s32 func_8002DF78(void);
-extern s32 func_80016490(s32, s32, void*);
 extern u16 D_80093E68;
 extern u16 D_80093F70;
 extern u8 D_8009A197;
-extern u32 D_8009A420;
 extern u16 D_8009A42E;
 extern u8 D_800C9310;
 extern s8 D_800D1C00[];
@@ -31,18 +32,18 @@ void func_800575D0(u8* arg0) {
         func_8004FE6C(arg0, 1, 0x60, 0x60, 2);
     }
     if (!(func_8002DFB0() & 1)) {
-        o = func_8002D53C();
+        o = alloc_class6_slot();
         if (o != 0) {
             o[0] = 1;
             o[1] = 4;
-            func_8002DF78();
+            random_byte();
             *(u16*)(o + 8) = D_80093F70 & 0xFFF;
             *(u16*)(o + 0xA) = *(u16*)(arg0 + 0xA);
             *(u16*)(o + 0xE) = *(u16*)(arg0 + 0xE);
         }
     }
-    if (!(func_8002DF78() & 3)) {
-        o2 = func_8002D53C();
+    if (!(random_byte() & 3)) {
+        o2 = alloc_class6_slot();
         if (o2 != 0) {
             o2[0] = 1;
             o2[1] = 6;
@@ -53,7 +54,7 @@ void func_800575D0(u8* arg0) {
     if ((u16)(*(u16*)(arg0 + 0x14) % 5) == 0) {
         c = D_800D1C00;
         if (c[0xC] == 0xC && c[0x31] == 2 && (f = c[0x1D]) == 0x15) {
-            f = D_8009A420 & 1;
+            f = D_8009A420_as_u32 & 1;
             if (f == 0) {
                 D_800D50DE += 1;
                 D_8009A42E += 0x20;
@@ -78,7 +79,7 @@ void func_800575D0(u8* arg0) {
             arg0[7] = 1;
             c3 = D_800D1C00;
             c3[0x24] = 0;
-            func_80016490(0, 5, 0);
+            play_sound(0, 5, 0);
             D_8009A197 = 0;
             D_800C9310 = 1;
             if (c3[0xC] == 0) {

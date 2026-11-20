@@ -1,9 +1,8 @@
 /* Adapted from mmx6 @c1c892d src/shared/SLUS_013.95/func_80048380.c, AGPL-3.0 (THIRD_PARTY.md). */
 #include "types.h"
-#define M2C_UNK s32
+#include "mmx5/globals.h"
+#include "mmx5/movement.h"
 
-M2C_UNK func_8002C338(M2C_UNK, M2C_UNK*, M2C_UNK);
-M2C_UNK func_8002DED4();
 extern s8 D_800D1C1E;
 extern u16 D_800E9568[];
 
@@ -52,5 +51,5 @@ void func_8004E08C(void* arg0) {
         D_800D1C1E = 1;
         return;
     }
-    func_8002DED4(arg0);
+    apply_object_motion(arg0);
 }

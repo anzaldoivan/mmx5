@@ -1,9 +1,9 @@
 /* Shared body (DK-5), from the banked draft of func_800EEC98_ovl08 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
 
-extern void DEDUP_CALLEE(u8* obj, s32 state);
 extern Obj8002CC08 D_80098120[];
-extern u8 D_8009A0A0[];
 
 void DEDUP_NAME(u8* o) {
     Obj8002CC08* p;
@@ -26,8 +26,7 @@ void DEDUP_NAME(u8* o) {
             continue;
         }
         if (o[0x15] != 0) {
-            if (D_8009A0A0[0x15] == 0 &&
-                *(s32*)(o + 8) < *(s32*)(D_8009A0A0 + 8) &&
+            if (g_Player[0x15] == 0 && *(s32*)(o + 8) < *(s32*)(g_Player + 8) &&
                 ((*(s16*)((u8*)p + 0xE) - *(s16*)(o + 0xE)) < 0
                      ? (*(s16*)(o + 0xE) - *(s16*)((u8*)p + 0xE))
                      : (*(s16*)((u8*)p + 0xE) - *(s16*)(o + 0xE))) < 0x18 &&
@@ -35,8 +34,7 @@ void DEDUP_NAME(u8* o) {
                 o[0x80] |= 1;
             }
         } else {
-            if (D_8009A0A0[0x15] != 0 &&
-                *(s32*)(o + 8) > *(s32*)(D_8009A0A0 + 8) &&
+            if (g_Player[0x15] != 0 && *(s32*)(o + 8) > *(s32*)(g_Player + 8) &&
                 ((*(s16*)((u8*)p + 0xE) - *(s16*)(o + 0xE)) < 0
                      ? (*(s16*)(o + 0xE) - *(s16*)((u8*)p + 0xE))
                      : (*(s16*)((u8*)p + 0xE) - *(s16*)(o + 0xE))) < 0x18 &&

@@ -1,11 +1,9 @@
 /* Shared body (DK-5), from the banked draft of func_800F8330_ovl07 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/title.h"
+#include "mmx5/globals.h"
 
-extern void func_80033024(u8* a0);
 extern s32 func_80032F70(u8* a0);
-extern s32 func_8004FD90(u8*, s32, s32, s32);
-extern s32 func_8002D938(u8* a0, s32 a1, s32 a2);
-extern void func_8002D89C(u8*);
 extern int func_8002D7A0();
 extern void func_8003258C(u8* a0);
 extern s32 func_800326BC(u8* a0);
@@ -44,15 +42,15 @@ void DEDUP_NAME(u8* arg0) {
             arg0[0x16] = 0x32;
         }
     }
-    func_80033024(arg0);
+    ((void (*)())func_80033024)(arg0);
     *(u16*)(arg0 + 0x42) &= 0x7FFF;
     ((void (*)(u8*))D_801016E4_ovl07[(s8)arg0[6]])(arg0);
     if ((s8)func_80032F70(arg0) < 0) {
-        func_8004FD90(arg0, 1, 0x1F, 0xF);
+        ((s32(*)())func_8004FD90)(arg0, 1, 0x1F, 0xF);
         arg0[4] = 2;
         return;
     }
-    if (func_8002D938(arg0, 0x80, 0x80) == 0) {
+    if (is_off_screen(arg0, 0x80, 0x80) == 0) {
         func_8002D89C(arg0);
     } else {
         val = D_800D1C00[0xC];

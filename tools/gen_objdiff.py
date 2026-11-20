@@ -26,6 +26,9 @@ import re
 import subprocess
 import sys
 
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "build"))
+import layout  # noqa: E402
+
 EXE, ALIAS = "SLUS_013.34", "slus"
 SUB = re.compile(r"^\s*- \[0x([0-9A-Fa-f]+),\s*(c|asm)(?:,\s*([\w.]+))?\]")
 SEG = re.compile(r"^  - name: (\w+)")
@@ -35,9 +38,10 @@ CATEGORIES = ["# config/categories.tsv -- from tools/gen_objdiff.py. id parent n
               "main\t\t%s (boot executable)\tactive" % EXE, "rock\t\tROCK_X5.BIN overlays\tactive"]
 
 
-def units(alias):
-    out, seg = [], None
-    for line in open("config/splat.%s.yaml" % alias):
+def units(alias, root=None):
+    """The yaml's code units of `alias`. A root other than None reads that tree's config (selftest fixtures)."""
+    out, seg, kw = [], None, {} if root is None else {"root": root}
+    for line in open(os.path.join(root or "", "config/splat.%s.yaml" % alias)):
         m = SEG.match(line)
         if m:
             seg = m.group(1)
@@ -45,13 +49,13 @@ def units(alias):
         if m:
             off, kind, name = m.groups()
             name = name or off.upper()
-            d = "src" if kind == "c" else "asm"
             if alias == ALIAS:
                 uname, cats = "main/" + name, ["sdk"] if SDK.match(name) else ["game", "main"]
             else:
                 uname, cats = "rock/%s/%s" % (seg, name), ["game", "rock", "rock." + seg]
-            out.append(dict(name=uname, kind=kind, src="%s/%s/%s.%s" % (d, alias, name, "c" if kind == "c" else "s"),
-                            obj="build/%s/%s/%s/%s.o" % (alias, d, alias, name), cats=cats))
+            src, obj = ((layout.locate, layout.obj) if kind == "c" else (layout.asm_s, layout.asm_obj))
+            out.append(dict(name=uname, kind=kind, src=str(src(alias, name, **kw)), obj=str(obj(alias, name, **kw)),
+                            cats=cats))
     return out
 
 
@@ -93,4 +97,5 @@ def main():
                                                           sum(u["cats"] == ["sdk"] for u in us), sum("rock" in u["cats"] for u in us)))
 
 
-main()
+if __name__ == "__main__":
+    main()

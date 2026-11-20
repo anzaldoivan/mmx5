@@ -1,13 +1,10 @@
 /* Shared body (DK-5), from the banked draft of func_800F52D4_ovl11 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/globals.h"
 #include "addr.h"
 
-extern void func_8002D9EC(u8* a0, s32 a1, s32 a2);
-extern s32 func_800317B8(u8* a0);
-extern s32 func_80031DD0(u8* a0);
 extern u8 D_80074EE0[];
 extern u8 D_80075F20[];
-extern u8 D_8009A0A0[];
 extern u8 D_800F9D14_ovl11[];
 extern u8 D_800F9D20_ovl11[];
 extern void* D_800F9F28_ovl11[];
@@ -16,7 +13,7 @@ void DEDUP_NAME(u8* arg0) {
     s32 r;
     u8 t;
 
-    if (D_8009A0A0[0xF7] == 0) {
+    if (g_Player[0xF7] == 0) {
         ((void (*)(u8*))D_800F9F28_ovl11[((s8*)arg0)[5]])(arg0);
     }
     if (D_1F80004C.bytes[0x8B] != 0) {
@@ -31,7 +28,7 @@ void DEDUP_NAME(u8* arg0) {
         D_1F80004C.bytes[0x8D] = arg0[0x5C];
         r = func_80031DD0(arg0);
         if (r < 0) {
-            D_8009A0A0[0x7A] = 1;
+            g_Player[0x7A] = 1;
             arg0[4] = 2;
             arg0[5] = 0;
             return;

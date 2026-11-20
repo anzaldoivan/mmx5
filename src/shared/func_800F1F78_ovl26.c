@@ -1,12 +1,12 @@
 /* Shared body (DK-5), from the banked draft of func_800F1F78_ovl26 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/globals.h"
 
-extern u8 D_8009A0A0[];
 extern u8 D_8009A1F8[];
 extern s16 D_800F961C_ovl26[];
 
 void DEDUP_NAME(u8* arg0) {
-    u8* a = D_8009A0A0;
+    u8* a = g_Player;
     u8* b = D_8009A1F8;
 
     *(s16*)(b + 0xE) = *(u16*)(a + 0xE) - 0x1E;

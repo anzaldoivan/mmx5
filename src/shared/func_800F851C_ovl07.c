@@ -1,11 +1,10 @@
 /* Shared body (DK-5), from the banked draft of func_800F851C_ovl07 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/ovl07.h"
+#include "mmx5/globals.h"
+#include "mmx5/movement.h"
 
-extern s32 func_800F7FF4_ovl07(u8*, s16, s16);
-extern void func_8002DED4(u8* obj);
-extern s32 func_8002FB58(u8* obj);
 extern s32 func_8003240C(u8* a0);
-extern u8 D_8009A0A0[];
 
 void DEDUP_NAME(u8* o) {
     s32 r1;
@@ -21,21 +20,23 @@ void DEDUP_NAME(u8* o) {
     s32 k;
 
     x = *(u8*)(o + 0x82) + (*(u16*)(o + 0xA) + *(s8*)(o + 0x80));
-    r1 = func_800F7FF4_ovl07(
+    r1 = ((s32(*)(u8*, s16, s16))func_800F7FF4_ovl07)(
         o, x - 1, *(u8*)(o + 0x83) + (*(u16*)(o + 0xE) + *(s8*)(o + 0x81)));
     x = (*(u16*)(o + 0xA) + *(s8*)(o + 0x80)) - *(u8*)(o + 0x82);
-    r2 = func_800F7FF4_ovl07(
+    r2 = ((s32(*)(u8*, s16, s16))func_800F7FF4_ovl07)(
         o, x + 1, *(u8*)(o + 0x83) + (*(u16*)(o + 0xE) + *(s8*)(o + 0x81)));
-    r3 = func_800F7FF4_ovl07(
+    r3 = ((s32(*)(u8*, s16, s16))func_800F7FF4_ovl07)(
         o, *(u8*)(o + 0x82) + (*(u16*)(o + 0xA) + *(s8*)(o + 0x80)),
         *(u16*)(o + 0xE) + 0x10);
     x = (*(u16*)(o + 0xA) + *(s8*)(o + 0x80)) - *(u8*)(o + 0x82);
-    r4 = func_800F7FF4_ovl07(o, x - 1, *(u16*)(o + 0xE) + 0x10);
-    r5 = func_800F7FF4_ovl07(
+    r4 = ((s32(*)(u8*, s16, s16))func_800F7FF4_ovl07)(o, x - 1,
+                                                      *(u16*)(o + 0xE) + 0x10);
+    r5 = ((s32(*)(u8*, s16, s16))func_800F7FF4_ovl07)(
         o, *(u8*)(o + 0x82) + (*(u16*)(o + 0xA) + *(s8*)(o + 0x80)),
         *(s16*)(o + 0xE));
     x = (*(u16*)(o + 0xA) + *(s8*)(o + 0x80)) - *(u8*)(o + 0x82);
-    r6 = func_800F7FF4_ovl07(o, x - 1, *(s16*)(o + 0xE));
+    r6 = ((s32(*)(u8*, s16, s16))func_800F7FF4_ovl07)(o, x - 1,
+                                                      *(s16*)(o + 0xE));
     v = *(s32*)(o + 0x20);
     if ((v > 0 && (r3 != 0 || (*(u8*)(o + 0x70) & 1))) ||
         (v < 0 && (r4 != 0 || (*(u8*)(o + 0x70) & 2))) ||
@@ -47,7 +48,7 @@ void DEDUP_NAME(u8* o) {
         *(u16*)(o + 0xA) = (*(u16*)(o + 0xA) & 0xFFF0) | 8;
         return;
     }
-    func_8002DED4(o);
+    apply_object_motion(o);
     func_8002FB58(o);
     if (r1 == 0 && r2 == 0 && !(*(u8*)(o + 0x70) & 8)) {
         k = 0x1000;
@@ -78,7 +79,7 @@ void DEDUP_NAME(u8* o) {
         *(s32*)(o + 0x2C) = 0;
         *(u8*)(o + 0x6) = 2;
     }
-    p = D_8009A0A0;
+    p = g_Player;
     if (p[0xF8] == 0) {
         d = *(s16*)(p + 0xA) - *(s16*)(o + 0xA);
         if (d >= 0 ? d < 0x30 : *(s16*)(o + 0xA) - *(s16*)(p + 0xA) < 0x30) {

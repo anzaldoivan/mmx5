@@ -1,6 +1,5 @@
 #include "types.h"
-
-extern void func_8003B33C(u8*, s32);
+#include "mmx5/globals.h"
 
 void func_8003AC44(u8* obj) {
     func_8003B33C(obj, 0x13);

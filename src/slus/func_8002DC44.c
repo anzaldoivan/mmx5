@@ -1,7 +1,7 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
 extern Obj8002CC08 D_80098120[];
-extern u8 D_8009A0A0[];
 
 void func_8002DC44(void) {
     Obj8002CC08* p;
@@ -21,7 +21,7 @@ void func_8002DC44(void) {
             } while (n--);
         }
     }
-    D_8009A0A0[0x99] = 0;
-    D_8009A0A0[0x98] = 0;
-    D_8009A0A0[0xA6] = 0;
+    g_Player[0x99] = 0;
+    g_Player[0x98] = 0;
+    g_Player[0xA6] = 0;
 }

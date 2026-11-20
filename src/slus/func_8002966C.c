@@ -3,4 +3,4 @@
 
 #define DEDUP_NAME func_8002966C
 
-#include "../shared/func_8002966C.c"
+#include "shared/func_8002966C.c"

@@ -3,7 +3,7 @@
 
 #define DEDUP_NAME func_800367E8
 #define func_800365A4 func_800367E8.NON_MATCHING
-#define func_800365F0 func_80036834
+#define update_wall_jump_push func_80036834
 #define func_800366D4 func_80036920
 
-#include "../shared/func_800365A4.c"
+#include "shared/func_800365A4.c"

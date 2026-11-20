@@ -1,8 +1,6 @@
 /* Shared body (DK-5), from the banked draft of func_800F0F0C_ovl12 by tools/wave/gate.py rescan. */
 #include "types.h"
-
-extern void func_8002385C(s32, s32, s32);
-extern void func_8002D9EC(u8* a0, s32 a1, s32 a2);
+#include "mmx5/globals.h"
 
 void DEDUP_NAME(u8* obj) {
     if (**(s8**)(obj + 0x80) == 0) {

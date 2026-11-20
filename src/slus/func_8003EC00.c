@@ -1,6 +1,6 @@
 #include "types.h"
 
-extern void func_8003F250(u8* p);
+extern void player_reset_charge(u8* p);
 extern void func_8003F4C4(u8* p, s32 arg);
 extern void func_8003DF20(u8* p);
 
@@ -10,7 +10,7 @@ void func_8003EC00(u8* p) {
         v; // !FAKE: one-byte struct keeps the byte in a QImode pseudo (no promotion)
 
     if (*(s8*)(p + 0x2) == 0) {
-        func_8003F250(p);
+        player_reset_charge(p);
         if (*(s8*)(p + 0xF0) != 0) {
             p[0x94] = 0;
             p[0x95] = 0;

@@ -1,10 +1,9 @@
 /* Shared body (DK-5), from the banked draft of func_800EEA68_ovl09 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/system.h"
+#include "mmx5/globals.h"
 
-extern s32 func_8002DF78(void);
-extern s32 func_8002FB58(u8* obj);
 extern u8 D_8009A1F8[];
-extern u8 D_8009A0A0[];
 extern u16 D_800FA620_ovl09[3][8][2];
 
 void DEDUP_NAME(u8* obj) {
@@ -18,12 +17,12 @@ void DEDUP_NAME(u8* obj) {
     s32 r;
     s32 q;
 
-    r = func_8002DF78() & 7;
-    q = func_8002DF78() & 0xF;
+    r = random_byte() & 7;
+    q = random_byte() & 0xF;
     if (((s8*)obj)[7] != 0) {
         for (i = 0; i < 8; i++) {
             e = D_8009A1F8;
-            p = D_8009A0A0;
+            p = g_Player;
             d = *(s16*)(p + 0xA) - *(s16*)(e + 0xA);
             if (d < 0x6E) {
                 switch (((s8*)obj)[2]) {
@@ -89,7 +88,7 @@ void DEDUP_NAME(u8* obj) {
                     break;
                 }
             }
-            func_8002FB58(obj);
+            ((s32(*)())func_8002FB58)(obj);
             if (obj[0x70] == 0) {
                 *(s32*)(obj + 0x68) = 0;
                 obj[6] = 1;
@@ -102,7 +101,7 @@ void DEDUP_NAME(u8* obj) {
     } else {
         for (i = 0; i < 8; i++) {
             e2 = D_8009A1F8;
-            p2 = D_8009A0A0;
+            p2 = g_Player;
             d2 = *(s16*)(p2 + 0xA) - *(s16*)(e2 + 0xA);
             if (d2 < 0x6E) {
                 if (q < 2) {
@@ -156,7 +155,7 @@ void DEDUP_NAME(u8* obj) {
                         *(u16*)(e2 + 0xE) + D_800FA620_ovl09[1][r][1];
                 }
             }
-            func_8002FB58(obj);
+            ((s32(*)())func_8002FB58)(obj);
             if (obj[0x70] == 0) {
                 *(s32*)(obj + 0x68) = 0;
                 obj[6]++;

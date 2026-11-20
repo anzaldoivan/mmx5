@@ -1,6 +1,6 @@
 #include "types.h"
 
-extern void func_8003A2C8(void* arg0);
+extern void cancel_player_attack(void* arg0);
 extern void func_8003EC00(u8* obj);
 extern void func_8003C5D8(u8* obj);
 extern void func_80038D44(u8* obj);
@@ -86,7 +86,7 @@ void func_800389E8(u8* obj) {
     if (*(s8*)(obj + 0x5C) == -0x80) {
         obj[0x5C] = 0;
         D_800D1C1C = 1;
-        func_8003A2C8(obj);
+        cancel_player_attack(obj);
         func_8003EC00(obj);
         *(s32*)(obj + 0x68) = 0;
         *(s32*)(obj + 0x54) = 0;

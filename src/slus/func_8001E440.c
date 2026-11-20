@@ -3,7 +3,7 @@
 extern s8 D_8009A424;
 extern u8 D_800D1C00[];
 extern void func_8002CF20(void);
-extern void func_80012E0C(s32, void (*)(void));
+extern void create_task(s32, void (*)(void));
 extern void func_80012EAC(void);
 extern void func_80020904(void);
 
@@ -18,7 +18,7 @@ void func_8001E440(u8* a0) {
             D_800D1C00[1] = 0;
             D_800D1C00[2] = 0;
             D_800D1C00[3] = 0;
-            func_80012E0C(1, func_80020904);
+            create_task(1, func_80020904);
             func_80012EAC();
             break;
         case 1:
@@ -39,7 +39,7 @@ void func_8001E440(u8* a0) {
             D_800D1C00[2] = 0;
             D_800D1C00[3] = 0;
             D_800D1C00[0x79] = 10;
-            func_80012E0C(1, func_80020904);
+            create_task(1, func_80020904);
             func_80012EAC();
             break;
         }

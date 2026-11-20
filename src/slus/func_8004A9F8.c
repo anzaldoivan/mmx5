@@ -1,10 +1,8 @@
 #include "types.h"
+#include "mmx5/object.h"
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
 
-extern void func_80017248(u8* obj);
-extern void func_8002DF54(u8* a0);
-extern s32 func_8002F8FC(u8* a0);
-extern void func_800171E8(u8* obj, s32 state);
-extern void func_8002D9EC(u8* a0, s32 a1, s32 a2);
 extern s32 func_8003D430(s32, s32, s32, void*);
 extern s32 D_800771C8[];
 extern s32 D_800771EC[];
@@ -16,8 +14,8 @@ void func_8004A9F8(u8* obj) {
     s16 q;
     s32 t;
 
-    func_80017248(obj);
-    func_8002DF54(obj);
+    animate_object(obj);
+    move_object(obj);
     x = *(s32*)(obj + 0x20) + *(s32*)(obj + 0x28);
     *(s32*)(obj + 0x20) = x;
     *(s32*)(obj + 0x24) = *(s32*)(obj + 0x24) + *(s32*)(obj + 0x2C);
@@ -30,8 +28,8 @@ void func_8004A9F8(u8* obj) {
     if (*(s32*)(obj + 0x24) > 0x40000) {
         *(s32*)(obj + 0x24) = 0x40000;
     }
-    if (obj[0x70] != 0 || (func_8002F8FC(obj), obj[0x70] != 0)) {
-        func_800171E8(obj, 1);
+    if (obj[0x70] != 0 || (((s32(*)())func_8002F8FC)(obj), obj[0x70] != 0)) {
+        set_animation(obj, 1);
         state = 2;
         goto clear; // !FAKE: goto kept for the matching branch layout
     }

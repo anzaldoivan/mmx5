@@ -1,6 +1,6 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
-extern u8 D_8009A0A0[];
 extern u8 D_8009A2F8[];
 extern u8 D_800942A8[][0x50];
 extern u8 D_80093E10[];
@@ -40,7 +40,7 @@ void func_8002C50C(void) {
     u32 j;
     u32 k;
 
-    p0 = D_8009A0A0;
+    p0 = g_Player;
     n0 = 0x158;
     while (n0--) {
         *p0++ = z0;

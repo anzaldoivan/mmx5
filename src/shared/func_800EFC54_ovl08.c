@@ -1,7 +1,8 @@
 /* Shared body (DK-5), from the banked draft of func_800EFC54_ovl08 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/title.h"
+#include "mmx5/globals.h"
 
-extern u8 D_8009A0A0[];
 extern u8 D_80074EE0[];
 extern u8 D_800750C0[];
 extern void* D_800F3D30_ovl08[];
@@ -14,18 +15,12 @@ extern u8 D_800F3B80_ovl08[];
 extern u8 D_800F3B84_ovl08[];
 extern u8 D_800F3B88_ovl08[];
 extern u8 D_800F3D18_ovl08[];
-extern void func_800317B8(u8* a0);
-extern s32 func_80031DD0(u8* a0);
 extern void func_80054440(u8* a0, s32 a1);
-extern s32 func_8002D938(u8* a0, s32 a1, s32 a2);
-extern void func_80016D54(s32, s32);
-extern void func_8002D9EC(u8* a0, s32 a1, s32 a2);
-extern s32 func_8004FD24(u8* a0);
+extern void silence_sound(s32, s32);
 extern void func_8004D4F4(s32 a0, void* a1, u8* a2);
-extern s32 func_8002FB58(u8* obj);
 
 void DEDUP_NAME(u8* obj) {
-    u8* g = D_8009A0A0;
+    u8* g = g_Player;
     s32 st;
     s32 r;
     u8* q;
@@ -45,9 +40,9 @@ void DEDUP_NAME(u8* obj) {
             } else {
                 *(s32*)(obj + 0x50) = D_800F4004_ovl08;
             }
-            func_800317B8(obj);
+            ((void (*)())func_800317B8)(obj);
             *(s32*)(obj + 0x50) = D_800F400C_ovl08;
-            func_800317B8(obj);
+            ((void (*)())func_800317B8)(obj);
         }
         if (obj[0x8B] == 0) {
             *(u8**)(obj + 0x58) = D_80074EE0;
@@ -72,8 +67,8 @@ void DEDUP_NAME(u8* obj) {
             goto dead; // !FAKE: goto kept for the matching branch layout
         }
         if (((s8*)obj)[4] != 2) {
-            if (func_8002D938(obj, 0x60, 0x60) != 0) {
-                func_80016D54(2, 0x51);
+            if (is_off_screen(obj, 0x60, 0x60) != 0) {
+                silence_sound(2, 0x51);
                 obj[4] = 4;
                 return;
             }
@@ -88,7 +83,7 @@ void DEDUP_NAME(u8* obj) {
         *(s16*)(obj + 0x7C) = 0x20;
         *(s16*)(obj + 0x7E) = 6;
         obj[3] = 0;
-        func_80016D54(2, 0x51);
+        silence_sound(2, 0x51);
         obj[4] = 2;
         return;
     }

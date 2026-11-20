@@ -1,14 +1,12 @@
 /* Shared body (DK-5), from the banked draft of func_800EF478_ovl08 by tools/wave/gate.py rescan. */
 #include "types.h"
-
-extern s32 func_80017248(u8* obj);
-extern u8* func_8002D1A4();
-extern s32 func_800171E8(u8* obj, s32 state);
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
 
 void DEDUP_NAME(u8* obj) {
     u8* p;
 
-    func_80017248(obj);
+    ((s32(*)())animate_object)(obj);
     if (*(s8*)(obj + 0x45) != 0) {
         *(s8*)(obj + 0x45) = 0;
         p = func_8002D1A4();
@@ -28,7 +26,7 @@ void DEDUP_NAME(u8* obj) {
     if (*(s8*)(obj + 0x46) == 0) {
         obj[5] = 1;
         obj[6] = 0;
-        func_800171E8(obj, 1);
+        ((s32(*)())set_animation)(obj, 1);
         obj[0x83] = 0x78;
         obj[0x80] &= 0xFD;
     }

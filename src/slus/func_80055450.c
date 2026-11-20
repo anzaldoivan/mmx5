@@ -1,10 +1,10 @@
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/object.h"
 
 extern void func_80054FE4(u8* obj);
 extern void func_80055718(u8* obj);
-extern void func_8002D6FC(u8* obj);
 extern void func_80032F70(u8* obj);
-extern void func_80033024(u8* obj);
 extern void func_8003240C(u8* obj);
 extern void func_800326BC(u8* obj);
 extern void func_8003258C(u8* obj);
@@ -29,7 +29,7 @@ void func_80055450(u8* obj) {
     }
     src = *(u8**)(obj + 0x7C);
     if (*(s8*)src == 0) {
-        func_8002D6FC(obj);
+        clear_object_slot(obj);
         return;
     }
     n = obj[4];

@@ -1,13 +1,12 @@
 #include "types.h"
-
-extern u8 D_8009A0A0[];
+#include "mmx5/globals.h"
 
 extern void func_8002F338(void);
-extern void func_8003CDB8(void);
+extern void read_player_input(void);
 extern void func_80022960(void);
 extern void func_80035040(void);
 extern void func_80022084(void);
-extern void func_80022844(void);
+extern void update_layer_objects(void);
 extern void func_80021F64(void);
 extern void func_800221B0(void);
 extern void func_800222D0(void);
@@ -16,8 +15,7 @@ extern void func_80022618(void);
 extern void func_8002272C(void);
 extern void func_8002AE50(void);
 extern void func_800223E4(void);
-extern void func_80022E80(void);
-extern s32 func_8002FB58(u8* obj);
+extern void run_text_box(void);
 extern void func_8002A440(void);
 extern void func_8002A4E4(void);
 extern void func_8002A554(void);
@@ -32,12 +30,12 @@ void func_80022D98(void) {
     u8* p;
 
     func_8002F338();
-    func_8003CDB8();
-    p = D_8009A0A0;
+    read_player_input();
+    p = g_Player;
     func_80022960();
     func_80035040();
     func_80022084();
-    func_80022844();
+    update_layer_objects();
     func_80021F64();
     func_800221B0();
     func_800222D0();
@@ -46,7 +44,7 @@ void func_80022D98(void) {
     func_8002272C();
     func_8002AE50();
     func_800223E4();
-    func_80022E80();
+    run_text_box();
     func_8002FB58(p);
     func_8002A440();
     func_8002A4E4();

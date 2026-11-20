@@ -1,18 +1,14 @@
 #include "types.h"
-
-extern void func_80017248(u8* obj);
-extern void func_8002DED4(u8* obj);
-extern void func_8003B33C(u8* obj, s32 arg1);
-extern void func_8002D89C(u8* obj);
-extern u8 D_8009A0A0[];
+#include "mmx5/movement.h"
+#include "mmx5/globals.h"
 
 void func_8004C99C(u8* obj) {
-    u8* g = D_8009A0A0;
+    u8* g = g_Player;
     s32 mask;
     s16 d;
 
-    func_80017248(obj);
-    func_8002DED4(obj);
+    animate_object(obj);
+    apply_object_motion(obj);
     mask = 1;
     if (obj[0x15] == 0) {
         mask = 2;

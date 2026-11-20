@@ -1,14 +1,14 @@
 #include "types.h"
+#include "mmx5/object.h"
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
 
-extern void func_800171E8(u8* obj, s32 state);
-extern void func_8002DF54(u8* a0);
 extern s32 ratan2(s32, s32);
 extern s32 rcos(s32);
 extern s32 rsin(s32);
-extern u8 D_8009A0A0[];
 
 void func_8004A610(u8* obj) {
-    u8* p = D_8009A0A0;
+    u8* p = g_Player;
     s32 dx;
     s32 dz;
     s32 a;
@@ -22,7 +22,7 @@ void func_8004A610(u8* obj) {
     if (dx * dx + dz * dz < 0x25) {
         *(s32*)(obj + 0x50) = 0;
         *(s32*)(obj + 0x68) = 0;
-        func_800171E8(obj, 1);
+        set_animation(obj, 1);
         *(s16*)(obj + 0xA) = *(s16*)(p + 0xA);
         *(s16*)(obj + 0xE) = *(s16*)(p + 0xE);
         obj[5]++;
@@ -36,5 +36,5 @@ void func_8004A610(u8* obj) {
     c = *(s32*)(obj + 0x20);
     u = c << 4;
     *(s32*)(obj + 0x20) = ((c << 5) + u) << 1;
-    func_8002DF54(obj);
+    move_object(obj);
 }

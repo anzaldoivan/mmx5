@@ -2,7 +2,7 @@
 #include "types.h"
 
 #define DEDUP_NAME func_80040418
-#define DEDUP_CALLEE func_80017248
+#define DEDUP_CALLEE animate_object
 #define D_800FA778_ovl09 D_80074D44
 
-#include "../shared/func_800EF37C_ovl09.c"
+#include "shared/func_800EF37C_ovl09.c"

@@ -1,16 +1,16 @@
 #include "types.h"
+#include "mmx5/globals.h"
+#define D_8009A420_as_s32 (*(s32*)&D_8009A420)
 
 extern int VSync(int mode);
 extern u8 D_80074540[];
 extern u8 D_80074590[];
 extern void* D_800745E0[];
-extern u8 D_8009A0A0[];
-extern s32 D_8009A420;
 extern u8 D_800C9318;
 extern u8 D_800D1C00[];
 
 void func_80035040(void) {
-    u8* p = D_8009A0A0;
+    u8* p = g_Player;
     u8* q = D_800D1C00;
 
     *(u8**)(q + 0x38) = p;
@@ -48,12 +48,12 @@ void func_80035040(void) {
     if (D_80074540[p[5] & 0x3F] != 0) {
         if (q[0x7B] != 0) {
             if ((*(u16*)(q + 0xC) == 2 && *(s8*)(q + 0x26) != 0) ||
-                (D_8009A420 & 1)) {
+                (D_8009A420_as_s32 & 1)) {
                 VSync(0);
             }
         } else if (*(u16*)(q + 0xC) == 2) {
             if (*(s8*)(q + 0x26) != 0) {
-                if (D_8009A420 & 1) {
+                if (D_8009A420_as_s32 & 1) {
                     VSync(0);
                 }
             }

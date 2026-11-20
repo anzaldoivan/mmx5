@@ -1,14 +1,12 @@
 /* Shared body (DK-5), from the banked draft of func_800F486C_ovl04 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/ovl04.h"
+#include "mmx5/system.h"
+#include "mmx5/globals.h"
+#include "mmx5/sound.h"
+#include "mmx5/graphics.h"
 
-extern void func_800171E8(u8* obj, s32 state);
-extern u8* func_8002D27C(void);
-extern s32 func_8002DF78(void);
 extern s32 func_8002DFB0(void);
-extern void func_80016490(s32, s32, void*);
-extern u8* func_8002D1A4();
-extern s16 D_80102FEC_ovl04[][20];
-extern u8 D_8009A0A0[];
 extern s8 D_800D1C00[];
 extern s16 D_8009A0AE;
 
@@ -39,14 +37,14 @@ void DEDUP_NAME(u8* obj) {
             *(s16*)(obj + 0xE) = *(s16*)(obj + 0xE) + 4;
         }
         if ((*(u16*)(obj + 0x7E) & 0x1F) == 0 && *(s16*)(obj + 0x7E) < 0x230) {
-            func_800171E8(obj, 0x17);
-            base = D_8009A0A0;
+            set_animation(obj, 0x17);
+            base = g_Player;
             for (i = 0; i < 6; i++) {
                 p = func_8002D27C();
                 if (p != 0) {
                     p[0] = 0x41;
                     p[1] = 0x1A;
-                    p[0x15] = func_8002DF78() & 0x40;
+                    p[0x15] = random_byte() & 0x40;
                     p[2] = 6;
                     *(s32*)(p + 0x20) = 0xFFFF0000;
                     *(s32*)(p + 0x30) = *(s32*)(obj + 0x30);
@@ -67,7 +65,7 @@ void DEDUP_NAME(u8* obj) {
 
     *(s32*)(obj + 0x98) += 0x100;
     if (*(s8*)(obj + 0x45) == 7) {
-        func_80016490(2, 0x17, obj);
+        play_sound(2, 0x17, obj);
         q = func_8002D1A4();
         if (q != 0) {
             q[0] = 0x41;
@@ -82,13 +80,13 @@ void DEDUP_NAME(u8* obj) {
             q[0x15] = obj[0x15];
             *(u8**)(q + 0x7C) = obj;
         }
-        base = D_8009A0A0;
+        base = g_Player;
         for (i = 0; i < 3; i++) {
             p = func_8002D27C();
             if (p != 0) {
                 p[0] = 0x41;
                 p[1] = 0x1A;
-                p[0x15] = func_8002DF78() & 0x40;
+                p[0x15] = random_byte() & 0x40;
                 p[2] = 3;
                 *(s32*)(p + 0x20) = 0;
                 *(s32*)(p + 0x30) = *(s32*)(obj + 0x30);
@@ -102,11 +100,11 @@ void DEDUP_NAME(u8* obj) {
         }
     }
     if (*(s8*)(obj + 0x45) == 9) {
-        func_800171E8(obj, 4);
+        set_animation(obj, 4);
     }
     if (obj[0x8E] != 0) {
         if (--obj[0x8E] == 0) {
-            func_800171E8(obj, 7);
+            set_animation(obj, 7);
         }
         return;
     }

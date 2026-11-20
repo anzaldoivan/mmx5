@@ -1,26 +1,22 @@
 #include "types.h"
+#include "mmx5/object.h"
+#include "mmx5/globals.h"
 #include "addr.h"
 
 extern void func_800132F8(s8 arg);
-extern s32 func_800272DC(void);
 extern void func_800183E8(void);
-extern s32 func_8002C338(s32, void*, s32);
 extern u8* func_8002D2DC(void);
-extern u8* func_8002D53C(void);
 extern void func_80013288(s32);
 extern s32 func_800231B4(void);
 extern void func_80011FD4(s8 arg0, s8 arg1);
 extern void func_8002C2C0(void);
 extern void func_8002BD8C(void);
 extern void func_800272B4(void);
-extern void func_8002D6FC(u8* obj);
 extern s8 D_8009A424;
-extern u8 D_8009A0A0[];
 extern u16 D_800733C4[][6];
 extern u8* D_800E9538[];
 extern u8 D_800C9310;
 extern u8 D_800D1C00[];
-extern u16 D_800C931C[];
 
 void func_80034508(u8* obj) {
     u8* p;
@@ -57,12 +53,12 @@ void func_80034508(u8* obj) {
             }
         }
         for (i = 0; i < 4; i++) {
-            D_800E9538[i] = func_8002D53C();
+            D_800E9538[i] = alloc_class6_slot();
             if (D_800E9538[i] != 0) {
                 D_800E9538[i][0] = 1;
                 D_800E9538[i][1] = 0xB;
                 D_800E9538[i][0x36] = 0xFF;
-                if ((s8)D_8009A0A0[2] != 0) {
+                if ((s8)g_Player[2] != 0) {
                     *(s16*)(D_800E9538[i] + 0x34) = 0x1F;
                 } else {
                     *(s16*)(D_800E9538[i] + 0x34) = 0x7C00;
@@ -93,8 +89,8 @@ void func_80034508(u8* obj) {
         }
         func_800231B4();
         D_800C9310 |= 1;
-        if (D_8009A0A0[0xF7] == 2) {
-            D_8009A0A0[0xF7] = 1;
+        if (g_Player[0xF7] == 2) {
+            g_Player[0xF7] = 1;
         }
         func_8002C2C0();
         func_8002BD8C();
@@ -132,8 +128,8 @@ void func_80034508(u8* obj) {
         }
         func_80011FD4(D_800D1C00[0x1B8], D_800D1C00[0x1B9]);
         func_800231B4();
-        if (D_8009A0A0[0xF7] == 2) {
-            D_8009A0A0[0xF7] = 1;
+        if (g_Player[0xF7] == 2) {
+            g_Player[0xF7] = 1;
         }
         func_8002C2C0();
         func_8002BD8C();
@@ -144,8 +140,8 @@ void func_80034508(u8* obj) {
             obj[6]++;
         }
         func_800231B4();
-        if (D_8009A0A0[0xF7] == 2) {
-            D_8009A0A0[0xF7] = 1;
+        if (g_Player[0xF7] == 2) {
+            g_Player[0xF7] = 1;
         }
         func_8002C2C0();
         func_8002BD8C();
@@ -154,15 +150,15 @@ void func_80034508(u8* obj) {
     case 6:
         for (i = 0; i < 4; i++) {
             if (D_800E9538[i] != 0) {
-                func_8002D6FC(D_800E9538[i]);
+                clear_object_slot(D_800E9538[i]);
             }
         }
         D_800D1C00[1] = 0;
         obj[4] = 0;
         obj[5] = 0;
         func_800231B4();
-        if (D_8009A0A0[0xF7] == 2) {
-            D_8009A0A0[0xF7] = 1;
+        if (g_Player[0xF7] == 2) {
+            g_Player[0xF7] = 1;
         }
         func_8002C2C0();
         func_8002BD8C();

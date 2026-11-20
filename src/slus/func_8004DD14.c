@@ -1,7 +1,7 @@
 #include "types.h"
+#include "mmx5/graphics.h"
 #include "addr.h"
 
-extern void func_800171E8(u8* obj, s32 state);
 extern s8 D_800D1C44;
 extern u8 D_8007B4FC[];
 extern u8 D_8007B524[];
@@ -61,8 +61,8 @@ void func_8004DD14(u8* obj) {
             }
             D_800C9310 |= 1;
         }
-        func_800171E8(obj, 0);
+        set_animation(obj, 0);
     } else {
-        func_800171E8(obj, kind - 1);
+        set_animation(obj, kind - 1);
     }
 }

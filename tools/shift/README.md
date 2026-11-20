@@ -7,6 +7,8 @@ exe can be padded and relinked. Phase 2.4 adds the overlay targets (directions e
 ## Usage
 
 - Run `make shift-scan PY=…`. With `SCAN_FLAGS=--baseline`, the command exits 0 whatever the count is.
+- `make check` runs `make shift-scan` on the retail pair after the fleet line. If the scan finds a word or misses a
+  plant, `make check` fails.
 - `PY tools/shift/scan.py [--exe ELF] [--ovl ELF] [--allow config/shift/not_pointers.txt] [--report .run/shift/scan.txt] [--no-plant] [--baseline]`
 - `PY tools/shift/scan.py --selftest` prints `shift-scan: control OK`. The selftest uses a synthetic ELF and is
   game-free. It is in `make tools-selftest`.
@@ -118,7 +120,7 @@ The `#` comments carry the evidence.
   `SHIFT=1` explicitly (mk/rockx5.mk).
 - exe->ovl (T4.1): the exe relocs (config/reloc_addrs.slus.txt) name the symbol of the owner overlay.
   config/shift/ovl_syms.ld defines that symbol in the exe at the retail vram. The symbol is pinned: the exe does not
-  follow a shifted overlay. The rockx5 regions are placed at the exe's ovlA_VRAM/ovlB_VRAM (in-section exe globals).
+  follow a shifted overlay. The rockx5 regions are placed at the exe's g_ovl_a_vram/g_ovl_b_vram (in-section exe globals).
   28 HELD words stay raw (logs/T4.1.owners.txt).
 - The SHIFT rockx5 link has two passes (T8, mk/rockx5.mk LINK_POST).
   - `ovl_syms.py gen` rewrites the pinned names to the shifted rockx5 map (build/shift/ovl_syms.ld).

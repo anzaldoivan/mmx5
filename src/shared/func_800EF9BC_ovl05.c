@@ -1,19 +1,15 @@
 /* Shared body (DK-5), from the banked draft of func_800EF9BC_ovl05 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/title.h"
+#include "mmx5/globals.h"
 #include "addr.h"
 
 extern u8 D_8009A197;
 extern void (*D_800F52EC_ovl05[])(u8*);
 extern u8 D_800F52B4_ovl05[];
 extern void func_800F0990_ovl05(u8* obj);
-extern void func_80017248(u8* obj);
-extern s32 func_800317B8(u8* a0);
-extern s32 func_80031DD0(u8* a0);
 extern void func_8004D4F4(s32 a0, void* a1, u8* a2);
 extern void func_80054440(u8* a0, s32 a1);
-extern s32 func_8002D938(u8* a0, s32 a1, s32 a2);
-extern void func_8002D9EC(u8* a0, s32 a1, s32 a2);
-extern s32 func_8002FB58(u8* obj);
 
 void DEDUP_NAME(u8* obj) {
     s32 r;
@@ -22,7 +18,7 @@ void DEDUP_NAME(u8* obj) {
         *(s32*)(obj + 0x18) = *(s32*)(obj + 0x8);
         *(s32*)(obj + 0x1C) = *(s32*)(obj + 0xC);
         func_800F0990_ovl05(obj);
-        func_80017248(obj);
+        animate_object(obj);
         D_800F52EC_ovl05[*(signed char*)(obj + 5)](obj);
     }
     func_800317B8(obj);
@@ -48,7 +44,7 @@ void DEDUP_NAME(u8* obj) {
         obj[4] = 5;
         return;
     }
-    if (func_8002D938(obj, 0x40, 0x40) == 0) {
+    if (is_off_screen(obj, 0x40, 0x40) == 0) {
         func_8002D9EC(obj, 0x20, 0x20);
     } else {
         obj[4] = 3;

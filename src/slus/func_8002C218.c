@@ -1,4 +1,5 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
 extern s32 D_80093DD0[];
 extern u16 D_80093E68;

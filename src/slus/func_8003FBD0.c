@@ -1,7 +1,6 @@
 #include "types.h"
-
-extern void func_8003B33C(u8*, s32);
-extern void func_80016490(s32, s32, void*);
+#include "mmx5/globals.h"
+#include "mmx5/sound.h"
 
 void func_8003FBD0(u8* p, s32 arg1) {
     u8* unk; /* the target passes an uninitialised $s1 */
@@ -12,7 +11,7 @@ void func_8003FBD0(u8* p, s32 arg1) {
     } else {
         func_8003B33C(p, 0x63);
     }
-    func_80016490(1, 0x17, unk);
+    play_sound(1, 0x17, unk);
     flags = *(u16*)(p + 0x7C);
     if (flags & 2) {
         p[0x15] = 0;

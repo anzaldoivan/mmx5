@@ -1,11 +1,11 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
 extern void func_8003CE64(u8* obj);
-extern void func_8003F250(u8* p);
+extern void player_reset_charge(u8* p);
 extern void func_8003EE38(u8* p);
 extern void func_8003DF20(u8* p);
-extern void func_8003B33C(u8*, s32);
-extern void* func_8003D4C0(s8 arg0, s8 arg1, s8 arg2, s32 arg3);
+extern void* player_spawn_visual(s8 arg0, s8 arg1, s8 arg2, s32 arg3);
 extern s8 D_800D1C1C;
 
 s32 func_8003E1A8(u8* p) {
@@ -54,7 +54,7 @@ s32 func_8003E1A8(u8* p) {
             }
         }
         p[0x93] = 0;
-        func_8003F250(p);
+        player_reset_charge(p);
         func_8003EE38(p);
         func_8003DF20(p);
     }
@@ -74,7 +74,7 @@ s32 func_8003E1A8(u8* p) {
             func_8003B33C(p, 0xB1);
         }
         p[0x5] = 0x24;
-        func_8003D4C0(1, 0x1B, 7, 0);
+        player_spawn_visual(1, 0x1B, 7, 0);
         p[0x86] = 5;
         p[0xF4] = 0;
         *(s32*)(p + 0x68) = 0;

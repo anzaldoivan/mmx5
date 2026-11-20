@@ -1,6 +1,5 @@
 #include "types.h"
-
-extern void func_8002DED4(u8* obj);
+#include "mmx5/movement.h"
 
 s32 func_80044998(u8* obj) {
     s32 mask;
@@ -14,7 +13,7 @@ s32 func_80044998(u8* obj) {
     if (obj[0x89] & mask) {
         return 1;
     }
-    func_8002DED4(obj);
+    apply_object_motion(obj);
     if (obj[0x15] != 0) {
         over = *(s32*)(obj + 0x20);
         lim = *(s32*)(obj + 0x118);

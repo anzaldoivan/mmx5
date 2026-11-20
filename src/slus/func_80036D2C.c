@@ -1,8 +1,8 @@
 #include "types.h"
+#include "mmx5/sound.h"
 
 extern s32 func_800439A8(u8* obj);
 extern void func_8003D200(u8* obj);
-extern s32 func_80016490(s32, s32, void*);
 
 void func_80036D2C(u8* obj) {
     if (func_800439A8(obj) != 0) {
@@ -19,7 +19,7 @@ void func_80036D2C(u8* obj) {
         }
         if (*(s8*)(obj + 0x45) & 0x80) {
             obj[0x45] &= 0x3F;
-            func_80016490(1, 5, obj);
+            play_sound(1, 5, obj);
             obj[0x8C] = 1;
             obj[6]++;
         }

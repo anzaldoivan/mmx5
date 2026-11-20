@@ -1,16 +1,15 @@
 #include "types.h"
+#include "mmx5/weapon.h"
+#include "mmx5/sound.h"
+#include "mmx5/globals.h"
 
 extern s32 func_8003E6FC(void*, s8);
-extern u8* func_8003D3A8(s32, s32, s32, u8*);
 extern s32 func_800390A4(u8* p);
 extern void func_800443A8(u8*, s8);
-extern void func_80017248(u8* obj);
 extern s32 func_80044328(u8*);
-extern void func_8003B33C(u8*, s32);
-extern s32 func_80016490(s32, s32, void*);
-extern void* func_8003D4C0(s8 arg0, s8 arg1, s8 arg2, s32 arg3);
-extern s32 func_80039D2C(u8* obj);
-extern s32 func_80039AE0(void* self);
+extern void* player_spawn_visual(s8 arg0, s8 arg1, s8 arg2, s32 arg3);
+extern s32 try_grab_ladder_from_air(u8* obj);
+extern s32 try_enter_wall_cling(void* self);
 extern s32 func_80038850(u8* self);
 extern void func_8003D120(u8*);
 extern void func_8003D344(void* arg0);
@@ -22,12 +21,12 @@ static inline s32 func_80042770_a(u8* o) {
     if (func_80044328(o)) {
         if (o[0xC9] & 1) {
             func_8003B33C(o, 0x60);
-            func_80016490(1, 7, o);
-            func_8003D4C0(1, 0x11, 0, (s32)o);
+            play_sound(1, 7, o);
+            player_spawn_visual(1, 0x11, 0, (s32)o);
             o[5] = 0x35;
         } else {
             func_8003B33C(o, 0x5B);
-            func_80016490(1, 8, o);
+            play_sound(1, 8, o);
             o[5] = 0x31;
         }
         o[6] = 0;
@@ -46,7 +45,7 @@ void func_80042770(u8* o) {
         (*(u16*)(o + 0x80) & 0x20) && ((s8*)o)[0xA6] == 0) {
         t = func_8003E6FC(o, 3);
         if (*(s16*)(o + 0xAE) >= t) {
-            p = func_8003D3A8(1, 0x2B, 0, o);
+            p = player_spawn_weapon(1, 0x2B, 0, o);
             if (p != 0) {
                 *(s16*)(o + 0xAE) -= func_8003E6FC(o, 3);
                 p[0x99] = 0;
@@ -62,7 +61,7 @@ void func_80042770(u8* o) {
         }
         o[6]++;
     } else {
-        func_80017248(o);
+        animate_object(o);
         if (((s8*)o)[5] == 0x35) {
             func_800443A8(o, 0x20);
         }
@@ -90,10 +89,10 @@ void func_80042770(u8* o) {
         }
     }
     if (((s8*)o)[0x8B] == 0) {
-        if (func_80039D2C(o)) {
+        if (try_grab_ladder_from_air(o)) {
             return;
         }
-        if (func_80039AE0(o)) {
+        if (try_enter_wall_cling(o)) {
             return;
         }
         if (func_80038850(o)) {

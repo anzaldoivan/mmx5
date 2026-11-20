@@ -1,8 +1,8 @@
 #include "types.h"
+#include "mmx5/object.h"
 #include "addr.h"
 
 extern void func_80017348(u8* a0, s32 a1, s32 a2);
-extern void func_8002D6FC(u8* obj);
 
 void func_80050D04(u8* obj) {
     s32 big;
@@ -54,5 +54,5 @@ void func_80050D04(u8* obj) {
         obj[0x49] = 1;
         func_80017348(obj, 0x140, 0x40);
     }
-    func_8002D6FC(obj);
+    clear_object_slot(obj);
 }

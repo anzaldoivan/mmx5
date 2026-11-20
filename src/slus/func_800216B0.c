@@ -4,4 +4,4 @@
 #define DEDUP_NAME func_800216B0
 #define func_80021318 func_800216B0.NON_MATCHING
 
-#include "../shared/func_80021318.c"
+#include "shared/func_80021318.c"

@@ -1,8 +1,8 @@
 /* Shared body (DK-5), from the banked draft of func_800F4C30_ovl10 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/globals.h"
 
-extern u8* func_8002D144(void);
-extern void func_8002D9EC(u8* obj, s32 a, s32 b);
+extern u8* alloc_class3_slot(void);
 
 #define S16(p, o) (*(s16*)((p) + (o)))
 #define U16(p, o) (*(u16*)((p) + (o)))
@@ -16,7 +16,7 @@ void DEDUP_NAME(u8* obj) {
     if (S8(obj, 2) == 0) {
         if (--S16(obj, 0x7C) == 0) {
             obj[5] = 2;
-            child = func_8002D144();
+            child = alloc_class3_slot();
             if (child != 0) {
                 child[0] = 1;
                 child[1] = 0x1A;

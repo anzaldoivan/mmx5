@@ -1,13 +1,12 @@
 #include "types.h"
+#include "mmx5/object.h"
+#include "mmx5/globals.h"
 
 extern s32 func_80037E14(void);
-extern void func_8002DF54(u8* a0);
 extern s32 func_800306E0(u8* a0);
-extern void func_80038F18(u8* a0, s32 a1);
+extern void snap_to_tile_slope(u8* a0, s32 a1);
 extern s32 func_8003A134(u8* a0, s32 a1);
-extern void func_8003B33C(u8* a0, s32 a1);
 extern void func_8003B4CC(u8* a0, s32 a1, s32 a2);
-extern void func_80017248(u8* a0);
 
 void func_80038488(u8* a0) {
     s32 dir;
@@ -30,19 +29,19 @@ void func_80038488(u8* a0) {
                 r = 2;
                 *(s32*)(a0 + 0x20) = *(s32*)(a0 + 0x134);
             }
-            func_8002DF54(a0);
+            move_object(a0);
             in = (u8)(func_800306E0(a0) - 0x25) > 10;
             *(s32*)(a0 + 0x8) = *(s32*)(a0 + 0x18);
             if (in) {
                 r = 0;
             } else {
-                func_8002DF54(a0);
+                move_object(a0);
             }
         }
         dir = r;
     }
     if (dir != 0) {
-        func_80038F18(a0, func_800306E0(a0));
+        snap_to_tile_slope(a0, func_800306E0(a0));
     }
     c = func_800306E0(a0);
     if (*(s8*)(a0 + 0x2) == 0) {
@@ -80,7 +79,7 @@ void func_80038488(u8* a0) {
             func_8003B33C(a0, anim);
         }
     } else {
-        func_80017248(a0);
+        animate_object(a0);
     }
     if (*(s8*)(a0 + 0x46) == 0 && *(s8*)(a0 + 0x8E) == 0) {
         anim = func_8003A134(a0, c) - 0x5D;

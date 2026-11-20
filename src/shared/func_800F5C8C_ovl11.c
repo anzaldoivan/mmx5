@@ -1,38 +1,39 @@
 /* Shared body (DK-5), from the banked draft of func_800F5C8C_ovl11 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/sound.h"
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
+#define g_Player_as_Scr5C8C (*(Scr5C8C*)&g_Player)
 
-extern Scr5C8C D_8009A0A0;
 extern s16 D_800FA05A_ovl11;
 extern Row5C8C D_8009A1F8[];
-
-extern void func_800171E8(Obj5C8C*, s32);
-extern void func_80017248(Obj5C8C*);
-extern s32 func_80016490(s32, s32, void*);
 
 s32 DEDUP_NAME(Obj5C8C* obj) {
     s32 ret;
 
     obj->unk60 = 8;
-    if (D_8009A0A0.unk2 == 0 && D_8009A0A0.unkFA == 0) {
+    if (g_Player_as_Scr5C8C.unk2 == 0 && g_Player_as_Scr5C8C.unkFA == 0) {
         obj->unk62 = 8;
     } else {
         obj->unk62 = 6;
     }
-    func_800171E8(obj, 7);
+    set_animation(obj, 7);
     if (obj->unkA > D_800FA05A_ovl11) {
         obj->unk15 = 0;
         obj->unk20 = 0xFFFA0000;
         obj->unkA = (obj->unk14 + D_8009A1F8)->unkA + 0x180;
-        obj->unkE = D_8009A0A0.unkE - (obj->unkA - D_8009A0A0.unkA);
+        obj->unkE =
+            g_Player_as_Scr5C8C.unkE - (obj->unkA - g_Player_as_Scr5C8C.unkA);
     } else {
         obj->unk15 = 0x40;
         obj->unk20 = 0x60000;
         obj->unkA = (obj->unk14 + D_8009A1F8)->unkA - 0x40;
-        obj->unkE = D_8009A0A0.unkE - (D_8009A0A0.unkA - obj->unkA);
+        obj->unkE =
+            g_Player_as_Scr5C8C.unkE - (g_Player_as_Scr5C8C.unkA - obj->unkA);
     }
     obj->unk24 = 0xFFFA0000;
-    func_80017248(obj);
-    ret = func_80016490(2, 0x32, obj);
+    animate_object(obj);
+    ret = play_sound(2, 0x32, obj);
     obj->unk6++;
     return ret;
 }

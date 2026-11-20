@@ -1,9 +1,8 @@
 /* Shared body (DK-5), from the banked draft of func_800F37F0_ovl03 by tools/wave/gate.py rescan. */
 #include "types.h"
-
-extern s32 func_8002DF78(void);
-extern void func_80017248(u8* obj);
-extern void func_8002DED4(u8* obj);
+#include "mmx5/system.h"
+#include "mmx5/movement.h"
+#include "mmx5/globals.h"
 
 void DEDUP_NAME(u8* o) {
     s32 k = 0x2000;
@@ -15,7 +14,7 @@ void DEDUP_NAME(u8* o) {
         } else {
             switch (o[0x8E]) {
             case 0:
-                if ((func_8002DF78() & 0xF) < 8) {
+                if ((random_byte() & 0xF) < 8) {
                     o[0x8E] = 1;
                     *(s32*)(o + 0x84) = k;
                     *(s32*)(o + 0x88) = 0;
@@ -26,7 +25,7 @@ void DEDUP_NAME(u8* o) {
                 }
                 break;
             case 1:
-                if ((func_8002DF78() & 0xF) < 8) {
+                if ((random_byte() & 0xF) < 8) {
                     o[0x8E] = 0;
                     *(s32*)(o + 0x84) = -0x2000;
                     *(s32*)(o + 0x88) = 0;
@@ -37,7 +36,7 @@ void DEDUP_NAME(u8* o) {
                 }
                 break;
             case 2:
-                if ((func_8002DF78() & 0xF) < 4) {
+                if ((random_byte() & 0xF) < 4) {
                     o[0x8E] = 3;
                     *(s32*)(o + 0x84) = k;
                     *(s32*)(o + 0x88) = 0;
@@ -48,7 +47,7 @@ void DEDUP_NAME(u8* o) {
                 }
                 break;
             case 3:
-                if ((func_8002DF78() & 0xF) < 4) {
+                if ((random_byte() & 0xF) < 4) {
                     o[0x8E] = 2;
                     *(s32*)(o + 0x84) = -0x2000;
                     *(s32*)(o + 0x88) = 0;
@@ -63,6 +62,6 @@ void DEDUP_NAME(u8* o) {
             o[6]++;
         }
     }
-    func_80017248(o);
-    func_8002DED4(o);
+    animate_object(o);
+    apply_object_motion(o);
 }

@@ -1,8 +1,8 @@
 #include "types.h"
 
 extern void func_800389E8(u8* obj);
-extern void func_800396E8(u8* obj);
-extern void func_80039864(u8* obj);
+extern void check_floor_lost(u8* obj);
+extern void update_double_tap_dash(u8* obj);
 extern void func_800399D4(u8* obj);
 extern void func_80039A7C(u8* obj);
 extern void func_80039BF0(u8* obj);
@@ -65,8 +65,8 @@ void func_800352A8(u8* obj) {
         }
         func_800399D4(obj);
         func_80039A7C(obj);
-        func_80039864(obj);
-        func_800396E8(obj);
+        update_double_tap_dash(obj);
+        check_floor_lost(obj);
         func_8003ED94(obj);
         ((void (*)(u8*))D_800745F0[((s8*)obj)[5]])(obj);
         obj[0x71] = 0;

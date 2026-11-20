@@ -4,4 +4,5 @@
 #define DEDUP_NAME func_800210B8
 #define DEDUP_CALLEE func_800F2E80_ovl24 /* T4.1 trace owner=24 */
 
-#include "../shared/D_800EEBA0_ovl00.c"
+extern void func_800F2E80_ovl24();
+#include "shared/D_800EEBA0_ovl00.c"

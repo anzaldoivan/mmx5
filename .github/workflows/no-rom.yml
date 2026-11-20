@@ -4,9 +4,10 @@
 # medium, which needs the game and is therefore never in CI. CI proves everything that does NOT need the game:
 #   * audits       — the tracked tree is public-clean (tools/audit_public.py: no game-derived bytes, no purge path,
 #                    nothing over the size threshold, no pasted disassembly), and any text-only self-checks the
-#                    project adds (a cookbook index freshness check, a symbol-reference lint, decoder unit tests).
+#                    project adds (here: format-check, modding-check).
 #   * compile-only — the committed C still compiles with the pinned vintage toolchain and the build's exact flags
-#                    (enabled: job `compile-only`, `make compile-only` in mk/fleet.mk; every src/**/*.c on every run).
+#                    (enabled: job `compile-only`, `make compile-only` in mk/fleet.mk; every src/**/*.c on every run),
+#                    then readability-check and the public selftests (`make selftest`, no dev tier).
 # Byte-identity is verified locally with the game and RECORDED in the tracked verification log.
 name: no-rom
 
@@ -42,6 +43,8 @@ jobs:
           python -m venv .run/venv-format
           .run/venv-format/bin/pip install -q --require-hashes -r .run/req-format.txt
           make format-check CLANG_FORMAT=.run/venv-format/bin/clang-format
+      - name: modding-check — docs/modding.md documents every modding toggle with a verifying command
+        run: bash tools/modding_check.sh
 
   compile-only:
     name: compile-only (pinned cc1 + maspsx + binutils, no game bytes)
@@ -61,18 +64,8 @@ jobs:
         run: PY=python bash tools/refs_fetch.sh maspsx
       - name: make compile-only — every src/**/*.c with mk/slus.mk's C flags
         run: make compile-only PY=python
-      - name: types-check — tools/dedup/shapes.py over include/ and src/ (game-free; proven in a fresh worktree, T3.c1)
-        run: make types-check PY=python
       - name: readability-check — tools/readability/scan.py over include/, src/, config/ (game-free)
         run: make readability-check PY=python
-      # permuter/plateau selftests: pycparser+toml (decomp-permuter), rabbitizer (plateau) at the hashed pins
-      - name: selftest Python deps at the requirements-python.txt pins
-        run: |
-          mkdir -p .run
-          grep -A1 -E '^(pycparser|rabbitizer|toml)==' requirements-python.txt | grep -v '^--$' > .run/req-selftest.txt
-          python -m pip install -q --require-hashes -r .run/req-selftest.txt
-      - name: decomp-permuter at the config/refs.toml pin
-        run: PY=python bash tools/refs_fetch.sh decomp-permuter
-      # here, not in audits: reconcile/propagate selftests compile their fixture C with the pinned cc1 + maspsx
-      - name: tools-selftest — census/harness/sig/dedup/codegen/permuter tools on synthetic fixtures, each must exit 0 and print its control OK line
-        run: make tools-selftest PY=python
+      # the public selftests only (SELFTESTS_PUBLIC, mk/fleet.mk); SELFTESTS_DEV= drops the dev tier even where present
+      - name: selftest — readability/rockx5/shift-scan/assets tools on synthetic fixtures, each must print its control OK line
+        run: make selftest PY=python SELFTESTS_DEV=

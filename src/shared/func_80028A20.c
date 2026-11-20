@@ -4,7 +4,9 @@
 
 void func_80028DFC(s32, s32, s32, s32, s32);
 
-void DEDUP_NAME(s32 arg0, s16 arg1, s16 arg2, u16* arg3) {
+void DEDUP_NAME(s32 arg0, s32 a1, s32 a2, u16* arg3) {
+    s16 arg1 = a1;
+    s16 arg2 = a2;
     s32 var_v1;
     s32 var_s4;
     s32 var_s3;

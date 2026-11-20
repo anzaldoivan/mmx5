@@ -3,7 +3,7 @@
 
 #define DEDUP_NAME func_80020100
 
-// dedup-inline ../shared/func_8001F314.c
+// dedup-inline shared/func_8001F314.c
 // dedup-rename D_80070F2C D_80071068
 // dedup-rename func_800223E4 func_80022618
 // dedup-rename func_80022618 func_8002C2C0

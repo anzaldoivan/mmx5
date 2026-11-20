@@ -1,11 +1,9 @@
 /* Adapted from mmx6 @c1c892d src/shared/SLUS_013.95/func_80051490.c, AGPL-3.0 (THIRD_PARTY.md). */
 #include "types.h"
-#define M2C_UNK s32
+#include "mmx5/object.h"
+#include "mmx5/sound.h"
+#include "mmx5/globals.h"
 
-M2C_UNK func_80016490(M2C_UNK, M2C_UNK, void*);
-M2C_UNK func_80017248();
-M2C_UNK func_8002D6FC();
-M2C_UNK func_8002D9EC(void*, M2C_UNK, M2C_UNK);
 void func_80055E2C(void* arg0, void* arg1);
 extern s8 D_8009A195;
 
@@ -33,13 +31,13 @@ void func_8005532C(void* arg0) {
         } else if (t == 3) {
             P16(0xE) = P16(0xE) + 8;
         }
-        func_80016490(0, 0x25, 0);
+        play_sound(0, 0x25, 0);
     } else {
         if (P8(0x46) == 0) {
-            ((void (*)())func_8002D6FC)(arg0, a1);
+            ((void (*)())clear_object_slot)(arg0, a1);
             return;
         }
-        ((void (*)())func_80017248)(arg0, a1);
+        ((void (*)())animate_object)(arg0, a1);
         if (P8(0x45) == 1) {
             D_8009A195 = 3;
         }

@@ -1,12 +1,11 @@
 /* Shared body (DK-5), from the banked draft of func_800F6218_ovl11 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/system.h"
+#include "mmx5/object.h"
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
 #include "addr.h"
 
-extern void func_8002DF54(u8* a0);
-extern void func_80017248(u8* obj);
-extern void func_8002D9EC(u8* a0, s32 a1, s32 a2);
-extern void func_800171E8(u8* obj, s32 state);
-extern u32 func_8002DF78(void);
 extern u8 D_8009A1F8[];
 extern s16 D_800FA060_ovl11;
 
@@ -15,8 +14,8 @@ void DEDUP_NAME(u8* arg0) {
     u32 r;
     s32 b;
 
-    func_8002DF54(arg0);
-    func_80017248(arg0);
+    move_object(arg0);
+    animate_object(arg0);
     func_8002D9EC(arg0, 0x20, 0x40);
     if (((s8*)arg0)[0x3] == 0) {
         arg0[0x9A] = 0;
@@ -32,9 +31,9 @@ void DEDUP_NAME(u8* arg0) {
         arg0[0x9A] = 0;
         arg0[0x3] = 0;
         if (*(s16*)(arg0 + 0x7E) == 0) {
-            func_800171E8(arg0, 1);
+            set_animation(arg0, 1);
             *(s16*)(arg0 + 0xE) = D_800FA060_ovl11;
-            r = func_8002DF78();
+            r = random_byte();
             s = &D_1F80004C;
             *(s32*)(arg0 + 0x20) = 0;
             *(s32*)(arg0 + 0x24) = 0xFFFE0000;

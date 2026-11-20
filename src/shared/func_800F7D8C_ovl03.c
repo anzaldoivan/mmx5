@@ -1,8 +1,7 @@
 /* Shared body (DK-5), from the banked draft of func_800F7D8C_ovl03 by tools/wave/gate.py rescan. */
 #include "types.h"
-
-extern void func_80017248(Obj7D8C* obj);
-extern void func_8002DED4(Obj7D8C* obj);
+#include "mmx5/movement.h"
+#include "mmx5/globals.h"
 
 void DEDUP_NAME(Obj7D8C* obj) {
     if (++obj->timer == 20) {
@@ -14,6 +13,6 @@ void DEDUP_NAME(Obj7D8C* obj) {
         obj->timer = 1;
         obj->step++;
     }
-    func_80017248(obj);
-    func_8002DED4(obj);
+    animate_object(obj);
+    apply_object_motion(obj);
 }

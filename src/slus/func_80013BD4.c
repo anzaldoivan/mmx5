@@ -4,9 +4,9 @@
 #define M2C_UNK s32
 
 M2C_UNK func_80014684(M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
-void func_800157D4(void);                         /* extern */
+void pump_file_loads(void);                       /* extern */
 
 void func_80013BD4(void) {
     func_80014684(0, 0, 0);
-    func_800157D4();
+    pump_file_loads();
 }

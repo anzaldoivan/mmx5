@@ -1,10 +1,9 @@
 /* Adapted from mmx6 @c1c892d src/shared/SLUS_013.95/func_800383F8.c, AGPL-3.0 (THIRD_PARTY.md). */
 #include "types.h"
+#include "mmx5/sound.h"
 #include "addr.h"
-#define M2C_UNK s32
 
-M2C_UNK func_80016490(M2C_UNK, M2C_UNK, void*);
-X4_Obj* func_8002D0E4(void);
+X4_Obj* find_free_visual_obj(void);
 extern u32* D_8007B2E8[];
 
 #define F_PTR(p, o) (*(u8**)((u8*)(p) + (o)))
@@ -17,11 +16,11 @@ void func_80044F78(void* arg0) {
     s32 off;
 
     if (self->id == 0x3A) {
-        func_80016490(1, 9, self);
+        play_sound(1, 9, self);
     } else if ((u8)(self->id - 0x38) >= 2) {
-        func_80016490(1, 0xC, self);
+        play_sound(1, 0xC, self);
     }
-    obj = func_8002D0E4();
+    obj = find_free_visual_obj();
     if (obj != 0) {
         obj->active = 0x21;
         obj->id = 3;

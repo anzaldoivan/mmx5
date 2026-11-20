@@ -1,7 +1,7 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
-extern u8* func_8002D144(void);
-extern u8* func_8002D27C(void);
+extern u8* alloc_class3_slot(void);
 extern s8 D_800D1C00[];
 
 void func_80020950(void) {
@@ -23,7 +23,7 @@ void func_80020950(void) {
             }
         }
     } else if (p[0x1E] == 0) {
-        o = func_8002D144();
+        o = alloc_class3_slot();
         if (o != 0) {
             o[0] = 1;
             o[1] = 0x1B;

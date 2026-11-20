@@ -1,9 +1,9 @@
 /* Shared body (DK-5), from the banked draft of func_800F5864_ovl04 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
 
 extern signed char D_800D1C0C;
-extern void func_800171E8(Obj5864*, s32);
-extern void func_80017248(Obj5864*);
 
 void DEDUP_NAME(Obj5864* obj) {
     s32 goal = 0x70;
@@ -13,7 +13,7 @@ void DEDUP_NAME(Obj5864* obj) {
     }
     if (obj->unk7C != 0) {
         if (--obj->unk7C == 0) {
-            func_800171E8(obj, 3);
+            set_animation(obj, 3);
         }
         return;
     }
@@ -24,7 +24,7 @@ void DEDUP_NAME(Obj5864* obj) {
     } else {
         obj->unk7C = 30;
         obj->unk6++;
-        func_800171E8(obj, 0x19);
+        set_animation(obj, 0x19);
     }
-    func_80017248(obj);
+    animate_object(obj);
 }

@@ -1,8 +1,8 @@
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
 #include "addr.h"
 
-extern void func_800171E8(u8* obj, s32 state);
-extern void func_8002D9EC(u8* a0, s32 a1, s32 a2);
 extern u8 D_80076E34[];
 extern u8 D_80076E38[];
 extern u8 D_80076E4C[];
@@ -40,7 +40,7 @@ void func_80045368(u8* obj) {
         if (obj[0x15] == 0) {
             *(s32*)(obj + 0x20) = -*(s32*)(obj + 0x20);
         }
-        func_800171E8(obj, 0x1D);
+        set_animation(obj, 0x1D);
         sub[2] = 0;
     } else {
         *(u8**)(obj + 0x50) = D_80076E38;
@@ -49,7 +49,7 @@ void func_80045368(u8* obj) {
         *(s32*)(obj + 0x20) = 0;
         obj[0x8C] = 0x5A;
         sub[1] = 8;
-        func_800171E8(obj, 0x1E);
+        set_animation(obj, 0x1E);
     }
     *(s32*)(obj + 0x28) = 0;
     *(s32*)(obj + 0x24) = 0;

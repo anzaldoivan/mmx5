@@ -1,7 +1,7 @@
 /* Shared body (DK-5), from the banked draft of func_800F5CA0_ovl27 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/graphics.h"
 
-extern void DEDUP_CALLEE(ObjF5CA0*, s32);
 extern u8 D_800FD460_ovl27[];
 extern u8 D_800FD464_ovl27[];
 extern u8 D_800FD468_ovl27[];

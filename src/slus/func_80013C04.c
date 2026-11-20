@@ -1,10 +1,11 @@
 #include "types.h"
+#include "mmx5/globals.h"
 #include "addr.h"
+#define D_8009A420_as_s32 (*(s32*)&D_8009A420)
 
 extern s32 GetTPage(s32 tp, s32 abr, s32 x, s32 y);
 extern void SetDrawMode(u8* p, s32 dfe, s32 dtd, s32 tpage, void* tw);
 extern u8 D_8007029C[];
-extern s32 D_8009A420;
 extern u8* D_8009E794;
 
 void func_80013C04(u8 a0) {
@@ -15,7 +16,7 @@ void func_80013C04(u8 a0) {
     u8* ot;
     u32 lo;
 
-    if (a0 != 0 || !(D_8009A420 & 0x10)) {
+    if (a0 != 0 || !(D_8009A420_as_s32 & 0x10)) {
         poly = D_1F800100;
         mode = D_1F800104;
         e = D_8007029C + a0 * 8;

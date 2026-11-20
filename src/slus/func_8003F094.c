@@ -1,9 +1,9 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
 extern s32 func_8003E1A8(u8*);
 extern void func_8003E414(u8*);
-extern void func_80040180(u8*);
-extern void func_8003B33C(u8*, s32);
+extern void player_enter_ladder_shoot(u8*);
 extern void func_8003F548(u8*, s32);
 extern signed char D_80074968[];
 
@@ -25,7 +25,7 @@ s32 func_8003F094(u8* arg0) {
     }
     idx = *(signed char*)(arg0 + 0x96);
     if (D_80074968[idx] == 0) {
-        func_80040180(arg0);
+        player_enter_ladder_shoot(arg0);
         return 1;
     }
     arg0[0x8C] = 0;

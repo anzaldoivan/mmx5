@@ -1,15 +1,10 @@
 /* Shared body (DK-5), from the banked draft of func_800F6CC8_ovl10 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/title.h"
+#include "mmx5/object.h"
+#include "mmx5/movement.h"
+#include "mmx5/globals.h"
 
-extern s32 func_800317B8(u8* a0);
-extern void func_80017248(u8* obj);
-extern s32 func_80031DD0(u8* a0);
-extern s32 func_8004FD24(u8* a0);
-extern void func_8002DED4(u8* obj);
-extern s32 func_8002FB58(u8* obj);
-extern void func_8002D6FC(u8* obj);
-extern s32 func_8002D938(u8* a0, s32 a1, s32 a2);
-extern void func_8002D9EC(u8* a0, s32 a1, s32 a2);
 extern u8 D_800FBF3C_ovl10[];
 extern signed char D_800D1C0C;
 
@@ -34,13 +29,13 @@ void DEDUP_NAME(u8* o) {
     }
     *(u16*)(o + 0x42) &= 0x7FFF;
     func_800317B8(o);
-    func_80017248(o);
+    animate_object(o);
     if (func_80031DD0(o) < 0) {
         o[4] = 0xD;
         func_8004FD24(o);
         return;
     }
-    func_8002DED4(o);
+    apply_object_motion(o);
     y = *(s16*)(o + 0xE);
     y = lim < y;
     if (y != 0) {
@@ -72,7 +67,7 @@ void DEDUP_NAME(u8* o) {
         *(s32*)(o + 0x24) = 0;
         *(s32*)(o + 0x2C) = 0;
         if (*(s16*)(o + 0x92) == 0) {
-            func_8002D6FC(o);
+            clear_object_slot(o);
             return;
         }
         if (!(--(*(s16*)(o + 0x92)) & 1)) {
@@ -82,10 +77,10 @@ void DEDUP_NAME(u8* o) {
     }
     if ((*(s8**)(o + 0x7C))[4] == 2) {
         o[3] = 0;
-        func_8002D6FC(o);
+        clear_object_slot(o);
         return;
     }
-    if (func_8002D938(o, 0x60, 0x60) == 1) {
+    if (is_off_screen(o, 0x60, 0x60) == 1) {
         o[4] = 0xD;
         return;
     }

@@ -26,9 +26,8 @@ Game files exist outside the developer's machine only in the private `mmx5-priva
 read-only credential. The handling depends on where a leak lands:
 
 - **This repository** (a commit, a pull request, a CI log or artifact): It is made private at once. The runs and
-  artifacts are deleted. The history is rewritten after a rehearsal on a copy (G14). GitHub Support drops cached
-  views and `refs/pull/*`. The repository is public again only once a probe of the old object ids comes back empty
-  (G17).
+  artifacts are deleted. The history is rewritten after a rehearsal on a copy. GitHub Support drops cached
+  views and `refs/pull/*`. The repository is public again only once a probe of the old object ids comes back empty.
 - **`-dev`**: It gets the same rewrite. The next release is checked against it.
 - **The toolchain image**: The version is deleted. A corrected one is released under a new digest.
 - **The credential**: The deploy key is deleted and replaced with its `PRIVATE_DEPLOY_KEY` secret, or the token is

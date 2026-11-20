@@ -1,14 +1,14 @@
 #include "types.h"
+#include "mmx5/system.h"
 
-extern u8* func_8002D0E4(void);
-extern s32 func_8002DF78(void);
+extern u8* find_free_visual_obj(void);
 
 static inline u16 func_80050650_rnd16(void) {
     s32 hi;
     s32 lo;
 
-    hi = func_8002DF78();
-    lo = func_8002DF78();
+    hi = random_byte();
+    lo = random_byte();
     hi <<= 8;
     hi += lo;
     hi++;
@@ -33,14 +33,14 @@ void func_80050650(u8 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, s16 arg5) {
     for (i = 0; i < arg5; i++) {
         dx = d << 16;
         dy = (arg4 - arg2) << 16;
-        p = func_8002D0E4();
+        p = find_free_visual_obj();
         if (p != 0) {
             p[0] = 0x21;
             p[1] = 9;
             p[2] = 0;
             rx = func_80050650_rnd16();
-            hi = func_8002DF78();
-            lo = func_8002DF78();
+            hi = random_byte();
+            lo = random_byte();
             w = dx >> 16;
             ry = (hi << 8) + lo + 1;
             if (w == 0) {

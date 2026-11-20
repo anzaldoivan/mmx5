@@ -1,0 +1,698 @@
+# kind	image	vram	candidate	class	clause	source
+function	rockx5	0x800EEA80	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl05	x6-twin	scope overlay, x6 names 4, duplicate 7, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800EEAD8	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl00	x6-twin	scope overlay, x6 names 4, duplicate 6, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800EEB64	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl22	x6-twin	scope overlay, x6 names 4, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800EED58	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl26	x6-twin	scope overlay, x6 names 4, duplicate 10, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800EEED0	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl18	x6-twin	scope overlay, x6 names 4, duplicate 12, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800EEF38	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl16	x6-twin	scope overlay, x6 names 4, duplicate 3, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800EEF74	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl16	x6-twin	scope overlay, x6 names 4, duplicate 3, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800EEF90	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl10	x6-twin	scope overlay, x6 names 4, duplicate 5, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800EEFB0	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl16	x6-twin	scope overlay, x6 names 4, duplicate 3, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800EEFCC	spawn_common_effect_ovl10	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:85
+function	rockx5	0x800EEFD4	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl28	x6-twin	scope overlay, x6 names 4, duplicate 6, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800EF008	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl09	x6-twin	scope overlay, x6 names 4, duplicate 7, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800EF040	common_effect_animate_ovl10	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:86
+function	rockx5	0x800EF0F8	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl23	x6-twin	scope overlay, x6 names 4, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800EF190	spike_marl_detect_player_ovl29	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:170
+function	rockx5	0x800EF1B4	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl11	x6-twin	scope overlay, x6 names 4, duplicate 7, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800EF1D4	water_wake_main_ovl10	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:87
+function	rockx5	0x800EF244	update_blizzard_wolfang/update_blizzard_wolfang_boss_rush/update_high_max_hidden_area/update_high_max_intro/update_high_max_secret_lab2_1_ovl05	x6-twin	scope overlay, x6 names 6, no basis	docs/oracle/x6-twins.tsv:2174
+function	rockx5	0x800EF258	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl08	x6-twin	scope overlay, x6 names 4, duplicate 10, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800EF26C	update_nightmare_snake_ovl21	x6-twin	scope overlay, x6 names 2, no basis	docs/oracle/x6-twins.tsv:2079
+function	rockx5	0x800EF298	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl26	x6-twin	scope overlay, x6 names 4, duplicate 10, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800EF2B8	spike_marl_track_player_side_ovl29	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:171
+function	rockx5	0x800EF3AC	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl01	x6-twin	scope overlay, x6 names 4, duplicate 14, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800EF3DC	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl03	x6-twin	scope overlay, x6 names 4, duplicate 6, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800EF3E8	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl01	x6-twin	scope overlay, x6 names 4, duplicate 14, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800EF400	spike_marl_cleanup_ovl29	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:172
+function	rockx5	0x800EF450	water_wake_player_idle_ovl10	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:88
+function	rockx5	0x800EF450	spike_marl_cleanup_ovl29	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:173
+function	rockx5	0x800EF450	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl11	x6-twin	scope overlay, x6 names 4, duplicate 7, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800EF494	water_wake_player_moving_ovl10	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:89
+function	rockx5	0x800EF4C0	bomb_bat_hover_start_ovl03	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:25
+function	rockx5	0x800EF4DC	spike_marl_patrol_begin_ovl29	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:174
+function	rockx5	0x800EF514	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl27	x6-twin	scope overlay, x6 names 4, duplicate 11, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800EF5C8	spike_marl_turn_start_ovl29	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:175
+function	rockx5	0x800EF604	spike_marl_turn_flip_ovl29	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:176
+function	rockx5	0x800EF608	bomb_bat_drop_start_ovl03	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:26
+function	rockx5	0x800EF658	bomb_bat_drop_release_ovl03	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:27
+function	rockx5	0x800EF65C	update_nightmare_snake_ovl18	x6-twin	scope overlay, x6 names 2, duplicate 2, no basis	docs/oracle/x6-twins.tsv:2079
+function	rockx5	0x800EF668	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl04	x6-twin	scope overlay, x6 names 4, duplicate 11, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800EF68C	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl08	x6-twin	scope overlay, x6 names 4, duplicate 10, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800EF6A4	spike_marl_curl_begin_ovl29	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:177
+function	rockx5	0x800EF6A8	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl18	x6-twin	scope overlay, x6 names 4, duplicate 12, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800EF734	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl11	x6-twin	scope overlay, x6 names 4, duplicate 7, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800EF758	cutscene_actor_wait_ovl21	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:128
+function	rockx5	0x800EF82C	spike_marl_roll_update_ovl29	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:178
+function	rockx5	0x800EF928	update_gate/update_nightmare_zero_ovl12	x6-twin	scope overlay, x6 names 3, no basis	docs/oracle/x6-twins.tsv:3188
+function	rockx5	0x800EF928	update_gate/update_nightmare_zero_ovl14	x6-twin	scope overlay, x6 names 3, no basis	docs/oracle/x6-twins.tsv:3188
+function	rockx5	0x800EF9A4	bg_zone_controller_e_zone_4_enter_ovl27	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:143
+function	rockx5	0x800EFA00	bomb_bat_dive_fall_ovl03	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:28
+function	rockx5	0x800EFA68	update_blizzard_wolfang/update_blizzard_wolfang_boss_rush/update_high_max_hidden_area/update_high_max_intro/update_high_max_secret_lab2_1_ovl09	x6-twin	scope overlay, x6 names 6, duplicate 2, no basis	docs/oracle/x6-twins.tsv:2174
+function	rockx5	0x800EFA9C	spike_marl_uncurl_begin_ovl29	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:179
+function	rockx5	0x800EFAE4	spike_marl_uncurl_update_ovl29	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:180
+function	rockx5	0x800EFB0C	update_blizzard_wolfang/update_blizzard_wolfang_boss_rush/update_high_max_hidden_area/update_high_max_intro/update_high_max_secret_lab2_1_ovl10	x6-twin	scope overlay, x6 names 6, duplicate 2, no basis	docs/oracle/x6-twins.tsv:2174
+function	rockx5	0x800EFB60	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl01	x6-twin	scope overlay, x6 names 4, duplicate 14, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800EFBC4	spike_marl_roll_entry_begin_ovl29	x4	scope object	docs/oracle/x4-names.tsv:181
+function	rockx5	0x800EFBF8	spike_marl_roll_entry_update_ovl29	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:182
+function	rockx5	0x800EFC68	spike_marl_begin_fall_ovl29	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:183
+function	rockx5	0x800EFCE8	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl05	x6-twin	scope overlay, x6 names 4, duplicate 7, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800EFD08	bomb_bat_drop_bomb_ovl03	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:29
+function	rockx5	0x800EFD74	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl28	x6-twin	scope overlay, x6 names 4, duplicate 6, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800EFD80	update_blizzard_wolfang/update_blizzard_wolfang_boss_rush/update_high_max_hidden_area/update_high_max_intro/update_high_max_secret_lab2_1_ovl09	x6-twin	scope overlay, x6 names 6, duplicate 2, no basis	docs/oracle/x6-twins.tsv:2174
+function	rockx5	0x800EFDB0	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl03	x6-twin	scope overlay, x6 names 4, duplicate 6, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800EFE24	update_nightmare_snake_ovl02	x6-twin	scope overlay, x6 names 2, no basis	docs/oracle/x6-twins.tsv:2079
+function	rockx5	0x800EFE38	jump_shooter_fire_shots_ovl29	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:184
+function	rockx5	0x800F001C	update_nightmare_snake_ovl10	x6-twin	scope overlay, x6 names 2, duplicate 3, no basis	docs/oracle/x6-twins.tsv:2079
+function	rockx5	0x800F016C	spike_marl_detect_player_ovl18	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:112
+function	rockx5	0x800F01EC	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl02	x6-twin	scope overlay, x6 names 4, duplicate 5, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F0204	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl01	x6-twin	scope overlay, x6 names 4, duplicate 14, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F0280	wheel_charger_drop_ovl01	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:3
+function	rockx5	0x800F0294	spike_marl_track_player_side_ovl18	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:113
+function	rockx5	0x800F029C	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl09	x6-twin	scope overlay, x6 names 4, duplicate 7, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F02B4	wheel_charger_wait_for_player_ovl01	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:4
+function	rockx5	0x800F02C8	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl03	x6-twin	scope overlay, x6 names 4, duplicate 6, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F02D0	bomb_bat_hover_start_ovl02	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:20
+function	rockx5	0x800F02E4	colonel_jump_slam_rise_ovl05	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:32
+function	rockx5	0x800F0318	wheel_charger_drop_ovl09	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:75
+function	rockx5	0x800F0324	wheel_charger_charge_ready_ovl01	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:5
+function	rockx5	0x800F034C	wheel_charger_wait_for_player_ovl09	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:76
+function	rockx5	0x800F03BC	wheel_charger_charge_ready_ovl09	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:77
+function	rockx5	0x800F03DC	spike_marl_cleanup_ovl18	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:114
+function	rockx5	0x800F03E0	update_nightmare_snake_ovl26	x6-twin	scope overlay, x6 names 2, no basis	docs/oracle/x6-twins.tsv:2079
+function	rockx5	0x800F0418	bomb_bat_drop_start_ovl02	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:21
+function	rockx5	0x800F0424	jump_shooter_fire_aim_ovl29	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:185
+function	rockx5	0x800F042C	spike_marl_cleanup_ovl18	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:115
+function	rockx5	0x800F0468	bomb_bat_drop_release_ovl02	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:22
+function	rockx5	0x800F0488	jump_shooter_fire_ready_ovl29	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:186
+function	rockx5	0x800F04B8	spike_marl_patrol_begin_ovl18	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:116
+function	rockx5	0x800F04B8	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl08	x6-twin	scope overlay, x6 names 4, duplicate 10, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F04F4	dash_gunner_explode_ovl08	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:69
+function	rockx5	0x800F0568	wheel_charger_crash_ovl01	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:6
+function	rockx5	0x800F05A4	spike_marl_turn_start_ovl18	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:117
+function	rockx5	0x800F05E0	spike_marl_turn_flip_ovl18	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:118
+function	rockx5	0x800F0600	wheel_charger_crash_ovl09	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:78
+function	rockx5	0x800F0640	jump_shooter_jump_launch_ovl29	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:187
+function	rockx5	0x800F0680	spike_marl_curl_begin_ovl18	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:119
+function	rockx5	0x800F06F8	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl25	x6-twin	scope overlay, x6 names 4, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F077C	jump_shooter_jump_land_ovl29	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:188
+function	rockx5	0x800F07B0	wheel_charger_check_fall_ovl01	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:7
+function	rockx5	0x800F0808	spike_marl_roll_update_ovl18	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:120
+function	rockx5	0x800F0810	bomb_bat_dive_fall_ovl02	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:23
+function	rockx5	0x800F0848	wheel_charger_check_fall_ovl09	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:79
+function	rockx5	0x800F085C	dash_gunner_shoot_raise_ovl08	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:70
+function	rockx5	0x800F08B4	dash_gunner_shoot_aim_ovl08	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:71
+function	rockx5	0x800F08BC	fortress_cannon_explode_ovl11	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:102
+function	rockx5	0x800F08C4	colonel_jump_slam_rise_ovl03	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:30
+function	rockx5	0x800F08F8	spike_marl_detect_player_ovl26	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:129
+function	rockx5	0x800F0A20	spike_marl_track_player_side_ovl26	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:130
+function	rockx5	0x800F0A78	spike_marl_uncurl_begin_ovl18	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:121
+function	rockx5	0x800F0AC0	spike_marl_uncurl_update_ovl18	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:122
+function	rockx5	0x800F0B18	bomb_bat_drop_bomb_ovl02	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:24
+function	rockx5	0x800F0B44	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl04	x6-twin	scope overlay, x6 names 4, duplicate 11, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F0B68	spike_marl_cleanup_ovl26	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:131
+function	rockx5	0x800F0BA0	spike_marl_roll_entry_begin_ovl18	x4	scope object	docs/oracle/x4-names.tsv:123
+function	rockx5	0x800F0BB8	spike_marl_cleanup_ovl26	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:132
+function	rockx5	0x800F0BC0	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl02	x6-twin	scope overlay, x6 names 4, duplicate 5, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F0BD4	spike_marl_roll_entry_update_ovl18	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:124
+function	rockx5	0x800F0C08	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl28	x6-twin	scope overlay, x6 names 4, duplicate 6, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F0C44	spike_marl_begin_fall_ovl18	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:125
+function	rockx5	0x800F0C44	spike_marl_patrol_begin_ovl26	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:133
+function	rockx5	0x800F0CA4	dash_gunner_dash_brake_ovl08	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:72
+function	rockx5	0x800F0D10	dash_gunner_dash_end_ovl08	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:73
+function	rockx5	0x800F0D1C	sentry_drone_wait_for_player_ovl28	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:159
+function	rockx5	0x800F0D30	spike_marl_turn_start_ovl26	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:134
+function	rockx5	0x800F0D3C	memcard_save_name_ovl24	string	text not the work	config/oracle.strnames.tsv:9
+function	rockx5	0x800F0D6C	spike_marl_turn_flip_ovl26	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:135
+function	rockx5	0x800F0DA0	sentry_drone_drift_start_ovl28	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:160
+function	rockx5	0x800F0DB0	fortress_cannon_volley_wait_ovl11	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:103
+function	rockx5	0x800F0DD8	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl00	x6-twin	scope overlay, x6 names 4, duplicate 6, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F0DE4	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl05	x6-twin	scope overlay, x6 names 4, duplicate 7, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F0DE4	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl08	x6-twin	scope overlay, x6 names 4, duplicate 10, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F0E04	sentry_drone_drift_move_ovl28	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:161
+function	rockx5	0x800F0E0C	spike_marl_curl_begin_ovl26	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:136
+function	rockx5	0x800F0E14	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl00	x6-twin	scope overlay, x6 names 4, duplicate 6, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F0E9C	sentry_drone_dash_start_ovl28	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:162
+function	rockx5	0x800F0F18	sentry_drone_dash_move_ovl28	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:163
+function	rockx5	0x800F0F28	fortress_cannon_check_fall_ovl11	x4	scope object	docs/oracle/x4-names.tsv:104
+function	rockx5	0x800F0F94	spike_marl_roll_update_ovl26	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:137
+function	rockx5	0x800F1018	sentry_drone_burst_wait_ovl28	x4	scope object	docs/oracle/x4-names.tsv:164
+function	rockx5	0x800F1040	sentry_drone_burst_repeat_ovl28	x4	scope object	docs/oracle/x4-names.tsv:165
+function	rockx5	0x800F1074	fortress_cannon_fire_volley_ovl11	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:105
+function	rockx5	0x800F1114	update_nightmare_snake_ovl09	x6-twin	scope overlay, x6 names 2, duplicate 2, no basis	docs/oracle/x6-twins.tsv:2079
+function	rockx5	0x800F1148	fortress_cannon_fire_double_shot_ovl11	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:106
+function	rockx5	0x800F1204	spike_marl_uncurl_begin_ovl26	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:138
+function	rockx5	0x800F1224	sentry_drone_spread_fire_ovl28	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:166
+function	rockx5	0x800F124C	spike_marl_uncurl_update_ovl26	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:139
+function	rockx5	0x800F1274	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl05	x6-twin	scope overlay, x6 names 4, duplicate 7, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F12A8	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl01	x6-twin	scope overlay, x6 names 4, duplicate 14, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F12CC	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl07	x6-twin	scope overlay, x6 names 4, duplicate 16, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F1308	ride_chaser_shot_follow_scroll_ovl07	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:53
+function	rockx5	0x800F132C	spike_marl_roll_entry_begin_ovl26	x4	scope object	docs/oracle/x4-names.tsv:140
+function	rockx5	0x800F1344	sentry_drone_spread_repeat_ovl28	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:167
+function	rockx5	0x800F1360	spike_marl_roll_entry_update_ovl26	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:141
+function	rockx5	0x800F1374	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl18	x6-twin	scope overlay, x6 names 4, duplicate 12, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F13BC	sentry_drone_wait_for_player_ovl01	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:8
+function	rockx5	0x800F13C4	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl03	x6-twin	scope overlay, x6 names 4, duplicate 6, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F13D0	spike_marl_begin_fall_ovl26	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:142
+function	rockx5	0x800F140C	sentry_drone_drop_start_ovl28	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:168
+function	rockx5	0x800F1414	ride_chaser_shot_despawn_ovl07	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:54
+function	rockx5	0x800F1414	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl29	x6-twin	scope overlay, x6 names 4, duplicate 8, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F1440	sentry_drone_drift_start_ovl01	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:9
+function	rockx5	0x800F1448	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl07	x6-twin	scope overlay, x6 names 4, duplicate 16, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F1464	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl09	x6-twin	scope overlay, x6 names 4, duplicate 7, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F14A4	sentry_drone_drift_move_ovl01	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:10
+function	rockx5	0x800F14DC	ride_chaser_ram_main_ovl07	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:55
+function	rockx5	0x800F1528	sentry_drone_wait_for_player_ovl29	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:189
+function	rockx5	0x800F153C	sentry_drone_dash_start_ovl01	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:11
+function	rockx5	0x800F1574	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl05	x6-twin	scope overlay, x6 names 4, duplicate 7, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F15A4	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl07	x6-twin	scope overlay, x6 names 4, duplicate 16, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F15AC	sentry_drone_drift_start_ovl29	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:190
+function	rockx5	0x800F15B8	sentry_drone_dash_move_ovl01	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:12
+function	rockx5	0x800F1610	sentry_drone_drift_move_ovl29	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:191
+function	rockx5	0x800F1614	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl11	x6-twin	scope overlay, x6 names 4, duplicate 7, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F1630	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl04	x6-twin	scope overlay, x6 names 4, duplicate 11, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F16A8	sentry_drone_dash_start_ovl29	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:192
+function	rockx5	0x800F16B8	sentry_drone_burst_wait_ovl01	x4	scope object	docs/oracle/x4-names.tsv:13
+function	rockx5	0x800F16CC	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl10	x6-twin	scope overlay, x6 names 4, duplicate 5, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F16E0	sentry_drone_burst_repeat_ovl01	x4	scope object	docs/oracle/x4-names.tsv:14
+function	rockx5	0x800F1724	sentry_drone_dash_move_ovl29	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:193
+function	rockx5	0x800F1758	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl07	x6-twin	scope overlay, x6 names 4, duplicate 16, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F1794	ride_chaser_jet_init_ovl07	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:56
+function	rockx5	0x800F17D4	ride_chaser_jet_main_ovl07	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:57
+function	rockx5	0x800F17EC	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl04	x6-twin	scope overlay, x6 names 4, duplicate 11, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F1824	sentry_drone_burst_wait_ovl29	x4	scope object	docs/oracle/x4-names.tsv:194
+function	rockx5	0x800F184C	sentry_drone_burst_repeat_ovl29	x4	scope object	docs/oracle/x4-names.tsv:195
+function	rockx5	0x800F189C	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl26	x6-twin	scope overlay, x6 names 4, duplicate 10, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F18B8	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl07	x6-twin	scope overlay, x6 names 4, duplicate 16, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F18C4	sentry_drone_spread_fire_ovl01	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:15
+function	rockx5	0x800F18F4	ride_chaser_flash_init_ovl07	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:58
+function	rockx5	0x800F1908	update_nightmare_snake_ovl28	x6-twin	scope overlay, x6 names 2, duplicate 3, no basis	docs/oracle/x6-twins.tsv:2079
+function	rockx5	0x800F1930	ride_chaser_flash_main_ovl07	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:59
+function	rockx5	0x800F19E4	sentry_drone_spread_repeat_ovl01	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:16
+function	rockx5	0x800F19F0	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl07	x6-twin	scope overlay, x6 names 4, duplicate 16, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F1A30	sentry_drone_spread_fire_ovl29	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:196
+function	rockx5	0x800F1AAC	sentry_drone_drop_start_ovl01	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:17
+function	rockx5	0x800F1AD8	autoscroll_segment_wait_ovl07	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:60
+function	rockx5	0x800F1AD8	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl11	x6-twin	scope overlay, x6 names 4, duplicate 7, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F1B24	autoscroll_segment_end_ovl07	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:61
+function	rockx5	0x800F1B50	sentry_drone_spread_repeat_ovl29	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:197
+function	rockx5	0x800F1BFC	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl27	x6-twin	scope overlay, x6 names 4, duplicate 11, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F1C18	sentry_drone_drop_start_ovl29	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:198
+function	rockx5	0x800F1CA0	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl08	x6-twin	scope overlay, x6 names 4, duplicate 10, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F1CDC	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl08	x6-twin	scope overlay, x6 names 4, duplicate 10, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F1D34	update_blizzard_wolfang/update_blizzard_wolfang_boss_rush/update_high_max_hidden_area/update_high_max_intro/update_high_max_secret_lab2_1_ovl03	x6-twin	scope overlay, x6 names 6, no basis	docs/oracle/x6-twins.tsv:2174
+function	rockx5	0x800F1D70	jump_shooter_fire_shots_ovl27	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:144
+function	rockx5	0x800F1D78	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl11	x6-twin	scope overlay, x6 names 4, duplicate 7, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F1E60	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl18	x6-twin	scope overlay, x6 names 4, duplicate 12, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F1ED4	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl26	x6-twin	scope overlay, x6 names 4, duplicate 10, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F1EFC	jet_stingray_vortex_finish_ovl08	x4	scope object	docs/oracle/x4-names.tsv:74
+function	rockx5	0x800F1FA4	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl28	x6-twin	scope overlay, x6 names 4, duplicate 6, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F1FAC	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl20	x6-twin	scope overlay, x6 names 4, duplicate 9, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F213C	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl00	x6-twin	scope overlay, x6 names 4, duplicate 6, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F235C	jump_shooter_fire_aim_ovl27	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:145
+function	rockx5	0x800F23B4	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl04	x6-twin	scope overlay, x6 names 4, duplicate 11, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F23BC	update_nightmare_snake_ovl01	x6-twin	scope overlay, x6 names 2, no basis	docs/oracle/x6-twins.tsv:2079
+function	rockx5	0x800F23C0	jump_shooter_fire_ready_ovl27	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:146
+function	rockx5	0x800F23E0	update_nightmare_snake_ovl03	x6-twin	scope overlay, x6 names 2, no basis	docs/oracle/x6-twins.tsv:2079
+function	rockx5	0x800F2448	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl10	x6-twin	scope overlay, x6 names 4, duplicate 5, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F24EC	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl20	x6-twin	scope overlay, x6 names 4, duplicate 9, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F24EC	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl29	x6-twin	scope overlay, x6 names 4, duplicate 8, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F2578	jump_shooter_jump_launch_ovl27	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:147
+function	rockx5	0x800F25D0	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl02	x6-twin	scope overlay, x6 names 4, duplicate 5, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F25F8	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl08	x6-twin	scope overlay, x6 names 4, duplicate 10, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F260C	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl02	x6-twin	scope overlay, x6 names 4, duplicate 5, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F26B4	jump_shooter_jump_land_ovl27	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:148
+function	rockx5	0x800F26DC	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl01	x6-twin	scope overlay, x6 names 4, duplicate 14, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F290C	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl20	x6-twin	scope overlay, x6 names 4, duplicate 9, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F2A04	train_soldier_guard_start_ovl11	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:107
+function	rockx5	0x800F2A40	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl08	x6-twin	scope overlay, x6 names 4, duplicate 10, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F2A5C	fortress_cannon_explode_ovl29	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:199
+function	rockx5	0x800F2B50	train_soldier_fall_land_ovl11	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:108
+function	rockx5	0x800F2B98	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl03	x6-twin	scope overlay, x6 names 4, duplicate 6, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F2BE0	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl20	x6-twin	scope overlay, x6 names 4, duplicate 9, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F2C4C	memcard_write_save_file_ovl24	x6-twin	scope overlay	docs/oracle/x6-twins.tsv:3363
+function	rockx5	0x800F2C78	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl08	x6-twin	scope overlay, x6 names 4, duplicate 10, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F2D48	train_soldier_shoot_aim_ovl11	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:109
+function	rockx5	0x800F2DB4	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl02	x6-twin	scope overlay, x6 names 4, duplicate 5, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F2E38	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl06	x6-twin	scope overlay, x6 names 4, duplicate 11, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F2E44	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl04	x6-twin	scope overlay, x6 names 4, duplicate 11, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F2E60	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl20	x6-twin	scope overlay, x6 names 4, duplicate 9, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F2E74	ride_armor_shot_main_ovl06	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:34
+function	rockx5	0x800F2EEC	ride_armor_shot_despawn_ovl06	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:35
+function	rockx5	0x800F2F50	fortress_cannon_volley_wait_ovl29	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:200
+function	rockx5	0x800F2FAC	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl08	x6-twin	scope overlay, x6 names 4, duplicate 10, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F2FC4	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl03	x6-twin	scope overlay, x6 names 4, duplicate 6, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F2FF0	train_soldier_check_guard_ovl11	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:110
+function	rockx5	0x800F30C8	fortress_cannon_check_fall_ovl29	x4	scope object	docs/oracle/x4-names.tsv:201
+function	rockx5	0x800F3214	fortress_cannon_fire_volley_ovl29	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:202
+function	rockx5	0x800F32BC	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl20	x6-twin	scope overlay, x6 names 4, duplicate 9, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F32E8	fortress_cannon_fire_double_shot_ovl29	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:203
+function	rockx5	0x800F334C	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl27	x6-twin	scope overlay, x6 names 4, duplicate 11, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F3384	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl11	x6-twin	scope overlay, x6 names 4, duplicate 7, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F33A8	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl06	x6-twin	scope overlay, x6 names 4, duplicate 11, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F33E4	ride_armor_missile_despawn_ovl06	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:36
+function	rockx5	0x800F341C	ride_armor_punch_main_ovl06	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:37
+function	rockx5	0x800F3460	sentry_drone_wait_for_player_ovl27	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:149
+function	rockx5	0x800F346C	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl07	x6-twin	scope overlay, x6 names 4, duplicate 16, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F34E4	sentry_drone_drift_start_ovl27	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:150
+function	rockx5	0x800F3520	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl06	x6-twin	scope overlay, x6 names 4, duplicate 11, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F3524	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl00	x6-twin	scope overlay, x6 names 4, duplicate 6, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F3548	sentry_drone_drift_move_ovl27	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:151
+function	rockx5	0x800F355C	ride_armor_punch_init_ovl06	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:38
+function	rockx5	0x800F35CC	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl06	x6-twin	scope overlay, x6 names 4, duplicate 11, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F35E0	sentry_drone_dash_start_ovl27	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:152
+function	rockx5	0x800F3608	missile_smoke_init_ovl06	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:39
+function	rockx5	0x800F3658	missile_smoke_main_ovl06	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:40
+function	rockx5	0x800F365C	sentry_drone_dash_move_ovl27	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:153
+function	rockx5	0x800F36E0	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl20	x6-twin	scope overlay, x6 names 4, duplicate 9, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F36F8	update_nightmare_snake_ovl05	x6-twin	scope overlay, x6 names 2, duplicate 2, no basis	docs/oracle/x6-twins.tsv:2079
+function	rockx5	0x800F3744	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl05	x6-twin	scope overlay, x6 names 4, duplicate 7, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F375C	sentry_drone_burst_wait_ovl27	x4	scope object	docs/oracle/x4-names.tsv:154
+function	rockx5	0x800F3780	update_nightmare_snake_ovl05	x6-twin	scope overlay, x6 names 2, duplicate 2, no basis	docs/oracle/x6-twins.tsv:2079
+function	rockx5	0x800F3784	sentry_drone_burst_repeat_ovl27	x4	scope object	docs/oracle/x4-names.tsv:155
+function	rockx5	0x800F3840	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl18	x6-twin	scope overlay, x6 names 4, duplicate 12, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F387C	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl18	x6-twin	scope overlay, x6 names 4, duplicate 12, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F38FC	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl20	x6-twin	scope overlay, x6 names 4, duplicate 9, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F3968	sentry_drone_spread_fire_ovl27	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:156
+function	rockx5	0x800F3A80	debris_fall_ovl05	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:33
+function	rockx5	0x800F3A88	sentry_drone_spread_repeat_ovl27	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:157
+function	rockx5	0x800F3B4C	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl00	x6-twin	scope overlay, x6 names 4, duplicate 6, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F3B50	sentry_drone_drop_start_ovl27	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:158
+function	rockx5	0x800F3BA0	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl01	x6-twin	scope overlay, x6 names 4, duplicate 14, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F3C78	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl04	x6-twin	scope overlay, x6 names 4, duplicate 11, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F3D54	update_blizzard_wolfang/update_blizzard_wolfang_boss_rush/update_high_max_hidden_area/update_high_max_intro/update_high_max_secret_lab2_1_ovl26	x6-twin	scope overlay, x6 names 6, duplicate 2, no basis	docs/oracle/x6-twins.tsv:2174
+function	rockx5	0x800F3FDC	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl05	x6-twin	scope overlay, x6 names 4, duplicate 7, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F4010	magma_dragoon_update_ovl29	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:204
+function	rockx5	0x800F42F8	-	string	byte table	config/oracle.strnames.tsv:13
+function	rockx5	0x800F43E8	update_nightmare_snake_ovl06	x6-twin	scope overlay, x6 names 2, duplicate 3, no basis	docs/oracle/x6-twins.tsv:2079
+function	rockx5	0x800F4470	update_blizzard_wolfang/update_blizzard_wolfang_boss_rush/update_high_max_hidden_area/update_high_max_intro/update_high_max_secret_lab2_1_ovl27	x6-twin	scope overlay, x6 names 6, no basis	docs/oracle/x6-twins.tsv:2174
+function	rockx5	0x800F45C4	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl18	x6-twin	scope overlay, x6 names 4, duplicate 12, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F472C	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl20	x6-twin	scope overlay, x6 names 4, duplicate 9, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F47BC	update_nightmare_snake_ovl11	x6-twin	scope overlay, x6 names 2, no basis	docs/oracle/x6-twins.tsv:2079
+function	rockx5	0x800F4980	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl24	x6-twin	scope overlay, x6 names 4, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F4A84	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl27	x6-twin	scope overlay, x6 names 4, duplicate 11, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F4B08	update_blizzard_wolfang/update_blizzard_wolfang_boss_rush/update_high_max_hidden_area/update_high_max_intro/update_high_max_secret_lab2_1_ovl10	x6-twin	scope overlay, x6 names 6, duplicate 2, no basis	docs/oracle/x6-twins.tsv:2174
+function	rockx5	0x800F4B98	magma_dragoon_leap_center_glide_ovl29	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:205
+function	rockx5	0x800F4BC4	update_nightmare_snake_ovl00	x6-twin	scope overlay, x6 names 2, duplicate 2, no basis	docs/oracle/x6-twins.tsv:2079
+function	rockx5	0x800F4F08	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl04	x6-twin	scope overlay, x6 names 4, duplicate 11, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F4F88	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl01	x6-twin	scope overlay, x6 names 4, duplicate 14, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F5030	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl07	x6-twin	scope overlay, x6 names 4, duplicate 16, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F506C	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl07	x6-twin	scope overlay, x6 names 4, duplicate 16, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F51B4	magma_dragoon_fireball_low_ovl29	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:206
+function	rockx5	0x800F5290	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl27	x6-twin	scope overlay, x6 names 4, duplicate 11, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F529C	update_blizzard_wolfang/update_blizzard_wolfang_boss_rush/update_high_max_hidden_area/update_high_max_intro/update_high_max_secret_lab2_1_ovl00	x6-twin	scope overlay, x6 names 6, no basis	docs/oracle/x6-twins.tsv:2174
+function	rockx5	0x800F52CC	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl27	x6-twin	scope overlay, x6 names 4, duplicate 11, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F52E4	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl18	x6-twin	scope overlay, x6 names 4, duplicate 12, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F5590	magma_dragoon_stagger_rise_ovl29	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:207
+function	rockx5	0x800F55DC	magma_dragoon_stagger_burn_ovl29	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:208
+function	rockx5	0x800F5608	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl18	x6-twin	scope overlay, x6 names 4, duplicate 12, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F5644	frame_ghost_init_ovl18	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:126
+function	rockx5	0x800F56D8	frame_ghost_fade_ovl18	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:127
+function	rockx5	0x800F5864	update_nightmare_snake_ovl18	x6-twin	scope overlay, x6 names 2, duplicate 2, no basis	docs/oracle/x6-twins.tsv:2079
+function	rockx5	0x800F5994	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl29	x6-twin	scope overlay, x6 names 4, duplicate 8, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F5BD4	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl06	x6-twin	scope overlay, x6 names 4, duplicate 11, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F5BE4	update_nightmare_snake_ovl00	x6-twin	scope overlay, x6 names 2, duplicate 2, no basis	docs/oracle/x6-twins.tsv:2079
+function	rockx5	0x800F5C5C	update_blizzard_wolfang/update_blizzard_wolfang_boss_rush/update_high_max_hidden_area/update_high_max_intro/update_high_max_secret_lab2_1_ovl26	x6-twin	scope overlay, x6 names 6, duplicate 2, no basis	docs/oracle/x6-twins.tsv:2174
+function	rockx5	0x800F5E64	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl18	x6-twin	scope overlay, x6 names 4, duplicate 12, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F5E84	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl27	x6-twin	scope overlay, x6 names 4, duplicate 11, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F5EA0	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl18	x6-twin	scope overlay, x6 names 4, duplicate 12, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F5F88	rubble_fall_ovl00	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:1
+function	rockx5	0x800F5FAC	ride_armor_pilot_return_to_idle_ovl06	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:41
+function	rockx5	0x800F60D8	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl29	x6-twin	scope overlay, x6 names 4, duplicate 8, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F6200	update_blizzard_wolfang/update_blizzard_wolfang_boss_rush/update_high_max_hidden_area/update_high_max_intro/update_high_max_secret_lab2_1_ovl06	x6-twin	scope overlay, x6 names 6, no basis	docs/oracle/x6-twins.tsv:2174
+function	rockx5	0x800F6280	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl10	x6-twin	scope overlay, x6 names 4, duplicate 5, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F633C	update_nightmare_snake_ovl27	x6-twin	scope overlay, x6 names 2, duplicate 3, no basis	docs/oracle/x6-twins.tsv:2079
+function	rockx5	0x800F6378	-	string	byte table	config/oracle.strnames.tsv:8
+function	rockx5	0x800F6454	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl07	x6-twin	scope overlay, x6 names 4, duplicate 16, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F6490	dash_gunner_explode_ovl07	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:62
+function	rockx5	0x800F6540	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl27	x6-twin	scope overlay, x6 names 4, duplicate 11, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F6610	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl29	x6-twin	scope overlay, x6 names 4, duplicate 8, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F66BC	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl26	x6-twin	scope overlay, x6 names 4, duplicate 10, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F66D4	update_nightmare_snake_ovl06	x6-twin	scope overlay, x6 names 2, duplicate 3, no basis	docs/oracle/x6-twins.tsv:2079
+function	rockx5	0x800F67F8	dash_gunner_shoot_raise_ovl07	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:63
+function	rockx5	0x800F6850	dash_gunner_shoot_aim_ovl07	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:64
+function	rockx5	0x800F6A58	update_blizzard_wolfang/update_blizzard_wolfang_boss_rush/update_high_max_hidden_area/update_high_max_intro/update_high_max_secret_lab2_1_ovl11	x6-twin	scope overlay, x6 names 6, duplicate 2, no basis	docs/oracle/x6-twins.tsv:2174
+function	rockx5	0x800F6A58	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl18	x6-twin	scope overlay, x6 names 4, duplicate 12, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F6AD4	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl29	x6-twin	scope overlay, x6 names 4, duplicate 8, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F6B60	update_blizzard_wolfang/update_blizzard_wolfang_boss_rush/update_high_max_hidden_area/update_high_max_intro/update_high_max_secret_lab2_1_ovl28	x6-twin	scope overlay, x6 names 6, no basis	docs/oracle/x6-twins.tsv:2174
+function	rockx5	0x800F6BD4	eregion_fireball_update_ovl00	x4	no corroborator	docs/oracle/x4-names.tsv:2
+function	rockx5	0x800F6C40	dash_gunner_dash_brake_ovl07	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:65
+function	rockx5	0x800F6CAC	dash_gunner_dash_end_ovl07	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:66
+function	rockx5	0x800F6D80	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl07	x6-twin	scope overlay, x6 names 4, duplicate 16, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F6ECC	magma_fire_update_ovl29	x4	no corroborator	docs/oracle/x4-names.tsv:209
+function	rockx5	0x800F6F28	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl28	x6-twin	scope overlay, x6 names 4, duplicate 6, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F706C	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl06	x6-twin	scope overlay, x6 names 4, duplicate 11, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F70E8	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl26	x6-twin	scope overlay, x6 names 4, duplicate 10, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F7150	bomb_bat_hover_start_ovl06	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:42
+function	rockx5	0x800F71C0	magma_fire_pillar_repeat_ovl29	x4	no corroborator	docs/oracle/x4-names.tsv:210
+function	rockx5	0x800F724C	magma_fire_pillar_ovl29	x4	no corroborator	docs/oracle/x4-names.tsv:211
+function	rockx5	0x800F7298	bomb_bat_drop_start_ovl06	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:43
+function	rockx5	0x800F72A0	magma_fire_breath_follow_ovl29	x4	no corroborator	docs/oracle/x4-names.tsv:212
+function	rockx5	0x800F72E8	bomb_bat_drop_release_ovl06	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:44
+function	rockx5	0x800F7310	magma_fire_breath_drop_ovl29	x4	no corroborator	docs/oracle/x4-names.tsv:213
+function	rockx5	0x800F7408	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl26	x6-twin	scope overlay, x6 names 4, duplicate 10, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F74C8	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl01	x6-twin	scope overlay, x6 names 4, duplicate 14, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F7568	teleporter_main_ovl09	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:80
+function	rockx5	0x800F7690	bomb_bat_dive_fall_ovl06	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:45
+function	rockx5	0x800F7788	magma_fire_main_ovl29	x4	no corroborator	docs/oracle/x4-names.tsv:214
+function	rockx5	0x800F77D8	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl26	x6-twin	scope overlay, x6 names 4, duplicate 10, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F7814	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl29	x6-twin	scope overlay, x6 names 4, duplicate 8, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F78CC	update_nightmare_snake_ovl04	x6-twin	scope overlay, x6 names 2, duplicate 5, no basis	docs/oracle/x6-twins.tsv:2079
+function	rockx5	0x800F796C	teleporter_delay_ovl09	x4	scope object	docs/oracle/x4-names.tsv:81
+function	rockx5	0x800F7998	bomb_bat_drop_bomb_ovl06	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:46
+function	rockx5	0x800F79F4	update_nightmare_snake_ovl09	x6-twin	scope overlay, x6 names 2, duplicate 2, no basis	docs/oracle/x6-twins.tsv:2079
+function	rockx5	0x800F7A08	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl26	x6-twin	scope overlay, x6 names 4, duplicate 10, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F7A40	blink_marker_init_ovl09	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:82
+function	rockx5	0x800F7A44	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl26	x6-twin	scope overlay, x6 names 4, duplicate 10, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F7AB4	blink_marker_main_ovl09	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:83
+function	rockx5	0x800F7B14	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl01	x6-twin	scope overlay, x6 names 4, duplicate 14, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F7B38	blink_marker_despawn_ovl09	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:84
+function	rockx5	0x800F7CE8	update_nightmare_snake_ovl27	x6-twin	scope overlay, x6 names 2, duplicate 3, no basis	docs/oracle/x6-twins.tsv:2079
+function	rockx5	0x800F7F44	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl10	x6-twin	scope overlay, x6 names 4, duplicate 5, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F7F74	update_nightmare_snake_ovl07	x6-twin	scope overlay, x6 names 2, duplicate 4, no basis	docs/oracle/x6-twins.tsv:2079
+function	rockx5	0x800F8058	sentry_drone_wait_for_player_ovl10	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:90
+function	rockx5	0x800F80DC	sentry_drone_drift_start_ovl10	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:91
+function	rockx5	0x800F8140	sentry_drone_drift_move_ovl10	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:92
+function	rockx5	0x800F8170	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl01	x6-twin	scope overlay, x6 names 4, duplicate 14, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F81AC	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl01	x6-twin	scope overlay, x6 names 4, duplicate 14, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F81D8	sentry_drone_dash_start_ovl10	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:93
+function	rockx5	0x800F823C	update_blizzard_wolfang/update_blizzard_wolfang_boss_rush/update_high_max_hidden_area/update_high_max_intro/update_high_max_secret_lab2_1_ovl11	x6-twin	scope overlay, x6 names 6, duplicate 2, no basis	docs/oracle/x6-twins.tsv:2174
+function	rockx5	0x800F8254	sentry_drone_dash_move_ovl10	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:94
+function	rockx5	0x800F8264	update_nightmare_snake_ovl29	x6-twin	scope overlay, x6 names 2, no basis	docs/oracle/x6-twins.tsv:2079
+function	rockx5	0x800F82C4	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl09	x6-twin	scope overlay, x6 names 4, duplicate 7, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F8328	-	string	byte table	config/oracle.strnames.tsv:11
+function	rockx5	0x800F8354	sentry_drone_burst_wait_ovl10	x4	scope object	docs/oracle/x4-names.tsv:95
+function	rockx5	0x800F837C	sentry_drone_burst_repeat_ovl10	x4	scope object	docs/oracle/x4-names.tsv:96
+function	rockx5	0x800F8458	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl29	x6-twin	scope overlay, x6 names 4, duplicate 8, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F8494	dragoon_flame_burn_ovl29	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:215
+function	rockx5	0x800F8560	sentry_drone_spread_fire_ovl10	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:97
+function	rockx5	0x800F85AC	dragoon_flame_attached_ovl29	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:216
+function	rockx5	0x800F8680	sentry_drone_spread_repeat_ovl10	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:98
+function	rockx5	0x800F8748	sentry_drone_drop_start_ovl10	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:99
+function	rockx5	0x800F87D8	-	string	byte table	config/oracle.strnames.tsv:12
+function	rockx5	0x800F8948	slash_beast_death_finish_ovl01	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:18
+function	rockx5	0x800F8B60	update_gate/update_nightmare_zero_ovl28	x6-twin	scope overlay, x6 names 3, no basis	docs/oracle/x6-twins.tsv:3188
+function	rockx5	0x800F8CEC	update_nightmare_snake_ovl07	x6-twin	scope overlay, x6 names 2, duplicate 4, no basis	docs/oracle/x6-twins.tsv:2079
+function	rockx5	0x800F9060	update_nightmare_snake_ovl10	x6-twin	scope overlay, x6 names 2, duplicate 3, no basis	docs/oracle/x6-twins.tsv:2079
+function	rockx5	0x800F90E4	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl09	x6-twin	scope overlay, x6 names 4, duplicate 7, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F93EC	-	string	byte table	config/oracle.strnames.tsv:3
+function	rockx5	0x800F9474	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl09	x6-twin	scope overlay, x6 names 4, duplicate 7, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F9550	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl06	x6-twin	scope overlay, x6 names 4, duplicate 11, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F95F4	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl09	x6-twin	scope overlay, x6 names 4, duplicate 7, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F9694	-	string	byte table	config/oracle.strnames.tsv:4
+data	rockx5	0x800F97F4	fortress_cannon_animations_ovl29	x4	scope object, anchors 2	docs/oracle/x4-names.tsv:217
+data	rockx5	0x800F9854	fortress_cannon_animations_ovl11	x4	scope object, anchors 2	docs/oracle/x4-names.tsv:111
+function	rockx5	0x800F99C4	magma_fire_pillar_ovl28	x4	no corroborator	docs/oracle/x4-names.tsv:169
+function	rockx5	0x800F9B08	update_nightmare_snake_ovl27	x6-twin	scope overlay, x6 names 2, duplicate 3, no basis	docs/oracle/x6-twins.tsv:2079
+function	rockx5	0x800F9B54	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl27	x6-twin	scope overlay, x6 names 4, duplicate 11, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F9B90	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl27	x6-twin	scope overlay, x6 names 4, duplicate 11, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F9BCC	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl27	x6-twin	scope overlay, x6 names 4, duplicate 11, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800F9C58	colonel_jump_slam_rise_ovl06	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:47
+function	rockx5	0x800F9DB8	slash_beast_death_blink_ovl01	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:19
+function	rockx5	0x800F9E14	colonel_jump_slam_rise_ovl06	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:48
+function	rockx5	0x800F9E24	update_nightmare_snake_ovl10	x6-twin	scope overlay, x6 names 2, duplicate 3, no basis	docs/oracle/x6-twins.tsv:2079
+function	rockx5	0x800FA154	colonel_jump_slam_rise_ovl06	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:49
+function	rockx5	0x800FA580	slash_beast_death_finish_ovl30	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:218
+function	rockx5	0x800FA6BC	-	string	byte table	config/oracle.strnames.tsv:5
+function	rockx5	0x800FA728	colonel_jump_slam_rise_ovl06	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:50
+function	rockx5	0x800FA7A0	-	string	byte table	config/oracle.strnames.tsv:6
+function	rockx5	0x800FAA0C	-	string	byte table	config/oracle.strnames.tsv:7
+function	rockx5	0x800FAA74	colonel_jump_slam_rise_ovl06	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:51
+data	rockx5	0x800FAB50	x_water_wake_modes_ovl10	x4	anchors 2	docs/oracle/x4-names.tsv:100
+data	rockx5	0x800FABE0	zero_water_wake_modes_ovl10	x4	anchors 2	docs/oracle/x4-names.tsv:101
+function	rockx5	0x800FB024	-	string	byte table	config/oracle.strnames.tsv:14
+function	rockx5	0x800FB2CC	-	string	byte table	config/oracle.strnames.tsv:15
+function	rockx5	0x800FB328	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl28	x6-twin	scope overlay, x6 names 4, duplicate 6, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800FB32C	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl32	x6-twin	scope overlay, x6 names 4, duplicate 2, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800FB480	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl06	x6-twin	scope overlay, x6 names 4, duplicate 11, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800FB49C	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl38	x6-twin	scope overlay, x6 names 4, duplicate 2, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800FB4D8	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl38	x6-twin	scope overlay, x6 names 4, duplicate 2, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800FB6FC	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl07	x6-twin	scope overlay, x6 names 4, duplicate 16, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800FB804	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl01	x6-twin	scope overlay, x6 names 4, duplicate 14, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800FB9F0	slash_beast_death_blink_ovl30	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:219
+function	rockx5	0x800FBA48	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl01	x6-twin	scope overlay, x6 names 4, duplicate 14, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800FBA90	update_blizzard_wolfang/update_blizzard_wolfang_boss_rush/update_high_max_hidden_area/update_high_max_intro/update_high_max_secret_lab2_1_ovl37	x6-twin	scope overlay, x6 names 6, duplicate 2, no basis	docs/oracle/x6-twins.tsv:2174
+function	rockx5	0x800FBB14	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl33	x6-twin	scope overlay, x6 names 4, duplicate 3, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800FBB64	update_nightmare_snake_ovl28	x6-twin	scope overlay, x6 names 2, duplicate 3, no basis	docs/oracle/x6-twins.tsv:2079
+function	rockx5	0x800FBCD4	update_blizzard_wolfang/update_blizzard_wolfang_boss_rush/update_high_max_hidden_area/update_high_max_intro/update_high_max_secret_lab2_1_ovl36	x6-twin	scope overlay, x6 names 6, no basis	docs/oracle/x6-twins.tsv:2174
+function	rockx5	0x800FBFFC	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl06	x6-twin	scope overlay, x6 names 4, duplicate 11, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800FC004	update_blizzard_wolfang/update_blizzard_wolfang_boss_rush/update_high_max_hidden_area/update_high_max_intro/update_high_max_secret_lab2_1_ovl39	x6-twin	scope overlay, x6 names 6, no basis	docs/oracle/x6-twins.tsv:2174
+function	rockx5	0x800FC054	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl34	x6-twin	scope overlay, x6 names 4, duplicate 3, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800FC21C	colonel_jump_slam_rise_ovl33	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:220
+function	rockx5	0x800FC2F4	-	string	byte table	config/oracle.strnames.tsv:16
+function	rockx5	0x800FC3D8	-	string	byte table	config/oracle.strnames.tsv:17
+function	rockx5	0x800FC3D8	colonel_jump_slam_rise_ovl33	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:221
+function	rockx5	0x800FC4AC	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl06	x6-twin	scope overlay, x6 names 4, duplicate 11, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800FC644	-	string	byte table	config/oracle.strnames.tsv:18
+function	rockx5	0x800FC718	colonel_jump_slam_rise_ovl33	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:222
+function	rockx5	0x800FCC44	update_nightmare_snake_ovl28	x6-twin	scope overlay, x6 names 2, duplicate 3, no basis	docs/oracle/x6-twins.tsv:2079
+function	rockx5	0x800FCCEC	colonel_jump_slam_rise_ovl33	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:223
+function	rockx5	0x800FD038	colonel_jump_slam_rise_ovl33	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:224
+function	rockx5	0x800FD1D0	update_nightmare_snake_ovl07	x6-twin	scope overlay, x6 names 2, duplicate 4, no basis	docs/oracle/x6-twins.tsv:2079
+function	rockx5	0x800FD274	update_blizzard_wolfang/update_blizzard_wolfang_boss_rush/update_high_max_hidden_area/update_high_max_intro/update_high_max_secret_lab2_1_ovl37	x6-twin	scope overlay, x6 names 6, duplicate 2, no basis	docs/oracle/x6-twins.tsv:2174
+function	rockx5	0x800FD43C	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl30	x6-twin	scope overlay, x6 names 4, duplicate 2, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800FD44C	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl36	x6-twin	scope overlay, x6 names 4, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800FD500	update_nightmare_snake_ovl32	x6-twin	scope overlay, x6 names 2, no basis	docs/oracle/x6-twins.tsv:2079
+function	rockx5	0x800FD680	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl30	x6-twin	scope overlay, x6 names 4, duplicate 2, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800FD6AC	update_nightmare_snake_ovl06	x6-twin	scope overlay, x6 names 2, duplicate 3, no basis	docs/oracle/x6-twins.tsv:2079
+function	rockx5	0x800FD72C	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl06	x6-twin	scope overlay, x6 names 4, duplicate 11, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800FD768	ride_dust_init_ovl06	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:52
+function	rockx5	0x800FD860	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl07	x6-twin	scope overlay, x6 names 4, duplicate 16, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800FD8F8	update_nightmare_snake_ovl04	x6-twin	scope overlay, x6 names 2, duplicate 5, no basis	docs/oracle/x6-twins.tsv:2079
+function	rockx5	0x800FD944	update_nightmare_snake_ovl04	x6-twin	scope overlay, x6 names 2, duplicate 5, no basis	docs/oracle/x6-twins.tsv:2079
+function	rockx5	0x800FD990	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl04	x6-twin	scope overlay, x6 names 4, duplicate 11, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800FD9CC	sigma_final_fx_charge_ovl04	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:31
+function	rockx5	0x800FDA44	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl33	x6-twin	scope overlay, x6 names 4, duplicate 3, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800FDC28	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl34	x6-twin	scope overlay, x6 names 4, duplicate 3, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800FDF64	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl32	x6-twin	scope overlay, x6 names 4, duplicate 2, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800FE488	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl39	x6-twin	scope overlay, x6 names 4, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800FE5C0	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl33	x6-twin	scope overlay, x6 names 4, duplicate 3, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800FEE94	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl07	x6-twin	scope overlay, x6 names 4, duplicate 16, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800FF360	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl07	x6-twin	scope overlay, x6 names 4, duplicate 16, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800FF5C4	update_nightmare_snake_ovl07	x6-twin	scope overlay, x6 names 2, duplicate 4, no basis	docs/oracle/x6-twins.tsv:2079
+function	rockx5	0x800FF61C	update_nightmare_snake_ovl34	x6-twin	scope overlay, x6 names 2, no basis	docs/oracle/x6-twins.tsv:2079
+function	rockx5	0x800FF7EC	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl34	x6-twin	scope overlay, x6 names 4, duplicate 3, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800FF9E0	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl07	x6-twin	scope overlay, x6 names 4, duplicate 16, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x800FFA1C	ride_dust_init_ovl07	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:67
+function	rockx5	0x800FFB68	update_nightmare_snake_ovl04	x6-twin	scope overlay, x6 names 2, duplicate 5, no basis	docs/oracle/x6-twins.tsv:2079
+function	rockx5	0x800FFBB4	update_nightmare_snake_ovl04	x6-twin	scope overlay, x6 names 2, duplicate 5, no basis	docs/oracle/x6-twins.tsv:2079
+function	rockx5	0x800FFFD0	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl04	x6-twin	scope overlay, x6 names 4, duplicate 11, no basis	docs/oracle/x6-twins.tsv:207
+function	rockx5	0x80100370	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl04	x6-twin	scope overlay, x6 names 4, duplicate 11, no basis	docs/oracle/x6-twins.tsv:207
+data	rockx5	0x80100E94	autoscroll_segment_bounds_ovl07	x4	scope object, anchors 2	docs/oracle/x4-names.tsv:68
+function	slus	0x80013674	-	string	byte table	config/oracle.strnames.tsv:19
+function	slus	0x80013EE8	read_rock_dat_toc	string	refuted, fixed to load_rock_dat_file_table	config/oracle.strnames.tsv:24
+function	slus	0x80015DDC	cd_file_rock_x5_bin	string	named loadmap	config/oracle.strnames.tsv:25
+function	slus	0x800171E8	set_animation	x4	tier slot	docs/oracle/x4-names.tsv:225
+function	slus	0x8001728C	clear_vram_rect_ptrs	x4	no corroborator	docs/oracle/x4-names.tsv:227
+function	slus	0x8001B378	memcard_save_name	string	text not the work	config/oracle.strnames.tsv:26
+function	slus	0x8001D220	InitMemcards	x4	no corroborator	docs/oracle/x4-names.tsv:228
+function	slus	0x8001D6BC	memcard_device	string	named x6-twin	config/oracle.strnames.tsv:30
+function	slus	0x8001D8B4	memcard_device	string	named x6-twin	config/oracle.strnames.tsv:31
+function	slus	0x8002553C	-	string	byte table	config/oracle.strnames.tsv:32
+function	slus	0x80025A74	-	string	byte table	config/oracle.strnames.tsv:33
+function	slus	0x8002A5C4	start_screen_shake_x	x4	no corroborator	docs/oracle/x4-names.tsv:230
+function	slus	0x8002A600	start_screen_shake_y	x4	no corroborator	docs/oracle/x4-names.tsv:231
+function	slus	0x8002CF70	reset_main_and_shots	x4	no corroborator	docs/oracle/x4-names.tsv:234
+function	slus	0x8002D0E4	find_free_visual_obj	x4	tier slot	docs/oracle/x4-names.tsv:235
+function	slus	0x8002D1A4	find_free_shot_obj	x4	tier slot, no corroborator	docs/oracle/x4-names.tsv:236
+function	slus	0x8002D27C	find_free_misc_obj	x4	tier slot, no corroborator	docs/oracle/x4-names.tsv:237
+function	slus	0x8002D6FC	ZeroObjectState	x4	conflict x6-twin clear_object_slot	docs/oracle/x4-names.tsv:238
+function	slus	0x8002D760	despawn_object	x4	no corroborator	docs/oracle/x4-names.tsv:239
+function	slus	0x8002D89C	is_on_screen	x4	no corroborator	docs/oracle/x4-names.tsv:240
+function	slus	0x8002D9EC	update_on_screen	x4	tier slot, no corroborator	docs/oracle/x4-names.tsv:241
+function	slus	0x8002DED4	move_with_gravity	x4	tier slot, conflict x6-twin apply_object_motion, no corroborator	docs/oracle/x4-names.tsv:242
+function	slus	0x8002DF78	get_random	x4	tier slot, conflict x6-twin random_byte, no corroborator	docs/oracle/x4-names.tsv:244
+function	slus	0x8002E1C0	get_layout_screen	x4	no corroborator	docs/oracle/x4-names.tsv:246
+function	slus	0x8002FB58	CollisionRelated	x4	tier slot, no corroborator	docs/oracle/x4-names.tsv:247
+function	slus	0x80032CEC	quad_is_on_screen	x4	scope object, tier slot, no corroborator	docs/oracle/x4-names.tsv:248
+function	slus	0x80036F68	player_ladder_grab	x4	no corroborator	docs/oracle/x4-names.tsv:249
+function	slus	0x80037888	update_slide_down/update_wall_jump	x6-twin	x6 names 3, no basis	docs/oracle/x6-twins.tsv:3948
+function	slus	0x8003952C	player_check_dash_jump	x4	no corroborator	docs/oracle/x4-names.tsv:256
+function	slus	0x8003979C	player_check_dash_input	x4	tier slot, no corroborator	docs/oracle/x4-names.tsv:257
+function	slus	0x80039AE0	player_check_wall	x4	tier slot, conflict x6-twin try_enter_wall_cling, no corroborator	docs/oracle/x4-names.tsv:258
+function	slus	0x80039ECC	player_check_script	x4	tier slot, no corroborator	docs/oracle/x4-names.tsv:259
+function	slus	0x8003A008	player_leap_check_wall	x4	no corroborator	docs/oracle/x4-names.tsv:260
+function	slus	0x8003A30C	player_enter_dash	x4	tier slot, no corroborator	docs/oracle/x4-names.tsv:261
+function	slus	0x8003A7E4	player_enter_walk_start	x4	no corroborator	docs/oracle/x4-names.tsv:262
+function	slus	0x8003A82C	player_enter_walk	x4	no corroborator	docs/oracle/x4-names.tsv:263
+function	slus	0x8003A874	player_enter_jump	x4	tier slot, no corroborator	docs/oracle/x4-names.tsv:264
+function	slus	0x8003A9AC	player_enter_land	x4	no corroborator	docs/oracle/x4-names.tsv:265
+function	slus	0x8003B148	player_enter_ladder_down	x4	tier slot, no corroborator	docs/oracle/x4-names.tsv:269
+function	slus	0x8003B28C	player_enter_beam_out	x4	no corroborator	docs/oracle/x4-names.tsv:270
+function	slus	0x8003B33C	player_set_animation	x4	tier slot, no corroborator	docs/oracle/x4-names.tsv:271
+function	slus	0x8003B4CC	player_set_animation_frame	x4	tier slot, no corroborator	docs/oracle/x4-names.tsv:272
+function	slus	0x8003D200	player_spawn_dash_dust	x4	no corroborator	docs/oracle/x4-names.tsv:276
+function	slus	0x8003D250	player_spawn_wall_slide_dust	x4	conflict x6-twin spawn_dust, no corroborator	docs/oracle/x4-names.tsv:277
+function	slus	0x8003D2FC	player_check_splash_tile	x4	no corroborator	docs/oracle/x4-names.tsv:278
+function	slus	0x8003D72C	player_entry_beam_in	x4	no corroborator	docs/oracle/x4-names.tsv:281
+function	slus	0x8003DAA4	player_spawn_death_orb	x4	no corroborator	docs/oracle/x4-names.tsv:282
+function	slus	0x80040B6C	player_hover_check_end	x4	tier slot, no corroborator	docs/oracle/x4-names.tsv:293
+function	slus	0x80040BBC	player_hover_steer	x4	tier slot, no corroborator	docs/oracle/x4-names.tsv:294
+function	slus	0x80044BD8	enemy_hit_reaction	x4	no corroborator	docs/oracle/x4-names.tsv:298
+function	slus	0x80045928	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
+function	slus	0x80045964	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
+function	slus	0x800459A0	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
+function	slus	0x800459DC	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
+function	slus	0x80045A18	nova_strike_hitbox_update	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:300
+function	slus	0x80045BA0	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
+function	slus	0x80045D08	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
+function	slus	0x80045D44	-	string	byte table	config/oracle.strnames.tsv:34
+function	slus	0x80045D44	buster_shot_place_at_muzzle	x4	scope object, tier slot, no corroborator	docs/oracle/x4-names.tsv:301
+function	slus	0x80045E50	lemon_main	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:302
+function	slus	0x80045FCC	lemon_deflected	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:303
+function	slus	0x80046030	buster_shot_hide	x4	scope object, tier slot	docs/oracle/x4-names.tsv:304
+function	slus	0x80046048	buster_shot_despawn	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:305
+function	slus	0x800464F0	buster_shot_follow_muzzle	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:306
+function	slus	0x80047864	ground_hunter_burst	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:307
+function	slus	0x80048448	double_cyclone_charged_despawn	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:308
+function	slus	0x8004C10C	-	string	byte table	config/oracle.strnames.tsv:35
+function	slus	0x8004CE94	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
+function	slus	0x8004D174	menu_text_cursor	x4	no corroborator	docs/oracle/x4-names.tsv:309
+function	slus	0x8004D3DC	menu_label_init	x4	no corroborator	docs/oracle/x4-names.tsv:310
+function	slus	0x8004D6F0	spawn_debris_offset	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:311
+function	slus	0x8004D914	debris_fall	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:312
+function	slus	0x8004DC9C	death_orb_fly	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:313
+function	slus	0x8004DEDC	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
+function	slus	0x8004DF74	ready_text_appear	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:314
+function	slus	0x8004E1A4	ready_text_leave	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:315
+function	slus	0x8004E25C	ready_text_blink	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:316
+function	slus	0x8004E298	ready_text_show	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:317
+function	slus	0x8004ED7C	update_nightmare_snake	x6-twin	x6 names 2, duplicate 2, no basis	docs/oracle/x6-twins.tsv:2079
+function	slus	0x8004EE30	update_nightmare_snake	x6-twin	x6 names 2, duplicate 2, no basis	docs/oracle/x6-twins.tsv:2079
+function	slus	0x8004F458	wall_slide_dust_init	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:318
+function	slus	0x8004F57C	wall_slide_dust_fade	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:319
+function	slus	0x8004F6DC	charge_muzzle_flash_main	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:320
+function	slus	0x8004F824	charge_muzzle_flash_fade	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:321
+function	slus	0x8004F874	charge_muzzle_flash_follow	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:322
+function	slus	0x8004FD24	spawn_explosion	x4	scope object, partners slot 2, no corroborator	docs/oracle/x4-names.tsv:323
+function	slus	0x8004FD44	spawn_explosion_variant	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:324
+function	slus	0x80050F58	hover_jet_update	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:325
+function	slus	0x80051768	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
+function	slus	0x800518B4	boss_warning_quad_open	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:326
+function	slus	0x800519D0	boss_warning_quad_close	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:327
+function	slus	0x80051AE8	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
+function	slus	0x80051B24	boss_warning_quad_hold	x4	scope object	docs/oracle/x4-names.tsv:328
+function	slus	0x80051E00	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
+function	slus	0x800521D8	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
+function	slus	0x80052234	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
+function	slus	0x80052270	flash_band_init	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:329
+function	slus	0x800522DC	flash_band_widen	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:330
+function	slus	0x80052370	ready_line_sweep	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:331
+function	slus	0x80052868	ready_line_streak	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:332
+function	slus	0x80052A94	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
+function	slus	0x80052AD0	ready_line_init	x4	scope object	docs/oracle/x4-names.tsv:333
+function	slus	0x80052BA0	ready_line_move	x4	scope object	docs/oracle/x4-names.tsv:334
+function	slus	0x80052DC8	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
+function	slus	0x8005314C	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
+function	slus	0x800543E4	update_blizzard_wolfang/update_blizzard_wolfang_boss_rush/update_high_max_hidden_area/update_high_max_intro/update_high_max_secret_lab2_1	x6-twin	x6 names 6, duplicate 2, no basis	docs/oracle/x6-twins.tsv:2174
+function	slus	0x80054440	drop_item	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:335
+function	slus	0x8005446C	-	string	byte table	config/oracle.strnames.tsv:36
+function	slus	0x80054B5C	update_blizzard_wolfang/update_blizzard_wolfang_boss_rush/update_high_max_hidden_area/update_high_max_intro/update_high_max_secret_lab2_1	x6-twin	x6 names 6, duplicate 2, no basis	docs/oracle/x6-twins.tsv:2174
+function	slus	0x80054F90	boss_door_block_player	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:336
+function	slus	0x800556B0	light_capsule_spawn_visual	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:337
+function	slus	0x8005609C	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
+function	slus	0x800569F4	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
+function	slus	0x80056A30	stage_music_init	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:338
+function	slus	0x80056AA0	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
+function	slus	0x80056ADC	checkpoint_trigger_init	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:339
+function	slus	0x80056E88	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
+function	slus	0x80056FA0	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
+function	slus	0x80057130	boss_warning_wait	x4	scope object	docs/oracle/x4-names.tsv:340
+function	slus	0x80057164	boss_warning_wait_tiles	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:341
+function	slus	0x80057250	boss_warning_finish	x4	scope object	docs/oracle/x4-names.tsv:342
+function	slus	0x80057288	boss_warning_main	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:343
+function	slus	0x800578A0	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
+function	slus	0x80057C60	final_cutscene_despawn	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:344
+function	slus	0x80057C88	teleport_intro_spawn_quads	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:345
+function	slus	0x80057E50	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
+function	slus	0x80057E8C	teleport_intro_init	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:346
+function	slus	0x80057FB0	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
+function	slus	0x80058BA8	-	string	sdk	config/oracle.strnames.tsv:37
+function	slus	0x80058E28	-	string	sdk	config/oracle.strnames.tsv:39
+function	slus	0x8005A378	-	string	sdk	config/oracle.strnames.tsv:42
+function	slus	0x8005A4A8	-	string	sdk	config/oracle.strnames.tsv:43
+function	slus	0x8005CA18	-	string	sdk	config/oracle.strnames.tsv:44
+function	slus	0x8005CA58	-	string	sdk	config/oracle.strnames.tsv:45
+function	slus	0x8005CA98	-	string	sdk	config/oracle.strnames.tsv:46
+function	slus	0x8005CAD8	-	string	sdk	config/oracle.strnames.tsv:47
+function	slus	0x8005CB18	-	string	sdk	config/oracle.strnames.tsv:48
+function	slus	0x8005CB58	-	string	sdk	config/oracle.strnames.tsv:49
+function	slus	0x8005CB98	-	string	sdk	config/oracle.strnames.tsv:50
+function	slus	0x8005CBD8	-	string	sdk	config/oracle.strnames.tsv:51
+function	slus	0x8005CC18	-	string	sdk	config/oracle.strnames.tsv:52
+function	slus	0x8005CC58	-	string	sdk	config/oracle.strnames.tsv:53
+function	slus	0x8005CC98	-	string	sdk	config/oracle.strnames.tsv:54
+function	slus	0x8005CCD8	-	string	sdk	config/oracle.strnames.tsv:55
+function	slus	0x8005CD18	-	string	sdk	config/oracle.strnames.tsv:56
+function	slus	0x8005CD58	-	string	sdk	config/oracle.strnames.tsv:57
+function	slus	0x8005CD98	-	string	sdk	config/oracle.strnames.tsv:58
+function	slus	0x8005CDD8	-	string	sdk	config/oracle.strnames.tsv:59
+function	slus	0x8005CE18	-	string	sdk	config/oracle.strnames.tsv:60
+function	slus	0x8005CE58	-	string	sdk	config/oracle.strnames.tsv:61
+function	slus	0x8005CE98	-	string	sdk	config/oracle.strnames.tsv:62
+function	slus	0x8005CED8	-	string	sdk	config/oracle.strnames.tsv:63
+function	slus	0x8005CF18	-	string	sdk	config/oracle.strnames.tsv:64
+function	slus	0x8005CF58	-	string	sdk	config/oracle.strnames.tsv:65
+function	slus	0x8005CF98	-	string	sdk	config/oracle.strnames.tsv:66
+function	slus	0x8005CFD8	-	string	sdk	config/oracle.strnames.tsv:67
+function	slus	0x8005D018	-	string	sdk	config/oracle.strnames.tsv:68
+function	slus	0x8005D058	-	string	sdk	config/oracle.strnames.tsv:69
+function	slus	0x8005D098	-	string	sdk	config/oracle.strnames.tsv:70
+function	slus	0x8005D0D8	-	string	sdk	config/oracle.strnames.tsv:71
+function	slus	0x8005D118	-	string	sdk	config/oracle.strnames.tsv:72
+function	slus	0x8005D158	-	string	sdk	config/oracle.strnames.tsv:73
+function	slus	0x8005D198	-	string	sdk	config/oracle.strnames.tsv:74
+function	slus	0x8005D1D8	-	string	sdk	config/oracle.strnames.tsv:75
+function	slus	0x80062FC0	-	string	sdk	config/oracle.strnames.tsv:76
+function	slus	0x800632C4	-	string	sdk	config/oracle.strnames.tsv:77
+function	slus	0x80063884	-	string	sdk	config/oracle.strnames.tsv:79
+function	slus	0x80063B38	-	string	sdk	config/oracle.strnames.tsv:81
+function	slus	0x80063C88	CdPosToInt	x4	tier bytes, conflict psyq-sig names.tsv:991	docs/oracle/x4-names.tsv:347
+function	slus	0x80063D08	-	string	sdk	config/oracle.strnames.tsv:82
+function	slus	0x80064000	-	string	sdk	config/oracle.strnames.tsv:88
+function	slus	0x80064368	-	string	sdk	config/oracle.strnames.tsv:95
+function	slus	0x800654A0	-	string	sdk	config/oracle.strnames.tsv:99
+function	slus	0x80065648	-	string	sdk	config/oracle.strnames.tsv:100
+function	slus	0x80065BAC	-	string	sdk	config/oracle.strnames.tsv:104
+function	slus	0x80065E2C	-	string	sdk	config/oracle.strnames.tsv:128
+function	slus	0x800660F4	-	string	sdk	config/oracle.strnames.tsv:152
+function	slus	0x80066798	-	string	sdk	config/oracle.strnames.tsv:178
+function	slus	0x80066978	-	string	sdk	config/oracle.strnames.tsv:180
+function	slus	0x80066CE8	CdReset	x4	tier bytes, conflict psyq-sig names.tsv:1239	docs/oracle/x4-names.tsv:348
+function	slus	0x80067178	CdMix	x4	tier bytes, conflict psyq-sig names.tsv:1262, no corroborator	docs/oracle/x4-names.tsv:349
+function	slus	0x80067198	CdGetSector	x4	tier bytes, conflict psyq-sig names.tsv:1263, no corroborator	docs/oracle/x4-names.tsv:350
+function	slus	0x8006731C	-	string	sdk	config/oracle.strnames.tsv:204
+function	slus	0x80067660	-	string	sdk	config/oracle.strnames.tsv:205
+function	slus	0x80067CF8	CdGetSector	x4	tier bytes, conflict symbols slus:0x80067198, no corroborator	docs/oracle/x4-names.tsv:351
+function	slus	0x80068284	-	string	sdk	config/oracle.strnames.tsv:207
+function	slus	0x8006842C	-	string	sdk	config/oracle.strnames.tsv:209
+function	slus	0x80068488	-	string	sdk	config/oracle.strnames.tsv:210
+function	slus	0x8006853C	-	string	sdk	config/oracle.strnames.tsv:211
+function	slus	0x8006859C	-	string	sdk	config/oracle.strnames.tsv:212
+function	slus	0x80068634	-	string	sdk	config/oracle.strnames.tsv:213
+function	slus	0x8006869C	-	string	sdk	config/oracle.strnames.tsv:214
+function	slus	0x800687B8	-	string	sdk	config/oracle.strnames.tsv:216
+function	slus	0x80068848	-	string	sdk	config/oracle.strnames.tsv:217
+function	slus	0x800688E0	-	string	sdk	config/oracle.strnames.tsv:218
+function	slus	0x80068940	-	string	sdk	config/oracle.strnames.tsv:219
+function	slus	0x800689A0	-	string	sdk	config/oracle.strnames.tsv:220
+function	slus	0x80068A58	-	string	sdk	config/oracle.strnames.tsv:221
+function	slus	0x80068B20	-	string	sdk	config/oracle.strnames.tsv:222
+function	slus	0x80068C28	-	string	sdk	config/oracle.strnames.tsv:223
+function	slus	0x80068C98	-	string	sdk	config/oracle.strnames.tsv:224
+function	slus	0x80068D58	-	string	sdk	config/oracle.strnames.tsv:225
+function	slus	0x80068E64	-	string	sdk	config/oracle.strnames.tsv:226
+function	slus	0x8006AB6C	-	string	sdk	config/oracle.strnames.tsv:227
+function	slus	0x8006AD50	-	string	sdk	config/oracle.strnames.tsv:228
+function	slus	0x8006AE3C	-	string	sdk	config/oracle.strnames.tsv:229
+function	slus	0x8006AF28	-	string	sdk	config/oracle.strnames.tsv:230
+function	slus	0x8006B06C	-	string	sdk	config/oracle.strnames.tsv:231
+function	slus	0x8006B278	SetDefDispEnv	x4	tier bytes, conflict psyq-sig names.tsv:1602	docs/oracle/x4-names.tsv:352
+function	slus	0x8006B398	DecDCTReset	x4	tier bytes, conflict psyq-sig names.tsv:1609	docs/oracle/x4-names.tsv:353
+function	slus	0x8006B658	-	string	sdk	config/oracle.strnames.tsv:232
+function	slus	0x8006B864	-	string	sdk	config/oracle.strnames.tsv:233
+function	slus	0x8006B8F8	-	string	sdk	config/oracle.strnames.tsv:234
+function	slus	0x8006B9A4	-	string	sdk	config/oracle.strnames.tsv:235
+data	slus	0x8007B944	boss_warning_quad_motions	x4	scope object, anchors 2	docs/oracle/x4-names.tsv:354
+data	slus	0x8009A420	main_bss_state	x4	scope -	docs/oracle/x4-names.tsv:356

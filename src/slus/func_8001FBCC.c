@@ -1,11 +1,11 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
-extern void func_80012E0C(s32, void (*)(void));
+extern void create_task(s32, void (*)(void));
 extern void func_80012EAC(void);
 extern void func_8001CC34(u8*, u8*);
 extern u8 D_80070C54;
 extern u8 D_8009A1F8[];
-extern u8 D_8009A420[];
 extern u8 D_800C9310;
 extern u8 D_800D1C00[];
 extern void func_80020904(void);
@@ -32,7 +32,7 @@ void func_8001FBCC(u8* arg0) {
                 D_800D1C00[3] = 0;
                 D_800D1C00[0x1D] = D_800D1C00[0x194];
             }
-            func_80012E0C(1, func_80020904);
+            create_task(1, func_80020904);
             func_80012EAC();
             return;
         case 1:

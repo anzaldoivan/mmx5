@@ -1,18 +1,15 @@
 /* Shared body (DK-5), from the banked draft of func_800EF220_ovl03 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/title.h"
+#include "mmx5/globals.h"
 
 extern u8 D_8009A197;
 extern void (*D_800F9660_ovl03[])(ObjEF094*);
 extern void* D_800F9658_ovl03[];
 extern u8 D_800F9644_ovl03[];
-extern s32 func_800317B8(ObjEF094*);
-extern s32 func_80031DD0(ObjEF094*);
 extern void func_800EFD08_ovl03(ObjEF094*);
-extern s32 func_8004FD24(ObjEF094*);
 extern void func_8004D4F4(s32, void*, ObjEF094*);
 extern void func_80054440(ObjEF094*, s32);
-extern s32 func_8002D938(ObjEF094*, s32, s32);
-extern void func_8002D9EC(ObjEF094*, s32, s32);
 
 void DEDUP_NAME(ObjEF094* e) {
     u8 hit;
@@ -52,7 +49,7 @@ void DEDUP_NAME(ObjEF094* e) {
             }
         }
     }
-    if (func_8002D938(e, 0x20, 0x20) == 0) {
+    if (is_off_screen(e, 0x20, 0x20) == 0) {
         if (e->unk5 != 9) {
             func_8002D9EC(e, 0x20, 0x20);
         }

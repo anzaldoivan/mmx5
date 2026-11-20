@@ -1,16 +1,14 @@
 /* Shared body (DK-5), from the banked draft of func_800F6A34_ovl04 by tools/wave/gate.py rescan. */
 #include "types.h"
-
-extern u8 D_8009A0A0[];
-extern void func_80017248(u8* obj);
-extern void func_8002DF54(u8* a0);
+#include "mmx5/object.h"
+#include "mmx5/globals.h"
 
 void DEDUP_NAME(u8* obj) {
     u8* plr;
     s32 target;
 
-    func_80017248(obj);
-    plr = D_8009A0A0;
+    animate_object(obj);
+    plr = g_Player;
     if (*(s16*)(plr + 0xA) < *(s16*)(obj + 0xA)) {
         target = *(s16*)(plr + 0xE) - 8;
         if (*(s16*)(obj + 0xE) < target) {
@@ -19,5 +17,5 @@ void DEDUP_NAME(u8* obj) {
             *(s16*)(obj + 0xE) -= 1;
         }
     }
-    func_8002DF54(obj);
+    move_object(obj);
 }

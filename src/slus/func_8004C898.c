@@ -1,13 +1,12 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
 extern void func_80017348(u8* a0, s32 a1, s32 a2);
-extern void func_8003B33C(u8*, s32);
 extern u8 D_80077260[];
 extern u8 D_80077264[];
-extern u8 D_8009A0A0[];
 
 void func_8004C898(u8* obj) {
-    u8* g = D_8009A0A0;
+    u8* g = g_Player;
     s32 t;
 
     obj[2] = 1;

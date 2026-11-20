@@ -1,11 +1,11 @@
 #include "types.h"
+#include "mmx5/sound.h"
+#include "mmx5/globals.h"
 #include "addr.h"
 
-extern void func_80017248(u8* obj);
-extern u8* func_8002D0E4(void);
+extern u8* find_free_visual_obj(void);
 extern u8* func_8002D078();
-extern void func_8003CEAC(s32 arg0, s32 arg1, s32 arg2, u8* arg3);
-extern void func_80016490(s32, s32, void*);
+extern void load_buffered_palette(s32 arg0, s32 arg1, s32 arg2, u8* arg3);
 extern void func_8003AA4C(u8* arg0);
 extern u8 D_8007B3D8[];
 
@@ -16,10 +16,10 @@ void func_80043678(u8* obj) {
     s32 i;
     s32 off;
 
-    func_80017248(obj);
+    animate_object(obj);
     if (*(s8*)(obj + 0x45) & 0x80) {
         obj[0x45] = 0;
-        p = func_8002D0E4();
+        p = find_free_visual_obj();
         if (p != 0) {
             p[0] = 0x21;
             p[1] = 3;
@@ -35,7 +35,7 @@ void func_80043678(u8* obj) {
             *(s32*)(p + 0x8) = *(s32*)(obj + 0x8);
             *(s32*)(p + 0xC) = *(s32*)(obj + 0xC);
             p[0x15] = obj[0x15];
-            func_8003CEAC(0x54, 0x13, 1, p);
+            load_buffered_palette(0x54, 0x13, 1, p);
         }
     }
     if (obj[0x45] & 0x40) {
@@ -51,7 +51,7 @@ void func_80043678(u8* obj) {
             }
             i++;
         } while ((u32)i < 9);
-        func_80016490(1, 0x11, obj);
+        play_sound(1, 0x11, obj);
     }
     if (*(s8*)(obj + 0x46) == 0) {
         obj[0x93] = 0;

@@ -7,6 +7,13 @@ pattern, and the experiment that proves the lever.
 The writers translated the map item by item from the kit's gcc-2.7.2 map
 (`decomp-architect/corpus/cookbook/gcc-2.7.2-map/`). They consult the kit text and never copy it.
 
+## Pages
+- [SYMPTOMS.md](SYMPTOMS.md) indexes the symptoms of a near-miss diff, with their entries and levers.
+- [cse_expr.md](cse_expr.md) holds the cse, combine, cross-jump and expression expansion entries.
+- [loop.md](loop.md) holds the loop optimiser entries.
+- [regalloc.md](regalloc.md) holds the register allocation and reload entries.
+- [sched.md](sched.md) holds the scheduling and delayed branch entries.
+
 ## Files
 - `sched.md` covers scheduling and delayed branch: `sched.c` (not haifa: see its §0), `reorg.c` and MIPS hooks.
   It holds kit S1-S13 and D1-D5.
@@ -15,8 +22,7 @@ The writers translated the map item by item from the kit's gcc-2.7.2 map
 - `cse_expr.md` covers cse, gcse, combine, jump2 cross-jump, expression expansion, `/s` aliasing and frame layout.
   It holds kit K§1-K§8, H1-H3 and E1-E5. It also holds `div_pow2_signed`: `expand_divmod` is in expmed.c, and
   expr.c expression expansion calls it. That expression expansion is the kit's cse_expr scope.
-- `levers.yaml` and `levers/<id>.{before,after}.c` hold the byte-proven levers. The levers are a JSON list, and
-  tools/codegen/README.md gives the record shape.
+- `levers.yaml` and `levers/<id>.{before,after}.c` hold the byte-proven levers. The levers are a JSON list.
 
 ## Entry shape
 An entry starts with `### <kit id> — <residual> · <status>`. Bullets follow. They give the pass with its
@@ -29,12 +35,11 @@ The status is one value of this vocabulary:
 - `absent in 2.95.2`: at the pin, the mechanism is not compiled into cc1, or it is not reachable.
 
 ## Tools
-- `PY tools/codegen/cites.py check` — every `gcc/<path>:<line> <symbol>` in this dir must be grep-true in the
-  staged tree (lines split on `\n`). The tool prints `cites: <ok> of <n> citations resolve, <s> stale`.
-- `PY tools/codegen/levers.py check` — the tool compiles the before/after of each lever at the pin. The tell regex
-  must match before and not after. The masked words of `fn` must differ. `levers.py dump <file.c>` gives `-da` RTL
-  dumps in `.run/codegen/dumps/<stem>/` (`.sched`, `.sched2`, `.dbr`, …). For details, read
-  tools/codegen/README.md.
+- The cite check — every `gcc/<path>:<line> <symbol>` in this dir must be grep-true in the
+  staged tree (lines split on `\n`). The check prints `cites: <ok> of <n> citations resolve, <s> stale`.
+- The lever check — the tool compiles the before/after of each lever at the pin. The tell regex
+  must match before and not after. The masked words of `fn` must differ. Its `dump <file.c>` mode gives `-da` RTL
+  dumps in `.run/codegen/dumps/<stem>/` (`.sched`, `.sched2`, `.dbr`, …).
 - Reproducers are synthetic C with no game bytes. The function of a reproducer has a `lever_*` name.
 
 ## Levers by group
@@ -50,7 +55,7 @@ The status is one value of this vocabulary:
 The key of the table is the symptom. Find the tell. Open the map §. Try the lever family. Rerun the lever id as
 the worked example.
 
-`(C0002)` marks a row of cookbook/C0002.md. `—` means that the row has no byte-proven lever yet. The § is then the
+`(C0002)` marks a row of the cookbook entry C0002. `—` means that the row has no byte-proven lever yet. The § is then the
 pointer.
 
 | Tell in the diff | Pass (map §) | Lever family | Lever ids |
@@ -116,7 +121,7 @@ route of the class is its key:
   evidence (G61), never a closeness number.
 
 ### Routes (3.6 T3)
-`.run/3.6/plateau/run.py` gives each ledger head one route from its `waves.py try` band and its classify result.
+The wave kit's `route.py`, a private development tool, gives each ledger head one route from its `waves.py try` band and its classify result.
 The first rule that applies gives the route:
 1. If classify fails, the route is `failed`, with its reason.
 2. If the band is `try-match` or the class is `match`, the route is `reconcile`.

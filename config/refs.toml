@@ -368,7 +368,7 @@ do       = "prove a preset through the kit's decompme_replica before saving it; 
 [[ref]]
 name     = "mmx4"
 url      = "https://github.com/sozud/mmx4"
-ref      = "34f37a46f34a1180a7eac7d545fdfb6e0c7f533d"
+ref      = "4e16dfc7c06597fd5719dd112654d8cf85d343c2"
 licence  = "AGPL-3.0"
 class    = "copyleft"
 tier     = "optional"
@@ -376,13 +376,13 @@ when     = "the compiler ladder (its US triple is a rung), or a function shared 
 covers   = "Mega Man X4 (SLUS_005.61 US / JP / EU) main exe only; PsyQ 4.0 headers; not X5's addresses or its 4.7 libraries"
 topics   = ["sibling", "compiler-ladder", "gcc-2.7.2", "aspsx-2.56", "expand-div", "capcom-engine", "splat-config"]
 paths    = ["LICENSE", "build.py", "compiler.sh", "requirements.txt", "config", "include", "src"]
-used_by  = "S3 lead 2026-10-03 (research/repo-mmx4.md); phase-1.6 T2 L8 leaf signatures at 7569876 (src/main compiled to .run/sig/mmx4/, never copied); 2026-10-12 tools/sig/x4adapter.py partner and names tables (docs/oracle/x4-*: names, addresses, keys and mmx4 paths only; compiled to .run/x4/, never copied)"
-checked  = "2026-10-12"
+used_by  = "S3 lead 2026-10-03 (research/repo-mmx4.md); phase-1.6 T2 L8 leaf signatures at 7569876 (src/main compiled to .run/sig/mmx4/, never copied); 2026-10-12 tools/sig/x4adapter.py partner and names tables (docs/oracle/x4-*: names, addresses, keys and mmx4 paths only; compiled to .run/x4/, never copied); 2026-11-15 repinned from 34f37a46 to 4e16dfc7, the mmx4 ref of mmx6 93515c1f (R51), and the X4 tables rebuilt"
+checked  = "2026-11-15"
 
 [[ref]]
 name     = "mmx6"
 url      = "https://github.com/anzaldoivan/mmx6"
-ref      = "a8f96d1d6377e8566e77089dcd25ceac877893f2"
+ref      = "93515c1f8546647b2a0aa03e3cae28fbd9f44670"
 licence  = "AGPL-3.0"
 class    = "copyleft"
 tier     = "optional"
@@ -390,8 +390,8 @@ when     = "a wave target with a row in docs/oracle/x6-leads.tsv (its card's `##
 covers   = "Mega Man X6 (SLUS_013.95 US) decompilation, the developer's own: its C at this commit; X6's addresses, not X5's; X6 builds with -msoft-float -funsigned-char"
 topics   = ["sibling", "capcom-engine", "twin-c", "port-x6", "gcc-2.95.2", "aspsx-2.86"]
 paths    = ["LICENSE", "include", "src"]
-used_by  = "2026-10-13 tools/sig/imgtab.py x6 (docs/oracle/x6-twins.tsv, facts); 2026-10-14 imgtab.py x6 --leads (docs/oracle/x6-leads.tsv: names, addresses and paths only); a drafter adapts the C a card names (THIRD_PARTY.md); 2026-11-14 repinned from c1c892dc to a8f96d1d for the 3.6 port lane (R36, R38)"
-checked  = "2026-11-14"
+used_by  = "2026-10-13 tools/sig/imgtab.py x6 (docs/oracle/x6-twins.tsv, facts); 2026-10-14 imgtab.py x6 --leads (docs/oracle/x6-leads.tsv: names, addresses and paths only); a drafter adapts the C a card names (THIRD_PARTY.md); 2026-11-14 repinned from c1c892dc to a8f96d1d for the 3.6 port lane (R36, R38); 2026-11-15 repinned from a8f96d1d to 93515c1f, the public head, for the 3.7 names (R51, T2)"
+checked  = "2026-11-15"
 
 [[ref]]
 name     = "megamanx5recomp"
@@ -429,6 +429,7 @@ licence  = "unstated (archive.org rights empty; readme states no terms)"
 topics   = ["ram-map", "disc-toc", "rock_x5-bin", "rock_x5-dat", "bin-to-ram", "entity-tables", "damage-tables", "asm-notes"]
 covers   = "the clean USA retail disc (patch base Redump #7437), workbook 2022.07.19 (sha1 179ebbbc1544d5d07257f2b1e26712645ebbc6de); hack-only sheets (TOC_PS-EXE custom code, *_Mod, OtherHacks_*) describe the patched game"
 used_by  = "S4 lead L13 2026-10-03 (named by the developer; research/maps-addendum.md)"
+note     = "Facts only. The developer holds a local copy of patch v2.1.4 (an xdelta and its readme, dated 2023-07-26) and of the workbook 2022.07.19. The copy is never applied, copied or committed. Phase 3.7 T6 indexes the workbook addresses against our census (docs/prior-art.md L13)."
 
 # ---- added by /psxdecomp:upgrade 2026-10-13 ----
 [[ref]]
@@ -578,3 +579,88 @@ do = "convert a .LIB and pack it with ar before a `lib` segment names it, or nam
 what = "a byo SDK object's data can differ from retail where its .text matches: mmx6's LIBCD_BIOS_1 holds 1 at 0x8007CCE4, retail 0"
 evidence = "mmx6 1.9 T4 summary (cee67b0d, 2026-10-24): 232 objects' data equal, 1 differs, 9 not compared (no relocation reaches their initialized sections: LIBCARD_INIT, LIBCD_CDROM, seven LIBCD_C_*)"
 do = "compare an object's data with retail before you link that data from the object; otherwise link its .text only and keep the split data"
+
+# ---- added by 3.7 T1 2026-11-15 (R69): a record for every naming source ----
+[[ref]]
+name = "proto-2000-07-28"
+url = ""
+ref = ""
+licence = "proprietary (the game's publisher)"
+class = "byo"
+topics = ["oracle-build", "prototype", "names", "debug-strings"]
+covers = "The Jul 28, 2000 prototype of Mega Man X5. It speaks for its own build only. Retail code lies in it at other addresses (docs/prior-art.md L15a, L15b)."
+used_by = "mmx5 2.x imgtab.py proto (2026-10-13): config/oracle.proto-2000-07-28.map.tsv and strings.tsv. mmx5 3.7 T7: the same map again with tools/psxd_img.py, strnames with both prototypes, docs/leads/tcrf-proto.md. mmx5 3.7 T8: the string names."
+note = "Never fetched. The developer holds the copy. No URL, pin or local path is recorded here. A name from it maps to retail only by the authority row below."
+
+[[ref]]
+name = "proto-2000-05-01"
+url = ""
+ref = ""
+licence = "proprietary (the game's publisher)"
+class = "byo"
+topics = ["oracle-build", "prototype", "names", "debug-strings"]
+covers = "The May 1, 2000 prototype of Mega Man X5, one image with no cue sheet. It speaks for its own build only (docs/prior-art.md L18)."
+used_by = "mmx5 3.7 T7 (2026-11-16): tools/psxd_img.py proto writes config/oracle.proto-2000-05-01.map.tsv and strings.tsv. strnames reads it beside the Jul 28 build. docs/leads/tcrf-proto.md."
+note = "Never fetched. The developer holds the copy. No URL, pin or local path is recorded here. A name from it maps to retail only by the authority row below."
+
+[[ref]]
+name = "pc-port"
+url = ""
+ref = ""
+licence = "proprietary (the game's publisher)"
+class = "byo"
+topics = ["oracle-build", "port", "structure", "function-pairs"]
+covers = "The Windows port of Mega Man X5: x5.exe of 1,097,728 bytes and its data files. It is another program, so it gives structure leads and no names (docs/prior-art.md L19)."
+used_by = "mmx5 3.7 T9 (2026-11-16): docs/leads/pc-port.md. It has no symbols, no debug record and no SafeDisc wrapper, so it gave 0 names. Structure leads P1-P4. mmx6 found 0 names in the X6 port too."
+note = "Never fetched, never run. The developer holds the copy. No URL, pin or local path is recorded here."
+
+[[authority]]
+topic = "what an X5 retail function or variable is called, when another X5 build names it"
+order = ["proto-2000-07-28", "proto-2000-05-01", "pc-port"]
+scope = "mmx5 3.7 T1 (R69), after mmx6 config/refs.toml:470-479 and the oracle-build row of this file"
+rule = "The retail disc comes first. A prototype gives a retail name only where the function's bytes are identical at the mapped address. Otherwise the name stays a lead. The port gives structure, not names. A sibling game comes next. A wiki or a manual gives a word but proves no address."
+
+[[ref]]
+name = "tcrf-proto-2000-07-28"
+url = "https://tcrf.net/Proto:Mega_Man_X5/July_28,_2000_prototype"
+class = "link"
+licence = "CC BY 3.0 (site text)"
+topics = ["prototypes", "debug-features", "unused-content", "vocabulary"]
+covers = "What the Jul 28, 2000 prototype differs in from retail, and its debug features. A term gives a word and proves no address."
+used_by = "mmx5 docs/prior-art.md L20 (saved 2026-11-15, local and ignored). mmx5 3.7 T7: docs/leads/tcrf-proto.md. mmx5 3.7 T9: docs/leads/community.tsv, 9 vocabulary rows."
+
+[[ref]]
+name = "tcrf-proto-2000-05-01"
+url = "https://tcrf.net/Proto:Mega_Man_X5/May_1,_2000_prototype"
+class = "link"
+licence = "CC BY 3.0 (site text)"
+topics = ["prototypes", "x4-leftovers", "unused-content", "vocabulary"]
+covers = "What the May 1, 2000 prototype differs in from retail, and the X4 content it keeps. A term gives a word and proves no address."
+used_by = "mmx5 docs/prior-art.md L21 (saved 2026-11-15, local and ignored). mmx5 3.7 T7: docs/leads/tcrf-proto.md. mmx5 3.7 T9: docs/leads/community.tsv, 13 vocabulary rows."
+
+[[ref]]
+name = "mmkb-x5-sprites"
+url = "https://megaman.fandom.com/wiki/Category:Mega_Man_X5_sprites"
+class = "link"
+licence = "CC BY-SA (Fandom site text)"
+topics = ["vocabulary", "characters", "enemies", "objects"]
+covers = "Names of the characters, enemies and objects of X5, by sprite. Vocabulary only: a term is never a basis alone."
+used_by = "mmx5 docs/prior-art.md L22 (saved 2026-11-15, local and ignored; the page html is missing, only its images were saved). mmx5 3.7 T9: docs/leads/community.tsv, 18 vocabulary rows from image file names."
+
+[[ref]]
+name = "spriters-resource-x5"
+url = "https://www.spriters-resource.com/playstation/mmx5/"
+class = "link"
+licence = "unstated (sheets are game art, never copied)"
+topics = ["vocabulary", "characters", "bosses", "stages"]
+covers = "Sprite sheet names of X5 for characters, bosses and stages. Vocabulary only: a term is never a basis alone."
+used_by = "mmx5 docs/prior-art.md L23 (saved 2026-11-15, local and ignored). mmx5 3.7 T9: docs/leads/community.tsv, 88 vocabulary rows (sheet names)."
+
+[[ref]]
+name = "x5-walkthrough-neochozo"
+url = "https://gamefaqs.gamespot.com/community/NeoChozo/contributions/"
+class = "link"
+licence = "all rights reserved (the guide states its copyright)"
+topics = ["vocabulary", "stages", "items", "weapons", "bosses"]
+covers = "A 100% completion guide to X5 (NeoChozo, version 1.1): names of stages, items, weapons and bosses. Vocabulary only: a term is never a basis alone."
+used_by = "mmx5 docs/prior-art.md L24 (saved 2026-11-15, local and ignored). mmx5 3.7 T9: docs/leads/community.tsv, 89 vocabulary rows."

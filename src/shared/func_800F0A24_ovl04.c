@@ -1,10 +1,10 @@
 /* Shared body (DK-5), from the banked draft of func_800F0A24_ovl04 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/ovl04.h"
+#include "mmx5/object.h"
 #include "addr.h"
 
-extern void func_8002DF54(Ent0900*);
 extern s32 func_800F0FF4_ovl04(Ent0900*, s32);
-extern u8 D_80101480_ovl04[][8];
 
 #define G D_1F80004C.bytes
 void DEDUP_NAME(Ent0900* arg0) {
@@ -12,7 +12,7 @@ void DEDUP_NAME(Ent0900* arg0) {
     u8* p;
     s32 e;
 
-    func_8002DF54(arg0);
+    move_object(arg0);
     r = func_800F0FF4_ovl04(arg0, 0);
     switch (r) {
     case 2:

@@ -1,11 +1,11 @@
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
+#define D_8009A420_as_s32 (*(s32*)&D_8009A420)
 
-extern void func_800171E8(u8* obj, s32 state);
-extern void func_8002D9EC(u8* a0, s32 a1, s32 a2);
 extern s32 D_80077268[];
 extern s32 D_80077380[];
 extern s8 D_8009A0A6;
-extern s32 D_8009A420;
 
 void func_8004B8E4(u8* obj, u8* src) {
     u8* p;
@@ -40,7 +40,7 @@ void func_8004B8E4(u8* obj, u8* src) {
     if ((s8)t == 0x23) {
         goto count; // !FAKE: goto kept for the matching branch layout
     }
-    if ((s8)t == 0x1A || (s8)t == 0x20 || !(D_8009A420 & 3)) {
+    if ((s8)t == 0x1A || (s8)t == 0x20 || !(D_8009A420_as_s32 & 3)) {
         v = obj[0x45];
     store:
         obj[0x64] = v;
@@ -61,7 +61,7 @@ void func_8004B8E4(u8* obj, u8* src) {
             *(s32*)(obj + 0x50) = 0;
         }
         if (D_8009A0A6 == 2 && obj[0x17] != 0x79) {
-            func_800171E8(obj, 0x79);
+            set_animation(obj, 0x79);
         }
     }
     func_8002D9EC(obj, 0x80, 0x80);

@@ -1,9 +1,9 @@
 #include "types.h"
+#include "mmx5/system.h"
 
-extern s32 func_8002DF78(void);
 extern void func_8003CF74(u8*, s32);
 extern void func_8003D120(u8*);
-extern void func_8003F294(u8* arg0, s32 arg1);
+extern void player_set_animation_shooting(u8* arg0, s32 arg1);
 extern u8 D_8007482C[];
 
 void func_8003A874(u8* obj) {
@@ -18,10 +18,9 @@ void func_8003A874(u8* obj) {
         obj[0x8C] = 1;
     }
     obj[0x8B] = 10;
-    func_8003F294(obj, 10);
-    if (func_8002DF78() & 4) {
-        func_8003CF74(obj,
-                      D_8007482C[(func_8002DF78() & 3) + ((s8)obj[2] << 2)]);
+    player_set_animation_shooting(obj, 10);
+    if (random_byte() & 4) {
+        func_8003CF74(obj, D_8007482C[(random_byte() & 3) + ((s8)obj[2] << 2)]);
     }
     func_8003D120(obj);
     obj[5] = 6;

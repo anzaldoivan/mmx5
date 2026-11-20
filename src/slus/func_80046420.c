@@ -1,7 +1,6 @@
 #include "types.h"
-
-extern void func_800171E8(u8* obj, s32 state);
-extern void func_8002D9EC(u8* a0, s32 a1, s32 a2);
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
 
 void func_80046420(u8* o) {
     u8* p;
@@ -11,7 +10,7 @@ void func_80046420(u8* o) {
         t = o[0x8C];
         p = o + 0x8C;
         if (t == 0) {
-            func_800171E8(o, 0x1F);
+            set_animation(o, 0x1F);
             *(s32*)(o + 0x50) = 0;
             o[5] = 1;
         } else {

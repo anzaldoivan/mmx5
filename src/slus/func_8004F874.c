@@ -1,13 +1,13 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
-extern u8 D_8009A0A0[];
 extern int func_80045D44();
 
 void func_8004F874(u8* a0) {
     u8* p;
 
     if (((s8*)a0)[0x5C] == 0) {
-        p = D_8009A0A0;
+        p = g_Player;
         if (((s8*)p)[0x8E] == 0) {
             a0[0x5C] = 1;
         }

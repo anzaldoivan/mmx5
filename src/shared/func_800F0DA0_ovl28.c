@@ -1,9 +1,9 @@
 /* Shared body (DK-5), from the banked draft of func_800F0DA0_ovl28 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/graphics.h"
 #include "addr.h"
 
 #define SCR_4C D_1F80004C.ctx0f18
-extern void DEDUP_CALLEE(Ent0DA0*, s32);
 
 void DEDUP_NAME(Ent0DA0* e) {
     s32 v;

@@ -98,3 +98,8 @@ Thumbs.db
 # decomp-architect (the day-one kit's package folder — safe to delete after install)
 decomp-architect/
 /objdiff.json
+
+# The asd-ste100 dev skill is not part of the repository. To install it, run `npx skills add danyuchn/asd-ste100-skill`.
+/.agents/
+/skills-lock.json
+/.claude/skills/asd-ste100

@@ -1,11 +1,10 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
-extern s32 func_80043B88(u8* arg0);
 extern void func_8003A9AC(u8* arg0);
 extern void func_8003A94C(u8* arg0);
 extern s32 func_8003EFE0(u8* arg0);
 extern void func_8003AC98(u8* obj);
-extern void func_80017248(u8* obj);
 extern void* D_80074724[];
 
 void func_80036C58(u8* arg0) {
@@ -27,6 +26,6 @@ void func_80036C58(u8* arg0) {
             return;
         }
     }
-    func_80017248(arg0);
+    animate_object(arg0);
     ((void (*)(u8*))D_80074724[*(s8*)(arg0 + 6)])(arg0);
 }

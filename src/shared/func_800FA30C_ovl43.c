@@ -1,11 +1,10 @@
 /* Shared body (DK-5), from the banked draft of func_800FA30C_ovl43 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/globals.h"
 
 extern u8 D_800D1F3C;
 extern signed char D_8009A424;
 extern u8 D_8009A1F8[];
-extern void func_8001E668(void);
-extern void func_8002C50C(void);
 
 void DEDUP_NAME(u8* arg0) {
     s32 i;

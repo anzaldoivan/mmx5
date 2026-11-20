@@ -1,11 +1,11 @@
 /* Shared body (DK-5), from the banked draft of func_800F899C_ovl06 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/ovl06.h"
+#include "mmx5/globals.h"
+#include "mmx5/sound.h"
+#include "mmx5/graphics.h"
 #include "addr.h"
 
-extern void func_800FAEF8_ovl06(u8* obj);
-extern void func_800171E8(u8* obj, s32 state);
-extern s32 func_80016490(s32, s32, void*);
-extern s16 D_8009A0AA;
 extern u8 D_800FF1D4_ovl06[];
 extern u8 D_800FF1D8_ovl06[];
 extern u8 D_80074EE0[];
@@ -21,7 +21,7 @@ void DEDUP_NAME(u8* obj) {
     }
     func_800FAEF8_ovl06(obj);
     obj[0x60] = 8;
-    func_800171E8(obj, 0xF);
+    set_animation(obj, 0xF);
     *(u8**)(obj + 0x50) = D_800FF1D4_ovl06;
     *(u8**)(obj + 0x54) = D_800FF1D8_ovl06;
     obj[0x62] = 5;
@@ -35,7 +35,7 @@ void DEDUP_NAME(u8* obj) {
     *(s32*)(obj + 0x24) = 0;
     *(s32*)(obj + 0x2C) = 0;
     *(u16*)(D_1F80004C.bytes + 0x8C) = *(u16*)(obj + 0xA);
-    func_80016490(2, 0x21, obj);
+    play_sound(2, 0x21, obj);
     *(s16*)(obj + 0x7C) = 0x10;
     obj[6]++;
 }

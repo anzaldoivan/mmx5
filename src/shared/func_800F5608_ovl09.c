@@ -1,8 +1,7 @@
 /* Shared body (DK-5), from the banked draft of func_800F5608_ovl09 by tools/wave/gate.py rescan. */
 #include "types.h"
-
-extern ObjFAF38* func_8002D1A4();
-extern void func_800171E8(Obj3DD4*, s32);
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
 
 void DEDUP_NAME(Obj3DD4* o) {
     ObjFAF38* c;
@@ -18,7 +17,7 @@ void DEDUP_NAME(Obj3DD4* o) {
         o->unk7E = 0;
     }
     if (--o->unk7C == 0) {
-        func_800171E8(o, 1);
+        set_animation(o, 1);
         o->unk7C = 0;
         o->unk6++;
     }

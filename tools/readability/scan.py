@@ -52,7 +52,7 @@ def basis(root):
         return set(), set()
     rows = [ln.split("\t") for ln in p.read_text(encoding="utf-8").splitlines()[1:] if ln.strip()]
     rows = [r for r in rows if len(r) > 5 and r[5] != "rejected"]
-    return {(r[1], r[4]) for r in rows}, {r[4] for r in rows}
+    return {("rockx5" if re.fullmatch(r"ovl\d+", r[1]) else r[1], r[4]) for r in rows}, {r[4] for r in rows}
 
 
 def scan(root):

@@ -1,10 +1,10 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
 extern void func_800177B0(s32, s32);
 extern void func_8003B28C(u8* obj);
-extern void func_8003B33C(u8*, s32);
 extern void func_8003CE64(u8* obj);
-extern void func_8003D0A0(u8* obj);
+extern void set_stand_animation_by_hp(u8* obj);
 extern void func_8003EC00(u8* obj);
 extern void func_8003ED10(u8* obj);
 extern u8 D_800D1C00[];
@@ -19,7 +19,7 @@ void func_8003B1A8(u8* obj) {
     flags = base[0xF];
     base[0x1C] = 1;
     if (flags & 0x10) {
-        func_8003D0A0(obj);
+        set_stand_animation_by_hp(obj);
         func_8003ED10(obj);
         if (((s8*)obj)[2] == 0) {
             func_800177B0(0, 0x7F);

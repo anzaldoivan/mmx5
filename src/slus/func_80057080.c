@@ -1,13 +1,12 @@
 #include "types.h"
-
-extern u8* func_8002D53C(void);
-extern u8* D_800E95A8[22];
+#include "mmx5/object.h"
+#include "mmx5/globals.h"
 
 void func_80057080(u8* a0) {
     u8* p;
 
     if (*(u16*)(a0 + 0x18) == 0) {
-        p = func_8002D53C();
+        p = alloc_class6_slot();
         if (p != 0) {
             *(s8*)p = -0x7D;
             p[1] = 3;

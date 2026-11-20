@@ -1,0 +1,24 @@
+#include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/system.h"
+
+extern D_8009A1F8_t D_8009A1F8;
+
+void func_800FA7E0_ovl41(UnkObj* obj) {
+    D_8009A1F8_t* p;
+
+    if (--obj->unk6 == 0) {
+        D_8009A1F8.unkB6 |= 0x200;
+        obj->unk6 = (random_byte() % 6 + 6) * 10;
+    } else if (obj->unk6 == 6 && random_byte() % 3 == 1) {
+        D_8009A1F8.unkB6 |= 0x200;
+    } else {
+        D_8009A1F8.unkB6 &= ~0x200;
+    }
+    p = &D_8009A1F8;
+    p->unkF4 = 1;
+    if (obj->unk4 == 0) {
+        func_8002385C(6, 0xFF, 0);
+        obj->unk1++;
+    }
+}

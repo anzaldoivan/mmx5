@@ -1,11 +1,10 @@
 /* Adapted from mmx6 @c1c892d src/shared/SLUS_013.95/func_8004C844.c, AGPL-3.0 (THIRD_PARTY.md). */
 /* Adapted from sozud/mmx4 @29b62af src/main/quads/quad_07_ready_line.c:ready_line_sweep, AGPL-3.0; proven shared with X6 by exact signature 5aa466ee5359 (see THIRD_PARTY.md). */
 #include "types.h"
-extern int func_80052BA0();
+#include "mmx5/globals.h"
 #define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8*)(expr) + (offset)))
 #define FIXED(x) ((s32)((x) * 0x10000))
 #define NULL ((void*)0)
-void* func_8002D27C();
 extern u16 D_8007BABC[8];
 
 void func_80052370(struct X4_QuadObj* arg0) {

@@ -1,12 +1,9 @@
 /* Shared body (DK-5), from the banked draft of func_800EF7EC_ovl12 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/object.h"
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
 
-extern s32 func_800317B8(u8* a0);
-extern u8* func_8002D1A4();
-extern void func_800171E8(u8* obj, s32 state);
-extern void func_8002D9EC(u8* a0, s32 a1, s32 a2);
-extern void func_80017248(u8* obj);
-extern void func_8002DF54(u8* a0);
 extern s16 D_8009A0AE;
 
 void DEDUP_NAME(u8* arg0) {
@@ -32,7 +29,7 @@ void DEDUP_NAME(u8* arg0) {
                 *(u8**)(p + 0x7C) = arg0;
             }
             *(s32*)(arg0 + 0x50) = 0;
-            func_800171E8(arg0, 0xF);
+            set_animation(arg0, 0xF);
             *(s32*)(arg0 + 0x24) = 0;
             arg0[5]++;
         }
@@ -48,6 +45,6 @@ void DEDUP_NAME(u8* arg0) {
         arg0[4] = 2;
     }
     func_8002D9EC(arg0, 0x10, 0x10);
-    func_80017248(arg0);
-    func_8002DF54(arg0);
+    animate_object(arg0);
+    move_object(arg0);
 }

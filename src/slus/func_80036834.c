@@ -1,15 +1,14 @@
 #include "types.h"
+#include "mmx5/object.h"
+#include "mmx5/globals.h"
 
-extern void func_80017248(u8* obj);
-extern void func_8002DF54(u8* a0);
-extern s32 func_80039B50(u8* arg0);
-extern s32 func_80039BA8(u8* arg0);
+extern s32 try_wall_jump(u8* arg0);
+extern s32 is_pressing_into_wall(u8* arg0);
 extern void func_8003A94C(u8* obj);
 extern void func_8003A9AC(void);
 extern void func_8003AEF0(u8* arg0);
 extern void func_8003D344(void* arg0);
 extern s32 func_8003EFE0(u8* arg0);
-extern void func_8003F2D8(u8* arg0, s32 arg1);
 extern s32 func_80043B08(u8* arg0);
 
 void func_80036834(u8* obj) {
@@ -31,12 +30,12 @@ void func_80036834(u8* obj) {
     func_8003A94C(obj);
     return;
 rest: // !FAKE: label kept for the matching branch layout
-    if (func_80039B50(obj) != 0) {
+    if (try_wall_jump(obj) != 0) {
         return;
     }
-    if (func_80039BA8(obj) != 0) {
-        func_80017248(obj);
-        func_8002DF54(obj);
+    if (is_pressing_into_wall(obj) != 0) {
+        animate_object(obj);
+        move_object(obj);
         func_8003D344(obj);
         func_8003F2D8(obj, 0xF);
         return;

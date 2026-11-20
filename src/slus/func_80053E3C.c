@@ -1,8 +1,8 @@
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/sound.h"
 
 extern void func_800545DC(s32);
-extern void func_80016490(s32, s32, void*);
-extern u8 D_8009A0A0[];
 extern Gm1C00 D_800D1C00;
 
 void func_80053E3C(u8* obj, u8 arg1, u8 arg2) {
@@ -14,9 +14,8 @@ void func_80053E3C(u8* obj, u8 arg1, u8 arg2) {
     s8 t;
     u8 v;
 
-    hi = D_8009A0A0[0x5C] & 0x80;
-    if ((D_8009A0A0[0x5C] & 0x7F) <
-        (s8)D_800D1C00.lim[*(s8*)(D_8009A0A0 + 2)]) {
+    hi = g_Player[0x5C] & 0x80;
+    if ((g_Player[0x5C] & 0x7F) < (s8)D_800D1C00.lim[*(s8*)(g_Player + 2)]) {
         func_800545DC(1);
         obj[0x83] = arg1;
         obj[0x84] = 2;
@@ -27,7 +26,7 @@ void func_80053E3C(u8* obj, u8 arg1, u8 arg2) {
     } else {
         obj[4] = 3;
     }
-    b = D_8009A0A0;
+    b = g_Player;
     c = &D_800D1C00;
     v = c->lim[*(s8*)(b + 2)];
     if (!((b[0x5C] & 0x7F) < (s8)v)) {
@@ -46,9 +45,9 @@ void func_80053E3C(u8* obj, u8 arg1, u8 arg2) {
                 t += arg2 * 2;
                 if (t >= 0x20) {
                     t = 0x20;
-                    func_80016490(0, 0x18, 0);
+                    play_sound(0, 0x18, 0);
                 } else {
-                    func_80016490(0, 0x17, 0);
+                    play_sound(0, 0x17, 0);
                 }
                 *p = t | 0x80;
                 break;

@@ -1,5 +1,7 @@
 #include "types.h"
+#include "mmx5/globals.h"
 #include "addr.h"
+#define D_8009A420_as_s32 (*(s32*)&D_8009A420)
 
 extern void func_80012344(void);
 extern int VSync(int mode);
@@ -21,7 +23,6 @@ extern void func_800289D8(void);
 extern void func_80012824(void);
 extern void func_80012A84(void);
 
-extern s32 D_8009A420;
 extern u8* D_8009E794;
 extern u8 D_800C9328[];
 extern u8 D_800D5188[];
@@ -62,7 +63,7 @@ void main(void) {
         func_800178C8();
         func_8001255C();
         func_8001728C();
-        D_8009A420++;
+        D_8009A420_as_s32++;
         func_80012C34();
         func_80015B78();
         (&D_1F800000)[0x1C] = VSync(1);

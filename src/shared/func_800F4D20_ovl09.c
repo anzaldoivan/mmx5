@@ -1,14 +1,12 @@
 /* Shared body (DK-5), from the banked draft of func_800F4D20_ovl09 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/object.h"
+#include "mmx5/sound.h"
+#include "mmx5/globals.h"
 
-extern void func_8002DF54(u8* a0);
 extern s32 ratan2(s32, s32);
 extern s32 rcos(s32);
 extern s32 rsin(s32);
-extern s32 func_80016490(s32, s32, void*);
-extern void func_8002D9EC(u8* a0, s32 a1, s32 a2);
-extern void func_80017248(u8* obj);
-extern s32 func_800317B8(u8* a0);
 extern s16 D_800FB67A_ovl09;
 
 void DEDUP_NAME(u8* o) {
@@ -16,7 +14,7 @@ void DEDUP_NAME(u8* o) {
     s16 ang;
     s32 dx;
 
-    func_8002DF54(o);
+    move_object(o);
     switch (((s8*)o)[5]) {
     case 0:
         if ((*(s8**)(o + 0x7C))[5] == 0xB || (*(s8**)(o + 0x7C))[4] == 2) {
@@ -68,7 +66,7 @@ void DEDUP_NAME(u8* o) {
             }
             *(s32*)(o + 0x20) = rcos(ang) * 0xC0;
             *(s32*)(o + 0x24) = -rsin(ang) * 0xC0;
-            func_80016490(2, 0x82, o);
+            play_sound(2, 0x82, o);
             o[5]++;
         }
         func_8002D9EC(o, 0x20, 0x20);
@@ -108,6 +106,6 @@ void DEDUP_NAME(u8* o) {
         }
         break;
     }
-    func_80017248(o);
+    animate_object(o);
     func_800317B8(o);
 }

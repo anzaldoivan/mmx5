@@ -1,5 +1,7 @@
 # Mega Man X5 decompilation (mmx5)
 
+[![named functions](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/anzaldoivan/mmx5/main/docs/badges/named.json)](docs/progress.md) [![open functions](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/anzaldoivan/mmx5/main/docs/badges/open.json)](docs/progress.md) [![finished functions](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/anzaldoivan/mmx5/main/docs/badges/finished.json)](docs/progress.md)
+
 ## Description
 
 **mmx5** is a matching decompilation of ***Mega Man X5*** (PlayStation, Capcom, 2000), USA release SLUS-01334. It
@@ -111,102 +113,65 @@ Progress bars powered by [decomp.dev][psxd-progress].
 [psxd-progress]: https://decomp.dev/anzaldoivan/mmx5
 <!-- psxdecomp:progress:end -->
 
-What does the percentage mean? A function counts as matched only when the whole binary still hashes identically
-with it compiled from C. Names and types come only from evidence, never from guesses. An address-named placeholder is
-honest. The record behind them is what makes the work auditable. That record is the [cookbook](cookbook/INDEX.md) of
-byte-proven idioms, the [codegen map](docs/codegen-map/README.md) and the
-[build contract](docs/publish/contract.md).
+A function counts as matched only when the whole binary still hashes identically with it compiled from C. Names and
+types come only from evidence, never from guesses. An address-named placeholder is honest.
+[docs/progress.md](docs/progress.md) counts the named, open and finished functions.
 
 ## Building the decompilation
 
-Requirements: Linux on x86-64 (WSL 2 counts), Git, Bash, Make, Python 3 with `venv`, and `clang-format`. You must
-also have your own dump of *Mega Man X5* (USA), SLUS-01334, as `.cue` + `.bin`. The dump never enters the
-repository: `disks/` and everything extracted from the dump are git-ignored.
+You need Linux on x86-64 or WSL 2, Git, Bash, Make, Python 3.14 with `venv`, `clang-format` and your own dump of
+the USA disc.
 
 ```sh
 git clone https://github.com/anzaldoivan/mmx5.git && cd mmx5
-bash bootstrap.sh /path/to/your/dump.cue   # venv, binutils, the pinned compiler and maspsx, then the extraction
-make check                                 # split, assemble/compile, link, hash-check every binary
+bash bootstrap.sh /path/to/your/dump.cue
+make check
 ```
 
-`bootstrap.sh` fetches every tool by pinned checksum or commit and ends with `bootstrap: OK`. A successful
-`make check` prints `check: slus ok`, `check: rockx5 ok` and `check: 2 of 2 green, 0 failed`, then runs the tool
-self-tests.
-
-`make disc` rebuilds the whole disc from your extraction plus the built `SLUS_013.34` and `ROCK_X5.BIN` (its
-overlay table regenerated from the overlay sizes). It writes the disc into `build/disc/mmx5.cue` + `.bin`. When the
-image is identical to the retail track, it prints `disc: track sha1 10709231f857636b5ccd3cd9acebc91458dcb5fd OK`.
-`REDUX_CUE=build/disc/mmx5.cue bash tools/redux/run.sh tools/redux/title.lua` boots that image in PCSX-Redux to the
-title screen and prints `redux: title OK`. Disc images are git-ignored and refused by the firewall.
-
-`make replay-check PY=...` replays the tracked input script `tools/replay/scripts/intro.pad` in PCSX-Redux. The
-script holds pad events per frame and no game bytes. The replay runs on your original image 3 times, on the rebuilt
-`build/disc/mmx5.cue` once, and once with a planted one-instruction change (`tools/replay/plants.txt`). The command
-prints `replay: original 3 of 3 identical, 8 checkpoints`, `replay: rebuilt 0 divergences` and
-`replay: plant caught at stage_start`. It takes about an hour. Details are in `tools/replay/README.md`.
-
-`make shift-scan PY=...` scans the built `SLUS_013.34` and `ROCK_X5.BIN` for references that are still bare
-addresses rather than symbols. It reads the references into the main executable and into both overlay regions
-(exe->exe, exe->ovl, ovl->ovl). It prints `shift-scan: 0 unsymbolized` and one `shift-scan: plant caught at <addr>` for each direction (its planted
-controls).
-
-`make build SHIFT=1` and `make disc SHIFT=1` build a shifted variant into `build/shift/`. Every code and data
-address of the executable moves (`SHIFT_PAD`, default 0). Every code overlay in `ROCK_X5.BIN` moves too
-(`SHIFT_OVL_PAD`, default 0x10). The build regenerates `ROCK_X5.BIN` and its table of contents from the shifted link,
-and it skips the hash check. `make replay-shift PY=...` replays the intro script on `build/shift/disc/mmx5.cue` and
-prints `replay: shifted 0 divergences`. Details are in `tools/shift/README.md`.
-
-The `ROCK_X5.BIN` link, default and SHIFT, asserts that each overlay fits its RAM region. `make shift-oversize PY=...`
-plants an oversize overlay and prints `shift-oversize: link failed as planted (<ovl>)`.
-
-`PATCHES=<name>` (with `SHIFT=1` only) builds a patched variant into `build/shift-<name>/`. Each
-`patches/<name>/<alias>/<file>.c` replaces its twin `src/<alias>/<file>.c`. A patch file without a twin is an error.
-`make disc SHIFT=1 PATCHES=<name>` writes `build/shift-<name>/disc/mmx5.cue`.
-
-`make replay-patch PATCHES=<name> PY=...` replays the intro script on that disc three times. It compares the replay with the original from the checkpoint that
-`patches/<name>/checkpoint` names. It prints `replay-patch: <name> OK (first divergence <cp> >= declared <cp>, 3 of 3 deterministic, control caught)` when the patch changes the game from that
-checkpoint on and never before it.
-
-`PY tools/assets/assets.py export|import|roundtrip` exports `ROCK_X5.DAT` into the git-ignored `assets/` and imports it
-back. `roundtrip` prints `assets: container 898 of 898 identical, 0 differences` and `assets: roundtrip OK (1 class)`.
-`make disc-assets PY=...` re-exports and re-imports `ROCK_X5.DAT`, rebuilds the image and prints
-`disc-assets: re-imported image sha1 matches config/medium.sha1`. Details are in `tools/assets/README.md`.
-
-An asset edit lives in `asset-edits/<name>/` as `edit.json`, `checkpoint` and `README.md`. `asset-edits/m092fill` is
-an example. `make disc ASSET_EDIT=<name>` writes `build/asset-<name>/disc/mmx5.cue`. `make replay-asset ASSET_EDIT=<name>
-PY=...` prints `replay-asset: <name> OK (first divergence <cp> >= declared <cp>, 3 of 3 deterministic, control caught)`.
-`make firewall-check` also plants an exported asset and prints `firewall-check: assets control caught`.
-Every modding toggle, with its command and its success string, is in [docs/modding.md](docs/modding.md).
+On a good build, `make check` prints `check: 2 of 2 green, 0 failed`. The detail is in
+[docs/building.md](docs/building.md).
 
 ## Repository layout
 
 | Path | Contents |
 |---|---|
-| `src/` | Decompiled C, one directory per binary (`src/slus/`, `src/rockx5/`) and the code they share (`src/shared/`) |
+| `src/` | Decompiled C, one directory per binary (`src/slus/`, `src/rockx5/`) and the code they share (`src/shared/`). `src/rockx5/` has one folder for each overlay (`src/rockx5/ovlNN/`) |
 | `include/` | Headers and assembler macros |
 | `config/` | splat configurations, symbol files, hash checks, the firewall's rules |
-| `tools/` | Extraction, build, matching and analysis tools |
+| `tools/` | Extraction, build, repack, asset, replay and shift tools |
 | `Makefile`, `mk/` | The build and its checks |
-| `docs/` | Formats, memory map, codegen map and prior art |
-| `cookbook/` | Byte-proven C idioms for this compiler |
+| `docs/` | Building, modding, formats, memory map, codegen map and prior art |
+| `patches/` | Patch sets for modified builds |
+| `asset-edits/` | Data asset edits for modified builds |
 | `disks/` | Your dump, if you keep it in the tree (git-ignored) |
 
 ## Getting started
 
 ### Setting up
 
-`bash bootstrap.sh` without an argument prepares the toolchain alone. `make no-rom` then runs every check that needs
-no game file (the same ones CI runs).
+[docs/building.md](docs/building.md) gives the requirements and the bootstrap. It also tells how to prepare the
+toolchain alone and run `make no-rom`, the checks that need no game file. [docs/modding.md](docs/modding.md) gives
+the build toggles that make modified variants of the game.
 
 ### Contributing
 
 Before your first pull request, read [CONTRIBUTING.md](CONTRIBUTING.md). It gives these rules. Bring your own copy of
-the game. Never commit anything derived from the game. Follow the AI-use conduct section.
+the game. Never commit anything derived from the game. Follow the AI-use conduct section. To report a leak of game
+data, read [SECURITY.md](SECURITY.md).
 
 ### Reference
 
-Are you new to this compiler or stuck on a function? The [cookbook](cookbook/INDEX.md) and the
-[codegen map](docs/codegen-map/README.md) document the code patterns proven so far.
+- [docs/progress.md](docs/progress.md): the function counts and the badges.
+- [docs/ROADMAP.md](docs/ROADMAP.md) and [docs/BACKLOG.md](docs/BACKLOG.md): the phases, the known defects and the planned work.
+- [docs/formats.md](docs/formats.md): the disc and container formats.
+- [docs/memory-map.md](docs/memory-map.md): the addresses, with source and verification.
+- [docs/codegen-map/README.md](docs/codegen-map/README.md): the code patterns of the compiler, proven so far.
+- [docs/prior-art.md](docs/prior-art.md): the outside leads and their status.
+- [docs/publish/contract.md](docs/publish/contract.md): the build contract.
+- [tools/replay/README.md](tools/replay/README.md): the input replay in PCSX-Redux.
+- [tools/shift/README.md](tools/shift/README.md): the shift scan and the shifted build.
+- [tools/assets/README.md](tools/assets/README.md): the `ROCK_X5.DAT` asset tool.
+- [tools/repack/README.md](tools/repack/README.md): the disc repacker.
 
 ## Acknowledgements
 

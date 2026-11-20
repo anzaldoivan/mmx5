@@ -1,8 +1,8 @@
 #include "types.h"
+#include "mmx5/object.h"
+#include "mmx5/sound.h"
 
-extern void func_8002DF54(u8* a0);
 extern s32 func_800306E0(u8* a0);
-extern void func_80016490(s32, s32, void*);
 
 s32 func_80038748(u8* a0) {
     s32 in;
@@ -21,7 +21,7 @@ s32 func_80038748(u8* a0) {
     } else {
         *(s32*)(a0 + 0x20) = -*(s32*)(a0 + 0x13C);
     }
-    func_8002DF54(a0);
+    move_object(a0);
     in = (u8)(func_800306E0(a0) - 0x25) > 10;
     *(s32*)(a0 + 0x8) = *(s32*)(a0 + 0x18);
     if (in) {
@@ -35,6 +35,6 @@ s32 func_80038748(u8* a0) {
         *(u8*)(a0 + 0x85) = 0x1E;
     }
     *(u8*)(a0 + 0x8C) = 1;
-    func_80016490(1, 5, a0);
+    play_sound(1, 5, a0);
     return 1;
 }

@@ -1,5 +1,7 @@
 /* Shared body (DK-5), from the banked draft of func_800F44E8_ovl10 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/sound.h"
+#include "mmx5/globals.h"
 
 #define S8(p, o) (*(s8*)((u8*)(p) + (o)))
 #define U8(p, o) (*(u8*)((u8*)(p) + (o)))
@@ -7,11 +9,7 @@
 #define S32(p, o) (*(s32*)((u8*)(p) + (o)))
 #define PTR(p, o) (*(void**)((u8*)(p) + (o)))
 
-void func_80016490(s32, s32, void*);
 void func_800F6250_ovl10(void*);
-void func_80017248(void*);
-void* func_8002D27C(void);
-void* func_8002D1A4(void);
 
 void DEDUP_NAME(void* p) {
     void* self = p;
@@ -19,10 +17,10 @@ void DEDUP_NAME(void* p) {
     void* q;
 
     if (S8(self, 0x45) == 0x20) {
-        func_80016490(2, 0x2C, self);
+        play_sound(2, 0x2C, self);
     }
     func_800F6250_ovl10(self);
-    func_80017248(self);
+    animate_object(self);
     if (S8(self, 0x45) != 1) {
         return;
     }

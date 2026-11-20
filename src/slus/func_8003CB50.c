@@ -1,10 +1,10 @@
 #include "types.h"
+#include "mmx5/sound.h"
 #include "addr.h"
 
-X4_Obj* func_8002D0E4(void);
+X4_Obj* find_free_visual_obj(void);
 extern s32 func_80030AE4(X4_Obj*, s16, s16);
 s32 func_8002B5B4(s32);
-void func_80016490(s32, s32, void*);
 extern u32* D_8007B2E8[];
 extern u32* D_80098118;
 
@@ -19,7 +19,7 @@ void func_8003CB50(X4_Obj* self, s16 arg1) {
     if (func_80030AE4(self, self->x_pos.i.hi, arg1) == 0x24 &&
         ((s8*)self)[0xF2] == 0) {
         ((s8*)self)[0xF2] = 1;
-        obj = func_8002D0E4();
+        obj = find_free_visual_obj();
         if (obj != 0) {
             obj->active = 0x41;
             obj->id = 3;
@@ -40,6 +40,6 @@ void func_8003CB50(X4_Obj* self, s16 arg1) {
             obj->y_pos.i.hi = arg1 - 8;
             obj->x_pos.i.hi = h;
         }
-        func_80016490(5, 0x20, self);
+        play_sound(5, 0x20, self);
     }
 }

@@ -1,8 +1,6 @@
 /* Shared body (DK-5), from the banked draft of func_800F1468_ovl04 by tools/wave/gate.py rescan. */
 #include "types.h"
 
-void DEDUP_CALLEE(u8* arg0, s32 arg1);
-
 void DEDUP_NAME(u8* arg0) {
     if (--*(s16*)(arg0 + 0x7C) == -1) {
         *(s16*)(arg0 + 0x7C) = 0x78;

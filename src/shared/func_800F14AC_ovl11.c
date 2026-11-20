@@ -1,9 +1,7 @@
 /* Shared body (DK-5), from the banked draft of func_800F14AC_ovl11 by tools/wave/gate.py rescan. */
 #include "types.h"
-
-extern u8* func_8002D27C(void);
-extern s32 func_8002DF78(void);
-extern u8 D_8009A0A0[];
+#include "mmx5/system.h"
+#include "mmx5/globals.h"
 
 void DEDUP_NAME(u8* p) {
     u8* q;
@@ -19,7 +17,7 @@ void DEDUP_NAME(u8* p) {
         }
         p[0x8D]--;
         y = *(s16*)(p + 0xE) + 8;
-        b = D_8009A0A0;
+        b = g_Player;
         d = *(s16*)(b + 0xE) - y;
         if (d >= 0) {
             if (d < 3) {
@@ -29,7 +27,7 @@ void DEDUP_NAME(u8* p) {
             }
         } else if (y - *(s16*)(b + 0xE) >= 3) {
         cmp:
-            c = D_8009A0A0;
+            c = g_Player;
             if (*(s16*)(c + 0xE) - 8 >= *(s16*)(p + 0xE)) {
                 *(s32*)(p + 0x24) = -0x20000;
             } else {
@@ -49,7 +47,7 @@ void DEDUP_NAME(u8* p) {
             q[0] = 0x21;
             q[1] = 0x17;
             q[2] = 0;
-            q[0x15] = func_8002DF78() & 0x40;
+            q[0x15] = random_byte() & 0x40;
             q[0x54] = 0;
             if (p[0x15] == 0) {
                 *(s16*)(q + 0xA) = *(s16*)(p + 0xA) + 0x10;

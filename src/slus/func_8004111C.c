@@ -4,4 +4,4 @@
 #define DEDUP_NAME func_8004111C
 #define DEDUP_CALLEE func_8003A94C
 
-#include "../shared/func_80040B6C.c"
+#include "shared/func_80040B6C.c"

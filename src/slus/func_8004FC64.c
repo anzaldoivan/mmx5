@@ -1,14 +1,14 @@
 #include "types.h"
 #include "addr.h"
 
-extern X4_Obj* func_8002D0E4(void);
+extern X4_Obj* find_free_visual_obj(void);
 extern u8 D_8009A0B4;
 extern u32* D_8007B2E8[];
 
 void func_8004FC64(X4_Obj* arg0) {
     X4_Obj* obj;
 
-    obj = func_8002D0E4();
+    obj = find_free_visual_obj();
     if (obj != 0) {
         obj->active = 0x21;
         obj->id = 3;

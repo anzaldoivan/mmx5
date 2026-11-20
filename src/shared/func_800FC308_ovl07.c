@@ -3,7 +3,6 @@
 #include "addr.h"
 
 #define G D_1F80004C.bytes
-void DEDUP_CALLEE(ObjFC308* self);
 
 void DEDUP_NAME(ObjFC308* self) {
     if (--self->timer == -1) {

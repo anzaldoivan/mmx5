@@ -1,14 +1,14 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
 extern s8 D_800D1D0D;
-extern u8 D_8009A0A0[];
 extern void (*D_800712E8[])(u8*, u8*);
 
 void func_80022C84(u8* arg0) {
     u8* p;
 
     if (D_800D1D0D == 0) {
-        p = D_8009A0A0;
+        p = g_Player;
         arg0[0x47] = p[0x47];
         arg0[0x15] = p[0x15];
         *(s32*)(arg0 + 0x38) = *(s32*)(p + 0x38);

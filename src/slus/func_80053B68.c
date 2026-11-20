@@ -1,7 +1,7 @@
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/sound.h"
 
-extern void func_80016490(s32, s32, void*);
-extern u8 D_8009A0A0[];
 extern u8 D_800D1C00[];
 
 void func_80053B68(s32 arg0, u8 arg1) {
@@ -17,7 +17,7 @@ void func_80053B68(s32 arg0, u8 arg1) {
 
         n = 4;
         lvl = 1;
-        q = D_8009A0A0;
+        q = g_Player;
         if (*(s32*)(q + 0xFC) & 0x40) {
             n = 6;
             lvl = 2;
@@ -27,7 +27,7 @@ void func_80053B68(s32 arg0, u8 arg1) {
 
         n = 0x10;
         lvl = 2;
-        q = D_8009A0A0;
+        q = g_Player;
         if (*(s32*)(q + 0xFC) & 0x40) {
             n = 0x16;
             lvl = 3;
@@ -37,7 +37,7 @@ void func_80053B68(s32 arg0, u8 arg1) {
         if (arg1 == 7) {
             u8* q;
 
-            q = D_8009A0A0;
+            q = g_Player;
             n = *(u16*)(q + 0x148);
             lvl = 4;
         } else {
@@ -45,7 +45,7 @@ void func_80053B68(s32 arg0, u8 arg1) {
         }
     }
     n = n * 6;
-    base = D_8009A0A0;
+    base = g_Player;
     if (*(s8*)(base + 2) == 0) {
         p = (s16*)(base + 0xA8);
         for (i = 1; i < 9; i++) {
@@ -53,7 +53,7 @@ void func_80053B68(s32 arg0, u8 arg1) {
                 if (p[i] < *(s16*)(base + 0x148)) {
                     p[i] = p[i] + n;
                     if (p[i] >= *(s16*)(base + 0x148)) {
-                        func_80016490(0, 0x16, 0);
+                        play_sound(0, 0x16, 0);
                     }
                 }
             } else {
@@ -71,7 +71,7 @@ void func_80053B68(s32 arg0, u8 arg1) {
         }
         if (*(s16*)(base + 0xAA) >= *(s16*)(base + 0x148)) {
             if (*(s8*)(base + 0x93) == 1) {
-                func_80016490(0, 0x16, 0);
+                play_sound(0, 0x16, 0);
             }
             *(u16*)(base + 0xAA) = *(u16*)(base + 0x148);
         }
@@ -82,7 +82,7 @@ void func_80053B68(s32 arg0, u8 arg1) {
         }
         if (*(s16*)(base + 0xAE) >= *(s16*)(base + 0x148)) {
             if (*(s8*)(base + 0x93) == 3) {
-                func_80016490(0, 0x16, 0);
+                play_sound(0, 0x16, 0);
             }
             *(u16*)(base + 0xAE) = *(u16*)(base + 0x148);
         }

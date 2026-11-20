@@ -1,6 +1,6 @@
 # Memory map
 
-This file is the static map from `tools/loadmap/loadmap.py derive` (`docs/oracle/loadmap.json`). Every claim below is
+This file is the static load map. Every claim below is
 `static` (decoded from SLUS_013.34 code/tables and the ROCK_X5.BIN TOC). T5 proves the claims live and appends
 `- datapoint` lines.
 
@@ -37,13 +37,24 @@ This file is the static map from `tools/loadmap/loadmap.py derive` (`docs/oracle
   - A.lo is the A members with a retail end <= 800FA000. They may be resident while B loads. Its max end is 800F80F8
     (ovl18). Its bound is 800FA000. Its slack is 0x1F08.
   - B starts at 800FA000. Its max end is 80100172 (ovl34). Its bound is 80105000. Its slack is 0x4E8E.
+- 3.8 T2 region B base hazards: five C code sites hold 800FA000 as a constant (lui/ori). A symbol gives lui/addiu
+  and loses the byte match. Thus the region B base does not move with a shift. config/shift/not_pointers.txt
+  accepts each site under R96.
+  - slus 8001369C (`func_80013674`): lui/ori pair, found by `scan.py`.
+  - slus 80014310 (`poll_rock_bin_read`): lui/ori pair, found by `scan.py`.
+  - slus 80013528 (`func_80013524`): lui at 80013528, ori at 8001356C. The pair is outside the 8-word hilo window,
+    so `scan.py` does not find it.
+  - rockx5 ovl18 800F6B24 (`func_800F6A94_ovl18`): lui/ori pair, found by `scan.py`.
+  - rockx5 ovl18 800F6C1C (`func_800F6BF8_ovl18`): lui/ori pair, found by `scan.py`.
 
 ## Overlay table `static`
 
-- The loader is Ovl_ReadToc 80015DDC: BIN sector 0 TOC -> RAM table 800E6188, 59 rows of 8 bytes. Row 59 is
+- The loader is read_rock_bin_toc 80015DDC: BIN sector 0 TOC -> RAM table 800E6188, 59 rows of 8 bytes. Row 59 is
   all-zero. `static`
-- Ovl_Load is 80015EB4(a0=index, a1=dest). The dest comes from the call sites 800136EC (base `*80010000`, initial
+- read_rock_bin_member is 80015EB4(a0=index, a1=dest). The dest comes from the call sites 800136EC (base `*80010000`, initial
   800EE970), 800136B4 and 80013568 (800FA000). `static`
+- poll_rock_bin_read is 80014290. It reads a row of the TOC table 800E6188 (`src/slus/poll_rock_bin_read.c:59-60`), as read_rock_bin_member does
+  (`src/slus/read_rock_bin_member.c:42-43`). It also calls CdReset, CdControlB and VSync. `static`
 - The region bounds are 80105000 for A and B (the base of the exe CD/image buffer) and 800FA000 for A.lo. See
   config/shift/regions.txt. `static`
 - If the blob contains `jr ra` (03E00008), the kind is `code`. If not, the kind is `data`. A `-` dest means that the
@@ -123,7 +134,7 @@ SHIFT does not move them. make replay-shift (T6) arbitrates. A divergence at any
 
 ## Boundaries `static`
 
-- `tools/ghidra/import.sh` writes `docs/oracle/boundaries.txt` (`tools/ghidra/scripts/ExportBoundaries.java`). Each
+- The private Ghidra import and its export script write a private boundaries table. Each
   line is `<start>-<end> | jumptable|libobj|libobj? | <owner> | <evidence>`. The end is exclusive, overlay starts
   `ovlNN:`. `static`
 - The jumptable lines are 583 (exe 42, overlays 541). 452 owners are `nofn@<jr>` (Ghidra made no function around the
@@ -131,19 +142,33 @@ SHIFT does not move them. make replay-shift (T6) arbitrates. A divergence at any
 - The libobj lines are 181 (psx_ldr PsyQ 4.7.0 obj sigs, owner `<lib>/<obj>`). The libobj? lines are 0. `static`
 - The unresolved computed jumps (jr non-ra, no recovered table) are 8. `static`
 - The overlays loaded as Ghidra blocks are 53 (code, dest known). The skipped overlays are 38, 39 (dest=null). `static`
-- 80014064 is renamed Ovl_Load2 -> Cd_Unk_80014064. It calls CdReset/CdControlB/VSync. T5 saw a1=1F801110. `static`
+- 80014064 is renamed Ovl_Load2 -> wait_rock_bin_read. It calls CdReset/CdControlB/VSync. T5 saw a1=1F801110. `static`
 
 ## Overlays 38/39 (T2, 1.8.3)
 
-- static: no 8006FD50/8006FD80/8006FC5C entry is 38 or 39. The exe Ovl_Load call sites are only
-  80013568/800136B4/800136EC. The loader is ovl18 (stage 12 sub 0, 8006FD50[24]). It calls Ovl_Load(0x26, 800FA000) at
-  800F6B30 and Ovl_Load(0x27, 800FA000) at 800F6C30. These calls are states 3/6 of an object state machine (dispatcher
+- static: no 8006FD50/8006FD80/8006FC5C entry is 38 or 39. The exe read_rock_bin_member call sites are only
+  80013568/800136B4/800136EC. The loader is ovl18 (stage 12 sub 0, 8006FD50[24]). It calls read_rock_bin_member(0x26, 800FA000) at
+  800F6B30 and read_rock_bin_member(0x27, 800FA000) at 800F6C30. These calls are states 3/6 of an object state machine (dispatcher
   800F5EA0, handler table 800F80D4). `static`
-- ovl38: dest 800FA000 proven live (phase 2.2 T4): Ovl_Load(0x26) a1=800FA000 ra=800F6B38 (ovl18), spawn-poke route `PY tools/loadmap/prove.py ovl3839`; 2026-10-12 .run/redux/prove_ovl3839.spawn.log
-- ovl39: dest 800FA000 proven live (phase 2.2 T4): Ovl_Load(0x27) a1=800FA000 ra=800F6C38 (ovl18), spawn-poke route `PY tools/loadmap/prove.py ovl3839`; 2026-10-12 .run/redux/prove_ovl3839.spawn.log
-- binding (1.8.3 T2): the `docs/oracle/loadmap.json` dest for 38/39 is filled only from a live datapoint, never from
+- ovl38: dest 800FA000 proven live (phase 2.2 T4): read_rock_bin_member(0x26) a1=800FA000 ra=800F6B38 (ovl18), spawn-poke route of the private load-map prover (`ovl3839`). Log 2026-10-12 .run/redux/prove_ovl3839.spawn.log
+- ovl39: dest 800FA000 proven live (phase 2.2 T4): read_rock_bin_member(0x27) a1=800FA000 ra=800F6C38 (ovl18), spawn-poke route of the private load-map prover (`ovl3839`). Log 2026-10-12 .run/redux/prove_ovl3839.spawn.log
+- binding (1.8.3 T2): the private load-map table's dest for 38/39 is filled only from a live datapoint, never from
   the static 800FA000. Filling it flips harness p6 and makes 38/39 code segments in the rockx5 yaml/census. The test
-  is `PY tools/loadmap/loadmap.py check`.
+  is the check of the private load-map tool.
+
+## X6 twin leads at boot (3.7 T1) `lead`
+
+R3.5-003 pairs three X5 boot functions with X6 functions. Each X6 body has the same masked hash and word count as its
+X5 twin (the private twin table `x6-twins.tsv`). A pair is a lead for a name, not a name. The gate and the name rules decide.
+
+- 80012F58 (13 words) pairs with X6 `func_8001344C`, the task starter (`x6-twins.tsv:3440-3441`). X6 has no name. `lead`
+- 80014464 (68 words) pairs with X6 `func_80014D50`, which calls CdGetSector and CdPosToInt (`x6-twins.tsv:3460-3461`).
+  X6 has no name. `lead`
+- 80015EB4 (62 words, read_rock_bin_member) pairs with X6 `read_rock_bin_member` (`x6-twins.tsv:3480-3481`). The name rests on
+  this twin. Phase 3.7 T4 gives it through the `x6-twin` class. `lead`
+- `mmx6:docs/systems/boot.md:234` says that X5 has no counterpart for the boot chain, the `D_800710E8` table, the
+  title or the menu. That line is about the chain as a whole. Lines 230-233 of the same file list these single
+  pairs. Thus the line does not deny the 80015EB4 pair. `lead`
 
 ## Datapoints
 

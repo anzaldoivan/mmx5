@@ -3,8 +3,8 @@
 # r3000 gas rejects them, mips4 assembles the same words. Encoding is fixed, so bytes are unchanged (sha-checked).
 # Exe symbols: split names exe addresses from build/rockx5/exe_syms.txt (the exe ELF's globals); splat's auto files
 # lose their exe-range lines; link takes the exe ELF as --just-symbols, so exe refs keep exe names (T4).
-# Region placement: SPLIT_POST rewrites the splat ld's segment vrams 0x800EE970/0x800FA000 to the exe's ovlA_VRAM/
-# ovlB_VRAM (config/symbols.slus.txt, in-section via config/shift/ovl_syms.ld), so regions follow the exe (T4.1).
+# Region placement: SPLIT_POST rewrites the splat ld's segment vrams 0x800EE970/0x800FA000 to the exe's g_ovl_a_vram/
+# g_ovl_b_vram (config/symbols.slus.txt, in-section via config/shift/ovl_syms.ld), so regions follow the exe (T4.1).
 ifeq ($(BINARY),rockx5)
 AS_MARCH := mips4
 # Every link goes through tools/shift/pad_ld.py (region-bound ASSERTs); overlay pad 0, SHIFT=1: SHIFT_OVL_PAD (mk/shift.mk).
@@ -17,7 +17,7 @@ SPLIT_DEPS := build/rockx5/exe_syms.txt
 SPLIT_POST = for f in undefined_syms_auto undefined_funcs_auto; do \
 	awk '!($$3 >= "0x80010000;" && $$3 < "0x800EE970;")' build/rockx5/$$f.txt > build/rockx5/$$f.tmp && \
 	mv build/rockx5/$$f.tmp build/rockx5/$$f.txt || exit 1; done; \
-	sed -i -E 's/^(    \.ovl[0-9]+) 0x800EE970 :/\1 ovlA_VRAM :/; s/^(    \.ovl[0-9]+) 0x800FA000 :/\1 ovlB_VRAM :/' build/rockx5/ROCK_X5.BIN.ld
+	sed -i -E 's/^(    \.ovl[0-9]+) 0x800EE970 :/\1 g_ovl_a_vram :/; s/^(    \.ovl[0-9]+) 0x800FA000 :/\1 g_ovl_b_vram :/' build/rockx5/ROCK_X5.BIN.ld
 # SHIFT two-pass (T8; PASS2=1 is the inner relink): exe->ovl names follow the shifted overlays. gen
 # $(SH)/ovl_syms.ld from this link's map, keep the pass-1 exe, relink slus against it, check (tools/shift/ovl_syms.py),
 # refresh .just.elf/exe_syms from the pass-2 exe, relink rockx5, check again against the pass-2 map.

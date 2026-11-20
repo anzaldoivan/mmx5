@@ -1,12 +1,12 @@
 #include "types.h"
 
-extern u8* func_8002D0E4(void);
+extern u8* find_free_visual_obj(void);
 extern u16 D_800D1C0C;
 
 u8* func_8004FF94(s32 arg0, s16 x, s16 y, u8 arg3) {
     u8* p;
 
-    p = func_8002D0E4();
+    p = find_free_visual_obj();
     if (p != 0) {
         p[0] = 0x21;
         p[1] = 4;

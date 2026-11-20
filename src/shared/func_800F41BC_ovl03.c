@@ -1,12 +1,11 @@
 /* Shared body (DK-5), from the banked draft of func_800F41BC_ovl03 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/ovl03.h"
+#include "mmx5/movement.h"
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
 
 extern u8* func_8002C938();
-extern void func_800171E8(Obj3EEC*, s32);
-extern void func_80017248(Obj3EEC*);
-extern void func_8002DED4(Obj3EEC*);
-extern u8 D_8009A0A0[];
-extern u8 D_800FA0BC_ovl03[][6];
 
 void DEDUP_NAME(Obj3EEC* o) {
     u8* c;
@@ -26,7 +25,7 @@ void DEDUP_NAME(Obj3EEC* o) {
                 }
             }
             {
-                Obj3EEC* p = (Obj3EEC*)D_8009A0A0;
+                Obj3EEC* p = (Obj3EEC*)g_Player;
                 if (p->unkA > o->unkA) {
                     o->unk15 = 0x40;
                 } else {
@@ -38,7 +37,7 @@ void DEDUP_NAME(Obj3EEC* o) {
         }
     } else if (o->unk7C == 20) {
         if (o->unk7E == 6) {
-            func_800171E8(o, 1);
+            set_animation(o, 1);
             o->unk5 = D_800FA0BC_ovl03[o->unk92][o->unk93++];
             o->unk6 = 0;
         } else {
@@ -53,7 +52,7 @@ void DEDUP_NAME(Obj3EEC* o) {
                 }
             }
             {
-                Obj3EEC* p = (Obj3EEC*)D_8009A0A0;
+                Obj3EEC* p = (Obj3EEC*)g_Player;
                 if (p->unkA > o->unkA) {
                     o->unk15 = 0x40;
                 } else {
@@ -64,6 +63,6 @@ void DEDUP_NAME(Obj3EEC* o) {
             o->unk7E++;
         }
     }
-    func_80017248(o);
-    func_8002DED4(o);
+    animate_object(o);
+    apply_object_motion(o);
 }

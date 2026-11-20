@@ -2,8 +2,6 @@
 #include "types.h"
 #include "addr.h"
 
-extern void DEDUP_CALLEE(Obj800F2688*);
-
 void DEDUP_NAME(Obj800F2688* self) {
     if (--self->unk7C == 0) {
         DEDUP_CALLEE(self);

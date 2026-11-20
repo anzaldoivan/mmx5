@@ -1,11 +1,11 @@
 #include "types.h"
+#include "mmx5/globals.h"
+#define D_8009A420_as_s32 (*(s32*)&D_8009A420)
 
 extern void func_80025A74(u8* arg0);
 extern void func_80025D94(u8* arg0);
 extern void func_80026080(s32 arg0, u8 arg1);
 extern void func_800262D8(void* arg0, s32 arg1);
-extern u8 D_8009A0A0[];
-extern s32 D_8009A420;
 extern u8 D_800D1C00[];
 extern u8 D_800E92F0;
 
@@ -16,7 +16,7 @@ void func_80025828(void) {
     s32 snd;
     s32 q;
 
-    o = D_8009A0A0;
+    o = g_Player;
     g = D_800D1C00;
     if (*(s8*)(g + 0x1F) != 0) {
         func_800262D8(o, 0);
@@ -43,7 +43,7 @@ void func_80025828(void) {
                 snd = (s16)(snd + 1);
             }
             if (lv == 31) {
-                if (D_8009A420 & 4) {
+                if (D_8009A420_as_s32 & 4) {
                     func_80026080(10, snd);
                 }
             } else {

@@ -1,15 +1,14 @@
 /* Shared body (DK-5), from the banked draft of func_800F5958_ovl11 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/sound.h"
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
 #include "addr.h"
 
-extern void func_80016490(s32, s32, void*);
-extern void func_800171E8(u8* obj, s32 state);
-extern void func_80017248(u8* obj);
 extern void func_800F81F4_ovl11(u8* obj);
 extern s32 ratan2(s32, s32);
 extern s32 rcos(s32);
 extern s32 rsin(s32);
-extern u8 D_8009A0A0[];
 extern s16 D_800FA05C_ovl11;
 
 void DEDUP_NAME(u8* obj) {
@@ -22,15 +21,15 @@ void DEDUP_NAME(u8* obj) {
     s32 dy;
     s32 ang;
 
-    func_80017248(obj);
+    animate_object(obj);
     if (--*(s16*)(obj + 0x7C) == 0) {
-        g = D_8009A0A0;
+        g = g_Player;
         if (*(s8*)(g + 2) == 0 && g[0xFA] == 0) {
             obj[0x62] = 8;
         } else {
             obj[0x62] = 6;
         }
-        func_800171E8(obj, 3);
+        set_animation(obj, 3);
         func_800F81F4_ovl11(obj);
         if (D_1F80004C.bytes[0x91] != 0) {
             *(s32*)(obj + 0x2C) = -0x100;
@@ -38,7 +37,7 @@ void DEDUP_NAME(u8* obj) {
             *(s32*)(obj + 0x2C) = -0x200;
         }
         s = &D_1F80004C;
-        g2 = D_8009A0A0;
+        g2 = g_Player;
         *(s32*)(obj + 0x24) = 0xFFFC0000;
         *(u16*)(s->bytes + 0x88) = *(u16*)(g2 + 0xA);
         obj[6]++;
@@ -54,7 +53,7 @@ void DEDUP_NAME(u8* obj) {
         *(s32*)(obj + 0x2C) = 0;
         *(s32*)(obj + 0x28) = 0;
         ang = ratan2(dy, dx);
-        g3 = D_8009A0A0;
+        g3 = g_Player;
         if (((*(s16*)(g3 + 0xA) - *(s16*)(obj + 0xA)) < 0
                  ? (*(s16*)(obj + 0xA) - *(s16*)(g3 + 0xA))
                  : (*(s16*)(g3 + 0xA) - *(s16*)(obj + 0xA))) > 0xA0) {
@@ -64,6 +63,6 @@ void DEDUP_NAME(u8* obj) {
             *(s32*)(obj + 0x20) = rcos(ang) << 6;
             *(s32*)(obj + 0x24) = -rsin(ang) << 6;
         }
-        func_80016490(2, 0x30, obj);
+        play_sound(2, 0x30, obj);
     }
 }

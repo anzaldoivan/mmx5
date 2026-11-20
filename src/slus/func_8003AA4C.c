@@ -1,10 +1,10 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
-extern void func_8003CE10(u8*);
-extern s32 func_80039ECC(u8* arg0);
+extern void player_clear_dash(u8*);
 extern void func_8003B4CC(u8* obj, s32 arg1, s32 arg2);
-extern void func_8003D0A0(u8* obj);
-extern void func_8003F294(u8* arg0, s32 arg1);
+extern void set_stand_animation_by_hp(u8* obj);
+extern void player_set_animation_shooting(u8* arg0, s32 arg1);
 
 void func_8003AA4C(u8* obj) {
     s32 a2;
@@ -13,7 +13,7 @@ void func_8003AA4C(u8* obj) {
     if (obj[0x89] & 8) {
         obj[0x67] = 0;
         obj[0x86] = 0;
-        func_8003CE10(obj);
+        player_clear_dash(obj);
         if (func_80039ECC(obj) == 0) {
             obj[5] = 2;
             obj[6] = 0;
@@ -28,11 +28,11 @@ void func_8003AA4C(u8* obj) {
                     obj[0x44] = t - 8;
                 }
             } else {
-                func_8003D0A0(obj);
+                set_stand_animation_by_hp(obj);
             }
         }
     } else {
-        func_8003F294(obj, 0xB);
+        player_set_animation_shooting(obj, 0xB);
         *(s32*)(obj + 0x20) = 0;
         *(s32*)(obj + 0x28) = 0;
         *(s32*)(obj + 0x24) = 0;

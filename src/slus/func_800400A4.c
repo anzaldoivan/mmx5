@@ -1,8 +1,7 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
-extern void func_80017248(u8* obj);
-extern void func_8003B33C(u8*, s32);
-extern void func_8003D0A0(u8* obj);
+extern void set_stand_animation_by_hp(u8* obj);
 extern void func_80040738(u8* obj);
 extern D1C00 D_800D1C00;
 
@@ -13,7 +12,7 @@ void func_800400A4(u8* obj) {
             return;
         }
         if (((s8*)obj)[0x90] != 0) {
-            func_8003D0A0(obj);
+            set_stand_animation_by_hp(obj);
             return;
         }
     }
@@ -22,5 +21,5 @@ void func_800400A4(u8* obj) {
         func_8003B33C(obj, 5);
         return;
     }
-    func_80017248(obj);
+    animate_object(obj);
 }

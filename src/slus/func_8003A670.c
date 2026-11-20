@@ -1,20 +1,20 @@
 /* Adapted from mmx6 @c1c892d src/shared/SLUS_013.95/func_8003AD18.c, AGPL-3.0 (THIRD_PARTY.md). */
 #include "types.h"
+#include "mmx5/globals.h"
 
 #define M2C_UNK s32
 #define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8*)(expr) + (offset)))
 
-s32 func_80039ECC(void*);                  /* extern */
 M2C_UNK func_8003B4CC(void*, M2C_UNK, s8); /* extern */
-M2C_UNK func_8003CE10();                   /* extern */
-M2C_UNK func_8003D0A0(void*);              /* extern */
+M2C_UNK player_clear_dash();               /* extern */
+M2C_UNK set_stand_animation_by_hp(void*);  /* extern */
 
 void func_8003A670(void* arg0) {
     s32 var_a2;
     u8 temp_v0;
     u8 temp_v1;
 
-    func_8003CE10();
+    player_clear_dash();
     if (func_80039ECC(arg0) == 0) {
         M2C_FIELD(arg0, s8*, 5) = 2;
         M2C_FIELD(arg0, s8*, 6) = 0;
@@ -31,7 +31,7 @@ void func_8003A670(void* arg0) {
                 M2C_FIELD(arg0, s8*, 0x44) = (s8)(temp_v1 - 8);
             }
         } else {
-            func_8003D0A0(arg0);
+            set_stand_animation_by_hp(arg0);
         }
     }
 }

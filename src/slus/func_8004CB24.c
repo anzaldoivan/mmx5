@@ -1,13 +1,13 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
-extern void func_80017248(u8* obj);
 extern u8* func_8002D078();
 extern signed char D_8009A0A5;
 
 void func_8004CB24(u8* p) {
     u8* q;
 
-    func_80017248(p);
+    animate_object(p);
     if (*(s8*)(p + 0x45) & 0x80) {
         p[0x45] &= 0x7F;
         q = func_8002D078();

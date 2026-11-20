@@ -1,8 +1,6 @@
 /* Shared body (DK-5), from the banked draft of func_800F0240_ovl01 by tools/wave/gate.py rescan. */
 #include "types.h"
-
-extern int func_8002D760();
-extern int func_8002D7A0();
+#include "mmx5/globals.h"
 
 void DEDUP_NAME(signed char* arg0) {
     if (arg0[4] == 3) {

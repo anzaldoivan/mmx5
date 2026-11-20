@@ -1,14 +1,12 @@
 /* Shared body (DK-5), from the banked draft of func_800F3EA0_ovl04 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/system.h"
+#include "mmx5/globals.h"
 
-extern void func_8001296C(s32);
+extern void start_pad_vibration(s32);
 extern void func_80024548(s32);
 extern s32 func_8002A5C4(s32, s32, s32);
-extern u8* func_8002D27C(void);
-extern s32 func_8002DF78(void);
 extern s32 func_8002DFB0(void);
-extern void func_8003D29C(s32, s32);
-extern u8 D_8009A0A0[];
 extern Bg800F3EA0 D_8009A1F8;
 extern Glb800F3EA0 D_800D1C00;
 
@@ -36,15 +34,15 @@ void DEDUP_NAME(u8* arg0) {
                 D_8009A1F8.unkAB = 0;
             }
             func_8002A5C4(0x20, 6, 2);
-            func_8001296C(2);
-            b = D_8009A0A0;
+            start_pad_vibration(2);
+            b = g_Player;
             i = 0x1F;
             do {
                 p = func_8002D27C();
                 if (p != 0) {
                     p[0] = 0x41;
                     p[1] = 0x1A;
-                    p[0x15] = func_8002DF78() & 0x40;
+                    p[0x15] = random_byte() & 0x40;
                     p[2] = (func_8002DFB0() & 1) + 1;
                     *(s32*)(p + 0x20) = 0;
                     *(s32*)(p + 0x30) = *(s32*)(arg0 + 0x30);

@@ -1,4 +1,5 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
 extern X4_BackgroundObj D_8009A1F8[3];
 

@@ -16,9 +16,11 @@ $(if $(P_ORPHAN),$(error PATCHES=$(PATCHES): no src/ twin for $(P_ORPHAN)))
 BINARY ?= slus
 
 # Shorter stem than mk/slus.mk's `$(B_DIR)/%.o: %.c`, so it wins where a patch exists; falls back to src/ elsewhere.
-# -I the twin's src dir: its quoted relative includes (../shared/*.c) resolve as they do from src/; sed names the
+# Its root-relative includes (shared/*.c) resolve through CPPFLAGS' -I src, as they do from src/; sed names the
 # twin in cpp's line markers (the object's .file), so an identical patch gives a cmp-equal object.
-$(SH)/$(BINARY)/src/%.o: patches/$(PATCHES)/%.c $(wildcard include/*.h) $(wildcard src/shared/*.c)
+# Depfile as in mk/slus.mk's C rule (DEPFILE); its -include there covers these objects' paths.
+$(SH)/$(BINARY)/src/%.o: patches/$(PATCHES)/%.c $(wildcard include/*.h)
 	@mkdir -p $(dir $@)
-	$(CPP) $(CPPFLAGS) -I $(dir src/$*) $< | sed 's|"$<"|"src/$*.c"|' | $(CC1) $(CFLAGS) | $(MASPSX) | $(AS) $(CC_ASFLAGS) -o $@
+	$(CPP) $(CPPFLAGS) -MMD $@.dt $< | sed 's|"$<"|"src/$*.c"|' | $(CC1) $(CFLAGS) | $(MASPSX) | $(AS) $(CC_ASFLAGS) -o $@
+	@$(DEPFILE)
 endif

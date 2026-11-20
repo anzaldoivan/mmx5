@@ -3,4 +3,4 @@
 
 #define DEDUP_NAME func_800545DC
 
-#include "../shared/func_800F03E0_ovl11.c"
+#include "shared/func_800F03E0_ovl11.c"

@@ -1,9 +1,9 @@
 #include "types.h"
 
-extern void func_8003F294(u8* arg0, s32 arg1);
+extern void player_set_animation_shooting(u8* arg0, s32 arg1);
 
 void func_8003A94C(u8* arg0) {
-    func_8003F294(arg0, 0xB);
+    player_set_animation_shooting(arg0, 0xB);
     *(s32*)(arg0 + 0x20) = 0;
     *(s32*)(arg0 + 0x28) = 0;
     *(s32*)(arg0 + 0x24) = 0;

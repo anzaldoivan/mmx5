@@ -1,15 +1,14 @@
 /* Shared body (DK-5), from the banked draft of func_800F00AC_ovl01 by tools/wave/gate.py rescan. */
 #include "types.h"
-
-extern void func_800171E8(u8* obj, s32 state);
-extern void func_80017248(u8* obj);
-extern void func_8002DED4(u8* obj);
+#include "mmx5/movement.h"
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
 
 void DEDUP_NAME(u8* obj) {
     s32 st;
     s32 one;
 
-    func_80017248(obj);
+    animate_object(obj);
     if (obj[0x70] & 8) {
         *(s32*)(obj + 0x24) = 0;
         *(s32*)(obj + 0x2C) = 0;
@@ -25,7 +24,7 @@ void DEDUP_NAME(u8* obj) {
                 one =
                     0; // !FAKE: dead store ends the st == one equivalence (C0070)
                 *(s32*)(obj + 0x80) = 2;
-                func_800171E8(obj, 1);
+                set_animation(obj, 1);
                 obj[0x60] = 4;
                 *(s32*)(obj + 0x84) = st;
                 obj[5] = 5;
@@ -45,7 +44,7 @@ void DEDUP_NAME(u8* obj) {
         obj[5] = 2;
         return;
     }
-    func_8002DED4(obj);
+    apply_object_motion(obj);
     if (*(s32*)(obj + 0x80) != 2) {
         if (obj[0x15] == 0) {
             if (obj[0x70] & 2) {

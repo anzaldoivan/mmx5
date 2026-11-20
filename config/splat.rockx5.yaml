@@ -50,14 +50,15 @@ segments:
     vram: 0x800EE970
     align: 1
     exclusive_ram_id: ovlA
+    dir: ovl00
     subsegments:
       - [0x800, rodata]  # carve was: - [0x800, textbin]  # gen:rockx5_splits  # T3: was rodatabin; ovl pointer words -> symbols
       - [0x804, .rodata, func_800EECA4_ovl00]  # carve
       - [0x848, .rodata, func_800F16C8_ovl00]  # carve
-      - [0x890, .rodata, func_800F47D0_ovl00]  # carve
+      - [0x890, .rodata, func_800F47D0_ovl00]  # carve was: - [0x890, rodata]  # carve
       - [0x8A4, .rodata, func_800F50D0_ovl00]  # carve was: - [0x8A4, rodata]  # carve  # T3: was rodatabin; ovl pointer words -> symbols
       - [0x8E0, .rodata, func_800F5FE8_ovl00]  # carve
-      - [0x954, .rodata, func_800F9B4C_ovl00]  # carve
+      - [0x954, .rodata, func_800F9B4C_ovl00]  # carve was: - [0x954, rodata]  # carve
       - [0x968, c, func_800EEAD8_ovl00]  # carve was: - [0x968, asm]  # gen:rockx5_splits
       - [0x9A4, c, func_800EEB14_ovl00]  # carve was: - [0x9A4, asm, ovl00_800EEB14]  # carve
       - [0x9F4, c, func_800EEB64_ovl00]  # carve was: - [0x9F4, asm, ovl00_800EEB64]
@@ -175,12 +176,12 @@ segments:
       - [0x4E58, c, func_800F2FC8_ovl00]  # carve was: - [0x4E58, asm, ovl00_800F2FC8]  # carve
       - [0x4EA4, c, func_800F3014_ovl00]  # carve was: - [0x4EA4, asm, ovl00_800F3014]  # carve
       - [0x50B4, c, func_800F3224_ovl00]  # carve
-      - [0x5240, asm, ovl00_800F33B0]  # carve
+      - [0x5240, c, func_800F33B0_ovl00]  # carve was: - [0x5240, asm, ovl00_800F33B0]  # carve
       - [0x53B4, c, func_800F3524_ovl00]  # carve
       - [0x53F0, c, func_800F3560_ovl00]  # carve was: - [0x53F0, asm, ovl00_800F3560]  # carve
       - [0x549C, c, func_800F360C_ovl00]  # carve
       - [0x54BC, c, func_800F362C_ovl00]  # carve was: - [0x54BC, asm, ovl00_800F362C]  # carve
-      - [0x54F8, asm, ovl00_800F3668]  # carve
+      - [0x54F8, c, func_800F3668_ovl00]  # carve was: - [0x54F8, asm, ovl00_800F3668]  # carve
       - [0x5544, c, func_800F36B4_ovl00]  # carve
       - [0x558C, c, func_800F36FC_ovl00]  # carve was: - [0x558C, asm, ovl00_800F36FC]  # carve
       - [0x55D4, c, func_800F3744_ovl00]  # carve was: - [0x55D4, asm, ovl00_800F3744]  # carve
@@ -198,7 +199,7 @@ segments:
       - [0x6208, c, func_800F4378_ovl00]  # carve was: - [0x6208, asm, ovl00_800F4378]  # carve
       - [0x6344, c, func_800F44B4_ovl00]  # carve was: - [0x6344, asm, ovl00_800F44B4]  # carve
       - [0x644C, c, func_800F45BC_ovl00]  # carve was: - [0x644C, asm, ovl00_800F45BC]  # carve
-      - [0x6660, c, func_800F47D0_ovl00]  # carve
+      - [0x6660, c, func_800F47D0_ovl00]  # carve was: - [0x6660, asm, ovl00_800F47D0]  # carve
       - [0x698C, c, func_800F4AFC_ovl00]  # carve was: - [0x698C, asm, ovl00_800F4AFC]  # carve
       - [0x6A54, c, func_800F4BC4_ovl00]  # carve was: - [0x6A54, asm, ovl00_800F4BC4]  # carve
       - [0x6AA0, c, func_800F4C10_ovl00]  # carve
@@ -307,7 +308,7 @@ segments:
       - [0xB918, c, func_800F9A88_ovl00]  # carve was: - [0xB918, asm, ovl00_800F9A88]  # carve
       - [0xB964, c, func_800F9AD4_ovl00]  # carve was: - [0xB964, asm, ovl00_800F9AD4]  # carve
       - [0xB9B0, c, func_800F9B20_ovl00]  # carve was: - [0xB9B0, asm, ovl00_800F9B20]  # carve
-      - [0xB9DC, c, func_800F9B4C_ovl00]  # carve
+      - [0xB9DC, c, func_800F9B4C_ovl00]  # carve was: - [0xB9DC, asm, ovl00_800F9B4C]  # carve
       - [0xBAC4, c, func_800F9C34_ovl00]  # carve
       - [0xBAE4, c, func_800F9C54_ovl00]  # carve
       - [0xBAEC, c, func_800F9C5C_ovl00]  # carve was: - [0xBAEC, asm, ovl00_800F9C5C]  # carve
@@ -331,6 +332,7 @@ segments:
     vram: 0x800EE970
     align: 1
     exclusive_ram_id: ovlA
+    dir: ovl01
     subsegments:
       - [0xD800, rodata]  # carve was: - [0xD800, textbin]  # gen:rockx5_splits  # T3: was rodatabin; ovl pointer words -> symbols
       - [0xD804, .rodata, func_800EFD44_ovl01]  # carve
@@ -340,7 +342,7 @@ segments:
       - [0xD914, rodatabin]  # carve
       - [0xD918, .rodata, func_800F1090_ovl01]  # carve
       - [0xD994, rodatabin]  # carve
-      - [0xD998, .rodata, func_800F1210_ovl01]  # carve
+      - [0xD998, .rodata, func_800F1210_ovl01]  # carve was: - [0xD998, rodata]  # carve
       - [0xD9B8, .rodata, func_800F1D74_ovl01]  # carve was: - [0xD9B8, rodatabin]  # carve
       - [0xDA2C, .rodata, func_800F2170_ovl01]  # carve was: - [0xDA2C, rodata]  # carve  # T3: was rodatabin; ovl pointer words -> symbols
       - [0xDAA0, .rodata, func_800F312C_ovl01]  # carve
@@ -408,7 +410,7 @@ segments:
       - [0xFD18, c, func_800F0E88_ovl01]  # carve was: - [0xFD18, asm, ovl01_800F0E88]  # carve
       - [0xFE5C, c, func_800F0FCC_ovl01]  # carve was: - [0xFE5C, asm, ovl01_800F0FCC]  # carve
       - [0xFF20, c, func_800F1090_ovl01]  # carve
-      - [0x100A0, c, func_800F1210_ovl01]  # carve
+      - [0x100A0, c, func_800F1210_ovl01]  # carve was: - [0x100A0, asm, ovl01_800F1210]  # carve
       - [0x10138, c, func_800F12A8_ovl01]  # carve was: - [0x10138, asm, ovl01_800F12A8]  # carve
       - [0x10174, c, func_800F12E4_ovl01]  # carve was: - [0x10174, asm, ovl01_800F12E4]  # carve
       - [0x1024C, c, func_800F13BC_ovl01]  # carve
@@ -527,12 +529,12 @@ segments:
       - [0x138BC, c, func_800F4A2C_ovl01]  # carve was: - [0x138BC, asm, ovl01_800F4A2C]  # carve
       - [0x13908, c, func_800F4A78_ovl01]  # carve was: - [0x13908, asm, ovl01_800F4A78]  # carve
       - [0x13B18, c, func_800F4C88_ovl01]  # carve
-      - [0x13CA4, asm, ovl01_800F4E14]  # carve
+      - [0x13CA4, c, func_800F4E14_ovl01]  # carve was: - [0x13CA4, asm, ovl01_800F4E14]  # carve
       - [0x13E18, c, func_800F4F88_ovl01]  # carve
       - [0x13E54, c, func_800F4FC4_ovl01]  # carve was: - [0x13E54, asm, ovl01_800F4FC4]  # carve
       - [0x13F00, c, func_800F5070_ovl01]  # carve
       - [0x13F20, c, func_800F5090_ovl01]  # carve was: - [0x13F20, asm, ovl01_800F5090]  # carve
-      - [0x13F5C, asm, ovl01_800F50CC]  # carve
+      - [0x13F5C, c, func_800F50CC_ovl01]  # carve was: - [0x13F5C, asm, ovl01_800F50CC]  # carve
       - [0x13FA8, c, func_800F5118_ovl01]  # carve
       - [0x13FF0, c, func_800F5160_ovl01]  # carve was: - [0x13FF0, asm, ovl01_800F5160]  # carve
       - [0x14038, c, func_800F51A8_ovl01]  # carve was: - [0x14038, asm, ovl01_800F51A8]  # carve
@@ -541,7 +543,7 @@ segments:
       - [0x140CC, c, func_800F523C_ovl01]  # carve was: - [0x140CC, asm, ovl01_800F523C]  # carve
       - [0x14108, c, func_800F5278_ovl01]  # carve
       - [0x14128, c, func_800F5298_ovl01]  # carve was: - [0x14128, asm, ovl01_800F5298]  # carve
-      - [0x1474C, asm, ovl01_800F58BC]  # carve
+      - [0x1474C, c, func_800F58BC_ovl01]  # carve was: - [0x1474C, asm, ovl01_800F58BC]  # carve
       - [0x149C8, c, func_800F5B38_ovl01]  # carve
       - [0x14E7C, c, func_800F5FEC_ovl01]  # carve
       - [0x14FA0, c, func_800F6110_ovl01]  # carve was: - [0x14FA0, asm, ovl01_800F6110]  # carve
@@ -558,7 +560,7 @@ segments:
       - [0x154B4, c, func_800F6624_ovl01]  # carve was: - [0x154B4, asm, ovl01_800F6624]  # carve
       - [0x15508, c, func_800F6678_ovl01]  # carve was: - [0x15508, asm, ovl01_800F6678]  # carve
       - [0x15550, c, func_800F66C0_ovl01]  # carve
-      - [0x1558C, asm, ovl01_800F66FC]  # carve
+      - [0x1558C, c, func_800F66FC_ovl01]  # carve was: - [0x1558C, asm, ovl01_800F66FC]  # carve
       - [0x15640, c, func_800F67B0_ovl01]  # carve
       - [0x156D0, c, func_800F6840_ovl01]  # carve
       - [0x1570C, c, func_800F687C_ovl01]  # carve was: - [0x1570C, asm, ovl01_800F687C]  # carve
@@ -599,7 +601,7 @@ segments:
       - [0x16694, c, func_800F7804_ovl01]  # carve
       - [0x166E0, c, func_800F7850_ovl01]  # carve was: - [0x166E0, asm, ovl01_800F7850]  # carve
       - [0x16750, c, func_800F78C0_ovl01]  # carve was: - [0x16750, asm, ovl01_800F78C0]  # carve
-      - [0x16850, asm, ovl01_800F79C0]  # carve
+      - [0x16850, c, func_800F79C0_ovl01]  # carve was: - [0x16850, asm, ovl01_800F79C0]  # carve
       - [0x16924, c, func_800F7A94_ovl01]  # carve
       - [0x169A4, c, func_800F7B14_ovl01]  # carve
       - [0x169E0, c, func_800F7B50_ovl01]  # carve was: - [0x169E0, asm, ovl01_800F7B50]  # carve
@@ -673,7 +675,7 @@ segments:
       - [0x19B10, c, func_800FAC80_ovl01]  # carve
       - [0x19BA4, c, func_800FAD14_ovl01]  # carve was: - [0x19BA4, asm, ovl01_800FAD14]  # carve
       - [0x19C74, c, func_800FADE4_ovl01]  # carve
-      - [0x19CB8, asm, ovl01_800FAE28]  # carve
+      - [0x19CB8, c, func_800FAE28_ovl01]  # carve was: - [0x19CB8, asm, ovl01_800FAE28]  # carve
       - [0x19D88, c, func_800FAEF8_ovl01]  # carve
       - [0x19DCC, c, func_800FAF3C_ovl01]  # carve
       - [0x19E6C, c, func_800FAFDC_ovl01]  # carve was: - [0x19E6C, asm, ovl01_800FAFDC]  # carve
@@ -703,6 +705,7 @@ segments:
     vram: 0x800EE970
     align: 1
     exclusive_ram_id: ovlA
+    dir: ovl02
     subsegments:
       - [0x1D000, rodatabin]  # carve was: - [0x1D000, textbin]  # gen:rockx5_splits
       - [0x1D004, .rodata, func_800EFA30_ovl02]  # carve
@@ -824,6 +827,7 @@ segments:
     vram: 0x800EE970
     align: 1
     exclusive_ram_id: ovlA
+    dir: ovl03
     subsegments:
       - [0x23000, rodata]  # T3: was asm; head jtbl/data split off, asm from 0x231F4
       - [0x23004, .rodata, func_800F0C68_ovl03]  # carve
@@ -928,7 +932,7 @@ segments:
       - [0x25B40, c, func_800F14B0_ovl03]  # carve was: - [0x25B40, asm, ovl03_800F14B0]  # carve
       - [0x25B6C, c, func_800F14DC_ovl03]  # carve was: - [0x25B6C, asm, ovl03_800F14DC]  # carve
       - [0x25BB0, c, func_800F1520_ovl03]  # carve
-      - [0x25BEC, asm, ovl03_800F155C]  # carve
+      - [0x25BEC, c, func_800F155C_ovl03]  # carve was: - [0x25BEC, asm, ovl03_800F155C]  # carve
       - [0x25C20, c, func_800F1590_ovl03]  # carve
       - [0x25C6C, c, func_800F15DC_ovl03]  # carve
       - [0x25CAC, c, func_800F161C_ovl03]  # carve
@@ -1040,7 +1044,7 @@ segments:
       - [0x2C628, c, func_800F7F98_ovl03]  # carve was: - [0x2C628, asm, ovl03_800F7F98]  # carve
       - [0x2C714, c, func_800F8084_ovl03]  # carve
       - [0x2C7D0, c, func_800F8140_ovl03]  # carve
-      - [0x2C83C, asm, ovl03_800F81AC]  # carve
+      - [0x2C83C, c, func_800F81AC_ovl03]  # carve was: - [0x2C83C, asm, ovl03_800F81AC]  # carve
       - [0x2C8FC, c, func_800F826C_ovl03]  # carve
       - [0x2C96C, c, func_800F82DC_ovl03]  # carve
       - [0x2C9C8, c, func_800F8338_ovl03]  # carve was: - [0x2C9C8, asm, ovl03_800F8338]  # carve
@@ -1068,8 +1072,11 @@ segments:
     vram: 0x800EE970
     align: 1
     exclusive_ram_id: ovlA
+    dir: ovl04
     subsegments:
       - [0x2F000, rodata]  # carve was: - [0x2F000, textbin]  # gen:rockx5_splits  # T3: was rodatabin; ovl pointer words -> symbols
+      - [0x2F004, .rodata, func_800F04AC_ovl04]  # carve
+      - [0x2F090, rodata, 2F090]  # carve
       - [0x2F094, .rodata, func_800F1190_ovl04]  # carve
       - [0x2F0E0, .rodata, func_800F5E5C_ovl04]  # carve
       - [0x2F108, .rodata, func_800F6E78_ovl04]  # carve was: - [0x2F108, rodatabin]  # carve
@@ -1121,7 +1128,8 @@ segments:
       - [0x3095C, c, func_800F02CC_ovl04]  # carve
       - [0x309CC, c, func_800F033C_ovl04]  # carve was: - [0x309CC, asm, ovl04_800F033C]  # carve
       - [0x30A08, c, func_800F0378_ovl04]  # carve
-      - [0x30A84, asm, ovl04_800F03F4]  # carve
+      - [0x30A84, c, func_800F03F4_ovl04]  # carve was: - [0x30A84, asm, ovl04_800F03F4]  # carve
+      - [0x30B3C, c, func_800F04AC_ovl04]  # carve was: - [0x30B3C, asm, ovl04_800F04AC]  # carve
       - [0x30D4C, c, func_800F06BC_ovl04]  # carve
       - [0x30E70, c, func_800F07E0_ovl04]  # carve was: - [0x30E70, asm, ovl04_800F07E0]  # carve
       - [0x30F90, c, func_800F0900_ovl04]  # carve
@@ -1260,11 +1268,11 @@ segments:
       - [0x361B0, c, func_800F5B20_ovl04]  # carve was: - [0x361B0, asm, ovl04_800F5B20]  # carve
       - [0x3627C, c, func_800F5BEC_ovl04]  # carve
       - [0x36288, c, func_800F5BF8_ovl04]  # carve
-      - [0x362F4, asm, ovl04_800F5C64]  # carve
+      - [0x362F4, c, func_800F5C64_ovl04]  # carve was: - [0x362F4, asm, ovl04_800F5C64]  # carve
       - [0x363D8, c, func_800F5D48_ovl04]  # carve
       - [0x364B0, c, func_800F5E20_ovl04]  # carve
       - [0x364EC, c, func_800F5E5C_ovl04]  # carve
-      - [0x369E8, asm, ovl04_800F6358]  # carve
+      - [0x369E8, c, func_800F6358_ovl04]  # carve was: - [0x369E8, asm, ovl04_800F6358]  # carve
       - [0x36B2C, c, func_800F649C_ovl04]  # carve
       - [0x36B88, c, func_800F64F8_ovl04]  # carve was: - [0x36B88, asm, ovl04_800F64F8]  # carve
       - [0x36CDC, c, func_800F664C_ovl04]  # carve
@@ -1404,7 +1412,7 @@ segments:
       - [0x405A8, c, func_800FFF18_ovl04]  # carve was: - [0x405A8, asm, ovl04_800FFF18]  # carve
       - [0x40640, c, func_800FFFB0_ovl04]  # carve
       - [0x40660, c, func_800FFFD0_ovl04]  # carve was: - [0x40660, asm, ovl04_800FFFD0]  # carve
-      - [0x4069C, asm, ovl04_8010000C]  # carve
+      - [0x4069C, c, func_8010000C_ovl04]  # carve was: - [0x4069C, asm, ovl04_8010000C]  # carve
       - [0x406F8, c, func_80100068_ovl04]  # carve
       - [0x40768, c, func_801000D8_ovl04]  # carve
       - [0x40794, c, func_80100104_ovl04]  # carve
@@ -1427,6 +1435,7 @@ segments:
     vram: 0x800EE970
     align: 1
     exclusive_ram_id: ovlA
+    dir: ovl05
     subsegments:
       - [0x43800, rodatabin]  # carve was: - [0x43800, textbin]  # gen:rockx5_splits
       - [0x43804, .rodata, func_800EF078_ovl05]  # carve
@@ -1506,7 +1515,7 @@ segments:
       - [0x45D60, c, func_800F0ED0_ovl05]  # carve was: - [0x45D60, asm, ovl05_800F0ED0]  # carve
       - [0x45D8C, c, func_800F0EFC_ovl05]  # carve was: - [0x45D8C, asm, ovl05_800F0EFC]  # carve
       - [0x45DD0, c, func_800F0F40_ovl05]  # carve
-      - [0x45E0C, asm, ovl05_800F0F7C]  # carve
+      - [0x45E0C, c, func_800F0F7C_ovl05]  # carve was: - [0x45E0C, asm, ovl05_800F0F7C]  # carve
       - [0x45E40, c, func_800F0FB0_ovl05]  # carve
       - [0x45E8C, c, func_800F0FFC_ovl05]  # carve
       - [0x45ECC, c, func_800F103C_ovl05]  # carve
@@ -1588,6 +1597,7 @@ segments:
     vram: 0x800EE970
     align: 1
     exclusive_ram_id: ovlA
+    dir: ovl06
     subsegments:
       - [0x4A800, rodatabin]  # carve was: - [0x4A800, textbin]  # gen:rockx5_splits
       - [0x4A804, .rodata, func_800FD2B8_ovl06]  # carve
@@ -1653,7 +1663,7 @@ segments:
       - [0x4FE58, c, func_800F3FC8_ovl06]  # carve was: - [0x4FE58, asm, ovl06_800F3FC8]  # carve
       - [0x50278, c, func_800F43E8_ovl06]  # carve
       - [0x502C4, c, func_800F4434_ovl06]  # carve was: - [0x502C4, asm, ovl06_800F4434]  # carve
-      - [0x5033C, asm, ovl06_800F44AC]  # carve
+      - [0x5033C, c, func_800F44AC_ovl06]  # carve was: - [0x5033C, asm, ovl06_800F44AC]  # carve
       - [0x503DC, c, func_800F454C_ovl06]  # carve
       - [0x5041C, c, func_800F458C_ovl06]  # carve
       - [0x50490, c, func_800F4600_ovl06]  # carve
@@ -1780,7 +1790,7 @@ segments:
       - [0x55F60, c, func_800FA0D0_ovl06]  # carve
       - [0x55FA8, c, func_800FA118_ovl06]  # carve was: - [0x55FA8, asm, ovl06_800FA118]  # carve
       - [0x55FE4, c, func_800FA154_ovl06]  # carve
-      - [0x56028, asm, ovl06_800FA198]  # carve
+      - [0x56028, c, func_800FA198_ovl06]  # carve was: - [0x56028, asm, ovl06_800FA198]  # carve
       - [0x56114, c, func_800FA284_ovl06]  # carve
       - [0x561B4, c, func_800FA324_ovl06]  # carve was: - [0x561B4, asm, ovl06_800FA324]  # carve
       - [0x56204, c, func_800FA374_ovl06]  # carve
@@ -1876,6 +1886,7 @@ segments:
     vram: 0x800EE970
     align: 1
     exclusive_ram_id: ovlA
+    dir: ovl07
     subsegments:
       - [0x5B800, rodata]  # carve was: - [0x5B800, textbin]  # gen:rockx5_splits  # T3: was rodatabin; ovl pointer words -> symbols
       - [0x5B804, .rodata, func_800EF2C8_ovl07]  # carve
@@ -1904,7 +1915,7 @@ segments:
       - [0x5D2F4, c, func_800F0464_ovl07]  # carve was: - [0x5D2F4, asm, ovl07_800F0464]  # carve
       - [0x5D378, c, func_800F04E8_ovl07]  # carve was: - [0x5D378, asm, ovl07_800F04E8]  # carve
       - [0x5D468, c, func_800F05D8_ovl07]  # carve
-      - [0x5D500, asm, ovl07_800F0670]  # carve
+      - [0x5D500, c, func_800F0670_ovl07]  # carve was: - [0x5D500, asm, ovl07_800F0670]  # carve
       - [0x5D5AC, c, func_800F071C_ovl07]  # carve
       - [0x5D644, c, func_800F07B4_ovl07]  # carve
       - [0x5D6F4, c, func_800F0864_ovl07]  # carve
@@ -1967,7 +1978,7 @@ segments:
       - [0x5F90C, c, func_800F2A7C_ovl07]  # carve was: - [0x5F90C, asm, ovl07_800F2A7C]  # carve
       - [0x5F958, c, func_800F2AC8_ovl07]  # carve was: - [0x5F958, asm, ovl07_800F2AC8]  # carve
       - [0x5F980, c, func_800F2AF0_ovl07]  # carve
-      - [0x5F9BC, asm, ovl07_800F2B2C]  # carve
+      - [0x5F9BC, c, func_800F2B2C_ovl07]  # carve was: - [0x5F9BC, asm, ovl07_800F2B2C]  # carve
       - [0x5FA64, c, func_800F2BD4_ovl07]  # carve
       - [0x5FAA8, c, func_800F2C18_ovl07]  # carve was: - [0x5FAA8, asm, ovl07_800F2C18]  # carve
       - [0x5FB88, c, func_800F2CF8_ovl07]  # carve
@@ -2074,7 +2085,7 @@ segments:
       - [0x651C0, c, func_800F8330_ovl07]  # carve was: - [0x651C0, asm, ovl07_800F8330]  # carve
       - [0x653AC, c, func_800F851C_ovl07]  # carve was: - [0x653AC, asm, ovl07_800F851C]  # carve
       - [0x65780, c, func_800F88F0_ovl07]  # carve
-      - [0x65960, asm, ovl07_800F8AD0]  # carve
+      - [0x65960, c, func_800F8AD0_ovl07]  # carve was: - [0x65960, asm, ovl07_800F8AD0]  # carve
       - [0x65B7C, c, func_800F8CEC_ovl07]  # carve
       - [0x65BC8, c, func_800F8D38_ovl07]  # carve
       - [0x65BE8, c, func_800F8D58_ovl07]  # carve
@@ -2162,7 +2173,7 @@ segments:
       - [0x69968, c, func_800FCAD8_ovl07]  # carve was: - [0x69968, asm, ovl07_800FCAD8]  # carve
       - [0x69A28, c, func_800FCB98_ovl07]  # carve
       - [0x69AE4, c, func_800FCC54_ovl07]  # carve was: - [0x69AE4, asm, ovl07_800FCC54]  # carve
-      - [0x69B3C, asm, ovl07_800FCCAC]  # carve
+      - [0x69B3C, c, func_800FCCAC_ovl07]  # carve was: - [0x69B3C, asm, ovl07_800FCCAC]  # carve
       - [0x69C60, c, func_800FCDD0_ovl07]  # carve
       - [0x6A060, c, func_800FD1D0_ovl07]  # carve
       - [0x6A0AC, c, func_800FD21C_ovl07]  # carve
@@ -2180,7 +2191,7 @@ segments:
       - [0x6AAFC, c, func_800FDC6C_ovl07]  # carve
       - [0x6ABB8, c, func_800FDD28_ovl07]  # carve was: - [0x6ABB8, asm, ovl07_800FDD28]  # carve
       - [0x6AC44, c, func_800FDDB4_ovl07]  # carve was: - [0x6AC44, asm, ovl07_800FDDB4]  # carve
-      - [0x6AC64, asm, ovl07_800FDDD4]  # carve
+      - [0x6AC64, c, func_800FDDD4_ovl07]  # carve was: - [0x6AC64, asm, ovl07_800FDDD4]  # carve
       - [0x6AD24, c, func_800FDE94_ovl07]  # carve
       - [0x6ADB0, c, func_800FDF20_ovl07]  # carve was: - [0x6ADB0, asm, ovl07_800FDF20]  # carve
       - [0x6ADD0, c, func_800FDF40_ovl07]  # carve
@@ -2247,6 +2258,7 @@ segments:
     vram: 0x800EE970
     align: 1
     exclusive_ram_id: ovlA
+    dir: ovl08
     subsegments:
       - [0x6F000, rodata]  # gen:rockx5_splits  # T3: was textbin; ovl pointer words -> symbols
       - [0x6F004, .rodata, func_800EF878_ovl08]  # carve
@@ -2369,6 +2381,7 @@ segments:
     vram: 0x800EE970
     align: 1
     exclusive_ram_id: ovlA
+    dir: ovl09
     subsegments:
       - [0x74800, rodata]  # T3: was asm; head jtbl/data split off, asm from 0x748F8
       - [0x74804, .rodata, func_800EFDDC_ovl09]  # carve
@@ -2394,7 +2407,7 @@ segments:
       - [0x7539C, c, func_800EF50C_ovl09]  # carve
       - [0x753BC, c, func_800EF52C_ovl09]  # carve was: - [0x753BC, asm, ovl09_800EF52C]  # carve
       - [0x75404, c, func_800EF574_ovl09]  # carve
-      - [0x75430, asm, ovl09_800EF5A0]  # carve
+      - [0x75430, c, func_800EF5A0_ovl09]  # carve was: - [0x75430, asm, ovl09_800EF5A0]  # carve
       - [0x754FC, c, func_800EF66C_ovl09]  # carve
       - [0x75504, c, func_800EF674_ovl09]  # carve was: - [0x75504, asm, ovl09_800EF674]  # carve
       - [0x75540, c, func_800EF6B0_ovl09]  # carve was: - [0x75540, asm, ovl09_800EF6B0]  # carve
@@ -2433,7 +2446,7 @@ segments:
       - [0x76768, c, func_800F08D8_ovl09]  # carve
       - [0x76770, asm, ovl09_800F08E0]  # carve
       - [0x7690C, c, func_800F0A7C_ovl09]  # carve
-      - [0x76D80, asm, ovl09_800F0EF0]  # carve
+      - [0x76D80, c, func_800F0EF0_ovl09]  # carve was: - [0x76D80, asm, ovl09_800F0EF0]  # carve
       - [0x76E28, c, func_800F0F98_ovl09]  # carve
       - [0x76FA4, c, func_800F1114_ovl09]  # carve
       - [0x76FF0, c, func_800F1160_ovl09]  # carve was: - [0x76FF0, asm, ovl09_800F1160]  # carve
@@ -2450,7 +2463,7 @@ segments:
       - [0x77414, c, func_800F1584_ovl09]  # carve
       - [0x77434, c, func_800F15A4_ovl09]  # carve was: - [0x77434, asm, ovl09_800F15A4]  # carve
       - [0x77470, c, func_800F15E0_ovl09]  # carve was: - [0x77470, asm, ovl09_800F15E0]  # carve
-      - [0x7748C, asm, ovl09_800F15FC]  # carve
+      - [0x7748C, c, func_800F15FC_ovl09]  # carve was: - [0x7748C, asm, ovl09_800F15FC]  # carve
       - [0x77544, c, func_800F16B4_ovl09]  # carve
       - [0x77580, c, func_800F16F0_ovl09]  # carve was: - [0x77580, asm, ovl09_800F16F0]  # carve
       - [0x7759C, c, func_800F170C_ovl09]  # carve
@@ -2490,7 +2503,7 @@ segments:
       - [0x7A544, c, func_800F46B4_ovl09]  # carve was: - [0x7A544, asm, ovl09_800F46B4]  # carve
       - [0x7A740, c, func_800F48B0_ovl09]  # carve was: - [0x7A740, asm, ovl09_800F48B0]  # carve
       - [0x7ABB0, c, func_800F4D20_ovl09]  # carve was: - [0x7ABB0, asm, ovl09_800F4D20]  # carve
-      - [0x7AF48, asm, ovl09_800F50B8]  # carve
+      - [0x7AF48, c, func_800F50B8_ovl09]  # carve was: - [0x7AF48, asm, ovl09_800F50B8]  # carve
       - [0x7B234, c, func_800F53A4_ovl09]  # carve
       - [0x7B2E8, c, func_800F5458_ovl09]  # carve
       - [0x7B308, c, func_800F5478_ovl09]  # carve
@@ -2624,7 +2637,7 @@ segments:
       - [0x7F3B0, c, func_800F9520_ovl09]  # carve
       - [0x7F464, c, func_800F95D4_ovl09]  # carve
       - [0x7F484, c, func_800F95F4_ovl09]  # carve was: - [0x7F484, asm, ovl09_800F95F4]  # carve
-      - [0x7F4C0, asm, ovl09_800F9630]  # carve
+      - [0x7F4C0, c, func_800F9630_ovl09]  # carve was: - [0x7F4C0, asm, ovl09_800F9630]  # carve
       - [0x7F5B4, c, func_800F9724_ovl09]  # carve
       - [0x7F62C, c, func_800F979C_ovl09]  # carve
       - [0x7F64C, c, func_800F97BC_ovl09]  # carve was: - [0x7F64C, asm, ovl09_800F97BC]  # carve
@@ -2640,6 +2653,7 @@ segments:
     vram: 0x800EE970
     align: 1
     exclusive_ram_id: ovlA
+    dir: ovl10
     subsegments:
       - [0x81800, rodata]  # gen:rockx5_splits  # T3: was textbin; ovl pointer words -> symbols
       - [0x81804, .rodata, func_800EECDC_ovl10]  # carve
@@ -2785,10 +2799,10 @@ segments:
       - [0x87FC0, c, func_800F5130_ovl10]  # carve was: - [0x87FC0, asm, ovl10_800F5130]  # carve
       - [0x87FF8, c, func_800F5168_ovl10]  # carve
       - [0x88050, c, func_800F51C0_ovl10]  # carve was: - [0x88050, asm, ovl10_800F51C0]  # carve
-      - [0x88090, asm, ovl10_800F5200]  # carve
+      - [0x88090, c, func_800F5200_ovl10]  # carve was: - [0x88090, asm, ovl10_800F5200]  # carve
       - [0x880CC, c, func_800F523C_ovl10]  # carve
       - [0x880D4, c, func_800F5244_ovl10]  # carve was: - [0x880D4, asm, ovl10_800F5244]  # carve
-      - [0x88128, asm, ovl10_800F5298]  # carve
+      - [0x88128, c, func_800F5298_ovl10]  # carve was: - [0x88128, asm, ovl10_800F5298]  # carve
       - [0x881CC, c, func_800F533C_ovl10]  # carve
       - [0x88208, asm, ovl10_800F5378]  # carve
       - [0x882E4, c, func_800F5454_ovl10]  # carve
@@ -2826,7 +2840,7 @@ segments:
       - [0x8914C, c, func_800F62BC_ovl10]  # carve
       - [0x8916C, c, func_800F62DC_ovl10]  # carve was: - [0x8916C, asm, ovl10_800F62DC]  # carve
       - [0x89374, c, func_800F64E4_ovl10]  # carve was: - [0x89374, asm, ovl10_800F64E4]  # carve
-      - [0x8949C, asm, ovl10_800F660C]  # carve
+      - [0x8949C, c, func_800F660C_ovl10]  # carve was: - [0x8949C, asm, ovl10_800F660C]  # carve
       - [0x89610, c, func_800F6780_ovl10]  # carve
       - [0x897B4, c, func_800F6924_ovl10]  # carve
       - [0x8993C, c, func_800F6AAC_ovl10]  # carve
@@ -2895,7 +2909,7 @@ segments:
       - [0x8C2F8, c, func_800F9468_ovl10]  # carve was: - [0x8C2F8, asm, ovl10_800F9468]  # carve
       - [0x8C4E4, c, func_800F9654_ovl10]  # carve was: - [0x8C4E4, asm, ovl10_800F9654]  # carve
       - [0x8C8B8, c, func_800F9A28_ovl10]  # carve
-      - [0x8CA98, asm, ovl10_800F9C08]  # carve
+      - [0x8CA98, c, func_800F9C08_ovl10]  # carve was: - [0x8CA98, asm, ovl10_800F9C08]  # carve
       - [0x8CCB4, c, func_800F9E24_ovl10]  # carve
       - [0x8CD00, c, func_800F9E70_ovl10]  # carve
       - [0x8CD20, c, func_800F9E90_ovl10]  # carve
@@ -2910,6 +2924,7 @@ segments:
     vram: 0x800EE970
     align: 1
     exclusive_ram_id: ovlA
+    dir: ovl11
     subsegments:
       - [0x8F800, rodata]  # gen:rockx5_splits  # T3: was textbin; ovl pointer words -> symbols
       - [0x8F804, .rodata, func_800F33E8_ovl11]  # carve
@@ -2927,7 +2942,7 @@ segments:
       - [0x90298, c, func_800EF408_ovl11]  # carve
       - [0x902A0, c, func_800EF410_ovl11]  # carve was: - [0x902A0, asm, ovl11_800EF410]  # carve
       - [0x902E0, c, func_800EF450_ovl11]  # carve was: - [0x902E0, asm, ovl11_800EF450]  # carve
-      - [0x9031C, asm, ovl11_800EF48C]  # carve
+      - [0x9031C, c, func_800EF48C_ovl11]  # carve was: - [0x9031C, asm, ovl11_800EF48C]  # carve
       - [0x90340, c, func_800EF4B0_ovl11]  # carve
       - [0x9036C, c, func_800EF4DC_ovl11]  # carve
       - [0x9038C, c, func_800EF4FC_ovl11]  # carve was: - [0x9038C, asm, ovl11_800EF4FC]  # carve
@@ -3000,7 +3015,7 @@ segments:
       - [0x92AB4, c, func_800F1C24_ovl11]  # carve
       - [0x92B64, c, func_800F1CD4_ovl11]  # carve was: - [0x92B64, asm, ovl11_800F1CD4]  # carve
       - [0x92C08, c, func_800F1D78_ovl11]  # carve
-      - [0x92C44, asm, ovl11_800F1DB4]  # carve
+      - [0x92C44, c, func_800F1DB4_ovl11]  # carve was: - [0x92C44, asm, ovl11_800F1DB4]  # carve
       - [0x92C94, c, func_800F1E04_ovl11]  # carve
       - [0x92D14, c, func_800F1E84_ovl11]  # carve
       - [0x92D34, asm, ovl11_800F1EA4]  # carve
@@ -3068,7 +3083,7 @@ segments:
       - [0x96578, c, func_800F56E8_ovl11]  # carve
       - [0x966CC, c, func_800F583C_ovl11]  # carve was: - [0x966CC, asm, ovl11_800F583C]  # carve
       - [0x967E8, c, func_800F5958_ovl11]  # carve
-      - [0x969CC, asm, ovl11_800F5B3C]  # carve
+      - [0x969CC, c, func_800F5B3C_ovl11]  # carve was: - [0x969CC, asm, ovl11_800F5B3C]  # carve
       - [0x96B1C, c, func_800F5C8C_ovl11]  # carve
       - [0x96C84, c, func_800F5DF4_ovl11]  # carve was: - [0x96C84, asm, ovl11_800F5DF4]  # carve
       - [0x96E00, c, func_800F5F70_ovl11]  # carve
@@ -3129,7 +3144,7 @@ segments:
       - [0x992B0, c, func_800F8420_ovl11]  # carve
       - [0x992C0, c, func_800F8430_ovl11]  # carve was: - [0x992C0, asm, ovl11_800F8430]  # carve
       - [0x992FC, c, func_800F846C_ovl11]  # carve was: - [0x992FC, asm, ovl11_800F846C]  # carve
-      - [0x9934C, asm, ovl11_800F84BC]  # carve
+      - [0x9934C, c, func_800F84BC_ovl11]  # carve was: - [0x9934C, asm, ovl11_800F84BC]  # carve
       - [0x993C4, c, func_800F8534_ovl11]  # carve
       - [0x993D8, c, func_800F8548_ovl11]  # carve
       - [0x99414, c, func_800F8584_ovl11]  # carve was: - [0x99414, asm, ovl11_800F8584]  # carve
@@ -3151,6 +3166,7 @@ segments:
     vram: 0x800EE970
     align: 1
     exclusive_ram_id: ovlA
+    dir: ovl12
     subsegments:
       - [0x9B000, rodata]  # T3: was asm; head jtbl/data split off, asm from 0x9B038
       - [0x9B024, .rodata, func_800F1078_ovl12]  # carve
@@ -3182,7 +3198,7 @@ segments:
       - [0x9C78C, c, func_800F00FC_ovl12]  # carve
       - [0x9C828, c, func_800F0198_ovl12]  # carve
       - [0x9C87C, c, func_800F01EC_ovl12]  # carve
-      - [0x9C8E8, asm, ovl12_800F0258]  # carve
+      - [0x9C8E8, c, func_800F0258_ovl12]  # carve was: - [0x9C8E8, asm, ovl12_800F0258]  # carve
       - [0x9C9C4, c, func_800F0334_ovl12]  # carve
       - [0x9CA18, c, func_800F0388_ovl12]  # carve was: - [0x9CA18, asm, ovl12_800F0388]  # carve
       - [0x9CB00, c, func_800F0470_ovl12]  # carve
@@ -3235,6 +3251,7 @@ segments:
     vram: 0x800EE970
     align: 1
     exclusive_ram_id: ovlA
+    dir: ovl14
     subsegments:
       - [0x9F000, rodata]  # T3: was asm; head jtbl/data split off, asm from 0x9F038
       - [0x9F024, .rodata, func_800F1078_ovl14]  # carve
@@ -3266,7 +3283,7 @@ segments:
       - [0xA078C, c, func_800F00FC_ovl14]  # carve was: - [0xA078C, asm, ovl14_800F00FC]  # carve
       - [0xA0828, c, func_800F0198_ovl14]  # carve was: - [0xA0828, asm, ovl14_800F0198]  # carve
       - [0xA087C, c, func_800F01EC_ovl14]  # carve
-      - [0xA08E8, asm, ovl14_800F0258]  # carve
+      - [0xA08E8, c, func_800F0258_ovl14]  # carve was: - [0xA08E8, asm, ovl14_800F0258]  # carve
       - [0xA09C4, c, func_800F0334_ovl14]  # carve
       - [0xA0A18, c, func_800F0388_ovl14]  # carve was: - [0xA0A18, asm, ovl14_800F0388]  # carve
       - [0xA0B00, c, func_800F0470_ovl14]  # carve
@@ -3319,6 +3336,7 @@ segments:
     vram: 0x800EE970
     align: 1
     exclusive_ram_id: ovlA
+    dir: ovl16
     subsegments:
       - [0xA3000, rodata]  # gen:rockx5_splits  # T3: was textbin; ovl pointer words -> symbols
       - [0xA3004, .rodata, func_800EE994_ovl16]  # carve
@@ -3359,8 +3377,11 @@ segments:
     vram: 0x800EE970
     align: 1
     exclusive_ram_id: ovlA
+    dir: ovl18
     subsegments:
       - [0xA7800, rodata]  # gen:rockx5_splits  # T3: was textbin; ovl pointer words -> symbols
+      - [0xA7804, .rodata, func_800F0CDC_ovl18]  # carve
+      - [0xA7890, rodata, A7890]  # carve
       - [0xA7894, .rodata, func_800F19C0_ovl18]  # carve
       - [0xA78E0, c, func_800EEA50_ovl18]  # carve was: - [0xA78E0, asm]  # gen:rockx5_splits
       - [0xA7A24, c, func_800EEB94_ovl18]  # carve was: - [0xA7A24, asm, ovl18_800EEB94]
@@ -3423,7 +3444,7 @@ segments:
       - [0xA9AD4, c, func_800F0C44_ovl18]  # carve
       - [0xA9B58, c, func_800F0CC8_ovl18]  # carve
       - [0xA9B60, c, func_800F0CD0_ovl18]  # carve was: - [0xA9B60, asm, ovl18_800F0CD0]  # carve
-      - [0xA9B6C, asm, ovl18_800F0CDC]  # carve
+      - [0xA9B6C, c, func_800F0CDC_ovl18]  # carve was: - [0xA9B6C, asm, ovl18_800F0CDC]  # carve
       - [0xA9D7C, c, func_800F0EEC_ovl18]  # carve
       - [0xA9EA0, c, func_800F1010_ovl18]  # carve was: - [0xA9EA0, asm, ovl18_800F1010]  # carve
       - [0xA9FC0, c, func_800F1130_ovl18]  # carve was: - [0xA9FC0, asm, ovl18_800F1130]  # carve
@@ -3516,7 +3537,7 @@ segments:
       - [0xAD958, c, func_800F4AC8_ovl18]  # carve
       - [0xAD978, c, func_800F4AE8_ovl18]  # carve was: - [0xAD978, asm, ovl18_800F4AE8]  # carve
       - [0xAD9C0, c, func_800F4B30_ovl18]  # carve
-      - [0xAD9EC, asm, ovl18_800F4B5C]  # carve
+      - [0xAD9EC, c, func_800F4B5C_ovl18]  # carve was: - [0xAD9EC, asm, ovl18_800F4B5C]  # carve
       - [0xADAB8, c, func_800F4C28_ovl18]  # carve
       - [0xADAC0, c, func_800F4C30_ovl18]  # carve was: - [0xADAC0, asm, ovl18_800F4C30]  # carve
       - [0xADAFC, c, func_800F4C6C_ovl18]  # carve was: - [0xADAFC, asm, ovl18_800F4C6C]  # carve
@@ -3609,6 +3630,7 @@ segments:
     vram: 0x800EE970
     align: 1
     exclusive_ram_id: ovlA
+    dir: ovl20
     subsegments:
       - [0xB1800, textbin]  # gen:rockx5_splits
       - [0xB1804, c, func_800EE974_ovl20]  # carve was: - [0xB1804, asm]  # gen:rockx5_splits
@@ -3689,6 +3711,7 @@ segments:
       - [0xB4F98, c, func_800F2108_ovl20]  # carve
       - [0xB5020, c, func_800F2190_ovl20]  # carve was: - [0xB5020, asm, ovl20_800F2190]  # carve
       - [0xB5060, asm, ovl20_800F21D0]  # carve
+      - [0xB51D8, c, func_800F2348_ovl20]  # carve
       - [0xB537C, c, func_800F24EC_ovl20]  # carve
       - [0xB53B8, c, func_800F2528_ovl20]  # carve was: - [0xB53B8, asm, ovl20_800F2528]  # carve
       - [0xB53F0, asm, ovl20_800F2560]  # carve
@@ -3738,7 +3761,7 @@ segments:
       - [0xB68B8, c, func_800F3A28_ovl20]  # carve was: - [0xB68B8, asm, ovl20_800F3A28]  # carve
       - [0xB6B68, c, func_800F3CD8_ovl20]  # carve
       - [0xB6BC8, c, func_800F3D38_ovl20]  # carve
-      - [0xB6BE8, asm, ovl20_800F3D58]  # carve
+      - [0xB6BE8, c, func_800F3D58_ovl20]  # carve was: - [0xB6BE8, asm, ovl20_800F3D58]  # carve
       - [0xB6C58, c, func_800F3DC8_ovl20]  # carve
       - [0xB6CB4, c, func_800F3E24_ovl20]  # carve
       - [0xB6D30, c, func_800F3EA0_ovl20]  # carve
@@ -3767,6 +3790,7 @@ segments:
     vram: 0x800EE970
     align: 1
     exclusive_ram_id: ovlA
+    dir: ovl21
     subsegments:
       - [0xBA000, rodata]  # T3: was asm; all jtbl/data words
       - [0xBA004, .rodata, func_800EE994_ovl21]  # carve
@@ -3810,6 +3834,7 @@ segments:
     vram: 0x800EE970
     align: 1
     exclusive_ram_id: ovlA
+    dir: ovl22
     subsegments:
       - [0xBC000, textbin]  # gen:rockx5_splits
       - [0xBC004, c, func_800EE974_ovl22]  # carve was: - [0xBC004, asm]  # gen:rockx5_splits
@@ -3824,6 +3849,7 @@ segments:
     vram: 0x800EE970
     align: 1
     exclusive_ram_id: ovlA
+    dir: ovl23
     subsegments:
       - [0xBD000, textbin]  # gen:rockx5_splits
       - [0xBD004, c, func_800EE974_ovl23]  # carve was: - [0xBD004, asm]  # gen:rockx5_splits
@@ -3852,6 +3878,7 @@ segments:
     vram: 0x800EE970
     align: 1
     exclusive_ram_id: ovlA
+    dir: ovl24
     subsegments:
       - [0xBE000, rodata]  # T3: was asm; all jtbl/data words
       - [0xBE044, .rodata, func_800F3ABC_ovl24]  # carve
@@ -3921,7 +3948,7 @@ segments:
       - [0xC0F08, c, func_800F1878_ovl24]  # carve
       - [0xC1080, asm, ovl24_800F19F0]  # carve
       - [0xC2000, c, func_800F2970_ovl24]  # carve
-      - [0xC22DC, c, func_800F2C4C_ovl24]  # carve
+      - [0xC22DC, c, memcard_write_save_file_ovl24]  # carve
       - [0xC2510, c, func_800F2E80_ovl24]  # carve was: - [0xC2510, asm, ovl24_800F2E80]  # carve
       - [0xC256C, c, func_800F2EDC_ovl24]  # carve was: - [0xC256C, asm, ovl24_800F2EDC]  # carve
       - [0xC264C, c, func_800F2FBC_ovl24]  # carve
@@ -3969,6 +3996,7 @@ segments:
     vram: 0x800EE970
     align: 1
     exclusive_ram_id: ovlA
+    dir: ovl25
     subsegments:
       - [0xC5800, rodata]  # gen:rockx5_splits  # T3: was textbin; ovl pointer words -> symbols
       - [0xC5804, .rodata, func_800EFA84_ovl25]  # carve
@@ -4013,6 +4041,7 @@ segments:
     vram: 0x800EE970
     align: 1
     exclusive_ram_id: ovlA
+    dir: ovl26
     subsegments:
       - [0xC9800, rodata]  # T3: was asm; head jtbl/data split off, asm from 0xC9968
       - [0xC9804, .rodata, func_800EFFEC_ovl26]  # carve
@@ -4297,6 +4326,7 @@ segments:
     vram: 0x800EE970
     align: 1
     exclusive_ram_id: ovlA
+    dir: ovl27
     subsegments:
       - [0xD5800, rodata]  # carve was: - [0xD5800, textbin]  # gen:rockx5_splits  # T3: was rodatabin; ovl pointer words -> symbols
       - [0xD5804, .rodata, func_800EFAC8_ovl27]  # carve
@@ -4646,6 +4676,7 @@ segments:
     vram: 0x800EE970
     align: 1
     exclusive_ram_id: ovlA
+    dir: ovl28
     subsegments:
       - [0xE5800, rodata]  # T3: was asm; head jtbl/data split off, asm from 0xE5B50
       - [0xE5804, .rodata, func_800F047C_ovl28]  # carve
@@ -4656,6 +4687,8 @@ segments:
       - [0xE5980, rodata, E5980]  # carve
       - [0xE5984, .rodata, func_800F0B70_ovl28]  # carve
       - [0xE59A4, rodata, E59A4]  # carve
+      - [0xE59B4, .rodata, func_800F3BF0_ovl28]  # carve
+      - [0xE59E0, rodata, E59E0]  # carve
       - [0xE59E4, .rodata, func_800F4434_ovl28]  # carve
       - [0xE5A04, .rodata, func_800F7BE4_ovl28]  # carve was: - [0xE5A04, rodata, E5A04]  # carve
       - [0xE5A34, .rodata, func_800F84D0_ovl28]  # carve was: - [0xE5A34, rodata, E5A34]  # carve
@@ -4764,7 +4797,7 @@ segments:
       - [0xEA43C, c, func_800F35AC_ovl28]  # carve
       - [0xEA61C, c, func_800F378C_ovl28]  # carve
       - [0xEA838, c, func_800F39A8_ovl28]  # carve was: - [0xEA838, asm, ovl28_800F39A8]  # carve
-      - [0xEAA80, asm, ovl28_800F3BF0]  # carve
+      - [0xEAA80, c, func_800F3BF0_ovl28]  # carve was: - [0xEAA80, asm, ovl28_800F3BF0]  # carve
       - [0xEAF24, c, func_800F4094_ovl28]  # carve
       - [0xEB188, c, func_800F42F8_ovl28]  # carve was: - [0xEB188, asm, ovl28_800F42F8]  # carve
       - [0xEB2C4, c, func_800F4434_ovl28]  # carve
@@ -4976,6 +5009,7 @@ segments:
     vram: 0x800EE970
     align: 1
     exclusive_ram_id: ovlA
+    dir: ovl29
     subsegments:
       - [0xF6000, rodata]  # gen:rockx5_splits  # T3: was textbin; ovl pointer words -> symbols
       - [0xF6004, .rodata, func_800F017C_ovl29]  # carve
@@ -5120,7 +5154,7 @@ segments:
       - [0xFA7A8, c, func_800F3118_ovl29]  # carve was: - [0xFA7A8, asm, ovl29_800F3118]  # carve
       - [0xFA8A4, c, func_800F3214_ovl29]  # carve was: - [0xFA8A4, asm, ovl29_800F3214]  # carve
       - [0xFA978, c, func_800F32E8_ovl29]  # carve
-      - [0xFAA40, asm, ovl29_800F33B0]  # carve
+      - [0xFAA40, c, func_800F33B0_ovl29]  # carve was: - [0xFAA40, asm, ovl29_800F33B0]  # carve
       - [0xFAAD4, c, func_800F3444_ovl29]  # carve
       - [0xFAC00, c, func_800F3570_ovl29]  # carve was: - [0xFAC00, asm, ovl29_800F3570]  # carve
       - [0xFAD0C, c, func_800F367C_ovl29]  # carve was: - [0xFAD0C, asm, ovl29_800F367C]  # carve
@@ -5229,7 +5263,7 @@ segments:
       - [0xFEE18, c, func_800F7788_ovl29]  # carve was: - [0xFEE18, asm, ovl29_800F7788]  # carve
       - [0xFEE84, c, func_800F77F4_ovl29]  # carve
       - [0xFEEA4, c, func_800F7814_ovl29]  # carve was: - [0xFEEA4, asm, ovl29_800F7814]  # carve
-      - [0xFEEE0, asm, ovl29_800F7850]  # carve
+      - [0xFEEE0, c, func_800F7850_ovl29]  # carve was: - [0xFEEE0, asm, ovl29_800F7850]  # carve
       - [0xFEF30, c, func_800F78A0_ovl29]  # carve
       - [0xFEFB0, c, func_800F7920_ovl29]  # carve
       - [0xFEFD0, c, func_800F7940_ovl29]  # carve was: - [0xFEFD0, asm, ovl29_800F7940]  # carve
@@ -5259,6 +5293,7 @@ segments:
     vram: 0x800FA000
     align: 1
     exclusive_ram_id: ovlB
+    dir: ovl30
     subsegments:
       - [0x102000, rodata]  # gen:rockx5_splits  # T3: was textbin; ovl pointer words -> symbols
       - [0x102004, .rodata, func_800FA864_ovl30]  # carve
@@ -5321,7 +5356,7 @@ segments:
       - [0x1048B8, c, func_800FC8B8_ovl30]  # carve
       - [0x10494C, c, func_800FC94C_ovl30]  # carve was: - [0x10494C, asm, ovl30_800FC94C]  # carve
       - [0x104A1C, c, func_800FCA1C_ovl30]  # carve
-      - [0x104A60, asm, ovl30_800FCA60]  # carve
+      - [0x104A60, c, func_800FCA60_ovl30]  # carve was: - [0x104A60, asm, ovl30_800FCA60]  # carve
       - [0x104B30, c, func_800FCB30_ovl30]  # carve
       - [0x104B74, c, func_800FCB74_ovl30]  # carve
       - [0x104C14, c, func_800FCC14_ovl30]  # carve was: - [0x104C14, asm, ovl30_800FCC14]  # carve
@@ -5350,6 +5385,7 @@ segments:
     vram: 0x800FA000
     align: 1
     exclusive_ram_id: ovlB
+    dir: ovl31
     subsegments:
       - [0x106000, rodata]  # T3: was asm; head jtbl/data split off, asm from 0x10618C
       - [0x106174, .rodata, func_800FE22C_ovl31]  # carve
@@ -5418,7 +5454,7 @@ segments:
       - [0x10AF84, c, func_800FEF84_ovl31]  # carve was: - [0x10AF84, asm, ovl31_800FEF84]  # carve
       - [0x10B070, c, func_800FF070_ovl31]  # carve
       - [0x10B12C, c, func_800FF12C_ovl31]  # carve
-      - [0x10B198, asm, ovl31_800FF198]  # carve
+      - [0x10B198, c, func_800FF198_ovl31]  # carve was: - [0x10B198, asm, ovl31_800FF198]  # carve
       - [0x10B258, c, func_800FF258_ovl31]  # carve
       - [0x10B2C8, c, func_800FF2C8_ovl31]  # carve
       - [0x10B324, c, func_800FF324_ovl31]  # carve was: - [0x10B324, asm, ovl31_800FF324]  # carve
@@ -5441,6 +5477,7 @@ segments:
     vram: 0x800FA000
     align: 1
     exclusive_ram_id: ovlB
+    dir: ovl32
     subsegments:
       - [0x10C000, rodata]  # gen:rockx5_splits  # T3: was textbin; ovl pointer words -> symbols
       - [0x10C004, .rodata, func_800FCAAC_ovl32]  # carve
@@ -5482,7 +5519,7 @@ segments:
       - [0x10DF44, c, func_800FBF44_ovl32]  # carve was: - [0x10DF44, asm, ovl32_800FBF44]  # carve
       - [0x10E010, c, func_800FC010_ovl32]  # carve
       - [0x10E01C, c, func_800FC01C_ovl32]  # carve
-      - [0x10E088, asm, ovl32_800FC088]  # carve
+      - [0x10E088, c, func_800FC088_ovl32]  # carve was: - [0x10E088, asm, ovl32_800FC088]  # carve
       - [0x10E16C, c, func_800FC16C_ovl32]  # carve
       - [0x10E244, c, func_800FC244_ovl32]  # carve
       - [0x10E280, c, func_800FC280_ovl32]  # carve was: - [0x10E280, asm, ovl32_800FC280]  # carve
@@ -5510,7 +5547,7 @@ segments:
       - [0x10F660, c, func_800FD660_ovl32]  # carve
       - [0x10F668, c, func_800FD668_ovl32]  # carve was: - [0x10F668, asm, ovl32_800FD668]  # carve
       - [0x10F774, c, func_800FD774_ovl32]  # carve was: - [0x10F774, asm, ovl32_800FD774]  # carve
-      - [0x10FC70, asm, ovl32_800FDC70]  # carve
+      - [0x10FC70, c, func_800FDC70_ovl32]  # carve was: - [0x10FC70, asm, ovl32_800FDC70]  # carve
       - [0x10FDB4, c, func_800FDDB4_ovl32]  # carve
       - [0x10FE10, c, func_800FDE10_ovl32]  # carve was: - [0x10FE10, asm, ovl32_800FDE10]  # carve
       - [0x10FF64, c, func_800FDF64_ovl32]  # carve
@@ -5524,6 +5561,7 @@ segments:
     vram: 0x800FA000
     align: 1
     exclusive_ram_id: ovlB
+    dir: ovl33
     subsegments:
       - [0x111800, textbin]  # gen:rockx5_splits
       - [0x111804, c, func_800FA004_ovl33]  # carve was: - [0x111804, asm]  # gen:rockx5_splits
@@ -5574,7 +5612,7 @@ segments:
       - [0x113E94, c, func_800FC694_ovl33]  # carve was: - [0x113E94, asm, ovl33_800FC694]  # carve
       - [0x113EDC, c, func_800FC6DC_ovl33]  # carve
       - [0x113F18, c, func_800FC718_ovl33]  # carve
-      - [0x113F5C, asm, ovl33_800FC75C]  # carve
+      - [0x113F5C, c, func_800FC75C_ovl33]  # carve was: - [0x113F5C, asm, ovl33_800FC75C]  # carve
       - [0x114048, c, func_800FC848_ovl33]  # carve
       - [0x1140E8, c, func_800FC8E8_ovl33]  # carve was: - [0x1140E8, asm, ovl33_800FC8E8]  # carve
       - [0x114138, c, func_800FC938_ovl33]  # carve
@@ -5651,6 +5689,7 @@ segments:
     vram: 0x800FA000
     align: 1
     exclusive_ram_id: ovlB
+    dir: ovl34
     subsegments:
       - [0x117000, rodata]  # gen:rockx5_splits  # T3: was textbin; ovl pointer words -> symbols
       - [0x117004, .rodata, func_800FD604_ovl34]  # carve
@@ -5737,7 +5776,7 @@ segments:
       - [0x11B034, c, func_800FE034_ovl34]  # carve
       - [0x11B0F0, c, func_800FE0F0_ovl34]  # carve was: - [0x11B0F0, asm, ovl34_800FE0F0]  # carve
       - [0x11B17C, c, func_800FE17C_ovl34]  # carve
-      - [0x11B19C, asm, ovl34_800FE19C]  # carve
+      - [0x11B19C, c, func_800FE19C_ovl34]  # carve was: - [0x11B19C, asm, ovl34_800FE19C]  # carve
       - [0x11B25C, c, func_800FE25C_ovl34]  # carve
       - [0x11B2E8, c, func_800FE2E8_ovl34]  # carve was: - [0x11B2E8, asm, ovl34_800FE2E8]  # carve
       - [0x11B308, c, func_800FE308_ovl34]  # carve
@@ -5772,7 +5811,7 @@ segments:
       - [0x11BF10, c, func_800FEF10_ovl34]  # carve
       - [0x11BF94, c, func_800FEF94_ovl34]  # carve
       - [0x11C04C, c, func_800FF04C_ovl34]  # carve was: - [0x11C04C, asm, ovl34_800FF04C]  # carve
-      - [0x11C0F8, asm, ovl34_800FF0F8]  # carve
+      - [0x11C0F8, c, func_800FF0F8_ovl34]  # carve was: - [0x11C0F8, asm, ovl34_800FF0F8]  # carve
       - [0x11C21C, c, func_800FF21C_ovl34]  # carve
       - [0x11C61C, c, func_800FF61C_ovl34]  # carve
       - [0x11C668, c, func_800FF668_ovl34]  # carve
@@ -5790,6 +5829,7 @@ segments:
     vram: 0x800FA000
     align: 1
     exclusive_ram_id: ovlB
+    dir: ovl35
     subsegments:
       - [0x11D800, rodata]  # T3: was asm; head jtbl/data split off, asm from 0x11D8D0
       - [0x11D804, .rodata, func_800FB66C_ovl35]  # carve
@@ -5824,7 +5864,7 @@ segments:
       - [0x1203C0, c, func_800FCBC0_ovl35]  # carve was: - [0x1203C0, asm, ovl35_800FCBC0]  # carve
       - [0x1205BC, c, func_800FCDBC_ovl35]  # carve
       - [0x120A2C, c, func_800FD22C_ovl35]  # carve was: - [0x120A2C, asm, ovl35_800FD22C]  # carve
-      - [0x120DC4, asm, ovl35_800FD5C4]  # carve
+      - [0x120DC4, c, func_800FD5C4_ovl35]  # carve was: - [0x120DC4, asm, ovl35_800FD5C4]  # carve
       - [0x1210B0, c, func_800FD8B0_ovl35]  # carve
       - [0x121164, c, func_800FD964_ovl35]  # carve
       - [0x121184, c, func_800FD984_ovl35]  # carve
@@ -5895,6 +5935,7 @@ segments:
     vram: 0x800FA000
     align: 1
     exclusive_ram_id: ovlB
+    dir: ovl36
     subsegments:
       - [0x123800, rodata]  # gen:rockx5_splits  # T3: was textbin; ovl pointer words -> symbols
       - [0x123804, .rodata, func_800FD4A8_ovl36]  # carve
@@ -5928,10 +5969,10 @@ segments:
       - [0x125AFC, c, func_800FC2FC_ovl36]  # carve was: - [0x125AFC, asm, ovl36_800FC2FC]  # carve
       - [0x125B34, c, func_800FC334_ovl36]  # carve
       - [0x125B8C, c, func_800FC38C_ovl36]  # carve was: - [0x125B8C, asm, ovl36_800FC38C]  # carve
-      - [0x125BCC, asm, ovl36_800FC3CC]  # carve
+      - [0x125BCC, c, func_800FC3CC_ovl36]  # carve was: - [0x125BCC, asm, ovl36_800FC3CC]  # carve
       - [0x125C08, c, func_800FC408_ovl36]  # carve
       - [0x125C10, c, func_800FC410_ovl36]  # carve was: - [0x125C10, asm, ovl36_800FC410]  # carve
-      - [0x125C64, asm, ovl36_800FC464]  # carve
+      - [0x125C64, c, func_800FC464_ovl36]  # carve was: - [0x125C64, asm, ovl36_800FC464]  # carve
       - [0x125D08, c, func_800FC508_ovl36]  # carve
       - [0x125D44, asm, ovl36_800FC544]  # carve
       - [0x125E20, c, func_800FC620_ovl36]  # carve
@@ -5969,7 +6010,7 @@ segments:
       - [0x126C88, c, func_800FD488_ovl36]  # carve
       - [0x126CA8, c, func_800FD4A8_ovl36]  # carve was: - [0x126CA8, asm, ovl36_800FD4A8]  # carve
       - [0x126EB0, c, func_800FD6B0_ovl36]  # carve
-      - [0x126FD8, asm, ovl36_800FD7D8]  # carve
+      - [0x126FD8, c, func_800FD7D8_ovl36]  # carve was: - [0x126FD8, asm, ovl36_800FD7D8]  # carve
       - [0x12714C, c, func_800FD94C_ovl36]  # carve
       - [0x1272F0, c, func_800FDAF0_ovl36]  # carve
       - [0x127478, c, func_800FDC78_ovl36]  # carve
@@ -5996,6 +6037,7 @@ segments:
     vram: 0x800FA000
     align: 1
     exclusive_ram_id: ovlB
+    dir: ovl37
     subsegments:
       - [0x128800, textbin]  # gen:rockx5_splits
       - [0x128804, c, func_800FA004_ovl37]  # carve was: - [0x128804, asm]  # gen:rockx5_splits
@@ -6066,7 +6108,7 @@ segments:
       - [0x12BC58, c, func_800FD458_ovl37]  # carve
       - [0x12BC68, c, func_800FD468_ovl37]  # carve was: - [0x12BC68, asm, ovl37_800FD468]  # carve
       - [0x12BCA4, c, func_800FD4A4_ovl37]  # carve was: - [0x12BCA4, asm, ovl37_800FD4A4]  # carve
-      - [0x12BCF4, asm, ovl37_800FD4F4]  # carve
+      - [0x12BCF4, c, func_800FD4F4_ovl37]  # carve was: - [0x12BCF4, asm, ovl37_800FD4F4]  # carve
       - [0x12BD6C, c, func_800FD56C_ovl37]  # carve
       - [0x12BD80, c, func_800FD580_ovl37]  # carve
       - [0x12BDBC, c, func_800FD5BC_ovl37]  # carve was: - [0x12BDBC, asm, ovl37_800FD5BC]  # carve
@@ -6088,6 +6130,7 @@ segments:
     vram: 0x800FA000
     align: 1
     exclusive_ram_id: ovlB
+    dir: ovl38
     subsegments:
       - [0x12C800, rodata]  # gen:rockx5_splits  # T3: was textbin; ovl pointer words -> symbols
       - [0x12C824, asm]  # gen:rockx5_splits
@@ -6118,7 +6161,7 @@ segments:
       - [0x12E178, c, func_800FB978_ovl38]  # carve was: - [0x12E178, asm, ovl38_800FB978]  # carve
       - [0x12E1B4, c, func_800FB9B4_ovl38]  # carve
       - [0x12E1EC, c, func_800FB9EC_ovl38]  # carve was: - [0x12E1EC, asm, ovl38_800FB9EC]  # carve
-      - [0x12E268, asm, ovl38_800FBA68]  # carve
+      - [0x12E268, c, func_800FBA68_ovl38]  # carve was: - [0x12E268, asm, ovl38_800FBA68]  # carve
       - [0x12E310, c, func_800FBB10_ovl38]  # carve
       - [0x12E358, c, func_800FBB58_ovl38]  # carve
       - [0x12E3C8, c, func_800FBBC8_ovl38]  # carve
@@ -6186,6 +6229,7 @@ segments:
     vram: 0x800FA000
     align: 1
     exclusive_ram_id: ovlB
+    dir: ovl39
     subsegments:
       - [0x130800, rodata]  # gen:rockx5_splits  # T3: was textbin; ovl pointer words -> symbols
       - [0x130804, .rodata, func_800FB498_ovl39]  # carve
@@ -6314,6 +6358,7 @@ segments:
     vram: 0x800FA000
     align: 1
     exclusive_ram_id: ovlB
+    dir: ovl40
     subsegments:
       - [0x135800, textbin]  # gen:rockx5_splits
       - [0x135804, c, func_800FA004_ovl40]  # carve was: - [0x135804, asm]  # gen:rockx5_splits
@@ -6323,7 +6368,8 @@ segments:
       - [0x135954, c, func_800FA154_ovl40]  # carve
       - [0x1359DC, c, func_800FA1DC_ovl40]  # carve was: - [0x1359DC, asm, ovl40_800FA1DC]  # carve
       - [0x135A44, c, func_800FA244_ovl40]  # carve was: - [0x135A44, asm, ovl40_800FA244]  # carve
-      - [0x135B10, asm, ovl40_800FA310]  # carve
+      - [0x135B10, c, func_800FA310_ovl40]  # carve was: - [0x135B10, asm, ovl40_800FA310]  # carve
+      - [0x135B9C, asm, ovl40_800FA39C]  # carve
       - [0x135C64, c, func_800FA464_ovl40]  # carve
       - [0x135CD0, c, func_800FA4D0_ovl40]  # carve
       - [0x135D94, c, func_800FA594_ovl40]  # carve
@@ -6336,6 +6382,7 @@ segments:
     vram: 0x800FA000
     align: 1
     exclusive_ram_id: ovlB
+    dir: ovl41
     subsegments:
       - [0x136000, textbin]  # gen:rockx5_splits
       - [0x136004, c, func_800FA004_ovl41]  # carve was: - [0x136004, asm]  # gen:rockx5_splits
@@ -6372,6 +6419,7 @@ segments:
     vram: 0x800FA000
     align: 1
     exclusive_ram_id: ovlB
+    dir: ovl42
     subsegments:
       - [0x138000, textbin]  # gen:rockx5_splits
       - [0x138004, c, func_800FA004_ovl42]  # carve was: - [0x138004, asm]  # gen:rockx5_splits
@@ -6391,6 +6439,7 @@ segments:
     vram: 0x800FA000
     align: 1
     exclusive_ram_id: ovlB
+    dir: ovl43
     subsegments:
       - [0x138800, textbin]  # gen:rockx5_splits
       - [0x138804, c, func_800FA004_ovl43]  # carve was: - [0x138804, asm]  # gen:rockx5_splits
@@ -6409,6 +6458,7 @@ segments:
     vram: 0x800FA000
     align: 1
     exclusive_ram_id: ovlB
+    dir: ovl44
     subsegments:
       - [0x139000, textbin]  # gen:rockx5_splits
       - [0x139004, c, func_800FA004_ovl44]  # carve was: - [0x139004, asm]  # gen:rockx5_splits
@@ -6435,6 +6485,7 @@ segments:
     vram: 0x800FA000
     align: 1
     exclusive_ram_id: ovlB
+    dir: ovl45
     subsegments:
       - [0x13A000, textbin]  # gen:rockx5_splits
       - [0x13A004, c, func_800FA004_ovl45]  # carve was: - [0x13A004, asm]  # gen:rockx5_splits
@@ -6460,6 +6511,7 @@ segments:
     vram: 0x800FA000
     align: 1
     exclusive_ram_id: ovlB
+    dir: ovl46
     subsegments:
       - [0x13A800, textbin]  # gen:rockx5_splits
       - [0x13A804, c, func_800FA004_ovl46]  # carve was: - [0x13A804, asm]  # gen:rockx5_splits
@@ -6493,6 +6545,7 @@ segments:
     vram: 0x800FA000
     align: 1
     exclusive_ram_id: ovlB
+    dir: ovl47
     subsegments:
       - [0x13B800, textbin]  # gen:rockx5_splits
       - [0x13B804, c, func_800FA004_ovl47]  # carve was: - [0x13B804, asm]  # gen:rockx5_splits
@@ -6516,6 +6569,7 @@ segments:
     vram: 0x800FA000
     align: 1
     exclusive_ram_id: ovlB
+    dir: ovl48
     subsegments:
       - [0x13C000, textbin]  # gen:rockx5_splits
       - [0x13C004, c, func_800FA004_ovl48]  # carve was: - [0x13C004, asm]  # gen:rockx5_splits
@@ -6536,6 +6590,7 @@ segments:
     vram: 0x800FA000
     align: 1
     exclusive_ram_id: ovlB
+    dir: ovl49
     subsegments:
       - [0x13C800, textbin]  # gen:rockx5_splits
       - [0x13C804, c, func_800FA004_ovl49]  # carve was: - [0x13C804, asm]  # gen:rockx5_splits
@@ -6575,7 +6630,7 @@ segments:
       - [0x13DBB8, c, func_800FB3B8_ovl49]  # carve was: - [0x13DBB8, asm, ovl49_800FB3B8]  # carve
       - [0x13DC04, c, func_800FB404_ovl49]  # carve was: - [0x13DC04, asm, ovl49_800FB404]  # carve
       - [0x13DC84, c, func_800FB484_ovl49]  # carve
-      - [0x13DD00, asm, ovl49_800FB500]  # carve
+      - [0x13DD00, c, func_800FB500_ovl49]  # carve was: - [0x13DD00, asm, ovl49_800FB500]  # carve
       - [0x13DD9C, c, func_800FB59C_ovl49]  # carve
       - [0x13DE30, c, func_800FB630_ovl49]  # carve was: - [0x13DE30, asm, ovl49_800FB630]  # carve
       - [0x13DE80, c, func_800FB680_ovl49]  # carve
@@ -6592,6 +6647,7 @@ segments:
     vram: 0x800FA000
     align: 1
     exclusive_ram_id: ovlB
+    dir: ovl50
     subsegments:
       - [0x13F000, textbin]  # gen:rockx5_splits
       - [0x13F004, c, func_800FA004_ovl50]  # carve was: - [0x13F004, asm]  # gen:rockx5_splits
@@ -6624,7 +6680,7 @@ segments:
       - [0x13FE80, c, func_800FAE80_ovl50]  # carve
       - [0x13FEF8, c, func_800FAEF8_ovl50]  # carve was: - [0x13FEF8, asm, ovl50_800FAEF8]  # carve
       - [0x13FF70, c, func_800FAF70_ovl50]  # carve was: - [0x13FF70, asm, ovl50_800FAF70]  # carve
-      - [0x13FFE8, asm, ovl50_800FAFE8]  # carve
+      - [0x13FFE8, c, func_800FAFE8_ovl50]  # carve was: - [0x13FFE8, asm, ovl50_800FAFE8]  # carve
       - [0x140074, c, func_800FB074_ovl50]  # carve
       - [0x140184, asm, ovl50_800FB184]  # carve
       - [0x140224, c, func_800FB224_ovl50]  # carve
@@ -6639,6 +6695,7 @@ segments:
     vram: 0x800FA000
     align: 1
     exclusive_ram_id: ovlB
+    dir: ovl51
     subsegments:
       - [0x141000, textbin]  # gen:rockx5_splits
       - [0x141004, c, func_800FA004_ovl51]  # carve was: - [0x141004, asm]  # gen:rockx5_splits
@@ -6659,6 +6716,7 @@ segments:
     vram: 0x800FA000
     align: 1
     exclusive_ram_id: ovlB
+    dir: ovl52
     subsegments:
       - [0x141800, textbin]  # gen:rockx5_splits
       - [0x141804, c, func_800FA004_ovl52]  # carve was: - [0x141804, asm]  # gen:rockx5_splits
@@ -6698,6 +6756,7 @@ segments:
     vram: 0x800FA000
     align: 1
     exclusive_ram_id: ovlB
+    dir: ovl53
     subsegments:
       - [0x143800, textbin]  # gen:rockx5_splits
       - [0x143804, c, func_800FA004_ovl53]  # carve was: - [0x143804, asm]  # gen:rockx5_splits
@@ -6729,6 +6788,7 @@ segments:
     vram: 0x800FA000
     align: 1
     exclusive_ram_id: ovlB
+    dir: ovl54
     subsegments:
       - [0x145000, textbin]  # gen:rockx5_splits
       - [0x145004, c, func_800FA004_ovl54]  # carve was: - [0x145004, asm]  # gen:rockx5_splits
@@ -6759,6 +6819,7 @@ segments:
     vram: 0x800FA000
     align: 1
     exclusive_ram_id: ovlB
+    dir: ovl55
     subsegments:
       - [0x146800, textbin]  # gen:rockx5_splits
       - [0x146804, c, func_800FA004_ovl55]  # carve was: - [0x146804, asm]  # gen:rockx5_splits
@@ -6808,6 +6869,7 @@ segments:
     vram: 0x800FA000
     align: 1
     exclusive_ram_id: ovlB
+    dir: ovl56
     subsegments:
       - [0x14A000, textbin]  # gen:rockx5_splits
       - [0x14A004, c, func_800FA004_ovl56]  # carve was: - [0x14A004, asm]  # gen:rockx5_splits
@@ -6864,6 +6926,7 @@ segments:
     vram: 0x800FA000
     align: 1
     exclusive_ram_id: ovlB
+    dir: ovl57
     subsegments:
       - [0x14E000, textbin]  # gen:rockx5_splits
       - [0x14E004, c, func_800FA004_ovl57]  # carve was: - [0x14E004, asm]  # gen:rockx5_splits
@@ -6894,6 +6957,7 @@ segments:
     vram: 0x800FA000
     align: 1
     exclusive_ram_id: ovlB
+    dir: ovl58
     subsegments:
       - [0x14F800, textbin]  # gen:rockx5_splits
       - [0x14F804, c, func_800FA004_ovl58]  # carve was: - [0x14F804, asm]  # gen:rockx5_splits

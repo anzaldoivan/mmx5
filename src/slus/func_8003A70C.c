@@ -1,10 +1,9 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
-extern s32 func_80039ECC(u8* arg0);
-extern void func_8003B33C(u8*, s32);
 extern void func_8003B4CC(u8* obj, s32 arg1, s32 arg2);
-extern void func_8003CE10(u8*);
-extern void func_8003D0A0(u8* obj);
+extern void player_clear_dash(u8*);
+extern void set_stand_animation_by_hp(u8* obj);
 
 void func_8003A70C(u8* arg0) {
     s32 var_a2;
@@ -13,7 +12,7 @@ void func_8003A70C(u8* arg0) {
 
     if (func_80039ECC(arg0) == 0) {
         if (*(s8*)(arg0 + 2) == 0) {
-            func_8003CE10(arg0);
+            player_clear_dash(arg0);
             if (func_80039ECC(arg0) == 0) {
                 arg0[5] = 2;
                 arg0[6] = 0;
@@ -29,7 +28,7 @@ void func_8003A70C(u8* arg0) {
                         arg0[0x44] = temp_v1 - 8;
                     }
                 } else {
-                    func_8003D0A0(arg0);
+                    set_stand_animation_by_hp(arg0);
                 }
             }
         } else {

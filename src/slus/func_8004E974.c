@@ -1,7 +1,7 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
 extern u8 D_800D1F2B;
-extern void func_8002D89C(u8*);
 
 void func_8004E974(u8* a0) {
     if ((a0[2] & 0x3F) == 3) {

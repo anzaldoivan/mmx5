@@ -1,7 +1,7 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
-extern void func_8003B33C(u8*, s32);
-extern void func_8003CE30(u8*);
+extern void player_clear_attack(u8*);
 
 void func_8003ABD0(u8* p) {
     func_8003B33C(p, 0x12);
@@ -15,7 +15,7 @@ void func_8003ABD0(u8* p) {
         p[0x85] = 0x12;
     }
     p[0x86] = 3;
-    func_8003CE30(p);
+    player_clear_attack(p);
     p[0x5] = 0xD;
     p[0x6] = 0;
 }

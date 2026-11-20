@@ -1,7 +1,7 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
 extern u8 D_800C9318;
-extern u8 D_8009A0A0[];
 extern u8 D_80096D98[];
 extern u8 D_800D1DC0[];
 extern u8 D_800D1C00[];
@@ -27,7 +27,7 @@ s32 func_800317B8(u8* a0) {
     if (D_800C9318 != 0) {
         return 0;
     }
-    p = D_8009A0A0;
+    p = g_Player;
     if (((s8*)p)[0x7A] == 1) {
         return 0;
     }

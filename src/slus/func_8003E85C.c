@@ -4,8 +4,8 @@ extern void func_8003C5D8(u8* obj);
 extern void func_8003CEDC(u8* arg0, s32 arg1);
 extern s32 func_8003E96C(u8* p);
 extern void func_8003EA98(u8* p);
-extern void func_8003F250(u8* p);
-extern s32 func_8003FCC0(u8* p, s32 i);
+extern void player_reset_charge(u8* p);
+extern s32 player_set_charge_flash(u8* p, s32 i);
 extern void func_8003FD24(u8* p);
 
 void func_8003E85C(u8* p) {
@@ -37,7 +37,7 @@ void func_8003E85C(u8* p) {
         return;
     }
     if (func_8003E96C(p) != 0) {
-        func_8003F250(p);
+        player_reset_charge(p);
         if (((s8*)p)[0xA2] != 0) {
             func_8003CEDC(p, 0x32);
         } else {
@@ -48,8 +48,8 @@ void func_8003E85C(u8* p) {
     if (!(*(s32*)(p + 0xFC) & 0x1000)) {
         func_8003EA98(p);
         func_8003FD24(p);
-        if (func_8003FCC0(p, 0) == 0) {
-            func_8003FCC0(p, 1);
+        if (player_set_charge_flash(p, 0) == 0) {
+            player_set_charge_flash(p, 1);
         }
     }
 }

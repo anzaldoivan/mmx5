@@ -1,9 +1,10 @@
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
 #include "addr.h"
 
 extern u8 D_80078C80[];
 extern u8 D_8007A0E4[];
-extern void func_800171E8(u8*, s32);
 
 void func_8003B33C(u8* p, s32 idx) {
     u8 t;
@@ -34,5 +35,5 @@ void func_8003B33C(u8* p, s32 idx) {
                 D_1F80001C.bytes + *(s32*)(D_1F80001C.bytes + 0x1C);
         }
     }
-    func_800171E8(p, idx);
+    set_animation(p, idx);
 }

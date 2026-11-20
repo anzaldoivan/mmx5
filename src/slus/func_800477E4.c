@@ -1,9 +1,9 @@
 #include "types.h"
+#include "mmx5/object.h"
+#include "mmx5/globals.h"
 
 extern void func_800479F4(u8* a0);
 extern void func_8004795C(u8* a0);
-extern void func_8002DF54(u8* a0);
-extern void func_8002D9EC(u8* a0, s32 a1, s32 a2);
 
 void func_800477E4(u8* a0) {
     s32 mask;
@@ -21,6 +21,6 @@ void func_800477E4(u8* a0) {
             func_8004795C(a0);
         }
     }
-    func_8002DF54(a0);
+    move_object(a0);
     func_8002D9EC(a0, 0x2C, 0x20);
 }

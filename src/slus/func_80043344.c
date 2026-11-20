@@ -1,11 +1,10 @@
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/movement.h"
 
-extern u8* func_8002D27C(void);
-extern void func_8002DED4(u8* obj);
 extern s32 func_80038850(u8* self);
-extern s32 func_80039AE0(void* self);
-extern s32 func_80039D2C(u8* obj);
-extern void func_8003B33C(u8* obj, s32 arg1);
+extern s32 try_enter_wall_cling(void* self);
+extern s32 try_grab_ladder_from_air(u8* obj);
 extern void func_8003D344(void* arg0);
 
 void func_80043344(u8* obj) {
@@ -36,7 +35,7 @@ void func_80043344(u8* obj) {
         return;
     }
     obj[0x8E] = 0;
-    if (func_80039D2C(obj) == 0 && func_80039AE0(obj) == 0 &&
+    if (try_grab_ladder_from_air(obj) == 0 && try_enter_wall_cling(obj) == 0 &&
         func_80038850(obj) == 0) {
         obj[0x8E] = 1;
         *(s32*)(obj + 0x20) = 0;
@@ -48,7 +47,7 @@ void func_80043344(u8* obj) {
                 *(s32*)(obj + 0x20) = 0x18000;
             }
         }
-        func_8002DED4(obj);
+        apply_object_motion(obj);
         func_8003D344(obj);
     }
 }

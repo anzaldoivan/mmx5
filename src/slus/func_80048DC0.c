@@ -1,13 +1,13 @@
 #include "types.h"
+#include "mmx5/object.h"
+#include "mmx5/globals.h"
 
 extern Unk800770CC D_800770CC[];
 extern s32 D_800770B0[];
 
-extern void func_80017248(Ent487F8*);
-extern void func_8002DF54(Ent487F8*);
 extern void* func_8003157C(Ent487F8*, s16, s16);
 extern s32 func_80031630(void*);
-extern void func_80017214(Ent487F8*, s32, s32);
+extern void set_animation_frame(Ent487F8*, s32, s32);
 
 void func_80048DC0(Ent487F8* p) {
     Unk800770CC* e;
@@ -20,11 +20,11 @@ void func_80048DC0(Ent487F8* p) {
     s16 t;
     s16 u;
 
-    func_80017248(p);
+    animate_object(p);
     p->unk68 = &D_800770CC[p->unk45 & 0x3F];
     p->unk50 = &D_800770B0[p->unk45 & 0x3F];
     if (!(p->unk45 & 0x80)) {
-        func_8002DF54(p);
+        move_object(p);
     }
     e = p->unk68;
     x = p->unk90;
@@ -57,9 +57,9 @@ void func_80048DC0(Ent487F8* p) {
     found:
         d = p->unk92 - x;
         if (d >= 0 ? d >= 0x18 : x - p->unk92 >= 0x18) {
-            func_80017214(p, 3, 0);
+            set_animation_frame(p, 3, 0);
         } else {
-            func_80017214(p, 3, 1);
+            set_animation_frame(p, 3, 1);
         }
         p->unk95 = 4;
         if (p->unk15) {

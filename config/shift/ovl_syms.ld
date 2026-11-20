@@ -3,8 +3,8 @@
    ovlA/B_VRAM: region bases, exe in-section globals (scan.py symbolizes in-section names only): ovlA = the bss end;
    ovlB via an empty output section (ld drops it, the symbol stays relative to .main_bss). Plain `main_BSS_END + 0xB690`
    outside SECTIONS is made ABS by ld (non-SANE_EXPR arithmetic). */
-ovlA_VRAM = main_BSS_END;
-SECTIONS { .ovlB_mark main_BSS_END + 0xB690 (NOLOAD) : { ovlB_VRAM = .; } }
+g_ovl_a_vram = main_BSS_END;
+SECTIONS { .ovlB_mark main_BSS_END + 0xB690 (NOLOAD) : { g_ovl_b_vram = .; } }
 D_800EE974_ovl13 = 0x800EE974;
 D_800EE974_ovl15 = 0x800EE974;
 D_800EE974_ovl17 = 0x800EE974;

@@ -2,7 +2,7 @@
 
 Pass group: `regmove` → `sched1` → `local-alloc` → `global-alloc` → `reload` (+ `reload_cse_regs`).
 
-Source: `refs/gcc-2.95.2-psx/gcc/{regmove.c,local-alloc.c,global.c,reload.c,reload1.c,flow.c}` + `config/mips/mips.h` (as staged, `tools/codegen/stage.sh`).
+Source: `refs/gcc-2.95.2-psx/gcc/{regmove.c,local-alloc.c,global.c,reload.c,reload1.c,flow.c}` + `refs/gcc-2.95.2-psx/gcc/config/mips/mips.h` (as staged, `tools/codegen/stage.sh`).
 
 Translated from the kit map `gcc-2.7.2-map/regalloc.md` (2.7.2/2.8.1 lines). Those lines are never reused here — every line below is re-derived and audited by `cites.py check`.
 
@@ -10,7 +10,7 @@ Shape per item: pass → residual pattern → lever → experiment → citation.
 
 Experiment tags: `byte-proven` = a `levers.yaml` record green under `levers.py check`. `source-read` = mechanism read in the staged tree, not byte-tested in this task.
 
-Dumps: `PY tools/codegen/levers.py dump <file.c>` → `.run/codegen/dumps/<stem>/`. `.lreg` holds `Register N used R times across L insns` (gcc/flow.c:4243 fprintf). `.greg` `;; N regs to allocate: …` lists the global allocnos IN PRIORITY ORDER (gcc/global.c:1781 fprintf), then `;; Register dispositions:` (gcc/global.c:1831 fprintf).
+Dumps: the `dump <file.c>` mode of the lever check → `.run/codegen/dumps/<stem>/`. `.lreg` holds `Register N used R times across L insns` (gcc/flow.c:4243 fprintf). `.greg` `;; N regs to allocate: …` lists the global allocnos IN PRIORITY ORDER (gcc/global.c:1781 fprintf), then `;; Register dispositions:` (gcc/global.c:1831 fprintf).
 
 ## Pass order (2.95.2, -O2 as pinned: `-O2 -G0`)
 - regmove runs at -O2 (`flag_regmove = 1`: gcc/toplev.c:4872 flag_regmove, call gcc/toplev.c:4111 regmove_optimize) — **new vs kit** (2.7.2 has no regmove).

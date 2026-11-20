@@ -1,8 +1,8 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
 extern void func_80013288(s32);
 extern void func_8002002C(s32);
-extern void func_8002BBF8(void);
 extern u8* func_8002D2DC(void);
 extern u8 D_8007113C[];
 extern u8 D_80071154[];

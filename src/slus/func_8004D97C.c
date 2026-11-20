@@ -1,8 +1,8 @@
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/system.h"
 #include "addr.h"
 
-extern u8* func_8002D27C(void);
-extern s32 func_8002DF78(void);
 extern s32 func_8002B5B4(s32);
 extern u32* D_80098118;
 
@@ -17,13 +17,12 @@ void func_8004D97C(u8 n, u8* bytes, u8* src, s32 seed, s32 arg4) {
             p[0] = 0x41;
             p[1] = 3;
             p[2] = 1;
-            p[0x15] = func_8002DF78() & 0x40;
+            p[0x15] = random_byte() & 0x40;
             p[4] = 0;
             p[5] = 0;
             p[6] = 0;
-            *(s32*)(p + 8) = *(s32*)(src + 8) + ((func_8002DF78() & 3) << 16);
-            *(s32*)(p + 0xC) =
-                *(s32*)(src + 0xC) + ((func_8002DF78() & 3) << 16);
+            *(s32*)(p + 8) = *(s32*)(src + 8) + ((random_byte() & 3) << 16);
+            *(s32*)(p + 0xC) = *(s32*)(src + 0xC) + ((random_byte() & 3) << 16);
             p[0x58] = *bytes++;
             *(u8**)(p + 0x54) = src;
             *(s32*)(p + 0x30) = arg4;

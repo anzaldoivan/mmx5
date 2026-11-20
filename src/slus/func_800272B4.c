@@ -3,6 +3,6 @@
 
 #define DEDUP_NAME func_800272B4
 #define func_80034A04 func_80024698
-#define func_8003CDB8 func_80027BFC
+#define read_player_input func_80027BFC
 
-#include "../shared/func_80020F78.c"
+#include "shared/func_80020F78.c"

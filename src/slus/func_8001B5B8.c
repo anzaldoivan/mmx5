@@ -1,16 +1,13 @@
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/sound.h"
+#define D_800C931C_as_Pad800218E0 (*(Pad800218E0*)&D_800C931C)
 
 extern s32 func_8001D7E8(u8);
 extern void func_8001B984(void);
-extern s32 func_80016490(s32, s32, void*);
-extern s32 func_8002C50C(void);
-extern u8* func_8002D27C(void);
-extern u8 D_8009A420[];
 extern u8 D_8009A427;
-extern Pad800218E0 D_800C931C;
 extern u8 D_800D1F28[];
 extern void* D_800E81D4;
-extern u8 D_800E81D8[];
 
 static inline s32 func_8001B5B8_start(u8* arg0) {
     u8* b = D_800E81D8;
@@ -49,7 +46,7 @@ void func_8001B5B8(u8* arg0) {
     if (func_8001B5B8_start(arg0) != 0) {
         return;
     }
-    if (D_800C931C.unk4 & 0x1000) {
+    if (D_800C931C_as_Pad800218E0.unk4 & 0x1000) {
         if (D_8009A420[7] == 0) {
             for (i = 0; i < 7; i++) {
                 p = D_800E81D8;
@@ -64,7 +61,7 @@ void func_8001B5B8(u8* arg0) {
         }
         func_8001B984();
     }
-    if (D_800C931C.unk4 & 0x4000) {
+    if (D_800C931C_as_Pad800218E0.unk4 & 0x4000) {
         if (D_8009A420[7] == 7) {
             for (i = 0; i < 7; i++) {
                 p = D_800E81D8;
@@ -79,16 +76,16 @@ void func_8001B5B8(u8* arg0) {
         }
         func_8001B984();
     }
-    if (D_800C931C.unk4 & 0x10) {
-        func_80016490(0, 0x22, 0);
-        func_8002C50C();
+    if (D_800C931C_as_Pad800218E0.unk4 & 0x10) {
+        play_sound(0, 0x22, 0);
+        ((s32(*)())func_8002C50C)();
         D_800D1F28[0] = 7;
         D_800D1F28[1] = 5;
         return;
     }
     b = D_800E81D8;
-    if ((D_800C931C.unk4 & 0x40) && **(u8**)(b + 0xC) != 0xFF) {
-        func_80016490(0, 0x22, 0);
+    if ((D_800C931C_as_Pad800218E0.unk4 & 0x40) && **(u8**)(b + 0xC) != 0xFF) {
+        play_sound(0, 0x22, 0);
         b[7] = D_8009A427;
         p = func_8002D27C();
         if (p != 0) {

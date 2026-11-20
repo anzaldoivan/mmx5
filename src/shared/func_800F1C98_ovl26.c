@@ -1,11 +1,11 @@
 /* Shared body (DK-5), from the banked draft of func_800F1C98_ovl26 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/graphics.h"
 #include "addr.h"
 
 extern s16 D_8009A202;
 extern s32 D_800F95B0_ovl26;
 extern s32 D_800F95B4_ovl26;
-extern void DEDUP_CALLEE(Obj1C98*, s32);
 
 void DEDUP_NAME(Obj1C98* o) {
     s8 v;

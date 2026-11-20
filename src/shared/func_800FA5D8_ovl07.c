@@ -1,21 +1,21 @@
 /* Shared body (DK-5), from the banked draft of func_800FA5D8_ovl07 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/ovl07.h"
+#include "mmx5/sound.h"
 #include "addr.h"
 
-extern void func_8001296C(s32);
-extern s32 func_80016490(s32, s32, void*);
+extern void start_pad_vibration(s32);
 extern void func_800FCAD8_ovl07(u8* obj, s16 x, s16 y, s32 kind, s32 arg4);
 extern s16 D_80102014_ovl07;
 extern s16 D_80102016_ovl07;
-extern u8 D_80101C10_ovl07[][2];
 
 void DEDUP_NAME(u8* obj) {
     s16 x;
     s16 y;
 
     if (((s8*)obj)[0x45] == 2) {
-        func_8001296C(7);
-        func_80016490(2, 0x23, obj);
+        start_pad_vibration(7);
+        play_sound(2, 0x23, obj);
         x = D_80102014_ovl07 + 0x2250;
         y = D_80102016_ovl07 + 0x570;
         func_800FCAD8_ovl07(obj, x, y, 4, 0);

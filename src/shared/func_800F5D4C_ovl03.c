@@ -1,12 +1,11 @@
 /* Shared body (DK-5), from the banked draft of func_800F5D4C_ovl03 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/movement.h"
+#include "mmx5/globals.h"
 
-extern s16 D_8009A0AA;
 extern s16 D_800FA240_ovl03;
 extern s16 D_800FA242_ovl03;
 extern s16 D_800FA244_ovl03;
-extern void func_80017248(Obj5D4C*);
-extern void func_8002DED4(Obj5D4C*);
 
 void DEDUP_NAME(Obj5D4C* o) {
     if (D_8009A0AA > o->unkA) {
@@ -34,6 +33,6 @@ void DEDUP_NAME(Obj5D4C* o) {
         o->unk5 = 4;
         o->unk6 = 0;
     }
-    func_80017248(o);
-    func_8002DED4(o);
+    animate_object(o);
+    apply_object_motion(o);
 }

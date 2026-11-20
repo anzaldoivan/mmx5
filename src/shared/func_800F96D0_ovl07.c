@@ -1,9 +1,9 @@
 /* Shared body (DK-5), from the banked draft of func_800F96D0_ovl07 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
 #include "addr.h"
 
-extern void func_800171E8(u8* obj, s32 state);
-extern s32 func_8002C338(s32, void*, s32);
 extern u8 D_80075D40[];
 extern u32* D_80098118;
 extern u8 D_8009A0B4;
@@ -69,7 +69,7 @@ void DEDUP_NAME(u8* o) {
     D_1F80004C.bytes[0x94] = 0xFF;
     o[0x3] = 0;
     o[0x65] = 0;
-    func_800171E8(o, 2);
+    set_animation(o, 2);
     if (D_800D1C00[0xC] != 0xC) {
         D_80102014_ovl07 = 0;
         D_80102016_ovl07 = 0;

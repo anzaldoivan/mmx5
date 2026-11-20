@@ -1,4 +1,5 @@
 #include "types.h"
+#include "mmx5/globals.h"
 #include "addr.h"
 
 extern u8 D_800AA9A8[];
@@ -7,7 +8,6 @@ extern u8 D_800E8588[];
 extern u8 D_800E8D88[];
 extern u8 D_800E9188[];
 extern u8 D_8009A428;
-extern u8 D_8009A0A0[];
 extern u8 D_8009A3B8[];
 extern u8 D_800942A8[];
 extern u8 D_80093E10[];
@@ -46,7 +46,7 @@ void func_80024698(void) {
     }
     func_800272FC();
 
-    p = (s8*)D_8009A0A0;
+    p = (s8*)g_Player;
     if (p[3] != 0) {
         kind = p[5];
         save = *(s16*)(p + 0xA);

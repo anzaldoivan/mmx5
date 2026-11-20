@@ -1,15 +1,13 @@
 #include "types.h"
+#include "mmx5/object.h"
+#include "mmx5/globals.h"
 
-extern void func_8002DF54(u8* a0);
 extern u8* func_8002D078();
-extern s32 func_8002F8FC(u8* a0);
 extern void func_80044F78(void* arg0);
-extern void func_8002D9EC(u8* a0, s32 a1, s32 a2);
-extern u8 D_8009A0A0[];
 extern Obj8002CC08 D_80098120[];
 
 void func_800454A8(u8* arg0) {
-    u8* g = D_8009A0A0;
+    u8* g = g_Player;
     u8* s2 = arg0 + 0x8C;
     u32 lim;
     s32 n;
@@ -17,7 +15,7 @@ void func_800454A8(u8* arg0) {
     Obj8002CC08* p;
     u8* o;
 
-    func_8002DF54(arg0);
+    move_object(arg0);
     lim = 1;
     if (g[0xFA] == 4) {
         lim = 3;
@@ -54,7 +52,7 @@ void func_800454A8(u8* arg0) {
         }
         arg0[0x98] = 0;
     }
-    if (arg0[0x70] != 0 || (func_8002F8FC(arg0), arg0[0x70] != 0)) {
+    if (arg0[0x70] != 0 || (((s32(*)())func_8002F8FC)(arg0), arg0[0x70] != 0)) {
         func_80044F78(arg0);
         arg0[3] = 0;
         arg0[4] = 3;

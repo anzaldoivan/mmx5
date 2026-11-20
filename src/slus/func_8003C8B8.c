@@ -1,8 +1,8 @@
 #include "types.h"
 #include "addr.h"
 
-X4_Obj* func_8002D0E4(void);
-s32 func_80030820();
+X4_Obj* find_free_visual_obj(void);
+s32 get_tile_attr_bottom();
 s32 func_8002B5B4(s32);
 extern s16 D_800748E8[];
 extern u32* D_8007B2E8[];
@@ -17,8 +17,8 @@ void func_8003C8B8(void* arg0) {
     u8 f;
     u8 g;
 
-    if (func_80030820() == 0x24) {
-        obj = func_8002D0E4();
+    if (get_tile_attr_bottom() == 0x24) {
+        obj = find_free_visual_obj();
         if (obj != 0) {
             obj->active = 0x41;
             obj->id = 3;

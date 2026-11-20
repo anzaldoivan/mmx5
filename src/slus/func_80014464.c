@@ -1,6 +1,7 @@
 /* Adapted from mmx6 @c1c892d src/shared/SLUS_013.95/func_80014D50.c, AGPL-3.0 (THIRD_PARTY.md). */
 /* Adapted from sozud/mmx4 @29b62af src/main/3D88.c:func_800136B0, AGPL-3.0; proven shared with X6 by exact signature 630fc0e04ff1 (see THIRD_PARTY.md). */
 #include "types.h"
+#include "mmx5/globals.h"
 int CdGetSector(void* madr, int size);
 int CdPosToInt(void* p);
 extern u8* D_800E5A1C;

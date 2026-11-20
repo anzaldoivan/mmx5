@@ -1,11 +1,10 @@
 /* Shared body (DK-5), from the banked draft of func_800F8A40_ovl01 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/ovl01.h"
+#include "mmx5/sound.h"
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
 
-extern void func_80016490(s32, s32, void*);
-extern void func_800171E8(u8* obj, s32 state);
-extern void func_80017248(u8* obj);
-extern u8* func_8002D1A4();
-extern void func_800FB308_ovl01(u8* obj);
 extern u8 D_800FD590_ovl01[];
 extern u8 D_800FD594_ovl01[];
 extern u8 D_800FD598_ovl01[];
@@ -16,10 +15,10 @@ extern u8 D_800FD5A4_ovl01[];
 void DEDUP_NAME(u8* obj) {
     u8* child;
 
-    func_80017248(obj);
+    animate_object(obj);
     switch (*(s16*)(obj + 0x7C)) {
     case 0:
-        func_80016490(2, 9, obj);
+        play_sound(2, 9, obj);
         child = func_8002D1A4();
         if (child != 0) {
             child[0] = 0x41;
@@ -74,7 +73,7 @@ void DEDUP_NAME(u8* obj) {
         }
         break;
     case 24:
-        func_800171E8(obj, 0);
+        set_animation(obj, 0);
         func_800FB308_ovl01(obj);
         *(s16*)(obj + 0x7C) = 0x28;
         obj[6] = 2;

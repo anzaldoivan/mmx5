@@ -1,4 +1,5 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
 extern Slot8002D27C D_800D1F40[128];
 

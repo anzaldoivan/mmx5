@@ -23,7 +23,7 @@
 - `form1`: 2048 user bytes/sector, truncated to `size`. `form2`/`mixed`: 2336 bytes/sector (raw `16..2351`: subheader +
   data + EDC/ECC), not truncated. Their file size on disk = sectors*2336.
 - Retail: `STR/*.STR` and `XA/BGM.XA` are `mixed` (Form 1 video `0x48` / null `0x00` sectors among Form 2 audio `0x64`).
-- Reference cross-check (`tools/extract/refcheck.py`): dumpsxiso 2.30 writes XA/mixed files in the same 2336-byte/sector
+- Reference cross-check: dumpsxiso 2.30 writes XA/mixed files in the same 2336-byte/sector
   layout (raw `16..2351`). It writes Form 1 files truncated to `size`. The mapping is identity, with no normalisation.
 
 ## Manifest (`<out>/manifest.jsonl`)
@@ -41,7 +41,7 @@
 ## ROCK_X5.BIN TOC (inverse)
 - Tool: `tools/repack/rockx5.py pack` rebuilds the archive from `build/rockx5/ROCK_X5.BIN` + its ld map. The TOC is generated, never copied.
 - Sector 0: 59 rows `<II` (start sector = offset/2048, size bytes) for ovl00..ovl58, then `(0,0)`. The rest of sector 0 is zero.
-  The count comes from exe `addiu a2,zero,0x3a` (+1). Reader: `tools/loadmap/loadmap.py`.
+  The count comes from exe `addiu a2,zero,0x3a` (+1).
 - Layout: ovl00 at 0x800. Each next overlay is at the next 2048-aligned offset after the previous end. The file ends 2048-aligned (0x152000).
 - Gap rule: every gap (padNN, padend) is exactly the rounding remainder (retail: 59 gaps, max 0x7ec) and zero. If a gap breaks this rule, pack exits 1 and names it.
 - Named non-zero pads: none.
@@ -73,8 +73,8 @@
 ## ROCK_X5.DAT (inverse)
 - TOC (sector 0): `struct.pack('<II', start_sector, size_bytes)` x172, then `(0,0)`, rest of sector 0 zero. Same row form as the ROCK_X5.BIN TOC.
 - Layout: member 0 at sector 1. Member i at `start_sector*2048`, length `size_bytes`. Next member at the next 2048 boundary. Gap = rounding remainder, zero. Last member ends at the file end (23,406 sectors).
-- Reader: `func_80013EE8` (0x80013EE8). `CdSearchFile("\ROCK_X5.DAT;1")` at 0x80013F1C (name `D_80010004`), `CdRead` of 1 sector to 0x80105000, then copies the 172 rows into the file table `D_800E5C08[175][2]` as `{DAT LBA + start_sector, size}`. Rows 172-174 come from `CdSearchFile` on the name table `D_8006F3FC` (22-byte stride): `\STR\CAPLOGO.STR;1`, `\STR\X5OP.STR;1`, `\XA\BGM.XA;1`.
-- Indexing (R5): proven for the exe. The only DAT LBA source is the TOC copy above. `D_800E5C08` consumers are all in slus: `func_80014574` (x2), `func_80015A00`, `func_80015BA4`, `func_800157D4`. No `D_800E5C08` reference in asm/rockx5. A member that changes size moves later members, and the game follows that through the TOC. Unproven: whether any overlay keeps its own copy of an LBA.
+- Reader: `load_rock_dat_file_table` (0x80013EE8). `CdSearchFile("\ROCK_X5.DAT;1")` at 0x80013F1C (name `D_80010004`), `CdRead` of 1 sector to 0x80105000, then copies the 172 rows into the file table `D_800E5C08[175][2]` as `{DAT LBA + start_sector, size}`. Rows 172-174 come from `CdSearchFile` on the name table `D_8006F3FC` (22-byte stride): `\STR\CAPLOGO.STR;1`, `\STR\X5OP.STR;1`, `\XA\BGM.XA;1`.
+- Indexing (R5): proven for the exe. The only DAT LBA source is the TOC copy above. `D_800E5C08` consumers are all in slus: `func_80014574` (x2), `func_80015A00`, `func_80015BA4`, `pump_file_loads`. No `D_800E5C08` reference in asm/rockx5. A member that changes size moves later members, and the game follows that through the TOC. Unproven: whether any overlay keeps its own copy of an LBA.
 - Pack form (165 of 172 members): `u32 count, u32 total_size (== member size)`, then `count` rows `<II (type, size)>`. Header padded with zero to 2048. Entry k starts at `2048 + sum(align2048(size_j), j<k)`. Each entry is zero-padded to 2048. `total_size == 2048 + sum(align2048(size))`. Offsets are implicit (no offset table), padding byte 0x00 everywhere (header and entries).
 - Entry `type`: low 16 bits = kind, high 16 bits = class (observed 0, 1, 2). Per-class counts, sizes, kinds and readings: `### Entry taxonomy`.
 - Non-pack members (7, kind raw): 78 (u32 count 28 + ascending u32 table). 89 and 91 (u32 8, u32 0x474, `pQES` SEQ magic at +8). 96-99 (8192 B each, other form). Not decoded.

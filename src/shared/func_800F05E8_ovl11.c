@@ -1,15 +1,15 @@
 /* Shared body (DK-5), from the banked draft of func_800F05E8_ovl11 by tools/wave/gate.py rescan. */
 /* Adapted from mmx6 @c1c892d src/shared/rock_15/func_800EB56C.c, AGPL-3.0 (THIRD_PARTY.md). */
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
+#define g_Player_as_X4_Obj (*(X4_Obj*)&g_Player)
 
 #define M2C_UNK s32
 
 #define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8*)(expr) + (offset)))
 
-M2C_UNK func_800171E8(void*, M2C_UNK);
-
 extern M2C_UNK D_80075160;
-extern X4_Obj D_8009A0A0;
 extern M2C_UNK D_800F9760_ovl11;
 extern M2C_UNK D_800F9764_ovl11;
 extern M2C_UNK D_800F9768_ovl11;
@@ -23,7 +23,7 @@ extern M2C_UNK D_800F9854_ovl11;
 #define PTR(o) M2C_FIELD(self, void**, o)
 
 void DEDUP_NAME(void* self) {
-    X4_Obj* p = &D_8009A0A0;
+    X4_Obj* p = &g_Player_as_X4_Obj;
     s32 x;
     s32 t;
 
@@ -62,7 +62,7 @@ void DEDUP_NAME(void* self) {
         U8(0x15) = 0x40;
         break;
     }
-    func_800171E8(self, 0);
+    set_animation(self, 0);
     {
         // !FAKE: pins v to $2; gcc 2.7.2 allocates another register without it (byte mismatch)
         register s32 v asm("$2") = 2;

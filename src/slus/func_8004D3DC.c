@@ -1,7 +1,6 @@
 #include "types.h"
+#include "mmx5/globals.h"
 #include "addr.h"
-
-extern void func_8002D89C(u8*);
 
 void func_8004D3DC(u8* a0) {
     u8* base = D_801F3000;

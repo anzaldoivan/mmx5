@@ -1,6 +1,6 @@
 #include "types.h"
+#include "mmx5/sound.h"
 
-extern s32 func_80016490(s32, s32, void*);
 extern u8 D_800D1D10;
 
 void func_8003FD24(u8* arg0) {
@@ -34,7 +34,7 @@ void func_8003FD24(u8* arg0) {
         lo = 0xC;
     }
     if ((count & 0xFF) == lo) {
-        func_80016490(1, 7, arg0);
+        play_sound(1, 7, arg0);
         arg0[0x9C] = 1;
         return;
     }

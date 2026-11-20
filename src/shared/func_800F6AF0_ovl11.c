@@ -1,8 +1,7 @@
 /* Shared body (DK-5), from the banked draft of func_800F6AF0_ovl11 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/globals.h"
 
-extern void func_8003D29C(s32, s32);
-extern void func_8002D9EC(Ent6AF0*, s32, s32);
 extern u8 D_8009A0B5;
 
 void DEDUP_NAME(Ent6AF0* e) {

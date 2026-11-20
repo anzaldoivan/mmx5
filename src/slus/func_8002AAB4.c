@@ -2,7 +2,8 @@
 #include "types.h"
 
 #define DEDUP_NAME func_8002AAB4
-#define func_80017248 func_8002AB84
-#define func_8002DF54 func_8002AB64
+#define animate_object func_8002AB84
+#define move_object func_8002AB64
 
-#include "../shared/func_800EF574_ovl09.c"
+s32 func_8002AB64(s32); /* extern */
+#include "shared/func_800EF574_ovl09.c"

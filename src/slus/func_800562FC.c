@@ -1,6 +1,6 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
-extern s32 func_8002D760();
 extern s8 D_80093E66;
 extern s16 D_80093E68;
 extern s8 D_8009A42C;
@@ -25,7 +25,7 @@ void func_800562FC(u8* arg0) {
         if (*(u16*)(o + 4) == 0x8000) {
             s = q[3];
             if (s == 1) {
-                func_8002D760(arg0, q);
+                ((s32(*)())func_8002D760)(arg0, q);
                 D_800C9310 = s;
                 return;
             }

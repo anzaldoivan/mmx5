@@ -1,10 +1,10 @@
 /* Shared body (DK-5), from the banked draft of func_800F97BC_ovl06 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/globals.h"
 #include "addr.h"
 
 #define G D_1F80004C.bytes
-extern void func_8003D29C(s32, s32);
-extern u8* func_8002D144(void);
+extern u8* alloc_class3_slot(void);
 extern signed char D_8009A0A5;
 extern u8 D_8009A23F;
 extern signed char D_800D1C0C;
@@ -18,7 +18,7 @@ void DEDUP_NAME(Obj* a) {
             func_8003D29C(0x1D, 0x40);
         }
         a->timer = 0x3C;
-        p = func_8002D144();
+        p = alloc_class3_slot();
         if (p != 0) {
             p[0] = 1;
             p[1] = 0x18;

@@ -1,14 +1,14 @@
 /* Shared body (DK-5), from the banked draft of func_800FBFE8_ovl07 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/ovl07.h"
+#include "mmx5/graphics.h"
 #include "addr.h"
 
-extern void func_800171E8(u8* obj, s32 state);
 extern void func_800FCB98_ovl07(u8* obj, s32 x, s32 y, s32 mode);
-extern void func_800FC9E0_ovl07(u8* obj);
 extern s8 D_800D1C44;
 
 void DEDUP_NAME(u8* obj) {
-    func_800171E8(obj, 2);
+    set_animation(obj, 2);
     D_1F80004C.bytes[0x92] = 1;
     func_800FCB98_ovl07(obj, *(s16*)(obj + 0xA), *(s16*)(obj + 0xE), 2);
     *(s32*)(obj + 0x20) = 0;

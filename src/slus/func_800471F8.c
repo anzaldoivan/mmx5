@@ -1,14 +1,14 @@
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
 #include "addr.h"
 
-extern void func_800171E8(u8* obj, s32 state);
-extern u8* func_8002D0E4(void);
+extern u8* find_free_visual_obj(void);
 extern u8 D_80076FD4[];
 extern s32 D_80076FF4[];
 extern s32 D_80077014[];
 extern s32 D_80077034[];
 extern u8 D_8007B480[];
-extern u8 D_8009A0A0[];
 
 void func_800471F8(u8* obj) {
     u8* g;
@@ -20,7 +20,7 @@ void func_800471F8(u8* obj) {
     s32 y;
     s32 off;
 
-    g = D_8009A0A0;
+    g = g_Player;
     if (((s8*)g)[5] != 0x2B) {
         v = 3;
         goto store; // !FAKE: goto kept for the matching branch layout
@@ -56,9 +56,9 @@ void func_800471F8(u8* obj) {
     *(s32*)(obj + 0x28) = 0;
     *(s32*)(obj + 0x24) = D_80077014[i];
     *(s32*)(obj + 0x2C) = D_80077034[i];
-    func_800171E8(obj, 0);
+    set_animation(obj, 0);
     if (((s8*)obj)[2] == 0 || ((s8*)obj)[2] == 4) {
-        q = func_8002D0E4();
+        q = find_free_visual_obj();
         if (q != 0) {
             q[0] = 1;
             q[1] = 3;

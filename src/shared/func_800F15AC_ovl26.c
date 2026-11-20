@@ -1,11 +1,11 @@
 /* Shared body (DK-5), from the banked draft of func_800F15AC_ovl26 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/object.h"
+#include "mmx5/globals.h"
 
-extern u8 D_8009A0A0[];
 extern s16 D_8009A202;
-extern void DEDUP_CALLEE(Ent15AC*);
 
-#define PLR ((Ent15AC*)D_8009A0A0)
+#define PLR ((Ent15AC*)g_Player)
 #define ABS(x) ((x) < 0 ? -(x) : (x))
 
 void DEDUP_NAME(Ent15AC* o) {

@@ -1,13 +1,8 @@
 /* Shared body (DK-5), from the banked draft of func_800F6EE4_ovl03 by tools/wave/gate.py rescan. */
 #include "types.h"
-
-extern Obj66A0 D_8009A0A0;
-extern s32 func_800317B8(Obj66A0*);
-extern s32 func_80031DD0(Obj66A0*);
-extern s32 func_8004FD24(Obj66A0*);
-extern void func_8002D9EC(Obj66A0*, s32, s32);
-extern void func_80017248(Obj66A0*);
-extern void func_8002DED4(Obj66A0*);
+#include "mmx5/movement.h"
+#include "mmx5/globals.h"
+#define g_Player_as_Obj66A0 (*(Obj66A0*)&g_Player)
 
 void DEDUP_NAME(Obj66A0* o) {
     s32 vx;
@@ -31,20 +26,20 @@ void DEDUP_NAME(Obj66A0* o) {
             o->unk24 = -o->unk24;
         }
         if (++o->unk7C == 0x3C) {
-            if (D_8009A0A0.unkA > o->unkA) {
+            if (g_Player_as_Obj66A0.unkA > o->unkA) {
                 o->unk15 = 0x40;
             } else {
                 o->unk15 = 0;
             }
-            if (o->unkA > D_8009A0A0.unkA) {
+            if (o->unkA > g_Player_as_Obj66A0.unkA) {
                 o->unk20 = -vx;
             } else {
                 o->unk20 = 0;
             }
-            if (o->unkA == D_8009A0A0.unkA) {
+            if (o->unkA == g_Player_as_Obj66A0.unkA) {
                 o->unk20 = 0;
             }
-            if (D_8009A0A0.unkE < o->unkE) {
+            if (g_Player_as_Obj66A0.unkE < o->unkE) {
                 o->unk24 = vy;
             } else {
                 o->unk24 = -vy;
@@ -62,27 +57,27 @@ void DEDUP_NAME(Obj66A0* o) {
             break;
         }
         if (!(o->unk7C & 3)) {
-            if (D_8009A0A0.unkA > o->unkA) {
+            if (g_Player_as_Obj66A0.unkA > o->unkA) {
                 o->unk15 = 0x40;
             } else {
                 o->unk15 = 0;
             }
-            if (o->unkA > D_8009A0A0.unkA) {
+            if (o->unkA > g_Player_as_Obj66A0.unkA) {
                 o->unk20 = -vx;
             } else {
                 o->unk20 = vx;
             }
-            if (D_8009A0A0.unkE < o->unkE) {
+            if (g_Player_as_Obj66A0.unkE < o->unkE) {
                 o->unk24 = vy;
             } else {
                 o->unk24 = -vy;
             }
         }
-        d = o->unkA - D_8009A0A0.unkA;
-        if ((d >= 0) ? (d < 2) : (D_8009A0A0.unkA - o->unkA < 2)) {
+        d = o->unkA - g_Player_as_Obj66A0.unkA;
+        if ((d >= 0) ? (d < 2) : (g_Player_as_Obj66A0.unkA - o->unkA < 2)) {
             o->unk20 = 0;
         }
-        if (o->unkE == D_8009A0A0.unkE) {
+        if (o->unkE == g_Player_as_Obj66A0.unkE) {
             o->unk24 = 0;
         }
         break;
@@ -100,6 +95,6 @@ void DEDUP_NAME(Obj66A0* o) {
         o->unk4 = 2;
     }
     func_8002D9EC(o, 0x10, 0x10);
-    func_80017248(o);
-    func_8002DED4(o);
+    animate_object(o);
+    apply_object_motion(o);
 }

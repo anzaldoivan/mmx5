@@ -1,8 +1,9 @@
 /* Shared body (DK-5), from the banked draft of func_800EECF8_ovl29 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
+#define g_Player_as_X4_Obj (*(X4_Obj*)&g_Player)
 
-extern void DEDUP_CALLEE(ObjEECF8*, s32);
-extern X4_Obj D_8009A0A0;
 extern u8 D_800F9104_ovl29[];
 extern Unk800770CC D_800F8FB4_ovl29[];
 extern u8 D_800F8FBC_ovl29[];
@@ -14,10 +15,10 @@ void DEDUP_NAME(ObjEECF8* e) {
     e->unk7C = 0;
     e->unk5C = 6;
     e->unk61 = 0;
-    e->unk14 = D_8009A0A0.bg_offset;
+    e->unk14 = g_Player_as_X4_Obj.bg_offset;
     e->unk18 = e->x.val;
     e->unk1C = e->y.val;
-    if (D_8009A0A0.x_pos.val < e->x.val) {
+    if (g_Player_as_X4_Obj.x_pos.val < e->x.val) {
         e->unk15 = 0;
     } else {
         e->unk15 = 0x40;

@@ -1,10 +1,9 @@
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
 #include "addr.h"
 
-extern void func_800171E8(u8* obj, s32 state);
-extern void func_8002D89C(u8*);
 extern u8 D_80077534[];
-extern u8 D_8009A420[];
 
 void func_8004CFCC(u8* obj) {
     s8 kind = obj[2];
@@ -22,7 +21,7 @@ void func_8004CFCC(u8* obj) {
             *(s16*)(obj + 0x42) = 0x780A;
             *(s16*)(obj + 0xE) = (*(u8**)(obj + 0x50))[p[7] * 2] + 8;
             obj[0x54] = p[7];
-            func_800171E8(obj, 0);
+            set_animation(obj, 0);
         } else {
             *(s16*)(obj + 0x40) = 0x1E00;
             *(s32*)(obj + 0x3C) = *(s32*)(D_801F3000 + 0x14) + (s32)D_801F3000;

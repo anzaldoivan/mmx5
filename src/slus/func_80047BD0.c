@@ -1,14 +1,13 @@
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/sound.h"
+#include "mmx5/graphics.h"
 #include "addr.h"
 
-extern void func_80016490(s32, s32, void*);
-extern void func_800171E8(u8* obj, s32 state);
-extern void func_8002D9EC(u8* a0, s32 a1, s32 a2);
 extern void func_80045D44();
 extern u8 D_80077064[];
 extern u8 D_80077070[];
 extern u8 D_8007B424[];
-extern u8 D_8009A0A0[];
 
 void func_80047BD0(u8* obj) {
     s8 kind;
@@ -27,7 +26,7 @@ void func_80047BD0(u8* obj) {
     *(s16*)(obj + 0x42) = 0x7801;
     obj[0x16] = 1;
     *(u8**)(obj + 0x3C) = q;
-    g = D_8009A0A0;
+    g = g_Player;
     obj[0x15] = g[0x15];
     if (kind == 0) {
         func_80045D44(obj, g, (s8)obj[1]);
@@ -51,11 +50,11 @@ void func_80047BD0(u8* obj) {
     }
     obj[0x67] = 1;
     if (((s8*)obj)[2] == 0) {
-        func_800171E8(obj, 0);
-        func_80016490(1, 0x12, obj);
+        set_animation(obj, 0);
+        play_sound(1, 0x12, obj);
         obj[5] = 0;
     } else {
-        func_800171E8(obj, 2);
+        set_animation(obj, 2);
         obj[5] = 2;
         obj[0x8D] = 0x3C;
     }

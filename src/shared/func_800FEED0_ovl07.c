@@ -1,9 +1,9 @@
 /* Shared body (DK-5), from the banked draft of func_800FEED0_ovl07 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/system.h"
+#include "mmx5/graphics.h"
 
-extern void func_8001296C(s32);
-extern void func_800171E8(u8* obj, s32 state);
-extern u32 func_8002DF78(void);
+extern void start_pad_vibration(s32);
 extern signed char D_800D1C0C;
 
 void DEDUP_NAME(u8* obj) {
@@ -12,10 +12,10 @@ void DEDUP_NAME(u8* obj) {
     obj[0x16] = 4;
     switch ((s8)obj[2]) {
     case 0:
-        func_8001296C(2);
-        func_800171E8(obj, 0x17);
+        start_pad_vibration(2);
+        set_animation(obj, 0x17);
         obj[0x15] = 0;
-        d = (u8)(func_8002DF78() % 48) + 0xFFE8;
+        d = (u8)(((u32(*)())random_byte)() % 48) + 0xFFE8;
         *(u16*)(obj + 0xA) += d;
         if (D_800D1C0C != 0xC) {
             *(s16*)(obj + 0xE) = 0x480;
@@ -25,11 +25,11 @@ void DEDUP_NAME(u8* obj) {
         obj[4] = 3;
         break;
     case 1:
-        func_800171E8(obj, 1);
+        set_animation(obj, 1);
         obj[4] = 1;
         break;
     case 2:
-        func_800171E8(obj, 3);
+        set_animation(obj, 3);
         obj[4] = 1;
         break;
     }

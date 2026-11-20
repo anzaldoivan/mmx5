@@ -2,6 +2,6 @@
 #include "types.h"
 
 #define DEDUP_NAME func_80053500
-#define DEDUP_CALLEE func_8002DF54
+#define DEDUP_CALLEE move_object
 
-#include "../shared/func_800F27DC_ovl04.c"
+#include "shared/func_800F27DC_ovl04.c"

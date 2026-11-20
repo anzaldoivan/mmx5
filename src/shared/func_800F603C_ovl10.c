@@ -1,7 +1,7 @@
 /* Shared body (DK-5), from the banked draft of func_800F603C_ovl10 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/globals.h"
 
-extern void DEDUP_CALLEE(u8* obj);
 extern u8 D_800FBE00_ovl10[];
 
 void DEDUP_NAME(u8* obj) {

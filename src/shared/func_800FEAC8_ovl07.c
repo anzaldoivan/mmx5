@@ -1,7 +1,6 @@
 /* Shared body (DK-5), from the banked draft of func_800FEAC8_ovl07 by tools/wave/gate.py rescan. */
 #include "types.h"
-
-extern s32 DEDUP_CALLEE(EntFEAC8*);
+#include "mmx5/globals.h"
 
 void DEDUP_NAME(EntFEAC8* a0) {
     a0->unk3 = 0;

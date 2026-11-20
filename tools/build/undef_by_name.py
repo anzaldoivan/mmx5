@@ -41,11 +41,11 @@ def exe_syms(elf, out):
     """One name per exe-range address: FUNC/OBJECT before NOTYPE, splat boundary symbols last; no ABS, no `.L`
     (gas-local), no `*.NON_MATCHING`. The .ld twin works around bfd: MIPS ELF32 --just-symbols values are
     sign-extended (0xFFFFFFFF8...), so every R_MIPS_26 to one fails "relocation truncated to fit" (bits are right);
-    a script assignment of the same name overrides it with the zero-extended value. Region bases ovl<X>_VRAM (exe
+    a script assignment of the same name overrides it with the zero-extended value. Region bases g_ovl_<x>_vram (exe
     in-section, at/after the exe's end; rockx5 places its segments there) go to the .ld only, not to splat (T4.1)."""
     best, region = {}, {}
     for v, _, t, b, x, n in symbols(elf):
-        if b == "GLOBAL" and x not in ("UND", "ABS") and re.fullmatch(r"ovl[A-Z]_VRAM", n):
+        if b == "GLOBAL" and x not in ("UND", "ABS") and re.fullmatch(r"g_ovl_[a-z]_vram", n):
             region[n] = v
         if b != "GLOBAL" or x in ("UND", "ABS") or not EXE_LO <= v < EXE_HI:
             continue

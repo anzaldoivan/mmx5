@@ -5,4 +5,4 @@
 #define D_8007B5CC D_8007B5D4
 #define func_8004F5CC func_8004F654.NON_MATCHING
 
-#include "../shared/func_8004F5CC.c"
+#include "shared/func_8004F5CC.c"

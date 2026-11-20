@@ -1,9 +1,8 @@
 /* Shared body (DK-5), from the banked draft of func_800F3EF4_ovl10 by tools/wave/gate.py rescan. */
 #include "types.h"
-
-extern void func_80017248(u8* obj);
-extern void func_800171E8(u8* obj, s32 state);
-extern s32 func_8002DF78(void);
+#include "mmx5/system.h"
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
 
 void DEDUP_NAME(u8* o) {
     s32 v;
@@ -11,11 +10,11 @@ void DEDUP_NAME(u8* o) {
     v = 2;
     if (((s8*)o)[7] == v) {
         if (((s8*)o)[0x45] != v) {
-            func_80017248(o);
+            animate_object(o);
         }
         return;
     }
-    func_80017248(o);
+    animate_object(o);
     if (o[0x8A] == v) {
         if (((s8*)o)[2] != 0) {
             if (((s8*)o)[7] != 1) {
@@ -29,11 +28,11 @@ void DEDUP_NAME(u8* o) {
                 return;
             }
             if (o[0x8B] != 2) {
-                func_800171E8(o, 10);
+                set_animation(o, 10);
                 o[0x90] = v;
             } else {
             nine:
-                func_800171E8(o, 9);
+                set_animation(o, 9);
                 o[0x90] = 0;
             }
         } else {
@@ -57,7 +56,7 @@ void DEDUP_NAME(u8* o) {
             if (o[0x8B] == 0) {
                 goto nine; // !FAKE: goto kept for the matching branch layout
             }
-            func_800171E8(o, 10);
+            set_animation(o, 10);
             o[0x90] = v;
         }
     } else {
@@ -68,12 +67,12 @@ void DEDUP_NAME(u8* o) {
         if (((s8*)o)[0x45] != 3) {
             return;
         }
-        if ((u32)(func_8002DF78() & 0xF) >= 6) {
+        if ((u32)(random_byte() & 0xF) >= 6) {
             o[0x90] = v;
-            func_800171E8(o, 10);
+            set_animation(o, 10);
         } else {
             o[0x90] = 0;
-            func_800171E8(o, 9);
+            set_animation(o, 9);
         }
     }
     o[6] = 5;

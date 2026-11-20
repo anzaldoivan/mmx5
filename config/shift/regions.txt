@@ -3,7 +3,7 @@
 # max_end = retail vram + file size of the largest member; bound = first address a member image must not reach;
 # slack = bound - max_end. Overlays have no bss past their file image (highest overlay-held target 8010309C < ovl04 end).
 # Bound 80105000: lowest fixed exe RAM user above the regions = CD sector / image buffer base, lui/ori 0x80105000 at
-#   exe 80015DE4, 80015E34 (Ovl_ReadToc CdRead dest), 80013EF0, 80013F4C (CdRead dest), 80014798, 8001E814,
+#   exe 80015DE4, 80015E34 (read_rock_bin_toc CdRead dest), 80013EF0, 80013F4C (CdRead dest), 80014798, 8001E814,
 #   8001A310 (with 80109000, 80117000, 80125000). No exe or overlay constant lies in [8010309E, 80105000);
 #   highest exe-held overlay pointer 80101348, highest overlay constant 8010309C. PsyQ heap (InitHeap 800589D8, base 800EE974) covers the
 #   regions but has no malloc/calloc caller (unused). Next users above: 801F3004.. (exe), stack 801F8000..801FFFF0.

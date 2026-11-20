@@ -1,8 +1,6 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
-extern void func_80017248(u8* obj);
-extern void func_8002D89C(u8* obj);
-extern u8 D_8009A420[];
 extern u16 D_800C9320;
 extern s8 D_800D1F28;
 
@@ -27,6 +25,6 @@ void func_8004EA24(u8* obj) {
             obj[0x54] = D_8009A420[7];
         }
     }
-    func_80017248(obj);
+    animate_object(obj);
     func_8002D89C(obj);
 }

@@ -1,14 +1,13 @@
 /* Shared body (DK-5), from the banked draft of func_800EFC78_ovl11 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
 #include "addr.h"
 
-extern u8 D_8009A0A0[];
 extern u32* D_80098118;
 extern u8 D_800F9734_ovl11[];
 extern u8 D_800F96C8_ovl11[];
 extern s32 func_8002B5B4(s32);
-extern void func_800171E8(u8*, s32);
-extern u8* func_8002D27C(void);
 
 #define B(p, o) (*(u8*)((p) + (o)))
 #define SB(p, o) (*(s8*)((p) + (o)))
@@ -21,7 +20,7 @@ void DEDUP_NAME(u8* a0) {
     s32 v;
     u8 t;
 
-    t = D_8009A0A0[0x14];
+    t = g_Player[0x14];
     B(a0, 0x0) = 0x41;
     B(a0, 0x4) = 1;
     B(a0, 0x5) = 0;
@@ -48,9 +47,9 @@ void DEDUP_NAME(u8* a0) {
     if (SB(a0, 0x2) == 0) {
         W(a0, 0x24) = 0;
         W(a0, 0x2C) = 0x8000;
-        func_800171E8(a0, 4);
+        set_animation(a0, 4);
     } else {
-        func_800171E8(a0, 0);
+        set_animation(a0, 0);
     }
     p = func_8002D27C();
     if (p != 0) {
@@ -64,7 +63,7 @@ void DEDUP_NAME(u8* a0) {
         W(p, 0x8) = W(a0, 0x8);
         H(p, 0xE) = H(a0, 0xE) - 0x20;
         H(p, 0x42) = H(a0, 0x42);
-        B(p, 0x14) = D_8009A0A0[0x14];
+        B(p, 0x14) = g_Player[0x14];
         W(p, 0x50) = (s32)a0;
     }
 }

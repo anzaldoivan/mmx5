@@ -1,9 +1,9 @@
 /* Shared body (DK-5), from the banked draft of func_800FAC04_ovl58 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/object.h"
 
 extern D_8009A1F8_t D_8009A1F8;
 extern void func_8002C1C8(void);
-extern u8* func_8002D53C(void);
 
 void DEDUP_NAME(UnkObj* arg0) {
     u8* s;
@@ -12,7 +12,7 @@ void DEDUP_NAME(UnkObj* arg0) {
     arg0->unk4++;
     if (arg0->unk4 >= 0x3D) {
         func_8002C1C8();
-        s = func_8002D53C();
+        s = alloc_class6_slot();
         if (s != 0) {
             s[0] = 1;
             s[1] = 9;

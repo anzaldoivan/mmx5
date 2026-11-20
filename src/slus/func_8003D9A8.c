@@ -1,6 +1,6 @@
 #include "types.h"
+#include "mmx5/system.h"
 
-extern s32 func_8002DF78(void);
 extern void func_8003DAA4(s32 arg0);
 extern void func_8003DAF4(s32 arg0);
 
@@ -14,7 +14,7 @@ void func_8003D9A8(u8* obj) {
         i = 0;
         do {
             i++;
-            t = func_8002DF78() & 0x1F;
+            t = random_byte() & 0x1F;
             m = -0x80;
             func_8003DAA4(t | m);
             m = 0; // !FAKE: dead second set of m stops loop.c hoisting the constant

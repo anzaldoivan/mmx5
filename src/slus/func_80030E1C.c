@@ -3,4 +3,6 @@
 
 #define DEDUP_NAME func_80030E1C
 
-#include "../shared/func_80030E1C.c"
+s32 func_800311CC();
+
+#include "shared/func_80030E1C.c"

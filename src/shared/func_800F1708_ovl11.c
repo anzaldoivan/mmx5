@@ -1,7 +1,6 @@
 /* Shared body (DK-5), from the banked draft of func_800F1708_ovl11 by tools/wave/gate.py rescan. */
 #include "types.h"
-
-extern s32 DEDUP_CALLEE(s32, s32, void*);
+#include "mmx5/sound.h"
 
 void DEDUP_NAME(u8* arg0) {
     if (--arg0[0x8C] == 0 && arg0[0x91] == 0) {

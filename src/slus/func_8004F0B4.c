@@ -1,22 +1,20 @@
 #include "types.h"
+#include "mmx5/object.h"
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
 #include "addr.h"
 
-extern void func_800171E8(u8* obj, s32 state);
-extern void func_80017248(u8* obj);
-extern void func_8002D6FC(u8* obj);
-extern void func_8002D89C(u8* obj);
 extern void func_8004F654(u8* obj, u8* base);
 extern u8 D_8007B2E8[];
-extern u8 D_8009A0A0[];
 
 void func_8004F0B4(u8* obj) {
-    u8* base = D_8009A0A0;
+    u8* base = g_Player;
     s32 flag;
     u8* scr;
     s32 off;
 
     if (((s8*)base)[5] == 0x14) {
-        func_8002D6FC(obj);
+        clear_object_slot(obj);
         return;
     }
     if (((s8*)obj)[4] == 0) {
@@ -30,10 +28,10 @@ void func_8004F0B4(u8* obj) {
         obj[0x16] = 3;
         *(u8**)(obj + 0x3C) = scr + off;
         func_8004F654(obj, base);
-        func_800171E8(obj, 2);
+        set_animation(obj, 2);
         obj[4]++;
     } else {
-        func_80017248(obj);
+        animate_object(obj);
         func_8004F654(obj, base);
         flag = 0;
         if (((s8*)base)[0x84] > 0) {
@@ -47,7 +45,7 @@ void func_8004F0B4(u8* obj) {
             flag = 1;
         }
         if (flag != 0) {
-            func_8002D6FC(obj);
+            clear_object_slot(obj);
             return;
         }
     }

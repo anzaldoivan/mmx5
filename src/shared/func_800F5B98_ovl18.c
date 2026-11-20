@@ -2,7 +2,6 @@
 #include "types.h"
 
 extern u8 D_800D1C00[];
-extern void DEDUP_CALLEE(u8 arg0);
 
 void DEDUP_NAME(u8* obj) {
     D_800D1C00[0x10D] = 0;

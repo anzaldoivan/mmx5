@@ -1,9 +1,8 @@
 /* Adapted from mmx6 @c1c892d src/shared/SLUS_013.95/func_80051FE8.c, AGPL-3.0 (THIRD_PARTY.md). */
 #include "types.h"
-#define M2C_UNK s32
+#include "mmx5/graphics.h"
 
-M2C_UNK func_800171E8(void*, M2C_UNK);
-#define func_800171E8 ((void (*)(void*, s32))func_800171E8)
+#define set_animation ((void (*)(void*, s32))set_animation)
 
 #define F8(p, o) (*(s8*)((u8*)(p) + (o)))
 #define FU8(p, o) (*(u8*)((u8*)(p) + (o)))
@@ -26,21 +25,21 @@ void func_80055E2C(void* arg0, void* arg1) {
     switch (F8(arg0, 1)) {
     case 35:
         FU8(arg0, 0x16) = 3;
-        func_800171E8(arg0, F8(arg0, 2));
+        set_animation(arg0, F8(arg0, 2));
         break;
     case 36:
         FU8(arg0, 0x16) = one;
-        func_800171E8(arg0, 7);
+        set_animation(arg0, 7);
         break;
     case 37:
         v = F8(arg0, 2);
         FU8(arg0, 0x16) = 0;
         if (v == 0) {
-            func_800171E8(arg0, 8);
+            set_animation(arg0, 8);
         } else if (v == 3) {
-            func_800171E8(arg0, 0xE);
+            set_animation(arg0, 0xE);
         } else {
-            func_800171E8(arg0, 9);
+            set_animation(arg0, 9);
         }
         break;
     }
@@ -48,4 +47,4 @@ void func_80055E2C(void* arg0, void* arg1) {
     FU8(arg0, 4) = FU8(arg0, 4) + 1;
 }
 
-#undef func_800171E8
+#undef set_animation

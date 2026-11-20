@@ -1,4 +1,5 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
 s32 func_80031430(u8* arg0, s16 arg1);
 extern u8 D_800E9309;

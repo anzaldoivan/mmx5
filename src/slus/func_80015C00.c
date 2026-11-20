@@ -1,9 +1,9 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
 extern s32 func_80066D78(s32, s32);
 extern void* func_80066D98(void* func);
 extern s32 CdControlB(s32, s32, u8*);
-extern s32 func_80014464(void);
 extern s32 CdControl(s32, u8*, u8*);
 extern u8 D_8009811C;
 extern s32 D_800E5A40;

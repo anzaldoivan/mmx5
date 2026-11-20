@@ -1,6 +1,6 @@
 #include "types.h"
 
-extern void func_8003D0A0(u8* obj);
+extern void set_stand_animation_by_hp(u8* obj);
 extern X4_BackgroundObj D_8009A1F8[3];
 
 void func_80039F1C(u8* obj) {
@@ -26,7 +26,7 @@ void func_80039F1C(u8* obj) {
         go = 1;
     }
     if (go != 0) {
-        func_8003D0A0(obj);
+        set_stand_animation_by_hp(obj);
         t = D_8009A1F8[*(s8*)(obj + 0x14)].x_pos.i.hi;
         *(s8*)(obj + 0xD0) = -1;
         obj[0x15] = 0x40;

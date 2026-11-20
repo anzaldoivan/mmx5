@@ -1,0 +1,16 @@
+#include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
+#include "addr.h"
+
+void func_800F6934_ovl28(u8* obj) {
+    animate_object(obj);
+    if (D_1F80004C.bytes[0x8C] == 1) {
+        set_animation(obj, 5);
+        *(s32*)(obj + 0x20) = 0;
+        *(s32*)(obj + 0x28) = 0;
+        *(s8*)(obj + 0x67) = -1;
+        obj[7] = 0;
+        obj[6]++;
+    }
+}

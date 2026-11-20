@@ -1,4 +1,5 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
 extern Obj8002CD14 D_800C6A10[];
 extern Obj8002CD14 D_800C926C[];

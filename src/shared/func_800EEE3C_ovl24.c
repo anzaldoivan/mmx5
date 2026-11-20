@@ -1,9 +1,10 @@
 /* Shared body (DK-5), from the banked draft of func_800EEE3C_ovl24 by tools/wave/gate.py rescan. */
 /* Adapted from mmx6 @c1c892d src/shared/rock_20/func_800EA11C.c, AGPL-3.0 (THIRD_PARTY.md). */
 #include "types.h"
+#include "mmx5/globals.h"
+#define D_800D1C28_as_s8 (*(s8*)&D_800D1C28)
 
 extern u16 D_800C9320;
-extern s8 D_800D1C28;
 extern u16 D_800F4E60_ovl24;
 extern u16 D_800F5F74_ovl24;
 extern s16 D_800F5F76_ovl24;
@@ -15,7 +16,7 @@ void DEDUP_NAME(u8* self) {
     s32 t;
 
     if (D_800C9320 & 0x8FF) {
-        D_800D1C28 = D_800F5F78_ovl24;
+        D_800D1C28_as_s8 = D_800F5F78_ovl24;
         self[2]++;
         return;
     }

@@ -1,6 +1,7 @@
 #include "types.h"
+#include "mmx5/weapon.h"
+#include "mmx5/globals.h"
 
-extern u8* func_8003D3A8(s32, s32, s32, u8*);
 extern s32 func_8003E6FC(void*, s8);
 
 s32 func_80043B88(u8* arg0) {
@@ -26,7 +27,7 @@ s32 func_80043B88(u8* arg0) {
     if (*(s16*)(arg0 + 0xAE) < cost) {
         return 0;
     }
-    p = func_8003D3A8(1, 0x2B, 0, arg0);
+    p = player_spawn_weapon(1, 0x2B, 0, arg0);
     if (p != 0) {
         *(s16*)(arg0 + 0xAE) -= func_8003E6FC(arg0, 3);
         p[0x99] = 0;

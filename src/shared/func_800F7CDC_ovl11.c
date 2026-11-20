@@ -1,8 +1,8 @@
 /* Shared body (DK-5), from the banked draft of func_800F7CDC_ovl11 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/system.h"
 #include "addr.h"
 
-extern u32 DEDUP_CALLEE(void);
 extern u8 D_800F9D10_ovl11[];
 extern u8 D_800F9D14_ovl11[];
 
@@ -15,7 +15,7 @@ void DEDUP_NAME(u8* obj) {
         *(s32*)(obj + 0x20) = 0;
         *(s32*)(obj + 0x24) = 0;
         *(s16*)(obj + 0x7E) -= 1;
-        r = DEDUP_CALLEE() % 3;
+        r = ((u32(*)())random_byte)() % 3;
         if (r == 0) {
             obj[6] = 3;
             if (D_1F80004C.bytes[0x92] == 3) {

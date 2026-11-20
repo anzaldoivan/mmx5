@@ -1,7 +1,6 @@
 /* Shared body (DK-5), from the banked draft of func_800EF140_ovl09 by tools/wave/gate.py rescan. */
 #include "types.h"
-
-extern int DEDUP_CALLEE();
+#include "mmx5/object.h"
 
 void DEDUP_NAME(Ovl09Obj800EF140* obj) {
     obj->unk58 = 0;

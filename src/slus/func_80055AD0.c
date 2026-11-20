@@ -1,19 +1,18 @@
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
 
-extern void func_800171E8(u8* obj, s32 state);
-extern void func_8003D29C(s32, s32);
-extern u8* func_8002D0E4(void);
-extern u8 D_8009A0A0[];
+extern u8* find_free_visual_obj(void);
 
 void func_80055AD0(u8* obj) {
     u8* g;
     u8* p;
 
     if (obj[0x72] & 8) {
-        func_800171E8(obj, 1);
-        g = D_8009A0A0;
+        set_animation(obj, 1);
+        g = g_Player;
         func_8003D29C(0x18, g[0x15]);
-        p = func_8002D0E4();
+        p = find_free_visual_obj();
         if (p != 0) {
             p[0] = 0x41;
             p[1] = 0x24;

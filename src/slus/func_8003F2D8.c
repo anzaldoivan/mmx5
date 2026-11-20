@@ -1,4 +1,5 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
 extern void func_8003B4CC(u8* obj, s32 arg1, s32 arg2);
 

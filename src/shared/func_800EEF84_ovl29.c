@@ -1,8 +1,8 @@
 /* Shared body (DK-5), from the banked draft of func_800EEF84_ovl29 by tools/wave/gate.py rescan. */
 #include "types.h"
+#include "mmx5/graphics.h"
 
 extern u8 func_80030AE4(ObjEECF8*, s16, s16);
-extern void func_800171E8(ObjEECF8*, s32);
 extern s32 D_8009A0A8;
 
 void DEDUP_NAME(ObjEECF8* e) {
@@ -25,7 +25,7 @@ void DEDUP_NAME(ObjEECF8* e) {
         e->unk8C = 0x78;
         e->unk5 = 3;
         e->unk6 = 0;
-        func_800171E8(e, 2);
+        set_animation(e, 2);
     }
     if (e->unk88 == 0) {
         if (e->unk15) {
@@ -33,14 +33,14 @@ void DEDUP_NAME(ObjEECF8* e) {
                 e->unk5 = 3;
                 e->unk6 = 0;
                 e->unk8C = 0x78;
-                func_800171E8(e, 2);
+                set_animation(e, 2);
             }
         } else {
             if (e->unk70 & 2) {
                 e->unk5 = 3;
                 e->unk6 = 0;
                 e->unk8C = 0x78;
-                func_800171E8(e, 2);
+                set_animation(e, 2);
             }
         }
     } else {
@@ -51,7 +51,7 @@ void DEDUP_NAME(ObjEECF8* e) {
                 e->unk6 = 0;
                 e->unk88 = 0;
                 e->unk8C = 0x3C;
-                func_800171E8(e, 2);
+                set_animation(e, 2);
             }
         } else {
             if (dx < 0 || (e->unk70 & 2)) {
@@ -59,7 +59,7 @@ void DEDUP_NAME(ObjEECF8* e) {
                 e->unk6 = 0;
                 e->unk88 = 0;
                 e->unk8C = 0x3C;
-                func_800171E8(e, 2);
+                set_animation(e, 2);
             }
         }
     }

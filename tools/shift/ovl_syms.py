@@ -18,7 +18,7 @@ from undef_by_name import symbols  # noqa: E402
 
 PIN = re.compile(r"^([A-Za-z_][A-Za-z0-9_]*) = 0x[0-9A-Fa-f]+;$")
 MAP = re.compile(r"^\s+0x([0-9a-f]+)\s+([A-Za-z_][A-Za-z0-9_]*)(?:$| = )")
-REGIONS = ("ovlA_VRAM", "ovlB_VRAM")
+REGIONS = ("g_ovl_a_vram", "g_ovl_b_vram")
 
 
 def pinned(path):

@@ -1,12 +1,12 @@
 #include "types.h"
+#include "mmx5/system.h"
+#include "mmx5/globals.h"
 
 extern void func_80012BD8(void);
 extern void func_800132F8(s8 arg);
 extern void func_80022D98(void);
 extern void func_800272B4(void);
-extern s32 func_8002DF78(void);
 extern s8 D_8009A0A4;
-extern u8 D_8009A420[];
 extern u16 D_800C9320;
 extern u8 D_800D51A0[];
 
@@ -29,7 +29,7 @@ void func_80020D98(u8* arg0) {
         arg0[1]++;
         func_800132F8(8);
     }
-    func_8002DF78();
+    random_byte();
     func_80022D98();
     func_800272B4();
 }

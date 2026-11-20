@@ -1,8 +1,8 @@
 #include "types.h"
+#include "mmx5/globals.h"
+#include "mmx5/sound.h"
+#define D_8009A420_as_s32 (*(s32*)&D_8009A420)
 
-extern void func_80016490(s32, s32, void*);
-extern u8 D_8009A0A0[];
-extern s32 D_8009A420;
 extern u8 D_800D1C00[];
 
 void func_8003432C(u8* obj) {
@@ -13,11 +13,11 @@ void func_8003432C(u8* obj) {
     s32 v;
     s32 t;
 
-    if (!(D_8009A420 & 1)) {
+    if (!(D_8009A420_as_s32 & 1)) {
         flag = 0;
         if (*(s32*)(obj + 0x34) != 0) {
             for (i = 0; i < 9; i++) {
-                b = D_8009A0A0;
+                b = g_Player;
                 p = (s16*)(b + 0xA8) + i;
                 if (*p >= *(s16*)(b + 0x148)) {
                     *p = *(s16*)(b + 0x148);
@@ -45,7 +45,7 @@ void func_8003432C(u8* obj) {
         }
         i = 0;
         if (D_800D1C00[0x78] & 0x7F) {
-            b = D_8009A0A0;
+            b = g_Player;
             for (p = (s16*)(b + 0xA8); i < 9; i++, p++) {
                 if (!(*p < *(s16*)(b + 0x148))) {
                     *p = *(s16*)(b + 0x148);
@@ -65,8 +65,8 @@ void func_8003432C(u8* obj) {
                     v--;
                 }
                 D_800D1C00[0x78] = v;
-                if (!(D_8009A420 & 3)) {
-                    func_80016490(0, 0x17, 0);
+                if (!(D_8009A420_as_s32 & 3)) {
+                    play_sound(0, 0x17, 0);
                 }
                 return;
             }

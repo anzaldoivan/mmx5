@@ -24,18 +24,19 @@ mode filename count
 raise protected 1 2026-10-14 psxdecomp 0.6.0: the guard hook fails closed (upgrade from the first build of the floor)
 raise protected 1 2026-10-14 [own] gate runs make no-rom in the build container: the host has no toolchain
 raise protected 1 2026-11-14 T5 dup-member ledger rows
+raise protected 1 2026-11-16 T8 scan.py basis maps ovlNN names to rockx5
+raise protected 1 2026-11-18 4.2 T1 no-rom.yml runs the public tier only (R112)
 raise asm 2 2026-10-26 first public release with the floor: header.s and game_80013348.s were already counted in dev's baseline
 raise asm 2 2026-10-26 first public release with the floor: header.s and game_80013348.s were already counted in dev's baseline
-68 pin
-232 goto
+74 pin
+233 goto
 21 goto-unmarked
-21732 offset
-37 address
+22429 offset
+42 address
 11 cast
-10073 field
+10171 field
 2 asm
-3103 placeholder
-40948 placeholder-use
-6 struct
-16587 extern
-8517 filename
+3066 placeholder
+29242 placeholder-use
+10404 extern
+8526 filename

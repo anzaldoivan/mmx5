@@ -1,18 +1,15 @@
 #include "types.h"
-
-extern void func_80017248(u8* obj);
-extern void func_8002D6FC(u8* obj);
-extern void func_8002DF54(u8* a0);
-extern void func_8002D89C(u8*);
+#include "mmx5/object.h"
+#include "mmx5/globals.h"
 
 void func_80050138(u8* obj) {
-    func_80017248(obj);
+    animate_object(obj);
     if (*(s8*)(obj + 0x46) < 0) {
-        func_8002D6FC(obj);
+        clear_object_slot(obj);
         return;
     }
     if (*(s8*)(obj + 2) != 0) {
-        func_8002DF54(obj);
+        move_object(obj);
     }
     func_8002D89C(obj);
 }
