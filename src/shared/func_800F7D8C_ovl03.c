@@ -1,9 +1,8 @@
-/* Shared body (DK-5), from the banked draft of func_800F7D8C_ovl03 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/movement.h"
 #include "mmx5/globals.h"
 
-void DEDUP_NAME(Obj7D8C* obj) {
+void func_800F7D8C_ovl03(Obj7D8C* obj) {
     if (++obj->timer == 20) {
         if (obj->kind == 2) {
             obj->vel = 0x30000;

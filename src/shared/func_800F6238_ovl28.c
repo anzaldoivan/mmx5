@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800F6238_ovl28 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/globals.h"
 #include "addr.h"
@@ -7,7 +6,7 @@ extern void func_800F6A8C_ovl28(u8* obj);
 extern u8 D_800FE198_ovl28[][3];
 
 #define G D_1F80004C.bytes
-void DEDUP_NAME(u8* obj) {
+void func_800F6238_ovl28(u8* obj) {
     animate_object(obj);
     if ((s8)obj[0x45] == 1) {
         func_800F6A8C_ovl28(obj);

@@ -1,9 +1,8 @@
-/* Shared body (DK-5), from the banked draft of func_800EF714_ovl02 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/ovl02.h"
 #include "mmx5/graphics.h"
 
-void DEDUP_NAME(Obj800EF714* o) {
+void func_800EF714_ovl02(Obj800EF714* o) {
     s32 v;
 
     v = o->unk24;
@@ -17,7 +16,7 @@ void DEDUP_NAME(Obj800EF714* o) {
             o->unk24 = -v;
             o->unk8A = 0;
             o->unk8B = 2;
-            DEDUP_CALLEE(o, 2);
+            set_animation(o, 2);
         }
     } else {
         if (o->unkE >=
@@ -26,11 +25,11 @@ void DEDUP_NAME(Obj800EF714* o) {
             o->unk24 = -v;
             o->unk8A = 0;
             o->unk8B = 1;
-            DEDUP_CALLEE(o, 1);
+            set_animation(o, 1);
         }
     }
     if (o->unk24 != o->unk80) {
         o->unk84 = 0x3C;
-        DEDUP_CALLEE(o, 1);
+        set_animation(o, 1);
     }
 }

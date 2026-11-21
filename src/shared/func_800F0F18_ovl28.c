@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800F0F18_ovl28 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/object.h"
 #include "mmx5/globals.h"
@@ -6,7 +5,7 @@
 
 #define SCRATCH_CTX D_1F80004C.ctx0f18
 
-void DEDUP_NAME(Ent0F18* a0) {
+void func_800F0F18_ovl28(Ent0F18* a0) {
     Ctx0F18* c;
 
     animate_object(a0);

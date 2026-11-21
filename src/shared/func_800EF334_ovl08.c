@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800EF334_ovl08 by tools/wave/gate.py rescan. */
 /* Adapted from mmx6 @c1c892d src/shared/rock_06/func_800EB070.c, AGPL-3.0 (THIRD_PARTY.md). */
 #include "types.h"
 #include "mmx5/movement.h"
@@ -8,7 +7,7 @@
 
 #define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8*)(expr) + (offset)))
 
-void DEDUP_NAME(void* arg0) {
+void func_800EF334_ovl08(void* arg0) {
     ((M2C_UNK(*)())animate_object)();
     if (M2C_FIELD(arg0, s8*, 6) == 0) {
         if (M2C_FIELD(arg0, s8*, 0x45) != 0) {

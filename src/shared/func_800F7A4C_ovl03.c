@@ -1,11 +1,10 @@
-/* Shared body (DK-5), from the banked draft of func_800F7A4C_ovl03 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/ovl03.h"
 #include "mmx5/system.h"
 #include "mmx5/movement.h"
 #include "mmx5/globals.h"
 
-void DEDUP_NAME(u8* arg0) {
+void func_800F7A4C_ovl03(u8* arg0) {
     u32 r;
 
     r = random_byte() & 0xF;

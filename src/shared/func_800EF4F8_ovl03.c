@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800EF4F8_ovl03 by tools/wave/gate.py rescan. */
 /* Adapted from mmx6 @c1c892d src/shared/rock_09/func_800EC3B8.c, AGPL-3.0 (THIRD_PARTY.md). */
 #include "types.h"
 #include "mmx5/object.h"
@@ -8,7 +7,7 @@ s32 func_8002DFF8(void* arg0, s32 arg1, s32 arg2);
 void set_velocity_from_angle(void*, s32);
 #define g_Player_as_X4_Obj (*(X4_Obj*)&g_Player)
 
-void DEDUP_NAME(X4_Obj* self) {
+void func_800EF4F8_ovl03(X4_Obj* self) {
     X4_Obj* pl;
     s32 v;
     s32 dx;

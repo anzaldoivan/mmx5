@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800F01A0_ovl08 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/system.h"
 #include "mmx5/object.h"
@@ -9,7 +8,7 @@ extern void silence_sound(s32, s32);
 
 #define ABS(x) ((x) < 0 ? -(x) : (x))
 
-void DEDUP_NAME(Obj01A0* arg0) {
+void func_800F01A0_ovl08(Obj01A0* arg0) {
 
     arg0->timer8C--;
     if (arg0->timer8C == 0) {

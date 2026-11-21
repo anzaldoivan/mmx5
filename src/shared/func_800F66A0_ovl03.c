@@ -1,10 +1,9 @@
-/* Shared body (DK-5), from the banked draft of func_800F66A0_ovl03 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/movement.h"
 #include "mmx5/globals.h"
 #define g_Player_as_Obj66A0 (*(Obj66A0*)&g_Player)
 
-void DEDUP_NAME(Obj66A0* o) {
+void func_800F66A0_ovl03(Obj66A0* o) {
     s32 vx;
     s32 r;
     s32 vy;

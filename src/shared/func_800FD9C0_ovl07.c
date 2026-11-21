@@ -1,9 +1,8 @@
-/* Shared body (DK-5), from the banked draft of func_800FD9C0_ovl07 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/globals.h"
 
-void DEDUP_NAME(EntFD9C0* e) {
-    DEDUP_CALLEE(e);
+void func_800FD9C0_ovl07(EntFD9C0* e) {
+    animate_object(e);
     if (e->unk7 == 0) {
         e->unk90 = 60;
         e->unk7++;

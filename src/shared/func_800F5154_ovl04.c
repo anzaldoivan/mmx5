@@ -1,11 +1,10 @@
-/* Shared body (DK-5), from the banked draft of func_800F5154_ovl04 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/system.h"
 #include "mmx5/globals.h"
 
 extern u8 D_8009A240;
 
-void DEDUP_NAME(u8* obj) {
+void func_800F5154_ovl04(u8* obj) {
     animate_object(obj);
     obj[0x91] = random_byte() & 0xF;
     if (obj[0x91] < 5) {

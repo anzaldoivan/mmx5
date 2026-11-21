@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800F8BB4_ovl00 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/sound.h"
 #include "mmx5/movement.h"
@@ -7,7 +6,7 @@
 
 extern u8 D_800FB448_ovl00[][6];
 
-void DEDUP_NAME(u8* obj) {
+void func_800F8BB4_ovl00(u8* obj) {
     u8* p;
 
     if (--*(s16*)(obj + 0x7C) == 0) {

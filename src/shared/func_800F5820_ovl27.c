@@ -1,8 +1,7 @@
-/* Shared body (DK-5), from the banked draft of func_800F5820_ovl27 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/sound.h"
 
-void DEDUP_NAME(Obj5820* arg0) {
+void func_800F5820_ovl27(Obj5820* arg0) {
     if (--arg0->unk7C == 0) {
         arg0->unk7C = 0x28;
         if (--arg0->unk7E != -1) {

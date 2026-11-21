@@ -1,9 +1,8 @@
-/* Shared body (DK-5), from the banked draft of func_800F1590_ovl28 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/object.h"
 #include "mmx5/globals.h"
 
-void DEDUP_NAME(u8* obj) {
+void func_800F1590_ovl28(u8* obj) {
     animate_object(obj);
     if (*(s16*)(obj + 0x7C) != 0) {
         *(s16*)(obj + 0x7C) -= 1;

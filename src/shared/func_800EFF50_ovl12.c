@@ -1,9 +1,8 @@
-/* Shared body (DK-5), from the banked draft of func_800EFF50_ovl12 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/globals.h"
 #include "mmx5/sound.h"
 
-void DEDUP_NAME(ObjEFF50* self) {
+void func_800EFF50_ovl12(ObjEFF50* self) {
     ObjEFF50* obj;
 
     if (self->unk45 != 0) {

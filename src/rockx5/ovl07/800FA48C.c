@@ -1,0 +1,10 @@
+#include "types.h"
+#include "mmx5/ovl07.h"
+#include "mmx5/sound.h"
+#include "addr.h"
+#include "mmx5/system.h"
+#include "mmx5/graphics.h"
+#include "mmx5/object.h"
+#include "mmx5/globals.h"
+
+#include "shared/func_800FA48C_ovl07.c"

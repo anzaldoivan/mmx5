@@ -1,11 +1,10 @@
-/* Shared body (DK-5), from the banked draft of func_800F690C_ovl11 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/object.h"
 
 extern u8 D_8009A197;
 extern void (*D_800FA048_ovl11[])(u8* obj, u8* parent);
 
-void DEDUP_NAME(u8* obj) {
+void func_800F690C_ovl11(u8* obj) {
     u8* parent = *(u8**)(obj + 0x50);
 
     obj[0x47] = parent[0x47];
@@ -38,6 +37,6 @@ void DEDUP_NAME(u8* obj) {
         }
     }
     if (*(signed char*)(parent + 4) == 2) {
-        DEDUP_CALLEE(obj);
+        clear_object_slot(obj);
     }
 }

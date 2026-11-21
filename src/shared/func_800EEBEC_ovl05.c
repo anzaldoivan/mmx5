@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800EEBEC_ovl05 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/globals.h"
 #include "mmx5/graphics.h"
@@ -13,7 +12,7 @@ extern u8 D_800F4E3C_ovl05[][16];
 extern s8 D_800F4EC0_ovl05[][32];
 extern s8 func_8002E024(ObjEEBEC*, u8*);
 
-void DEDUP_NAME(ObjEEBEC* s) {
+void func_800EEBEC_ovl05(ObjEEBEC* s) {
     u8 t = g_Player[0x14];
 
     s->unk30 = D_800F4DE8_ovl05;
@@ -42,4 +41,42 @@ void DEDUP_NAME(ObjEEBEC* s) {
     s->unk4 = 1;
     s->unk5 = 2;
     s->unk6 = 0;
+}
+
+extern u8 D_8009A197;
+extern u8 D_800F4EBC_ovl05[];
+extern void (*D_800F4FD8_ovl05[])(u8*);
+extern void func_80054440(u8* a0, s32 a1);
+extern void func_8004D4F4(s32 a0, void* a1, u8* a2);
+extern void func_800EF390_ovl05(u8* a0);
+extern s32 func_8002D800(u8* a0);
+extern int func_8002D7A0();
+
+void func_800EED34_ovl05(u8* obj) {
+    signed char kind;
+
+    animate_object(obj);
+    if (func_80031DD0(obj) < 0) {
+        func_80054440(obj, 0x12);
+        goto die;
+    }
+    kind = *(signed char*)(obj + 2);
+    if ((kind == 0 && (obj[0x70] & 7)) || (kind == 1 && (obj[0x70] & 0xE)) ||
+        (kind == 2 && (obj[0x70] & 0xD)) || (kind == 3 && (obj[0x70] & 0xB))) {
+    die:
+        func_8004FD24(obj);
+        func_8004D4F4(4, D_800F4EBC_ovl05, obj);
+        obj[4] = 2;
+        return;
+    }
+    if (D_8009A197 == 0) {
+        func_800EF390_ovl05(obj);
+        D_800F4FD8_ovl05[*(signed char*)(obj + 5)](obj);
+    }
+    func_800317B8(obj);
+    if (func_8002D800(obj) == 0) {
+        func_8002D89C(obj);
+        return;
+    }
+    func_8002D7A0(obj);
 }

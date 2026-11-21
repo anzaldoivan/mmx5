@@ -1,10 +1,9 @@
-/* Shared body (DK-5), from the banked draft of func_800FAC00_ovl01 by tools/wave/gate.py rescan. */
 #include "types.h"
 
 extern u8 D_800D1C00[];
 extern s16 D_8009A1F8[];
 
-void DEDUP_NAME(u8* obj) {
+void func_800FAC00_ovl01(u8* obj) {
     if ((signed char)D_800D1C00[0xF] == 0) {
         if ((signed char)D_800D1C00[0xC] != 0xC) {
             s16* p = D_8009A1F8;

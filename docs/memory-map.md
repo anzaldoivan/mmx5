@@ -53,8 +53,8 @@ This file is the static load map. Every claim below is
   all-zero. `static`
 - read_rock_bin_member is 80015EB4(a0=index, a1=dest). The dest comes from the call sites 800136EC (base `*80010000`, initial
   800EE970), 800136B4 and 80013568 (800FA000). `static`
-- poll_rock_bin_read is 80014290. It reads a row of the TOC table 800E6188 (`src/slus/poll_rock_bin_read.c:59-60`), as read_rock_bin_member does
-  (`src/slus/read_rock_bin_member.c:42-43`). It also calls CdReset, CdControlB and VSync. `static`
+- poll_rock_bin_read is 80014290. It reads a row of the TOC table 800E6188 (`src/slus/file/poll_rock_bin_read.c:59-60`), as read_rock_bin_member does
+  (`src/slus/file/read_rock_bin_member.c:42-43`). It also calls CdReset, CdControlB and VSync. `static`
 - The region bounds are 80105000 for A and B (the base of the exe CD/image buffer) and 800FA000 for A.lo. See
   config/shift/regions.txt. `static`
 - If the blob contains `jr ra` (03E00008), the kind is `code`. If not, the kind is `data`. A `-` dest means that the

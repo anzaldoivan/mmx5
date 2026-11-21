@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800F079C_ovl12 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/system.h"
 #include "mmx5/sound.h"
@@ -8,7 +7,7 @@
 
 extern u8 D_800F1F94_ovl12[][6];
 
-void DEDUP_NAME(Obj079C* obj) {
+void func_800F079C_ovl12(Obj079C* obj) {
     if (obj->unk70 & 8) {
         if (obj->unk24 != 0) {
             play_sound(2, 0x42, obj);

@@ -1,8 +1,9 @@
-/* Shared body (DK-5), from the banked draft of func_800EF9BC_ovl05 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/title.h"
 #include "mmx5/globals.h"
 #include "addr.h"
+#include "mmx5/movement.h"
+#include "mmx5/graphics.h"
 
 extern u8 D_8009A197;
 extern void (*D_800F52EC_ovl05[])(u8*);
@@ -11,7 +12,7 @@ extern void func_800F0990_ovl05(u8* obj);
 extern void func_8004D4F4(s32 a0, void* a1, u8* a2);
 extern void func_80054440(u8* a0, s32 a1);
 
-void DEDUP_NAME(u8* obj) {
+void func_800EF9BC_ovl05(u8* obj) {
     s32 r;
 
     if (D_8009A197 == 0) {
@@ -50,4 +51,55 @@ void DEDUP_NAME(u8* obj) {
         obj[4] = 3;
     }
     func_8002FB58(obj);
+}
+
+extern s8 D_800D1C44;
+
+void func_800EFB28_ovl05(u8* o) {
+    s32 d;
+
+    if (--*(s16*)(o + 0x7C) == -1 || D_1F80004C.bytes[0x85] != 0) {
+        o[6]++;
+    } else if (D_800D1C44 == 0) {
+        d = D_8009A0AA - *(s16*)(o + 0xA);
+        if ((d >= 0) ? (d < 0x90) : (*(s16*)(o + 0xA) - D_8009A0AA < 0x90)) {
+            o[6]++;
+        }
+    } else {
+        d = D_8009A0AA - *(s16*)(o + 0xA);
+        if ((d >= 0) ? (d < 0x70) : (*(s16*)(o + 0xA) - D_8009A0AA < 0x70)) {
+            o[6]++;
+        }
+    }
+}
+
+extern u8 D_800F52C8_ovl05[];
+
+void func_800EFBFC_ovl05(u8* obj) {
+    u8* p = g_Player;
+
+    if (((*(s16*)(p + 0xA) - *(s16*)(obj + 0xA)) < 0
+             ? (*(s16*)(obj + 0xA) - *(s16*)(p + 0xA))
+             : (*(s16*)(p + 0xA) - *(s16*)(obj + 0xA))) >= 3) {
+        u8* q = g_Player;
+
+        if (*(s16*)(q + 0xA) < *(s16*)(obj + 0xA)) {
+            *(s32*)(obj + 0x20) = 0xFFFF0000;
+        } else {
+            *(s32*)(obj + 0x20) = 0x10000;
+        }
+    } else {
+        *(s32*)(obj + 0x20) = 0;
+    }
+    apply_object_motion(obj);
+    if (obj[0x70] & 8) {
+        *(u8**)(obj + 0x54) = D_800F52C8_ovl05;
+        set_animation(obj, 0xE);
+        D_1F80004C.bytes[0x84] = 1;
+        *(s32*)(obj + 0x24) = 0;
+        *(s32*)(obj + 0x2C) = 0;
+        *(s32*)(obj + 0x20) = 0;
+        *(s32*)(obj + 0x28) = 0;
+        obj[6]++;
+    }
 }

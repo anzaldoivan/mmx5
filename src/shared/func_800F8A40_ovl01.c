@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800F8A40_ovl01 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/ovl01.h"
 #include "mmx5/sound.h"
@@ -12,7 +11,7 @@ extern u8 D_800FD59C_ovl01[];
 extern u8 D_800FD5A0_ovl01[];
 extern u8 D_800FD5A4_ovl01[];
 
-void DEDUP_NAME(u8* obj) {
+void func_800F8A40_ovl01(u8* obj) {
     u8* child;
 
     animate_object(obj);

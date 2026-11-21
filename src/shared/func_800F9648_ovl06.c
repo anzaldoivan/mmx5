@@ -1,5 +1,4 @@
-/* Shared body (DK-5), from the banked draft of func_800F9648_ovl06 by tools/wave/gate.py rescan. */
-/* rockx5 DEDUP_NAME: twin of func_800F6B60_ovl11 (dup0771), child stored at +0x80. */
+/* Twin of func_800F6B60_ovl11 (dup0771), child stored at +0x80. */
 #include "types.h"
 #include "mmx5/globals.h"
 #include "addr.h"
@@ -9,7 +8,7 @@ extern u8* alloc_class3_slot(void);
 #define S16(p, o) (*(s16*)((p) + (o)))
 #define U16(p, o) (*(u16*)((p) + (o)))
 #define S8(p, o) (*(signed char*)((p) + (o)))
-void DEDUP_NAME(u8* obj) {
+void func_800F9648_ovl06(u8* obj) {
     u8* child;
     s16 r;
     s32 v;

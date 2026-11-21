@@ -26,6 +26,7 @@ raise protected 1 2026-10-14 [own] gate runs make no-rom in the build container:
 raise protected 1 2026-11-14 T5 dup-member ledger rows
 raise protected 1 2026-11-16 T8 scan.py basis maps ovlNN names to rockx5
 raise protected 1 2026-11-18 4.2 T1 no-rom.yml runs the public tier only (R112)
+raise protected 1 2026-11-21 AI policy text: drop the last sentence
 raise asm 2 2026-10-26 first public release with the floor: header.s and game_80013348.s were already counted in dev's baseline
 raise asm 2 2026-10-26 first public release with the floor: header.s and game_80013348.s were already counted in dev's baseline
 74 pin
@@ -36,7 +37,7 @@ raise asm 2 2026-10-26 first public release with the floor: header.s and game_80
 11 cast
 10171 field
 2 asm
-3066 placeholder
-29242 placeholder-use
+4226 placeholder
+29384 placeholder-use
 10404 extern
-8526 filename
+4718 filename

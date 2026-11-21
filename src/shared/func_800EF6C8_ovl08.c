@@ -1,7 +1,10 @@
-/* Shared body (DK-5), from the banked draft of func_800EF6C8_ovl08 by tools/wave/gate.py rescan. */
-/* Adapted from mmx6 @c1c892d src/shared/rock_06/func_800EB41C.c, AGPL-3.0 (THIRD_PARTY.md). */
 #include "types.h"
 #include "mmx5/graphics.h"
+#include "mmx5/title.h"
+#include "mmx5/object.h"
+#include "mmx5/globals.h"
+
+/* Adapted from mmx6 @c1c892d src/shared/rock_06/func_800EB41C.c, AGPL-3.0 (THIRD_PARTY.md). */
 
 #define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8*)(expr) + (offset)))
 
@@ -9,7 +12,7 @@ extern s32 D_80074E40;
 extern s32 D_800F3B44_ovl08;
 extern s32 D_800F3B48_ovl08;
 
-void DEDUP_NAME(void* arg0) {
+void func_800EF6C8_ovl08(void* arg0) {
     s32 var_a1;
     u8 temp_v1;
     s32 temp_v0;
@@ -39,5 +42,42 @@ void DEDUP_NAME(void* arg0) {
     M2C_FIELD(arg0, s32**, 0x58) = &D_80074E40;
     M2C_FIELD(arg0, u8*, 0x60) = 2;
     M2C_FIELD(arg0, u16*, 0xE) = M2C_FIELD(arg0, u16*, 0xE) + 3;
-    DEDUP_CALLEE(arg0, 8);
+    set_animation(arg0, 8);
+}
+
+extern u8 D_8009A197;
+s32 func_8004FC64(u8* a0);
+
+void func_800EF780_ovl08(u8* a0) {
+    s32 state;
+
+    if (D_8009A197 == 0) {
+        animate_object();
+        move_object(a0);
+    }
+    if (func_800317B8(a0) != 0) {
+        state = 2;
+        goto store;
+    }
+    if (func_80031DD0(a0) < 0) {
+        state = 2;
+        goto store;
+    }
+    if (a0[0x70] == 0) {
+        ((s32(*)())func_8002F8FC)(a0);
+        if (a0[0x70] == 0) {
+            goto check;
+        }
+    }
+    func_8004FC64(a0);
+    a0[4]++;
+    return;
+check:
+    if (is_off_screen(a0, 0x20, 0x20) == 0) {
+        func_8002D9EC(a0, 0x10, 0x10);
+        return;
+    }
+    state = a0[4] + 1;
+store:
+    a0[4] = state;
 }

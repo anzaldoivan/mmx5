@@ -1,10 +1,9 @@
-/* Shared body (DK-5), from the banked draft of func_800FD89C_ovl07 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/globals.h"
 
 extern void* D_80101E54_ovl07[];
 
-void DEDUP_NAME(u8* o) {
+void func_800FD89C_ovl07(u8* o) {
     if (*(s8*)(*(u8**)(o + 0x7C) + 4) == 2) {
         o[4] = 2;
         return;

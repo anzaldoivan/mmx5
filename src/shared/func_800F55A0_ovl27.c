@@ -1,11 +1,10 @@
-/* Shared body (DK-5), from the banked draft of func_800F55A0_ovl27 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/graphics.h"
 #include "addr.h"
 
 extern void func_800F5C58_ovl27(Obj5524*);
 
-void DEDUP_NAME(Obj5524* obj) {
+void func_800F55A0_ovl27(Obj5524* obj) {
     u8* sp;
 
     if (--obj->timer7E == 0) {
@@ -21,5 +20,13 @@ void DEDUP_NAME(Obj5524* obj) {
             set_animation(obj, 1);
             obj->state6++;
         }
+    }
+}
+
+void func_800F5648_ovl27(u8* arg0) {
+    if (*(s8*)(arg0 + 0x45) != 0) {
+        D_1F80004C.bytes[0x87] = 0;
+        arg0[5] = 3;
+        arg0[6] = 0;
     }
 }

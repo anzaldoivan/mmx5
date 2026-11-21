@@ -45,7 +45,7 @@ def units(alias, root=None):
         m = SEG.match(line)
         if m:
             seg = m.group(1)
-        m = SUB.match(line)
+        m = SUB.match(layout.list_form(line))
         if m:
             off, kind, name = m.groups()
             name = name or off.upper()
@@ -53,9 +53,10 @@ def units(alias, root=None):
                 uname, cats = "main/" + name, ["sdk"] if SDK.match(name) else ["game", "main"]
             else:
                 uname, cats = "rock/%s/%s" % (seg, name), ["game", "rock", "rock." + seg]
-            src, obj = ((layout.locate, layout.obj) if kind == "c" else (layout.asm_s, layout.asm_obj))
-            out.append(dict(name=uname, kind=kind, src=str(src(alias, name, **kw)), obj=str(obj(alias, name, **kw)),
-                            cats=cats))
+            # seg: a merged unit's first address can start a unit in two overlays (C0422)
+            src = (layout.locate if kind == "c" else layout.asm_s)(alias, name, seg=seg, **kw)
+            obj = os.path.join("build", alias, str(src.with_suffix(".o")))
+            out.append(dict(name=uname, kind=kind, src=str(src), obj=obj, cats=cats))
     return out
 
 

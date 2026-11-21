@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800493F0 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/object.h"
 #include "mmx5/globals.h"
@@ -8,7 +7,7 @@ extern s32 D_800770B0[];
 
 extern void func_8002F460(Ent493F0*);
 
-void DEDUP_NAME(Ent493F0* p) {
+void func_800493F0(Ent493F0* p) {
     animate_object(p);
     p->unk68 = &D_800770CC[p->unk45 & 0x3F];
     p->unk50 = &D_800770B0[p->unk45 & 0x3F];

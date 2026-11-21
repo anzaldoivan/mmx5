@@ -1,7 +1,5 @@
 # Mega Man X5 decompilation (mmx5)
 
-[![named functions](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/anzaldoivan/mmx5/main/docs/badges/named.json)](docs/progress.md) [![open functions](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/anzaldoivan/mmx5/main/docs/badges/open.json)](docs/progress.md) [![finished functions](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/anzaldoivan/mmx5/main/docs/badges/finished.json)](docs/progress.md)
-
 ## Description
 
 **mmx5** is a matching decompilation of ***Mega Man X5*** (PlayStation, Capcom, 2000), USA release SLUS-01334. It
@@ -15,7 +13,7 @@ with their own dump can rebuild the binaries from this README alone.
 
 <!-- psxdecomp: ai-policy -->
 > [!IMPORTANT]
-> **AI policy:** LLMs produce negligible decompilation results without good guidance. Investigate and familiarize yourself with the console's architecture and the game you are decompiling, and always use your own judgment. Humans drive the decisions. AI reads and writes the code.
+> **AI policy:** LLMs produce negligible decompilation results without good guidance. Investigate and familiarize yourself with the console's architecture and the game you are decompiling, and always use your own judgment. Humans drive the decisions.
 
 <!-- psxdecomp:disc:begin -->
 | Disc | Serial | Executable | SHA-1 of the data track |
@@ -113,6 +111,8 @@ Progress bars powered by [decomp.dev][psxd-progress].
 [psxd-progress]: https://decomp.dev/anzaldoivan/mmx5
 <!-- psxdecomp:progress:end -->
 
+[![named functions](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/anzaldoivan/mmx5/main/docs/badges/named.json)](docs/progress.md) [![open functions](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/anzaldoivan/mmx5/main/docs/badges/open.json)](docs/progress.md) [![finished functions](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/anzaldoivan/mmx5/main/docs/badges/finished.json)](docs/progress.md)
+
 A function counts as matched only when the whole binary still hashes identically with it compiled from C. Names and
 types come only from evidence, never from guesses. An address-named placeholder is honest.
 [docs/progress.md](docs/progress.md) counts the named, open and finished functions.
@@ -135,7 +135,7 @@ On a good build, `make check` prints `check: 2 of 2 green, 0 failed`. The detail
 
 | Path | Contents |
 |---|---|
-| `src/` | Decompiled C, one directory per binary (`src/slus/`, `src/rockx5/`) and the code they share (`src/shared/`). `src/rockx5/` has one folder for each overlay (`src/rockx5/ovlNN/`) |
+| `src/` | Decompiled C, one directory per binary (`src/slus/`, `src/rockx5/`) and the code they share (`src/shared/`). `src/rockx5/` has one folder for each overlay (`src/rockx5/ovlNN/`). A `slus` unit with names of one system is in `src/slus/<system>/` |
 | `include/` | Headers and assembler macros |
 | `config/` | splat configurations, symbol files, hash checks, the firewall's rules |
 | `tools/` | Extraction, build, repack, asset, replay and shift tools |

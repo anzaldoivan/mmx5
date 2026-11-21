@@ -1,0 +1,106 @@
+#include "types.h"
+#include "mmx5/system.h"
+#include "mmx5/globals.h"
+#include "addr.h"
+#include "mmx5/object.h"
+
+extern u8* alloc_class3_slot(void);
+
+void func_800F28A8_ovl26(u8* p) {
+    u8* q;
+    u8* r;
+    s8 v;
+    s32 n;
+    s32 t;
+
+    if (--*(s16*)(p + 0x7C) == 0) {
+        p[5] = 2;
+        r = alloc_class3_slot();
+        if (r != 0) {
+            r[0] = 1;
+            r[1] = 0x1A;
+            *(s16*)(r + 0xA) = *(s16*)(p + 0xA);
+            *(s16*)(r + 0xE) = *(s16*)(p + 0xE);
+            *(u8**)(D_1F80004C.bytes + 0x84) = r;
+        }
+    }
+    func_8002D9EC(p, 0x60, 0x60);
+    if (--*(s16*)(p + 0x7E) == -1) {
+        *(u16*)(p + 0x42) ^= 0x8000;
+        p[0x61] -= 5;
+        if ((s8)p[0x61] >= 0x1A) {
+            p[0x61] = 0;
+        }
+        v = p[0x61];
+        n = v < 6;
+        if (n) {
+            n = 5;
+        } else {
+            n = v;
+        }
+        *(s16*)(p + 0x7E) = n;
+        q = func_8002D27C();
+        if (q != 0) {
+            q[0] = 0x41;
+            q[1] = 0x3D;
+            q[2] = 1;
+            *(s32*)(q + 0x3C) = *(s32*)(p + 0x3C);
+            *(s16*)(q + 0x40) = *(s16*)(p + 0x40);
+            *(s32*)(q + 0x30) = *(s32*)(p + 0x30);
+            *(s16*)(q + 0x42) = *(s16*)(p + 0x42);
+            t = (random_byte() & 3) * 16 - 0x30;
+            *(s16*)(q + 0xA) = *(s16*)(p + 0xA) + t;
+            t = (random_byte() & 1) * 16 - 0x10;
+            *(s16*)(q + 0xE) = *(s16*)(p + 0xE) + t;
+            q[0x15] = random_byte() & 0x40;
+            *(u8**)(q + 0x50) = p;
+        }
+    }
+}
+
+extern u8 D_800D1C00[];
+extern u8 D_8009A1F8[];
+
+void func_800F2A48_ovl26(u8* obj) {
+    u8* child;
+    s8* q;
+    u8* g;
+    u8* h;
+    s32 r;
+
+    obj[3] = 0;
+    q = *(s8**)(D_1F80004C.bytes + 0x84);
+    if (q[0] != 0) {
+        if (q[7] == 0) {
+            if (--*(s16*)(obj + 0x7E) == -1) {
+                *(s16*)(obj + 0x7E) = 5;
+                *(u16*)(obj + 0x42) ^= 0x8000;
+                child = func_8002D27C();
+                if (child != 0) {
+                    child[0] = 0x41;
+                    child[1] = 0x3D;
+                    child[2] = 1;
+                    *(s32*)(child + 0x3C) = *(s32*)(obj + 0x3C);
+                    *(s16*)(child + 0x40) = *(s16*)(obj + 0x40);
+                    *(s32*)(child + 0x30) = *(s32*)(obj + 0x30);
+                    *(s16*)(child + 0x42) = *(s16*)(obj + 0x42);
+                    r = (random_byte() & 3) * 16 - 0x30;
+                    *(s16*)(child + 0xA) = *(s16*)(obj + 0xA) + r;
+                    r = (random_byte() & 1) * 16 - 0x10;
+                    *(s16*)(child + 0xE) = *(s16*)(obj + 0xE) + r;
+                    child[0x15] = random_byte() & 0x40;
+                    *(u8**)(child + 0x50) = obj;
+                }
+            }
+            func_8002D9EC(obj, 0x60, 0x60);
+        }
+    } else {
+        g = D_800D1C00;
+        h = D_8009A1F8;
+        g[0xF] = 0x10;
+        g[0x24] = 0;
+        *(s32*)(g + 0x20) = 0;
+        *(u16*)(h + 0x2A) = *(u16*)(h + 0xE);
+        clear_object_slot(obj);
+    }
+}

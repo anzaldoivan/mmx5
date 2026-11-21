@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800F6114_ovl29 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/title.h"
 #include "mmx5/object.h"
@@ -7,7 +6,7 @@
 extern u8 D_8009A197;
 s32 func_8004FC64(u8* a0);
 
-void DEDUP_NAME(u8* a0) {
+void func_800F6114_ovl29(u8* a0) {
     if (D_8009A197 == 0) {
         animate_object();
         move_object(a0);

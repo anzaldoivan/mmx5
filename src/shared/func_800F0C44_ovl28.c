@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800F0C44_ovl28 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/globals.h"
 #include "mmx5/object.h"
@@ -7,7 +6,7 @@
 extern int func_8002D7A0();
 
 #define G D_1F80004C.bytes
-void DEDUP_NAME(u8* arg0) {
+void func_800F0C44_ovl28(u8* arg0) {
     G[0x80] = 0;
     G[0x81] = 0;
     G[0x82] = 0;

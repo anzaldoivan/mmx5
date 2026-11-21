@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_8001D7E8 by tools/wave/gate.py rescan. */
 #include "types.h"
 
 s32 TestEvent(s32);
@@ -10,7 +9,7 @@ extern s32 D_800E81BC;
 extern s32 D_800E81C0;
 extern s32 D_800E81C4;
 
-s32 DEDUP_NAME(s32 arg0) {
+s32 func_8001D7E8(s32 arg0) {
     s32 ret;
     s32 i;
     s32 prev;

@@ -1,10 +1,9 @@
-/* Shared body (DK-5), from the banked draft of func_800FB774_ovl07 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/globals.h"
 #include "mmx5/graphics.h"
 #include "addr.h"
 
-void DEDUP_NAME(u8* arg0) {
+void func_800FB774_ovl07(u8* arg0) {
     D_1F80004C.scr2074->pad8E = 1;
     D_1F80004C.scr2074->unk92 = 0;
     g_Player[0xCA] = 0;

@@ -1,9 +1,8 @@
-/* Shared body (DK-5), from the banked draft of func_800F95C8_ovl06 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/globals.h"
 #include "mmx5/graphics.h"
 
-void DEDUP_NAME(Ent657C* e) {
+void func_800F95C8_ovl06(Ent657C* e) {
     ((u8*)e)[0x9A] = 0;
     g_Player[0xCA] = 0;
     func_8003D29C(0x14, g_Player[0x15]);

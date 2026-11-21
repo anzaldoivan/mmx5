@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800F0648_ovl28 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/globals.h"
 #include "addr.h"
@@ -6,7 +5,7 @@
 extern void set_velocity_from_angle();
 
 #define G D_1F80004C.bytes
-void DEDUP_NAME(u8* arg0) {
+void func_800F0648_ovl28(u8* arg0) {
     u8* p;
 
     p = func_8002D1A4();

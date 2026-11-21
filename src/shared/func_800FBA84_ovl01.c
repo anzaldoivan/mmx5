@@ -1,11 +1,10 @@
-/* Shared body (DK-5), from the banked draft of func_800FBA84_ovl01 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/object.h"
 #include "mmx5/globals.h"
 
 extern s8 D_800D1C1D;
 
-void DEDUP_NAME(u8* obj) {
+void func_800FBA84_ovl01(u8* obj) {
     u8* g = g_Player;
 
     if (*(s16*)(g + 0xA) > 0x1100) {

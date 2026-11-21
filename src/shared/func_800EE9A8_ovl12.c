@@ -1,6 +1,10 @@
-/* Shared body (DK-5), from the banked draft of func_800EE9A8_ovl12 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/globals.h"
+#include "mmx5/object.h"
+#include "mmx5/graphics.h"
+#include "mmx5/system.h"
+#include "mmx5/movement.h"
+#include "mmx5/sound.h"
 
 extern u8 D_80074EE0[];
 extern u8 D_80076100[];
@@ -14,7 +18,7 @@ extern u8 D_800F1BD8_ovl12[];
 extern u8 D_800F1BDC_ovl12[];
 extern void* D_800F2000_ovl12[];
 
-void DEDUP_NAME(u8* o) {
+void func_800EE9A8_ovl12(u8* o) {
     u8* p;
     u8* q;
     s32 r;
@@ -100,4 +104,168 @@ void DEDUP_NAME(u8* o) {
         }
     }
     ((void (*)(u8*))D_800F2000_ovl12[*(s8*)(o + 5)])(o);
+}
+
+extern u8 D_800D1C00[];
+extern u8 D_800F1BC0_ovl12[];
+
+void func_800EEC38_ovl12(u8* arg0) {
+    u8* p;
+    s32 snd;
+
+    if (*(u8**)(arg0 + 0x68) == 0 && *(s16*)(arg0 + 0xE) >= 0x12C) {
+        *(u8**)(arg0 + 0x68) = D_800F1BC0_ovl12;
+    }
+    if (arg0[0x70] & 8) {
+        *(s32*)(arg0 + 0x24) = 0;
+    }
+    if (*(s8*)(arg0 + 0x46) == 0) {
+        p = D_800D1C00;
+        if (*(s8*)(p + 0xC) != 0xC) {
+            snd = 0x35;
+            if (*(s8*)(arg0 + 2) == 0) {
+                snd = 0x33;
+            }
+            ((s32(*)())func_8002385C)(snd, 0xFF, *(s8*)(p + 0x2E));
+            p[0x2E] = 1;
+        }
+        set_animation(arg0, 1);
+        *(s16*)(arg0 + 0x7C) = 3;
+        arg0[6]++;
+    }
+    animate_object(arg0);
+    move_object(arg0);
+    func_8002D9EC(arg0, 0x40, 0x40);
+}
+
+extern s8 D_8009A0A2;
+extern u8 D_800F1F94_ovl12[][6];
+
+void func_800EED30_ovl12(u8* obj) {
+    u32 r;
+
+    r = random_byte() & 0xF;
+    obj[0x87] = 0;
+    if (((s8*)obj)[2] == 0) {
+        if (D_8009A0A2 == 0) {
+            if (r < 6) {
+                obj[0x86] = 0;
+            } else if (r < 12) {
+                obj[0x86] = 1;
+            } else {
+                obj[0x86] = 4;
+            }
+        } else {
+            if (r < 6) {
+                obj[0x86] = 2;
+            } else if (r < 10) {
+                obj[0x86] = 3;
+            } else {
+                obj[0x86] = 4;
+            }
+        }
+    } else {
+        if (D_8009A0A2 == 0) {
+            if (r < 6) {
+                obj[0x86] = 5;
+            } else if (r < 10) {
+                obj[0x86] = 6;
+            } else {
+                obj[0x86] = 9;
+            }
+        } else {
+            if (r < 6) {
+                obj[0x86] = 7;
+            } else if (r < 10) {
+                obj[0x86] = 8;
+            } else {
+                obj[0x86] = 9;
+            }
+        }
+    }
+    obj[5] = D_800F1F94_ovl12[obj[0x86]][obj[0x87]++];
+    obj[6] = 0;
+    animate_object(obj);
+    apply_object_motion(obj);
+    func_8002D9EC(obj, 0x40, 0x40);
+}
+
+extern u8 D_800F1F94_ovl12[][6];
+
+void func_800EEE5C_ovl12(ObjEE5C* obj) {
+    if (obj->unk24 < 0) {
+        if (obj->unk20 < 0) {
+            obj->unk20 = -0x10000;
+        } else {
+            obj->unk20 = 0x10000;
+        }
+    }
+    if (obj->unk45 == 3) {
+        obj->unk45 = 0;
+        if (obj->unk15 == 0) {
+            obj->unk15 = 0x40;
+        } else {
+            obj->unk15 = 0;
+        }
+    }
+    if (obj->unk70 & 8) {
+        if (obj->unk24 != 0) {
+            play_sound(2, 0x42, obj);
+        }
+        obj->unk20 = 0;
+        obj->unk24 = 0;
+        obj->unk2C = 0;
+    }
+    if (obj->unk46 == 0) {
+        if ((random_byte() & 3) == 0) {
+            play_sound(2, 0x3D, obj);
+            set_animation(obj, 8);
+            if (D_8009A0AA > obj->unkA) {
+                obj->unk15 = 0x40;
+            } else {
+                obj->unk15 = 0;
+            }
+            obj->unk7C = 0;
+            obj->unk6++;
+        } else {
+            set_animation(obj, 1);
+            obj->unk5 = D_800F1F94_ovl12[obj->unk86][obj->unk87++];
+            obj->unk6 = 0;
+        }
+    }
+    animate_object(obj);
+    apply_object_motion(obj);
+}
+
+void func_800EEFE0_ovl12(u8* obj) {
+    s16 d;
+
+    set_animation(obj, 6);
+    if (D_8009A0AA < 0xB8) {
+        d = 0x130 - *(u16*)(obj + 0xA);
+        obj[0x15] = 0;
+        if ((d < 0 ? -d : d) < 0x20) {
+            set_animation(obj, 7);
+            play_sound(2, 0x3D, obj);
+            obj[6] += 2;
+        } else {
+            *(s32*)(obj + 0x20) = (d << 16) / 42;
+            goto far; // !FAKE: goto kept for the matching branch layout
+        }
+    } else {
+        obj[0x15] = 0x40;
+        d = 0x40 - *(u16*)(obj + 0xA);
+        if ((d < 0 ? -d : d) < 0x20) {
+            set_animation(obj, 7);
+            play_sound(2, 0x3D, obj);
+            obj[6] += 2;
+        } else {
+            *(s32*)(obj + 0x20) = (d << 16) / 42;
+        far:
+            *(s32*)(obj + 0x24) = 0x30000;
+            *(s32*)(obj + 0x2C) = 0x2666;
+            play_sound(2, 0x35, obj);
+            obj[6] += 1;
+        }
+    }
 }

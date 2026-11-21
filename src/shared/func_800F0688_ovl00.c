@@ -1,9 +1,8 @@
-/* Shared body (DK-5), from the banked draft of func_800F0688_ovl00 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "addr.h"
 
 #define G D_1F80004C.bytes
-void DEDUP_NAME(u8* arg0) {
+void func_800F0688_ovl00(u8* arg0) {
     *(s32*)(G + 0x88) -= *(s32*)(G + 0x8C);
     *(s32*)(G + 0x8C) += 0x4000;
     if (*(s16*)(G + 0x8A) <= 0) {

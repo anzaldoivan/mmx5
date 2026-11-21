@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800EEE84_ovl05 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/globals.h"
 #include "mmx5/graphics.h"
@@ -13,7 +12,7 @@ extern s8 func_8002E024(ObjEEE84*, u8*);
 extern void func_800EF078_ovl05(ObjEEE84*);
 extern void set_velocity_from_angle();
 
-void DEDUP_NAME(ObjEEE84* s) {
+void func_800EEE84_ovl05(ObjEEE84* s) {
     SpawnEEE84* p;
 
     if (((s8*)G)[0x84] != 0) {

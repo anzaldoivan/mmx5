@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800F0B80_ovl04 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/title.h"
 #include "mmx5/globals.h"
@@ -10,7 +9,7 @@ extern void func_800F1080_ovl04(u8* a0);
 extern void func_8004D4F4(s32 a0, void* a1, u8* a2);
 extern void func_80054440(u8* a0, s32 a1);
 
-void DEDUP_NAME(u8* obj) {
+void func_800F0B80_ovl04(u8* obj) {
     u8 state;
 
     if (D_8009A197 == 0 || *(signed char*)(obj + 2) != 0) {

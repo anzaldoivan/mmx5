@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800F018C_ovl11 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/movement.h"
 #include "mmx5/globals.h"
@@ -6,7 +5,7 @@
 extern void func_800F0330_ovl11(u8* obj);
 extern void func_800F0414_ovl11(u8* obj);
 
-void DEDUP_NAME(u8* obj) {
+void func_800F018C_ovl11(u8* obj) {
     if (obj[0x87] != 0) {
         obj[0x87]--;
         *(s32*)(obj + 0x8) += *(s32*)(obj + 0x20);

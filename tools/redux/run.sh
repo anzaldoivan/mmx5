@@ -18,6 +18,9 @@ OUT="$ROOT/.run/redux"; mkdir -p "$OUT"
 [ -f "$SCRIPT" ] || { echo "redux: missing script $SCRIPT (a missing -dofile hangs to the timeout)"; exit 2; }
 
 export REDUX_ADDR="${REDUX_ADDR:-0x80010000}"
+# The AppImage's libuv 1.48 reads files through io_uring and sometimes loses a completion.
+# The emulator thread then waits on it forever. libuv 1.49 made io_uring opt-in, so turn it off.
+export UV_USE_IO_URING=0
 # expected sha1 of the exe file slice at offset 0x800 + (addr - t_addr); hash only, never bytes
 export REDUX_EXPECT_SHA1="$("${PY:-python3}" - "$EXE" "${REDUX_EXPECT_ADDR:-$REDUX_ADDR}" <<'EOF'
 import hashlib, struct, sys

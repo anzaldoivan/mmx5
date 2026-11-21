@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_80036E60 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/globals.h"
 #include "mmx5/movement.h"
@@ -7,7 +6,7 @@ extern void func_8003A9AC(void);
 extern s32 func_800439A8(u8* obj);
 extern void func_8003D344(void* arg0);
 
-void DEDUP_NAME(u8* obj) {
+void func_80036E60(u8* obj) {
     if (obj[0x89] & 8) {
         func_8003A9AC();
         return;

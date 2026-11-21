@@ -22,7 +22,7 @@ Each item has these fields:
 
 - Kind: defect
 - Status: planned
-- Planned in: phase 4.9, Validation: the clean repository, or earlier
+- Planned in: phase 4.10, Validation: the clean repository, or earlier
 - Problem: The progress block of `README.md` cites a file in the rules folder. The public repository does not ship
   that folder. Thus the link check finds one unresolved link at `README.md:107`.
 - Cause: The psxdecomp tool writes the text of the progress block. Its progress note names the file. The same tool keeps
@@ -68,6 +68,11 @@ Each item has these fields:
 - Approaches: The chosen approach has four steps. Phase 4.3 maps each C function to one proposed unit, and a dry run
   compiles each unit. Phase 4.4 gives each symbol one declaration in a header. Phases 4.5 and 4.6 merge the files.
   The other approach keeps one function in each file. We do not prefer it, because the original units are the goal.
+- Progress: Phase 4.5 merged 923 of the 994 multi-function units of `ROCK_X5.BIN`. Each merged unit is one file,
+  `src/rockx5/ovlNN/<first address>.c`. The phase held 71 units, and the merge record gives the cause of each.
+  The phase also joined 196 runs of shared bodies into one file each. Phase 4.6 merged 149 of the 152
+  multi-function units of `SLUS_013.34`, and it held 3 with their cause. It also moved 81 named units into system
+  folders under `src/slus/`.
 - Done when: Every C function is in exactly one compile unit of the 4.3 map, merged or held with its cause. No file
   declares a symbol that a header declares. A clean rebuild of both binaries is byte-identical.
 

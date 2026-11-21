@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800F7120_ovl10 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/sound.h"
 #include "mmx5/graphics.h"
@@ -8,7 +7,7 @@ extern signed char D_800D1C0C;
 extern u8 D_800FBF30_ovl10[];
 extern u8 D_800FBF38_ovl10[];
 
-void DEDUP_NAME(u8* obj) {
+void func_800F7120_ovl10(u8* obj) {
     obj[4] = 8;
     obj[3] = 1;
     obj[0x16] = 6;

@@ -1,9 +1,8 @@
-/* Shared body (DK-5), from the banked draft of func_800F43AC_ovl10 by tools/wave/gate.py rescan. */
 #include "types.h"
 
 extern u8 D_800FBE00_ovl10[];
 
-void DEDUP_NAME(u8* o) {
+void func_800F43AC_ovl10(u8* o) {
     if (*(s8*)(*(u8**)(o + 0x80) + 6) == 6) {
         return;
     }

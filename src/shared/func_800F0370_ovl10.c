@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800F0370_ovl10 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/title.h"
 #include "mmx5/object.h"
@@ -6,7 +5,7 @@
 
 extern s32 func_8002E274(u8* a0, u8* a1);
 
-void DEDUP_NAME(u8* obj) {
+void func_800F0370_ovl10(u8* obj) {
     u8* g = g_Player;
 
     if (g[0xF7] == 0) {

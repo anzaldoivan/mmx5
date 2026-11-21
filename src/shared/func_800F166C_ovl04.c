@@ -1,11 +1,11 @@
-/* Shared body (DK-5), from the banked draft of func_800F166C_ovl04 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/graphics.h"
+#include "mmx5/globals.h"
 
-void DEDUP_NAME(u8* obj) {
+void func_800F166C_ovl04(u8* obj) {
     u8* parent;
 
-    DEDUP_CALLEE(obj, 10);
+    set_animation(obj, 10);
     parent = *(u8**)(obj + 0x50);
     *(s32*)(obj + 0x8) = *(s32*)(parent + 0x8);
     *(s32*)(obj + 0xC) = *(s32*)(parent + 0xC);
@@ -16,4 +16,33 @@ void DEDUP_NAME(u8* obj) {
         *(s16*)(obj + 0xA) -= 3;
     }
     obj[4] = 1;
+}
+
+extern u8 D_8009A197;
+
+void func_800F16EC_ovl04(u8* obj) {
+    u8* parent;
+    s32 v;
+
+    parent = *(u8**)(obj + 0x50);
+    if (*(s8*)(parent + 4) != 1) {
+        obj[4] = 2;
+        obj[3] = 0;
+    }
+    if (D_8009A197 == 0 || *(s8*)(obj + 2) != 0) {
+        animate_object(obj);
+        *(s32*)(obj + 8) = *(s32*)(parent + 8);
+        *(s32*)(obj + 0xC) = *(s32*)(parent + 0xC);
+        obj[0x16] = parent[0x16];
+        if (obj[0x15] != 0) {
+            v = *(u16*)(obj + 0xA) + 3;
+        } else {
+            v = *(u16*)(obj + 0xA) - 3;
+        }
+        *(u16*)(obj + 0xA) = v;
+    }
+    if (*(s8*)(obj + 0x45) != 0) {
+        obj[4] = 2;
+    }
+    func_8002D9EC(obj, 0x30, 0x30);
 }

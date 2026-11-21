@@ -186,7 +186,8 @@ build. If you set `ASSET_EDIT=` with `SHIFT=1`, the build stops before it starts
 1. Make the directory `patches/<name>/`.
 2. Copy each source file that you change to `patches/<name>/<alias>/<file>.c`.
 3. Make sure that each patch file has a twin `src/<alias>/<file>.c`. For `rockx5`, the twin is `src/rockx5/ovlNN/<file>.c`
-   and the patch file is `patches/<name>/rockx5/ovlNN/<file>.c`.
+   and the patch file is `patches/<name>/rockx5/ovlNN/<file>.c`. For a `slus` unit in a system folder, the patch
+   file is `patches/<name>/slus/<system>/<file>.c`.
 4. Write the declared checkpoint as the first line of `patches/<name>/checkpoint` that does not start with `#`.
 5. Run `make replay-patch PATCHES=<name> PY=...` after the shifted disc build.
 

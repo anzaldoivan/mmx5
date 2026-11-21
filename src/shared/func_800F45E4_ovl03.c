@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800F45E4_ovl03 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/movement.h"
 #include "mmx5/globals.h"
@@ -12,7 +11,7 @@ extern s16 D_800FA242_ovl03;
 extern s16 D_800FA244_ovl03;
 extern s16 D_800FA248_ovl03;
 
-void DEDUP_NAME(Obj4FE0* obj) {
+void func_800F45E4_ovl03(Obj4FE0* obj) {
     s16 x;
     s16 a;
 

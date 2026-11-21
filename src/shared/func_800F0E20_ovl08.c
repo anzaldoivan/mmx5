@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800F0E20_ovl08 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/graphics.h"
 
@@ -6,7 +5,7 @@ extern u8 D_80074E40[];
 extern u8 D_800F3D8C_ovl08[];
 extern u8 D_800F3D88_ovl08[];
 
-void DEDUP_NAME(u8* obj) {
+void func_800F0E20_ovl08(u8* obj) {
     *(u8**)(obj + 0x58) = D_80074E40;
     obj[4] = 1;
     obj[3] = 1;
@@ -22,5 +21,5 @@ void DEDUP_NAME(u8* obj) {
     *(u8**)(obj + 0x50) = D_800F3D88_ovl08;
     obj[0x5C] = 1;
     obj[0x60] = 3;
-    DEDUP_CALLEE(obj, 5);
+    set_animation(obj, 5);
 }

@@ -1,11 +1,10 @@
-/* Shared body (DK-5), from the banked draft of func_800F3AF0_ovl10 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/graphics.h"
 
 extern s32 D_8009A0A8;
 extern s8 D_800D1C0C;
 
-void DEDUP_NAME(u8* obj) {
+void func_800F3AF0_ovl10(u8* obj) {
     s32 hi;
     s32 lo;
     s32 d;
@@ -50,6 +49,6 @@ void DEDUP_NAME(u8* obj) {
     *(s32*)(obj + 0x28) = 0;
     *(s32*)(obj + 0x24) = 0x64000;
     *(s32*)(obj + 0x2C) = 0x3800;
-    DEDUP_CALLEE(obj, 2);
+    set_animation(obj, 2);
     obj[6] = 1;
 }

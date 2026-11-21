@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800F1340_ovl04 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/object.h"
 #include "mmx5/globals.h"
@@ -8,7 +7,7 @@ extern s32 ratan2(s32, s32);
 extern s32 rcos(s32);
 extern s32 rsin(s32);
 
-void DEDUP_NAME(Obj66A0* e) {
+void func_800F1340_ovl04(Obj66A0* e) {
     s32 a;
     s32 px;
     s32 py;

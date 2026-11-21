@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800F4D20_ovl09 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/object.h"
 #include "mmx5/sound.h"
@@ -9,7 +8,7 @@ extern s32 rcos(s32);
 extern s32 rsin(s32);
 extern s16 D_800FB67A_ovl09;
 
-void DEDUP_NAME(u8* o) {
+void func_800F4D20_ovl09(u8* o) {
     s32 v;
     s16 ang;
     s32 dx;

@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800F6218_ovl11 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/system.h"
 #include "mmx5/object.h"
@@ -9,7 +8,7 @@
 extern u8 D_8009A1F8[];
 extern s16 D_800FA060_ovl11;
 
-void DEDUP_NAME(u8* arg0) {
+void func_800F6218_ovl11(u8* arg0) {
     D_1F80004C_t* s;
     u32 r;
     s32 b;

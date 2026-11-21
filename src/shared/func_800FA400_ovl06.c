@@ -1,14 +1,14 @@
-/* Shared body (DK-5), from the banked draft of func_800FA400_ovl06 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/object.h"
 #include "mmx5/globals.h"
 #include "mmx5/graphics.h"
 #include "addr.h"
+#include "mmx5/ovl06.h"
 
 extern u8 D_80074EE0[];
 extern u8 D_80075FC0[];
 
-void DEDUP_NAME(u8* obj) {
+void func_800FA400_ovl06(u8* obj) {
     move_object(obj);
     *(u8**)(obj + 0x58) = D_80074EE0;
     func_8002FB58(obj);
@@ -28,4 +28,13 @@ void DEDUP_NAME(u8* obj) {
     *(u8**)(obj + 0x58) = D_80075FC0;
     obj[0x62] = 0;
     obj[6]++;
+}
+
+void func_800FA4D8_ovl06(u8* obj) {
+    animate_object(obj);
+    if (*(s8*)(obj + 0x45) == 1) {
+        obj[0x60] = 5;
+        animate_object(obj);
+        func_800F9180_ovl06(obj);
+    }
 }

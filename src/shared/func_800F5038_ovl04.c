@@ -1,11 +1,10 @@
-/* Shared body (DK-5), from the banked draft of func_800F5038_ovl04 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/globals.h"
 
 extern s32 func_8002DC14(void);
 extern u8 D_800D1C00[];
 
-void DEDUP_NAME(u8* obj) {
+void func_800F5038_ovl04(u8* obj) {
     u8* d;
 
     animate_object(obj);
