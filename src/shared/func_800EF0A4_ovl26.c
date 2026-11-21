@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800EF0A4_ovl26 by tools/wave/gate.py rescan. */
 #include "types.h"
 
 extern void (*D_800F8BE8_ovl26[])(u8*);
@@ -6,7 +5,7 @@ extern u16 D_800F8BB8_ovl26[][2];
 extern signed char D_800D1C26;
 extern D_8009A1F8_t D_8009A1F8;
 
-void DEDUP_NAME(u8* arg0) {
+void func_800EF0A4_ovl26(u8* arg0) {
     D_8009A1F8_t* d;
 
     D_800F8BE8_ovl26[*(signed char*)(arg0 + 6)](arg0);

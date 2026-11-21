@@ -1,9 +1,8 @@
-/* Shared body (DK-5), from the banked draft of func_800F150C_ovl28 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/globals.h"
 #include "mmx5/graphics.h"
 
-void DEDUP_NAME(Obj150C* s) {
+void func_800F150C_ovl28(Obj150C* s) {
     if (D_8009A0AA - s->b.unkA > 0) {
         s->b.unk15 = 0x40;
     }

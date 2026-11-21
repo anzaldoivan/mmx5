@@ -1,6 +1,9 @@
-/* Shared body (DK-5), from the banked draft of func_800F9BB0_ovl07 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "addr.h"
+#include "mmx5/movement.h"
+#include "mmx5/globals.h"
+#include "mmx5/graphics.h"
+#include "mmx5/ovl07.h"
 
 extern void func_800FCC54_ovl07(void);
 extern void func_80024548(s32);
@@ -17,7 +20,7 @@ extern u16 D_800D50DE;
 extern s16 D_80102014_ovl07;
 extern s16 D_80102016_ovl07;
 
-void DEDUP_NAME(u8* obj) {
+void func_800F9BB0_ovl07(u8* obj) {
     s32 i;
     u16 x;
     u16 y;
@@ -58,4 +61,173 @@ void DEDUP_NAME(u8* obj) {
     D_1F80004C.bytes[0x92] = 1;
     func_800FCB98_ovl07(obj, *(s16*)(obj + 0xA), *(s16*)(obj + 0xE), 2);
     obj[6]++;
+}
+
+extern void func_800FCB98_ovl07(u8* obj, s32 x, s32 y, s32 mode);
+extern s32 func_8002DC14(void);
+extern u16 D_800D50DE;
+extern u16 D_8009A42E;
+extern u16 D_80093E68;
+extern u8 D_800C9310;
+extern u8 D_800D1C00[];
+
+void func_800F9D38_ovl07(u8* obj) {
+    u8* p;
+
+    if (!(*(u16*)(obj + 0x7E) & 0xF)) {
+        if (--*(s16*)(obj + 0x7C) == -1) {
+            ((s16*)obj)[0x3E] = 6;
+            D_800D50DE++;
+            D_8009A42E += 0x20;
+            D_80093E68 += 0x400;
+            D_800C9310 |= 1;
+            if (D_800D50DE >= 0x1F) {
+                *(u16*)(obj + 0x7E) |= 1;
+            }
+        }
+    }
+    if (!(*(u16*)(obj + 0x7E) & 0xF0)) {
+        apply_object_motion(obj);
+        if (D_1F80004C.bytes[0x91] & 8) {
+            *(u16*)(obj + 0x7E) |= 0x10;
+        }
+    }
+    if (*(s16*)(obj + 0x7E) == 0x11) {
+        D_1F80004C.bytes[0x92] = 0;
+        set_animation(obj, 2);
+        D_1F80004C.bytes[0x92] = 1;
+        func_800FCB98_ovl07(obj, *(s16*)(obj + 0xA), *(s16*)(obj + 0xE), 2);
+        obj[0x15] = 0;
+        p = D_800D1C00;
+        if (*(s8*)(p + 0xC) != 0xC) {
+            if (func_8002DC14() == 0) {
+                func_8002385C(0x2C, 0xFF, p[0x2E]);
+            } else {
+                func_8002385C(0x5E, 0xFF, p[0x2E]);
+            }
+            D_800D1C00[0x2E] = 1;
+        }
+        obj[6]++;
+    }
+    animate_object(obj);
+}
+
+extern void func_800FCB98_ovl07(u8* obj, s32 x, s32 y, s32 mode);
+extern s8 D_800D1C44;
+extern s16 D_8009A0AE;
+
+void func_800F9F08_ovl07(u8* obj) {
+    set_animation(obj, 2);
+    D_1F80004C.bytes[0x92] = 1;
+    func_800FCB98_ovl07(obj, *(s16*)(obj + 0xA), *(s16*)(obj + 0xE), 2);
+    *(u16*)(D_1F80004C.bytes + 0x84) = 0;
+    func_800FC9E0_ovl07(obj);
+    *(s32*)(obj + 0x20) = 0;
+    *(s32*)(obj + 0x28) = 0;
+    *(s32*)(obj + 0x24) = 0;
+    *(s32*)(obj + 0x2C) = 0;
+    if (D_800D1C44 == 0) {
+        if (D_8009A0AE < *(s16*)(obj + 0xE)) {
+            *(u16*)(D_1F80004C.bytes + 0x84) = *(u16*)(obj + 0xE);
+            D_1F80004C.bytes[0x8F] = 0;
+            *(s32*)(obj + 0x24) = 0x2000;
+            *(s32*)(obj + 0x2C) = -0x1000;
+            obj[6] = 1;
+            return;
+        } else {
+            *(u16*)(D_1F80004C.bytes + 0x84) = *(u16*)(obj + 0xE);
+            D_1F80004C.bytes[0x8F] = 1;
+            *(s32*)(obj + 0x24) = -0x2000;
+            *(s32*)(obj + 0x2C) = 0x1000;
+            obj[6] = 1;
+            return;
+        }
+    }
+    if (obj[0x15] == 0) {
+        *(u16*)(D_1F80004C.bytes + 0x84) = *(u16*)(obj + 0xA);
+        D_1F80004C.bytes[0x8F] = 0;
+        *(s32*)(obj + 0x20) = -0x2000;
+        *(s32*)(obj + 0x28) = 0x1000;
+    } else {
+        *(u16*)(D_1F80004C.bytes + 0x84) = *(u16*)(obj + 0xA);
+        D_1F80004C.bytes[0x8F] = 0x40;
+        *(s32*)(obj + 0x20) = 0x2000;
+        *(s32*)(obj + 0x28) = 0x1000;
+    }
+    obj[6] = 2;
+}
+
+extern s16 D_8009A0AE;
+
+void func_800FA094_ovl07(u8* obj) {
+    u8* p;
+    s32 v;
+
+    animate_object(obj);
+    p = D_1F80004C.bytes;
+    if (p[0x8F] == 0) {
+        if (((*(s16*)(obj + 0xE) - *(s16*)(p + 0x84)) < 0
+                 ? (*(s16*)(p + 0x84) - *(s16*)(obj + 0xE))
+                 : (*(s16*)(obj + 0xE) - *(s16*)(p + 0x84))) >= 0x50 &&
+            D_8009A0AE > *(s16*)(obj + 0xE)) {
+            goto store; // !FAKE: goto kept for the matching branch layout
+        }
+        p = D_1F80004C.bytes;
+        v = p[0x91] & 4;
+    } else {
+        if (((*(s16*)(obj + 0xE) - *(s16*)(p + 0x84)) < 0
+                 ? (*(s16*)(p + 0x84) - *(s16*)(obj + 0xE))
+                 : (*(s16*)(obj + 0xE) - *(s16*)(p + 0x84))) >= 0x50 &&
+            D_8009A0AE < *(s16*)(obj + 0xE)) {
+            goto store; // !FAKE: goto kept for the matching branch layout
+        }
+        p = D_1F80004C.bytes;
+        v = p[0x91] & 8;
+    }
+    if (v != 0) {
+    store:
+        obj[6] = 3;
+    } else {
+        apply_object_motion(obj);
+    }
+}
+
+void func_800FA1C4_ovl07(u8* obj) {
+    u8* p;
+    s32 a;
+    s32 b;
+    s32 d;
+
+    animate_object(obj);
+    p = D_1F80004C.bytes;
+    if (p[0x8F] == 0) {
+        a = *(s16*)(obj + 0xA);
+        b = *(s16*)(p + 0x84);
+        d = a - b;
+        if (((d >= 0) ? (d >= 0x30) : (b - a >= 0x30)) &&
+            D_8009A0AA + 0x10 > (s16) * (u16*)(obj + 0xA)) {
+            obj[6] = 3;
+            return;
+        }
+        p = D_1F80004C.bytes;
+        d = p[0x91];
+        d &= 2;
+    } else {
+        a = *(s16*)(obj + 0xA);
+        b = *(s16*)(p + 0x84);
+        d = a - b;
+        if (((d >= 0) ? (d >= 0x30) : (b - a >= 0x30)) &&
+            D_8009A0AA - 0x10 < (s16) * (u16*)(obj + 0xA)) {
+            obj[6] = 3;
+            return;
+        }
+        p = D_1F80004C.bytes;
+        d = p[0x91];
+        d &= 1;
+    }
+    if (d) {
+        obj[6] = 3;
+    } else {
+        apply_object_motion(obj);
+    }
 }

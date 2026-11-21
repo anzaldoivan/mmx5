@@ -1,12 +1,11 @@
-/* Shared body (DK-5), from the banked draft of func_800FCD04_ovl38 by tools/wave/gate.py rescan. */
 #include "types.h"
 
-extern X4_Obj* DEDUP_CALLEE(void);
+extern X4_Obj* find_free_visual_obj(void);
 
-void DEDUP_NAME(X4_Obj* e, u8 arg1) {
+void func_800FCD04_ovl38(X4_Obj* e, u8 arg1) {
     X4_Obj* o;
 
-    o = DEDUP_CALLEE();
+    o = find_free_visual_obj();
     if (o != 0) {
         o->active = 0x61;
         o->id = 0xE;

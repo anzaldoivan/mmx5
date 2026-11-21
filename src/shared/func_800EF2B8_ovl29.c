@@ -1,11 +1,10 @@
-/* Shared body (DK-5), from the banked draft of func_800EF2B8_ovl29 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/globals.h"
 #define g_Player_as_X4_Obj (*(X4_Obj*)&g_Player)
 
 extern s16 D_8009A0AE;
 
-void DEDUP_NAME(ObjEECF8* self) {
+void func_800EF2B8_ovl29(ObjEECF8* self) {
     s32 d;
 
     if (self->unk5 != 2) {

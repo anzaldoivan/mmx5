@@ -1,8 +1,8 @@
-/* Shared body (DK-5), from the banked draft of func_800F01A8_ovl28 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/system.h"
 #include "mmx5/graphics.h"
 #include "addr.h"
+#include "mmx5/globals.h"
 
 extern u8 D_8009A0B4;
 extern u8 D_800FD98C_ovl28[];
@@ -10,7 +10,7 @@ extern u8 D_800FD9C8_ovl28[];
 extern u8 D_800FD9C0_ovl28[];
 extern u8 D_800750C0[];
 
-void DEDUP_NAME(Ent01A8* e) {
+void func_800F01A8_ovl28(Ent01A8* e) {
     s32 t = D_8009A0B4;
     s32 r;
 
@@ -57,4 +57,50 @@ void DEDUP_NAME(Ent01A8* e) {
         D_1F80004C.scr01a8->unk94 = e->unk2C;
         e->unk5 = 7;
     }
+}
+
+#define SCR4C D_1F80004C.bytes
+extern u8 D_800FD9D4_ovl28[];
+extern void (*D_800FDA10_ovl28[])(u8*);
+extern void func_80054440(u8* a0, s32 a1);
+extern void func_8004D4F4(s32 a0, void* a1, u8* a2);
+extern void func_800F092C_ovl28(u8* a0);
+extern s32 func_8002D800(u8* a0);
+
+void func_800F0344_ovl28(u8* obj) {
+    u8 state;
+    u8* p;
+
+    *(s32*)(obj + 0x18) = *(s32*)(obj + 0x8);
+    *(s32*)(obj + 0x1C) = *(s32*)(obj + 0xC);
+    if (func_80031DD0(obj) < 0) {
+        func_8004FD24(obj);
+        func_80054440(obj, 0x12);
+        func_8004D4F4(5, D_800FD9D4_ovl28, obj);
+        state = 2;
+    } else {
+        p = g_Player;
+        if (p[0xF7] == 0) {
+            if (*(signed char*)(obj + 2) == 3) {
+                if (*(s32*)(obj + 8) > *(s32*)(p + 8)) {
+                    obj[0x15] = 0;
+                } else {
+                    obj[0x15] = 0x40;
+                }
+            }
+            func_800F092C_ovl28(obj);
+            if (SCR4C[0x89] < 0x3C) {
+                D_800FDA10_ovl28[*(signed char*)(obj + 5)](obj);
+            } else {
+                animate_object(obj);
+            }
+        }
+        func_800317B8(obj);
+        if (func_8002D800(obj) == 0) {
+            func_8002D89C(obj);
+            return;
+        }
+        state = 4;
+    }
+    obj[4] = state;
 }

@@ -1,11 +1,10 @@
-/* Shared body (DK-5), from the banked draft of func_800F17EC_ovl26 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/object.h"
 #include "mmx5/globals.h"
 #include "mmx5/graphics.h"
 #include "addr.h"
 
-void DEDUP_NAME(Obj17EC* arg0) {
+void func_800F17EC_ovl26(Obj17EC* arg0) {
     s32 d;
 
     move_object(arg0);

@@ -1,9 +1,8 @@
-/* Shared body (DK-5), from the banked draft of func_80040B6C by tools/wave/gate.py rescan. */
 #include "types.h"
 
-extern void DEDUP_CALLEE(void);
+extern void func_8003A94C(void);
 
-s32 DEDUP_NAME(u8* arg0) {
+s32 func_80040B6C(u8* arg0) {
     u32 flag;
     u8 cnt;
 
@@ -14,7 +13,7 @@ s32 DEDUP_NAME(u8* arg0) {
         flag = 1;
     }
     if (flag != 0) {
-        DEDUP_CALLEE();
+        func_8003A94C();
         return 1;
     }
     return 0;

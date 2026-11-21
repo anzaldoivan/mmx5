@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800FA5B0_ovl50 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/ovl50.h"
 #include "mmx5/globals.h"
@@ -6,7 +5,7 @@
 
 extern D_8009A1F8_AB_t D_8009A1F8;
 
-void DEDUP_NAME(Ovl45State* arg0) {
+void func_800FA5B0_ovl50(Ovl45State* arg0) {
     UnkSpawn* s;
 
     if (++arg0->unk4 >= 30) {
@@ -18,7 +17,7 @@ void DEDUP_NAME(Ovl45State* arg0) {
         D_8009A1F8.unkC = 0;
         D_8009A1F8.unk3 = 1;
         D_8009A1F8.unk4C = 1;
-        s = DEDUP_CALLEE();
+        s = func_8002D27C();
         if (s != 0) {
             s->unk0 = 0x41;
             s->unk1 = 0x1D;

@@ -1,10 +1,9 @@
-/* Shared body (DK-5), from the banked draft of func_800F5528_ovl04 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/system.h"
 #include "mmx5/globals.h"
 #include "mmx5/graphics.h"
 
-void DEDUP_NAME(u8* o) {
+void func_800F5528_ovl04(u8* o) {
     s32 base;
 
     if (--*(s16*)(o + 0x7C) == 0) {
@@ -31,4 +30,38 @@ void DEDUP_NAME(u8* o) {
         }
     }
     animate_object(o);
+}
+
+extern signed char D_800D1C0C;
+
+void func_800F55F8_ovl04(u8* obj) {
+    s32 lim = 0xB0;
+
+    if (D_800D1C0C != 12) {
+        lim = 0xA0;
+    }
+    animate_object(obj);
+    if (*(s16*)(obj + 0xE) < lim) {
+        *(s16*)(obj + 0xE) += 1;
+    } else if (lim < *(s16*)(obj + 0xE)) {
+        *(s16*)(obj + 0xE) -= 1;
+    } else {
+        if (*(signed char*)(obj + 0x46) == 0) {
+            set_animation(obj, 3);
+        }
+        *(s32*)(obj + 0x98) = 0;
+        *(s16*)(obj + 0x7C) = 30;
+        obj[6]++;
+    }
+}
+
+void func_800F56A0_ovl04(u8* obj) {
+    animate_object(obj);
+    if (*(s16*)(obj + 0x7C) != 0) {
+        *(s16*)(obj + 0x7C) -= 1;
+    } else {
+        *(s32*)(obj + 0x98) = 0;
+        obj[5] = 5;
+        obj[6] = 0;
+    }
 }

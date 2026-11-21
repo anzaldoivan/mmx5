@@ -43,7 +43,7 @@ only what a person needs to build, check, mod and contribute. Both binaries stay
 
 ### 4.4: One declaration per symbol
 
-- Status: current
+- Status: done
 - What and why: Each system gets one header. A header declaration replaces each local declaration. Conflicts of
   declarations between sibling functions were the main stop when the Mega Man X6 decompilation merged files.
 - Goal: Each conflicting symbol has one header declaration, or it is held with its cause. Conflict units fall below
@@ -54,18 +54,26 @@ only what a person needs to build, check, mod and contribute. Both binaries stay
 
 ### 4.5: Merge I: shared bodies and overlays
 
-- Status: next
-- What and why: The files of each overlay and the shared bodies merge into their compile units. Each overlay merges
-  in its own commit. The merge also removes the pipeline banners and the dead aliases.
-- Result: Each overlay is byte-identical from a clean rebuild after its commit. The shifted build and the patch build
-  stay green.
+- Status: done
+- What and why: The files of each overlay of `ROCK_X5.BIN` merged into their compile units. Each overlay merged in
+  its own commit. Each shared body now has the name of its owner function. Each other file that uses the body renames
+  it only around its include. The merge also removed the pipeline banners, the dead aliases and the rename comments.
+- Result: The phase merged 923 of the 994 multi-function units of `ROCK_X5.BIN`. It held 71 units with their cause:
+  62 have conflicting types, 5 compile differently, and 4 would rename a header by accident. The phase also joined
+  196 runs of shared bodies, 589 bodies, into one file each. The `src/shared/` folder went from 1136 files to 743.
+  Each overlay was byte-identical from a clean rebuild after its commit. The shifted build and the patch build stay
+  green.
 
 ### 4.6: Merge II: SLUS and the system folders
 
-- Status: next
+- Status: done
 - What and why: The files of `SLUS_013.34` merge into their compile units. Merged units with an accepted name go into
   system folders. Units without a name stay under their address names.
-- Result: The phase merges each SLUS unit of the map, or the map records its cause. Both binaries stay byte-identical.
+- Result: The phase merged 149 of the 152 multi-function units of `SLUS_013.34`, in five batches. It held 3 units
+  with their cause: 2 have conflicting types, and 1 compiles its constant data in a different order. 81 of the 86
+  units with a game name moved into 19 system folders, such as `player` and `ladder`. The other 5 stay flat, and the
+  placement record gives the cause of each. Both binaries stayed byte-identical from a clean rebuild after each commit.
+  The shifted build and the patch build stay green.
 
 ### 4.7: The ledger after the merge
 
@@ -83,7 +91,14 @@ only what a person needs to build, check, mod and contribute. Both binaries stay
 - Result: `make readability-check PY=...` prints `0 task ids, 0 banners` with its other zero counts. The named count
   in [docs/progress.md](progress.md) rises.
 
-### 4.9: Validation: the clean repository
+### 4.9: The version axis
+
+- Status: next
+- What and why: The build learns to select a game version. US stays the only version in this phase. The
+  paths change once, before the release, so that they stay the same after it.
+- Result: Both binaries stay byte-identical with `VERSION=us`. `make check` prints `check: 2 of 2 green, 0 failed`.
+
+### 4.10: Validation: the clean repository
 
 - Status: next
 - What and why: This phase proves the final tree from a clean rebuild. A fresh clone builds and checks with the

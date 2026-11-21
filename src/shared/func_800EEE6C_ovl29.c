@@ -1,7 +1,7 @@
-/* Shared body (DK-5), from the banked draft of func_800EEE6C_ovl29 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/title.h"
 #include "mmx5/globals.h"
+#include "mmx5/graphics.h"
 
 extern u8 D_8009A197;
 extern void (*D_800F9150_ovl29[])(u8*);
@@ -11,7 +11,7 @@ extern void func_800EFCEC_ovl29(u8* a0);
 extern void func_8004D4F4(s32 a0, void* a1, u8* a2);
 extern void func_80054440(u8* a0, s32 a1);
 
-void DEDUP_NAME(u8* obj) {
+void func_800EEE6C_ovl29(u8* obj) {
     u8 state;
 
     if (D_8009A197 == 0) {
@@ -41,4 +41,67 @@ void DEDUP_NAME(u8* obj) {
         state = 3;
     }
     obj[4] = state;
+}
+
+extern u8 func_80030AE4(ObjEECF8*, s16, s16);
+extern s32 D_8009A0A8;
+
+void func_800EEF84_ovl29(ObjEECF8* e) {
+    s16 x;
+    s32 dx;
+
+    if (e->unk5 != 2) {
+        return;
+    }
+    if (e->unk7C != 0) {
+        e->unk7C--;
+        return;
+    }
+    if (e->unk15) {
+        x = e->x.i.hi + e->unk68->a + 0x10;
+    } else {
+        x = e->x.i.hi - e->unk68->a - 0x10;
+    }
+    if (!func_80030AE4(e, x, e->unk68->d + (e->y.i.hi + e->unk68->b))) {
+        e->unk8C = 0x78;
+        e->unk5 = 3;
+        e->unk6 = 0;
+        set_animation(e, 2);
+    }
+    if (e->unk88 == 0) {
+        if (e->unk15) {
+            if (e->unk70 & 1) {
+                e->unk5 = 3;
+                e->unk6 = 0;
+                e->unk8C = 0x78;
+                set_animation(e, 2);
+            }
+        } else {
+            if (e->unk70 & 2) {
+                e->unk5 = 3;
+                e->unk6 = 0;
+                e->unk8C = 0x78;
+                set_animation(e, 2);
+            }
+        }
+    } else {
+        dx = e->x.val - D_8009A0A8;
+        if (e->unk15) {
+            if (dx > 0 || (e->unk70 & 1)) {
+                e->unk5 = 3;
+                e->unk6 = 0;
+                e->unk88 = 0;
+                e->unk8C = 0x3C;
+                set_animation(e, 2);
+            }
+        } else {
+            if (dx < 0 || (e->unk70 & 2)) {
+                e->unk5 = 3;
+                e->unk6 = 0;
+                e->unk88 = 0;
+                e->unk8C = 0x3C;
+                set_animation(e, 2);
+            }
+        }
+    }
 }

@@ -1,10 +1,9 @@
-/* Shared body (DK-5), from the banked draft of func_800F0B30_ovl12 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/graphics.h"
 
-void DEDUP_NAME(Obj800EFBC4* arg0) {
+void func_800F0B30_ovl12(Obj800EFBC4* arg0) {
     if (++arg0->unk7C == 20) {
-        DEDUP_CALLEE(arg0, 10);
+        set_animation(arg0, 10);
         if (arg0->unk15 != 0) {
             arg0->unk20 = -0x80000;
         } else {

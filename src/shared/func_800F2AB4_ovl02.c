@@ -1,12 +1,11 @@
-/* Shared body (DK-5), from the banked draft of func_800F2AB4_ovl02 by tools/wave/gate.py rescan. */
 #include "types.h"
 
-extern u8* DEDUP_CALLEE();
+extern u8* func_8002C938();
 extern s32 D_800F46E8_ovl02;
 
-void DEDUP_NAME(u8* arg0, s32 a1) {
+void func_800F2AB4_ovl02(u8* arg0, s32 a1) {
     u8 arg1 = a1;
-    u8* obj = DEDUP_CALLEE();
+    u8* obj = func_8002C938();
 
     if (obj != 0) {
         obj[0] = 0x41;

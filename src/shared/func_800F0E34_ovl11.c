@@ -1,10 +1,9 @@
-/* Shared body (DK-5), from the banked draft of func_800F0E34_ovl11 by tools/wave/gate.py rescan. */
 /* Adapted from mmx6 @c1c892d src/shared/rock_15/func_800EC334.c, AGPL-3.0 (THIRD_PARTY.md). */
 #include "types.h"
 #include "mmx5/globals.h"
 #include "mmx5/graphics.h"
 
-void DEDUP_NAME(u8* arg0) {
+void func_800F0E34_ovl11(u8* arg0) {
     animate_object();
     set_animation(arg0, 6);
     {

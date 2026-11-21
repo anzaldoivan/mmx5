@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800EF81C_ovl02 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/ovl02.h"
 #include "mmx5/title.h"
@@ -6,7 +5,7 @@
 
 extern void func_8005019C(s32 a0, s32 a1, void* a2, s32 a3, s32 a4);
 
-void DEDUP_NAME(Obj800EF81C* p) {
+void func_800EF81C_ovl02(Obj800EF81C* p) {
     p->unk86++;
     p->unk86 = p->unk86 % p->unk89;
     p->unk87 = (p->unk87 + 1) & 0xF;

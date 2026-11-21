@@ -1,7 +1,6 @@
-/* Shared body (DK-5), from the banked draft of func_800F0BAC_ovl12 by tools/wave/gate.py rescan. */
 #include "types.h"
 
-void DEDUP_NAME(u8* arg0) {
+void func_800F0BAC_ovl12(u8* arg0) {
     if (arg0[0x70] & 4) {
         *(s32*)(arg0 + 0x24) = 0xFFFF0000;
     }

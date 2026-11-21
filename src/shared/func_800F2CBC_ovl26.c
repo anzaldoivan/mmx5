@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800F2CBC_ovl26 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/globals.h"
 #include "addr.h"
@@ -8,7 +7,7 @@ extern s32 rcos(s32);
 extern s32 rsin(s32);
 extern u16 D_800FA0A4_ovl26[][2];
 
-void DEDUP_NAME(u8* o) {
+void func_800F2CBC_ovl26(u8* o) {
     u8* c;
     u8* p;
     s32 a;

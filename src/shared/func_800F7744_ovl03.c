@@ -1,10 +1,9 @@
-/* Shared body (DK-5), from the banked draft of func_800F7744_ovl03 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/movement.h"
 #include "mmx5/globals.h"
 #include "mmx5/graphics.h"
 
-void DEDUP_NAME(Obj* obj) {
+void func_800F7744_ovl03(Obj* obj) {
     if (++obj->timer == 300) {
         set_animation(obj, 0);
     }

@@ -1,9 +1,8 @@
-/* Shared body (DK-5), from the banked draft of func_800EF400_ovl29 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/globals.h"
 #include "mmx5/object.h"
 
-void DEDUP_NAME(u8* arg0) {
+void func_800EF400_ovl29(u8* arg0) {
     ((int*)arg0)[32] = 0;
     ((int*)arg0)[33] = 0;
     ((int*)arg0)[34] = 0;

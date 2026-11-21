@@ -1,9 +1,8 @@
-/* Shared body (DK-5), from the banked draft of func_8002979C by tools/wave/gate.py rescan. */
 #include "types.h"
 
 extern s16 D_8009A1F8[];
 
-void DEDUP_NAME(s16* p) {
+void func_8002979C(s16* p) {
     s16 t;
     s16 a;
     s16 d;

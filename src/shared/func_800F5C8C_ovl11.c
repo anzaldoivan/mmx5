@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800F5C8C_ovl11 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/sound.h"
 #include "mmx5/globals.h"
@@ -8,7 +7,7 @@
 extern s16 D_800FA05A_ovl11;
 extern Row5C8C D_8009A1F8[];
 
-s32 DEDUP_NAME(Obj5C8C* obj) {
+s32 func_800F5C8C_ovl11(Obj5C8C* obj) {
     s32 ret;
 
     obj->unk60 = 8;

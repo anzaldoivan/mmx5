@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800EF91C_ovl00 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/system.h"
 
@@ -6,7 +5,7 @@ extern Obj80050880* find_free_visual_obj(void);
 extern s32 D_800FA948_ovl00[];
 extern s32 D_800FA928_ovl00[];
 
-void DEDUP_NAME(u8 flags, s16 x0, s16 y0, s16 x1, s16 y1, s16 count) {
+void func_800EF91C_ovl00(u8 flags, s16 x0, s16 y0, s16 x1, s16 y1, s16 count) {
     Obj80050880* obj;
     u16 rx;
     u16 ry;

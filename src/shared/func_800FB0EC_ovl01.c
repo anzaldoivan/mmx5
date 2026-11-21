@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800FB0EC_ovl01 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/sound.h"
 #include "mmx5/movement.h"
@@ -7,7 +6,7 @@
 extern void start_pad_vibration(s32);
 extern void func_8002A600(s32, s32, s32);
 
-void DEDUP_NAME(u8* obj) {
+void func_800FB0EC_ovl01(u8* obj) {
     animate_object(obj);
     apply_object_motion(obj);
     if ((obj[0x70] & 8) && *(s32*)(obj + 0x24) < 0) {

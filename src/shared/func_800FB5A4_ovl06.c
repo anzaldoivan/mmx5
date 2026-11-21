@@ -1,8 +1,7 @@
-/* Shared body (DK-5), from the banked draft of func_800FB5A4_ovl06 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/globals.h"
 
-void DEDUP_NAME(ObjFB5A4* obj) {
+void func_800FB5A4_ovl06(ObjFB5A4* obj) {
     s32 s;
 
     if (obj->parent->state == 2) {

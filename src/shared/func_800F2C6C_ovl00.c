@@ -1,8 +1,7 @@
-/* Shared body (DK-5), from the banked draft of func_800F2C6C_ovl00 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/movement.h"
 
-void DEDUP_NAME(Obj2C6C* obj) {
+void func_800F2C6C_ovl00(Obj2C6C* obj) {
     if (obj->flags70 & 8) {
         obj->unk24 = 0;
         obj->unk2C = 0;
@@ -11,6 +10,6 @@ void DEDUP_NAME(Obj2C6C* obj) {
         obj->unk67 = 0;
         obj->state++;
     } else {
-        DEDUP_CALLEE(obj);
+        apply_object_motion(obj);
     }
 }

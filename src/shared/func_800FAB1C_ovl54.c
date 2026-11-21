@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800FAB1C_ovl54 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/ovl54.h"
 #include "mmx5/globals.h"
@@ -10,7 +9,7 @@ extern u8 D_800FB354_ovl54[];
 
 void func_8002C3CC(void*, void*, s32, s32, s32);
 
-void DEDUP_NAME(u8* arg0) {
+void func_800FAB1C_ovl54(u8* arg0) {
     s32 t;
 
     if (D_80091C44 == 0) {

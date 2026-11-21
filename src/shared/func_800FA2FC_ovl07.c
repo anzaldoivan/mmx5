@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800FA2FC_ovl07 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/ovl07.h"
 #include "mmx5/object.h"
@@ -10,7 +9,7 @@ extern s32 ratan2(s32, s32);
 extern s32 rcos(s32);
 extern s32 rsin(s32);
 
-void DEDUP_NAME(Ent7C* e) {
+void func_800FA2FC_ovl07(Ent7C* e) {
     s32 dx;
     s32 dy;
     s32 ang;

@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800FED30_ovl07 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/system.h"
 #include "mmx5/object.h"
@@ -7,7 +6,7 @@
 
 extern signed char D_800D1C0C;
 
-void DEDUP_NAME(u8* o) {
+void func_800FED30_ovl07(u8* o) {
     s8 st = o[6];
     u8 r;
 

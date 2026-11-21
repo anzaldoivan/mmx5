@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800FAD14_ovl01 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/sound.h"
 #include "mmx5/movement.h"
@@ -10,7 +9,7 @@ extern void func_8002A600(s32, s32, s32);
 extern s8 D_800D1C0C;
 extern u8 D_800FD608_ovl01[];
 
-void DEDUP_NAME(u8* arg0) {
+void func_800FAD14_ovl01(u8* arg0) {
     s32 lim;
 
     lim = 0x40;

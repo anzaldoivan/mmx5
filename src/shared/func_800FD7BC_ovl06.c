@@ -1,11 +1,10 @@
-/* Shared body (DK-5), from the banked draft of func_800FD7BC_ovl06 by tools/wave/gate.py rescan. */
 /* Adapted from mmx6 @c1c892d src/shared/rock_06/func_800EA64C.c, AGPL-3.0 (THIRD_PARTY.md). */
 #include "types.h"
 #include "mmx5/globals.h"
 
 #define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8*)(expr) + (offset)))
 
-void DEDUP_NAME(void* arg0) {
+void func_800FD7BC_ovl06(void* arg0) {
     s8 temp_v0;
     void* temp_v1;
 

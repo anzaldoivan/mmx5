@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800F7858_ovl03 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/sound.h"
 #include "mmx5/movement.h"
@@ -7,7 +6,7 @@
 extern D_8009A1F8_t D_8009A1F8;
 extern s32 func_80044DE0();
 
-void DEDUP_NAME(Ent8EF0* obj) {
+void func_800F7858_ovl03(Ent8EF0* obj) {
     if (func_80044DE0()) {
         func_8002D9EC(obj, 0x40, 0x40);
         return;

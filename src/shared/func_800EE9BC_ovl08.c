@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800EE9BC_ovl08 by tools/wave/gate.py rescan. */
 /* Adapted from mmx6 @c1c892d src/shared/rock_06/func_800EA704.c, AGPL-3.0 (THIRD_PARTY.md). */
 #include "types.h"
 #include "mmx5/globals.h"
@@ -8,7 +7,7 @@
 
 #define PLAYER (*(X4_Obj*)&g_Player)
 
-void DEDUP_NAME(X4_Obj* self) {
+void func_800EE9BC_ovl08(X4_Obj* self) {
     if (M2C_FIELD(self, s8*, 0x67) != 0) {
         return;
     }

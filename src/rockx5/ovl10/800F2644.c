@@ -1,0 +1,50 @@
+#include "types.h"
+#include "mmx5/graphics.h"
+#include "mmx5/object.h"
+
+void func_800F2644_ovl10(u8* obj) {
+    if (obj[0x90] == 0) {
+        set_animation(obj, 10);
+        obj[0x15] = 0;
+    } else {
+        set_animation(obj, 10);
+        obj[0x15] = 0x40;
+    }
+    *(s32*)(obj + 0x20) = 0;
+    *(s32*)(obj + 0x24) = 0x13000;
+    obj[6]++;
+}
+
+extern u8 D_800FB75C_ovl10[][8];
+
+extern s32 func_800F2C4C_ovl10(Ent26B4*, s32);
+
+void func_800F26B4_ovl10(Ent26B4* e) {
+    s32 r;
+    u8* p;
+    s32 t;
+    s32 v;
+    s32 y;
+
+    move_object(e);
+    r = func_800F2C4C_ovl10(e, 1);
+    switch (r) {
+    case 2:
+        v = D_800FB75C_ovl10[e->unk90][5];
+        e->unk6 = 0;
+        e->unk5 = v;
+        if (v & 0xF0) {
+            e->unk5 = v & 0xF;
+            e->unk90 ^= 1;
+        }
+        break;
+    case 1:
+        t = D_800FB75C_ovl10[e->unk90][1];
+        p = e->unk68;
+        e->unk6 = 0;
+        e->unk5 = t;
+        y = e->unkE;
+        e->unkE = (-(e->unkE + (signed char)p[1] + p[3]) & 0xF) + y;
+        break;
+    }
+}

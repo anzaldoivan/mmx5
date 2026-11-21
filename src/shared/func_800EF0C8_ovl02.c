@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800EF0C8_ovl02 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/movement.h"
 #include "mmx5/globals.h"
@@ -12,7 +11,7 @@ extern void func_8003258C(Obj0C8*);
 extern void (*D_800F44C0_ovl02[])(Obj0C8*);
 extern signed char D_800D1C0C;
 
-void DEDUP_NAME(Obj0C8* o) {
+void func_800EF0C8_ovl02(Obj0C8* o) {
     s32 t;
 
     func_80032F70(o);

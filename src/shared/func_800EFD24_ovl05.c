@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800EFD24_ovl05 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/graphics.h"
 #include "addr.h"
@@ -11,7 +10,7 @@ extern u8 D_800F52C4_ovl05[];
 extern u8 D_800F52BC_ovl05[];
 extern u8 D_800F52CC_ovl05[];
 
-void DEDUP_NAME(u8* obj) {
+void func_800EFD24_ovl05(u8* obj) {
     *(u8*)(obj + 0x5C) = 0x1F;
     *(u8*)(obj + 0x60) = 4;
     *(u8**)(obj + 0x58) = D_80075480;

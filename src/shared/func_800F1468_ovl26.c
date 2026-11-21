@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800F1468_ovl26 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/globals.h"
 #include "mmx5/graphics.h"
@@ -9,7 +8,7 @@ extern u8 D_800750C0[];
 extern u8 D_800F95A0_ovl26[];
 extern u8 D_800D1C4A;
 
-void DEDUP_NAME(Ent1468* o) {
+void func_800F1468_ovl26(Ent1468* o) {
     Plr1468* plr = &g_Player_as_Plr1468;
 
     o->unk5C = 1;
@@ -36,7 +35,7 @@ void DEDUP_NAME(Ent1468* o) {
     } else {
         D_1F80004C.scr84->unk85 = 0;
     }
-    DEDUP_CALLEE(o, 0);
+    set_animation(o, 0);
     o->unk67 = 1;
     o->unk20 = 0;
     o->unk28 = 0;

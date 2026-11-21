@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_80021318 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/globals.h"
 #include "mmx5/sound.h"
@@ -7,7 +6,7 @@
 
 extern void func_800132F8(s8 arg);
 
-void DEDUP_NAME(Arg800218E0* a) {
+void func_80021318(Arg800218E0* a) {
     s16 lim;
     signed char* p;
 

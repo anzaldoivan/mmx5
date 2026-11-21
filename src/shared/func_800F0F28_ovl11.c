@@ -1,7 +1,6 @@
-/* Shared body (DK-5), from the banked draft of func_800F0F28_ovl11 by tools/wave/gate.py rescan. */
 #include "types.h"
 
-void DEDUP_NAME(Ent08D8* e) {
+void func_800F0F28_ovl11(Ent08D8* e) {
     s32 v;
 
     if ((s8)e->unk67 == 0 && !(e->unk70 & 8)) {

@@ -1,7 +1,6 @@
-/* Shared body (DK-5), from the banked draft of func_800F72D0_ovl28 by tools/wave/gate.py rescan. */
 #include "types.h"
 
-void DEDUP_NAME(Obj800F72D0* arg0, Obj800F72D0* arg1) {
+void func_800F72D0_ovl28(Obj800F72D0* arg0, Obj800F72D0* arg1) {
     s8 temp_v0;
     s32 temp;
 

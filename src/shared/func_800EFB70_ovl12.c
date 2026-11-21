@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800EFB70_ovl12 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/globals.h"
 #include "mmx5/sound.h"
@@ -7,7 +6,7 @@
 extern s8 D_800D1C0F;
 extern s16 D_8009A1F8[];
 
-void DEDUP_NAME(Obj3DD4* a) {
+void func_800EFB70_ovl12(Obj3DD4* a) {
     if (D_800D1C0F == 0) {
         if (a->unk7C == 0x28) {
             *(s32*)((u8*)a + 0x94) = D_8009A1F8[0x13];

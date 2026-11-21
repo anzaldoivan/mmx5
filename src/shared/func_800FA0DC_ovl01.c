@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800FA0DC_ovl01 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/sound.h"
 #include "mmx5/movement.h"
@@ -12,7 +11,7 @@ extern u8 D_800FD57C_ovl01[];
 extern u8 D_800FD5A8_ovl01[];
 extern u8 D_800FD5AC_ovl01[];
 
-void DEDUP_NAME(u8* obj) {
+void func_800FA0DC_ovl01(u8* obj) {
     apply_object_motion(obj);
     animate_object(obj);
     if ((obj[0x70] & 8) && *(s32*)(obj + 0x24) < 0) {
@@ -31,5 +30,14 @@ void DEDUP_NAME(u8* obj) {
     } else {
         *(u8**)(obj + 0x54) = D_800FD578_ovl01;
         *(u8**)(obj + 0x50) = D_800FD57C_ovl01;
+    }
+}
+
+void func_800FA1B0_ovl01(u8* obj) {
+    animate_object(obj);
+    if (--*(s16*)(obj + 0x7C) == 0) {
+        set_animation(obj, 0);
+        obj[5] = 3;
+        obj[6] = 0;
     }
 }

@@ -1,10 +1,9 @@
-/* Shared body (DK-5), from the banked draft of func_800F9704_ovl28 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/globals.h"
 #include "mmx5/sound.h"
 #include "mmx5/graphics.h"
 
-void DEDUP_NAME(u8* self) {
+void func_800F9704_ovl28(u8* self) {
     u8* s;
 
     if (*(signed char*)(self + 0x45) == 1) {

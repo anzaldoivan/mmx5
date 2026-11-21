@@ -1,11 +1,10 @@
-/* Shared body (DK-5), from the banked draft of func_800F0DA0_ovl28 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/graphics.h"
 #include "addr.h"
 
 #define SCR_4C D_1F80004C.ctx0f18
 
-void DEDUP_NAME(Ent0DA0* e) {
+void func_800F0DA0_ovl28(Ent0DA0* e) {
     s32 v;
 
     v = -0x8000;
@@ -19,5 +18,5 @@ void DEDUP_NAME(Ent0DA0* e) {
     e->unk24 = 0;
     e->unk2C = 0;
     SCR_4C->unk80 = 0x30;
-    DEDUP_CALLEE(e, 0);
+    set_animation(e, 0);
 }

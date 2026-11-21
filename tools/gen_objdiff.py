@@ -45,7 +45,7 @@ def units(alias, root=None):
         m = SEG.match(line)
         if m:
             seg = m.group(1)
-        m = SUB.match(line)
+        m = SUB.match(layout.list_form(line))
         if m:
             off, kind, name = m.groups()
             name = name or off.upper()

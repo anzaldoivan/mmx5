@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800EFAD8_ovl12 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/globals.h"
 
@@ -6,7 +5,7 @@ extern u8* alloc_class3_slot(void);
 extern signed char D_8009A0A5;
 extern u8 D_8009A23F;
 
-void DEDUP_NAME(Obj3DD4* a) {
+void func_800EFAD8_ovl12(Obj3DD4* a) {
     u8* p;
 
     if (D_8009A0A5 == 0x14) {

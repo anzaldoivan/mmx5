@@ -1,12 +1,11 @@
-/* Shared body (DK-5), from the banked draft of func_800FCA20_ovl07 by tools/wave/gate.py rescan. */
 #include "types.h"
 
-extern u8* DEDUP_CALLEE();
+extern u8* func_8002D210();
 
-void DEDUP_NAME(u8* self, s16 x, s16 y, u8 sub) {
+void func_800FCA20_ovl07(u8* self, s16 x, s16 y, u8 sub) {
     u8* p;
 
-    p = DEDUP_CALLEE();
+    p = func_8002D210();
     if (p != 0) {
         p[0] = 0x41;
         p[1] = 0xA;

@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800FAFDC_ovl01 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/object.h"
 #include "mmx5/graphics.h"
@@ -7,7 +6,7 @@ extern u8 D_800FD604_ovl01[];
 extern u8 D_800FD600_ovl01[];
 extern u8 D_800FD608_ovl01[];
 
-void DEDUP_NAME(u8* arg0) {
+void func_800FAFDC_ovl01(u8* arg0) {
     set_animation(arg0, 3);
     *(u8**)(arg0 + 0x50) = D_800FD604_ovl01;
     *(u8**)(arg0 + 0x54) = D_800FD600_ovl01;

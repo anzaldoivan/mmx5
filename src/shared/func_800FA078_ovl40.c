@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800FA078_ovl40 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/globals.h"
 
@@ -12,7 +11,7 @@ extern u8 D_80093E66;
 extern u8 D_8009A42C;
 extern u8 D_800D50DC;
 
-void DEDUP_NAME(u8* arg0) {
+void func_800FA078_ovl40(u8* arg0) {
     func_8002C50C();
     func_8002D004();
     init_checkpoint_positions();

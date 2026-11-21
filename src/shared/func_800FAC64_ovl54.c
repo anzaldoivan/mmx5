@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800FAC64_ovl54 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/globals.h"
 
@@ -7,7 +6,7 @@ extern signed char D_8009A424;
 extern u8 D_8009A1F8[];
 extern u8 D_800D1C00[];
 
-void DEDUP_NAME(u8* arg0) {
+void func_800FAC64_ovl54(u8* arg0) {
     s32 i;
     u8* p;
 

@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800FA458_ovl50 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/ovl50.h"
 #include "mmx5/object.h"
@@ -6,12 +5,12 @@
 extern u8 D_80091C44;
 extern u8 D_8009A1F8[];
 
-void DEDUP_NAME(u8* arg0) {
+void func_800FA458_ovl50(u8* arg0) {
     u8* p;
     u8* q;
 
     if (D_80091C44 == 0) {
-        p = DEDUP_CALLEE();
+        p = alloc_class6_slot();
         D_800FBC88_ovl50 = p;
         if (p != 0) {
             p[0] = 1;

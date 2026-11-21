@@ -1,11 +1,10 @@
-/* Shared body (DK-5), from the banked draft of func_800F0C8C_ovl12 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/globals.h"
 #include "mmx5/graphics.h"
 
 extern u8 D_8009A0B5;
 
-void DEDUP_NAME(Ent657C* e) {
+void func_800F0C8C_ovl12(Ent657C* e) {
     set_animation(e, 0xA);
     e->unk7C = 0x7F;
     e->unk7E = 0x19;

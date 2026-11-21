@@ -1,10 +1,12 @@
 /* control: nothing here may be refused */
 #define CTL_COUNT 4
 #define CTL_ACC(p) ((p)->a)
-#define DEDUP_NAME func_00001000
+#define func_00001000 func_00001200
 
-void DEDUP_NAME(void) {
+void func_00001000(void) {
 }
+
+#undef func_00001000
 
 int ControlMain(int *p) {
     // !FAKE: pin kept to steer register allocation

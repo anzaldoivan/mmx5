@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800F9180_ovl06 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/system.h"
 #include "addr.h"
@@ -8,13 +7,13 @@ extern u8 D_800FF17C_ovl06[];
 extern u8 D_800FF188_ovl06[];
 extern u8 D_800FF170_ovl06[];
 
-void DEDUP_NAME(u8* o) {
+void func_800F9180_ovl06(u8* o) {
     u8* g;
 
     if (D_1F80004C.bytes[0x87] == 0) {
         if (((s8*)o)[0x5C] < (D_1F80004C.bytes[0x86] * 2) / 3) {
             D_1F80004C.bytes[0x87] = 1;
-            D_1F80004C.bytes[0x88] = D_800FF194_ovl06[1][DEDUP_CALLEE() & 0xF];
+            D_1F80004C.bytes[0x88] = D_800FF194_ovl06[1][random_byte() & 0xF];
             D_1F80004C.bytes[0x89] = 0;
             o[5] = D_800FF17C_ovl06[D_1F80004C.bytes[0x89] +
                                     D_1F80004C.bytes[0x88] * 5];
@@ -24,7 +23,7 @@ void DEDUP_NAME(u8* o) {
     } else if (D_1F80004C.bytes[0x87] == 1) {
         if (((s8*)o)[0x5C] < (u8)(D_1F80004C.bytes[0x86] / 3U)) {
             D_1F80004C.bytes[0x87] = 2;
-            D_1F80004C.bytes[0x88] = D_800FF194_ovl06[2][DEDUP_CALLEE() & 0xF];
+            D_1F80004C.bytes[0x88] = D_800FF194_ovl06[2][random_byte() & 0xF];
             D_1F80004C.bytes[0x89] = 0;
             o[5] = D_800FF188_ovl06[D_1F80004C.bytes[0x89] +
                                     D_1F80004C.bytes[0x88] * 6];
@@ -41,7 +40,7 @@ void DEDUP_NAME(u8* o) {
         v0 = D_800FF170_ovl06[D_1F80004C.bytes[0x89] +
                               D_1F80004C.bytes[0x88] * 5];
         if (v0 == 0xFF) {
-            D_1F80004C.bytes[0x88] = D_800FF194_ovl06[0][DEDUP_CALLEE() & 0xF];
+            D_1F80004C.bytes[0x88] = D_800FF194_ovl06[0][random_byte() & 0xF];
             D_1F80004C.bytes[0x89] = 0;
             o[5] = D_800FF170_ovl06[D_1F80004C.bytes[0x89] +
                                     D_1F80004C.bytes[0x88] * 5];
@@ -56,7 +55,7 @@ void DEDUP_NAME(u8* o) {
         v1 = D_800FF17C_ovl06[D_1F80004C.bytes[0x89] +
                               D_1F80004C.bytes[0x88] * 5];
         if (v1 == 0xFF) {
-            D_1F80004C.bytes[0x88] = D_800FF194_ovl06[1][DEDUP_CALLEE() & 0xF];
+            D_1F80004C.bytes[0x88] = D_800FF194_ovl06[1][random_byte() & 0xF];
             D_1F80004C.bytes[0x89] = 0;
             o[5] = D_800FF17C_ovl06[D_1F80004C.bytes[0x89] +
                                     D_1F80004C.bytes[0x88] * 5];
@@ -71,7 +70,7 @@ void DEDUP_NAME(u8* o) {
         v2 = D_800FF188_ovl06[D_1F80004C.bytes[0x89] +
                               D_1F80004C.bytes[0x88] * 6];
         if (v2 == 0xFF) {
-            D_1F80004C.bytes[0x88] = D_800FF194_ovl06[2][DEDUP_CALLEE() & 0xF];
+            D_1F80004C.bytes[0x88] = D_800FF194_ovl06[2][random_byte() & 0xF];
             D_1F80004C.bytes[0x89] = 0;
             o[5] = D_800FF188_ovl06[D_1F80004C.bytes[0x89] +
                                     D_1F80004C.bytes[0x88] * 6];

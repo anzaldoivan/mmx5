@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800F9364_ovl00 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/movement.h"
 #include "mmx5/globals.h"
@@ -6,7 +5,7 @@
 
 extern u8 D_800FB448_ovl00[][6];
 
-void DEDUP_NAME(Ent9364* e) {
+void func_800F9364_ovl00(Ent9364* e) {
     if (e->unk46 == 0) {
         u8 t;
         set_animation(e, 0);

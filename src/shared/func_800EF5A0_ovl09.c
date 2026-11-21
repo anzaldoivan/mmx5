@@ -1,9 +1,8 @@
-/* Shared body (DK-5), from the banked draft of func_800EF5A0_ovl09 by tools/wave/gate.py rescan. */
 #include "types.h"
 
-extern u8* DEDUP_CALLEE();
+extern u8* func_8002C938();
 
-void DEDUP_NAME(u8* o) {
+void func_800EF5A0_ovl09(u8* o) {
     s32 i;
     u8* c;
     s8* f;
@@ -14,7 +13,7 @@ void DEDUP_NAME(u8* o) {
             continue;
         }
         f[i] = 1;
-        c = DEDUP_CALLEE();
+        c = func_8002C938();
         if (c == 0) {
             continue;
         }

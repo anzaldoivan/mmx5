@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800EFC78_ovl11 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/globals.h"
 #include "mmx5/graphics.h"
@@ -14,7 +13,7 @@ extern s32 func_8002B5B4(s32);
 #define H(p, o) (*(u16*)((p) + (o)))
 #define W(p, o) (*(s32*)((p) + (o)))
 #define SCR20 D_1F800020.s32s
-void DEDUP_NAME(u8* a0) {
+void func_800EFC78_ovl11(u8* a0) {
     u8* p;
     s32 s0;
     s32 v;
