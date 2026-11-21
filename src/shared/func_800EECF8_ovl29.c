@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800EECF8_ovl29 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/globals.h"
 #include "mmx5/graphics.h"
@@ -11,7 +10,7 @@ extern u8 D_800F8FB8_ovl29[];
 extern u8 D_80074EE0[];
 extern u8 D_800750C0[];
 
-void DEDUP_NAME(ObjEECF8* e) {
+void func_800EECF8_ovl29(ObjEECF8* e) {
     e->unk7C = 0;
     e->unk5C = 6;
     e->unk61 = 0;
@@ -32,7 +31,7 @@ void DEDUP_NAME(ObjEECF8* e) {
     switch (e->unk2) {
     case 0:
         e->unk58 = D_800750C0;
-        DEDUP_CALLEE(e, 1);
+        set_animation(e, 1);
         e->unk60 = 3;
         e->unk80 = 0;
         e->unk88 = 0;
@@ -53,7 +52,7 @@ void DEDUP_NAME(ObjEECF8* e) {
         e->unk80 = 1;
         e->unk88 = 0;
         e->unk8C = 0x78;
-        DEDUP_CALLEE(e, 5);
+        set_animation(e, 5);
         e->unk5 = 8;
         break;
     }

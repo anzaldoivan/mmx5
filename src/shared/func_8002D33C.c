@@ -1,11 +1,10 @@
-/* Shared body (DK-5), from the banked draft of func_8002D33C by tools/wave/gate.py rescan. */
 #include "types.h"
 
 extern Slot8002D27C D_800D1F40[];
 extern Slot8002D27C D_800D4EE0[];
 extern Slot8002D27C D_800D4F40[];
 
-Slot8002D27C* DEDUP_NAME(Slot8002D27C* p, s32 backward) {
+Slot8002D27C* func_8002D33C(Slot8002D27C* p, s32 backward) {
     u8* q;
     s32 i;
 

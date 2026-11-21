@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800F81FC_ovl06 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/sound.h"
 #include "mmx5/movement.h"
@@ -8,7 +7,7 @@
 extern void start_pad_vibration(s32);
 extern void func_800FAFFC_ovl06(u8*, s32, s32, s32);
 
-void DEDUP_NAME(u8* obj) {
+void func_800F81FC_ovl06(u8* obj) {
     apply_object_motion(obj);
     animate_object(obj);
     ((s32(*)())func_8002FB58)(obj);

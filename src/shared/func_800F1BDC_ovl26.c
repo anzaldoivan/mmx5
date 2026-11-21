@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800F1BDC_ovl26 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/globals.h"
 #include "mmx5/graphics.h"
@@ -6,8 +5,8 @@
 
 extern s16 D_8009A1F8[];
 
-void DEDUP_NAME(u8* o) {
-    DEDUP_CALLEE(o, 0);
+void func_800F1BDC_ovl26(u8* o) {
+    set_animation(o, 0);
     *(s32*)(o + 0x54) = 0;
     *(s32*)(o + 0x50) = 0;
     *(s32*)(o + 0x20) = 0;

@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800F97BC_ovl06 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/globals.h"
 #include "addr.h"
@@ -9,7 +8,7 @@ extern signed char D_8009A0A5;
 extern u8 D_8009A23F;
 extern signed char D_800D1C0C;
 
-void DEDUP_NAME(Obj* a) {
+void func_800F97BC_ovl06(Obj* a) {
     u8* p;
 
     if (D_8009A0A5 == 0x14) {

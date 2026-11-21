@@ -1,11 +1,10 @@
-/* Shared body (DK-5), from the banked draft of func_800EFE84_ovl11 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/sound.h"
 #include "mmx5/globals.h"
 
 extern u8 D_800D1C00[];
 
-void DEDUP_NAME(u8* a0) {
+void func_800EFE84_ovl11(u8* a0) {
     u8* p;
     u8* q;
     u8* r;

@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800F44E8_ovl10 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/sound.h"
 #include "mmx5/globals.h"
@@ -11,7 +10,7 @@
 
 void func_800F6250_ovl10(void*);
 
-void DEDUP_NAME(void* p) {
+void func_800F44E8_ovl10(void* p) {
     void* self = p;
     void* r;
     void* q;

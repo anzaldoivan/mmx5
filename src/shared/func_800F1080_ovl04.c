@@ -1,13 +1,12 @@
-/* Shared body (DK-5), from the banked draft of func_800F1080_ovl04 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/globals.h"
 #include "addr.h"
 
-void DEDUP_NAME(u8* arg0) {
+void func_800F1080_ovl04(u8* arg0) {
     u8* p;
 
     if (!(D_1F80004C.bytes[0x81]++ & 3)) {
-        p = DEDUP_CALLEE();
+        p = func_8002D27C();
         if (p != 0) {
             p[0] = 0x41;
             p[1] = 7;

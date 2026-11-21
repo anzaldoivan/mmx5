@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_80030E1C by tools/wave/gate.py rescan. */
 /* Adapted from mmx6 @c1c892d src/shared/SLUS_013.95/func_8003056C.c, AGPL-3.0 (THIRD_PARTY.md). */
 #include "types.h"
 #include "mmx5/globals.h"
@@ -7,7 +6,7 @@
 
 M2C_UNK func_80030EA4(s32); /* extern */
 
-void DEDUP_NAME(s32 arg0) {
+void func_80030E1C(s32 arg0) {
     if ((func_800311CC() != 0) && (func_8003049C(arg0) != 0)) {
         func_80030EA4(arg0);
     }

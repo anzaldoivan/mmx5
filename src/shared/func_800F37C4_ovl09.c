@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800F37C4_ovl09 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/movement.h"
 #include "mmx5/globals.h"
@@ -11,7 +10,7 @@ extern s16 D_800FB62C_ovl09;
 extern s32 func_8002DFF8(Obj4FE0*, s32, s32);
 extern void func_8002E0F8(s32*, s32*, u8);
 
-void DEDUP_NAME(Obj4FE0* o) {
+void func_800F37C4_ovl09(Obj4FE0* o) {
     if (o->unkA < D_800FB62C_ovl09) {
         set_animation(o, 0);
         o->unk15 = 0x40;

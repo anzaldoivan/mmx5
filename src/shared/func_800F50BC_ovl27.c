@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800F50BC_ovl27 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/title.h"
 #include "mmx5/globals.h"
@@ -18,7 +17,7 @@ extern void func_80054440(Ent50BC*, s32);
 extern void func_8004D4F4(s32, void*, Ent50BC*);
 
 // from rockx5 800F50BC: per-frame update, runs the state handler then probes the floor/contact checks
-void DEDUP_NAME(Ent50BC* e) {
+void func_800F50BC_ovl27(Ent50BC* e) {
     D_1F80004C.scr5308->unk89 = e->unk5;
     if (D_8009A197 == 0) {
         e->unk18 = e->unk8;

@@ -1,10 +1,11 @@
-/* Shared body (DK-5), from the banked draft of func_800F6B44_ovl09 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/graphics.h"
+#include "mmx5/movement.h"
+#include "mmx5/globals.h"
 
 extern u8 D_800FB0B8_ovl09[];
 
-void DEDUP_NAME(Ent6B44* e) {
+void func_800F6B44_ovl09(Ent6B44* e) {
     Ent6B44* p;
 
     p = e->unk7C;
@@ -27,7 +28,35 @@ void DEDUP_NAME(Ent6B44* e) {
     e->unk2C = 0;
     e->unk5C = 0;
     e->unk60 = 0;
-    DEDUP_CALLEE(e, 6);
+    set_animation(e, 6);
     e->unk5 = 0;
     e->unk4++;
+}
+
+void func_800F6BF4_ovl09(Ent6BF4* e) {
+    Ent6BF4* p;
+
+    p = e->unk7C;
+    e->unkA = p->unkA;
+    e->unkE = p->unkE;
+    switch (e->unk5) {
+    case 0:
+        if (p->unk45 == 1) {
+            set_animation(e, 6);
+            e->unk5++;
+        }
+        break;
+    case 1:
+        if (e->unk46 == 0) {
+            e->unk4++;
+        }
+        func_8002D9EC(e, 0x20, 0x20);
+        break;
+    }
+    p = e->unk7C;
+    if (p->unk5 == 11 || p->unk4 == 2) {
+        e->unk4++;
+    }
+    animate_object(e);
+    apply_object_motion(e);
 }

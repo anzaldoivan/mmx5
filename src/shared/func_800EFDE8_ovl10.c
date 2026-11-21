@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800EFDE8_ovl10 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/object.h"
 #include "mmx5/globals.h"
@@ -6,7 +5,7 @@
 
 extern s32 func_80030AE4(u8* obj, s16 x, s16 y);
 
-void DEDUP_NAME(u8* obj) {
+void func_800EFDE8_ovl10(u8* obj) {
     s32 r;
     s32 hit;
 
@@ -48,4 +47,27 @@ void DEDUP_NAME(u8* obj) {
         *(s32*)(obj + 0x20) = -*(s32*)(obj + 0x20);
     }
     move_object(obj);
+}
+
+void func_800EFF54_ovl10(u8* obj) {
+    u8* g = g_Player;
+    s32 d;
+
+    d = *(s16*)(g + 0xA) - *(s16*)(obj + 0xA);
+    if ((d >= 0) ? (d < 0x40)
+                 : (*(s16*)(obj + 0xA) - *(s16*)(g + 0xA) < 0x40)) {
+        u8* h = g_Player;
+
+        d = *(s16*)(h + 0xE) - *(s16*)(obj + 0xE);
+        if (d >= 0) {
+            d = d < 0x40;
+        } else {
+            d = *(s16*)(obj + 0xE) - *(s16*)(h + 0xE) < 0x40;
+        }
+        if (d || (obj[0x47] != 0 && obj[0x47] != 6)) {
+            animate_object(obj);
+        }
+    } else if (obj[0x47] != 0 && obj[0x47] != 6) {
+        animate_object(obj);
+    }
 }

@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800FA528_ovl53 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/object.h"
 
@@ -6,13 +5,13 @@ extern signed char D_8009A424;
 extern u8* D_800FB59C_ovl53;
 extern u8 D_8009A1F8[];
 
-void DEDUP_NAME(Ovl45State* s) {
+void func_800FA528_ovl53(Ovl45State* s) {
     u8* p;
     u8* q;
 
     if (D_8009A424 == 0) {
         D_800FB59C_ovl53[4] = 2;
-        p = DEDUP_CALLEE();
+        p = alloc_class6_slot();
         if (p != 0) {
             p[0] = 1;
             p[1] = 9;

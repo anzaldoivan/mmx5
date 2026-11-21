@@ -1,8 +1,7 @@
-/* Shared body (DK-5), from the banked draft of func_800F3560_ovl00 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/globals.h"
 
-void DEDUP_NAME(Obj3560* obj) {
+void func_800F3560_ovl00(Obj3560* obj) {
     s8 state = obj->unk7;
     s8 t;
 

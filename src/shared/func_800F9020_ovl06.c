@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800F9020_ovl06 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/globals.h"
 #include "mmx5/ovl06.h"
@@ -14,7 +13,7 @@ extern u8 D_800FF518_ovl06[];
 extern u8 D_800FF528_ovl06[];
 extern u8 D_800FF538_ovl06[];
 
-void DEDUP_NAME(u8* obj) {
+void func_800F9020_ovl06(u8* obj) {
     u8* p;
 
     obj[0x9A] = 0;

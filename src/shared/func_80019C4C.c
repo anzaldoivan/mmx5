@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_80019C4C by tools/wave/gate.py rescan. */
 /* Adapted from mmx6 @c1c892d src/shared/SLUS_013.95/func_80022E44.c, AGPL-3.0 (THIRD_PARTY.md). */
 /* Adapted from sozud/mmx4 @29b62af src/main/14A60.c:func_80024260, AGPL-3.0; proven shared with X6 by exact signature ce7e7513ad74 (see THIRD_PARTY.md). */
 #include "types.h"
@@ -10,7 +9,7 @@ extern struct X4_DrawInfo* D_8009E794;
 extern M2C_UNK D_800D1F20;
 #define D_800D1F20 (*(s8(*)[4]) & D_800D1F20)
 
-void DEDUP_NAME(void) {
+void func_80019C4C(void) {
     u32 buffer;
     u32 i;
     u32 j;

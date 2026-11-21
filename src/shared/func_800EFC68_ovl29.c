@@ -1,13 +1,12 @@
-/* Shared body (DK-5), from the banked draft of func_800EFC68_ovl29 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/graphics.h"
 
-void DEDUP_NAME(ObjEFC68* obj) {
+void func_800EFC68_ovl29(ObjEFC68* obj) {
     s32 v;
 
     if (obj->unk67 == 0 && !(obj->unk70 & 8)) {
         if (obj->unk5 != 5) {
-            DEDUP_CALLEE(obj, 0);
+            set_animation(obj, 0);
             obj->unk20 = 0;
         }
         v = 6;

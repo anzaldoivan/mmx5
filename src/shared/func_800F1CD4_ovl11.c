@@ -1,11 +1,10 @@
-/* Shared body (DK-5), from the banked draft of func_800F1CD4_ovl11 by tools/wave/gate.py rescan. */
 /* Adapted from mmx6 @c1c892d src/shared/SLUS_013.95/func_8004AD78.c via src/slus/func_80050C60.c, AGPL-3.0 (THIRD_PARTY.md). */
 #include "types.h"
 #include "mmx5/object.h"
 #include "mmx5/globals.h"
 #define D_8009A420_as_s32 (*(s32*)&D_8009A420)
 
-void DEDUP_NAME(u8* arg0) {
+void func_800F1CD4_ovl11(u8* arg0) {
     u8 temp_v1;
 
     move_object(arg0);

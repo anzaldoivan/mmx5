@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800F01BC_ovl10 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/object.h"
 #include "mmx5/globals.h"
@@ -6,7 +5,7 @@
 
 extern u8 func_80030AE4(Obj01BC*, s16, s16);
 
-void DEDUP_NAME(Obj01BC* obj) {
+void func_800F01BC_ovl10(Obj01BC* obj) {
     if (func_80030AE4(obj, obj->x, obj->y) == 0x2D) {
         obj->state++;
         if (obj->f2 == 0) {

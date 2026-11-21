@@ -1,10 +1,9 @@
-/* Shared body (DK-5), from the banked draft of func_800F4E70_ovl26 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/globals.h"
 #include "addr.h"
 
-void DEDUP_NAME(u8* obj) {
-    DEDUP_CALLEE(obj);
+void func_800F4E70_ovl26(u8* obj) {
+    animate_object(obj);
     if (*(signed char*)(obj + 7) == 2) {
         obj[5] = 7;
         obj[6] = 0;

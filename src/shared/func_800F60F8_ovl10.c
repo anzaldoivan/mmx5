@@ -1,8 +1,8 @@
-/* Shared body (DK-5), from the banked draft of func_800F60F8_ovl10 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/globals.h"
+#include "mmx5/graphics.h"
 
-void DEDUP_NAME(u8* obj) {
+void func_800F60F8_ovl10(u8* obj) {
     s8 state;
     u8* p;
 
@@ -26,4 +26,20 @@ void DEDUP_NAME(u8* obj) {
         obj[6] = state;
         *(s16*)(obj + 0x7E) = 0x84;
     }
+}
+
+void func_800F61C8_ovl10(u8* obj) {
+    animate_object(obj);
+    if (--*(s16*)(obj + 0x7E) == 0) {
+        obj[6] = 2;
+    }
+}
+
+extern u8 D_80076060[];
+
+void func_800F620C_ovl10(u8* obj) {
+    *(u8**)(obj + 0x58) = D_80076060;
+    set_animation(obj, 0);
+    obj[5] = 4;
+    obj[6] = 2;
 }

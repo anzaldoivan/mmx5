@@ -1,9 +1,8 @@
-/* Shared body (DK-5), from the banked draft of func_800F0388_ovl12 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/globals.h"
 #include "mmx5/sound.h"
 
-void DEDUP_NAME(u8* arg0) {
+void func_800F0388_ovl12(u8* arg0) {
     u8* obj;
 
     if (--*(s16*)(arg0 + 0x7C) == -1) {

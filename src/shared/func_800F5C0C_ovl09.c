@@ -1,10 +1,9 @@
-/* Shared body (DK-5), from the banked draft of func_800F5C0C_ovl09 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/movement.h"
 #include "mmx5/globals.h"
 #include "mmx5/graphics.h"
 
-void DEDUP_NAME(Obj5C0C* e) {
+void func_800F5C0C_ovl09(Obj5C0C* e) {
     set_animation(e, 3);
     if (D_8009A0AA > e->unkA) {
         e->unk15 = 0x40;

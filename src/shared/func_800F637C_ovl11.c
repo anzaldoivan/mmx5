@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800F637C_ovl11 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/object.h"
 #include "mmx5/globals.h"
@@ -9,7 +8,7 @@ extern u8 D_800F9D10_ovl11[];
 extern u8 D_800F9D14_ovl11[];
 extern s16 D_800FA05A_ovl11;
 
-void DEDUP_NAME(Obj637C* obj) {
+void func_800F637C_ovl11(Obj637C* obj) {
     Scr2074* s;
 
     s = D_1F80004C.scr2074;

@@ -1,11 +1,10 @@
-/* Shared body (DK-5), from the banked draft of func_800F02C4_ovl11 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/object.h"
 #include "mmx5/globals.h"
 
 extern s32 func_8002D800(u8* a0);
 
-void DEDUP_NAME(u8* obj) {
+void func_800F02C4_ovl11(u8* obj) {
     animate_object(obj);
     if (obj[0x47] >= 12) {
         move_object(obj);

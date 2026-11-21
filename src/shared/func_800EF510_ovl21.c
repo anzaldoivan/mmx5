@@ -1,9 +1,8 @@
-/* Shared body (DK-5), from the banked draft of func_800EF510_ovl21 by tools/wave/gate.py rescan. */
 #include "types.h"
 
 #define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8*)(expr) + (offset)))
 
-void DEDUP_NAME(void* arg0) {
+void func_800EF510_ovl21(void* arg0) {
     void* temp_a1;
 
     temp_a1 = M2C_FIELD(arg0, void**, 0x5C);

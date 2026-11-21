@@ -54,8 +54,15 @@ The row has the columns kind, image, scope, old_name, new_name, decision, eviden
 
 ## Source layout
 
-Each function is one compile unit in its own file. A `slus` unit goes in `src/slus/<name>.c`. A `rockx5` unit goes in
-the folder of its overlay, `src/rockx5/ovlNN/<name>.c`. A shared body goes in `src/shared/<name>.c`. If you need the
+The layout tool decides where a `slus` unit goes. If the admitted names of a unit map to one mmx6 system, the unit
+goes in `src/slus/<system>/`. Any other `slus` unit stays in `src/slus/`. A `slus` unit of one function is
+`<name>.c` in its folder. A `slus` unit of several functions is one file named for its first address, `<first vram>.c`.
+
+A `rockx5` unit goes in the folder of its overlay.
+A unit of one function is `src/rockx5/ovlNN/<name>.c`. A unit of several functions is one file named for its first
+address, `src/rockx5/ovlNN/<first vram>.c`.
+
+A shared body goes in `src/shared/<name>.c`. If you need the
 path of a unit, ask `tools/build/layout.py` `locate()` and do not write the path by hand.
 `python3 tools/build/layout.py check` reports each file that is not at its path.
 

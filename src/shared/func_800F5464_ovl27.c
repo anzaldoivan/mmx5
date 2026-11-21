@@ -1,8 +1,7 @@
-/* Shared body (DK-5), from the banked draft of func_800F5464_ovl27 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/globals.h"
 
-void DEDUP_NAME(Obj800F2688* obj) {
+void func_800F5464_ovl27(Obj800F2688* obj) {
     if (--obj->unk7C == 0) {
         obj->unk4 = 2;
     } else if (--obj->unk7E == 0) {

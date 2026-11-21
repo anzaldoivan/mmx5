@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800F5CF0_ovl09 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/movement.h"
 #include "mmx5/globals.h"
@@ -7,7 +6,7 @@
 extern s32 D_800FB67C_ovl09;
 extern s16 D_800FB680_ovl09;
 
-void DEDUP_NAME(Obj5CF0* obj) {
+void func_800F5CF0_ovl09(Obj5CF0* obj) {
     set_animation(obj, 5);
     obj->unk20 = 0;
     obj->unk24 = 0;

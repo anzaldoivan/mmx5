@@ -1,10 +1,9 @@
-/* Shared body (DK-5), from the banked draft of func_800F5494_ovl04 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/globals.h"
 
 extern void (*D_80101BD0_ovl04[])(u8*);
 
-void DEDUP_NAME(u8* arg0) {
+void func_800F5494_ovl04(u8* arg0) {
     u8* g = g_Player;
 
     if (((signed char*)g)[0xF3] == 0) {

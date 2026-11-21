@@ -1,14 +1,13 @@
-/* Shared body (DK-5), from the banked draft of func_800FA6B8_ovl50 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/globals.h"
 
 extern u8 D_80091C44;
 
-void DEDUP_NAME(UnkObj* obj) {
+void func_800FA6B8_ovl50(UnkObj* obj) {
     UnkSpawn* s;
 
     if (D_80091C44 == 0) {
-        s = DEDUP_CALLEE();
+        s = func_8002D27C();
         if (s != 0) {
             s->unk0 = 0x41;
             s->unk1 = 0x1D;

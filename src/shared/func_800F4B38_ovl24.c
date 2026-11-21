@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800F4B38_ovl24 by tools/wave/gate.py rescan. */
 /* Adapted from mmx6 @c1c892d src/shared/rock_18/func_800EF7E4.c, AGPL-3.0 (THIRD_PARTY.md). */
 #include "types.h"
 #include "mmx5/globals.h"
@@ -9,7 +8,7 @@
 
 extern u16 D_800F5A1C_ovl24[][2];
 
-void DEDUP_NAME(void* arg0) {
+void func_800F4B38_ovl24(void* arg0) {
     if (D_800D1C28_as_u8 == 0x7F) {
         M2C_FIELD(arg0, s8*, 4) = 2;
         return;

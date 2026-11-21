@@ -1,13 +1,14 @@
-/* Shared body (DK-5), from the banked draft of func_800F1650_ovl11 by tools/wave/gate.py rescan. */
-/* Adapted from mmx6 @c1c892d src/shared/rock_15/func_800ECA98.c, AGPL-3.0 (THIRD_PARTY.md). */
 #include "types.h"
+#include "mmx5/sound.h"
+
+/* Adapted from mmx6 @c1c892d src/shared/rock_15/func_800ECA98.c, AGPL-3.0 (THIRD_PARTY.md). */
 
 extern s32 D_800F98F0_ovl11[];
 extern s32 D_800F98F8_ovl11[];
 
 #define U8F(p, o) (*(u8*)((u8*)(p) + (o)))
 
-void DEDUP_NAME(X4_Obj* self) {
+void func_800F1650_ovl11(X4_Obj* self) {
     u8 t;
     s32 c;
     // !FAKE: pins y to $5; gcc 2.7.2 allocates another register without it (byte mismatch)
@@ -36,3 +37,19 @@ void DEDUP_NAME(X4_Obj* self) {
     self->unk42 |= 0x8000;
 }
 #undef U8F
+
+void func_800F1708_ovl11(u8* arg0) {
+    if (--arg0[0x8C] == 0 && arg0[0x91] == 0) {
+        *(s32*)(arg0 + 0x20) = 0;
+        *(s32*)(arg0 + 0x24) = 0;
+        *(s32*)(arg0 + 0x28) = 0x3000;
+        arg0[0x91] = 1;
+        arg0[0x8D] = 0x28;
+        play_sound(0, 0x23, arg0);
+        arg0[5]++;
+    }
+    if (*(signed char*)(arg0 + 2) != 0 && arg0[0x8C] < 0x15 &&
+        *(s32*)(arg0 + 0x24) != 0) {
+        *(s32*)(arg0 + 0x24) = 0;
+    }
+}

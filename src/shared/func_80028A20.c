@@ -1,10 +1,9 @@
-/* Shared body (DK-5), from the banked draft of func_80028A20 by tools/wave/gate.py rescan. */
 /* Adapted from mmx6 @c1c892d src/shared/SLUS_013.95/func_80027AA8.c, AGPL-3.0 (THIRD_PARTY.md). */
 #include "types.h"
 
 void func_80028DFC(s32, s32, s32, s32, s32);
 
-void DEDUP_NAME(s32 arg0, s32 a1, s32 a2, u16* arg3) {
+void func_80028A20(s32 arg0, s32 a1, s32 a2, u16* arg3) {
     s16 arg1 = a1;
     s16 arg2 = a2;
     s32 var_v1;

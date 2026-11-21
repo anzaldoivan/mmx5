@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800F18D8_ovl26 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/title.h"
 #include "mmx5/globals.h"
@@ -8,7 +7,7 @@
 extern u8 D_8009A197;
 extern void (*D_800F95CC_ovl26[])(u8* obj);
 
-void DEDUP_NAME(u8* obj) {
+void func_800F18D8_ovl26(u8* obj) {
     if (is_off_screen(obj, 0x40, 0x40) == 0) {
         func_8002D9EC(obj, 0x20, 0x20);
     } else {

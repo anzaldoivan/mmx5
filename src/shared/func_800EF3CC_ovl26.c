@@ -1,4 +1,3 @@
-/* Shared body (DK-5), from the banked draft of func_800EF3CC_ovl26 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "mmx5/ovl26.h"
 #include "mmx5/system.h"
@@ -16,7 +15,7 @@ extern u8 D_800767E0[];
 extern u8 D_800F9214_ovl26[];
 extern Ent800F43E8 D_800F927C_ovl26[];
 
-void DEDUP_NAME(Ent3CC* o) {
+void func_800EF3CC_ovl26(Ent3CC* o) {
     Ent3CC_Src* src;
     u32* t;
     s32 a;

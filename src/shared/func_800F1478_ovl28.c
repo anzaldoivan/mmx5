@@ -1,11 +1,10 @@
-/* Shared body (DK-5), from the banked draft of func_800F1478_ovl28 by tools/wave/gate.py rescan. */
 #include "types.h"
 #include "addr.h"
 
 extern void (*D_800FDA78_ovl28[])(u8*);
 
 #define SCR D_1F80004C.bytes
-void DEDUP_NAME(u8* a0) {
+void func_800F1478_ovl28(u8* a0) {
     D_800FDA78_ovl28[(s8)a0[6]](a0);
     SCR[0x8A] = a0[6];
     SCR[0x8B] = a0[0x7C];
