@@ -4,8 +4,6 @@
 #include "mmx5/globals.h"
 #include "mmx5/graphics.h"
 
-extern signed char D_800D1C0C;
-
 void func_800FED30_ovl07(u8* o) {
     s8 st = o[6];
     u8 r;
@@ -17,7 +15,7 @@ void func_800FED30_ovl07(u8* o) {
         *(s32*)(o + 0x2C) = 0;
         o[6]++;
     } else if (st == 1) {
-        if (D_800D1C0C != 12) {
+        if (D_800D1C0C.s != 12) {
             if (*(s16*)(o + 0xE) < 0x519) {
                 move_object(o);
             } else {

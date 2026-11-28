@@ -1,8 +1,5 @@
 #include "types.h"
-
-extern u16 D_800D50DE;
-extern u16 D_8009A42E;
-extern u16 D_80093E68;
+#include "mmx5/globals.h"
 
 void func_800EF008_ovl26(u8* arg0) {
     if ((s16)(++*(s16*)(arg0 + 0x16) % 3) == 0) {

@@ -15,12 +15,11 @@ void func_800F364C_ovl24(u8* arg0) {
 extern void func_800211C4(void*, s32);
 extern s32 func_800132F8(s8 arg);
 extern s16 func_8001FF18(void*, s32);
-extern u16 D_800C9320;
 extern u8 D_80070F5C[];
 
 void func_800F3694_ovl24(u8* arg0) {
     func_800211C4(&D_8009A420[7], *(s16*)(arg0 + 8));
-    if (D_800C9320 & 0x40) {
+    if (D_800C9320.h & 0x40) {
         play_sound(0, 0x22, 0);
         if (D_8009A420[7] == 0) {
             func_800132F8(8);
@@ -37,11 +36,10 @@ void func_800F3694_ovl24(u8* arg0) {
 
 extern void func_800211C4(void*, s32);
 extern s32 func_800132F8(s8 arg);
-extern u16 D_800C9320;
 
 void func_800F3754_ovl24(u8* arg0) {
     func_800211C4(&D_8009A420[7], *(s16*)(arg0 + 8));
-    if (D_800C9320 & 0x40) {
+    if (D_800C9320.h & 0x40) {
         play_sound(0, 0x22, 0);
         if (D_8009A420[7] == 0) {
             func_800132F8(8);

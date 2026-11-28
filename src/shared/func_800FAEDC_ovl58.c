@@ -3,9 +3,6 @@
 #define D_8009A420_as_s32 (*(s32*)&D_8009A420)
 
 extern void func_8002C1C8(void);
-extern u16 D_800D50DE;
-extern u16 D_80093E68;
-extern u16 D_8009A42E;
 
 void func_800FAEDC_ovl58(u8* arg0) {
     if (!(D_8009A420_as_s32 & 1)) {

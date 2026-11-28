@@ -21,3 +21,17 @@ void func_800FA004_ovl43(u8* arg0) {
     func_8002BD8C();
     func_800272B4();
 }
+
+extern void func_800FA078_ovl43(u8*);
+extern void func_800FA0F8_ovl43(u8*);
+extern void func_800FA128_ovl43(u8*);
+extern void func_800FA1B0_ovl43(u8*);
+extern void func_800FA230_ovl43(u8*);
+extern void func_800FA2C0_ovl43(u8*);
+extern void func_800FA30C_ovl43(u8*);
+
+void (*D_800FA38C_ovl43[])(u8*) = {
+    func_800FA078_ovl43, func_800FA0F8_ovl43, func_800FA128_ovl43,
+    func_800FA1B0_ovl43, func_800FA230_ovl43, func_800FA2C0_ovl43,
+    func_800FA30C_ovl43,
+};

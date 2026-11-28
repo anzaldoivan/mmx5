@@ -2,10 +2,6 @@
 #include "mmx5/globals.h"
 #include "mmx5/ovl54.h"
 
-extern u16 D_800D50DE;
-extern u16 D_80093E68;
-extern u16 D_8009A42E;
-
 void func_800FAA34_ovl54(u8* arg0) {
     u16 t;
 

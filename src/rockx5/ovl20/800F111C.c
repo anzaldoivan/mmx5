@@ -15,20 +15,18 @@ void func_800F111C_ovl20(u8* arg0) {
     arg0[2]++;
 }
 
-extern u8 D_8009A1F8[];
-
 void func_800F1160_ovl20(u8* arg0) {
     u8* b;
     u8* c;
     u8* p;
 
-    b = D_8009A1F8;
+    b = D_8009A1F8.u;
     if (*(s16*)(b + 0x5E) < 0x281) {
         *(s16*)(b + 0x5E) -= 8;
     } else {
         *(s16*)(b + 0x5E) += 8;
     }
-    c = D_8009A1F8;
+    c = D_8009A1F8.u;
     if ((u16)(*(u16*)(c + 0x5E) - 0x141) >= 0x3BF) {
         *(s16*)(c + 0x5E) = 0x140;
         c[0xA0] = 1;
@@ -49,10 +47,8 @@ void func_800F1200_ovl20(u8* arg0) {
     }
 }
 
-extern u8 D_800D1C00[];
-
 void func_800F122C_ovl20(u8* arg0) {
-    u8* base = D_800D1C00;
+    u8* base = g_playthrough_state.u;
     u8* p;
 
     if (((s8*)base)[0x29] == 0) {
@@ -88,25 +84,23 @@ void func_800F12A8_ovl20(u8* arg0) {
 #undef func_800EFFBC_ovl24
 #undef D_800F5024_ovl24
 
-extern u8 D_8009A1F8[];
-
 void func_800F1344_ovl20(u8* arg0) {
     u8* b;
     u8* c;
     u8* e;
     s16 d;
 
-    b = D_8009A1F8;
+    b = D_8009A1F8.u;
     if (*(s16*)(b + 0x5E) < 0x281) {
         *(s16*)(b + 0x5E) += 8;
     } else {
         *(s16*)(b + 0x5E) -= 8;
     }
-    c = D_8009A1F8;
+    c = D_8009A1F8.u;
     d = (*(s16*)(c + 0x5E) - 0x280) < 0 ? (0x280 - *(s16*)(c + 0x5E))
                                         : (*(s16*)(c + 0x5E) - 0x280);
     if (d < 8) {
-        e = D_8009A1F8;
+        e = D_8009A1F8.u;
         *(s16*)(e + 0x5E) = 0x280;
         arg0[1] = 4;
         arg0[2] = 0;

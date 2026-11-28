@@ -1,10 +1,8 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
 extern const s16 D_80102FD4_ovl04;
 extern s8 D_800D1C1D;
-extern u16 D_800D50DE;
-extern u16 D_8009A42E;
-extern u16 D_80093E68;
 
 void func_800F03F4_ovl04(u8* p) {
     u16 t;

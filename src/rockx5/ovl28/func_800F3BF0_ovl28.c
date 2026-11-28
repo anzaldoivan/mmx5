@@ -9,7 +9,6 @@
 s32 func_8002B5B4(s32);
 void func_8002A5C4(s32, s32, s32);
 void start_pad_vibration(s32);
-extern Row5C8C D_8009A1F8[]; // Row5C8C (include/types.h): 0x54 rows, u16 at 0xA
 extern u8 D_80074E40[];
 extern u8 D_800FE2CC_ovl28[];
 extern u8 D_800FE2D0_ovl28[];
@@ -66,8 +65,8 @@ void func_800F3BF0_ovl28(void* self) {
         M2C_FIELD(self, s32*, 0x20) <<= 7;
         M2C_FIELD(self, s32*, 0x24) <<= 7;
         set_animation(self, 0x18);
-        func_8002C338(0x13E, D_1F800024 + 0x6C0, 1);
-        func_8002C338(0x13F, D_1F800024 + 0x6C0, 1);
+        load_palette(0x13E, D_1F800024 + 0x6C0, 1);
+        load_palette(0x13F, D_1F800024 + 0x6C0, 1);
         M2C_FIELD(self, u16*, 0x42) = 0x7CCE;
         M2C_FIELD(self, u8*, 5) = 1;
         play_sound(2, 0x6C, self);
@@ -136,7 +135,7 @@ void func_800F3BF0_ovl28(void* self) {
         } else {
             set_animation(self, 0x12);
             M2C_FIELD(self, u16*, 0xA) =
-                (&D_8009A1F8[M2C_FIELD(self, s8*, 0x14)])->unkA + 0xA0;
+                (&D_8009A1F8.row[M2C_FIELD(self, s8*, 0x14)])->unkA + 0xA0;
             M2C_FIELD(self, u16*, 0xA) +=
                 D_800FE308_ovl28[(M2C_FIELD(self, u8*, 2) & 0xF) - 7];
         }

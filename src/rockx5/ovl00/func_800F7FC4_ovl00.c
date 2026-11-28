@@ -3,7 +3,6 @@
 
 extern void func_80024548(s32);
 extern u8 D_80074EE0[];
-extern u8 D_800D1C00[];
 extern u8 D_800FB3DC_ovl00[];
 extern u8 D_800FB3E8_ovl00[];
 extern u8 D_800FB434_ovl00[];
@@ -31,7 +30,7 @@ void func_800F7FC4_ovl00(u8* o) {
     *(s32*)(o + 0x2C) = 0;
     o[0x5C] = 0;
     o[0x60] = 6;
-    g = D_800D1C00;
+    g = g_playthrough_state.u;
     g[0x25] = 1;
     *(u8**)(g + 0x20) = o;
     g[0xA2] = 0x30;

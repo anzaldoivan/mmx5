@@ -1,4 +1,5 @@
 #include "types.h"
+#include "mmx5/object.h"
 #include "mmx5/globals.h"
 
 extern u8 D_80101D58_ovl04[];

@@ -2,8 +2,6 @@
 #include "mmx5/globals.h"
 #include "mmx5/system.h"
 
-extern s16 D_8009A206;
-extern u8 D_8009A1F8[];
 extern u16 D_80102D64_ovl04[];
 
 static inline u8* func_800FCF68_ovl04_spawn(s32 kind, s32 arg0) {
@@ -26,7 +24,7 @@ void func_800FCF68_ovl04(s32 arg0, s32 arg1) {
     kind = 7;
     if (!(in & 4)) {
         kind = 8;
-        if (D_8009A206 < 0x41) {
+        if (D_8009A206.s < 0x41) {
             kind = 7;
         }
     }
@@ -35,11 +33,11 @@ void func_800FCF68_ovl04(s32 arg0, s32 arg1) {
         if (kind == 7) {
             u8* base;
             u32 r = random_byte();
-            base = D_8009A1F8;
+            base = D_8009A1F8.u;
             *(u16*)(obj + 0xA) = *(u16*)(base + 0xA) + (u8)(r % 161) * 2;
             *(u16*)(obj + 0xE) = *(u16*)(base + 0xE) + 0xF0;
         } else {
-            u8* base = D_8009A1F8;
+            u8* base = D_8009A1F8.u;
             *(u16*)(obj + 0xA) =
                 *(u16*)(base + 0xA) + D_80102D64_ovl04[arg1 * 2];
             if (arg1 == 1) {

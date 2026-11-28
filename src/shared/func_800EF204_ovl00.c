@@ -69,7 +69,6 @@ void func_800EF204_ovl00(u8* obj) {
 extern void start_pad_vibration(s32);
 extern void func_8002A600(s32, s32, s32);
 extern void func_800EF91C_ovl00(s32, s16, s16, s16, s16, s32);
-extern s16 D_8009A1F8[];
 
 void func_800EF400_ovl00(u8* obj) {
     u8* q;
@@ -92,7 +91,7 @@ void func_800EF400_ovl00(u8* obj) {
             p[0x87] = 1;
             start_pad_vibration(8);
             play_sound(5, 5, 0);
-            if (D_8009A1F8[0x10] == D_8009A1F8[7]) {
+            if (D_8009A1F8.h[0x10] == D_8009A1F8.h[7]) {
                 func_8002A600(8, 4, 2);
             }
             func_800EF91C_ovl00(
@@ -112,7 +111,6 @@ void func_800EF400_ovl00(u8* obj) {
     }
 }
 
-extern s16 D_8009A1F8[];
 extern void start_pad_vibration(s32);
 extern void func_8002A600(s32, s32, s32);
 extern void func_800F0740_ovl27(s32, s16, s16, s16, s16, s32);
@@ -128,7 +126,7 @@ void func_800F0408_ovl27(Self780* self) {
         scr->unk80->unk87 = 1;
         start_pad_vibration(8);
         play_sound(5, 5, 0);
-        if (D_8009A1F8[0x10] == D_8009A1F8[7]) {
+        if (D_8009A1F8.h[0x10] == D_8009A1F8.h[7]) {
             func_8002A600(8, 4, 2);
         }
         func_800F0740_ovl27(0x11, self->unkA - 0x20, self->unkE - 0x14,
@@ -144,7 +142,6 @@ void func_800F0408_ovl27(Self780* self) {
     self->unkE = D_1F80004C.scr780->unk80->unkE;
 }
 
-extern s16 D_8009A1F8[];
 extern void start_pad_vibration(s32);
 extern void func_8002A600(s32, s32, s32);
 extern void func_800EF91C_ovl00(s32, s16, s16, s16, s16, s32);
@@ -160,7 +157,7 @@ void func_800EF780_ovl00(Self780* self) {
         scr->unk80->unk87 = 1;
         start_pad_vibration(8);
         play_sound(5, 5, 0);
-        if (D_8009A1F8[0x10] == D_8009A1F8[7]) {
+        if (D_8009A1F8.h[0x10] == D_8009A1F8.h[7]) {
             func_8002A600(8, 4, 2);
         }
         func_800EF91C_ovl00(0x12, self->unkA + 0x10, self->unkE - 0x14,

@@ -21,15 +21,31 @@ void func_800FA004_ovl51(u8* arg0) {
     func_800272B4();
 }
 
+extern void func_800FA078_ovl51(u8*);
+// unprototyped: these five are defined below with UnkObj*
+extern void func_800FA0E4_ovl51();
+extern void func_800FA12C_ovl51(u8*);
+extern void func_800FA174_ovl51();
+extern void func_800FA1F4_ovl51();
+extern void func_800FA238_ovl51();
+extern void func_800FA290_ovl51();
+extern void func_800FA31C_ovl51(u8*);
+extern void func_800FA368_ovl51(u8*);
+
+void (*D_800FA3E8_ovl51[])(u8*) = {
+    func_800FA078_ovl51, func_800FA0E4_ovl51, func_800FA12C_ovl51,
+    func_800FA174_ovl51, func_800FA1F4_ovl51, func_800FA238_ovl51,
+    func_800FA290_ovl51, func_800FA31C_ovl51, func_800FA368_ovl51,
+};
+
 #define func_800FA078_ovl40 func_800FA078_ovl51
 #include "shared/func_800FA078_ovl40.c"
 #undef func_800FA078_ovl40
 
-extern u8 D_8009A1F8[];
 extern void func_80013288(s32);
 
 void func_800FA0E4_ovl51(UnkObj* obj) {
-    u8* p = D_8009A1F8;
+    u8* p = D_8009A1F8.u;
 
     p[0x3] = 0;
     p[0x57] = 0;
@@ -69,13 +85,11 @@ void func_800FA174_ovl51(UnkObj* obj) {
     }
 }
 
-extern u8 D_8009A1F8[];
-
 void func_800FA1F4_ovl51(UnkObj* arg0) {
     u8* p;
 
     if (arg0->unk4 == 0) {
-        p = D_8009A1F8;
+        p = D_8009A1F8.u;
         p[0xAB] = 1;
         *(s16*)(p + 0xB2) = 0;
         *(s16*)(p + 0xB6) = 0;
@@ -85,8 +99,6 @@ void func_800FA1F4_ovl51(UnkObj* arg0) {
     }
 }
 
-extern u8 D_8009A1F8[];
-
 void func_800FA238_ovl51(UnkObj* arg0) {
     u8* p;
 
@@ -94,7 +106,7 @@ void func_800FA238_ovl51(UnkObj* arg0) {
         arg0->unk4++;
         return;
     }
-    p = D_8009A1F8;
+    p = D_8009A1F8.u;
     p[0x57] = 1;
     *(s16*)(p + 0x5E) = 0x140;
     *(s16*)(p + 0x62) = 0x100;
@@ -103,10 +115,8 @@ void func_800FA238_ovl51(UnkObj* arg0) {
     arg0->unk1++;
 }
 
-extern u8 D_8009A1F8[];
-
 void func_800FA290_ovl51(UnkObj* arg0) {
-    u8* p = D_8009A1F8;
+    u8* p = D_8009A1F8.u;
 
     p[0xA0] = 1;
     *(s32*)(p + 0x5C) += -0xB3333;

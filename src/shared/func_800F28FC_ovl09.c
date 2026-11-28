@@ -1,9 +1,7 @@
 #include "types.h"
+#include "mmx5/ovl09.h"
 #include "mmx5/globals.h"
 
-extern s8 D_800D1C00[];
-extern u8 D_8009A1F8[];
-extern s32 D_800FB660_ovl09;
 extern u8 D_800D50DC;
 extern u8 D_8009A42C;
 extern u8 D_80093E66;
@@ -15,10 +13,10 @@ void func_800F28FC_ovl09(u8* arg) {
     u8* w;
     s8 t;
 
-    if (D_800D1C00[0xF] == 0) {
+    if (g_playthrough_state.s[0xF] == 0) {
         if (*(s16*)(arg + 0x7C) == 0x28) {
-            w = D_8009A1F8;
-            D_800FB660_ovl09 = *(s16*)(w + 0x26);
+            w = D_8009A1F8.u;
+            D_800FB660_ovl09.w = *(s16*)(w + 0x26);
             *(s16*)(w + 0x26) = *(s16*)(w + 0x24) - 0x10;
         }
         if (--*(s16*)(arg + 0x7C) == 0) {
@@ -41,7 +39,7 @@ void func_800F28FC_ovl09(u8* arg) {
                 s32 m = 1 << sh;
                 D_80093DD0[q] &= ~m;
             }
-            h = D_800D1C00;
+            h = g_playthrough_state.s;
             t = h[0xC];
             if (t == 0xC) {
                 D_80093DD0[9] = -0x10;

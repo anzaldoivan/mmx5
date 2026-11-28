@@ -2,9 +2,6 @@
 #include "mmx5/globals.h"
 
 extern void func_8002C1C8(void);
-extern u16 D_800D50DE;
-extern u16 D_80093E68;
-extern u16 D_8009A42E;
 
 void func_800FAF7C_ovl52(u8* arg0) {
     u16 t = --D_800D50DE;

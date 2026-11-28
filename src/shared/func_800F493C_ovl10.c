@@ -4,7 +4,6 @@
 #include "mmx5/globals.h"
 
 extern u8* func_8002C938();
-extern signed char D_800D1C0C;
 
 void func_800F493C_ovl10(u8* obj) {
     s32 lim;
@@ -16,7 +15,7 @@ void func_800F493C_ovl10(u8* obj) {
     s8 t;
 
     lim = 0xC0;
-    if (D_800D1C0C != 0xC) {
+    if (D_800D1C0C.s != 0xC) {
         lim = 0x480;
     }
     animate_object(obj);

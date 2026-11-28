@@ -2,7 +2,6 @@
 #include "mmx5/globals.h"
 
 extern void func_80024548(s32);
-extern u8 D_800D1C00[];
 
 void func_800F3670_ovl10(u8* arg0) {
     s16 t;
@@ -45,7 +44,7 @@ void func_800F3670_ovl10(u8* arg0) {
                 *(s32*)(q + 0xC) = *(s32*)(arg0 + 0xC);
                 *(u8**)(q + 0x50) = arg0;
             }
-            g = D_800D1C00;
+            g = g_playthrough_state.u;
             g[0x24] = 1;
             g[0x25] = 0;
             g[0xA2] = 0x30;

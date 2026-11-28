@@ -32,7 +32,7 @@ Define a struct or union once, in `include/types.h`, never in `src/`. Name an ab
 absolute address in `src/`.
 
 Declare a function or data symbol that several files use once, in `include/mmx5/<system>.h`. Use the system where
-mmx6 declares the symbol. Otherwise use its system in `config/layout.tsv`. A `slus` symbol without a system goes in
+mmx6 declares the symbol. Otherwise use its system in `config/layout.tsv`. A `main` symbol without a system goes in
 `include/mmx5/globals.h`.
 
 A header holds only prototypes, externs and enum constants. Its guard is `MMX5_<NAME>_H`.
@@ -47,6 +47,9 @@ If files index the bytes of a data symbol, declare it in the header as an unsize
 `extern u8 g_Player[];`. If a file reads it as a struct or scalar, define a view after the includes:
 `#define g_Player_as_X4_Obj (*(X4_Obj*)&g_Player)`. Then use the view in that file.
 
+If files index one symbol with different element types, declare it as a union with one array per type.
+Each file then indexes its own member, for example `g_playthrough_state.s[k]`.
+
 A symbol renamed in `config/symbols.*.txt` needs one accepted row in `config/names.tsv`.
 The row has the columns kind, image, scope, old_name, new_name, decision, evidence and reason.
 `make readability-check` gates these rules and the type rules above, inside `make no-rom` and in the public CI
@@ -54,9 +57,9 @@ The row has the columns kind, image, scope, old_name, new_name, decision, eviden
 
 ## Source layout
 
-The layout tool decides where a `slus` unit goes. If the admitted names of a unit map to one mmx6 system, the unit
-goes in `src/slus/<system>/`. Any other `slus` unit stays in `src/slus/`. A `slus` unit of one function is
-`<name>.c` in its folder. A `slus` unit of several functions is one file named for its first address, `<first vram>.c`.
+The layout tool decides where a `main` unit goes. If the admitted names of a unit map to one mmx6 system, the unit
+goes in `src/main/<system>/`. Any other `main` unit stays in `src/main/`. A `main` unit of one function is
+`<name>.c` in its folder. A `main` unit of several functions is one file named for its first address, `<first vram>.c`.
 
 A `rockx5` unit goes in the folder of its overlay.
 A unit of one function is `src/rockx5/ovlNN/<name>.c`. A unit of several functions is one file named for its first
@@ -66,7 +69,26 @@ A shared body goes in `src/shared/<name>.c`. If you need the
 path of a unit, ask `tools/build/layout.py` `locate()` and do not write the path by hand.
 `python3 tools/build/layout.py check` reports each file that is not at its path.
 
-## AI use — conduct
+A named twin is one shared body that several overlays compile under one name.
+Each overlay copy links as `<name>_ovlNN`, and the `main` copy links as `<name>`.
+The build passes `-DOVL_ID=NN` to every unit in `src/rockx5/ovlNN/`.
+`include/mmx5/ovl.h` turns `OVL(<name>)` into `<name>_ovlNN` there and into `<name>` in `main`.
+
+Write the shared body as `<type> OVL(<name>)(...) {`, and include `mmx5/ovl.h` at its top.
+A site that includes the body needs no `#define` for that name.
+To call a copy from other code in an overlay, write `<name>_ovlNN`.
+To rename a twin group into this form, run `python3 tools/readability/rename.py --twin <owner> <name>`.
+
+## Version differences
+
+Code that differs between game versions compares ordered numbers.
+Include `mmx5/version.h` and write `#if VERSION >= VER_US`.
+The numbers are `VER_JP` 10, `VER_US` 20 and `VER_EU` 30.
+The build passes `-DVERSION=VER_US` to each C file of the US version.
+Do not write `#ifdef VERSION_US`, `#ifndef VERSION_US` or `defined(VERSION_US)`.
+`make style-check` refuses these forms in `src/`, `include/` and `patches/`.
+
+## AI use: conduct
 
 AI-use statement to be added before this repository is made public.
 

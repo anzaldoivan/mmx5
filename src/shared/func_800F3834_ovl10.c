@@ -1,12 +1,10 @@
 #include "types.h"
+#include "mmx5/ovl10.h"
 #include "mmx5/sound.h"
 #include "mmx5/globals.h"
 #include "mmx5/graphics.h"
 
 extern s32 func_80044DE0();
-extern u8 D_8009A1F8[];
-extern s8 D_800D1C00[];
-extern u8 D_800FC1C8_ovl10;
 
 void func_800F3834_ovl10(u8* obj) {
     u8* q;
@@ -20,23 +18,23 @@ void func_800F3834_ovl10(u8* obj) {
             play_sound(0, 0xE, 0);
             *(s16*)(obj + 0x7E) = 3;
         }
-        if (D_800D1C00[0xC] != 0xC) {
-            q = D_8009A1F8;
+        if (g_playthrough_state.s[0xC] != 0xC) {
+            q = D_8009A1F8.u;
             *(s16*)(q + 0x26) = 0x1F50;
         } else {
-            q2 = D_8009A1F8;
+            q2 = D_8009A1F8.u;
             *(s16*)(q2 + 0x26) = 0xA50;
         }
-        if ((s8)++obj[0x5C] == D_800D1C00[0xA2]) {
-            if (D_800D1C00[0xC] != 0xC) {
-                p = D_8009A1F8;
+        if ((s8)++obj[0x5C] == g_playthrough_state.s[0xA2]) {
+            if (g_playthrough_state.s[0xC] != 0xC) {
+                p = D_8009A1F8.u;
                 *(s16*)(p + 0x24) = 0x1F70;
             } else {
-                p = D_8009A1F8;
+                p = D_8009A1F8.u;
                 *(s16*)(p + 0x24) = 0xA70;
             }
-            r = D_8009A1F8;
-            r[0x48] = D_800FC1C8_ovl10;
+            r = D_8009A1F8.u;
+            r[0x48] = D_800FC1C8_ovl10.b;
             set_animation(obj, 0x17);
             obj[5] = 9;
             obj[6] = 0;

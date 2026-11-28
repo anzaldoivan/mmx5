@@ -4,7 +4,6 @@
 #include "mmx5/globals.h"
 #include "mmx5/sound.h"
 
-extern u8 D_800D1C00[];
 extern u8 D_800F9730_ovl11[];
 extern s32 func_8002E804(u8*, u8*);
 
@@ -14,7 +13,7 @@ void func_800F0330_ovl11(u8* arg0) {
 
     if ((g_Player[0x5C] & 0x7F) && func_8002E804(arg0, g_Player)) {
         arg0[5] = 0;
-        p = D_800D1C00;
+        p = g_playthrough_state.u;
         if ((signed char)++p[0x45] >= 10) {
             p[0x45] = 9;
         } else {

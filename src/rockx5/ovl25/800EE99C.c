@@ -1,4 +1,5 @@
 #include "types.h"
+#include "mmx5/object.h"
 #include "mmx5/ovl25.h"
 #include "addr.h"
 #include "mmx5/globals.h"
@@ -16,8 +17,6 @@ extern void func_8002906C(void);
 extern s32 func_80027238(void);
 extern void func_800177B0(s32, s32);
 extern void func_80013288(s32);
-extern u8 D_800C9310;
-extern u8 D_8009A1F8[];
 
 void func_800EE99C_ovl25(u8* arg0) {
     u8 i;
@@ -32,10 +31,10 @@ void func_800EE99C_ovl25(u8* arg0) {
     init_checkpoint_positions();
     func_8002906C();
     func_80027238();
-    D_8009A1F8[3] = 0;
-    D_8009A1F8[0x57] = 1;
-    D_8009A1F8[0xAB] = 0;
-    D_800C9310 |= 1;
+    D_8009A1F8.u[3] = 0;
+    D_8009A1F8.u[0x57] = 1;
+    D_8009A1F8.u[0xAB] = 0;
+    D_800C9310.b |= 1;
     src = D_1F800028 + 0xA00;
     D_800F0CF4_ovl25_as_Blk200 = *(Blk200*)src;
     src = D_1F800028 + 0xC00;
@@ -85,17 +84,17 @@ void func_800EEE48_ovl25(u8* arg0) {
             (*(u16*)(arg0 + 4))++;
             if (*(s16*)(arg0 + 4) >= 0x3D) {
                 func_8002C3CC(D_800F0EF4_ovl25, D_800F0CF4_ovl25, 0x100, 0, 0);
-                func_8002C338(0x50, D_800F0EF4_ovl25, 0x10);
+                load_palette(0x50, D_800F0EF4_ovl25, 0x10);
                 func_8002C3CC(D_800F12F4_ovl25, D_800F10F4_ovl25, 0x100, 0, 0);
-                func_8002C338(0x60, D_800F12F4_ovl25, 0x10);
+                load_palette(0x60, D_800F12F4_ovl25, 0x10);
                 func_8002C3CC(D_800F16F4_ovl25, D_800F14F4_ovl25, 0x100, 0, 0);
-                func_8002C338(0x70, D_800F16F4_ovl25, 0x10);
+                load_palette(0x70, D_800F16F4_ovl25, 0x10);
                 func_8002C3CC(D_800F1AF4_ovl25, D_800F18F4_ovl25, 0x100, 0, 0);
-                func_8002C338(0x80, D_800F1AF4_ovl25, 0x10);
+                load_palette(0x80, D_800F1AF4_ovl25, 0x10);
                 func_8002C3CC(D_800F1EF4_ovl25, D_800F1CF4_ovl25, 0x100, 0, 0);
-                func_8002C338(0x90, D_800F1EF4_ovl25, 0x10);
+                load_palette(0x90, D_800F1EF4_ovl25, 0x10);
                 func_8002C3CC(D_800F22F4_ovl25, D_800F20F4_ovl25, 0x100, 0, 0);
-                func_8002C338(0xA0, D_800F22F4_ovl25, 0x10);
+                load_palette(0xA0, D_800F22F4_ovl25, 0x10);
                 D_8009A2A3 = 1;
                 arg0[2] = 0;
                 arg0[1]++;

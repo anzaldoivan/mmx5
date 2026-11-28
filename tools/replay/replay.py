@@ -11,10 +11,12 @@
 
 Memcards: both slots on a fresh repo-local card, .run/replay/cards/card1.mcd, deleted before every run (README.md).
 """
-import argparse, json, os, re, shutil, subprocess, sys
+import argparse, json, os, re, shutil, subprocess, sys, time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / "tools/build"))
+import layout  # noqa: E402
 CARDS = ROOT / '.run/replay/cards'
 PLANTS = ROOT / 'tools/replay/plants.txt'
 CP = re.compile(r'redux: cp (\S+) frame=(\d+) stage/sub=(\d+)/(\d+) vram_sha1=([0-9a-f]{40})\s*$')
@@ -47,12 +49,16 @@ def run(a):
         shutil.rmtree(CARDS, ignore_errors=True)  # fresh empty card per run; Redux creates it
         CARDS.mkdir(parents=True)
         card = str(CARDS / 'card1.mcd')
+        t0 = time.time()
         # Redux 298 sets Mcd2 from -memcard1's value too; both flags given so neither slot falls back to ~/.config
         p = subprocess.run(['bash', str(ROOT / 'tools/redux/run.sh'), str(ROOT / 'tools/replay/replay.lua'),
                             '-memcard1', card, '-memcard2', card],
                            env=dict(env, REDUX_OUT=str(d)), capture_output=True, text=True)
         (d / 'stdout.txt').write_text(p.stdout)
-        shutil.copy(ROOT / '.run/redux/replay.log', d / 'redux.log')
+        log = ROOT / '.run/redux/replay.log'
+        if not log.exists() or log.stat().st_mtime < t0:  # run.sh refused before the emulator: no log, or last run's
+            sys.exit(f'replay: tools/redux/run.sh wrote no .run/redux/replay.log (rc={p.returncode}): {p.stdout.strip()}')
+        shutil.copy(log, d / 'redux.log')
         cps = parse(p.stdout.splitlines())
         (d / 'checkpoints.jsonl').write_text(''.join(json.dumps(c) + '\n' for c in cps))
         ended = any(l.startswith('redux: end ') for l in p.stdout.splitlines())
@@ -130,7 +136,7 @@ def caught(a, b, declared):
 
 def check(_):
     py, rr = sys.executable, ROOT / '.run/replay'
-    cue = ROOT / 'build/disc/mmx5.cue'
+    cue = ROOT / layout.build_dir('disc') / 'mmx5.cue'
     if not cue.exists():
         subprocess.run(['make', 'disc', f'PY={py}'], cwd=ROOT, check=True)
     pad = str(ROOT / 'tools/replay/scripts/intro.pad')

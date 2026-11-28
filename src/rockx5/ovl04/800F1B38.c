@@ -8,7 +8,6 @@
 extern s32 func_8002B5B4(s32);
 extern u8 D_800750C0[];
 extern u32* D_80098118;
-extern u8 D_8009A1F8[];
 extern u8 D_80101568_ovl04[];
 extern u8 D_8010156C_ovl04[];
 extern u8 D_80101570_ovl04[];
@@ -52,7 +51,7 @@ void func_800F1B38_ovl04(u8* obj) {
             ((a * 4 + 0x18) % 16) | (((b + 6) / 4 + 0x1E0) << 6);
         *(s32*)(obj + 0x3C) = (s32)D_1F800020.u32s +
                               D_1F800020.u32s[func_8002B5B4(((s8*)obj)[1])];
-        p = D_8009A1F8;
+        p = D_8009A1F8.u;
         if (*(s16*)(g_Player + 0xA) - *(s16*)(p + 0xA) >= 0xA1) {
             d = (random_byte() & 0xF) + 0x38;
             *(s16*)(obj + 0xA) = *(u16*)(p + 0xA) - d;
@@ -61,10 +60,10 @@ void func_800F1B38_ovl04(u8* obj) {
             *(s16*)(obj + 0xA) = *(u16*)(p + 0xA) + d;
         }
         if (((s8*)obj)[2] == 2) {
-            u8* q2 = D_8009A1F8;
+            u8* q2 = D_8009A1F8.u;
             *(s16*)(obj + 0xE) = *(u16*)(q2 + 0xE) + 0x14;
         } else if (((s8*)obj)[2] == 3) {
-            q = D_8009A1F8;
+            q = D_8009A1F8.u;
             *(s16*)(obj + 0xE) = *(u16*)(q + 0xE) + 0xDC;
         }
     }

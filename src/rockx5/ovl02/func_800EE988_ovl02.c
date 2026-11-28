@@ -2,8 +2,6 @@
 #include "mmx5/globals.h"
 #define D_8009A420_as_s32 (*(s32*)&D_8009A420)
 
-extern s8 D_800D1C00[];
-extern u8 D_8009A1F8[];
 extern void* D_800F3DC8_ovl02[];
 extern u8 D_800F4918_ovl02[];
 extern u8 D_800F3DA8_ovl02[];
@@ -14,17 +12,17 @@ void func_800EE988_ovl02(u8* obj) {
     u8* s;
 
     if (*(s16*)(g + 0xA) > 0x1520) {
-        if (D_800D1C00[0xF] == 0) {
-            D_800D1C00[0xF] = 1;
+        if (g_playthrough_state.s[0xF] == 0) {
+            g_playthrough_state.s[0xF] = 1;
         }
     }
     if (g_Player[0xF7] != 0) {
-        u8* t = D_8009A1F8;
+        u8* t = D_8009A1F8.u;
         *(s16*)(t + 0xB6) = 0x2F0;
         t[0xF4] = 1;
         return;
     }
-    s = D_8009A1F8;
+    s = D_8009A1F8.u;
     *(s16*)(s + 0xB6) = 0x1E0;
     s[0xF4] = 1;
     ((void (*)(u8*))D_800F3DC8_ovl02[(s8)obj[4]])(obj);
@@ -35,10 +33,10 @@ void func_800EE988_ovl02(u8* obj) {
         }
         s[0xF4] = 1;
     }
-    if ((s8)obj[0x16] != D_800D1C00[0x27]) {
+    if ((s8)obj[0x16] != g_playthrough_state.s[0x27]) {
         func_8002C3CC(D_800F4918_ovl02, D_800F3DA8_ovl02, 0x100,
-                      0x1F - D_800D1C00[0x27], 0x1F);
-        ((s32(*)())func_8002C338)(0x4A, D_800F4918_ovl02, 1);
-        obj[0x16] = D_800D1C00[0x27];
+                      0x1F - g_playthrough_state.s[0x27], 0x1F);
+        ((s32(*)())load_palette)(0x4A, D_800F4918_ovl02, 1);
+        obj[0x16] = g_playthrough_state.s[0x27];
     }
 }

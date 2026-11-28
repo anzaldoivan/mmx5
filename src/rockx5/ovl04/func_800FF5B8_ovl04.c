@@ -1,4 +1,5 @@
 #include "types.h"
+#include "mmx5/globals.h"
 #include "mmx5/sound.h"
 #include "mmx5/graphics.h"
 
@@ -11,7 +12,6 @@ extern u8 D_80102ED0_ovl04[];
 extern u8 D_80074DA0[];
 extern u8 D_80102ED4_ovl04[];
 extern u8 D_80102EDC_ovl04[];
-extern s16 D_8009A206;
 
 void func_800FF5B8_ovl04(u8* obj) {
     u8* p;
@@ -69,7 +69,7 @@ void func_800FF5B8_ovl04(u8* obj) {
         obj[0x15] = 0;
         *(u16*)(obj + 0x42) &= 0x7FFF;
         set_animation(obj, 0x12);
-        *(s32*)(obj + 0x24) = *(s16*)(obj + 0xE) - D_8009A206;
+        *(s32*)(obj + 0x24) = *(s16*)(obj + 0xE) - D_8009A206.s;
         obj[0x16] = 0x20;
         obj[5] = 2;
         break;

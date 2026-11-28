@@ -480,219 +480,219 @@ function	rockx5	0x800FFBB4	update_nightmare_snake_ovl04	x6-twin	scope overlay, x
 function	rockx5	0x800FFFD0	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl04	x6-twin	scope overlay, x6 names 4, duplicate 11, no basis	docs/oracle/x6-twins.tsv:207
 function	rockx5	0x80100370	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure_ovl04	x6-twin	scope overlay, x6 names 4, duplicate 11, no basis	docs/oracle/x6-twins.tsv:207
 data	rockx5	0x80100E94	autoscroll_segment_bounds_ovl07	x4	scope object, anchors 2	docs/oracle/x4-names.tsv:68
-function	slus	0x80013674	-	string	byte table	config/oracle.strnames.tsv:19
-function	slus	0x80013EE8	read_rock_dat_toc	string	refuted, fixed to load_rock_dat_file_table	config/oracle.strnames.tsv:24
-function	slus	0x80015DDC	cd_file_rock_x5_bin	string	named loadmap	config/oracle.strnames.tsv:25
-function	slus	0x800171E8	set_animation	x4	tier slot	docs/oracle/x4-names.tsv:225
-function	slus	0x8001728C	clear_vram_rect_ptrs	x4	no corroborator	docs/oracle/x4-names.tsv:227
-function	slus	0x8001B378	memcard_save_name	string	text not the work	config/oracle.strnames.tsv:26
-function	slus	0x8001D220	InitMemcards	x4	no corroborator	docs/oracle/x4-names.tsv:228
-function	slus	0x8001D6BC	memcard_device	string	named x6-twin	config/oracle.strnames.tsv:30
-function	slus	0x8001D8B4	memcard_device	string	named x6-twin	config/oracle.strnames.tsv:31
-function	slus	0x8002553C	-	string	byte table	config/oracle.strnames.tsv:32
-function	slus	0x80025A74	-	string	byte table	config/oracle.strnames.tsv:33
-function	slus	0x8002A5C4	start_screen_shake_x	x4	no corroborator	docs/oracle/x4-names.tsv:230
-function	slus	0x8002A600	start_screen_shake_y	x4	no corroborator	docs/oracle/x4-names.tsv:231
-function	slus	0x8002CF70	reset_main_and_shots	x4	no corroborator	docs/oracle/x4-names.tsv:234
-function	slus	0x8002D0E4	find_free_visual_obj	x4	tier slot	docs/oracle/x4-names.tsv:235
-function	slus	0x8002D1A4	find_free_shot_obj	x4	tier slot, no corroborator	docs/oracle/x4-names.tsv:236
-function	slus	0x8002D27C	find_free_misc_obj	x4	tier slot, no corroborator	docs/oracle/x4-names.tsv:237
-function	slus	0x8002D6FC	ZeroObjectState	x4	conflict x6-twin clear_object_slot	docs/oracle/x4-names.tsv:238
-function	slus	0x8002D760	despawn_object	x4	no corroborator	docs/oracle/x4-names.tsv:239
-function	slus	0x8002D89C	is_on_screen	x4	no corroborator	docs/oracle/x4-names.tsv:240
-function	slus	0x8002D9EC	update_on_screen	x4	tier slot, no corroborator	docs/oracle/x4-names.tsv:241
-function	slus	0x8002DED4	move_with_gravity	x4	tier slot, conflict x6-twin apply_object_motion, no corroborator	docs/oracle/x4-names.tsv:242
-function	slus	0x8002DF78	get_random	x4	tier slot, conflict x6-twin random_byte, no corroborator	docs/oracle/x4-names.tsv:244
-function	slus	0x8002E1C0	get_layout_screen	x4	no corroborator	docs/oracle/x4-names.tsv:246
-function	slus	0x8002FB58	CollisionRelated	x4	tier slot, no corroborator	docs/oracle/x4-names.tsv:247
-function	slus	0x80032CEC	quad_is_on_screen	x4	scope object, tier slot, no corroborator	docs/oracle/x4-names.tsv:248
-function	slus	0x80036F68	player_ladder_grab	x4	no corroborator	docs/oracle/x4-names.tsv:249
-function	slus	0x80037888	update_slide_down/update_wall_jump	x6-twin	x6 names 3, no basis	docs/oracle/x6-twins.tsv:3948
-function	slus	0x8003952C	player_check_dash_jump	x4	no corroborator	docs/oracle/x4-names.tsv:256
-function	slus	0x8003979C	player_check_dash_input	x4	tier slot, no corroborator	docs/oracle/x4-names.tsv:257
-function	slus	0x80039AE0	player_check_wall	x4	tier slot, conflict x6-twin try_enter_wall_cling, no corroborator	docs/oracle/x4-names.tsv:258
-function	slus	0x80039ECC	player_check_script	x4	tier slot, no corroborator	docs/oracle/x4-names.tsv:259
-function	slus	0x8003A008	player_leap_check_wall	x4	no corroborator	docs/oracle/x4-names.tsv:260
-function	slus	0x8003A30C	player_enter_dash	x4	tier slot, no corroborator	docs/oracle/x4-names.tsv:261
-function	slus	0x8003A7E4	player_enter_walk_start	x4	no corroborator	docs/oracle/x4-names.tsv:262
-function	slus	0x8003A82C	player_enter_walk	x4	no corroborator	docs/oracle/x4-names.tsv:263
-function	slus	0x8003A874	player_enter_jump	x4	tier slot, no corroborator	docs/oracle/x4-names.tsv:264
-function	slus	0x8003A9AC	player_enter_land	x4	no corroborator	docs/oracle/x4-names.tsv:265
-function	slus	0x8003B148	player_enter_ladder_down	x4	tier slot, no corroborator	docs/oracle/x4-names.tsv:269
-function	slus	0x8003B28C	player_enter_beam_out	x4	no corroborator	docs/oracle/x4-names.tsv:270
-function	slus	0x8003B33C	player_set_animation	x4	tier slot, no corroborator	docs/oracle/x4-names.tsv:271
-function	slus	0x8003B4CC	player_set_animation_frame	x4	tier slot, no corroborator	docs/oracle/x4-names.tsv:272
-function	slus	0x8003D200	player_spawn_dash_dust	x4	no corroborator	docs/oracle/x4-names.tsv:276
-function	slus	0x8003D250	player_spawn_wall_slide_dust	x4	conflict x6-twin spawn_dust, no corroborator	docs/oracle/x4-names.tsv:277
-function	slus	0x8003D2FC	player_check_splash_tile	x4	no corroborator	docs/oracle/x4-names.tsv:278
-function	slus	0x8003D72C	player_entry_beam_in	x4	no corroborator	docs/oracle/x4-names.tsv:281
-function	slus	0x8003DAA4	player_spawn_death_orb	x4	no corroborator	docs/oracle/x4-names.tsv:282
-function	slus	0x80040B6C	player_hover_check_end	x4	tier slot, no corroborator	docs/oracle/x4-names.tsv:293
-function	slus	0x80040BBC	player_hover_steer	x4	tier slot, no corroborator	docs/oracle/x4-names.tsv:294
-function	slus	0x80044BD8	enemy_hit_reaction	x4	no corroborator	docs/oracle/x4-names.tsv:298
-function	slus	0x80045928	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
-function	slus	0x80045964	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
-function	slus	0x800459A0	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
-function	slus	0x800459DC	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
-function	slus	0x80045A18	nova_strike_hitbox_update	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:300
-function	slus	0x80045BA0	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
-function	slus	0x80045D08	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
-function	slus	0x80045D44	-	string	byte table	config/oracle.strnames.tsv:34
-function	slus	0x80045D44	buster_shot_place_at_muzzle	x4	scope object, tier slot, no corroborator	docs/oracle/x4-names.tsv:301
-function	slus	0x80045E50	lemon_main	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:302
-function	slus	0x80045FCC	lemon_deflected	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:303
-function	slus	0x80046030	buster_shot_hide	x4	scope object, tier slot	docs/oracle/x4-names.tsv:304
-function	slus	0x80046048	buster_shot_despawn	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:305
-function	slus	0x800464F0	buster_shot_follow_muzzle	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:306
-function	slus	0x80047864	ground_hunter_burst	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:307
-function	slus	0x80048448	double_cyclone_charged_despawn	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:308
-function	slus	0x8004C10C	-	string	byte table	config/oracle.strnames.tsv:35
-function	slus	0x8004CE94	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
-function	slus	0x8004D174	menu_text_cursor	x4	no corroborator	docs/oracle/x4-names.tsv:309
-function	slus	0x8004D3DC	menu_label_init	x4	no corroborator	docs/oracle/x4-names.tsv:310
-function	slus	0x8004D6F0	spawn_debris_offset	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:311
-function	slus	0x8004D914	debris_fall	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:312
-function	slus	0x8004DC9C	death_orb_fly	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:313
-function	slus	0x8004DEDC	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
-function	slus	0x8004DF74	ready_text_appear	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:314
-function	slus	0x8004E1A4	ready_text_leave	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:315
-function	slus	0x8004E25C	ready_text_blink	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:316
-function	slus	0x8004E298	ready_text_show	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:317
-function	slus	0x8004ED7C	update_nightmare_snake	x6-twin	x6 names 2, duplicate 2, no basis	docs/oracle/x6-twins.tsv:2079
-function	slus	0x8004EE30	update_nightmare_snake	x6-twin	x6 names 2, duplicate 2, no basis	docs/oracle/x6-twins.tsv:2079
-function	slus	0x8004F458	wall_slide_dust_init	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:318
-function	slus	0x8004F57C	wall_slide_dust_fade	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:319
-function	slus	0x8004F6DC	charge_muzzle_flash_main	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:320
-function	slus	0x8004F824	charge_muzzle_flash_fade	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:321
-function	slus	0x8004F874	charge_muzzle_flash_follow	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:322
-function	slus	0x8004FD24	spawn_explosion	x4	scope object, partners slot 2, no corroborator	docs/oracle/x4-names.tsv:323
-function	slus	0x8004FD44	spawn_explosion_variant	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:324
-function	slus	0x80050F58	hover_jet_update	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:325
-function	slus	0x80051768	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
-function	slus	0x800518B4	boss_warning_quad_open	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:326
-function	slus	0x800519D0	boss_warning_quad_close	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:327
-function	slus	0x80051AE8	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
-function	slus	0x80051B24	boss_warning_quad_hold	x4	scope object	docs/oracle/x4-names.tsv:328
-function	slus	0x80051E00	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
-function	slus	0x800521D8	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
-function	slus	0x80052234	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
-function	slus	0x80052270	flash_band_init	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:329
-function	slus	0x800522DC	flash_band_widen	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:330
-function	slus	0x80052370	ready_line_sweep	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:331
-function	slus	0x80052868	ready_line_streak	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:332
-function	slus	0x80052A94	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
-function	slus	0x80052AD0	ready_line_init	x4	scope object	docs/oracle/x4-names.tsv:333
-function	slus	0x80052BA0	ready_line_move	x4	scope object	docs/oracle/x4-names.tsv:334
-function	slus	0x80052DC8	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
-function	slus	0x8005314C	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
-function	slus	0x800543E4	update_blizzard_wolfang/update_blizzard_wolfang_boss_rush/update_high_max_hidden_area/update_high_max_intro/update_high_max_secret_lab2_1	x6-twin	x6 names 6, duplicate 2, no basis	docs/oracle/x6-twins.tsv:2174
-function	slus	0x80054440	drop_item	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:335
-function	slus	0x8005446C	-	string	byte table	config/oracle.strnames.tsv:36
-function	slus	0x80054B5C	update_blizzard_wolfang/update_blizzard_wolfang_boss_rush/update_high_max_hidden_area/update_high_max_intro/update_high_max_secret_lab2_1	x6-twin	x6 names 6, duplicate 2, no basis	docs/oracle/x6-twins.tsv:2174
-function	slus	0x80054F90	boss_door_block_player	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:336
-function	slus	0x800556B0	light_capsule_spawn_visual	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:337
-function	slus	0x8005609C	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
-function	slus	0x800569F4	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
-function	slus	0x80056A30	stage_music_init	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:338
-function	slus	0x80056AA0	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
-function	slus	0x80056ADC	checkpoint_trigger_init	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:339
-function	slus	0x80056E88	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
-function	slus	0x80056FA0	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
-function	slus	0x80057130	boss_warning_wait	x4	scope object	docs/oracle/x4-names.tsv:340
-function	slus	0x80057164	boss_warning_wait_tiles	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:341
-function	slus	0x80057250	boss_warning_finish	x4	scope object	docs/oracle/x4-names.tsv:342
-function	slus	0x80057288	boss_warning_main	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:343
-function	slus	0x800578A0	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
-function	slus	0x80057C60	final_cutscene_despawn	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:344
-function	slus	0x80057C88	teleport_intro_spawn_quads	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:345
-function	slus	0x80057E50	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
-function	slus	0x80057E8C	teleport_intro_init	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:346
-function	slus	0x80057FB0	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
-function	slus	0x80058BA8	-	string	sdk	config/oracle.strnames.tsv:37
-function	slus	0x80058E28	-	string	sdk	config/oracle.strnames.tsv:39
-function	slus	0x8005A378	-	string	sdk	config/oracle.strnames.tsv:42
-function	slus	0x8005A4A8	-	string	sdk	config/oracle.strnames.tsv:43
-function	slus	0x8005CA18	-	string	sdk	config/oracle.strnames.tsv:44
-function	slus	0x8005CA58	-	string	sdk	config/oracle.strnames.tsv:45
-function	slus	0x8005CA98	-	string	sdk	config/oracle.strnames.tsv:46
-function	slus	0x8005CAD8	-	string	sdk	config/oracle.strnames.tsv:47
-function	slus	0x8005CB18	-	string	sdk	config/oracle.strnames.tsv:48
-function	slus	0x8005CB58	-	string	sdk	config/oracle.strnames.tsv:49
-function	slus	0x8005CB98	-	string	sdk	config/oracle.strnames.tsv:50
-function	slus	0x8005CBD8	-	string	sdk	config/oracle.strnames.tsv:51
-function	slus	0x8005CC18	-	string	sdk	config/oracle.strnames.tsv:52
-function	slus	0x8005CC58	-	string	sdk	config/oracle.strnames.tsv:53
-function	slus	0x8005CC98	-	string	sdk	config/oracle.strnames.tsv:54
-function	slus	0x8005CCD8	-	string	sdk	config/oracle.strnames.tsv:55
-function	slus	0x8005CD18	-	string	sdk	config/oracle.strnames.tsv:56
-function	slus	0x8005CD58	-	string	sdk	config/oracle.strnames.tsv:57
-function	slus	0x8005CD98	-	string	sdk	config/oracle.strnames.tsv:58
-function	slus	0x8005CDD8	-	string	sdk	config/oracle.strnames.tsv:59
-function	slus	0x8005CE18	-	string	sdk	config/oracle.strnames.tsv:60
-function	slus	0x8005CE58	-	string	sdk	config/oracle.strnames.tsv:61
-function	slus	0x8005CE98	-	string	sdk	config/oracle.strnames.tsv:62
-function	slus	0x8005CED8	-	string	sdk	config/oracle.strnames.tsv:63
-function	slus	0x8005CF18	-	string	sdk	config/oracle.strnames.tsv:64
-function	slus	0x8005CF58	-	string	sdk	config/oracle.strnames.tsv:65
-function	slus	0x8005CF98	-	string	sdk	config/oracle.strnames.tsv:66
-function	slus	0x8005CFD8	-	string	sdk	config/oracle.strnames.tsv:67
-function	slus	0x8005D018	-	string	sdk	config/oracle.strnames.tsv:68
-function	slus	0x8005D058	-	string	sdk	config/oracle.strnames.tsv:69
-function	slus	0x8005D098	-	string	sdk	config/oracle.strnames.tsv:70
-function	slus	0x8005D0D8	-	string	sdk	config/oracle.strnames.tsv:71
-function	slus	0x8005D118	-	string	sdk	config/oracle.strnames.tsv:72
-function	slus	0x8005D158	-	string	sdk	config/oracle.strnames.tsv:73
-function	slus	0x8005D198	-	string	sdk	config/oracle.strnames.tsv:74
-function	slus	0x8005D1D8	-	string	sdk	config/oracle.strnames.tsv:75
-function	slus	0x80062FC0	-	string	sdk	config/oracle.strnames.tsv:76
-function	slus	0x800632C4	-	string	sdk	config/oracle.strnames.tsv:77
-function	slus	0x80063884	-	string	sdk	config/oracle.strnames.tsv:79
-function	slus	0x80063B38	-	string	sdk	config/oracle.strnames.tsv:81
-function	slus	0x80063C88	CdPosToInt	x4	tier bytes, conflict psyq-sig names.tsv:991	docs/oracle/x4-names.tsv:347
-function	slus	0x80063D08	-	string	sdk	config/oracle.strnames.tsv:82
-function	slus	0x80064000	-	string	sdk	config/oracle.strnames.tsv:88
-function	slus	0x80064368	-	string	sdk	config/oracle.strnames.tsv:95
-function	slus	0x800654A0	-	string	sdk	config/oracle.strnames.tsv:99
-function	slus	0x80065648	-	string	sdk	config/oracle.strnames.tsv:100
-function	slus	0x80065BAC	-	string	sdk	config/oracle.strnames.tsv:104
-function	slus	0x80065E2C	-	string	sdk	config/oracle.strnames.tsv:128
-function	slus	0x800660F4	-	string	sdk	config/oracle.strnames.tsv:152
-function	slus	0x80066798	-	string	sdk	config/oracle.strnames.tsv:178
-function	slus	0x80066978	-	string	sdk	config/oracle.strnames.tsv:180
-function	slus	0x80066CE8	CdReset	x4	tier bytes, conflict psyq-sig names.tsv:1239	docs/oracle/x4-names.tsv:348
-function	slus	0x80067178	CdMix	x4	tier bytes, conflict psyq-sig names.tsv:1262, no corroborator	docs/oracle/x4-names.tsv:349
-function	slus	0x80067198	CdGetSector	x4	tier bytes, conflict psyq-sig names.tsv:1263, no corroborator	docs/oracle/x4-names.tsv:350
-function	slus	0x8006731C	-	string	sdk	config/oracle.strnames.tsv:204
-function	slus	0x80067660	-	string	sdk	config/oracle.strnames.tsv:205
-function	slus	0x80067CF8	CdGetSector	x4	tier bytes, conflict symbols slus:0x80067198, no corroborator	docs/oracle/x4-names.tsv:351
-function	slus	0x80068284	-	string	sdk	config/oracle.strnames.tsv:207
-function	slus	0x8006842C	-	string	sdk	config/oracle.strnames.tsv:209
-function	slus	0x80068488	-	string	sdk	config/oracle.strnames.tsv:210
-function	slus	0x8006853C	-	string	sdk	config/oracle.strnames.tsv:211
-function	slus	0x8006859C	-	string	sdk	config/oracle.strnames.tsv:212
-function	slus	0x80068634	-	string	sdk	config/oracle.strnames.tsv:213
-function	slus	0x8006869C	-	string	sdk	config/oracle.strnames.tsv:214
-function	slus	0x800687B8	-	string	sdk	config/oracle.strnames.tsv:216
-function	slus	0x80068848	-	string	sdk	config/oracle.strnames.tsv:217
-function	slus	0x800688E0	-	string	sdk	config/oracle.strnames.tsv:218
-function	slus	0x80068940	-	string	sdk	config/oracle.strnames.tsv:219
-function	slus	0x800689A0	-	string	sdk	config/oracle.strnames.tsv:220
-function	slus	0x80068A58	-	string	sdk	config/oracle.strnames.tsv:221
-function	slus	0x80068B20	-	string	sdk	config/oracle.strnames.tsv:222
-function	slus	0x80068C28	-	string	sdk	config/oracle.strnames.tsv:223
-function	slus	0x80068C98	-	string	sdk	config/oracle.strnames.tsv:224
-function	slus	0x80068D58	-	string	sdk	config/oracle.strnames.tsv:225
-function	slus	0x80068E64	-	string	sdk	config/oracle.strnames.tsv:226
-function	slus	0x8006AB6C	-	string	sdk	config/oracle.strnames.tsv:227
-function	slus	0x8006AD50	-	string	sdk	config/oracle.strnames.tsv:228
-function	slus	0x8006AE3C	-	string	sdk	config/oracle.strnames.tsv:229
-function	slus	0x8006AF28	-	string	sdk	config/oracle.strnames.tsv:230
-function	slus	0x8006B06C	-	string	sdk	config/oracle.strnames.tsv:231
-function	slus	0x8006B278	SetDefDispEnv	x4	tier bytes, conflict psyq-sig names.tsv:1602	docs/oracle/x4-names.tsv:352
-function	slus	0x8006B398	DecDCTReset	x4	tier bytes, conflict psyq-sig names.tsv:1609	docs/oracle/x4-names.tsv:353
-function	slus	0x8006B658	-	string	sdk	config/oracle.strnames.tsv:232
-function	slus	0x8006B864	-	string	sdk	config/oracle.strnames.tsv:233
-function	slus	0x8006B8F8	-	string	sdk	config/oracle.strnames.tsv:234
-function	slus	0x8006B9A4	-	string	sdk	config/oracle.strnames.tsv:235
-data	slus	0x8007B944	boss_warning_quad_motions	x4	scope object, anchors 2	docs/oracle/x4-names.tsv:354
-data	slus	0x8009A420	main_bss_state	x4	scope -	docs/oracle/x4-names.tsv:356
+function	main	0x80013674	-	string	byte table	config/oracle.strnames.tsv:19
+function	main	0x80013EE8	read_rock_dat_toc	string	refuted, fixed to load_rock_dat_file_table	config/oracle.strnames.tsv:24
+function	main	0x80015DDC	cd_file_rock_x5_bin	string	named loadmap	config/oracle.strnames.tsv:25
+function	main	0x800171E8	set_animation	x4	tier slot	docs/oracle/x4-names.tsv:225
+function	main	0x8001728C	clear_vram_rect_ptrs	x4	no corroborator	docs/oracle/x4-names.tsv:227
+function	main	0x8001B378	memcard_save_name	string	text not the work	config/oracle.strnames.tsv:26
+function	main	0x8001D220	InitMemcards	x4	no corroborator	docs/oracle/x4-names.tsv:228
+function	main	0x8001D6BC	memcard_device	string	named x6-twin	config/oracle.strnames.tsv:30
+function	main	0x8001D8B4	memcard_device	string	named x6-twin	config/oracle.strnames.tsv:31
+function	main	0x8002553C	-	string	byte table	config/oracle.strnames.tsv:32
+function	main	0x80025A74	-	string	byte table	config/oracle.strnames.tsv:33
+function	main	0x8002A5C4	start_screen_shake_x	x4	no corroborator	docs/oracle/x4-names.tsv:230
+function	main	0x8002A600	start_screen_shake_y	x4	no corroborator	docs/oracle/x4-names.tsv:231
+function	main	0x8002CF70	reset_main_and_shots	x4	no corroborator	docs/oracle/x4-names.tsv:234
+function	main	0x8002D0E4	find_free_visual_obj	x4	tier slot	docs/oracle/x4-names.tsv:235
+function	main	0x8002D1A4	find_free_shot_obj	x4	tier slot, no corroborator	docs/oracle/x4-names.tsv:236
+function	main	0x8002D27C	find_free_misc_obj	x4	tier slot, no corroborator	docs/oracle/x4-names.tsv:237
+function	main	0x8002D6FC	ZeroObjectState	x4	conflict x6-twin clear_object_slot	docs/oracle/x4-names.tsv:238
+function	main	0x8002D760	despawn_object	x4	no corroborator	docs/oracle/x4-names.tsv:239
+function	main	0x8002D89C	is_on_screen	x4	no corroborator	docs/oracle/x4-names.tsv:240
+function	main	0x8002D9EC	update_on_screen	x4	tier slot, no corroborator	docs/oracle/x4-names.tsv:241
+function	main	0x8002DED4	move_with_gravity	x4	tier slot, conflict x6-twin apply_object_motion, no corroborator	docs/oracle/x4-names.tsv:242
+function	main	0x8002DF78	get_random	x4	tier slot, conflict x6-twin random_byte, no corroborator	docs/oracle/x4-names.tsv:244
+function	main	0x8002E1C0	get_layout_screen	x4	no corroborator	docs/oracle/x4-names.tsv:246
+function	main	0x8002FB58	CollisionRelated	x4	tier slot, no corroborator	docs/oracle/x4-names.tsv:247
+function	main	0x80032CEC	quad_is_on_screen	x4	scope object, tier slot, no corroborator	docs/oracle/x4-names.tsv:248
+function	main	0x80036F68	player_ladder_grab	x4	no corroborator	docs/oracle/x4-names.tsv:249
+function	main	0x80037888	update_slide_down/update_wall_jump	x6-twin	x6 names 3, no basis	docs/oracle/x6-twins.tsv:3948
+function	main	0x8003952C	player_check_dash_jump	x4	no corroborator	docs/oracle/x4-names.tsv:256
+function	main	0x8003979C	player_check_dash_input	x4	tier slot, no corroborator	docs/oracle/x4-names.tsv:257
+function	main	0x80039AE0	player_check_wall	x4	tier slot, conflict x6-twin try_enter_wall_cling, no corroborator	docs/oracle/x4-names.tsv:258
+function	main	0x80039ECC	player_check_script	x4	tier slot, no corroborator	docs/oracle/x4-names.tsv:259
+function	main	0x8003A008	player_leap_check_wall	x4	no corroborator	docs/oracle/x4-names.tsv:260
+function	main	0x8003A30C	player_enter_dash	x4	tier slot, no corroborator	docs/oracle/x4-names.tsv:261
+function	main	0x8003A7E4	player_enter_walk_start	x4	no corroborator	docs/oracle/x4-names.tsv:262
+function	main	0x8003A82C	player_enter_walk	x4	no corroborator	docs/oracle/x4-names.tsv:263
+function	main	0x8003A874	player_enter_jump	x4	tier slot, no corroborator	docs/oracle/x4-names.tsv:264
+function	main	0x8003A9AC	player_enter_land	x4	no corroborator	docs/oracle/x4-names.tsv:265
+function	main	0x8003B148	player_enter_ladder_down	x4	tier slot, no corroborator	docs/oracle/x4-names.tsv:269
+function	main	0x8003B28C	player_enter_beam_out	x4	no corroborator	docs/oracle/x4-names.tsv:270
+function	main	0x8003B33C	player_set_animation	x4	tier slot, no corroborator	docs/oracle/x4-names.tsv:271
+function	main	0x8003B4CC	player_set_animation_frame	x4	tier slot, no corroborator	docs/oracle/x4-names.tsv:272
+function	main	0x8003D200	player_spawn_dash_dust	x4	no corroborator	docs/oracle/x4-names.tsv:276
+function	main	0x8003D250	player_spawn_wall_slide_dust	x4	conflict x6-twin spawn_dust, no corroborator	docs/oracle/x4-names.tsv:277
+function	main	0x8003D2FC	player_check_splash_tile	x4	no corroborator	docs/oracle/x4-names.tsv:278
+function	main	0x8003D72C	player_entry_beam_in	x4	no corroborator	docs/oracle/x4-names.tsv:281
+function	main	0x8003DAA4	player_spawn_death_orb	x4	no corroborator	docs/oracle/x4-names.tsv:282
+function	main	0x80040B6C	player_hover_check_end	x4	tier slot, no corroborator	docs/oracle/x4-names.tsv:293
+function	main	0x80040BBC	player_hover_steer	x4	tier slot, no corroborator	docs/oracle/x4-names.tsv:294
+function	main	0x80044BD8	enemy_hit_reaction	x4	no corroborator	docs/oracle/x4-names.tsv:298
+function	main	0x80045928	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
+function	main	0x80045964	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
+function	main	0x800459A0	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
+function	main	0x800459DC	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
+function	main	0x80045A18	nova_strike_hitbox_update	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:300
+function	main	0x80045BA0	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
+function	main	0x80045D08	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
+function	main	0x80045D44	-	string	byte table	config/oracle.strnames.tsv:34
+function	main	0x80045D44	buster_shot_place_at_muzzle	x4	scope object, tier slot, no corroborator	docs/oracle/x4-names.tsv:301
+function	main	0x80045E50	lemon_main	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:302
+function	main	0x80045FCC	lemon_deflected	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:303
+function	main	0x80046030	buster_shot_hide	x4	scope object, tier slot	docs/oracle/x4-names.tsv:304
+function	main	0x80046048	buster_shot_despawn	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:305
+function	main	0x800464F0	buster_shot_follow_muzzle	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:306
+function	main	0x80047864	ground_hunter_burst	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:307
+function	main	0x80048448	double_cyclone_charged_despawn	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:308
+function	main	0x8004C10C	-	string	byte table	config/oracle.strnames.tsv:35
+function	main	0x8004CE94	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
+function	main	0x8004D174	menu_text_cursor	x4	no corroborator	docs/oracle/x4-names.tsv:309
+function	main	0x8004D3DC	menu_label_init	x4	no corroborator	docs/oracle/x4-names.tsv:310
+function	main	0x8004D6F0	spawn_debris_offset	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:311
+function	main	0x8004D914	debris_fall	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:312
+function	main	0x8004DC9C	death_orb_fly	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:313
+function	main	0x8004DEDC	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
+function	main	0x8004DF74	ready_text_appear	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:314
+function	main	0x8004E1A4	ready_text_leave	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:315
+function	main	0x8004E25C	ready_text_blink	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:316
+function	main	0x8004E298	ready_text_show	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:317
+function	main	0x8004ED7C	update_nightmare_snake	x6-twin	x6 names 2, duplicate 2, no basis	docs/oracle/x6-twins.tsv:2079
+function	main	0x8004EE30	update_nightmare_snake	x6-twin	x6 names 2, duplicate 2, no basis	docs/oracle/x6-twins.tsv:2079
+function	main	0x8004F458	wall_slide_dust_init	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:318
+function	main	0x8004F57C	wall_slide_dust_fade	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:319
+function	main	0x8004F6DC	charge_muzzle_flash_main	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:320
+function	main	0x8004F824	charge_muzzle_flash_fade	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:321
+function	main	0x8004F874	charge_muzzle_flash_follow	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:322
+function	main	0x8004FD24	spawn_explosion	x4	scope object, partners slot 2, no corroborator	docs/oracle/x4-names.tsv:323
+function	main	0x8004FD44	spawn_explosion_variant	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:324
+function	main	0x80050F58	hover_jet_update	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:325
+function	main	0x80051768	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
+function	main	0x800518B4	boss_warning_quad_open	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:326
+function	main	0x800519D0	boss_warning_quad_close	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:327
+function	main	0x80051AE8	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
+function	main	0x80051B24	boss_warning_quad_hold	x4	scope object	docs/oracle/x4-names.tsv:328
+function	main	0x80051E00	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
+function	main	0x800521D8	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
+function	main	0x80052234	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
+function	main	0x80052270	flash_band_init	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:329
+function	main	0x800522DC	flash_band_widen	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:330
+function	main	0x80052370	ready_line_sweep	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:331
+function	main	0x80052868	ready_line_streak	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:332
+function	main	0x80052A94	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
+function	main	0x80052AD0	ready_line_init	x4	scope object	docs/oracle/x4-names.tsv:333
+function	main	0x80052BA0	ready_line_move	x4	scope object	docs/oracle/x4-names.tsv:334
+function	main	0x80052DC8	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
+function	main	0x8005314C	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
+function	main	0x800543E4	update_blizzard_wolfang/update_blizzard_wolfang_boss_rush/update_high_max_hidden_area/update_high_max_intro/update_high_max_secret_lab2_1	x6-twin	x6 names 6, duplicate 2, no basis	docs/oracle/x6-twins.tsv:2174
+function	main	0x80054440	drop_item	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:335
+function	main	0x8005446C	-	string	byte table	config/oracle.strnames.tsv:36
+function	main	0x80054B5C	update_blizzard_wolfang/update_blizzard_wolfang_boss_rush/update_high_max_hidden_area/update_high_max_intro/update_high_max_secret_lab2_1	x6-twin	x6 names 6, duplicate 2, no basis	docs/oracle/x6-twins.tsv:2174
+function	main	0x80054F90	boss_door_block_player	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:336
+function	main	0x800556B0	light_capsule_spawn_visual	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:337
+function	main	0x8005609C	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
+function	main	0x800569F4	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
+function	main	0x80056A30	stage_music_init	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:338
+function	main	0x80056AA0	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
+function	main	0x80056ADC	checkpoint_trigger_init	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:339
+function	main	0x80056E88	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
+function	main	0x80056FA0	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
+function	main	0x80057130	boss_warning_wait	x4	scope object	docs/oracle/x4-names.tsv:340
+function	main	0x80057164	boss_warning_wait_tiles	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:341
+function	main	0x80057250	boss_warning_finish	x4	scope object	docs/oracle/x4-names.tsv:342
+function	main	0x80057288	boss_warning_main	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:343
+function	main	0x800578A0	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
+function	main	0x80057C60	final_cutscene_despawn	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:344
+function	main	0x80057C88	teleport_intro_spawn_quads	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:345
+function	main	0x80057E50	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
+function	main	0x80057E8C	teleport_intro_init	x4	scope object, no corroborator	docs/oracle/x4-names.tsv:346
+function	main	0x80057FB0	update_ground_scaravich/update_ground_scaravich_boss_rush/update_nightmare_pressure	x6-twin	x6 names 4, duplicate 24, no basis	docs/oracle/x6-twins.tsv:207
+function	main	0x80058BA8	-	string	sdk	config/oracle.strnames.tsv:37
+function	main	0x80058E28	-	string	sdk	config/oracle.strnames.tsv:39
+function	main	0x8005A378	-	string	sdk	config/oracle.strnames.tsv:42
+function	main	0x8005A4A8	-	string	sdk	config/oracle.strnames.tsv:43
+function	main	0x8005CA18	-	string	sdk	config/oracle.strnames.tsv:44
+function	main	0x8005CA58	-	string	sdk	config/oracle.strnames.tsv:45
+function	main	0x8005CA98	-	string	sdk	config/oracle.strnames.tsv:46
+function	main	0x8005CAD8	-	string	sdk	config/oracle.strnames.tsv:47
+function	main	0x8005CB18	-	string	sdk	config/oracle.strnames.tsv:48
+function	main	0x8005CB58	-	string	sdk	config/oracle.strnames.tsv:49
+function	main	0x8005CB98	-	string	sdk	config/oracle.strnames.tsv:50
+function	main	0x8005CBD8	-	string	sdk	config/oracle.strnames.tsv:51
+function	main	0x8005CC18	-	string	sdk	config/oracle.strnames.tsv:52
+function	main	0x8005CC58	-	string	sdk	config/oracle.strnames.tsv:53
+function	main	0x8005CC98	-	string	sdk	config/oracle.strnames.tsv:54
+function	main	0x8005CCD8	-	string	sdk	config/oracle.strnames.tsv:55
+function	main	0x8005CD18	-	string	sdk	config/oracle.strnames.tsv:56
+function	main	0x8005CD58	-	string	sdk	config/oracle.strnames.tsv:57
+function	main	0x8005CD98	-	string	sdk	config/oracle.strnames.tsv:58
+function	main	0x8005CDD8	-	string	sdk	config/oracle.strnames.tsv:59
+function	main	0x8005CE18	-	string	sdk	config/oracle.strnames.tsv:60
+function	main	0x8005CE58	-	string	sdk	config/oracle.strnames.tsv:61
+function	main	0x8005CE98	-	string	sdk	config/oracle.strnames.tsv:62
+function	main	0x8005CED8	-	string	sdk	config/oracle.strnames.tsv:63
+function	main	0x8005CF18	-	string	sdk	config/oracle.strnames.tsv:64
+function	main	0x8005CF58	-	string	sdk	config/oracle.strnames.tsv:65
+function	main	0x8005CF98	-	string	sdk	config/oracle.strnames.tsv:66
+function	main	0x8005CFD8	-	string	sdk	config/oracle.strnames.tsv:67
+function	main	0x8005D018	-	string	sdk	config/oracle.strnames.tsv:68
+function	main	0x8005D058	-	string	sdk	config/oracle.strnames.tsv:69
+function	main	0x8005D098	-	string	sdk	config/oracle.strnames.tsv:70
+function	main	0x8005D0D8	-	string	sdk	config/oracle.strnames.tsv:71
+function	main	0x8005D118	-	string	sdk	config/oracle.strnames.tsv:72
+function	main	0x8005D158	-	string	sdk	config/oracle.strnames.tsv:73
+function	main	0x8005D198	-	string	sdk	config/oracle.strnames.tsv:74
+function	main	0x8005D1D8	-	string	sdk	config/oracle.strnames.tsv:75
+function	main	0x80062FC0	-	string	sdk	config/oracle.strnames.tsv:76
+function	main	0x800632C4	-	string	sdk	config/oracle.strnames.tsv:77
+function	main	0x80063884	-	string	sdk	config/oracle.strnames.tsv:79
+function	main	0x80063B38	-	string	sdk	config/oracle.strnames.tsv:81
+function	main	0x80063C88	CdPosToInt	x4	tier bytes, conflict psyq-sig names.tsv:991	docs/oracle/x4-names.tsv:347
+function	main	0x80063D08	-	string	sdk	config/oracle.strnames.tsv:82
+function	main	0x80064000	-	string	sdk	config/oracle.strnames.tsv:88
+function	main	0x80064368	-	string	sdk	config/oracle.strnames.tsv:95
+function	main	0x800654A0	-	string	sdk	config/oracle.strnames.tsv:99
+function	main	0x80065648	-	string	sdk	config/oracle.strnames.tsv:100
+function	main	0x80065BAC	-	string	sdk	config/oracle.strnames.tsv:104
+function	main	0x80065E2C	-	string	sdk	config/oracle.strnames.tsv:128
+function	main	0x800660F4	-	string	sdk	config/oracle.strnames.tsv:152
+function	main	0x80066798	-	string	sdk	config/oracle.strnames.tsv:178
+function	main	0x80066978	-	string	sdk	config/oracle.strnames.tsv:180
+function	main	0x80066CE8	CdReset	x4	tier bytes, conflict psyq-sig names.tsv:1239	docs/oracle/x4-names.tsv:348
+function	main	0x80067178	CdMix	x4	tier bytes, conflict psyq-sig names.tsv:1262, no corroborator	docs/oracle/x4-names.tsv:349
+function	main	0x80067198	CdGetSector	x4	tier bytes, conflict psyq-sig names.tsv:1263, no corroborator	docs/oracle/x4-names.tsv:350
+function	main	0x8006731C	-	string	sdk	config/oracle.strnames.tsv:204
+function	main	0x80067660	-	string	sdk	config/oracle.strnames.tsv:205
+function	main	0x80067CF8	CdGetSector	x4	tier bytes, conflict symbols main:0x80067198, no corroborator	docs/oracle/x4-names.tsv:351
+function	main	0x80068284	-	string	sdk	config/oracle.strnames.tsv:207
+function	main	0x8006842C	-	string	sdk	config/oracle.strnames.tsv:209
+function	main	0x80068488	-	string	sdk	config/oracle.strnames.tsv:210
+function	main	0x8006853C	-	string	sdk	config/oracle.strnames.tsv:211
+function	main	0x8006859C	-	string	sdk	config/oracle.strnames.tsv:212
+function	main	0x80068634	-	string	sdk	config/oracle.strnames.tsv:213
+function	main	0x8006869C	-	string	sdk	config/oracle.strnames.tsv:214
+function	main	0x800687B8	-	string	sdk	config/oracle.strnames.tsv:216
+function	main	0x80068848	-	string	sdk	config/oracle.strnames.tsv:217
+function	main	0x800688E0	-	string	sdk	config/oracle.strnames.tsv:218
+function	main	0x80068940	-	string	sdk	config/oracle.strnames.tsv:219
+function	main	0x800689A0	-	string	sdk	config/oracle.strnames.tsv:220
+function	main	0x80068A58	-	string	sdk	config/oracle.strnames.tsv:221
+function	main	0x80068B20	-	string	sdk	config/oracle.strnames.tsv:222
+function	main	0x80068C28	-	string	sdk	config/oracle.strnames.tsv:223
+function	main	0x80068C98	-	string	sdk	config/oracle.strnames.tsv:224
+function	main	0x80068D58	-	string	sdk	config/oracle.strnames.tsv:225
+function	main	0x80068E64	-	string	sdk	config/oracle.strnames.tsv:226
+function	main	0x8006AB6C	-	string	sdk	config/oracle.strnames.tsv:227
+function	main	0x8006AD50	-	string	sdk	config/oracle.strnames.tsv:228
+function	main	0x8006AE3C	-	string	sdk	config/oracle.strnames.tsv:229
+function	main	0x8006AF28	-	string	sdk	config/oracle.strnames.tsv:230
+function	main	0x8006B06C	-	string	sdk	config/oracle.strnames.tsv:231
+function	main	0x8006B278	SetDefDispEnv	x4	tier bytes, conflict psyq-sig names.tsv:1602	docs/oracle/x4-names.tsv:352
+function	main	0x8006B398	DecDCTReset	x4	tier bytes, conflict psyq-sig names.tsv:1609	docs/oracle/x4-names.tsv:353
+function	main	0x8006B658	-	string	sdk	config/oracle.strnames.tsv:232
+function	main	0x8006B864	-	string	sdk	config/oracle.strnames.tsv:233
+function	main	0x8006B8F8	-	string	sdk	config/oracle.strnames.tsv:234
+function	main	0x8006B9A4	-	string	sdk	config/oracle.strnames.tsv:235
+data	main	0x8007B944	boss_warning_quad_motions	x4	scope object, anchors 2	docs/oracle/x4-names.tsv:354
+data	main	0x8009A420	main_bss_state	x4	scope -	docs/oracle/x4-names.tsv:356

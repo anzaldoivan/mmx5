@@ -1,9 +1,8 @@
 #include "types.h"
-
-extern u8 D_8009A1F8[];
+#include "mmx5/globals.h"
 
 s32 func_800F7A94_ovl01(s16 x, s16 y, s32 w, s32 h) {
-    u8* cam = D_8009A1F8;
+    u8* cam = D_8009A1F8.u;
 
     x -= *(u16*)(cam + 0xA);
     y -= *(u16*)(cam + 0xE);

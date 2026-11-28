@@ -6,7 +6,6 @@
 
 extern u8* alloc_class3_slot(void);
 extern signed char D_8009A0A5;
-extern s16 D_8009A1F8[];
 
 void func_800F406C_ovl29(Obj3DD4* a) {
     u8* p;
@@ -22,8 +21,8 @@ void func_800F406C_ovl29(Obj3DD4* a) {
         }
         a->unk15 = 0;
         a->unk6++;
-        D_8009A1F8[0x13] = 0xC80;
-        D_8009A1F8[0x12] = 0xC80;
+        D_8009A1F8.h[0x13] = 0xC80;
+        D_8009A1F8.h[0x12] = 0xC80;
     }
 }
 
@@ -70,13 +69,11 @@ void func_800F41DC_ovl29(u8* obj) {
     func_8002D9EC(obj, 0x40, 0x40);
 }
 
-extern u8 D_800D1C00[];
-
 void func_800F4244_ovl29(u8* obj) {
     if (*(s8*)(obj + 0x46) == 0) {
         set_animation(obj, 0x12);
-        D_800D1C00[0x24] = 1;
-        D_800D1C00[0x25] = 0;
+        g_playthrough_state.u[0x24] = 1;
+        g_playthrough_state.u[0x25] = 0;
         *(s16*)(obj + 0x7E) = 3;
         *(s32*)(obj + 0x20) = 0;
         *(s32*)(obj + 0x24) = 0;

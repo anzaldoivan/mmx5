@@ -25,7 +25,7 @@ docs/oracle/x6-systems.tsv
 docs/prior-art.md
 docs/progress.md
 docs/publish/contract.md
-extracted/retail/manifest.jsonl
+extracted/us/manifest.jsonl
 include/
 mk/disc.mk
 mk/fleet.mk
@@ -33,7 +33,7 @@ mk/patches.mk
 mk/replay.mk
 mk/rockx5.mk
 mk/shift.mk
-mk/slus.mk
+mk/main.mk
 patches/
 requirements-python.txt
 src/
@@ -44,8 +44,8 @@ tools/bin/libsframe1.deb.sha256
 tools/bin/pcsx-redux.sha256
 tools/bootstrap.sh
 tools/build/layout.py
+tools/build/splat_root.py
 tools/build/undef_by_name.py
-tools/codegen/stage.sh
 tools/dedup/shapes.py
 tools/docker/
 tools/extract/extract.py
@@ -58,6 +58,7 @@ tools/psxd_publish.py
 tools/readability/fixtures/config/
 tools/readability/fixtures/include/
 tools/readability/fixtures/src/
+tools/readability/rename.py
 tools/readability/scan.py
 tools/redux/run.sh
 tools/refs_fetch.sh

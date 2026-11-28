@@ -11,8 +11,7 @@ extern u16 D_800F5A78_ovl20[][2];
 extern u16 D_800F5A88_ovl20[][2];
 extern u8 D_800D1CCB;
 
-extern View800F4990 D_800D1C00;
-extern s8 D_800D1C32;
+#define D_800D1C00_as_View800F4990 (*(View800F4990*)&g_playthrough_state)
 
 void func_800F4990_ovl20(u8* obj) {
     u8 t;
@@ -62,7 +61,7 @@ void func_800F4990_ovl20(u8* obj) {
             *(u16*)(obj + 0xA) = D_800F5A78_ovl20[c - 12][0];
             *(u16*)(obj + 0xE) = D_800F5A78_ovl20[c - 12][1];
             i = c - 12;
-            p = &D_800D1C00;
+            p = &D_800D1C00_as_View800F4990;
             if (p->cb & 1) {
                 n = p->c6[i];
             } else {
@@ -95,7 +94,7 @@ void func_800F4990_ovl20(u8* obj) {
             obj[0x16] = 3;
             *(u16*)(obj + 0xA) = D_800F5A88_ovl20[c - 17][0];
             *(u16*)(obj + 0xE) = D_800F5A88_ovl20[c - 17][1];
-            n = D_800D1C32;
+            n = D_800D1C32.s;
             if (c == 17) {
                 set_animation_frame(obj, 4, n / 10);
             } else {

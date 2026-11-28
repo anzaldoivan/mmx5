@@ -113,8 +113,6 @@ void func_800F5C64_ovl04(u8* obj) {
     }
 }
 
-extern u8 D_800D1C00[];
-
 void func_800F5D48_ovl04(u8* obj) {
     s8* child;
     u8* base;
@@ -131,7 +129,7 @@ void func_800F5D48_ovl04(u8* obj) {
             func_8002D89C(obj);
         }
     } else {
-        base = D_800D1C00;
+        base = g_playthrough_state.u;
         if (((s8*)base)[0xC] != 0xC) {
             base[0xF] = 0x10;
         } else {

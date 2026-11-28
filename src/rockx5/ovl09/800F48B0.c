@@ -20,7 +20,7 @@ extern s32 ratan2(s32, s32);
 extern s32 rcos(s32);
 extern s32 rsin(s32);
 
-// from rockx5 800F48B0: child init beside the parent, aims at a per-slot target point and launches
+// child init beside the parent, aims at a per-slot target point and launches
 void func_800F48B0_ovl09(Ent48B0* e) {
     Ent48B0* p = e->unk7C;
     s32 a;

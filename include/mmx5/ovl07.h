@@ -3,6 +3,10 @@
 
 #include "types.h"
 
+extern union {
+    D1030 t;
+    s16 h[4];
+} D_80101030_ovl07;
 extern Ent800F43E8 D_801015A4_ovl07[];
 extern u8 D_80101C10_ovl07[][2];
 

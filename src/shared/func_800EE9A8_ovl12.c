@@ -106,7 +106,6 @@ void func_800EE9A8_ovl12(u8* o) {
     ((void (*)(u8*))D_800F2000_ovl12[*(s8*)(o + 5)])(o);
 }
 
-extern u8 D_800D1C00[];
 extern u8 D_800F1BC0_ovl12[];
 
 void func_800EEC38_ovl12(u8* arg0) {
@@ -120,7 +119,7 @@ void func_800EEC38_ovl12(u8* arg0) {
         *(s32*)(arg0 + 0x24) = 0;
     }
     if (*(s8*)(arg0 + 0x46) == 0) {
-        p = D_800D1C00;
+        p = g_playthrough_state.u;
         if (*(s8*)(p + 0xC) != 0xC) {
             snd = 0x35;
             if (*(s8*)(arg0 + 2) == 0) {

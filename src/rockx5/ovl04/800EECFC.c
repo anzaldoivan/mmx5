@@ -2,7 +2,6 @@
 #include "mmx5/globals.h"
 
 extern u8* alloc_class3_slot(void);
-extern u8 D_8009A1F8[];
 extern s8 D_800D1C26;
 
 void func_800EECFC_ovl04(u8* arg0) {
@@ -21,7 +20,7 @@ void func_800EECFC_ovl04(u8* arg0) {
             *(s32*)(p + 0x8) = *(s32*)(r + 0x8);
             *(s32*)(p + 0xC) = *(s32*)(r + 0xC);
         }
-        q = D_8009A1F8;
+        q = D_8009A1F8.u;
         q[0x44] = 0;
         *(s32*)(arg0 + 0x14) = *(s32*)(q + 0x8);
         *(s32*)(arg0 + 0x18) = *(s32*)(q + 0xC);
@@ -38,7 +37,6 @@ void func_800EECFC_ovl04(u8* arg0) {
 }
 
 extern void func_800F0260_ovl04(void);
-extern u8 D_8009A1F8[];
 extern s8 D_800D1C1D;
 
 void func_800EEE00_ovl04(u8* arg0) {
@@ -73,7 +71,7 @@ void func_800EEE00_ovl04(u8* arg0) {
         arg0[6]++;
         D_800D1C1D = 2;
     }
-    q = D_8009A1F8;
+    q = D_8009A1F8.u;
     *(s16*)(q + 0x26) = *(s16*)(arg0 + 0x16);
     *(s16*)(q + 0x24) = *(s16*)(arg0 + 0x16);
     *(s16*)(q + 0x2A) = *(s16*)(arg0 + 0x1A);
@@ -97,8 +95,6 @@ void func_800EEE00_ovl04(u8* arg0) {
 }
 
 extern void func_800F0260_ovl04(void);
-extern u8 D_8009A1F8[];
-extern u8 D_800D1C00[];
 
 void func_800EF00C_ovl04(u8* arg0) {
     s32 flag;
@@ -117,7 +113,7 @@ void func_800EF00C_ovl04(u8* arg0) {
     if (flag != 0) {
         *(s32*)(arg0 + 0x14) += 0x4000;
     }
-    q = D_8009A1F8;
+    q = D_8009A1F8.u;
     t = *(s32*)(q + 0x8);
     *(s16*)(q + 0x26) = *(s16*)(arg0 + 0x16);
     v = *(u16*)(arg0 + 0x16);
@@ -138,7 +134,7 @@ void func_800EF00C_ovl04(u8* arg0) {
     func_8002A080(q, t, v);
     if (*(s16*)(arg0 + 0x16) >= 0xAA0) {
         arg0[6]++;
-        D_800D1C00[0x26] |= 2;
+        g_playthrough_state.u[0x26] |= 2;
         x = *(s16*)(arg0 + 0x16);
         y = *(s16*)(arg0 + 0x1A);
         *(s16*)(q + 0x26) = x;

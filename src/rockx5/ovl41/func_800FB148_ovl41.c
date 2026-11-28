@@ -1,7 +1,6 @@
 #include "types.h"
 #include "mmx5/globals.h"
 
-extern D_8009A1F8_t D_8009A1F8;
 extern s16 D_800FB784_ovl41[];
 extern s16 D_800FB79C_ovl41[];
 extern u8 D_800FB7E0_ovl41[];
@@ -12,7 +11,7 @@ void func_800FB148_ovl41(UnkObj* obj) {
 
     if (obj->unk4 == 0) {
         func_8002385C(0xA, 0xFF, 0);
-        p = &D_8009A1F8;
+        p = &D_8009A1F8.t;
         *(u16*)((u8*)p + 0xB2) = 0x200;
         p->unkB6 = 0;
         p->unkF4 = 1;

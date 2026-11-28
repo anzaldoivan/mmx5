@@ -1,4 +1,6 @@
 #include "types.h"
+#include "mmx5/ovl05.h"
+#include "mmx5/globals.h"
 #include "mmx5/graphics.h"
 #include "addr.h"
 
@@ -7,7 +9,6 @@ extern u8 D_800750C0[];
 extern u8 D_800769C0;
 extern u32* D_80098118;
 extern u8 D_8009A0B4;
-extern u8 D_8009A1F8[];
 extern s8 D_800D1C1D;
 extern s32 D_800E92F8;
 extern u8 D_800F5688_ovl05;
@@ -15,7 +16,6 @@ extern u8 D_800F568C_ovl05;
 extern u8 D_800F5690_ovl05;
 extern u8 D_800F56B8_ovl05;
 extern u8 D_800F56D0_ovl05;
-extern u8 D_800F57DC_ovl05;
 extern u8 D_800F5964_ovl05[];
 
 void func_800F2378_ovl05(u8* p) {
@@ -48,12 +48,12 @@ void func_800F2378_ovl05(u8* p) {
         *(u8**)(p + 0x54) = &D_800F5690_ovl05;
         *(u8**)(p + 0x58) = &D_800769C0;
         *(u8**)(p + 0x30) = &D_800F56D0_ovl05;
-        b = D_8009A1F8;
+        b = D_8009A1F8.u;
         *(u16*)(p + 0x7C) = *(u16*)(b + 0x26);
         *(u16*)(p + 0x7E) = *(u16*)(b + 0x24);
         p[5] = mode;
     } else {
-        *(u8**)(p + 0x30) = &D_800F57DC_ovl05;
+        *(u8**)(p + 0x30) = &D_800F57DC_ovl05.b;
         p[0x16] = 0;
         p[0] |= 0x10;
         if (mode == 2) {

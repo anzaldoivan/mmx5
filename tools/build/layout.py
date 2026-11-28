@@ -1,14 +1,18 @@
 #!/usr/bin/env python3
 """layout -- the one place that decides a unit's file paths (stdlib only; phase 4.1 T4).
 
-Rule: a unit's folder is the `dir:` key of the config/splat.<alias>.yaml segment that declares it ('' when the
+Rule: a unit's folder is the `dir:` key of the config/us/splat.<alias>.yaml segment that declares it ('' when the
 segment has none), as splat 0.50.0 places it (segtypes/common/c.py:129,157; codesubsegment.py:221; data.py:20).
 All paths are repo-relative Paths; `root` selects the tree (fixtures pass their own root).
 
+  Paths (adapted from mmx6 tools/mmx6/paths.py; env VERSION, BUILD_ROOT): version(), config_path(name) an
+      address-bound config file by flat name, build_dir(binary=None), asm_dir(b=None), assets_dir(b), extracted_dir(),
+      expected_path(b, file), tree_path a splat yaml output path. A BUILD_ROOT other than `build` nests the split, asset
+      and expected trees under it. Every tool reads these paths through them; a shell tool through `layout.py path`.
   Library: locate(alias, name) source .c; asm_s, nonmatchings, data_s, obj, asm_obj the split paths; units(alias)
-      [(name, path)] in yaml order (alias `shared`: the bodies of config/dedup.us.yaml); src_root, asm_root (tree roots,
+      [(name, path)] in yaml order (alias `shared`: the bodies of config/us/dedup.yaml); src_root, asm_root (tree roots,
       for recursive walks only); home(alias, name) the final layout (an overlay unit: src/<alias>/<ovlNN>/<name>.c;
-      a slus unit: src/slus/<system>/<name>.c when placement() places it, else flat; shared: the flat path). An
+      a main unit: src/main/<system>/<name>.c when placement() places it, else flat; shared: the flat path). An
       undeclared name takes the segment its `_<seg>` suffix or `<seg>_` prefix names.
       data_root the split data folder; split_s(asm dir) its code .s (text, nonmatchings), recursive; include_path an
       `#include` under `-I src`; regen(root) gen() unprinted, for tools that add, remove or rename a unit or body.
@@ -16,6 +20,13 @@ All paths are repo-relative Paths; `root` selects the tree (fixtures pass their 
       A stem (first vram) repeats across overlays: locate/home take the yaml row's segment as `seg`.
       run_files() {body: [(owner, line)]} of the shared unit files (a body two or more groups name; owner = the
       function it defines that names a group member); locate("shared", owner) gives the file; run_file(body).
+      find_ovl_body(name): the body whose `OVL(x)` defines member name (x or x_ovlNN); locate("shared") reads it.
+      extract(root, body, owner) cuts a run file F at one owner Bk: F keeps the bodies before it (k=1: Bk), Bk
+      goes to src/shared/<Bk>.c, the rest to src/shared/<next>.c; each site's include of F -> the parts' includes.
+      versions() the config/versions.tsv rows; set_version(v) a tool's --version (refuses an unregistered one).
+      ovl_cppflags(path) ["-DVERSION=VER_<V>"] (include/mmx5/version.h) plus ["-DOVL_ID=NN"] in an ovlNN folder (every tool that
+      cpp's a unit adds it, as mk/rockx5.mk's OVL_CPPFLAGS); def_name(match) reads `OVL(x)(...) {` as `OVL(x)`,
+      resolve_def(d, unit) gives x_ovlNN in an ovlNN includer, else x (run_files owners, member_spans per unit).
 
   layout.py gen [--check]
       -> config/layout.tsv, rows `unit binary overlay system path cu cu_system` sorted (binary, overlay, unit).
@@ -23,7 +34,7 @@ All paths are repo-relative Paths; `root` selects the tree (fixtures pass their 
          stripped; empty, SLUS_013.95 and rock_NN dropped), joined by `,`, else `-`; a shared body takes its members'
          systems. cu = the config/units.tsv unit whose members hold (binary, unit), `held:<home ids>` for a held
          ledger function, else `-`. cu_system = that row's system. No units.tsv: both `-`.
-      -> docs/units/placement.tsv, rows `unit names system cause`, one per slus config/units.tsv unit holding an
+      -> docs/units/placement.tsv, rows `unit names system cause`, one per main config/units.tsv unit holding an
          admitted name (config/names.tsv function, accepted|provisional, class x6-twin|x4|loadmap|string|xref). A
          name's stem: the longest docs/oracle/x6-stems.tsv glossary stem among its token spans after the verb, else
          the name when it is a system stem, else those tokens. Placed (cause `-`): every name's stem has one system.
@@ -38,18 +49,24 @@ All paths are repo-relative Paths; `root` selects the tree (fixtures pass their 
          [build/<x>/](src|asm)/<binary folder>/<more> (<more> holds [A-Za-z0-9_{%$(] and is not `include`, the
          split tree's macro folder), P2 a pathlib join descending from "src"/"asm"[/<x>] (not ending in .rglob(); a
          bare "src"/"asm" joined to a quoted literal that is no binary folder is not a unit path), P3 a
-         non-recursive .glob() of units. A line ending `layout: other-tree <what>` is not
+         non-recursive .glob() of units, P4 a build/, asm/, assets/, extracted/, expected/ or address-bound config/
+         literal (splat., symbols., reloc_addrs., check., dedup.us.yaml, shift/) that bypasses the path helpers (not
+         in config/psxdecomp.toml [own] and [delivered] files). A line ending `layout: other-tree <what>` is not
          counted (--waived lists them). m: a unit file at locate() != home(); a unit or body with no file; a run
          file defining no member of one of its groups; a stray .c under src/; a stale config/layout.tsv or placement.tsv row. --paths: the scan only. --selftest: planted controls in
-         .run/layout/selftest/ (the slus ones: a named unit
-         left flat, a placeholder and a disagreeing unit in a folder), last line `layout: control OK`.
+         .run/layout/selftest/ (the main ones: a named unit
+         left flat, a placeholder and a disagreeing unit in a folder; ovl_control: an `OVL(x)` body read per
+         includer by run_files, member_spans, cpp, _alias_window, extract), last line `layout: control OK`.
 
-  layout.py move --overlay <ovlNN[,ovlMM...]> | --binary slus [--units <stem,...>] [--dry-run]
+  layout.py path <kind> [args...]
+      -> one path helper's result (kind: version config build asm assets extracted expected), for shell tools.
+
+  layout.py move --overlay <ovlNN[,ovlMM...]> | --binary main [--units <stem,...>] [--dry-run]
       -> gives each named segment (no dir: yet) `dir: <seg>` and git-mv's its units to home(); --binary: each unit
          whose locate() is not home() (or each listed one) gets the flow row with `dir: <system>` (owner rows too when
          OWNER_DIR), its file and its patches/<p>/ twin git-mv'd, layout.tsv and placement.tsv regenerated.
          Proof first: each unit
-         is cpp'd (CPP, CPPFLAGS of mk/slus.mk) at its old path in the real tree and at its new path in a staged tree
+         is cpp'd (CPP, CPPFLAGS of mk/main.mk, ovl_cppflags of the path) at its old path in the real tree and at its new path in a staged tree
          (.run/layout/move/: the units, include/ and src/shared/ symlinked; deleted at the end), `#` and blank
          lines dropped; a difference, a cpp error or an INCLUDE_ASM (its folder string would go stale) refuses with
          nothing written. Last line `move: <k> of <k> units identical, <k> renamed`; --dry-run adds
@@ -71,10 +88,11 @@ All paths are repo-relative Paths; `root` selects the tree (fixtures pass their 
          an alias window, or fails cc1), config/merge-holds.tsv `unit<TAB>cause` rows (cause as given). Proof: the unit's object equals the `ld -r` of the members' (unitmap's pipeline, staged in .run/layout/apply/).
          Then one yaml c row and one .rodata/.data row per unit, git add/rm, layout.tsv, docs/units/merge.tsv. Last
          line `apply: <ovls>: merged <m> of <n> units (<f> functions)...`. A failure writes nothing and exits 1.
-         Without unitmap.py it exits 2. --selftest: last line `apply: control OK (9 of 9 caught)`.
+         Without unitmap.py it exits 2. --selftest: last line `apply: control OK (10 of 10 caught)`.
 """
 import argparse
 import ast
+import bisect
 import io
 import os
 import re
@@ -87,13 +105,106 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 SELF = Path(__file__).resolve()
+# Adapted from mmx6 tools/mmx6/paths.py (VERSION, BUILD_ROOT): the one source of the build, split and config paths
+VERSION = os.environ.get("VERSION") or "us"
+BUILD_ROOT = os.environ.get("BUILD_ROOT") or "build"
+
+
+def version():
+    return VERSION
+
+
+def versions(root=None):
+    """The registered versions, in config/versions.tsv row order (`version serial triple`)."""
+    rows = (Path(root or ROOT) / "config" / "versions.tsv").read_text().splitlines()
+    return [r.split("\t")[0] for r in rows if r and not r.startswith("#")][1:]
+
+
+def set_version(v):
+    """Select version `v` for this process (a tool's --version): refuse a version without a registry row."""
+    global VERSION, DEDUP
+    if v not in versions():
+        sys.exit(f"version '{v}' has no row in config/versions.tsv (registered: {' '.join(versions())})")
+    VERSION = os.environ["VERSION"] = v
+    DEDUP = str(config_path("dedup.us.yaml"))
+
+
+MAIN = "main"  # the executable binary's alias: the one place a rename starts
+BINARIES = (MAIN, "rockx5")
+FORMER = {"slus": MAIN}  # a kept record's alias -> the binary it names today
+
+
+def binary(alias):
+    """The binary a record's alias names today (a kept record may spell it the old way)."""
+    return FORMER.get(alias, alias)
+
+
+def spellings(alias):
+    """A binary's alias with the other spellings a kept record may use for it."""
+    return (alias, *(k for k, v in FORMER.items() if v == alias and k != alias))
+
+
+def x6_prog(prog):
+    """An mmx6 program key as its one key `main`; an id keeps its `:<rest>` (`SLUS_013.95:0x80012658`)."""
+    head, sep, rest = prog.partition(":")
+    return ("main" if head == "SLUS_013.95" else head) + sep + rest
+
+
+VERSIONED = ("splat.", "symbols.", "reloc_addrs.", "shift")  # address-bound config: config/<VERSION>/<name>
+
+
+def config_path(name):  # an address-bound config file by its flat name (splat.main.yaml, dedup.us.yaml, shift/x)
+    if name == "dedup.us.yaml":
+        return Path("config") / VERSION / "dedup.yaml"
+    if name.startswith("check."):  # stays at the top: the kit reads config/check.*.sha
+        return Path("config") / f"check.{VERSION}.{name[len('check.'):]}"
+    return Path("config") / VERSION / name if name.startswith(VERSIONED) else Path("config") / name
+
+
+def build_dir(binary=None):
+    return Path(BUILD_ROOT) / VERSION / binary if binary else Path(BUILD_ROOT) / VERSION
+
+
+def tree_path(p):
+    """A splat yaml output path (build/, asm/, assets/, expected/) in the tree BUILD_ROOT selects: `build/us/x` is
+    `<BUILD_ROOT>/us/x`, `asm/us/x` is `<BUILD_ROOT>/asm/us/x`; a config path and the default `build` stay as spelled."""
+    parts = Path(p).parts
+    if BUILD_ROOT == "build" or not parts or parts[0] not in ("build", "asm", "assets", "expected"):
+        return Path(p)
+    return Path(BUILD_ROOT) / Path(*parts[1:]) if parts[0] == "build" else Path(BUILD_ROOT) / Path(p)
+
+
+def asm_dir(b=None):  # no binary: the split tree's root, for recursive walks
+    return tree_path(Path("asm") / VERSION / b if b else Path("asm") / VERSION)
+
+
+def assets_dir(b):
+    return tree_path(Path("assets") / VERSION / b)
+
+
+def extracted_dir():
+    return Path("extracted") / VERSION
+
+
+def expected_path(b, file):
+    return tree_path(Path("expected") / VERSION / b / file)
+
+
+def census_dir():  # the census tools' data (inventory, groups, report, boundaries): one folder per version
+    return Path(".run/census") / VERSION
+
+
+PATH_KINDS = {"version": version, "config": config_path, "build": build_dir, "asm": asm_dir, "assets": assets_dir,
+              "extracted": extracted_dir, "expected": expected_path, "main": lambda: MAIN,
+              "binaries": lambda: " ".join(BINARIES), "census": census_dir}
 TSV = "config/layout.tsv"
-DEDUP = "config/dedup.us.yaml"
+DEDUP = str(config_path("dedup.us.yaml"))
 SYSTEMS = "docs/oracle/x6-systems.tsv"
 UNITS = "config/units.tsv"
 HOLDS = "config/merge-holds.tsv"  # hand-edited `unit<TAB>cause` rows apply holds; no file: no holds
 FLAT = ("shared",)  # binaries whose home is today's flat path
 STEMS = "docs/oracle/x6-stems.tsv"  # `stem glossary system`, from mmx6 (its first line names the source)
+OWN_STEMS = "docs/oracle/x5-stems.tsv"  # `stem glossary system source`, our own rows, read after STEMS
 PLACEMENT = "docs/units/placement.tsv"
 NAMES = str(Path(UNITS).with_name("names.tsv"))
 GAME_CLASSES = ("x6-twin", "x4", "loadmap", "string", "xref")  # the game-name evidence classes, docs/ops/readability.md
@@ -116,6 +227,9 @@ BODY = re.compile(r"^\s*body: (\S+)")
 MEMBER = re.compile(r"^\s*- \{alias: (\w+),.*\bname: (\w+)[,}]")  # an inline member's line adds `renames: [...]`
 MARKER = re.compile(r"layout: other-tree (.+?)\s*$")
 FUNC_DEF = re.compile(r"^(?:[A-Za-z_]\w*[ \t*]+)+([A-Za-z_]\w*)\s*\([^;{}]*\)\s*\{", re.M)
+OVL_DIR = re.compile(r"ovl(\d+)$")  # an overlay unit's folder: include/mmx5/ovl.h's OVL_ID (mk/rockx5.mk OVL_CPPFLAGS)
+OVL_ARG = re.compile(r"\s*\(\s*(\w+)\s*\)")
+OVL_DEF = re.compile(r"\bOVL\s*\(\s*(\w+)\s*\)\s*\([^;{}]*\)\s*\{")
 ROCK = re.compile(r"rock_\d+$")
 
 _cache = {}
@@ -192,7 +306,7 @@ def _parse_yaml(lines):
 
 
 def _yaml_file(alias, root):
-    return Path(root) / f"config/splat.{alias}.yaml"
+    return Path(root) / config_path(f"splat.{alias}.yaml")
 
 
 def _yaml(alias, root):
@@ -201,11 +315,11 @@ def _yaml(alias, root):
 
 
 def _parse_unit_rows(lines):
-    """{(binary, unit id): [members]} of the config/units.tsv `unit` rows of two or more functions."""
+    """{(binary, unit id): [members]} of the config/units.tsv `unit` rows."""
     out = {}
     for line in lines:
         c = line.split("\t")
-        if c[0] == "unit" and len(c) >= 14 and c[6].isdigit() and int(c[6]) >= 2:
+        if c[0] == "unit" and len(c) >= 14 and c[6].isdigit():
             out[(c[2], c[1])] = c[13].split(",")
     return out
 
@@ -213,18 +327,39 @@ def _parse_unit_rows(lines):
 def _merged_at(alias, root=ROOT):
     """{member: (unit stem, segment)} for each multi-function unit of `alias` (config/units.tsv) whose stem, the unit id
     without `_<seg>` (its first vram), is a yaml `c` row in the unit's segment: those members live in that one file.
-    A stem may repeat across overlays, so the segment, not the stem alone, names the file."""
+    A stem may repeat across overlays, so the segment, not the stem alone, names the file.
+    unitmap gen cuts units from evidence only, never from the files: an overlay unit member with no c row of its own
+    lives in the c row before it by address; when that row is a stem (`<first vram>.c`), the member maps to it, over
+    the unit stem (a unit cut inside an earlier merge's file, or spanning several files)."""
     y, cu = _yaml(alias, root), _cached(Path(root) / UNITS, _parse_unit_rows) or {}
     key = ("merged", alias, str(root))
     hit = _cache.get(key)
     if hit and hit[0] is y and hit[1] is cu:
         return hit[2]
-    out = {}
+    out, rest = {}, []
     for (b, u), members in cu.items():
         stem, _, seg = u.partition("_")
         segs = y.segs_of.get(stem, [])
-        if b == alias and (seg in segs if seg else stem in y.seg_of):
+        if b != alias:
+            continue
+        if len(members) >= 2 and (seg in segs if seg else stem in y.seg_of):
             out.update((m, (stem, seg or y.seg_of[stem])) for m in members)
+        if seg in y.segs:
+            rest += [(m, seg) for m in members]
+    vram = lambda n: int(n, 16) if len(n) == 8 and HEX.match(n) else (
+        int(v.group(1), 16) if (v := re.search(r"(?:^|_)([0-9A-F]{8})(?:_|$)", n)) else None)
+    rows = {}  # {segment: [(vram, c row name)]} in address order
+    for n, s, _ in y.units:
+        if s is not None and (v := vram(n)) is not None:
+            rows.setdefault(s, []).append((v, n))
+    for r in rows.values():
+        r.sort()
+    for m, seg in rest:
+        if seg in y.segs_of.get(m, []) or (v := vram(m)) is None:
+            continue
+        k = bisect.bisect_right(rows.get(seg, []), (v, "~")) - 1
+        if k >= 0 and len(n := rows[seg][k][1]) == 8 and HEX.match(n):
+            out[m] = (n, seg)
     _cache[key] = (y, cu, out)
     return out
 
@@ -250,12 +385,22 @@ def _dedup(root):
 
 
 def _parse_defs(lines):
-    return FUNC_DEF.findall("\n".join(lines))
+    return [def_name(m) for m in FUNC_DEF.finditer("\n".join(lines))]
+
+
+def _owner(ds, names):
+    """The first of `names` a def_name of `ds` defines; an `OVL(x)` definition: the first member it defines, sorted."""
+    for d in ds or ():
+        if d in names:
+            return d
+        if d.startswith("OVL(") and (hit := sorted(n for n in names if defines_name(d, n))):
+            return hit[0]
+    return None
 
 
 def run_files(root=ROOT):
     """{run file: [(owner or None, registry line)]} for each body two or more groups name (a shared unit): the owner
-    is the function the file defines whose name is one of that group's members."""
+    is the function the file defines whose name is one of that group's members (`OVL(x)`: x or an x_ovlNN member)."""
     root, reg = Path(root), _dedup(root)
     key = ("runs", str(root))
     hit = _cache.get(key)
@@ -267,19 +412,19 @@ def run_files(root=ROOT):
     defs = tuple(_cached(root / b, _parse_defs) for b in hit[1])  # re-stat: a run file may be written after the registry
     if hit[2] is not None and all(x is y for x, y in zip(defs, hit[2])):
         return hit[3]
-    out = {b: [(next((d for d in ds or () if d in names), None), ln) for ln, names in gs]
+    out = {b: [(_owner(ds, names), ln) for ln, names in gs]
            for (b, gs), ds in zip(hit[1].items(), defs)}
     _cache[key] = (reg, hit[1], defs, out)
     return out
 
 
 def run_file(body, root=ROOT):
-    """True when `body` (repo-relative) is a shared unit file: writers refuse it (one function per body assumed)."""
+    """True when `body` (repo-relative) is a shared unit file: writers take one owner's body out first (extract)."""
     return Path(body).as_posix() in run_files(root)
 
 
 def aliases(root=ROOT):
-    return sorted(p.name.split(".")[1] for p in (Path(root) / "config").glob("splat.*.yaml"))
+    return sorted(p.name.split(".")[1] for p in Path(root).glob(str(config_path("splat.*.yaml"))))
 
 
 def segment(alias, name, root=ROOT):
@@ -316,13 +461,72 @@ def src_root(alias, root=ROOT):
 
 
 def asm_root(alias, root=ROOT):
-    return Path(_yaml(alias, root).opts.get("asm_path", f"asm/{alias}"))
+    p = _yaml(alias, root).opts.get("asm_path")
+    return tree_path(p) if p else asm_dir(alias)
+
+
+def ovl_id(path):
+    """NN when C unit `path` sits in an ovlNN folder (a staged mirror too), else None (mk/rockx5.mk OVL_CPPFLAGS)."""
+    m = OVL_DIR.fullmatch(Path(path).parent.name)
+    return m.group(1) if m else None
+
+
+def ovl_cppflags(path):
+    """The per-unit cpp flags beside mk/main.mk's CPPFLAGS (the one helper, C0454): -DVERSION=VER_<VERSION in
+    capitals> (include/mmx5/version.h, Makefile VERSION_CPPFLAGS) and, in an ovlNN folder, -DOVL_ID=NN."""
+    n = ovl_id(path)
+    return [f"-DVERSION=VER_{VERSION.upper()}"] + ([f"-DOVL_ID={n}"] if n else [])
+
+
+def def_name(m):
+    """The name a FUNC_DEF-shaped match defines; include/mmx5/ovl.h's `OVL(x)(...) {` reads `OVL(x)`."""
+    a = OVL_ARG.match(m.string, m.end(1)) if m.group(1) == "OVL" else None
+    return f"OVL({a.group(1)})" if a else m.group(1)
+
+
+def resolve_def(d, unit):
+    """def_name `d` as cpp gives it in includer `unit`: `OVL(x)` -> x_ovlNN in an ovlNN unit, else x."""
+    if not d.startswith("OVL("):
+        return d
+    n = ovl_id(unit)
+    return f"{d[4:-1]}_ovl{n}" if n else d[4:-1]
+
+
+def defines_name(d, name, unit=None):
+    """def_name `d` defines `name` in includer `unit`; unit None (a shared body read alone): in some includer."""
+    if unit is not None or not d.startswith("OVL("):
+        return resolve_def(d, unit or "") == name
+    return name == d[4:-1] or re.fullmatch(rf"{re.escape(d[4:-1])}_ovl\d+", name) is not None
+
+
+def def_at(text, name, unit=None):
+    """The match of `name`'s definition `<name>(...) {` in `text`, else of an `OVL(x)(...) {` defining it, else None."""
+    if m := re.search(rf"\b{re.escape(name)}\s*\([^;{{}}]*\)\s*\{{", text):
+        return m
+    return next((m for m in OVL_DEF.finditer(text) if defines_name(f"OVL({m.group(1)})", name, unit)), None)
+
+
+def find_ovl_body(name, root=ROOT):
+    """The registry body (repo-relative str) whose `OVL(x)` definition defines member `name` (x or x_ovlNN), else
+    None: an OVL body src/shared/<x>.c serves every member, a run file every member of its OVL groups."""
+    root, reg = Path(root), _dedup(root)
+    key = ("member-body", str(root))
+    hit = _cache.get(key)
+    if not (hit and hit[0] is reg):
+        by = {}
+        for body, _, members in reg:
+            for _, n in members:
+                by.setdefault(n, body)
+        hit = _cache[key] = (reg, by)
+    body = hit[1].get(name)
+    ds = body and _cached(root / body, _parse_defs)
+    return body if ds and any(d.startswith("OVL(") and defines_name(d, name) for d in ds) else None
 
 
 def locate(alias, name, root=ROOT, seg=None):  # seg: the declaring segment of a yaml row (a stem may repeat across them)
     if alias == "shared":
         owner = {o: b for b, gs in run_files(root).items() for o, _ in gs if o}
-        return Path(owner.get(name, f"src/shared/{name}.c"))
+        return Path(owner.get(name) or find_ovl_body(name, root) or f"src/shared/{name}.c")
     name, seg = _merged_at(alias, root).get(name, (name, seg))
     return src_root(alias, root) / _dir(alias, name, root, seg) / f"{name}.c"
 
@@ -346,11 +550,11 @@ def data_s(alias, name, root=ROOT, seg=None):
 
 
 def obj(alias, name, root=ROOT):
-    return Path(f"build/{alias}") / locate(alias, name, root).with_suffix(".o")
+    return build_dir(alias) / locate(alias, name, root).with_suffix(".o")
 
 
 def asm_obj(alias, name, root=ROOT, seg=None):
-    return Path(f"build/{alias}") / asm_s(alias, name, root, seg).with_suffix(".o")
+    return build_dir(alias) / asm_s(alias, name, root, seg).with_suffix(".o")
 
 
 def split_s(adir):
@@ -379,7 +583,7 @@ def home(alias, name, root=ROOT, seg=None):  # seg as in locate
         name, seg = _merged_at(alias, root).get(name, (name, seg))
     if alias in FLAT:
         return Path(f"src/{alias}/{name}.c")
-    if alias == "slus":  # a unit placed in a system folder (placement()), else flat
+    if alias == MAIN:  # a unit placed in a system folder (placement()), else flat
         return src_root(alias, root) / _placed(root).get(name, "") / f"{name}.c"
     s = seg or segment(alias, name, root)
     return src_root(alias, root) / (s or "") / f"{name}.c"
@@ -396,8 +600,6 @@ def units(alias, root=ROOT):
         return out
     return [(n, locate(alias, n, root, s)) for n, s, _ in _yaml(alias, root).units]
 
-
-# ---- gen ----
 
 def _systems(root):
     out = {}
@@ -437,20 +639,20 @@ def _units(root):
 # Adapted from mmx6 tools/mmx6/layout.py glossary_stems, slus_systems, system_of (f0ad66bb2)
 
 def _admitted(root):
-    """{name} of the config/names.tsv slus function rows, accepted or provisional, of a game evidence class."""
+    """{name} of the config/names.tsv main function rows, accepted or provisional, of a game evidence class."""
     p, out = Path(root) / NAMES, set()
     for line in p.read_text().splitlines() if p.exists() else ():
         c = line.split("\t")
-        if (len(c) >= 7 and c[0] == "function" and c[1] == "slus" and c[5] in ("accepted", "provisional")
+        if (len(c) >= 7 and c[0] == "function" and c[1] == MAIN and c[5] in ("accepted", "provisional")
                 and c[6].split(":")[0] in GAME_CLASSES):
             out.add(c[4])
     return out
 
 
 def _stems(root):
-    """(glossary stems, {stem: system}) of docs/oracle/x6-stems.tsv."""
-    p, glos, sysm = Path(root) / STEMS, set(), {}
-    for line in p.read_text().splitlines() if p.exists() else ():
+    """(glossary stems, {stem: system}) of docs/oracle/x6-stems.tsv, then of our own docs/oracle/x5-stems.tsv."""
+    glos, sysm = set(), {}
+    for line in [ln for f in (STEMS, OWN_STEMS) if (p := Path(root) / f).exists() for ln in p.read_text().splitlines()]:
         c = line.split("\t")
         if line.startswith("#") or len(c) < 3:
             continue
@@ -462,25 +664,34 @@ def _stems(root):
 
 
 def name_stem(name, glos, sysm):
-    """The longest glossary stem among the token spans after the verb (ties: more tokens, more chars, earliest);
-    else the name itself when it is a system stem; else the tokens after the verb joined (a one-token name: itself)."""
+    """The longest glossary stem among the token spans after the verb (ties: more tokens, more chars, earliest) when
+    it has a system; else the name itself when it is a system stem; else the longest leading-token prefix of the
+    tokens after the verb that is a system stem (dash_stop -> dash), then of a `check_` tail's object
+    (check_dash_input -> dash_input); else that glossary stem; else the tokens after the verb joined."""
     toks = name.split("_")[1:]
     spans = [(j - i, len(s), -i, s) for i in range(len(toks)) for j in range(i + 1, len(toks) + 1)
              if (s := "_".join(toks[i:j])) in glos]
-    if spans:
-        return max(spans)[3]
-    return name if name in sysm else ("_".join(toks).strip("_") or name)
+    best = max(spans)[3] if spans else None
+    if best in sysm:
+        return best
+    if name in sysm:
+        return name
+    for seq in (toks, toks[1:] if toks[:1] == ["check"] else []):
+        for k in range(len(seq), 0, -1):
+            if (s := "_".join(seq[:k])) in sysm:
+                return s
+    return best or "_".join(toks).strip("_") or name
 
 
 def placement(root=ROOT):
-    """[(unit id, [names], system, cause, [members])] for each slus config/units.tsv unit holding an admitted name: system the one
+    """[(unit id, [names], system, cause, [members])] for each main config/units.tsv unit holding an admitted name: system the one
     system of all its names, cause '-'; else system '-' and cause `disagree <name>:<sys>,...`, `no-system <stem>`
     or `x6 <folder>,...` (the X6 folders of its members, docs/oracle/x6-systems.tsv, are not that one system)."""
     p = Path(root) / UNITS
     adm, (glos, sysm), x6, out = _admitted(root), _stems(root), _systems(root), []
     for line in p.read_text().splitlines() if p.exists() else ():
         c = line.split("\t")
-        if c[0] != "unit" or len(c) < 14 or c[2] != "slus":
+        if c[0] != "unit" or len(c) < 14 or c[2] != MAIN:
             continue
         members = c[13].split(",")
         names = [m for m in members if m in adm]
@@ -489,7 +700,7 @@ def placement(root=ROOT):
         stems = {n: name_stem(n, glos, sysm) for n in names}
         got = {n: sysm.get(s) for n, s in stems.items()}
         systems = set(got.values())
-        folders = set().union(*(x6.get(("slus", m), set()) for m in members))
+        folders = set().union(*(x6.get((MAIN, m), set()) for m in members))
         if len(systems) > 1:
             cause = "disagree " + ",".join(f"{n}:{s or '-'}" for n, s in got.items())
         elif None in systems:
@@ -505,7 +716,7 @@ def placement(root=ROOT):
 
 def _placed(root):
     """{member or unit stem: system} of the placed units of placement(), cached on its inputs' stat."""
-    paths = [Path(root) / f for f in (NAMES, UNITS, STEMS, SYSTEMS)]
+    paths = [Path(root) / f for f in (NAMES, UNITS, STEMS, OWN_STEMS, SYSTEMS)]
     key = ("placed", str(root))
     st = tuple((s.st_mtime_ns, s.st_size) if (s := p.stat() if p.exists() else None) else None for p in paths)
     hit = _cache.get(key)
@@ -523,7 +734,7 @@ def rows(root=ROOT):
     sysm, unitm, out = _systems(root), _units(root), []
 
     def image(alias, name):
-        return "slus" if alias == "slus" else segment(alias, name, root)
+        return MAIN if alias == MAIN else segment(alias, name, root)
 
     for a in aliases(root):
         held_by = {}  # a merged unit's (segment, stem) -> its members, each keeping its own row
@@ -532,8 +743,8 @@ def rows(root=ROOT):
         for u, sg, _ in _yaml(a, root).units:
             for n in held_by.get((sg, u), [u]):
                 ns = sg or segment(a, n, root)
-                ov = "-" if a == "slus" else (ns or "-")
-                s = sysm.get(("slus" if a == "slus" else ns, n), set())
+                ov = "-" if a == MAIN else (ns or "-")
+                s = sysm.get((MAIN if a == MAIN else ns, n), set())
                 cu = unitm.get((a, n), ("-", "-"))
                 out.append((n, a, ov, ",".join(sorted(s)) or "-", str(locate(a, n, root, sg))) + cu)
     seen, of = set(), {}
@@ -551,12 +762,12 @@ def rows(root=ROOT):
 
 
 HEADER = ("# config/layout.tsv is generated by tools/build/layout.py gen, so do not edit it by hand.\n"
-          "# inputs: config/splat.*.yaml, config/dedup.us.yaml, docs/oracle/x6-systems.tsv, config/units.tsv\n"
+          f"# inputs: {config_path('splat.*.yaml')}, {DEDUP}, docs/oracle/x6-systems.tsv, config/units.tsv\n"
           "# unit\tbinary\toverlay\tsystem\tpath\tcu\tcu_system\n")
 
 
 PLACEMENT_HEADER = (f"# {PLACEMENT} is generated by tools/build/layout.py gen, so do not edit it by hand.\n"
-                    f"# inputs: {NAMES}, {UNITS}, {STEMS}, {SYSTEMS}\n"
+                    f"# inputs: {NAMES}, {UNITS}, {STEMS}, {OWN_STEMS}, {SYSTEMS}\n"
                     "# unit\tnames\tsystem\tcause\n")
 
 
@@ -614,8 +825,6 @@ def gen(root=ROOT, check=False):
     return 0
 
 
-# ---- check: hard-coded paths ----
-
 EXTS = {".py", ".sh", ".toml", ".mk", ".lua"}
 
 
@@ -664,7 +873,7 @@ def code_lines(path):
 
 
 def _binaries(root):
-    names = {"slus", "rockx5", "shared", *aliases(root)}
+    names = {MAIN, "rockx5", "shared", *aliases(root)}
     for p in (Path(root) / "tools").rglob("splat.*.yaml"):
         if "fixtures" in p.parts:
             names.add(p.name.split(".")[1])
@@ -679,6 +888,16 @@ def patterns(root):
     return p1, p2, p3, _binaries(root)
 
 
+P4 = re.compile(r"(?<![\w./$-])(?:(?:build|asm|assets|extracted|expected)/"
+                r"|config/(?:splat\.|symbols\.|reloc_addrs\.|dedup\.us\.yaml|shift/|check\.)"
+                r"|config/[a-z]{2}/(?:splat\.|symbols\.|reloc_addrs\.|dedup\.yaml|shift/))")  # config/<VERSION>/
+P4_JOIN = re.compile(r"(?:/\s*|\bjoin\((?:[^()]*,)?\s*)[fFrRbB]{0,2}([\"'])(?:build|asm|assets|extracted|expected)\1"
+                     r"|[fFrRbB]{0,2}([\"'])(?:build|asm|assets|extracted|expected)\2\s*/(?![/=])")
+TOOLS_PARENT = ('"tools"', "'tools'", "parents[1]", "HERE.parent")  # `<tools dir> / "build"` is tools/build
+# (root / "config").glob("splat.*"), join(root, "config", "splat.x.yaml")
+P4_CFG = re.compile(r"[\"']config[\"']\s*(?:\)\s*\.r?glob\(|,)\s*[fFrR]{0,2}[\"']"
+                    r"(?:(?:splat|symbols|reloc_addrs|check)\.|dedup\.us\.yaml|shift\b)")
+TOOLS_JOIN = re.compile(r"[\"']tools[\"']\s*,\s*[fFrRbB]{0,2}[\"']\w+[\"']$")  # join(ROOT, "tools", "build")
 NAMECH = re.compile(r"[A-Za-z0-9_{%$(]")
 NEXT_LIT = re.compile(r"\s*[rRbB]{0,2}([\"'])([^\"'{]*)\1")
 
@@ -705,15 +924,31 @@ def hits(code, is_py, pats):
     if any("**" not in m.group(2) and (m.group(2).endswith((".c", ".s", ".o")) or "nonmatchings/*" in m.group(2))
            for m in p3.finditer(code)):
         kinds.append("P3")
+    if P4.search(code) or is_py and (P4_CFG.search(code) or any(
+            not code[:m.start()].rstrip().endswith(TOOLS_PARENT) and not TOOLS_JOIN.search(code[:m.end()])
+            for m in P4_JOIN.finditer(code))):
+        kinds.append("P4")
     return kinds
+
+
+def protected(root):  # config/psxdecomp.toml [own] paths and [delivered] keys: files psxdecomp owns, never edited here
+    p = Path(root) / "config/psxdecomp.toml"
+    if not p.is_file():
+        return set()
+    import tomllib
+    d = tomllib.loads(p.read_text())
+    own = {w for v in d.get("own", {}).values() for w in str(v).split() if "/" in w}
+    return {w.rstrip("/") for w in own | set(d.get("delivered", {}))}
 
 
 def scan(root=ROOT):
     """-> (findings [(file, line, kind, text)], waived [(file, line, what)])."""
     root = Path(root)
-    pats, found, waived = patterns(root), [], []
+    pats, found, waived, own = patterns(root), [], [], protected(root)
     for p in scan_files(root):
         rel = p.relative_to(root)
+        if any(rel == Path(o) or Path(o) in rel.parents for o in own):
+            continue
         raw = p.read_text(errors="replace").split("\n")
         for i, (code, line) in enumerate(zip(code_lines(p), raw), 1):
             if m := MARKER.search(line):
@@ -723,8 +958,6 @@ def scan(root=ROOT):
                 found.append((rel, i, ",".join(kinds), line.strip()[:140]))
     return found, waived
 
-
-# ---- check: misplaced files ----
 
 def misplaced(root=ROOT):
     """-> (printed lines, m). (a) unit file at locate() != home(); (b) no file at locate(); (c) stray .c; (d) stale."""
@@ -736,7 +969,7 @@ def misplaced(root=ROOT):
             loc = locate(a, n, root, s)
             known.add(loc)
             if not (root / loc).is_file():
-                out.append(f"config/splat.{a}.yaml:{ln} missing {loc}")
+                out.append(f"{config_path(f'splat.{a}.yaml')}:{ln} missing {loc}")
                 m += 1
             elif loc != home(a, n, root, s):
                 moved.setdefault((a, s), []).append((loc, home(a, n, root, s)))
@@ -747,7 +980,8 @@ def misplaced(root=ROOT):
             dests = {}
             for _, h in files:
                 dests[h.parent] = dests.get(h.parent, 0) + 1
-            out += [f"config/splat.{a}.yaml:{ln} misplaced {k} {s} units not in {d}/" for d, k in sorted(dests.items())]
+            out += [f"{config_path(f'splat.{a}.yaml')}:{ln} misplaced {k} {s} units not in {d}/"
+                    for d, k in sorted(dests.items())]
         else:
             out += [f"{loc}:1 misplaced home {h}" for loc, h in files]
     for body, ln, _ in _dedup(root):
@@ -788,19 +1022,17 @@ def summary(h, m):
     return f"layout: {h} hard-coded paths" + ("" if m is None else f", {m} misplaced files")
 
 
-# ---- move ----
-
 def _mkvars(root=ROOT):
-    """`NAME := value` lines of mk/slus.mk, earlier $(NAME)s expanded (CPP, CPPFLAGS)."""
+    """`NAME := value` lines of mk/main.mk, earlier $(NAME)s expanded (CPP, CPPFLAGS)."""
     v = {}
-    for line in (Path(root) / "mk/slus.mk").read_text().splitlines():
+    for line in (Path(root) / f"mk/{MAIN}.mk").read_text().splitlines():
         if m := MKVAR.match(line):
             v[m.group(1)] = re.sub(r"\$\((\w+)\)", lambda r: v.get(r.group(1), r.group(0)), m.group(2).strip())
     return v
 
 
 def _cpp_text(cmd, cwd, path):
-    r = subprocess.run(cmd + [str(path)], cwd=cwd, capture_output=True)
+    r = subprocess.run(cmd + ovl_cppflags(path) + [str(path)], cwd=cwd, capture_output=True)
     if r.returncode or r.stderr:
         return None
     return "\n".join(ln for ln in r.stdout.decode("latin-1").splitlines() if ln.strip() and not ln.startswith("#"))
@@ -937,8 +1169,6 @@ def move(root, ovls, dry_run=False, mk_root=ROOT, binary=None, only=None):
     return [f"move: {same} of {len(pairs)} units identical, {moved} renamed"], 0 if moved == len(pairs) else 1
 
 
-# ---- apply ----
-
 MERGE_TSV = "docs/units/merge.tsv"
 MERGE_HEADER = ("# docs/units/merge.tsv is generated by tools/build/layout.py apply, so do not edit it by hand.\n"
                 "# unit\tbinary\toverlay\tcount\tstatus\tcause\n")
@@ -1004,7 +1234,8 @@ LINEMARK = re.compile(r'^# (\d+) "([^"]+)"(.*)$')
 
 def _alias_window(cpp, unit_c, text):
     """The first header whose first entry, in the cpp linemarkers of `unit_c` (holding `text`), comes from a unit line
-    inside an alias window (`#define <owner> <site>` .. `#undef <owner>` or end, around a shared/*.c include), else None."""
+    inside an alias window (`#define <owner> <site>` .. `#undef <owner>` or end, around a shared/*.c include), else None.
+    `unit_c` is cpp'd with its ovl_cppflags; an `OVL(x)` body's include (no #define) opens no window."""
     lines = text.splitlines()
     incs = [i + 1 for i, ln in enumerate(lines) if INC_LINE.match(ln)]
     wins = []
@@ -1016,7 +1247,7 @@ def _alias_window(cpp, unit_c, text):
                 wins.append((i + 1, end))
     if not wins:
         return None
-    r = subprocess.run(cpp + [str(unit_c)], cwd=ROOT, capture_output=True)
+    r = subprocess.run(cpp + ovl_cppflags(unit_c) + [str(unit_c)], cwd=ROOT, capture_output=True)
     depth, seen, pending, first = 0, set(), [], None
     for ln in r.stdout.decode("latin-1").splitlines():
         if not (m := LINEMARK.match(ln)):
@@ -1086,15 +1317,17 @@ def _import_unitmap():
     return unitmap
 
 
-def _yaml_edits(lines, stem, members):
+def _yaml_edits(lines, stem, members, prefer=()):
     """{line index: new line or None (deleted)} joining `members`' c rows into one `c, <stem>` row and their
-    .rodata/.data owner rows into one row per type at the first. None when the rows are not one adjacent run each."""
+    .rodata/.data owner rows into one row per type at the first. None when the rows are not one adjacent run each.
+    Each joined row keeps the dir: of the first of its rows named in `prefer`, else of its first row."""
     c_at = {m.group(3): i for i, ln in enumerate(lines) if (m := C_ROW.match(list_form(ln)))}
     idx = [c_at.get(n) for n in members]
     if None in idx or idx != list(range(idx[0], idx[0] + len(idx))):
         return None
+    pick = lambda ids, rx, g: next((i for i in ids if rx.match(list_form(lines[i])).group(g) in prefer), ids[0])
     m = C_ROW.match(list_form(lines[idx[0]]))
-    edits = {idx[0]: row_text(m.group(1)[:-1], m.group(2), "c", stem, _row_dir(lines[idx[0]])) + "\n",
+    edits = {idx[0]: row_text(m.group(1)[:-1], m.group(2), "c", stem, _row_dir(lines[pick(idx, C_ROW, 3)])) + "\n",
              **{i: None for i in idx[1:]}}
     by_type = {}
     for i, ln in enumerate(lines):
@@ -1104,9 +1337,23 @@ def _yaml_edits(lines, stem, members):
         if rows != list(range(rows[0], rows[0] + len(rows))):
             return None
         m = DATA_ROW.match(list_form(lines[rows[0]]))
-        edits[rows[0]] = row_text(m.group(1)[:-1], m.group(2), typ, stem, _row_dir(lines[rows[0]])) + "\n"
+        d = _row_dir(lines[pick(rows, DATA_ROW, 4)])
+        edits[rows[0]] = row_text(m.group(1)[:-1], m.group(2), typ, stem, d) + "\n"
         edits.update((i, None) for i in rows[1:])
     return edits
+
+
+def _holding_rows(alias, ov, members, root):
+    """[the yaml c row holding each member]: in address order, the last row of the member's segment named by a member
+    or by a member's first vram (an earlier merge's stem); None when the first member has no such row."""
+    y = _yaml(alias, root)
+    names = {n for n, s, _ in y.units if s == ov} if ov in y.segs else set(y.seg_of)
+    cur, out = None, []
+    for n in members:
+        v = re.search(r"(?:^|_)([0-9A-F]{8})(?:_|$)", n)
+        cur = n if n in names else v.group(1) if v and v.group(1) in names else cur
+        out.append(cur)
+    return None if out[0] is None else out
 
 
 def apply(root, ovls=(), dry_run=False, batch=None):
@@ -1141,10 +1388,14 @@ def apply(root, ovls=(), dry_run=False, batch=None):
                  if "\t" in ln and not ln.startswith("#"))
     status, work, edits = {}, [], {}
     for u, b, ov, members in units:
-        srcs = [locate(b, n, root) for n in members]
+        held_in = _holding_rows(b, ov, members, root)
+        rows_ = list(dict.fromkeys(held_in)) if held_in else members
+        seg = ov if ov in _yaml(b, root).segs else None
+        srcs = ([src_root(b, root) / _dir(b, r, root, seg) / f"{r}.c" for r in rows_] if held_in
+                else list(dict.fromkeys(locate(b, n, root) for n in members)))
         stem = u.partition("_")[0]
         cls = dry.get((u, b), ["missing", "-", "-"])
-        if len(set(srcs)) == 1:
+        if len(srcs) == 1:
             status[u] = ("merged", "-")
             continue
         if u in holds:
@@ -1156,7 +1407,7 @@ def apply(root, ovls=(), dry_run=False, batch=None):
         texts = [(root / s).read_text(encoding="latin-1") for s in srcs]
         why = ("include-asm" if any("INCLUDE_ASM" in t for t in texts)
                else "included" if any(s in included for s in srcs) else None)
-        e = None if why else _yaml_edits(ylines[b], stem, members)
+        e = None if why else _yaml_edits(ylines[b], stem, rows_)
         if why or e is None:
             status[u] = ("held", f"identical - {why or 'rodata-order'}")
             continue
@@ -1168,10 +1419,12 @@ def apply(root, ovls=(), dry_run=False, batch=None):
     miss = next((x for t in tools.values() if (x := um.dry_missing_tool(t))), None)
     if miss:
         return [f"apply: FAIL: missing tool {miss}", "apply: FAIL: nothing written"], 1
+    dests = {w[2] for w in work}
     for d in {w[2].parent for w in work}:
         (stage / d).mkdir(parents=True, exist_ok=True)
         for p in (root / d).iterdir():
-            (stage / d / p.name).symlink_to(p.resolve())
+            if d / p.name not in dests:  # a dest that is also a source: the proof must not write through its link
+                (stage / d / p.name).symlink_to(p.resolve())
 
     def one(w):
         u, b, dest, srcs, texts, _ = w
@@ -1209,25 +1462,338 @@ def apply(root, ovls=(), dry_run=False, batch=None):
                                          input="".join(f"{p}\n" for p in inp), text=True, capture_output=True)
     if work:
         git("add", inp=[w[2] for w in work])
-        git("rm", "-q", inp=[s for w in work for s in w[3]])
+        git("rm", "-q", inp=[s for w in work for s in w[3] if s != w[2]])
     for b, e in edits.items():
         _yaml_file(b, root).write_text("".join(e.get(i, ln) or "" for i, ln in enumerate(ylines[b])))
     regen(root)
     p = root / MERGE_TSV
-    rows, picked = {}, {(u, b) for u, b, _, _ in units}
-    if p.is_file():
-        for ln in p.read_text().splitlines():
-            c = ln.split("\t")
-            if not ln.startswith("#") and len(c) >= 6 and (c[0], c[1]) not in picked:
-                rows[(c[0], c[1])] = ln + "\n"
-    for u, b, ov, m in units:
-        rows[(u, b)] = "\t".join([u, b, ov, str(len(m)), *status[u]]) + "\n"
+    text = merge_rows(root, {(u, b): "\t".join([u, b, ov, str(len(m)), *status[u]]) + "\n" for u, b, ov, m in units})
     p.parent.mkdir(parents=True, exist_ok=True)
-    p.write_text(MERGE_HEADER + "".join(rows[u] for u in sorted(rows)))
+    p.write_text(text)
     return out + [head], 0
 
 
-# ---- proof ----
+def merge_rows(root, rows_):
+    """docs/units/merge.tsv's new text: its rows with `rows_` {(unit, binary): row line, or None to drop it} applied."""
+    p, rows = Path(root) / MERGE_TSV, {}
+    if p.is_file():
+        for ln in p.read_text().splitlines():
+            c = ln.split("\t")
+            if not ln.startswith("#") and len(c) >= 6:
+                rows[(c[0], c[1])] = ln + "\n"
+    rows.update(rows_)
+    return MERGE_HEADER + "".join(rows[u] for u in sorted(rows) if rows[u])
+
+
+DEFINE = re.compile(r"^#\s*define\s+(\w+)", re.M)  # as unitmap.DEFINE: the names merge_text #undefs after a member
+ASM_INC = re.compile(r'INCLUDE_ASM\(\s*"[^"]*"\s*,\s*(\w+)\s*\)')
+JOIN_FIXTURES = Path("tools/build/fixtures/layout/join")
+JOIN_STAGE = ".run/layout/join"
+
+
+def _close_brace(text, i):
+    """Index of the `}` closing the `{` at `i`, past comments and string or char literals."""
+    depth, n = 0, len(text)
+    while i < n:
+        if text.startswith("//", i):
+            j = text.find("\n", i)
+            i = n if j < 0 else j
+            continue
+        if text.startswith("/*", i):
+            j = text.find("*/", i + 2)
+            i = n if j < 0 else j + 2
+            continue
+        c = text[i]
+        if c in "\"'":
+            j = i + 1
+            while j < n and text[j] != c:
+                j += 2 if text[j] == "\\" else 1
+            i = j + 1
+            continue
+        depth += (c == "{") - (c == "}")
+        if c == "}" and depth == 0:
+            return i
+        i += 1
+    return n - 1
+
+
+def member_spans(text, names, unit=None, root=ROOT):
+    """[(name, start, end)] 0-based line ranges (end exclusive), in text order, of the members of a unit file that
+    `text` defines: by a function body, a shared include (named for it, or under an alias `#define <x> <name>` above
+    it) or an INCLUDE_ASM. A span starts at the first non-blank line after the head (the top run of header includes)
+    or the previous span, so a member's attribution, #define, alias and include lines belong to it; it ends after its
+    trailing #undefs (the last span: at the end of the text). Members one shared include defines share its span.
+    `OVL(x)` (include/mmx5/ovl.h) resolves for includer `unit` (resolve_def; None: any member it can name), in the
+    text and in each included body under `root` (no #define window)."""
+    lines, want = text.splitlines(keepends=True), set(names)
+    at = lambda pos: text.count("\n", 0, pos)
+    named = lambda d: [d] if d in want else sorted(n for n in want if d.startswith("OVL(") and defines_name(d, n, unit))
+    anchors = [(at(m.start(1)), at(_close_brace(text, m.end() - 1)), got)
+               for m in FUNC_DEF.finditer(text) if (got := named(def_name(m)))]
+    for i, ln in enumerate(lines):
+        if (m := INC_LINE.match(ln)) and not hoistable(ln):
+            anchors.append((i, i, m.group(1)))
+        elif (m := ASM_INC.search(ln)) and m.group(1) in want:
+            anchors.append((i, i, [m.group(1)]))
+    head = 0
+    while head < len(lines) and (not lines[head].strip() or hoistable(lines[head])):
+        head += 1
+    spans, prev = [], head
+    for a0, a1, got in sorted(anchors, key=lambda a: a[:2]):
+        if a0 < prev:
+            continue
+        if isinstance(got, str):  # the stem counts unless the window renames it (`#define <stem> <site>`)
+            inc, got = got, Path(got).stem
+            pairs = [(m.group(1), m.group(2)) for ln in lines[prev:a0] if (m := ALIAS.match(ln))]
+            ovl = [d for d in (_cached(Path(root) / include_path(inc), _parse_defs) or []) if d.startswith("OVL(")]
+            own = got not in {s for s, _ in pairs} and (unit is None or f"OVL({got})" not in ovl)
+            got = [n for n in [*([got] if own else []), *(d for _, d in pairs)] if n in want]
+            got += [n for d in (ovl if unit is not None else []) for n in named(d) if n not in got]
+        if not got:
+            continue
+        end = a1 + 1
+        while end < len(lines) and UNDEF.match(lines[end]):
+            end += 1
+        spans.append([got, next(j for j in range(prev, a0 + 1) if lines[j].strip()), end])
+        prev = end
+    if spans:
+        spans[-1][2] = len(lines)
+    return [(n, s, e) for got, s, e in spans for n in got]
+
+
+def _unit_members(root, alias):
+    """{unit id: [members]} of the config/units.tsv `unit` rows of `alias` (members in address order)."""
+    return {c[1]: c[13].split(",") for ln in (Path(root) / UNITS).read_text().splitlines()
+            if len(c := ln.split("\t")) >= 14 and c[0] == "unit" and c[2] == alias}
+
+
+def _seg_block(lines, seg):
+    """(first, end) line indexes of segment `seg` in the yaml `lines`, and its rom start and vram."""
+    i = next(k for k, ln in enumerate(lines) if (m := SEG.match(ln) or SEG_FLOW.match(ln)) and m.group(1) == seg)
+    end = next((k for k in range(i + 1, len(lines)) if lines[k].startswith("  - ")), len(lines))
+    head = "".join(ln.split("  #")[0] for ln in lines[i:end] if not ln.startswith("      "))
+    start, vram = (re.search(rf"\b{k}: (0x[0-9A-Fa-f]+)", head) for k in ("start", "vram"))
+    if not (start and vram):
+        raise ValueError(f"segment {seg}: no start: or vram:")
+    return i, end, int(start.group(1), 16), int(vram.group(1), 16)
+
+
+def _c_rows(lines, i0, end):
+    """{name: (line index, rom start)} of the c rows in lines[i0:end]."""
+    return {m.group(3): (k, int(m.group(2), 16)) for k in range(i0, end) if (m := C_ROW.match(list_form(lines[k])))}
+
+
+def _vram_of(alias, fn, root):
+    """A function's vram: the 8-digit hex of a placeholder name, else its config/us/symbols.<alias>.txt row."""
+    if m := re.search(r"(?:^|_)([0-9A-F]{8})(?:_|$)", fn):
+        return int(m.group(1), 16)
+    p = Path(root) / config_path(f"symbols.{alias}.txt")
+    for ln in p.read_text().splitlines() if p.exists() else ():
+        if m := re.match(rf"\s*{fn}\s*=\s*(0x[0-9A-Fa-f]+)", ln):
+            return int(m.group(1), 16)
+    raise ValueError(f"{fn}: no vram")
+
+
+def _write_tree(root, writes):
+    """Write {repo path: bytes, or None to remove} under `root`. -> the undo record {path: prior bytes or None}."""
+    undo = {p: (f.read_bytes() if (f := Path(root) / p).is_file() else None) for p in writes}
+    for p, v in writes.items():
+        f = Path(root) / p
+        if v is None:
+            f.unlink(missing_ok=True)
+        else:
+            f.parent.mkdir(parents=True, exist_ok=True)
+            f.write_bytes(v)
+    _cache.clear()  # a rewrite in the same mtime tick with the same size would read as unchanged
+    return undo
+
+
+def _finish(root, writes):
+    """_write_tree, then regen() with config/layout.tsv and the placement table in the undo record."""
+    undo = _write_tree(root, writes)
+    for p in (TSV, PLACEMENT):
+        undo.setdefault(p, (f.read_bytes() if (f := Path(root) / p).is_file() else None))
+    regen(root)
+    _cache.clear()
+    return undo
+
+
+def unjoin(root, undo):
+    """Restore every file of a join() or split() undo record to its prior bytes (or absence)."""
+    _write_tree(root, undo)
+
+
+def extract(root, body, owner):
+    """Take group owner `owner`'s body Bk out of the run file `body` (run_files) -> (Bk's body rel, undo record for
+    unjoin). The run file F (bodies in run order: member_spans over the groups' owners) is cut into the prefix P (the
+    bodies before Bk), Bk and the suffix S (the bodies after it). F keeps its name and holds its top and P (k=1: Bk
+    alone); Bk goes to src/shared/<Bk>.c (k>1), a non-empty S to src/shared/<first of S>.c; each new file = F's top
+    header lines + "\n" + its spans verbatim. Every src site's `#include "shared/<F>"` line becomes the include lines
+    of the non-empty parts in run order, in place (same alias window), and each group's `body:` line follows its
+    body. Nothing nests: every file is a one-body file or a run. An `OVL(x)` body's owner is the member run_files
+    resolves it to. Raises ValueError when the shape is refused."""
+    root, rel = Path(root), Path(body)
+    gs = run_files(root).get(rel.as_posix())
+    if not gs or owner not in {o for o, _ in gs}:
+        raise ValueError(f"{owner} is not a group owner defined in {rel.as_posix()}")
+    if None in {o for o, _ in gs}:
+        raise ValueError(f"{rel.as_posix()}: a group whose owner it does not define")
+    text = (root / rel).read_text()
+    lines, spans = text.splitlines(keepends=True), member_spans(text, {o for o, _ in gs})
+    order = [n for n, _, _ in spans]
+    if sorted(order) != sorted({o for o, _ in gs}) or len({s for _, s, _ in spans}) != len(spans):
+        raise ValueError(f"{rel.as_posix()}: owners {sorted(order)} do not each have their own span")
+    k = order.index(owner)
+    sh = src_root("shared", root)
+    head = "".join(ln for ln in lines[:spans[0][1]] if hoistable(ln)) + "\n"
+    parts = [(rel, order[:max(k, 1)], "".join(lines[:spans[max(k, 1) - 1][2]]))]  # F: its top + P (k=1: B1)
+    if k:
+        parts.append((sh / f"{owner}.c", [owner], head + "".join(lines[spans[k][1]:spans[k][2]])))
+    if k + 1 < len(spans):
+        parts.append((sh / f"{order[k + 1]}.c", order[k + 1:], head + "".join(lines[spans[k + 1][1]:])))
+    for p, _, _ in parts[1:]:
+        if (root / p).exists():
+            raise ValueError(f"{p.as_posix()} exists")
+    writes = {p: v.encode() for p, _, v in parts}
+    incs = "".join(f'#include "shared/{p.name}"\n' for p, _, _ in parts)
+    for p in sorted((root / "src").rglob("*.c")):
+        t = p.read_text()
+        if f'"shared/{rel.name}"' in t:
+            tl = t.splitlines(keepends=True)
+            for i, ln in enumerate(tl):
+                if (m := INC_LINE.match(ln)) and m.group(1) == f"shared/{rel.name}":
+                    tl[i] = incs if ln.endswith("\n") else incs[:-1]
+            writes[p.relative_to(root)] = "".join(tl).encode()
+    to = {o: p for p, os, _ in parts for o in os}
+    reg = (root / DEDUP).read_text().splitlines(keepends=True)
+    for o, ln in gs:
+        m = BODY.match(reg[ln - 1])
+        reg[ln - 1] = reg[ln - 1][:m.start(1)] + to[o].as_posix() + reg[ln - 1][m.end(1):]
+    writes[Path(DEDUP)] = "".join(reg).encode()
+    return to[owner], _finish(root, writes)
+
+
+def join_homes(root, alias, name):
+    """The home units of `name`'s config/units.tsv `held` row when each is one file (a merged or single-function
+    unit), else []: a target whose home is merge-held banks alone, and apply merges it with its home later."""
+    root, units, homes = Path(root), {}, []
+    f = root / UNITS
+    for ln in f.read_text().splitlines() if f.exists() else ():
+        c = ln.split("\t")
+        if len(c) >= 14 and c[2] == alias and c[0] == "unit":
+            units[c[1]] = c[13].split(",")
+        elif len(c) >= 14 and c[2] == alias and c[0] == "held" and c[1] == name and c[10] != "-":
+            homes = c[10].split(",")
+    one = lambda h: h in units and len({locate(alias, m, root) for m in units[h]}) == 1
+    return homes if homes and all(map(one, homes)) else []
+
+
+def join(root, alias, name, homes):
+    """Fold `name`'s one-function file and c row (as carve.apply writes them) into its home units `homes` (config/units.tsv
+    unit ids, before the join): one file `<first vram>.c` in the home's folder, merge_text of the files in address
+    order; the c rows and .rodata/.data owner rows (named by function or unit stem) folded like _yaml_edits, dir: from
+    a home row; the homes' docs/units/merge.tsv rows dropped, the new unit `merged`; provisional config/units.tsv rows
+    (_units_joined), so locate() finds the unit file before the next unitmap.py gen; regen(). -> the undo record.
+    ValueError when a row is missing or the rows are not one adjacent run."""
+    root = Path(root)
+    um, seg = _unit_members(root, alias), _yaml(alias, root).seg_of.get(name)
+    if seg is None:
+        raise ValueError(f"join: {name}: no c row of its own")
+    yp = _yaml_file(alias, root)
+    lines = yp.read_text().splitlines(keepends=True)
+    i0, end, rom, vram = _seg_block(lines, seg)
+    crow = _c_rows(lines, i0, end)
+    home_rows = [r for h in homes for r in ([h.partition("_")[0]] if h.partition("_")[0] in crow else um[h])]
+    if missing := [r for r in [name, *home_rows] if r not in crow]:
+        raise ValueError(f"join: {name}: no c row for {', '.join(missing)} in {seg}")
+    rows_ = sorted([name, *home_rows], key=lambda r: crow[r][1])
+    stem = f"{vram + crow[rows_[0]][1] - rom:08X}"
+    e = _yaml_edits(lines[i0:end], stem, rows_, prefer=home_rows)
+    if e is None:
+        raise ValueError(f"join: {name}: rows {', '.join(rows_)} are not one adjacent run")
+    src = lambda r: src_root(alias, root) / _dir(alias, r, root, seg) / f"{r}.c"
+    files = list(dict.fromkeys(src(r) for r in rows_))
+    text = merge_text([(root / f).read_text(encoding="latin-1") for f in files], DEFINE,
+                      shared=lambda inc: root / include_path(inc, root))
+    sfx = homes[0][len(homes[0].partition("_")[0]):]
+    unit_row = [stem + sfx, alias, sfx[1:] or "-", str(1 + sum(len(um[h]) for h in homes)), "merged", "-"]
+    writes = {str(f): None for f in files}
+    writes[str(src(home_rows[0]).parent / f"{stem}.c")] = text.encode("latin-1")
+    writes[str(yp.relative_to(root))] = "".join(e.get(k - i0, ln) or "" if i0 <= k < end else ln
+                                                for k, ln in enumerate(lines)).encode()
+    writes[MERGE_TSV] = merge_rows(root, {**{(h, alias): None for h in homes},
+                                          (unit_row[0], alias): "\t".join(unit_row) + "\n"}).encode()
+    members = sorted([name, *(m for h in homes for m in um[h])], key=lambda m: _vram_of(alias, m, root))
+    writes[UNITS] = _units_joined(root, alias, name, homes, unit_row[0], members).encode()
+    return _finish(root, writes)
+
+
+def _units_joined(root, alias, name, homes, uid, members):
+    """config/units.tsv text with `name`'s held row and its homes' unit rows folded into one provisional unit row
+    `uid` (columns but id, first, last, count and members from the first home row); other held rows naming a home name
+    `uid` instead. Valid until the next unitmap.py gen."""
+    out, done = [], False
+    for ln in (Path(root) / UNITS).read_text().splitlines(keepends=True):
+        c = ln.rstrip("\n").split("\t")
+        if len(c) < 14 or c[2] != alias or ln.startswith("#"):
+            out.append(ln)
+        elif c[0] == "held" and c[1] == name:
+            continue
+        elif c[0] == "unit" and c[1] in homes:
+            if not done:
+                c[1], c[4], c[5], c[6] = uid, members[0], members[-1], str(len(members))
+                c[10], c[13], done = "-", ",".join(members), True
+                out.append("\t".join(c) + "\n")
+        elif c[0] == "held" and set(hs := c[10].split(",")) & set(homes):
+            c[10] = ",".join(dict.fromkeys(uid if h in homes else h for h in hs))
+            out.append("\t".join(c) + "\n")
+        else:
+            out.append(ln)
+    return "".join(out)
+
+
+def split(root, alias, name):
+    """The inverse of join, for planting: `name` leaves its merged unit as a one-function file and c row (the unit's
+    folder and dir:); the members before it and after it each stay one unit named by the rule (`<first vram>.c` for 2+
+    functions, else `<function>.c`), each file the unit's head and its members' spans (member_spans). The unit's
+    .rodata/.data owner rows go to its first remaining piece (a row holds no per-member offsets). docs/units/merge.tsv
+    and regen() as join. -> the undo record. ValueError when `name` is not in a merged unit or has no span of its own."""
+    root = Path(root)
+    if (at := _merged_at(alias, root).get(name)) is None:
+        raise ValueError(f"split: {name} is not in a merged unit")
+    stem, seg = at
+    uid, fns = next((u, ms) for u, ms in _unit_members(root, alias).items() if name in ms)
+    yp = _yaml_file(alias, root)
+    lines = yp.read_text().splitlines(keepends=True)
+    i0, end, rom, vram = _seg_block(lines, seg)
+    k, ustart = _c_rows(lines, i0, end)[stem]
+    d, lead = _row_dir(lines[k]), C_ROW.match(list_form(lines[k])).group(1)[:-1]
+    f = src_root(alias, root) / _dir(alias, stem, root, seg) / f"{stem}.c"
+    tl = (root / f).read_text(encoding="latin-1").splitlines(keepends=True)
+    spans = {n: (s, e) for n, s, e in member_spans("".join(tl), fns, f, root)}
+    if missing := [n for n in fns if n not in spans]:
+        raise ValueError(f"split: {f}: no span for {', '.join(missing)}")
+    if list(spans.values()).count(spans[name]) > 1:
+        raise ValueError(f"split: {name} shares its span (one shared include) with another member")
+    head, j, sfx = "".join(tl[:spans[fns[0]][0]]), fns.index(name), uid[len(stem):]
+    writes, rows_, mrows, names = {str(f): None}, [], {(uid, alias): None}, []
+    for p in [p for p in (fns[:j], [name], fns[j + 1:]) if p]:
+        nm = f"{_vram_of(alias, p[0], root):08X}" if len(p) > 1 else p[0]
+        writes[str(f.parent / f"{nm}.c")] = (head + "".join(tl[spans[p[0]][0]:spans[p[-1]][1]])).encode("latin-1")
+        st = ustart if p[0] == fns[0] else rom + _vram_of(alias, p[0], root) - vram
+        rows_.append(row_text(lead, f"0x{st:X}", "c", nm, d) + "\n")
+        names.append((nm, p))
+        if len(p) > 1:
+            mrows[(nm + sfx, alias)] = "\t".join([nm + sfx, alias, sfx[1:] or "-", str(len(p)), "merged", "-"]) + "\n"
+    rest = next(nm for nm, p in names if p != [name])
+    out = lines[:k] + rows_ + lines[k + 1:]
+    for q in range(i0, end + len(rows_) - 1):
+        if (m := DATA_ROW.match(list_form(out[q]))) and m.group(4) == stem and rest != stem:
+            out[q] = row_text(m.group(1)[:-1], m.group(2), m.group(3), rest, _row_dir(out[q])) + "\n"
+    writes[str(yp.relative_to(root))] = "".join(out).encode()
+    writes[MERGE_TSV] = merge_rows(root, mrows).encode()
+    return _finish(root, writes)
+
 
 QINC = re.compile(r'^\s*#\s*include\s+"([^"]+)"', re.M)
 
@@ -1318,16 +1884,14 @@ def proof(root, rev, mk_root=ROOT):
     return res + [f"proof: {k} of {len(res)} units identical since {rev}"], 0 if k == len(res) else 1
 
 
-# ---- selftest ----
-
 def _fixture(root, extra_seg=""):
     """Scratch tree: alias fx with overlay segments ovl00/ovl01 carrying dir:, one shared body, a clean tool."""
     if root.exists():
         shutil.rmtree(root)
-    for d in ("config", "docs/oracle", "tools", "src"):
+    for d in ("config", config_path("splat.fx.yaml").parent, "docs/oracle", "tools", "src"):
         (root / d).mkdir(parents=True, exist_ok=True)
-    (root / "config/splat.fx.yaml").write_text(
-        "options:\n  asm_path: asm/fx\n  src_path: src/fx\n  build_path: build/fx\nsegments:\n"
+    (root / config_path("splat.fx.yaml")).write_text(
+        f"options:\n  asm_path: {asm_dir('fx')}\n  src_path: src/fx\n  build_path: {build_dir('fx')}\nsegments:\n"
         "  - name: ovl00\n    type: code\n    start: 0x0\n    dir: ovl00\n    subsegments:\n"
         "      - [0x0, c, func_80001000_ovl00]\n      - [0x10, c, func_80001010_ovl00]\n"
         "  - name: ovl01\n    type: code\n    start: 0x100\n    dir: ovl01\n    subsegments:\n"
@@ -1351,7 +1915,7 @@ def _fixture(root, extra_seg=""):
         'P = "refs/mmx6/src/fx/a.c"  # layout: other-tree mmx6 fixture\n'
         'W = list((ROOT / "src").rglob("*.c"))\n'
         "def f():\n    'src/fx/ovl01/inner_doc.c'\n    return 0\n")
-    (root / "tools/fx.mk").write_text("build/fx/src/fx/%.o: src/fx/%.c  # src/fx/x.c in a comment\n\tcc $<\n")
+    (root / "tools/fx.mk").write_text("$(B)/src/fx/%.o: src/fx/%.c  # src/fx/x.c in a comment\n\tcc $<\n")
     gen(root)
 
 
@@ -1359,25 +1923,76 @@ SLUS_WALK = "player_walk"
 
 
 def _slus_fixture(root, specs):
-    """A slus yaml of `specs` rows `<start>, c, <name>, <dir or ''>` (a dir: gives the flow form), each unit's file at
+    """A main yaml of `specs` rows `<start>, c, <name>, <dir or ''>` (a dir: gives the flow form), each unit's file at
     locate(); names.tsv admits player_walk (unit 80010000) and the pair player_clear_dash, player_clear_attack (merged
     unit 80010020, systems dash and attack); func_80010010 is a placeholder."""
     rows_ = [row_text("      - ", *(c.strip() for c in sp.split(",")[:3]), sp.split(",")[3].strip()) + "\n"
              for sp in specs]
-    _yaml_file("slus", root).write_text("options:\n  src_path: src/slus\nsegments:\n  - name: main\n    type: code\n"
+    _yaml_file(MAIN, root).write_text("options:\n  src_path: src/main\nsegments:\n  - name: main\n    type: code\n"
                                         "    start: 0x0\n    subsegments:\n" + "".join(rows_) + "  - [0x100]\n")
     (root / NAMES).write_text("kind\timage\tscope\told_name\tnew_name\tdecision\tevidence\treason\n" + "".join(
-        f"function\tslus\t\tfunc_{a}\t{n}\taccepted\tx6-twin:fixture\t\n" for a, n in (
+        f"function\t{MAIN}\t\tfunc_{a}\t{n}\taccepted\tx6-twin:fixture\t\n" for a, n in (
             ("80010000", SLUS_WALK), ("80010020", "player_clear_dash"), ("80010024", "player_clear_attack"))))
-    unit = lambda u, ms: "\t".join(["unit", u, "slus", "-", "-", "-", str(len(ms)), *"------", ",".join(ms)]) + "\n"
+    unit = lambda u, ms: "\t".join(["unit", u, MAIN, "-", "-", "-", str(len(ms)), *"------", ",".join(ms)]) + "\n"
     with open(root / UNITS, "a") as fh:
         fh.write(unit("80010000", [SLUS_WALK]) + unit("80010010", ["func_80010010"])
                  + unit("80010020", ["player_clear_dash", "player_clear_attack"]))
     (root / STEMS).write_text("# fixture\nwalk\ty\tplayer\ndash\ty\tdash\nattack\ty\tattack\n")
-    for _, p in units("slus", root):
+    for _, p in units(MAIN, root):
         (root / p).parent.mkdir(parents=True, exist_ok=True)
         (root / p).write_text("/* fixture */\n")
     gen(root)
+
+
+def ovl_control(root):
+    """include/mmx5/ovl.h's form: a shared body defining `void OVL(fx_ovl)(void) {` and fx_y (two groups, no #define
+    window), included by an ovl02 unit and a main unit. run_files owners fx_ovl_ovl02, fx_y; member_spans names
+    fx_ovl_ovl02 in the ovl02 unit, fx_ovl in the main one; cpp (_cpp_text) gives fx_ovl_ovl02 / fx_ovl; _alias_window's
+    cpp sees OVL_ID (a header the body includes only under it is found in the ovl02 unit, not the main one); extract
+    of fx_y leaves the OVL body in place. locate("shared", fx_ovl_ovl03) (not the run_files owner) is the body,
+    before and after the extract. -> [failure]."""
+    _fixture(root)
+    sh = src_root("shared", root)
+    body = sh / "fx_ovl.c"
+    files = {body: '#ifdef OVL_ID\n#include "fx_ovl.h"\n#endif\n#include "mmx5/ovl.h"\n\n'
+                   "void OVL(fx_ovl)(void) {\n}\n\nvoid fx_y(void) {\n}\n",
+             Path("include/fx_ovl.h"): "int fx_h;\n",
+             Path("src/fx/ovl02/80003000.c"): f'#define fx_cb fx_cb2\n#include "{sh.name}/fx_ovl.c"\n#undef fx_cb\n',
+             Path(f"src/{MAIN}/80010000.c"): f'#define fx_cb fx_cb2\n#include "{sh.name}/fx_ovl.c"\n#undef fx_cb\n'}
+    for f, t in files.items():
+        (root / f).parent.mkdir(parents=True, exist_ok=True)
+        (root / f).write_text(t)
+    (root / "include/mmx5").mkdir(exist_ok=True)
+    shutil.copy(ROOT / "include/mmx5/ovl.h", root / "include/mmx5/ovl.h")
+    with open(root / DEDUP, "a") as fh:
+        for g, ms in enumerate(((("fx", "fx_ovl_ovl02"), ("fx", "fx_ovl_ovl03")), ((MAIN, "fx_y"),)), 1):
+            fh.write(f"  - group: 1{g}\n    body: {body.as_posix()}\n    members:\n" + "".join(
+                f"      - {{alias: {a}, module: {a}/m, vram: 0x8000300{g}, name: {n}}}\n" for a, n in ms))
+    bad = []
+    owners = sorted(o for o, _ in run_files(root)[body.as_posix()])
+    if owners != ["fx_ovl_ovl02", "fx_y"]:
+        bad.append(f"run_files owners {owners}")
+    if [locate("shared", n, root) for n in ("fx_ovl_ovl03", "fx_ovl")] != [body, sh / "fx_ovl.c"]:
+        bad.append("locate fx_ovl_ovl03 (a run file's non-owner OVL member)")
+    v = _mkvars(ROOT)
+    cpp = [str(ROOT / v["CPP"]), "-I", str(root / "include"), "-I", str(root / "src")]
+    for unit, want in (("src/fx/ovl02/80003000.c", "fx_ovl_ovl02"), (f"src/{MAIN}/80010000.c", "fx_ovl")):
+        text = (root / unit).read_text()
+        got = [n for n, _, _ in member_spans(text, {"fx_ovl", "fx_ovl_ovl02"}, Path(unit), root)]
+        if got != [want]:
+            bad.append(f"member_spans {unit} {got}")
+        out = _cpp_text(cpp, root, unit) or ""
+        if not re.search(rf"\bvoid\s+{want}\s*\(", out):
+            bad.append(f"cpp {unit}: no `void {want}(`")
+        h = _alias_window(cpp, root / unit, text)
+        if (h is not None and h.endswith("fx_ovl.h")) != (want == "fx_ovl_ovl02"):
+            bad.append(f"_alias_window {unit} {h}")
+    to, _ = extract(root, body.as_posix(), "fx_y")
+    if to != sh / "fx_y.c" or "OVL(fx_ovl)" not in (root / body).read_text():
+        bad.append(f"extract fx_y -> {to}")
+    if locate("shared", "fx_ovl_ovl03", root) != body or run_file(body, root):
+        bad.append("locate fx_ovl_ovl03 (a one-group OVL body)")
+    return bad
 
 
 def selftest():
@@ -1406,8 +2021,8 @@ def selftest():
             c[plant["tsv"][0]] = plant["tsv"][1]
             t[3] = "\t".join(c)
             (root / TSV).write_text("\n".join(t))
-        if "slus" in plant:
-            _slus_fixture(root, plant["slus"])
+        if MAIN in plant:
+            _slus_fixture(root, plant[MAIN])
         if "run" in plant:  # a second group whose body is the first group's file: a shared unit
             with open(root / DEDUP, "a") as fh:
                 fh.write("  - group: 01\n    body: src/shared/func_80001010_ovl00.c\n    members:\n"
@@ -1436,31 +2051,49 @@ def selftest():
         n = "func_Y"
         flat = [locate("fx", n, root), asm_s("fx", n, root), nonmatchings("fx", n, root), data_s("fx", n, root),
                 obj("fx", n, root), asm_obj("fx", n, root)]
-        expect(flat == [Path(p) for p in ("src/fx/func_Y.c", "asm/fx/func_Y.s", "asm/fx/nonmatchings/func_Y",
-                                           "asm/fx/data/func_Y.s", "build/fx/src/fx/func_Y.o",
-                                           "build/fx/asm/fx/func_Y.o")], f"flat paths {flat}")
+        expect(flat == [Path(p) for p in ("src/fx/func_Y.c", "asm/us/fx/func_Y.s", "asm/us/fx/nonmatchings/func_Y",
+                                           "asm/us/fx/data/func_Y.s", "build/us/fx/src/fx/func_Y.o",
+                                           "build/us/fx/asm/us/fx/func_Y.o")], f"flat paths {flat}")
         n = "func_80001000_ovl00"
         got = [locate("fx", n, root), asm_s("fx", n, root), nonmatchings("fx", n, root), data_s("fx", n, root),
                obj("fx", n, root), home("fx", n, root)]
-        expect(got == [Path(p) for p in (f"src/fx/ovl00/{n}.c", f"asm/fx/ovl00/{n}.s",
-                                          f"asm/fx/nonmatchings/ovl00/{n}", f"asm/fx/data/ovl00/{n}.s",
-                                          f"build/fx/src/fx/ovl00/{n}.o", f"src/fx/ovl00/{n}.c")], f"dir paths {got}")
+        expect(got == [Path(p) for p in (f"src/fx/ovl00/{n}.c", f"asm/us/fx/ovl00/{n}.s",
+                                          f"asm/us/fx/nonmatchings/ovl00/{n}", f"asm/us/fx/data/ovl00/{n}.s",
+                                          f"build/us/fx/src/fx/ovl00/{n}.o", f"src/fx/ovl00/{n}.c")], f"dir paths {got}")
         stems = [data_s("fx", "100.rodata", root), data_s("fx", "400", root), asm_obj("fx", "0", root, "ovl00"),
                  asm_s("fx", "ovl01_80002000", root), data_s("fx", "func_80001000_ovl00.data", root)]
-        expect(stems == [Path(p) for p in ("asm/fx/data/ovl01/100.rodata.s", "asm/fx/data/400.s",
-                                            "build/fx/asm/fx/ovl00/0.o", "asm/fx/ovl01/ovl01_80002000.s",
-                                            "asm/fx/data/ovl00/func_80001000_ovl00.data.s")], f"stem dirs {stems}")
+        expect(stems == [Path(p) for p in ("asm/us/fx/data/ovl01/100.rodata.s", "asm/us/fx/data/400.s",
+                                            "build/us/fx/asm/us/fx/ovl00/0.o", "asm/us/fx/ovl01/ovl01_80002000.s",
+                                            "asm/us/fx/data/ovl00/func_80001000_ovl00.data.s")], f"stem dirs {stems}")
         run("P1", {"tool": 'p = f"src/fx/{name}.c"'}, 1, 0, "tools/fx_plant.py:1 P1")
         run("P2", {"tool": 'p = root / "src/fx" / name'}, 1, 0, "tools/fx_plant.py:1 P2")
         run("P3", {"tool": 'p = (root / d).glob("*.c")'}, 1, 0, "tools/fx_plant.py:1 P3")
+        run("P4", {"tool": 'y = ROOT / "config/splat.fx.yaml"\nz = ROOT / "config/us/splat.fx.yaml"'}, 2, 0,
+            "tools/fx_plant.py:2 P4")
+        run("P4-join", {"tool": 'b = root / "build" / alias\nt = ROOT / "tools" / "build"\n'
+                                'u = os.path.join(ROOT, "tools", "build")\nv = (root / "config").glob("splat.*.yaml")'},
+            2, 0, "tools/fx_plant.py:4 P4")
         # R-a, R-b, R-c: line 1 is not a unit path; line 2 still is
         run("R-a", {"tool": 'm = "the body lives in src/shared/. */"\np = f"src/shared/{n}.c"'}, 1, 0,
             "tools/fx_plant.py:2 P1")
-        run("R-b", {"tool": 'f = "-I asm/fx/include"\np = "asm/fx/include_x.s"'}, 1, 0, "tools/fx_plant.py:2 P1")
+        lines = run("R-b", {"tool": 'f = "-I asm/fx/include"\np = "asm/fx/include_x.s"'}, 2, 0,
+                    "tools/fx_plant.py:2 P1,P4")
+        expect(any(ln.startswith("tools/fx_plant.py:1 P4 ") for ln in lines), f"R-b: line 1 is P4 alone: {lines}")
         run("R-c", {"tool": 'p = repo / "src" / "walk.c"\nq = repo / "src" / "fx" / n'}, 1, 0,
             "tools/fx_plant.py:2 P2")
         run("outside", {"seg": "  - name: ovl02\n    type: code\n    start: 0x200\n    subsegments:\n"
                                "      - [0x200, c, func_80003000_ovl02]\n"}, 0, 1, "src/fx/func_80003000_ovl02.c:1")
+        # _merged_at fallback: a unit cut inside an earlier stem's file maps its members to that stem row by address;
+        # a non-stem row before them maps nothing
+        for row, want in (("80003000", "src/fx/ovl02/80003000.c"),
+                          ("func_80003000_ovl02", "src/fx/ovl02/func_80003018_ovl02.c")):
+            _fixture(root, "  - name: ovl02\n    type: code\n    start: 0x200\n    dir: ovl02\n    subsegments:\n"
+                           f"      - [0x200, c, {row}]\n")
+            with open(root / UNITS, "a") as fh:
+                fh.write("unit\t80003010_ovl02\tfx\tovl02\t-\t-\t2\t-\t-\t-\t-\t-\t-\t"
+                         "func_80003010_ovl02,func_80003018_ovl02\n")
+            got = locate("fx", "func_80003018_ovl02", root)
+            expect(got == Path(want), f"merged-at {row}: want {want}, got {got}")
         run("stray", {"file": "src/fx/ovl00/stray_func.c"}, 0, 1, "src/fx/ovl00/stray_func.c:1 stray")
         run("stale", {"tsv": (4, "src/fx/wrong.c")}, 0, 1, f"{TSV}:4 stale")
         run("stale-cu", {"tsv": (5, "80009999_ovl00")}, 0, 1, f"{TSV}:4 stale")
@@ -1470,18 +2103,18 @@ def selftest():
                and run_file("src/shared/func_80001010_ovl00.c", root)
                and locate("shared", "func_Z", root) == Path("src/shared/func_Z.c"), "run file locate")
         run("run-owner", {"run": two.split("\n\n")[0]}, 0, 1, f"{DEDUP}:7 run file")
-        # slus placement: a named unit in its system folder, a placeholder and a disagreeing pair flat (clean); each
+        # main placement: a named unit in its system folder, a placeholder and a disagreeing pair flat (clean); each
         # control plants one of them in the wrong place
         walk, ph, pair = (f"0x0, c, {SLUS_WALK}, player", "0x10, c, func_80010010, ", "0x20, c, 80010020, ")
-        run("slus", {"slus": (walk, ph, pair)}, 0, 0, None)
-        expect(locate("slus", SLUS_WALK, root) == home("slus", SLUS_WALK, root) == Path(f"src/slus/player/{SLUS_WALK}.c")
+        run(MAIN, {MAIN: (walk, ph, pair)}, 0, 0, None)
+        expect(locate(MAIN, SLUS_WALK, root) == home(MAIN, SLUS_WALK, root) == Path(f"src/{MAIN}/player/{SLUS_WALK}.c")
                and [r[2:] for r in placement_rows(root)] == [("player", "-"), ("-", "disagree player_clear_dash:dash,"
                                                                                  "player_clear_attack:attack")]
-               and not stale(root), f"slus placement {placement_rows(root)}")
-        run("named-flat", {"slus": (walk.rsplit(",", 1)[0] + ", ", ph, pair)}, 0, 1, f"src/slus/{SLUS_WALK}.c:1 misplaced")
-        run("placeholder-folder", {"slus": (walk, ph + "player", pair)}, 0, 1,
-            "src/slus/player/func_80010010.c:1 misplaced")
-        run("disagree-folder", {"slus": (walk, ph, pair + "dash")}, 0, 1, "src/slus/dash/80010020.c:1 misplaced")
+               and not stale(root), f"main placement {placement_rows(root)}")
+        run("named-flat", {MAIN: (walk.rsplit(",", 1)[0] + ", ", ph, pair)}, 0, 1, f"src/{MAIN}/{SLUS_WALK}.c:1 misplaced")
+        run("placeholder-folder", {MAIN: (walk, ph + "player", pair)}, 0, 1,
+            f"src/{MAIN}/player/func_80010010.c:1 misplaced")
+        run("disagree-folder", {MAIN: (walk, ph, pair + "dash")}, 0, 1, f"src/{MAIN}/dash/80010020.c:1 misplaced")
         # move proof: a segment with no dir: proves identical (dry run writes nothing); a sibling quote-include that
         # the new folder cannot see refuses with nothing written
         seg2 = "  - name: ovl02\n    type: code\n    start: 0x200\n    subsegments:\n      - [0x200, c, func_80003000_ovl02]\n"
@@ -1491,11 +2124,11 @@ def selftest():
             (root / "src/fx/fx_local.h").write_text("#define Y 2\n")
             unit = root / "src/fx/func_80003000_ovl02.c"
             unit.write_text(body)
-            ytext = (root / "config/splat.fx.yaml").read_text()
+            ytext = (root / config_path("splat.fx.yaml")).read_text()
             got, rc = move(root, ["ovl02"], dry_run=True)
             expect(got[-1].startswith(want) and rc == (0 if name == "move" else 1), f"{name}: {got}")
             expect(name != "move" or got[0] == "move: 1 of 1 units identical, 1 renamed", f"{name}: {got}")
-            expect(unit.is_file() and (root / "config/splat.fx.yaml").read_text() == ytext
+            expect(unit.is_file() and (root / config_path("splat.fx.yaml")).read_text() == ytext
                    and not (ROOT / ".run/layout/move").exists(), f"{name}: wrote or left the stage")
         # rewrite proof: a.c's alias renames a name its included body uses (cpp text changes); c.c's alias is unused
         # (identical); a header edit reaches its includer d.c
@@ -1522,6 +2155,11 @@ def selftest():
         got, rc = proof(root, "HEAD")
         expect(rc == 1 and got[0].startswith("proof: differs src/fx/d.c: line 1:") and len(got) == 2
                and not (ROOT / ".run/layout/proof").exists(), f"proof header: {got}")
+        bad = ovl_control(root)
+        expect(not bad, f"ovl: {bad}")
+        expect(binary("slus") == MAIN, "binary alias")
+        expect(x6_prog("SLUS_013.95:0x80012658") == "main:0x80012658", "x6 prog id")
+        expect(x6_prog("main") == "main", "x6 prog key")
     shutil.rmtree(root)
     if fails:
         print("layout: control FAIL " + " | ".join(fails))
@@ -1537,13 +2175,14 @@ def apply_selftest():
     trip the window without it. The mixed pair (hoisted text fails cc1, in-place text trips the window) must hold as
     alias-window. Three tree controls: one merged stem in two overlays must check 0/0 and locate per overlay; a unit
     listed in the holds file must be held with its cause; an exe batch must take only its window's units and keep the
-    merge.tsv rows of an earlier exe batch and of an overlay. The clean pair in its own order must prove, or the controls
-    prove nothing."""
+    merge.tsv rows of an earlier exe batch and of an overlay; a unit whose stem row exists while a member keeps its own
+    row must be merged, not skipped as one file. The clean pair in its own order must prove, or the controls prove
+    nothing."""
     um = _import_unitmap()
     if um is None:
         print("apply: needs tools/build/unitmap.py (private), not found")
         return 2
-    tools = um.dry_tools("slus")
+    tools = um.dry_tools(MAIN)
     if miss := um.dry_missing_tool(tools):
         print(f"apply: control FAIL: missing tool {miss}")
         return 1
@@ -1558,7 +2197,7 @@ def apply_selftest():
         (stage / name / "shared").symlink_to(fx / "shared")
         for h in hdrs:  # a body header the hoisted text includes by its bare name, beside the unit
             (stage / name / h).symlink_to(fx / "shared" / h)
-        return _prove_unit(um, tools, stage / name / "unit.c", stage / name, [fx / f for f in files], tx, "slus")
+        return _prove_unit(um, tools, stage / name / "unit.c", stage / name, [fx / f for f in files], tx, MAIN)
 
     order = ["order_a.c", "order_b.c"]
     clean = prove("clean", order)
@@ -1584,7 +2223,8 @@ def apply_selftest():
 
 
 def _apply_tree_controls(um):
-    """[(None, why) when caught, else (0, why)] for the stem, hold and exe batch controls, on a _fixture tree."""
+    """[(None, why) when caught, else (0, why)] for the stem, hold, exe batch and partial merge controls, on a
+    _fixture tree."""
     tree = ROOT / ".run/layout/apply-tree"
     unit = lambda u, ov, ms: "\t".join(["unit", u, "fx", ov, "-", "-", str(len(ms)), *"----", "save", "-", ",".join(ms)])
     seg = lambda ov, st: (f"  - name: {ov}\n    type: code\n    start: 0x{st}\n    dir: {ov}\n    subsegments:\n"
@@ -1608,7 +2248,7 @@ def _apply_tree_controls(um):
     (tree / um.DRYRUN_TSV).parent.mkdir(parents=True, exist_ok=True)
     (tree / um.DRYRUN_TSV).write_text("")
     (tree / "mk").mkdir(exist_ok=True)
-    (tree / "mk/slus.mk").write_text("CPPFLAGS := -I include\n")
+    (tree / f"mk/{MAIN}.mk").write_text("CPPFLAGS := -I include\n")
     got, rc = apply(tree, ["ovl00"])
     mt = (tree / MERGE_TSV).read_text() if (tree / MERGE_TSV).is_file() else ""
     out.append((None, "hold") if rc == 0 and "80001000_ovl00\tfx\tovl00\t2\theld\tcontrol hold\n" in mt
@@ -1616,26 +2256,152 @@ def _apply_tree_controls(um):
                else (0, f"hold: rc {rc} {got} merge.tsv {mt!r}"))
     exe = {"80010000": 2, "80012000": 2, "80012100": 2, "80012200": 1, "80020000": 2}
     fns = [f"func_{int(u, 16) + 4 * i:08X}" for u, n in exe.items() for i in range(n)]
-    _yaml_file("slus", tree).write_text(
-        "options:\n  src_path: src/slus\nsegments:\n  - name: main\n    type: code\n    start: 0x0\n    subsegments:\n"
+    _yaml_file(MAIN, tree).write_text(
+        "options:\n  src_path: src/main\nsegments:\n  - name: main\n    type: code\n    start: 0x0\n    subsegments:\n"
         + "".join(f"      - [0x{4 * i:X}, c, {f}]\n" for i, f in enumerate(fns)) + "  - [0x100]\n")
-    rows_ += ["\t".join(["unit", u, "slus", "-", "-", "-", str(n), *"----", "-", "-",
+    rows_ += ["\t".join(["unit", u, MAIN, "-", "-", "-", str(n), *"----", "-", "-",
                          ",".join(f"func_{int(u, 16) + 4 * i:08X}" for i in range(n))]) for u, n in exe.items()]
     (tree / UNITS).write_text("# kind\tunit\n" + "\n".join(rows_) + "\n")
     for f in fns:
-        (tree / "src/slus").mkdir(parents=True, exist_ok=True)
-        (tree / "src/slus" / f"{f}.c").write_text("/* fixture */\n")
+        (tree / f"src/{MAIN}").mkdir(parents=True, exist_ok=True)
+        (tree / f"src/{MAIN}" / f"{f}.c").write_text("/* fixture */\n")
     earlier = "80010000\tslus\t-\t2\tmerged\t-\n"
     (tree / MERGE_TSV).write_text(mt + earlier)
-    got, rc = apply(tree, batch=("slus", 0x80012000, 0x80012100))
+    got, rc = apply(tree, batch=(MAIN, 0x80012000, 0x80012100))
     mt = (tree / MERGE_TSV).read_text()
     want = MERGE_HEADER + "".join(sorted(["80001000_ovl00\tfx\tovl00\t2\theld\tcontrol hold\n", earlier]
                                          + [f"{u}\tslus\t-\t2\theld\tmissing - -\n" for u in ("80012000", "80012100")]))
     out.append((None, "exe batch") if rc == 0 and mt == want
-               and got[-1].startswith("apply: slus:80012000..80012100: merged 0 of 2 units")
+               and got[-1].startswith("apply: main:80012000..80012100: merged 0 of 2 units")
                else (0, f"exe batch: rc {rc} {got} merge.tsv {mt!r}"))
+    _yaml_file(MAIN, tree).write_text(
+        "options:\n  src_path: src/main\nsegments:\n  - name: main\n    type: code\n    start: 0x0\n    subsegments:\n"
+        "      - [0x0, c, 80030000]\n      - [0x8, c, func_80030008]\n  - [0x100]\n")
+    part = ["func_80030000", "func_80030004", "func_80030008"]
+    (tree / UNITS).write_text("# kind\tunit\n" + "\n".join(rows_ + ["\t".join(
+        ["unit", "80030000", MAIN, "-", "-", "-", "3", *"----", "-", "-", ",".join(part)])]) + "\n")
+    (tree / um.DRYRUN_TSV).write_text("80030000\tslus\t-\t3\tidentical\t-\t-\n")
+    (tree / f"src/{MAIN}/80030000.c").write_text("".join(f"void {f}(void) {{\n}}\n\n" for f in part[:2]))
+    (tree / f"src/{MAIN}/func_80030008.c").write_text(f"void {part[2]}(void) {{\n}}\n")
+    git = lambda *a: subprocess.run(["git", *a], cwd=tree, check=True, capture_output=True)
+    git("init", "-q")  # apply stages its writes: the tree is its own repo
+    git("add", f"src/{MAIN}/80030000.c", f"src/{MAIN}/func_80030008.c")
+    git("-c", "user.name=fx", "-c", "user.email=fx", "commit", "-qm", "fx")  # git rm refuses a file only staged
+    got, rc = apply(tree, batch=(MAIN, 0x80030000, 0x80030000))
+    mt = (tree / MERGE_TSV).read_text()
+    unit_c = (tree / f"src/{MAIN}/80030000.c").read_text()
+    out.append((None, "partial") if rc == 0 and "80030000\tslus\t-\t3\tmerged\t-\n" in mt
+               and not (tree / f"src/{MAIN}/func_80030008.c").exists() and part[2] in unit_c
+               and "func_80030008" not in _yaml_file(MAIN, tree).read_text()
+               else (0, f"partial: rc {rc} {got} merge.tsv {mt!r}"))
     shutil.rmtree(tree)
     return out
+
+
+def _join_tree(tree):
+    """The joined-state tree: fx ovl00 unit 80001000 (3 members, a .rodata owner row) and func_80001030_ovl00;
+    main unit 80010000 (2 members) on a flow c row with dir: player. -> its config/units.tsv text."""
+    shutil.rmtree(tree, ignore_errors=True)
+    fx = ROOT / JOIN_FIXTURES
+    for f, to in (("80001000.c", "src/fx/ovl00"), ("80010000.c", f"src/{MAIN}/player"), ("shared/func_80000000.c", "src/shared")):
+        (tree / to).mkdir(parents=True, exist_ok=True)
+        shutil.copy(fx / f, tree / to)
+    (tree / "src/fx/ovl00/func_80001030_ovl00.c").write_text("/* fixture */\n")
+    _yaml_file("fx", tree).parent.mkdir(parents=True)
+    _yaml_file("fx", tree).write_text(
+        "options:\n  src_path: src/fx\nsegments:\n  - name: ovl00\n    type: code\n    start: 0x0\n"
+        "    vram: 0x80001000\n    dir: ovl00\n    subsegments:\n      - [0x0, c, 80001000]\n"
+        "      - [0x30, c, func_80001030_ovl00]\n      - [0x80, .rodata, 80001000]\n  - [0x100]\n")
+    _yaml_file(MAIN, tree).write_text(
+        "options:\n  src_path: src/main\nsegments:\n  - name: main\n    type: code\n    start: 0x0\n"
+        "    vram: 0x80010000\n    subsegments:\n      - {start: 0x0, type: c, name: 80010000, dir: player}\n"
+        "  - [0x10]\n")
+    (tree / MERGE_TSV).parent.mkdir(parents=True, exist_ok=True)
+    (tree / MERGE_TSV).write_text(MERGE_HEADER + "80001000_ovl00\tfx\tovl00\t3\tmerged\t-\n"
+                                  "80010000\tslus\t-\t2\tmerged\t-\n")
+    return _join_units([("80001000_ovl00", "fx", ["func_80001000_ovl00", "func_80001010_ovl00",
+                                                    "func_80001020_ovl00"]),
+                        ("80001030_ovl00", "fx", ["func_80001030_ovl00"]),
+                        ("80010000", MAIN, ["func_80010000", "func_80010008"])])
+
+
+def _join_units(rows_):
+    """config/units.tsv text of `rows_` [(unit id, binary, members)]; a bare function id is a held row whose last item
+    is its homes."""
+    out = "# kind\tunit\n"
+    for r in rows_:
+        held = len(r) == 4
+        ov = r[0].partition("_ovl")[1][1:] + r[0].partition("_ovl")[2] or "-"
+        out += "\t".join(["held" if held else "unit", r[0], r[1], ov, "-", "-", str(len(r[2])), "-", "-", "-",
+                          ",".join(r[3]) if held else "-", "-", "-", ",".join(r[2])]) + "\n"
+    return out
+
+
+def join_selftest():
+    """join∘split = identity on the _join_tree fixture for a first member, a last member, a middle member (two
+    homes, function-named rows) and a main member on a flow row with dir: (its row and file carved flat, as carve
+    writes them, so its dir: must come from the home row); unjoin must restore the split tree byte for byte."""
+    tree, fails = ROOT / JOIN_STAGE, []
+    snap = lambda: {str(p.relative_to(tree)): p.read_bytes() for p in sorted(tree.rglob("*")) if p.is_file()}
+    o0 = "src/fx/ovl00/"
+    cases = [  # (alias, name, homes, split-state units rows, files the split must leave)
+        ("fx", "func_80001000_ovl00", ["80001010_ovl00"],
+         [("func_80001000_ovl00", "fx", ["func_80001000_ovl00"], ["80001010_ovl00"]),
+          ("80001010_ovl00", "fx", ["func_80001010_ovl00", "func_80001020_ovl00"])],
+         [o0 + "func_80001000_ovl00.c", o0 + "80001010.c"]),
+        ("fx", "func_80001020_ovl00", ["80001000_ovl00"],
+         [("80001000_ovl00", "fx", ["func_80001000_ovl00", "func_80001010_ovl00"]),
+          ("func_80001020_ovl00", "fx", ["func_80001020_ovl00"], ["80001000_ovl00"])],
+         [o0 + "80001000.c", o0 + "func_80001020_ovl00.c"]),
+        ("fx", "func_80001010_ovl00", ["80001000_ovl00", "80001020_ovl00"],
+         [("80001000_ovl00", "fx", ["func_80001000_ovl00"]),
+          ("func_80001010_ovl00", "fx", ["func_80001010_ovl00"], ["80001000_ovl00", "80001020_ovl00"]),
+          ("80001020_ovl00", "fx", ["func_80001020_ovl00"])],
+         [o0 + f"func_800010{k}0_ovl00.c" for k in "012"]),
+        (MAIN, "func_80010000", ["80010008"],
+         [("func_80010000", MAIN, ["func_80010000"], ["80010008"]), ("80010008", MAIN, ["func_80010008"])],
+         [f"src/{MAIN}/player/func_80010000.c", f"src/{MAIN}/player/func_80010008.c"]),
+    ]
+    for alias, name, homes, split_rows, left in cases:
+        joined_units = _join_tree(tree)
+        (tree / UNITS).write_text(joined_units)
+        regen(tree)
+        s0 = snap()
+        split(tree, alias, name)
+        got = sorted(p for p in snap() if p.startswith("src/") and not p.startswith("src/shared/")
+                     and not p.endswith("func_80001030_ovl00.c") and p.split("/")[1] == alias)
+        if got != sorted(left):
+            fails.append(f"{name}: split left {got}, want {sorted(left)}")
+        if alias == MAIN:  # carve's form: a list row and a flat file
+            yp = _yaml_file(MAIN, tree)
+            yp.write_text(yp.read_text().replace("{start: 0x0, type: c, name: func_80010000, dir: player}",
+                                                 "[0x0, c, func_80010000]"))
+            (tree / f"src/{MAIN}/player/func_80010000.c").rename(tree / f"src/{MAIN}/func_80010000.c")
+        (tree / UNITS).write_text(_join_units(split_rows))
+        regen(tree)
+        s1 = snap()
+        try:
+            unjoin(tree, join(tree, alias, name, homes))
+            if snap() != s1:
+                fails.append(f"{name}: unjoin did not restore the split tree")
+            join(tree, alias, name, homes)
+            if not (tree / locate(alias, name, tree)).is_file():
+                fails.append(f"{name}: locate after join finds no file ({locate(alias, name, tree)})")
+        except ValueError as e:
+            fails.append(f"{name}: {e}")
+            continue
+        (tree / UNITS).write_text(joined_units)
+        regen(tree)
+        s2 = snap()
+        diff = sorted(p for p in set(s0) | set(s2) if s0.get(p) != s2.get(p))
+        if diff:
+            fails.append(f"{name}: join∘split differs in {diff}")
+    for f in fails:
+        print(f"join: control FAIL {f}")
+    if not fails:
+        shutil.rmtree(tree)
+        print(f"join: control OK ({len(cases)} of {len(cases)} round trips identical)")
+    return 1 if fails else 0
 
 
 def main():
@@ -1647,20 +2413,33 @@ def main():
     c.add_argument("--paths", action="store_true", help="the hard-coded path scan only")
     c.add_argument("--selftest", action="store_true", help="planted controls in .run/layout/selftest/")
     c.add_argument("--waived", action="store_true", help="also list every `layout: other-tree` marker")
-    mv = sub.add_parser("move", help="give overlays (or slus units) dir: and git-mv their units home, after a cpp proof")
+    mv = sub.add_parser("move", help="give overlays (or main units) dir: and git-mv their units home, after a cpp proof")
     mx = mv.add_mutually_exclusive_group(required=True)
     mx.add_argument("--overlay", help="ovlNN[,ovlMM...]")
-    mx.add_argument("--binary", choices=["slus"], help="each unit of the binary whose file is not at its home")
+    mx.add_argument("--binary", choices=[MAIN], help="each unit of the binary whose file is not at its home")
     mv.add_argument("--units", help="with --binary: only these unit stems (stem[,stem...])")
     mv.add_argument("--dry-run", action="store_true", help="the proof only; nothing written")
     pr = sub.add_parser("proof", help="cpp-identity of every unit reached by the src/include changes since a rev")
     pr.add_argument("--since", required=True, help="git rev to compare the worktree against")
     ay = sub.add_parser("apply", help="merge each identical multi-function unit into one file, after an object proof")
     ay.add_argument("--overlay", help="ovlNN[,ovlMM...]")
-    ay.add_argument("--batch", help="<binary>:<first>..<last>, hex first addresses, inclusive (slus:80012F8C..80020FA0)")
+    ay.add_argument("--batch", help="<binary>:<first>..<last>, hex first addresses, inclusive (main:80012F8C..80020FA0)")
     ay.add_argument("--dry-run", action="store_true", help="the proof only, nothing written")
     ay.add_argument("--selftest", action="store_true", help="planted controls in .run/layout/apply/")
+    jn = sub.add_parser("join", help="library join/unjoin/split of a carved function and its home units; this: the controls")
+    jn.add_argument("--selftest", action="store_true", required=True, help="join∘split round trips in .run/layout/join/")
+    pa = sub.add_parser("path", help="print one helper path, for shell tools (config <name>, build [binary], ...)")
+    pa.add_argument("kind", choices=sorted(PATH_KINDS))
+    pa.add_argument("args", nargs="*", help="the helper's arguments (expected: <binary> <file>)")
     a = ap.parse_args()
+    if a.cmd == "path":
+        try:
+            print(PATH_KINDS[a.kind](*a.args))
+        except TypeError as e:
+            ap.error(f"path {a.kind}: {e}")
+        return 0
+    if a.cmd == "join":
+        return join_selftest()
     if a.cmd == "gen":
         return gen(ROOT, a.check)
     if a.cmd == "apply":
@@ -1671,7 +2450,7 @@ def main():
         if a.batch:
             m = re.fullmatch(r"(\w+):([0-9A-Fa-f]+)\.\.([0-9A-Fa-f]+)", a.batch)
             if not m:
-                ap.error("--batch is <binary>:<first>..<last>, e.g. slus:80012F8C..80020FA0")
+                ap.error("--batch is <binary>:<first>..<last>, e.g. main:80012F8C..80020FA0")
             lines, rc = apply(ROOT, dry_run=a.dry_run, batch=(m.group(1), int(m.group(2), 16), int(m.group(3), 16)))
         else:
             lines, rc = apply(ROOT, a.overlay.split(","), a.dry_run)

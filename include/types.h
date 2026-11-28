@@ -12,7 +12,6 @@ typedef unsigned short u16;
 typedef int s32;
 typedef unsigned int u32;
 
-// from slus 80012D88
 typedef struct {
     s16 state;
     u8 pad2[0xA];
@@ -23,25 +22,21 @@ typedef struct {
     u8 pad71[0xF];
 } Slot; /* 0x80 */
 
-// from slus 80012D88
 typedef struct {
     u8 d[0xC0];
 } Blk;
 
-// from slus 80012D88
 typedef struct {
     u8 pad[0x110];
     Blk* blk;
 } LowMem; /* fixed low-RAM block at address 0 */
 
-// from slus 800132F8
 typedef struct {
     u8 pad0[4];
     s8 busy;
     s8 arg;
 } Ctl;
 
-// from rockx5 800F2448
 typedef struct {
     u8 pad0[6];
     u8 step;
@@ -49,7 +44,6 @@ typedef struct {
     s16 timer;
 } Obj;
 
-// from rockx5 800F2688 (shared with 800EFE98)
 typedef struct {
     /* 0x00 */ u8 pad0[4];
     /* 0x04 */ u8 unk4;
@@ -58,7 +52,7 @@ typedef struct {
     /* 0x7E */ s16 unk7E;
 } Obj800F2688;
 
-// D_8009A1F8: union of the views from rockx5 800F7F84, 800FA244, 800FA66C, 800F5E5C, 800F8EF0
+// D_8009A1F8: union of its views
 typedef struct {
     u8 pad0[0xA];
     u16 unkA;
@@ -84,7 +78,6 @@ typedef struct {
     u8 unkF4;
 } D_8009A1F8_t;
 
-// from rockx5 800FA244 (shared with 800FA66C)
 typedef struct {
     u8 unk0;
     u8 unk1;
@@ -97,7 +90,6 @@ typedef struct {
     u8 unk54;
 } UnkSpawn;
 
-// from rockx5 800FA244 (shared with 800FA66C)
 typedef struct {
     u8 unk0;
     u8 unk1;
@@ -106,7 +98,6 @@ typedef struct {
     s16 unk6;
 } UnkObj;
 
-// from rockx5 800FA5B4 (shared with 800FADE0)
 typedef struct {
     u8 unk0;
     u8 unk1;
@@ -114,13 +105,11 @@ typedef struct {
     s16 unk4;
 } Ovl45State;
 
-// from rockx5 800FA3C0 (shared with 800FAE80)
 typedef struct {
     u8 pad0;
     u8 step;
 } Actor50;
 
-// from slus 800487F8 (shared with rockx5 800F14C8)
 typedef struct {
     signed char a;
     signed char b;
@@ -128,7 +117,6 @@ typedef struct {
     u8 d;
 } Unk800770CC;
 
-// from rockx5 800FE04C (shared with rockx5 800FE2A4)
 typedef struct Ent800FE04C {
     /* 0x00 */ u8 pad0[3];
     /* 0x03 */ u8 unk3;
@@ -150,7 +138,6 @@ typedef struct Ent800FE04C {
     /* 0x94 */ u16 unk94;
 } Ent800FE04C;
 
-// from rockx5 800FDA54 (shared with rockx5 800FDBC0)
 typedef struct Ovl07Ent {
     /* 0x00 */ u8 pad0[5];
     /* 0x05 */ u8 unk5;
@@ -164,7 +151,6 @@ typedef struct Ovl07Ent {
     /* 0x8E */ u8 unk8E;
 } Ovl07Ent;
 
-// from rockx5 800FA284 (shared with rockx5 800F9CF8)
 typedef struct {
     u8 pad0[6];
     u8 step;
@@ -177,7 +163,6 @@ typedef struct {
     s16 timer;
 } ObjFA284;
 
-// from rockx5 800FE130 (shared with rockx5 800FE388)
 typedef struct ObjFE130 {
     /* 0x00 */ u8 pad0[5];
     /* 0x05 */ u8 unk5;
@@ -200,7 +185,6 @@ typedef struct ObjFE130 {
     /* 0x8D */ u8 unk8D;
 } ObjFE130;
 
-// from rockx5 800F14C8 (shared with rockx5 800F228C)
 typedef struct {
     u8 pad0[0x83];
     u8 flags83;
@@ -208,7 +192,6 @@ typedef struct {
     u16 cnt88;
 } Scr4C;
 
-// from rockx5 800F14C8 (shared with rockx5 800F228C)
 typedef struct {
     u8 pad0[5];
     u8 state;
@@ -227,7 +210,6 @@ typedef struct {
     u8 flags70;
 } Ent14C8;
 
-// from rockx5 800EFA30 (shared with rockx5 800F78F4)
 typedef struct {
     u8 pad0[0xA];
     s16 xA;
@@ -244,7 +226,6 @@ typedef struct {
     u8 x85;
 } Obj800EFA30;
 
-// from rockx5 800EFA30 (shared with rockx5 800F78F4)
 typedef struct {
     s32 a;
     s32 b;
@@ -252,7 +233,6 @@ typedef struct {
     u16 y;
 } Ent800F43E8;
 
-// from rockx5 800FE1E8 (shared with rockx5 800FE440)
 typedef struct Ent800FE1E8 {
     /* 0x00 */ u8 pad0[0x5];
     /* 0x05 */ s8 unk5;
@@ -271,7 +251,6 @@ typedef struct Ent800FE1E8 {
     /* 0x8D */ s8 unk8D;
 } Ent800FE1E8;
 
-// from rockx5 800F3DD4 (shared with rockx5 800F40A8)
 typedef struct Obj3DD4 {
     u8 pad0[6];
     u8 unk6;
@@ -289,7 +268,6 @@ typedef struct Obj3DD4 {
     s16 unk7E;
 } Obj3DD4;
 
-// from rockx5 800EFEF4 (shared with rockx5 800F9CF8)
 typedef struct Ent {
     u8 pad0[6];
     u8 state;
@@ -299,7 +277,6 @@ typedef struct Ent {
     u8 flag15;
 } Ent;
 
-// from rockx5 800F08D8 (shared with rockx5 800F0EC8)
 typedef struct Ent08D8 {
     u8 pad0[5];
     u8 unk5;
@@ -315,7 +292,6 @@ typedef struct Ent08D8 {
     u8 unk70;
 } Ent08D8;
 
-// from rockx5 800F02E4 (shared with rockx5 800F2BEC)
 typedef struct Ob5 {
     u8 pad0[6];
     u8 b6;
@@ -323,7 +299,6 @@ typedef struct Ob5 {
     s8 b45;
 } Ob5;
 
-// from rockx5 800FDC6C (shared with rockx5 800FDB00)
 typedef struct {
     u8 pad0[5];
     u8 unk5;
@@ -336,20 +311,18 @@ typedef struct {
     u8 unk8C;
 } EntFDC6C;
 
-// from rockx5 800F0F18 (shared with rockx5 800F0E04)
 typedef struct Ctx0F18 {
     u8 pad0[0x80];
     signed char unk80;
 } Ctx0F18;
 
-// from rockx5 800EF5D8 (shared with rockx5 800EF714, 800EF81C): D_800F43AC_ovl02 entries
+// D_800F43AC_ovl02 entries
 typedef struct {
     u8 pad0[8];
     u16 unk8;
     u8 padA[2];
 } Ent43AC; /* 0xC */
 
-// from rockx5 800F4FE0 (shared with rockx5 800F45E4)
 typedef struct Obj4FE0 {
     /* 0x00 */ u8 pad0[6];
     /* 0x06 */ u8 unk6;
@@ -366,7 +339,6 @@ typedef struct Obj4FE0 {
     /* 0x2C */ s32 unk2C;
 } Obj4FE0;
 
-// from rockx5 800F06BC (shared with rockx5 800F07E0)
 typedef struct {
     u8 pad0[5];
     u8 u5;
@@ -383,14 +355,12 @@ typedef struct {
     u8* u68;
 } Ent06BC;
 
-// from slus 80022FF0 (shared with rockx5 800F7360)
 typedef struct {
     u8 pad0[0x18];
     s32 unk18;
     s32 unk1C;
 } Unk80022FF0Src;
 
-// from rockx5 800FE4F8 (shared with rockx5 800FE74C)
 typedef struct EntFE4F8 {
     /* 0x00 */ u8 pad0[3];
     /* 0x03 */ u8 unk3;
@@ -412,7 +382,6 @@ typedef struct EntFE4F8 {
     /* 0x92 */ u16 unk92;
 } EntFE4F8;
 
-// from rockx5 800F8EF0 (shared with rockx5 800F7858)
 typedef struct {
     u8 pad0[5];
     u8 unk5;
@@ -425,7 +394,6 @@ typedef struct {
     u16 unk94;
 } Ent8EF0;
 
-// from rockx5 800F0900 (shared with rockx5 800F0A24)
 typedef struct {
     u8 pad0[5];
     u8 u5;
@@ -442,19 +410,12 @@ typedef struct {
     u8* u68;
 } Ent0900;
 
-// from rockx5 800F7360 (shared with rockx5 800FC2E8)
 typedef struct {
     u8 pad0[0x9A];
     signed char unk9A;
 } Unk800F7360Arg;
 
-// from slus 8002D27C (shared with slus 8002D2DC, 8002D33C)
-typedef struct Slot8002D27C {
-    s8 active;
-    u8 pad[0x5F];
-} Slot8002D27C;
-
-// from rockx5 800FAF38 (shared with rockx5 800F2194): spawned child copies the parent's position/state
+// spawned child copies the parent's position/state
 typedef struct {
     /* 0x00 */ u8 unk0;
     /* 0x01 */ u8 unk1;
@@ -476,7 +437,6 @@ typedef struct {
     /* 0x7C */ void* unk7C; /* the parent ObjFAF38 */
 } ObjFAF38;
 
-// from rockx5 800F6234 (shared with rockx5 800F6150)
 typedef struct Ent6234 {
     u8 pad0[5];
     u8 unk5;
@@ -488,7 +448,6 @@ typedef struct Ent6234 {
     u8 unk97;
 } Ent6234;
 
-// from rockx5 800F6B44 (shared with rockx5 800F6D08)
 typedef struct Ent6B44 {
     /* 0x00 */ u8 pad0[3];
     /* 0x03 */ u8 unk3;
@@ -522,7 +481,6 @@ typedef struct Ent6B44 {
     /* 0x7C */ void* unk7C; /* an Ent6B44 */
 } Ent6B44;
 
-// from shared 800F0470_ovl12 (shared with rockx5 800F00FC_ovl12)
 typedef struct Obj0470 {
     /* 0x00 */ u8 pad0[5];
     /* 0x05 */ u8 unk5;
@@ -536,13 +494,7 @@ typedef struct Obj0470 {
     /* 0x87 */ u8 unk87;
 } Obj0470;
 
-// from slus 8002D0E4 (shared with slus 8002D43C)
-typedef struct Slot8002D0E4 {
-    s8 active;
-    u8 pad[0x6F];
-} Slot8002D0E4;
-
-// from rockx5 800F5820: countdown timer at 0x7C reloads to 0x28, repeat count at 0x7E (shared with rockx5 800F5950)
+// countdown timer at 0x7C reloads to 0x28, repeat count at 0x7E
 typedef struct {
     /* 0x00 */ u8 pad0[5];
     /* 0x05 */ u8 unk5;
@@ -552,7 +504,6 @@ typedef struct {
     /* 0x7E */ s16 unk7E;
 } Obj5820;
 
-// from rockx5 800F2BF8 (shared with rockx5 800F2C70)
 typedef struct Ent2BF8 {
     /* 0x00 */ u8 pad0[5];
     /* 0x05 */ u8 unk5;
@@ -566,7 +517,6 @@ typedef struct Ent2BF8 {
     /* 0x70 */ u8 unk70;
 } Ent2BF8;
 
-// from rockx5 800F0B1C (shared with rockx5 800F0E88)
 typedef struct Scr0B1C {
     /* 0x00 */ u8 pad0[0x80];
     /* 0x80 */ s8 unk80;
@@ -574,7 +524,6 @@ typedef struct Scr0B1C {
     /* 0x85 */ s8 unk85;
 } Scr0B1C;
 
-// from rockx5 800EF018 (shared with rockx5 800EF268, 800F0014)
 typedef struct Ovl25State {
     u8 pad0[2];
     u8 unk2;
@@ -582,13 +531,6 @@ typedef struct Ovl25State {
     s16 unk4;
 } Ovl25State;
 
-// from slus 8002D144 (shared with slus 8002D69C)
-typedef struct Slot8002D144 {
-    s8 active;
-    u8 pad[0x2F];
-} Slot8002D144;
-
-// from shared 800F657C (shared with rockx5 800F0C8C)
 typedef struct Ent657C {
     /* 0x00 */ u8 pad0[5];
     /* 0x05 */ u8 unk5;
@@ -601,7 +543,6 @@ typedef struct Ent657C {
     /* 0x7E */ s16 unk7E;
 } Ent657C;
 
-// from shared 800F9364 (shared with rockx5 800F8ADC)
 typedef struct Ent9364 {
     /* 0x00 */ u8 pad0[5];
     /* 0x05 */ u8 unk5;
@@ -613,7 +554,6 @@ typedef struct Ent9364 {
     /* 0x8E */ u8 unk8E;
 } Ent9364;
 
-// from rockx5 800EF4C4 (shape shared with 800EF47C, 800EF39C)
 typedef struct Obj800EF4C4 {
     /* 0x00 */ u8 pad0[2];
     /* 0x02 */ signed char unk2;
@@ -629,7 +569,6 @@ typedef struct Obj800EF4C4 {
     /* 0x58 */ s16 unk58;
 } Obj800EF4C4;
 
-// from rockx5 800F170C (shared with rockx5 800F15FC)
 typedef struct {
     u8 pad0[5];
     u8 unk5;
@@ -642,13 +581,11 @@ typedef struct {
     u8 unk8F;
 } Ent170C;
 
-// from rockx5 800FA2E0 (shared with W10 draft 800FA1C0)
 /* 0x200-byte block copied from the scratchpad buffer */
 typedef struct {
     u8 d[0x200];
 } Blk200;
 
-// from rockx5 800F3EEC (shared with W10 draft 800F41BC)
 typedef struct Obj3EEC {
     /* 0x00 */ u8 pad0[5];
     /* 0x05 */ u8 unk5;
@@ -666,7 +603,6 @@ typedef struct Obj3EEC {
     /* 0x93 */ u8 unk93;
 } Obj3EEC;
 
-// from rockx5 800F66A0 (shared with W10 draft 800F6EE4)
 typedef struct Obj66A0 {
     u8 pad0[4];
     s8 unk4;
@@ -688,7 +624,6 @@ typedef struct Obj66A0 {
     Ctl* unk80;
 } Obj66A0;
 
-// from rockx5 800F448C (shared with W10 draft 800F46B4)
 typedef struct Ent448C {
     /* 0x00 */ u8 pad0[4];
     /* 0x04 */ signed char unk4;
@@ -709,7 +644,6 @@ typedef struct Ent448C {
     /* 0x7C */ void* unk7C; /* an Ent448C */
 } Ent448C;
 
-// from rockx5 800EF780 (shared with W10 draft 800F0408)
 typedef struct Pl780 {
     /* 0x00 */ u8 pad0[0xA];
     /* 0x0A */ s16 unkA;
@@ -721,7 +655,6 @@ typedef struct Pl780 {
     /* 0x8A */ s16 unk8A;
 } Pl780;
 
-// from rockx5 800EF780 (shared with W10 draft 800F0408)
 typedef struct Scr780 {
     /* 0x00 */ u8 pad0[0x80];
     /* 0x80 */ Pl780* unk80;
@@ -729,7 +662,6 @@ typedef struct Scr780 {
     /* 0x90 */ u8 unk90;
 } Scr780;
 
-// from rockx5 800EF780 (shared with W10 draft 800F0408)
 typedef struct Self780 {
     /* 0x00 */ u8 pad0[6];
     /* 0x06 */ u8 unk6;
@@ -741,7 +673,6 @@ typedef struct Self780 {
     /* 0x70 */ u8 unk70;
 } Self780;
 
-// from rockx5 func_800F6BF4_ovl09 (shared with W11 draft)
 typedef struct Ent6BF4 {
     /* 0x00 */ u8 pad0[4];
     /* 0x04 */ signed char unk4;
@@ -757,14 +688,12 @@ typedef struct Ent6BF4 {
     /* 0x7C */ void* unk7C; /* an Ent6BF4 */
 } Ent6BF4;
 
-// from slus func_800218E0 (shared with W11 draft)
 /* 0x7 read as signed (lb) and as unsigned (lbu) */
 typedef union {
     signed char s;
     u8 u;
 } Byte800218E0;
 
-// from slus func_800218E0 (shared with W11 draft)
 typedef struct {
     u8 pad0[4];
     signed char unk4;
@@ -772,13 +701,11 @@ typedef struct {
     Byte800218E0 unk7;
 } Sel800218E0;
 
-// from slus func_800218E0 (shared with W11 draft)
 typedef struct {
     u8 pad0[4];
     u16 unk4;
 } Pad800218E0;
 
-// from slus func_800218E0 (shared with W11 draft)
 typedef struct {
     u8 pad0;
     u8 unk1;
@@ -786,7 +713,6 @@ typedef struct {
     s16 unk8;
 } Arg800218E0;
 
-// from slus get_tile_attr_bottom (shared with W11 draft)
 typedef struct {
     /* 0x00 */ u8 pad0[0xA];
     /* 0x0A */ u16 unkA;
@@ -798,13 +724,11 @@ typedef struct {
     /* 0x68 */ u8* unk68;
 } Obj80030820;
 
-// from rockx5 func_800EF078_ovl05 (shared with W11 draft)
 typedef struct Ent2 {
     /* 0x00 */ u8 pad0[2];
     /* 0x02 */ s8 unk2;
 } Ent2;
 
-// from rockx5 func_800F4EA0_ovl29 (shared with W11 draft)
 typedef struct Obj4EA0 {
     /* 0x00 */ u8 pad0[6];
     /* 0x06 */ u8 unk6;
@@ -816,7 +740,6 @@ typedef struct Obj4EA0 {
     /* 0x50 */ void* unk50;
 } Obj4EA0;
 
-// from rockx5 func_800F5C8C_ovl11 (shared with W11 draft)
 typedef struct Obj5C8C {
     /* 0x00 */ u8 pad0[6];
     /* 0x06 */ u8 unk6;
@@ -836,7 +759,6 @@ typedef struct Obj5C8C {
     /* 0x62 */ u8 unk62;
 } Obj5C8C;
 
-// from rockx5 func_800F5C8C_ovl11 (shared with W11 draft)
 typedef struct Row5C8C {
     /* 0x00 */ u8 pad0[0xA];
     /* 0x0A */ u16 unkA;
@@ -882,7 +804,6 @@ typedef struct Gm1C00 {
 
 /* lift: struct/union definitions lifted from src/ by tools/readability/lift.py */
 
-/* src/rockx5/ovl05/func_800EEBEC_ovl05.c */
 typedef struct {
     /* 0x00 */ u8 pad0[2];
     /* 0x02 */ s8 unk2;
@@ -908,7 +829,6 @@ typedef struct {
     /* 0x68 */ void* unk68;
 } ObjEEBEC;
 
-/* src/rockx5/ovl12/func_800EEE5C_ovl12.c */
 typedef struct ObjEE5C {
     /* 0x00 */ u8 pad0[5];
     /* 0x05 */ u8 unk5;
@@ -934,7 +854,6 @@ typedef struct ObjEE5C {
     /* 0x87 */ u8 unk87;
 } ObjEE5C;
 
-/* src/rockx5/ovl05/func_800EEE84_ovl05.c */
 typedef struct {
     /* 0x00 */ u8 pad0[2];
     /* 0x02 */ s8 unk2;
@@ -946,7 +865,6 @@ typedef struct {
     /* 0x0C */ s32 y; /* 16.16, integer half at 0x0E */
 } ObjEEE84;
 
-/* src/rockx5/ovl05/func_800EEE84_ovl05.c */
 typedef struct {
     /* 0x00 */ u8 unk0;
     /* 0x01 */ u8 unk1;
@@ -960,7 +878,6 @@ typedef struct {
     /* 0x84 */ s32 unk84;
 } SpawnEEE84;
 
-/* src/rockx5/ovl05/func_800EF078_ovl05.c */
 typedef struct Scr80 {
     /* 0x00 */ u8 pad0[0x80];
     /* 0x80 */ s16 unk80;
@@ -969,8 +886,6 @@ typedef struct Scr80 {
     /* 0x86 */ s8 unk86;
 } Scr80;
 
-/* src/rockx5/ovl02/func_800EF0C8_ovl02.c */
-// from rockx5 800EF0C8_ovl02
 typedef struct Obj0C8 {
     /* 0x00 */ u8 pad0[2];
     /* 0x02 */ signed char unk2;
@@ -990,8 +905,7 @@ typedef struct Obj0C8 {
     /* 0x8B */ u8 unk8B;
 } Obj0C8;
 
-/* src/rockx5/ovl02/func_800EF0C8_ovl02.c */
-// from rockx5 800EF0C8_ovl02: g_Player view
+// g_Player view
 typedef struct Scr0C8 {
     /* 0x00 */ u8 pad0[0xC];
     /* 0x0C */ s32 unkC;
@@ -1005,14 +919,13 @@ typedef struct Scr0C8 {
     /* 0xFA */ u8 unkFA;
 } Scr0C8;
 
-/* src/rockx5/ovl05/func_800EF2C8_ovl05.c */
 typedef struct Scr85 {
     /* 0x00 */ u8 pad0[0x85];
     /* 0x85 */ s8 unk85;
     /* 0x86 */ s8 unk86;
 } Scr85;
 
-/* src/rockx5/ovl26/func_800F1468_ovl26.c, func_800F1D84_ovl26.c: scratchpad 0x1F80004C pointee */
+/* scratchpad 0x1F80004C pointee */
 typedef struct Scr84 {
     /* 0x00 */ u8 pad0[0x80];
     /* 0x80 */ s32 unk80;
@@ -1021,7 +934,6 @@ typedef struct Scr84 {
     /* 0x86 */ u8 unk86;
 } Scr84;
 
-/* src/rockx5/ovl26/func_800F1468_ovl26.c */
 typedef struct {
     /* 0x00 */ u8 pad0[3];
     /* 0x03 */ u8 unk3;
@@ -1056,7 +968,7 @@ typedef struct {
     /* 0x68 */ s32 unk68;
 } Ent1468;
 
-/* src/rockx5/ovl26/func_800F1468_ovl26.c: player g_Player view */
+/* player g_Player view */
 typedef struct {
     /* 0x00 */ u8 pad0[2];
     /* 0x02 */ s8 unk2;
@@ -1066,7 +978,6 @@ typedef struct {
     /* 0xFC */ u32 unkFC;
 } Plr1468;
 
-/* src/rockx5/ovl26/func_800F1D84_ovl26.c */
 typedef struct {
     /* 0x00 */ u8 pad0[6];
     /* 0x06 */ u8 unk6;
@@ -1079,7 +990,6 @@ typedef struct {
     /* 0x24 */ s32 unk24;
 } Ent1D84;
 
-/* src/rockx5/ovl26/func_800F3804_ovl26.c */
 typedef struct {
     /* 0x00 */ u8 pad0[2];
     /* 0x02 */ s8 unk2;
@@ -1093,19 +1003,16 @@ typedef struct {
     /* 0x94 */ u8 unk94;
 } Ent3804;
 
-/* src/rockx5/ovl26/func_800EF3CC_ovl26.c */
 typedef struct {
     /* 0x00 */ u16 lo;
     /* 0x02 */ u16 hi;
 } Ent3CC_Half;
 
-/* src/rockx5/ovl26/func_800EF3CC_ovl26.c */
 typedef union {
     s32 w;
     Ent3CC_Half h;
 } Ent3CC_Fix;
 
-/* src/rockx5/ovl26/func_800EF3CC_ovl26.c */
 typedef struct {
     /* 0x00 */ u8 pad0[8];
     /* 0x08 */ s32 x;
@@ -1113,7 +1020,6 @@ typedef struct {
     /* 0x14 */ u8 unk14;
 } Ent3CC_Src;
 
-/* src/rockx5/ovl26/func_800EF3CC_ovl26.c */
 typedef struct {
     /* 0x00 */ u8 unk0;
     /* 0x01 */ u8 pad1;
@@ -1170,7 +1076,6 @@ typedef struct {
     /* 0xA2 */ u8 unkA2;
 } Ent3CC;
 
-/* src/rockx5/ovl05/func_800EF424_ovl05.c */
 typedef struct ObjF424 {
     /* 0x00 */ u8 pad0[4];
     /* 0x04 */ s8 state;
@@ -1180,7 +1085,6 @@ typedef struct ObjF424 {
     /* 0x84 */ s32 unk84;
 } ObjF424;
 
-/* src/rockx5/ovl02/func_800EF5D8_ovl02.c */
 typedef struct {
     u8 pad0[2];
     signed char unk2;
@@ -1203,7 +1107,6 @@ typedef struct {
     u8 unk8B;
 } Obj800EF5D8;
 
-/* src/rockx5/ovl03/func_800EF608_ovl03.c */
 typedef struct ObjEF608 {
     /* 0x00 */ u8 pad0[6];
     /* 0x06 */ u8 unk6;
@@ -1216,7 +1119,6 @@ typedef struct ObjEF608 {
     /* 0x80 */ s32 unk80;
 } ObjEF608;
 
-/* src/rockx5/ovl05/func_800EF680_ovl05.c */
 typedef struct {
     /* 0x00 */ u8 pad0[2];
     /* 0x02 */ s8 unk2;
@@ -1244,7 +1146,6 @@ typedef struct {
     /* 0x50 */ void* unk50; /* same ObjEF680 shape */
 } ObjEF680;
 
-/* src/rockx5/ovl02/func_800EF714_ovl02.c */
 typedef struct {
     /* 0x00 */ u8 pad0[2];
     /* 0x02 */ s8 unk2;
@@ -1263,8 +1164,6 @@ typedef struct {
     /* 0x8B */ u8 unk8B;
 } Obj800EF714;
 
-/* src/rockx5/ovl02/func_800EF81C_ovl02.c */
-// from rockx5 800EF81C
 typedef struct {
     /* 0x00 */ u8 pad0[2];
     /* 0x02 */ s8 unk2;
@@ -1289,7 +1188,6 @@ typedef struct {
     /* 0x89 */ u8 unk89;
 } Obj800EF81C;
 
-/* src/rockx5/ovl12/func_800EFC90_ovl12.c */
 typedef struct {
     u8 pad0[5];
     u8 unk5;
@@ -1304,7 +1202,6 @@ typedef struct {
     u16 unk94;
 } EntFC90;
 
-/* src/rockx5/ovl12/func_800EFE34_ovl12.c */
 typedef struct Ovl12Obj {
     u8 pad0[5];
     u8 unk5;
@@ -1315,7 +1212,6 @@ typedef struct Ovl12Obj {
     u8 unk87;
 } Ovl12Obj;
 
-/* src/rockx5/ovl12/func_800F001C_ovl12.c */
 typedef struct Obj001C {
     /* 0x00 */ u8 pad0[5];
     /* 0x05 */ u8 unk5;
@@ -1333,7 +1229,6 @@ typedef struct Obj001C {
     /* 0x87 */ u8 unk87;
 } Obj001C;
 
-/* src/rockx5/ovl28/func_800F01A8_ovl28.c */
 typedef struct Ent01A8 {
     /* 0x00 */ u8 pad0[2];
     /* 0x02 */ signed char unk2;
@@ -1368,7 +1263,6 @@ typedef struct Ent01A8 {
     /* 0x7C */ u8 unk7C;
 } Ent01A8;
 
-/* src/rockx5/ovl28/func_800F01A8_ovl28.c */
 typedef struct Scr01A8 {
     /* 0x00 */ u8 pad0[0x81];
     /* 0x81 */ u8 unk81;
@@ -1382,12 +1276,10 @@ typedef struct Scr01A8 {
     /* 0x94 */ s32 unk94;
 } Scr01A8;
 
-/* src/rockx5/ovl04/func_800F06BC_ovl04.c */
 typedef struct {
     u8 b[8];
 } D80101480_t;
 
-/* src/rockx5/ovl12/func_800F079C_ovl12.c */
 typedef struct Obj079C {
     /* 0x00 */ u8 pad0[5];
     /* 0x05 */ u8 unk5;
@@ -1412,8 +1304,6 @@ typedef struct Obj079C {
     /* 0x87 */ u8 unk87;
 } Obj079C;
 
-/* src/rockx5/ovl28/func_800F092C_ovl28.c */
-// from rockx5 800F092C
 typedef struct {
     u8 pad0[2];
     signed char unk2;
@@ -1426,8 +1316,6 @@ typedef struct {
     signed char unk67;
 } Obj092C;
 
-/* src/rockx5/ovl28/func_800F092C_ovl28.c */
-// from rockx5 800F092C
 typedef struct {
     u8 pad0[0x81];
     signed char unk81;
@@ -1435,7 +1323,6 @@ typedef struct {
     u8 unk89;
 } Scr092C;
 
-/* src/rockx5/ovl01/func_800F0B1C_ovl01.c */
 typedef struct Obj0B1C {
     /* 0x00 */ u8 pad0[2];
     /* 0x02 */ s8 unk2;
@@ -1447,7 +1334,6 @@ typedef struct Obj0B1C {
     /* 0x15 */ u8 unk15;
 } Obj0B1C;
 
-/* src/rockx5/ovl10/func_800F0CA4_ovl10.c */
 typedef struct {
     u8 pad0[0x82];
     u8 flags82;
@@ -1455,7 +1341,6 @@ typedef struct {
     Unk800770CC box;
 } Scr82;
 
-/* src/rockx5/ovl01/func_800F0E88_ovl01.c */
 typedef struct Obj0E88 {
     /* 0x00 */ u8 pad0[6];
     /* 0x06 */ u8 unk6;
@@ -1463,7 +1348,6 @@ typedef struct Obj0E88 {
     /* 0x15 */ u8 unk15;
 } Obj0E88;
 
-/* src/rockx5/ovl28/func_800F0E9C_ovl28.c */
 typedef struct Obj0E9C {
     /* 0x00 */ u8 pad0[2];
     /* 0x02 */ u8 unk2;
@@ -1480,8 +1364,6 @@ typedef struct Obj0E9C {
     /* 0x67 */ u8 unk67;
 } Obj0E9C;
 
-/* src/rockx5/ovl01/func_800F1090_ovl01.c */
-// from rockx5 800F1090
 typedef struct Scr1090 {
     /* 0x00 */ u8 pad0[0x85];
     /* 0x85 */ signed char unk85;
@@ -1490,14 +1372,12 @@ typedef struct Scr1090 {
     /* 0x88 */ u8 unk88;
 } Scr1090;
 
-/* src/rockx5/ovl28/func_800F1344_ovl28.c */
-// from rockx5 800F1344: scratchpad context, signed count at 0x82
+// scratchpad context, signed count at 0x82
 typedef struct Scr1344 {
     /* 0x00 */ u8 pad0[0x82];
     /* 0x82 */ signed char unk82;
 } Scr1344;
 
-/* src/rockx5/ovl04/func_800F1564_ovl04.c */
 typedef struct Ent1564 {
     u8 pad0[5];
     u8 state; /* 0x05 */
@@ -1508,7 +1388,6 @@ typedef struct Ent1564 {
     s16 timer; /* 0x7C */
 } Ent1564;
 
-/* src/rockx5/ovl26/func_800F15AC_ovl26.c */
 typedef struct Ent15AC {
     /* 0x00 */ u8 pad0[5];
     /* 0x05 */ u8 unk5;
@@ -1523,8 +1402,6 @@ typedef struct Ent15AC {
     /* 0x7C */ s16 unk7C;
 } Ent15AC;
 
-/* src/rockx5/ovl09/func_800F1818_ovl09.c */
-// from rockx5 800F1818
 typedef struct {
     u8 pad0[5];
     u8 unk5;
@@ -1537,7 +1414,6 @@ typedef struct {
     u8 unk8F;
 } Ent1818;
 
-/* src/rockx5/ovl10/func_800F1884_ovl10.c */
 typedef struct Obj1884 {
     /* 0x00 */ u8 pad0[6];
     /* 0x06 */ u8 unk6;
@@ -1545,13 +1421,11 @@ typedef struct Obj1884 {
     /* 0x58 */ void* unk58;
 } Obj1884;
 
-/* src/rockx5/ovl01/func_800F1D74_ovl01.c */
 typedef struct {
     signed char x;
     signed char y;
 } OffF1D74;
 
-/* src/rockx5/ovl01/func_800F1D74_ovl01.c */
 typedef struct {
     /* 0x00 */ u8 pad0[2];
     /* 0x02 */ signed char unk2;
@@ -1589,8 +1463,6 @@ typedef struct {
     /* 0x7C */ void* unk7C; /* an EntF1D74 */
 } EntF1D74;
 
-/* src/rockx5/ovl10/func_800F299C_ovl10.c */
-// from rockx5 800F299C (twin of rockx5 800F1818)
 typedef struct {
     u8 pad0[5];
     u8 unk5;
@@ -1603,7 +1475,6 @@ typedef struct {
     u8 unk90;
 } Ent299C;
 
-/* src/rockx5/ovl07/func_800F3594_ovl07.c */
 typedef struct Ent3594 {
     /* 0x00 */ u8 pad0[5];
     /* 0x05 */ u8 unk5;
@@ -1613,7 +1484,6 @@ typedef struct Ent3594 {
     /* 0x24 */ s32 unk24;
 } Ent3594;
 
-/* src/rockx5/ovl07/func_800F3620_ovl07.c */
 typedef struct Ent3620 {
     /* 0x00 */ u8 pad0[5];
     /* 0x05 */ u8 unk5;
@@ -1625,7 +1495,6 @@ typedef struct Ent3620 {
     /* 0x2C */ s32 unk2C;
 } Ent3620;
 
-/* src/rockx5/ovl07/func_800F36AC_ovl07.c */
 typedef struct Scr36AC {
     /* 0x00 */ u8 pad0[0x80];
     /* 0x80 */ s16 unk80;
@@ -1633,7 +1502,6 @@ typedef struct Scr36AC {
     /* 0x84 */ u8 unk84;
 } Scr36AC;
 
-/* src/rockx5/ovl03/func_800F3700_ovl03.c */
 typedef struct Obj3700 {
     /* 0x00 */ u8 pad0[6];
     /* 0x06 */ u8 unk6;
@@ -1648,7 +1516,6 @@ typedef struct Obj3700 {
     /* 0x2C */ s32 unk2C;
 } Obj3700;
 
-/* src/rockx5/ovl29/func_800F4460_ovl29.c */
 typedef struct Ovl29Obj {
     u8 pad0[5];
     u8 unk5;
@@ -1659,7 +1526,6 @@ typedef struct Ovl29Obj {
     u8 unk8F;
 } Ovl29Obj;
 
-/* src/rockx5/ovl09/func_800F57B4_ovl09.c */
 typedef struct {
     u8 pad0[5];
     u8 unk5;
@@ -1670,7 +1536,6 @@ typedef struct {
     s16 unk7C;
 } Ent57B4;
 
-/* src/rockx5/ovl09/func_800F5954_ovl09.c */
 typedef struct Ent5954 {
     u8 pad0[5];
     u8 unk5;
@@ -1681,7 +1546,6 @@ typedef struct Ent5954 {
     u8 unk97;
 } Ent5954;
 
-/* src/rockx5/ovl09/func_800F59B0_ovl09.c */
 typedef struct {
     u8 pad0[6];
     signed char unk6;
@@ -1691,7 +1555,6 @@ typedef struct {
     u8 unk15;
 } Ent59B0;
 
-/* src/rockx5/ovl09/func_800F5B3C_ovl09.c */
 typedef struct Ent5B3C {
     /* 0x00 */ u8 pad0[5];
     /* 0x05 */ u8 unk5;
@@ -1707,7 +1570,6 @@ typedef struct Ent5B3C {
     /* 0x97 */ u8 unk97;
 } Ent5B3C;
 
-/* src/rockx5/ovl18/func_800F5B40_ovl18.c */
 typedef struct Obj5B40 {
     /* 0x00 */ u8 pad0[4];
     /* 0x04 */ signed char unk4;
@@ -1715,7 +1577,6 @@ typedef struct Obj5B40 {
     /* 0x14 */ void* unk14; /* an Obj5B40 */
 } Obj5B40;
 
-/* src/rockx5/ovl11/func_800F5C8C_ovl11.c */
 typedef struct Scr5C8C {
     /* 0x00 */ u8 pad0[2];
     /* 0x02 */ signed char unk2;
@@ -1727,7 +1588,6 @@ typedef struct Scr5C8C {
     /* 0xFA */ u8 unkFA;
 } Scr5C8C;
 
-/* src/rockx5/ovl03/func_800F5D4C_ovl03.c */
 typedef struct Obj5D4C {
     u8 pad0[5];
     u8 unk5;
@@ -1745,7 +1605,6 @@ typedef struct Obj5D4C {
     u8 unk90;
 } Obj5D4C;
 
-/* src/rockx5/ovl04/func_800F5E5C_ovl04.c */
 typedef struct {
     u8 pad0[2];
     s8 unk2;
@@ -1768,7 +1627,6 @@ typedef struct {
     u8 unk47;
 } Obj5E5C;
 
-/* src/rockx5/ovl09/func_800F5F2C_ovl09.c */
 typedef struct Ent5F2C {
     /* 0x00 */ u8 pad0[5];
     /* 0x05 */ u8 unk5;
@@ -1782,7 +1640,6 @@ typedef struct Ent5F2C {
     /* 0x97 */ u8 unk97;
 } Ent5F2C;
 
-/* src/rockx5/ovl11/func_800F5F70_ovl11.c */
 typedef struct Scr5F70 {
     /* 0x00 */ u8 pad0[2];
     /* 0x02 */ signed char unk2;
@@ -1792,7 +1649,6 @@ typedef struct Scr5F70 {
     /* 0xFA */ u8 unkFA;
 } Scr5F70;
 
-/* src/rockx5/ovl09/func_800F62C8_ovl09.c */
 typedef struct Ent62C8 {
     /* 0x00 */ u8 pad0[6];
     /* 0x06 */ signed char unk6;
@@ -1800,7 +1656,6 @@ typedef struct Ent62C8 {
     /* 0x94 */ u8 unk94;
 } Ent62C8;
 
-/* src/rockx5/ovl04/func_800F6E78_ovl04.c */
 typedef struct Ob6E78 {
     /* 0x00 */ u8 x0;
     /* 0x01 */ u8 x1;
@@ -1842,7 +1697,6 @@ typedef struct Ob6E78 {
     /* 0xA2 */ u8 xA2;
 } Ob6E78;
 
-/* src/rockx5/ovl04/func_800F6E78_ovl04.c */
 typedef struct {
     u16 h;
     u8 pad2;
@@ -1850,7 +1704,6 @@ typedef struct {
     s32 v;
 } Ent6E78;
 
-/* src/rockx5/ovl28/func_800F7360_ovl28.c */
 typedef struct {
     u8 pad0[5];
     u8 unk5;
@@ -1863,7 +1716,6 @@ typedef struct {
     Unk80022FF0Src* unk5C;
 } Unk800F7360Obj;
 
-/* src/rockx5/ovl03/func_800F79F0_ovl03.c */
 typedef struct Ent79F0 {
     u8 pad0[5];
     u8 unk5;
@@ -1874,7 +1726,6 @@ typedef struct Ent79F0 {
     u8 unk93;
 } Ent79F0;
 
-/* src/rockx5/ovl03/func_800F7CB0_ovl03.c */
 typedef struct Ent7CB0 {
     u8 pad0[5];
     u8 unk5;
@@ -1886,7 +1737,6 @@ typedef struct Ent7CB0 {
     u8 unk93;
 } Ent7CB0;
 
-/* src/rockx5/ovl03/func_800F8140_ovl03.c */
 typedef struct Obj8140 {
     /* 0x00 */ u8 pad0[6];
     /* 0x06 */ signed char unk6;
@@ -1894,7 +1744,6 @@ typedef struct Obj8140 {
     /* 0x90 */ u8 unk90;
 } Obj8140;
 
-/* src/rockx5/ovl06/func_800F8AA8_ovl06.c */
 typedef struct Obj8AA8 {
     /* 0x00 */ u8 pad0[6];
     /* 0x06 */ u8 unk6;
@@ -1912,8 +1761,7 @@ typedef struct Obj8AA8 {
     /* 0x54 */ void* unk54;
 } Obj8AA8;
 
-/* src/rockx5/ovl00/func_800F8EF4_ovl00.c */
-// from rockx5 800F8EF4: timer at 0x7C, table row 0x8D, column 0x8E
+// timer at 0x7C, table row 0x8D, column 0x8E
 typedef struct Ent8EF4 {
     /* 0x00 */ u8 pad0[5];
     /* 0x05 */ u8 unk5;
@@ -1925,21 +1773,18 @@ typedef struct Ent8EF4 {
     /* 0x8E */ u8 unk8E;
 } Ent8EF4;
 
-/* src/rockx5/ovl40/func_800FA154_ovl40.c */
 /* D_8009A1F8 view: the word at 0xB0; its high half is also stored as the s16 at 0xB2 */
 typedef struct {
     u8 pad0[0xB0];
     s32 unkB0;
 } D_8009A1F8_B0_t;
 
-/* src/rockx5/ovl53/func_800FA678_ovl53.c */
 /* D_8009A1F8 view: the word at 0x8; its high half is also stored as the s16 at 0xA */
 typedef struct {
     u8 pad0[0x8];
     s32 unk8;
 } D_8009A1F8_8_t;
 
-/* src/rockx5/ovl50/func_800FAE80_ovl50.c */
 typedef struct {
     s16 unk0;
     s16 unk2;
@@ -1947,8 +1792,6 @@ typedef struct {
     s16 unk6;
 } Ovl50Pos;
 
-/* src/rockx5/ovl28/func_800FAF30_ovl28.c */
-// from rockx5 800FAF30_ovl28
 typedef struct {
     /* 0x00 */ u8 pad0[2];
     /* 0x02 */ s8 unk2;
@@ -1977,7 +1820,6 @@ typedef struct {
     /* 0x9A */ s8 unk9A;
 } ObjFAF30;
 
-/* src/rockx5/ovl06/func_800FC038_ovl06.c */
 typedef struct Obj800FC038 {
     /* 0x00 */ u8 pad0[3];
     /* 0x03 */ s8 unk3;
@@ -1987,7 +1829,6 @@ typedef struct Obj800FC038 {
     /* 0x50 */ void* unk50;
 } Obj800FC038;
 
-/* src/rockx5/ovl06/func_800FC2E8_ovl06.c */
 typedef struct {
     u8 pad0[6];
     u8 unk6;
@@ -2000,7 +1841,6 @@ typedef struct {
     Unk80022FF0Src* unk5C;
 } Unk800FC2E8Obj;
 
-/* src/rockx5/ovl34/func_800FE308_ovl34.c */
 typedef struct {
     u8 pad0[5];
     u8 unk5;
@@ -2013,7 +1853,6 @@ typedef struct {
     u8 unk8C;
 } EntFE308;
 
-/* src/shared/func_800EFCD8_ovl03.c */
 typedef struct Ent800EFCD8 {
     u8 pad0[0x8];
     s32 x;
@@ -2021,7 +1860,6 @@ typedef struct Ent800EFCD8 {
     u8 unk15;
 } Ent800EFCD8;
 
-/* src/shared/func_800F0248_ovl11.c */
 typedef struct Ent0248 {
     /* 0x00 */ u8 pad0[4];
     /* 0x04 */ u8 unk4;
@@ -2033,7 +1871,6 @@ typedef struct Ent0248 {
     /* 0x87 */ u8 unk87;
 } Ent0248;
 
-/* src/shared/func_800F0404_ovl05.c */
 typedef struct Ent0404 {
     /* 0x00 */ u8 pad0[5];
     /* 0x05 */ u8 unk5;
@@ -2044,22 +1881,18 @@ typedef struct Ent0404 {
     /* 0x67 */ u8 unk67;
 } Ent0404;
 
-/* src/shared/func_800F0418_ovl00.c */
-// from rockx5 800F0418: halves of the s32 at 0x88
+// halves of the s32 at 0x88
 typedef struct Half0418 {
     u16 lo;
     s16 hi;
 } Half0418;
 
-/* src/shared/func_800F0418_ovl00.c */
-// from rockx5 800F0418: 0x88 read as s32 (lw) and its high half as s16 (lh 0x8A)
+// 0x88 read as s32 (lw) and its high half as s16 (lh 0x8A)
 typedef union Fix0418 {
     s32 w;
     Half0418 h;
 } Fix0418;
 
-/* src/shared/func_800F0418_ovl00.c */
-// from rockx5 800F0418
 typedef struct Scr0418 {
     /* 0x00 */ u8 pad0[0x86];
     /* 0x86 */ u8 unk86;
@@ -2068,7 +1901,6 @@ typedef struct Scr0418 {
     /* 0x8C */ s32 unk8C;
 } Scr0418;
 
-/* src/shared/func_800F05DC_ovl12.c */
 typedef struct Obj05DC {
     /* 0x00 */ u8 pad0[6];
     /* 0x06 */ u8 unk6;
@@ -2085,7 +1917,6 @@ typedef struct Obj05DC {
     /* 0x45 */ signed char unk45;
 } Obj05DC;
 
-/* src/shared/func_800F0D1C_ovl28.c */
 typedef struct Ent800F0D1C {
     /* 0x00 */ u8 pad0[4];
     /* 0x04 */ u8 unk4;
@@ -2096,7 +1927,6 @@ typedef struct Ent800F0D1C {
     /* 0x15 */ u8 unk15;
 } Ent800F0D1C;
 
-/* src/shared/func_800F0DA0_ovl28.c */
 typedef struct Ent0DA0 {
     /* 0x00 */ u8 pad0[6];
     /* 0x06 */ u8 unk6;
@@ -2111,14 +1941,12 @@ typedef struct Ent0DA0 {
     /* 0x67 */ u8 unk67;
 } Ent0DA0;
 
-/* src/shared/func_800F0E04_ovl28.c */
 typedef struct Ent0E04 {
     u8 pad0[5];
     u8 unk5;
     u8 unk6;
 } Ent0E04;
 
-/* src/shared/func_800F0F18_ovl28.c */
 typedef struct Ent0F18 {
     u8 pad0[5];
     u8 unk5;
@@ -2127,7 +1955,6 @@ typedef struct Ent0F18 {
     signed char unk67;
 } Ent0F18;
 
-/* src/shared/func_800F0FC8_ovl28.c */
 typedef struct Ent0FC8 {
     /* 0x00 */ u8 pad0[2];
     /* 0x02 */ signed char unk2;
@@ -2140,7 +1967,6 @@ typedef struct Ent0FC8 {
     /* 0x2C */ s32 unk2C;
 } Ent0FC8;
 
-/* src/shared/func_800F1040_ovl28.c */
 typedef struct Ctx1040 {
     u8 pad0[0x80];
     signed char unk80;
@@ -2148,7 +1974,6 @@ typedef struct Ctx1040 {
     signed char unk82;
 } Ctx1040;
 
-/* src/shared/func_800F10C8_ovl28.c */
 typedef struct Scr10C8 {
     /* 0x00 */ u8 pad0[0x80];
     /* 0x80 */ s8 unk80;
@@ -2156,7 +1981,6 @@ typedef struct Scr10C8 {
     /* 0x83 */ s8 unk83;
 } Scr10C8;
 
-/* src/shared/func_800F12BC_ovl04.c */
 typedef struct Ent12BC {
     u8 pad0[5];
     u8 state; /* 0x05 */
@@ -2165,7 +1989,6 @@ typedef struct Ent12BC {
     s16 timer; /* 0x7C */
 } Ent12BC;
 
-/* src/shared/func_800F150C_ovl28.c */
 typedef struct {
     /* 0x00 */ Obj4FE0 b;
     /* 0x30 */ u8 pad30[0x7C - 0x30];
@@ -2173,8 +1996,7 @@ typedef struct {
     /* 0x7E */ s16 unk7E;
 } Obj150C;
 
-/* src/shared/func_800F2CE8_ovl02.c */
-// rockx5 800F2CE8: child copies parent's 0x50/0x15/0xA/0xE, advances step
+// child copies parent's 0x50/0x15/0xA/0xE, advances step
 typedef struct Ent2CE8 {
     /* 0x00 */ u8 pad0[3];
     /* 0x03 */ u8 unk3;
@@ -2193,7 +2015,6 @@ typedef struct Ent2CE8 {
     /* 0x7C */ void* unk7C; /* the parent Ent2CE8 */
 } Ent2CE8;
 
-/* src/shared/func_800F5C58_ovl27.c */
 typedef struct Ent800F5C58 {
     u8 pad0[0xA];
     s16 unkA;
@@ -2201,14 +2022,12 @@ typedef struct Ent800F5C58 {
     u8 unk15;
 } Ent800F5C58;
 
-/* src/shared/func_800FA4F8_ovl50.c */
 typedef struct {
     u8 pad0[0x60];
     s32 unk60;
 } D_8009A1F8_60_t;
 
-/* src/shared/func_800FAFFC_ovl06.c */
-// from rockx5 800FAFFC: spawned child copies the parent's state, keeps the parent at 0x50
+// spawned child copies the parent's state, keeps the parent at 0x50
 typedef struct {
     /* 0x00 */ u8 unk0;
     /* 0x01 */ u8 unk1;
@@ -2231,13 +2050,11 @@ typedef struct {
     /* 0x50 */ void* unk50; /* the parent */
 } ObjFAFFC;
 
-/* src/shared/func_800FC308_ovl07.c */
 typedef struct ObjFC308 {
     u8 pad0[0x7C];
     s16 timer; /* 0x7C */
 } ObjFC308;
 
-/* src/slus/func_80022FF0.c */
 typedef struct {
     u8 pad0[5];
     u8 unk5;
@@ -2249,13 +2066,11 @@ typedef struct {
     s16 unk54;
 } Unk80022FF0Obj;
 
-/* src/slus/func_80022FF0.c */
 typedef struct {
     u8 pad0[0x8C];
     signed char unk8C;
 } Unk80022FF0Arg;
 
-/* src/slus/func_80029E78.c */
 typedef struct {
     /* 0x00 */ u8 pad0[0xA];
     /* 0x0A */ s16 unkA;
@@ -2269,29 +2084,6 @@ typedef struct {
     /* 0x40 */ u16 unk40;
 } Obj29E78;
 
-/* src/slus/func_8002CC08.c */
-typedef struct {
-    s8 active;
-    u8 pad1[0x4F];
-    s32 unk50;
-    s32 unk54;
-    u8 pad58[0x10];
-    s32 unk68;
-    u8 pad6C[0x30];
-} Obj8002CC08;
-
-/* src/slus/func_8002CD14.c */
-typedef struct {
-    s8 active;
-    u8 pad1[0x4F];
-    s32 unk50;
-    s32 unk54;
-    u8 pad58[0x10];
-    s32 unk68;
-    u8 pad6C[0x38];
-} Obj8002CD14;
-
-/* src/slus/get_tile_attr_origin.c */
 typedef struct {
     /* 0x00 */ u8 pad0[0xA];
     /* 0x0A */ u16 unkA;
@@ -2301,7 +2093,6 @@ typedef struct {
     /* 0x14 */ signed char unk14;
 } Obj80030A0C;
 
-/* src/slus/func_800487F8.c */
 typedef struct {
     u8 pad0[5];
     u8 unk5;
@@ -2328,13 +2119,11 @@ typedef struct {
     u8 unk95;
 } Ent487F8;
 
-/* src/slus/func_8004A364.c */
 typedef struct {
     u8 pad0[4];
     s8 state;
 } Ent8004A364;
 
-/* src/slus/func_80050880.c */
 typedef struct {
     u8 unk0;
     u8 unk1;
@@ -2357,13 +2146,12 @@ typedef struct {
     u8 unk5C;
 } Obj80050880;
 
-/* src/slus/func_80019C4C.c (adapted from sozud/mmx4 @29b62af, AGPL-3.0, THIRD_PARTY.md) */
+/* Adapted from sozud/mmx4 @29b62af, AGPL-3.0, THIRD_PARTY.md */
 struct X4_DrawInfo {
     u8 pad0[0x70];
     u32 ot; /* ordering_table.start */
 };
 
-/* src/slus/func_80019C4C.c */
 typedef struct {
     u32 tag; /* addr : 24, len : 8 */
     u8 r0;
@@ -2372,20 +2160,17 @@ typedef struct {
     u8 code;
 } X4_P_TAG;
 
-/* src/slus/func_8001EB84.c */
 struct X4_GameInfo {
     u8 pad0[0x1];
     s8 mode;
     u8 pad2[0xE];
 };
 
-/* src/slus/func_800519D0.c */
 struct X4_QuadVertex {
     Ent3CC_Fix x;
     Ent3CC_Fix y;
 };
 
-/* src/slus/func_800519D0.c */
 struct X4_QuadObj {
     u8 pad0[0x2];
     s8 unk2;
@@ -2397,13 +2182,11 @@ struct X4_QuadObj {
     u8 timer; /* 0x3D */
 };
 
-/* src/slus/func_800519D0.c */
 struct X4_QuadMotionData {
     u8 pad0[0x8];
     s8 speed[4];
 };
 
-/* src/rockx5/ovl08/func_800F01A0_ovl08.c */
 typedef struct Obj01A0 {
     /* 0x00 */ u8 pad0[5];
     /* 0x05 */ u8 state;
@@ -2432,7 +2215,6 @@ typedef struct Obj01A0 {
     /* 0x8C */ s32 timer8C;
 } Obj01A0;
 
-/* src/rockx5/ovl08/func_800F01A0_ovl08.c */
 typedef struct Player01A0 {
     /* 0x00 */ u8 pad0[8];
     /* 0x08 */ s32 posX;
@@ -2440,13 +2222,11 @@ typedef struct Player01A0 {
     /* 0x0E */ s16 y;
 } Player01A0;
 
-/* src/rockx5/ovl08/func_800F01A0_ovl08.c */
 typedef struct PlayerA01A0 {
     /* 0x00 */ u8 pad0[0xA];
     /* 0x0A */ s16 x;
 } PlayerA01A0;
 
-/* src/rockx5/ovl26/func_800F1A84_ovl26.c */
 typedef struct {
     u8 pad0[3];
     u8 x3;
@@ -2463,7 +2243,6 @@ typedef struct {
     s32 x54;
 } Obj1A84;
 
-/* src/rockx5/ovl08/func_800F20CC_ovl08.c */
 typedef struct {
     u8 unk0;
     u8 unk1;
@@ -2486,7 +2265,6 @@ typedef struct {
     void* unk50;
 } Obj800F20CC;
 
-/* src/rockx5/ovl03/func_800F3988_ovl03.c */
 typedef struct Obj3988 {
     u8 pad0[6];
     u8 unk6;
@@ -2506,7 +2284,6 @@ typedef struct Obj3988 {
     u8 unk8F;
 } Obj3988;
 
-/* src/rockx5/ovl11/func_800F637C_ovl11.c */
 typedef struct Obj637C {
     /* 0x00 */ u8 pad0[3];
     /* 0x03 */ u8 unk3;
@@ -2528,7 +2305,6 @@ typedef struct Obj637C {
     /* 0x7C */ s16 unk7C;
 } Obj637C;
 
-/* src/rockx5/ovl07/func_800FA2FC_ovl07.c */
 typedef struct {
     u8 pad0[0x6];
     u8 unk6;
@@ -2545,7 +2321,6 @@ typedef struct {
     s16 unk7C;
 } Ent7C;
 
-/* src/rockx5/ovl49/func_800FAD8C_ovl49.c */
 typedef struct {
     u8 unk0;
     u8 unk1;
@@ -2554,7 +2329,6 @@ typedef struct {
     u16 unk6;
 } Unk800FAD8C;
 
-/* src/rockx5/ovl07/func_800FD23C_ovl07.c */
 typedef struct Obj800FD23C {
     /* 0x00 */ u8 pad00[2];
     /* 0x02 */ signed char state;
@@ -2592,7 +2366,6 @@ typedef struct Obj800FD23C {
     /* 0x90 */ s16 unk90;
 } Obj800FD23C;
 
-/* src/slus/func_80021650.c */
 typedef struct {
     /* 0x00 */ u8 unk0;
     /* 0x01 */ u8 unk1;
@@ -2604,8 +2377,6 @@ typedef struct {
     /* 0x24 */ u8 unk24;
 } Obj80021650;
 
-/* src/slus/func_80023368.c */
-// from slus 80023368
 typedef struct {
     u8 pad0[2];
     s8 unk2;
@@ -2623,7 +2394,6 @@ typedef struct {
     s8 unk8C;
 } Obj23368;
 
-/* src/slus/func_80025A74.c */
 typedef struct {
     u8 pad0[0x45];
     u8 unk45;
@@ -2631,7 +2401,6 @@ typedef struct {
     s8 unk47[1];
 } D1C00;
 
-/* src/slus/func_80025A74.c */
 typedef struct {
     u8 pad0[0x93];
     s8 unk93;
@@ -2641,7 +2410,6 @@ typedef struct {
     s16 unk148;
 } HudObj;
 
-/* src/slus/func_800371CC.c */
 typedef struct Ent371CC {
     /* 0x00 */ u8 pad0[0x15];
     /* 0x15 */ u8 unk15;
@@ -2654,7 +2422,6 @@ typedef struct Ent371CC {
     /* 0x80 */ u16 unk80;
 } Ent371CC;
 
-/* src/slus/func_800493F0.c */
 typedef struct {
     u8 pad0[4];
     u8 unk4;
@@ -2675,7 +2442,6 @@ typedef struct {
     u8 unk95;
 } Ent493F0;
 
-/* src/slus/func_8004E360.c */
 typedef struct Obj8004E360 {
     /* 0x00 */ u8 pad0[2];
     /* 0x02 */ s8 unk2;
@@ -2695,7 +2461,6 @@ typedef struct Obj8004E360 {
     /* 0x56 */ u16 unk56;
 } Obj8004E360;
 
-/* src/rockx5/ovl29/func_800EF6DC_ovl29.c */
 typedef struct Ent6DC {
     u8 pad0[5];
     u8 unk5;
@@ -2714,7 +2479,6 @@ typedef struct Ent6DC {
     s16 unk7C;
 } Ent6DC;
 
-/* src/rockx5/ovl29/func_800EF920_ovl29.c */
 typedef struct EntF920 {
     /* 0x00 */ u8 pad00[0x5];
     /* 0x05 */ u8 state;
@@ -2731,7 +2495,6 @@ typedef struct EntF920 {
     /* 0x70 */ u8 flags;
 } EntF920;
 
-/* src/rockx5/ovl29/func_800EF9C8_ovl29.c */
 typedef struct ObjEF9C8 {
     /* 0x00 */ u8 pad0[5];
     /* 0x05 */ u8 unk5;
@@ -2753,7 +2516,6 @@ typedef struct ObjEF9C8 {
     /* 0x80 */ s32 unk80;
 } ObjEF9C8;
 
-/* src/rockx5/ovl29/func_800EFAE4_ovl29.c */
 typedef struct ObjEFAE4 {
     /* 0x00 */ u8 pad0[0x5];
     /* 0x05 */ u8 unk5;
@@ -2768,7 +2530,6 @@ typedef struct ObjEFAE4 {
     /* 0x58 */ void* unk58;
 } ObjEFAE4;
 
-/* src/rockx5/ovl29/func_800EFC68_ovl29.c */
 typedef struct ObjEFC68 {
     u8 pad0[0x5];
     s8 unk5;
@@ -2784,7 +2545,6 @@ typedef struct ObjEFC68 {
     u8 unk70;
 } ObjEFC68;
 
-/* src/rockx5/ovl03/func_800EFD08_ovl03.c */
 typedef struct {
     /* 0x00 */ u8 unk0;
     /* 0x01 */ u8 unk1;
@@ -2806,7 +2566,6 @@ typedef struct {
     /* 0x7C */ void* unk7C;
 } ObjEFD08;
 
-/* src/rockx5/ovl26/func_800F17EC_ovl26.c */
 typedef struct Obj17EC {
     u8 pad0[0x6];
     u8 unk6;
@@ -2819,7 +2578,6 @@ typedef struct Obj17EC {
     s16 unk7C;
 } Obj17EC;
 
-/* src/rockx5/ovl05/func_800F197C_ovl05.c */
 typedef struct Obj197C {
     /* 0x00 */ u8 pad0[2];
     /* 0x02 */ s8 state;
@@ -2830,7 +2588,6 @@ typedef struct Obj197C {
     /* 0x92 */ u8 unk92;
 } Obj197C;
 
-/* src/rockx5/ovl05/func_800F1A00_ovl05.c */
 typedef struct {
     u8 pad0[2];
     s8 unk2; /* 0x02 */
@@ -2846,7 +2603,6 @@ typedef struct {
     u8 unk8F; /* 0x8F */
 } Obj1A00;
 
-/* src/rockx5/ovl26/func_800F1C98_ovl26.c */
 typedef struct {
     u8 pad0[0x6];
     u8 x6;
@@ -2859,7 +2615,6 @@ typedef struct {
     void* x54;
 } Obj1C98;
 
-/* src/rockx5/ovl27/func_800F5524_ovl27.c */
 typedef struct Obj5524 {
     u8 pad0[0x6];
     u8 state6; /* 0x06 */
@@ -2868,7 +2623,6 @@ typedef struct Obj5524 {
     s16 timer7E; /* 0x7E */
 } Obj5524;
 
-/* src/rockx5/ovl09/func_800F5C0C_ovl09.c */
 typedef struct Obj5C0C {
     /* 0x00 */ u8 pad0[6];
     /* 0x06 */ u8 unk6;
@@ -2885,13 +2639,11 @@ typedef struct Obj5C0C {
     /* 0x7C */ s16 unk7C;
 } Obj5C0C;
 
-/* src/rockx5/ovl00/func_800F5C30_ovl00.c */
 typedef struct Obj5C30 {
     /* 0x00 */ u8 pad0[6];
     /* 0x06 */ s8 state;
 } Obj5C30;
 
-/* src/rockx5/ovl01/func_800F6298_ovl01.c */
 typedef struct Obj6298 {
     /* 0x00 */ u8 pad0[3];
     /* 0x03 */ s8 unk3;
@@ -2908,7 +2660,6 @@ typedef struct Obj6298 {
     /* 0x7E */ s16 unk7E;
 } Obj6298;
 
-/* src/rockx5/ovl49/func_800FB59C_ovl49.c */
 /* D_8009A1F8 view: the word at 0x60 and the flag byte at 0xA0 */
 typedef struct {
     u8 pad0[0x60];
@@ -2917,7 +2668,6 @@ typedef struct {
     u8 unkA0;
 } D_8009A1F8_60A0_t;
 
-/* src/rockx5/ovl38/func_800FBD40_ovl38.c */
 typedef struct EntBD40 {
     /* 0x00 */ u8 pad0[0x6];
     /* 0x06 */ u8 unk6;
@@ -2927,7 +2677,6 @@ typedef struct EntBD40 {
     /* 0x7C */ s16 unk7C;
 } EntBD40;
 
-/* src/rockx5/ovl39/func_800FD048_ovl39.c */
 typedef struct EntFD048 {
     /* 0x00 */ u8 pad0[2];
     /* 0x02 */ s8 unk2;
@@ -2937,7 +2686,6 @@ typedef struct EntFD048 {
     /* 0x0A */ s16 unkA;
 } EntFD048;
 
-/* src/rockx5/ovl29/func_800EF51C_ovl29.c */
 typedef struct Obj800EF51C {
     u8 pad0[5];
     u8 unk5;
@@ -2947,7 +2695,6 @@ typedef struct Obj800EF51C {
     s32 unk8C;
 } Obj800EF51C;
 
-/* src/rockx5/ovl29/func_800EF604_ovl29.c */
 typedef struct ObjEF604 {
     /* 0x00 */ u8 pad0[5];
     /* 0x05 */ u8 unk5;
@@ -2964,7 +2711,6 @@ typedef struct ObjEF604 {
     /* 0x7C */ s16 unk7C;
 } ObjEF604;
 
-/* src/rockx5/ovl29/func_800EF7C0_ovl29.c */
 typedef struct ObjEF7C0 {
     /* 0x00 */ u8 pad0[0x6];
     /* 0x06 */ u8 unk6;
@@ -2976,7 +2722,6 @@ typedef struct ObjEF7C0 {
     /* 0x7C */ s16 unk7C;
 } ObjEF7C0;
 
-/* src/rockx5/ovl29/func_800EFBF8_ovl29.c */
 typedef struct EntFBF8 {
     u8 pad0[5];
     u8 unk5;
@@ -2989,7 +2734,6 @@ typedef struct EntFBF8 {
     s16 unk7C;
 } EntFBF8;
 
-/* src/rockx5/ovl05/func_800F1D68_ovl05.c */
 typedef struct {
     u8 pad0[2];
     s8 unk2; /* 0x02 */
@@ -3005,7 +2749,6 @@ typedef struct {
     u8 unk8E; /* 0x8E */
 } Obj1D68;
 
-/* src/rockx5/ovl28/func_800F72D0_ovl28.c */
 typedef struct {
     u8 pad0[2];
     s8 unk2;
@@ -3023,7 +2766,6 @@ typedef struct {
     s8 unk9A;
 } Obj800F72D0;
 
-/* src/rockx5/ovl26/func_800F7734_ovl26.c */
 typedef struct {
     /* 0x00 */ u8 unk0;
     /* 0x01 */ u8 unk1;
@@ -3044,7 +2786,6 @@ typedef struct {
     /* 0x7C */ s32 unk7C;
 } Obj800F7734;
 
-/* src/rockx5/ovl00/func_800F8B54_ovl00.c */
 typedef struct Obj8B54 {
     /* 0x00 */ u8 pad0[0x6];
     /* 0x06 */ u8 state;
@@ -3055,7 +2796,6 @@ typedef struct Obj8B54 {
     /* 0x7E */ s16 count;
 } Obj8B54;
 
-/* src/rockx5/ovl39/func_800FE004_ovl39.c */
 typedef struct EntFE004 {
     /* 0x00 */ u8 pad0[0x5];
     /* 0x05 */ u8 state;
@@ -3065,7 +2805,6 @@ typedef struct EntFE004 {
     /* 0x8C */ u16 timer;
 } EntFE004;
 
-/* src/rockx5/ovl29/func_800EFBC4_ovl29.c */
 typedef struct {
     u8 pad0[0x6];
     u8 unk6;
@@ -3080,7 +2819,6 @@ typedef struct {
     s16 unk7C;
 } Obj800EFBC4;
 
-/* src/rockx5/ovl08/func_800F0D10_ovl08.c */
 typedef struct Ent0D10 {
     /* 0x00 */ u8 pad0[5];
     /* 0x05 */ u8 unk5;
@@ -3101,7 +2839,6 @@ typedef struct Ent0D10 {
     /* 0x8C */ s32 unk8C;
 } Ent0D10;
 
-/* src/rockx5/ovl11/func_800F1148_ovl11.c */
 typedef struct Obj1148 {
     /* 0x00 */ u8 unk0;
     /* 0x01 */ u8 unk1;
@@ -3120,7 +2857,6 @@ typedef struct Obj1148 {
     /* 0x7C */ void* unk7C;
 } Obj1148;
 
-/* src/rockx5/ovl26/func_800F1B80_ovl26.c */
 typedef struct {
     /* 0x00 */ u8 pad0[5];
     /* 0x05 */ u8 unk5;
@@ -3129,7 +2865,6 @@ typedef struct {
     /* 0x45 */ s8 unk45;
 } Obj800F1B80;
 
-/* src/rockx5/ovl04/func_800F5864_ovl04.c */
 typedef struct Obj5864 {
     u8 pad0[6];
     u8 unk6;
@@ -3139,7 +2874,6 @@ typedef struct Obj5864 {
     s16 unk7C;
 } Obj5864;
 
-/* src/rockx5/ovl11/func_800F73D4_ovl11.c */
 typedef struct Obj73D4 {
     u8 pad0[6];
     u8 state; /* 0x06 */
@@ -3158,7 +2892,6 @@ typedef struct Obj73D4 {
     s16 timer; /* 0x7C */
 } Obj73D4;
 
-/* src/rockx5/ovl11/func_800F7724_ovl11.c */
 typedef struct {
     u8 pad0[6];
     u8 unk6;
@@ -3171,7 +2904,6 @@ typedef struct {
     s16 unk7E;
 } Ent7724;
 
-/* src/rockx5/ovl00/func_800F88E0_ovl00.c */
 typedef struct Obj88E0 {
     /* 0x00 */ u8 pad0[0x6];
     /* 0x06 */ u8 state;
@@ -3183,13 +2915,11 @@ typedef struct Obj88E0 {
     /* 0x7C */ s16 timer;
 } Obj88E0;
 
-/* src/rockx5/ovl06/func_800FB4BC_ovl06.c */
 typedef struct {
     s32 x;
     s32 y;
 } PairFB4BC;
 
-/* src/rockx5/ovl06/func_800FB4BC_ovl06.c */
 typedef struct {
     u8 pad0[2];
     signed char b2;
@@ -3204,7 +2934,6 @@ typedef struct {
     Ent8004A364* parent;
 } ObjFB4BC;
 
-/* src/rockx5/ovl09/func_800EF44C_ovl09.c */
 typedef struct Obj800EF44C {
     u8 pad0[0x6];
     u8 unk6;
@@ -3217,7 +2946,6 @@ typedef struct Obj800EF44C {
     s16 unk7C;
 } Obj800EF44C;
 
-/* src/rockx5/ovl10/func_800F01BC_ovl10.c */
 typedef struct Obj01BC {
     /* 0x00 */ u8 pad0[2];
     /* 0x02 */ signed char f2;
@@ -3237,7 +2965,6 @@ typedef struct Obj01BC {
     /* 0x7C */ s16 f7C;
 } Obj01BC;
 
-/* src/rockx5/ovl29/func_800F0640_ovl29.c */
 typedef struct Ent0640 {
     u8 pad00[0x6];
     u8 unk06;
@@ -3256,7 +2983,6 @@ typedef struct Ent0640 {
     u8 unk8C;
 } Ent0640;
 
-/* src/rockx5/ovl00/func_800F0E50_ovl00.c */
 typedef struct {
     u8 pad0[2];
     signed char state; /* 0x02 */
@@ -3273,7 +2999,6 @@ typedef struct {
     s32 u2C; /* 0x2C */
 } Obj0E50;
 
-/* src/rockx5/ovl00/func_800F0F0C_ovl00.c */
 typedef struct Sub50 {
     u8 pad0[0x4];
     s8 unk4;
@@ -3281,7 +3006,6 @@ typedef struct Sub50 {
     u16 unk96;
 } Sub50;
 
-/* src/rockx5/ovl00/func_800F0F0C_ovl00.c */
 typedef struct Ent50 {
     u8 pad0[0x3];
     u8 unk3;
@@ -3297,7 +3021,6 @@ typedef struct Ent50 {
     Sub50* unk50;
 } Ent50;
 
-/* src/rockx5/ovl05/func_800F103C_ovl05.c */
 typedef struct {
     u8 pad0[0xA];
     u16 unkA;
@@ -3307,7 +3030,6 @@ typedef struct {
     u8 unk8C;
 } Obj800F103C;
 
-/* src/rockx5/ovl09/func_800F53A4_ovl09.c */
 typedef struct {
     u8 pad0[2];
     signed char f2;
@@ -3321,7 +3043,6 @@ typedef struct {
     s32 f1C;
 } Obj53A4;
 
-/* src/rockx5/ovl00/func_800F6BD4_ovl00.c */
 typedef struct Obj6BD4 {
     u8 pad0[4];
     s8 state;
@@ -3333,7 +3054,6 @@ typedef struct Obj6BD4 {
     s32 prevY;
 } Obj6BD4;
 
-/* src/rockx5/ovl04/func_800F6D44_ovl04.c */
 typedef struct Obj6D44 {
     /* 0x00 */ u8 pad0[3];
     /* 0x03 */ u8 unk3;
@@ -3361,7 +3081,6 @@ typedef struct Obj6D44 {
     /* 0x91 */ u8 unk91;
 } Obj6D44;
 
-/* src/rockx5/ovl03/func_800F8084_ovl03.c */
 typedef struct Obj8084 {
     u8 pad0[5];
     u8 unk5;
@@ -3375,7 +3094,6 @@ typedef struct Obj8084 {
     u8 unk93;
 } Obj8084;
 
-/* src/rockx5/ovl00/func_800F9D50_ovl00.c */
 typedef struct {
     /* 0x00 */ u8 pad0[3];
     /* 0x03 */ u8 unk3;
@@ -3413,7 +3131,6 @@ typedef struct {
     /* 0x7C */ void* parent; /* Obj9D50* */
 } Obj9D50;
 
-/* src/rockx5/ovl50/func_800FA5B0_ovl50.c */
 typedef struct {
     u8 pad0[3];
     u8 unk3;
@@ -3435,7 +3152,6 @@ typedef struct {
     u8 unkF4;
 } D_8009A1F8_AB_t;
 
-/* src/rockx5/ovl06/func_800FB5A4_ovl06.c */
 typedef struct {
     u8 pad0[3];
     u8 b3;
@@ -3448,7 +3164,6 @@ typedef struct {
     s16 timer;
 } ObjFB5A4;
 
-/* src/rockx5/ovl06/func_800FBB70_ovl06.c */
 typedef struct ObjBB70 {
     /* 0x00 */ u8 pad00[0x4];
     /* 0x04 */ u8 unk4;
@@ -3468,7 +3183,6 @@ typedef struct ObjBB70 {
     /* 0x70 */ u8 unk70;
 } ObjBB70;
 
-/* src/rockx5/ovl07/func_800FCAD8_ovl07.c */
 typedef struct {
     /* 0x00 */ u8 unk0;
     /* 0x01 */ u8 unk1;
@@ -3491,7 +3205,6 @@ typedef struct {
     /* 0x88 */ s16 unk88;
 } ObjCAD8;
 
-/* src/rockx5/ovl39/func_800FD404_ovl39.c */
 typedef struct EntFD404Parent {
     u8 pad0[0x7];
     s8 unk7;
@@ -3499,7 +3212,6 @@ typedef struct EntFD404Parent {
     u8 unk89;
 } EntFD404Parent;
 
-/* src/rockx5/ovl39/func_800FD404_ovl39.c */
 typedef struct EntFD404 {
     u8 pad0[0x5];
     s8 unk5;
@@ -3515,7 +3227,6 @@ typedef struct EntFD404 {
     u8 unk88;
 } EntFD404;
 
-/* src/rockx5/ovl39/func_800FE070_ovl39.c */
 typedef struct EntFE070 {
     /* 0x00 */ u8 pad0[5];
     /* 0x05 */ u8 state;
@@ -3530,7 +3241,6 @@ typedef struct EntFE070 {
     /* 0x8C */ u16 timer;
 } EntFE070;
 
-/* src/rockx5/ovl39/func_800FE250_ovl39.c */
 typedef struct EntFE250 {
     /* 0x00 */ u8 pad0[0x5];
     /* 0x05 */ u8 state;
@@ -3542,7 +3252,6 @@ typedef struct EntFE250 {
     /* 0x8C */ u16 timer;
 } EntFE250;
 
-/* src/rockx5/ovl04/func_800FEAC0_ovl04.c */
 typedef struct {
     u8 pad0[2];
     s8 unk2;
@@ -3554,7 +3263,6 @@ typedef struct {
     void* unk80;
 } EntFEAC0;
 
-/* src/rockx5/ovl00/func_800EFE60_ovl00.c */
 typedef struct Ent85 {
     u8 pad0[0x2];
     signed char unk2;
@@ -3565,7 +3273,6 @@ typedef struct Ent85 {
     void* unk54;
 } Ent85;
 
-/* src/rockx5/ovl00/func_800EFE60_ovl00.c */
 typedef struct Scr {
     u8 pad0[0x86];
     u8 unk86;
@@ -3573,7 +3280,6 @@ typedef struct Scr {
     u8 unk91;
 } Scr;
 
-/* src/rockx5/ovl05/func_800F0138_ovl05.c */
 typedef struct {
     u8 pad0[0x5];
     u8 unk5;
@@ -3588,7 +3294,6 @@ typedef struct {
     u8 unk70;
 } Obj0138;
 
-/* src/rockx5/ovl01/func_800F03EC_ovl01.c */
 typedef struct Ent03EC {
     u8 pad0[0x6];
     u8 x6;
@@ -3604,7 +3309,6 @@ typedef struct Ent03EC {
     s32 x84;
 } Ent03EC;
 
-/* src/rockx5/ovl08/func_800F08B4_ovl08.c */
 typedef struct Obj08B4 {
     /* 0x00 */ u8 pad0[0x6];
     /* 0x06 */ u8 state;
@@ -3618,8 +3322,7 @@ typedef struct Obj08B4 {
     /* 0x81 */ s8 hit;
 } Obj08B4;
 
-/* src/rockx5/ovl00/func_800F0D34_ovl00.c */
-// from rockx5 800F0D34: source and spawned object share this layout
+// source and spawned object share this layout
 typedef struct {
     u8 unk0;
     u8 unk1;
@@ -3641,7 +3344,6 @@ typedef struct {
     void* unk50;
 } Obj800F0D34;
 
-/* src/rockx5/ovl12/func_800F13BC_ovl12.c */
 typedef struct Ent13BC {
     u8 pad0[4];
     s8 state; /* 0x04 */
@@ -3652,7 +3354,6 @@ typedef struct Ent13BC {
     s32 timer; /* 0x8C */
 } Ent13BC;
 
-/* src/rockx5/ovl00/func_800F3560_ovl00.c */
 typedef struct Obj3560 {
     u8 pad0[4];
     u8 unk4;
@@ -3665,14 +3366,12 @@ typedef struct Obj3560 {
     s32 unk50;
 } Obj3560;
 
-/* src/rockx5/ovl10/func_800F5298_ovl10.c */
 typedef struct {
     u8 pad0[0xA];
     s16 unkA;
     u8 padC[0x54 - 0xC];
 } Ent9A1F8;
 
-/* src/rockx5/ovl10/func_800F5298_ovl10.c */
 typedef struct {
     u8 pad0[5];
     u8 unk5;
@@ -3687,7 +3386,6 @@ typedef struct {
     u8 unk85;
 } Obj5298;
 
-/* src/rockx5/ovl09/func_800F56AC_ovl09.c */
 typedef struct Obj56AC {
     u8 pad0[0x6];
     u8 state; /* 0x06 */
@@ -3697,7 +3395,6 @@ typedef struct Obj56AC {
     s16 timer; /* 0x7C */
 } Obj56AC;
 
-/* src/rockx5/ovl09/func_800F5A88_ovl09.c */
 typedef struct Obj5A88 {
     /* 0x00 */ u8 pad0[0x6];
     /* 0x06 */ u8 state;
@@ -3710,7 +3407,6 @@ typedef struct Obj5A88 {
     /* 0x92 */ u8 unk92;
 } Obj5A88;
 
-/* src/rockx5/ovl04/func_800F6C0C_ovl04.c */
 typedef struct Obj6C0C {
     /* 0x00 */ u8 pad0[0x4];
     /* 0x04 */ u8 unk4;
@@ -3734,7 +3430,6 @@ typedef struct Obj6C0C {
     /* 0x93 */ u8 unk93;
 } Obj6C0C;
 
-/* src/rockx5/ovl00/func_800F6C2C_ovl00.c */
 typedef struct Obj6C2C {
     /* 0x00 */ u8 pad0[2];
     /* 0x02 */ s8 unk2;
@@ -3742,7 +3437,6 @@ typedef struct Obj6C2C {
     /* 0x06 */ s8 state;
 } Obj6C2C;
 
-/* src/rockx5/ovl06/func_800FA5C0_ovl06.c */
 typedef struct {
     u8 pad0[0x6];
     u8 state; /* 0x06 */
@@ -3757,7 +3451,6 @@ typedef struct {
     s16 count; /* 0x7E */
 } EntFA5C0;
 
-/* src/rockx5/ovl06/func_800FC1C0_ovl06.c */
 typedef struct EntFC1C0 {
     /* 0x00 */ u8 pad0[3];
     /* 0x03 */ u8 unk3;
@@ -3770,7 +3463,6 @@ typedef struct EntFC1C0 {
     /* 0x54 */ s16 timer;
 } EntFC1C0;
 
-/* src/rockx5/ovl07/func_800FC254_ovl07.c */
 typedef struct EntFC254 {
     /* 0x00 */ u8 pad0[5];
     /* 0x05 */ s8 kind;
@@ -3783,7 +3475,6 @@ typedef struct EntFC254 {
     /* 0x7C */ s16 timer;
 } EntFC254;
 
-/* src/slus/func_800376EC.c */
 typedef struct Obj76EC {
     u8 pad0[0x15];
     u8 unk15;
@@ -3797,7 +3488,6 @@ typedef struct Obj76EC {
     signed char unkD4;
 } Obj76EC;
 
-/* src/rockx5/ovl29/func_800F04D0_ovl29.c */
 typedef struct Ent04D0 {
     /* 0x00 */ u8 pad0[2];
     /* 0x02 */ signed char unk2;
@@ -3816,7 +3506,6 @@ typedef struct Ent04D0 {
     /* 0x8C */ u8 unk8C;
 } Ent04D0;
 
-/* src/rockx5/ovl08/func_800F06F4_ovl08.c */
 typedef struct Obj06F4 {
     /* 0x00 */ u8 pad0[0x5];
     /* 0x05 */ u8 unk5;
@@ -3833,7 +3522,6 @@ typedef struct Obj06F4 {
     /* 0x8A */ u8 unk8A;
 } Obj06F4;
 
-/* src/rockx5/ovl08/func_800F078C_ovl08.c */
 typedef struct Obj078C {
     /* 0x00 */ u8 pad0[0x5];
     /* 0x05 */ u8 unk5;
@@ -3851,7 +3539,6 @@ typedef struct Obj078C {
     /* 0x89 */ u8 unk89;
 } Obj078C;
 
-/* src/rockx5/ovl12/func_800F09D8_ovl12.c */
 typedef struct Obj09D8 {
     /* 0x00 */ u8 pad0[0x6];
     /* 0x06 */ u8 unk6;
@@ -3866,7 +3553,6 @@ typedef struct Obj09D8 {
     /* 0x70 */ u8 unk70;
 } Obj09D8;
 
-/* src/rockx5/ovl00/func_800F09F4_ovl00.c */
 typedef struct {
     /* 0x00 */ u8 pad0[0xA];
     /* 0x0A */ u16 unkA;
@@ -3876,7 +3562,6 @@ typedef struct {
     /* 0x15 */ u8 unk15;
 } Src09F4;
 
-/* src/rockx5/ovl00/func_800F09F4_ovl00.c */
 typedef struct {
     /* 0x00 */ u8 pad0[0x80];
     /* 0x80 */ Src09F4* unk80;
@@ -3884,7 +3569,6 @@ typedef struct {
     /* 0x90 */ u8 unk90;
 } Scr09F4;
 
-/* src/rockx5/ovl00/func_800F09F4_ovl00.c */
 typedef struct {
     /* 0x00 */ u8 pad0[6];
     /* 0x06 */ u8 unk6;
@@ -3900,7 +3584,6 @@ typedef struct {
     /* 0x68 */ s32 unk68;
 } Ent09F4;
 
-/* src/rockx5/ovl04/func_800F5734_ovl04.c */
 typedef struct Obj5734 {
     u8 pad0[5];
     u8 unk5;
@@ -3914,7 +3597,6 @@ typedef struct Obj5734 {
     u8 unk92;
 } Obj5734;
 
-/* src/rockx5/ovl10/func_800F72C0_ovl10.c */
 typedef struct Obj72C0 {
     u8 pad0[3];
     u8 b3; /* 0x3 */
@@ -3930,7 +3612,6 @@ typedef struct Obj72C0 {
     Ent8004A364* parent; /* 0x7C */
 } Obj72C0;
 
-/* src/rockx5/ovl11/func_800F7334_ovl11.c */
 typedef struct Ent7334 {
     u8 pad0[6];
     u8 state; /* 0x06 */
@@ -3940,12 +3621,10 @@ typedef struct Ent7334 {
     s16 timer; /* 0x7C */
 } Ent7334;
 
-/* src/rockx5/ovl03/func_800F7EB0_ovl03.c */
 typedef struct {
     u8 b[12];
 } Tbl7EB0;
 
-/* src/rockx5/ovl03/func_800F7EB0_ovl03.c */
 typedef struct {
     u8 pad0[6];
     u8 unk6;
@@ -3954,7 +3633,6 @@ typedef struct {
     s32 unk24;
 } Ent7EB0;
 
-/* src/rockx5/ovl06/func_800FB6A0_ovl06.c */
 typedef struct {
     u8 pad0[6];
     u8 x6;
@@ -3969,7 +3647,6 @@ typedef struct {
     s32 x2C;
 } Obj800FB6A0;
 
-/* src/rockx5/ovl07/func_800FD9C0_ovl07.c */
 typedef struct {
     u8 pad0[3];
     u8 unk3;
@@ -3980,7 +3657,6 @@ typedef struct {
     s16 unk90;
 } EntFD9C0;
 
-/* src/rockx5/ovl09/func_800EF3C4_ovl09.c */
 typedef struct {
     u8 pad0[0x5];
     u8 unk5;
@@ -3995,7 +3671,6 @@ typedef struct {
     s16 timer;
 } Obj3C4;
 
-/* src/rockx5/ovl05/func_800EFF4C_ovl05.c */
 typedef struct ObjEFF4C {
     u8 pad0[0x6];
     u8 unk6;
@@ -4005,7 +3680,6 @@ typedef struct ObjEFF4C {
     s16 unk7C;
 } ObjEFF4C;
 
-/* src/rockx5/ovl12/func_800EFF50_ovl12.c */
 typedef struct {
     /* 0x00 */ u8 unk0;
     /* 0x01 */ u8 unk1;
@@ -4019,7 +3693,6 @@ typedef struct {
     /* 0x7C */ void* unk7C;
 } ObjEFF50;
 
-/* src/rockx5/ovl10/func_800F0110_ovl10.c */
 typedef struct Ent0110 {
     u8 pad0[5];
     signed char state; /* 0x05 */
@@ -4030,7 +3703,6 @@ typedef struct Ent0110 {
     s32* animBase; /* 0x54 */
 } Ent0110;
 
-/* src/rockx5/ovl05/func_800F01DC_ovl05.c */
 typedef struct Obj01DC {
     /* 0x00 */ u8 pad0[0x5];
     /* 0x05 */ u8 unk5;
@@ -4047,7 +3719,6 @@ typedef struct Obj01DC {
     /* 0x68 */ u8* unk68;
 } Obj01DC;
 
-/* src/rockx5/ovl01/func_800F0364_ovl01.c */
 typedef struct Obj0364 {
     u8 pad0[0x6];
     u8 state; /* 0x06 */
@@ -4061,7 +3732,6 @@ typedef struct Obj0364 {
     s16 h7E;   /* 0x7E */
 } Obj0364;
 
-/* src/rockx5/ovl29/func_800F06F8_ovl29.c */
 typedef struct Ent06F8 {
     /* 0x00 */ u8 pad0[5];
     /* 0x05 */ u8 state;
@@ -4076,7 +3746,6 @@ typedef struct Ent06F8 {
     /* 0x8C */ u8 unk8C;
 } Ent06F8;
 
-/* src/rockx5/ovl11/func_800F1E04_ovl11.c */
 typedef struct Ent1E04 {
     /* 0x00 */ s8 active;
     /* 0x01 */ u8 pad01[3];
@@ -4091,19 +3760,16 @@ typedef struct Ent1E04 {
     /* 0x8C */ s32 link;
 } Ent1E04;
 
-/* src/rockx5/ovl11/func_800F4808_ovl11.c */
 typedef struct Obj4808 {
     u8 pad0[5];
     signed char state;
 } Obj4808;
 
-/* src/rockx5/ovl06/func_800FBA68_ovl06.c */
 typedef struct Sub7C {
     u8 pad0[0x8B];
     u8 unk8B;
 } Sub7C;
 
-/* src/rockx5/ovl06/func_800FBA68_ovl06.c */
 typedef struct Obj800FBA68 {
     u8 pad0[0x2];
     u8 unk2;
@@ -4119,7 +3785,6 @@ typedef struct Obj800FBA68 {
     Sub7C* unk7C;
 } Obj800FBA68;
 
-/* src/rockx5/ovl38/func_800FC3F8_ovl38.c */
 typedef struct ObjFC3F8 {
     /* 0x00 */ u8 pad0[6];
     /* 0x06 */ u8 unk6;
@@ -4129,7 +3794,6 @@ typedef struct ObjFC3F8 {
     /* 0x7C */ s16 unk7C;
 } ObjFC3F8;
 
-/* src/rockx5/ovl07/func_800FEFEC_ovl07.c */
 typedef struct ParentFEFEC {
     /* 0x00 */ u8 pad0[4];
     /* 0x04 */ signed char unk4;
@@ -4143,7 +3807,6 @@ typedef struct ParentFEFEC {
     /* 0x92 */ u8 unk92;
 } ParentFEFEC;
 
-/* src/rockx5/ovl07/func_800FEFEC_ovl07.c */
 typedef struct EntFEFEC {
     /* 0x00 */ u8 pad0[3];
     /* 0x03 */ u8 unk3;
@@ -4158,7 +3821,6 @@ typedef struct EntFEFEC {
     /* 0x50 */ ParentFEFEC* parent;
 } EntFEFEC;
 
-/* src/slus/func_800440A8.c */
 typedef struct Obj440A8 {
     u8 pad0[5];
     s8 unk5;
@@ -4171,7 +3833,6 @@ typedef struct Obj440A8 {
     s8 unk14B;
 } Obj440A8;
 
-/* src/rockx5/ovl16/func_800EF068_ovl16.c, func_800EEFEC_ovl16.c */
 typedef struct {
     /* 0x00 */ u8 pad0[2];
     /* 0x02 */ s8 unk2;
@@ -4193,14 +3854,12 @@ typedef struct {
     /* 0x44 */ s32 unk44;
 } Ovl16Obj;
 
-/* src/rockx5/ovl00/func_800EFCD8_ovl00.c */
 typedef struct {
     u8 pad0[0x93];
     u8 unk93;
     u16 unk94;
 } Ctx800EFCD8;
 
-/* src/rockx5/ovl05/func_800F038C_ovl05.c */
 typedef struct Obj038C {
     u8 pad0[0x6];
     u8 state; /* 0x06 */
@@ -4215,7 +3874,6 @@ typedef struct Obj038C {
     u8 flags70; /* 0x70 */
 } Obj038C;
 
-/* src/rockx5/ovl09/func_800F5CF0_ovl09.c */
 typedef struct Obj5CF0 {
     /* 0x00 */ u8 pad0[0x6];
     /* 0x06 */ u8 state;
@@ -4228,7 +3886,6 @@ typedef struct Obj5CF0 {
     /* 0x7C */ s16 unk7C;
 } Obj5CF0;
 
-/* src/rockx5/ovl11/func_800F77E8_ovl11.c */
 typedef struct Obj77E8 {
     u8 pad0[0x6];
     u8 state; /* 0x06 */
@@ -4240,7 +3897,6 @@ typedef struct Obj77E8 {
     s16 timer; /* 0x7C */
 } Obj77E8;
 
-/* src/rockx5/ovl03/func_800F7D8C_ovl03.c */
 typedef struct {
     /* 0x00 */ u8 pad0[0x6];
     /* 0x06 */ u8 step;
@@ -4252,7 +3908,6 @@ typedef struct {
     /* 0x8E */ u8 kind;
 } Obj7D8C;
 
-/* src/rockx5/ovl11/func_800F84BC_ovl11.c */
 typedef struct {
     u8 pad0[6];
     u8 unk6;
@@ -4265,7 +3920,6 @@ typedef struct {
     u8 unk95;
 } Obj800F84BC;
 
-/* src/rockx5/ovl06/func_800FC26C_ovl06.c */
 typedef struct Fc26cObj {
     u8 pad0[0x6];
     s8 unk6;
@@ -4281,7 +3935,6 @@ typedef struct Fc26cObj {
     void* unk50; // parent Fc26cObj (shapes.py has no self-referential struct)
 } Fc26cObj;
 
-/* src/rockx5/ovl07/func_800FE9A0_ovl07.c */
 typedef struct EntFE9A0 {
     /* 0x00 */ u8 pad0[0x4];
     /* 0x04 */ u8 state;
@@ -4293,7 +3946,6 @@ typedef struct EntFE9A0 {
     /* 0x90 */ s16 timer;
 } EntFE9A0;
 
-/* src/rockx5/ovl07/func_800FEAC8_ovl07.c */
 typedef struct SubFEAC8 {
     /* 0x00 */ u8 pad0[5];
     /* 0x05 */ u8 unk5;
@@ -4302,7 +3954,6 @@ typedef struct SubFEAC8 {
     /* 0x15 */ u8 unk15;
 } SubFEAC8;
 
-/* src/rockx5/ovl07/func_800FEAC8_ovl07.c */
 typedef struct EntFEAC8 {
     /* 0x00 */ u8 pad0[3];
     /* 0x03 */ u8 unk3;
@@ -4315,7 +3966,6 @@ typedef struct EntFEAC8 {
     /* 0x7C */ SubFEAC8* unk7C;
 } EntFEAC8;
 
-/* src/rockx5/ovl09/func_800EF140_ovl09.c */
 typedef struct {
     u8 pad0[0x2];
     s8 unk2;
@@ -4332,7 +3982,6 @@ typedef struct {
     s8 unk95;
 } Ovl09Obj800EF140;
 
-/* src/rockx5/ovl05/func_800EF8CC_ovl05.c */
 typedef struct {
     /* 0x00 */ s32 unk0;
     /* 0x04 */ s8 state;
@@ -4346,14 +3995,12 @@ typedef struct {
     /* 0x50 */ s8* unk50;
 } Entity800EF8CC;
 
-/* src/rockx5/ovl05/func_800F3950_ovl05.c */
 /* 0x7C is a frame counter whose low byte is reread as a blink mask. */
 typedef union Ctr3950 {
     u32 w;
     u8 b;
 } Ctr3950;
 
-/* src/rockx5/ovl05/func_800F3950_ovl05.c */
 typedef struct Obj3950 {
     u8 pad0[3];
     u8 unk3;
@@ -4362,7 +4009,6 @@ typedef struct Obj3950 {
     Ctr3950 unk7C;
 } Obj3950;
 
-/* src/rockx5/ovl29/func_800F4D08_ovl29.c */
 typedef struct Ent4D08 {
     /* 0x00 */ u8 pad0[5];
     /* 0x05 */ u8 unk5;
@@ -4376,7 +4022,6 @@ typedef struct Ent4D08 {
     /* 0x8E */ u8 unk8E;
 } Ent4D08;
 
-/* src/rockx5/ovl26/func_800F5D00_ovl26.c */
 typedef struct Obj5D00 {
     u8 pad0[5];
     u8 unk5;
@@ -4392,7 +4037,6 @@ typedef struct Obj5D00 {
     signed char* unk7C;
 } Obj5D00;
 
-/* src/rockx5/ovl11/func_800F6AF0_ovl11.c */
 typedef struct Ent6AF0 {
     /* 0x00 */ u8 pad0[5];
     /* 0x05 */ u8 unk5;
@@ -4407,13 +4051,11 @@ typedef struct Ent6AF0 {
     /* 0x7E */ s16 unk7E;
 } Ent6AF0;
 
-/* src/rockx5/ovl10/func_800F6EFC_ovl10.c */
 typedef struct Actor7CLink {
     /* 0x00 */ s32 pad0;
     /* 0x04 */ signed char state;
 } Actor7CLink;
 
-/* src/rockx5/ovl10/func_800F6EFC_ovl10.c */
 typedef struct Actor7C {
     /* 0x00 */ s32 pad0;
     /* 0x04 */ signed char state;
@@ -4427,7 +4069,6 @@ typedef struct Actor7C {
     /* 0x7C */ Actor7CLink* unk7C;
 } Actor7C;
 
-/* src/rockx5/ovl10/func_800F6F70_ovl10.c */
 typedef struct Obj6F70 {
     u8 pad0[3];
     u8 unk3;
@@ -4458,7 +4099,6 @@ typedef struct Obj6F70 {
     u8 unk94;
 } Obj6F70;
 
-/* src/rockx5/ovl11/func_800F7998_ovl11.c */
 typedef struct Ob7998 {
     u8 pad0[0x6];
     u8 state;
@@ -4472,7 +4112,6 @@ typedef struct Ob7998 {
     s16 count;
 } Ob7998;
 
-/* src/rockx5/ovl28/func_800FA798_ovl28.c */
 typedef struct ObjFA798 {
     u8 pad0[4];
     s8 f4;
@@ -4482,7 +4121,6 @@ typedef struct ObjFA798 {
     Ent8004A364* parent;
 } ObjFA798;
 
-/* src/rockx5/ovl28/func_800EF064_ovl28.c */
 typedef struct Obj800EF064 {
     /* 0x00 */ u8 pad0[5];
     /* 0x05 */ signed char state;
@@ -4490,7 +4128,6 @@ typedef struct Obj800EF064 {
     /* 0x14 */ u16 timer;
 } Obj800EF064;
 
-/* src/rockx5/ovl05/func_800F0328_ovl05.c */
 typedef struct Obj0328 {
     u8 pad0[5];
     u8 unk5;
@@ -4503,7 +4140,6 @@ typedef struct Obj0328 {
     s32 unk2C;
 } Obj0328;
 
-/* src/rockx5/ovl01/func_800F074C_ovl01.c */
 typedef struct Obj074C {
     u8 pad0[5];
     u8 state5; /* 0x05 */
@@ -4517,7 +4153,6 @@ typedef struct Obj074C {
     s32 unk8C; /* 0x8C */
 } Obj074C;
 
-/* src/rockx5/ovl24/func_800F0980_ovl24.c */
 typedef struct {
     /* 0x00 */ u8 pad0[2];
     /* 0x02 */ u8 unk2;
@@ -4529,7 +4164,6 @@ typedef struct {
     /* 0x24 */ u8 unk24;
 } Obj800F0980;
 
-/* src/rockx5/ovl04/func_800F4FD4_ovl04.c */
 typedef struct Obj4FD4 {
     /* 0x00 */ u8 pad0[3];
     /* 0x03 */ u8 unk3;
@@ -4539,7 +4173,6 @@ typedef struct Obj4FD4 {
     /* 0x7C */ s16 timer;
 } Obj4FD4;
 
-/* src/rockx5/ovl58/func_800FAD10_ovl58.c */
 typedef struct {
     u8 pad0[0xAB];
     u8 unkAB;
@@ -4551,7 +4184,6 @@ typedef struct {
     u8 unkF4;
 } D_8009A1F8_AD10_t;
 
-/* src/rockx5/ovl06/func_800FB930_ovl06.c */
 typedef struct ObjFB930 {
     u8 pad0[4];
     u8 state; /* 0x04 */
@@ -4562,7 +4194,6 @@ typedef struct ObjFB930 {
     void* p54; /* 0x54 */
 } ObjFB930;
 
-/* src/rockx5/ovl06/func_800FBA04_ovl06.c */
 typedef struct ObjFBA04 {
     /* 0x00 */ u8 pad0[6];
     /* 0x06 */ u8 state;
@@ -4572,7 +4203,6 @@ typedef struct ObjFBA04 {
     /* 0x88 */ s16 timer;
 } ObjFBA04;
 
-/* src/rockx5/ovl39/func_800FCE88_ovl39.c */
 typedef struct {
     /* 0x00 */ u8 pad0[4];
     /* 0x04 */ s8 state;
@@ -4589,7 +4219,6 @@ typedef struct {
     /* 0x84 */ u8 unk84;
 } Obj800FCE88;
 
-/* src/rockx5/ovl00/func_800F2C6C_ovl00.c */
 typedef struct Obj2C6C {
     /* 0x00 */ u8 pad0[6];
     /* 0x06 */ u8 state;
@@ -4604,7 +4233,6 @@ typedef struct Obj2C6C {
     /* 0x70 */ u8 flags70;
 } Obj2C6C;
 
-/* src/rockx5/ovl04/func_800F649C_ovl04.c */
 typedef struct Obj649C {
     u8 pad0[4];
     s8 unk4;
@@ -4612,7 +4240,6 @@ typedef struct Obj649C {
     s8 unk7;
 } Obj649C;
 
-/* src/rockx5/ovl18/func_800F6C58_ovl18.c */
 typedef struct {
     u8 pad0[4];
     u8 unk4;
@@ -4620,7 +4247,6 @@ typedef struct {
     u8* unk14;
 } Obj800F6C58;
 
-/* src/rockx5/ovl07/func_800FC928_ovl07.c */
 typedef struct {
     u8 pad0[6];
     u8 state;
@@ -4631,7 +4257,6 @@ typedef struct {
     s16 timer;
 } ObjFC928;
 
-/* src/rockx5/ovl39/func_800FD9BC_ovl39.c */
 typedef struct {
     u8 pad0[0x6];
     u8 unk6;
@@ -4645,7 +4270,6 @@ typedef struct {
     s8 unk85;
 } Obj800FD9BC;
 
-/* src/slus/func_8003CD08.c */
 typedef struct {
     u8 pad0[0x2];
     s8 unk2;
@@ -4657,7 +4281,6 @@ typedef struct {
     u8 unkF8;
 } Obj8003CD08;
 
-/* src/rockx5/ovl01/func_800F0658_ovl01.c */
 typedef struct Obj0658 {
     /* 0x00 */ u8 pad0[0x6];
     /* 0x06 */ u8 unk6;
@@ -4670,7 +4293,6 @@ typedef struct Obj0658 {
     /* 0x2C */ s32 unk2C;
 } Obj0658;
 
-/* src/rockx5/ovl04/func_800F5928_ovl04.c */
 typedef struct Obj5928 {
     /* 0x00 */ u8 pad0[5];
     /* 0x05 */ u8 state;
@@ -4681,7 +4303,6 @@ typedef struct Obj5928 {
     /* 0x98 */ s32 unk98;
 } Obj5928;
 
-/* src/rockx5/ovl11/func_800F846C_ovl11.c */
 typedef struct Ent846C {
     u8 pad0[0x6];
     u8 unk6;
@@ -4697,7 +4318,6 @@ typedef struct Ent846C {
     u8 unk95;
 } Ent846C;
 
-/* src/rockx5/ovl06/func_800F9AD8_ovl06.c */
 typedef struct Obj9AD8 {
     /* 0x00 */ u8 pad0[0x6];
     /* 0x06 */ u8 state;
@@ -4708,7 +4328,6 @@ typedef struct Obj9AD8 {
     /* 0x7C */ s16 timer;
 } Obj9AD8;
 
-/* src/rockx5/ovl04/func_800F0F2C_ovl04.c */
 typedef struct {
     u8 pad0[6];
     u8 unk6;
@@ -4718,7 +4337,6 @@ typedef struct {
     s16 unk7C;
 } Obj800F0F2C;
 
-/* src/rockx5/ovl04/func_800F5254_ovl04.c */
 typedef struct Obj5254 {
     u8 pad0[6];
     u8 unk6;
@@ -4728,7 +4346,6 @@ typedef struct Obj5254 {
     s16 unk7C;
 } Obj5254;
 
-/* src/rockx5/ovl11/func_800F81F4_ovl11.c */
 typedef struct {
     u8 pad0[0xA];
     s16 unkA;
@@ -4738,7 +4355,6 @@ typedef struct {
     s32 unk20;
 } Obj800F81F4;
 
-/* src/rockx5/ovl01/func_800FA8D8_ovl01.c */
 typedef struct {
     u8 pad0[5];
     u8 unk5;
@@ -4750,23 +4366,19 @@ typedef struct {
     u8 unk94;
 } Obj800FA8D8;
 
-/* src/slus/func_80023788.c */
 typedef struct {
     s32 w[0x6F];
 } Blk1BC;
 
-/* src/slus/func_80044BD8.c */
 typedef struct {
     void* fn[7];
 } FnTbl7;
 
-/* src/slus/func_80019DF0.c */
 typedef struct {
     u8 pad[0x1B8];
     s8 f1B8[1];
 } D1C00_80019DF0;
 
-/* src/slus/player_set_charge_flash.c */
 typedef struct {
     u8 pad0[0x94];
     /* 0x94 */ s8 unk94[7];
@@ -4774,13 +4386,11 @@ typedef struct {
     /* 0xA1 */ u8 unkA1;
 } Obj8003FCC0;
 
-/* src/slus/func_80012FE4.c */
 typedef struct {
     u8 pad[0x60];
     s16 f60[8];
 } Obj80012FE4;
 
-/* src/rockx5/ovl08/func_800F2230_ovl08.c */
 typedef struct {
     /* 0x00 */ u8 pad0[3];
     /* 0x03 */ u8 unk3;
@@ -4797,7 +4407,6 @@ typedef struct {
     /* 0x7C */ void* unk7C; /* an Obj2230 */
 } Obj2230;
 
-/* src/rockx5/ovl04/func_800F3EA0_ovl04.c */
 typedef struct {
     u8 pad0[0xC];
     s8 unkC;
@@ -4811,7 +4420,6 @@ typedef struct {
     s8 unkA2;
 } Glb800F3EA0;
 
-/* src/rockx5/ovl04/func_800F3EA0_ovl04.c */
 typedef struct {
     u8 pad0[0x24];
     s16 unk24;
@@ -4822,19 +4430,16 @@ typedef struct {
     s8 unkAB;
 } Bg800F3EA0;
 
-/* src/rockx5/ovl07/func_800F8128_ovl07.c */
 /* 0xA4-byte object image copied whole */
 typedef struct {
     s32 d[0x29];
 } Blk0A4;
 
-/* src/rockx5/ovl07/func_800F8128_ovl07.c */
 /* 4-byte unaligned record */
 typedef struct {
     u8 d[4];
 } Blk4;
 
-/* src/rockx5/ovl10/func_800F26B4_ovl10.c */
 typedef struct {
     u8 pad0[5];
     u8 unk5;
@@ -4847,13 +4452,11 @@ typedef struct {
     u8 unk90;
 } Ent26B4;
 
-/* src/rockx5/ovl11/func_800F306C_ovl11.c */
 typedef struct {
     s8 f0;
     u8 f1[1];
 } Tbl9B8C;
 
-/* src/rockx5/ovl11/func_800F306C_ovl11.c */
 typedef struct {
     /* 0x00 */ u8 pad0[2];
     /* 0x02 */ u8 unk2;
@@ -4881,41 +4484,34 @@ typedef struct {
     /* 0x68 */ u8* unk68;
 } Obj306C;
 
-/* src/rockx5/ovl03/func_800F69FC_ovl03.c */
 typedef struct {
     u16 v[3];
 } Tbl800EEB44;
 
-/* src/rockx5/ovl20/func_800EE974_ovl20.c */
 typedef struct {
     u8 pad[0xC6];
     s8 c6[4];
     s8 ca;
 } D_800D1C00_t;
 
-/* src/slus/func_8003EC00.c */
 typedef struct {
     u8 b;
 } QByte;
 
-/* src/rockx5/ovl27/func_800EEE24_ovl27.c */
 /* 0x80-byte block copied from the scratchpad buffer */
 typedef struct {
     u8 d[0x80];
 } Blk80;
 
-/* src/rockx5/ovl27/func_800EEE24_ovl27.c */
 /* 0x20-byte block copied from the scratchpad buffer */
 typedef struct {
     u8 d[0x20];
 } Blk20;
 
-/* src/rockx5/ovl24/func_800F2970_ovl24.c */
 typedef struct {
     s32 w[86];
 } Blk158;
 
-/* src/rockx5/ovl24/func_800F2970_ovl24.c */
 typedef struct {
     u8 pad0[0x26];
     u16 a26[16];
@@ -4935,7 +4531,6 @@ typedef struct {
     s16 sum;
 } Rec2970;
 
-/* src/slus/func_8001AAE8.c */
 typedef struct {
     /* 0x00 */ s32 unk0;
     /* 0x04 */ s32 unk4;
@@ -4948,7 +4543,6 @@ typedef struct {
     /* 0x1C */ s32 unk1C;
 } StHdr8130; /* 0x20 */
 
-/* src/slus/func_80014DEC.c, src/slus/func_80015068.c */
 typedef struct Rec5A58 {
     /* 0x00 */ u8 unk0;
     /* 0x01 */ u8 unk1;
@@ -4958,52 +4552,43 @@ typedef struct Rec5A58 {
     /* 0x0A */ u8 padA[2];
 } Rec5A58;
 
-/* src/rockx5/ovl26/func_800F38F4_ovl26.c */
 typedef struct {
     u8 b[3][16];
 } Tbl800EE9A8;
 
-/* src/rockx5/ovl28/func_800F39A8_ovl28.c */
 typedef struct {
     u8 b[3][3];
 } Tbl39A8;
 
-/* src/rockx5/ovl07/func_800EEF88_ovl07.c */
 typedef struct {
     u8 pad[0x5C];
     s8 f5C;
 } V5C;
 
-/* src/rockx5/ovl07/func_800F24C4_ovl07.c */
 typedef struct {
     u8 pad[4];
     u16 f4[1];
 } D1030;
 
-/* src/slus/func_8003C20C.c */
 typedef struct {
     u8 pad[0x88];
     s32 f88[1];
 } D_800D1C00_f88_t;
 
-/* src/slus/memcard_read_save_file.c */
 typedef struct {
     u8 b[18];
 } Str18;
 
-/* src/slus/memcard_read_save_file.c */
 typedef struct {
     Str18 s;
     u8 pad[2];
 } Name20;
 
-/* src/rockx5/ovl24/func_800EF9D0_ovl24.c */
 typedef struct {
     u8 pad[0x114];
     s32 w[1];
 } Obj114;
 
-/* src/rockx5/ovl29/func_800F3444_ovl29.c */
 typedef struct {
     /* 0x00 */ u8 pad0[4];
     /* 0x04 */ u8 unk4;
@@ -5040,12 +4625,10 @@ typedef struct {
     /* 0x8A */ u8 unk8A;
 } ObjF3444;
 
-/* src/rockx5/ovl24/func_800F3884_ovl24.c */
 typedef struct Rgb800F3884 {
     s8 c[3];
 } Rgb800F3884;
 
-/* src/rockx5/ovl49/func_800FB000_ovl49.c */
 typedef struct {
     /* 0x00 */ u8 unk0;
     /* 0x01 */ u8 unk1;
@@ -5057,7 +4640,6 @@ typedef struct {
     /* 0x38 */ s32 unk38;
 } Spawn800FB000;
 
-/* src/rockx5/ovl04/func_800FF4D0_ovl04.c */
 typedef struct {
     u8 pad0[0x5E];
     s16 unk5E;
@@ -5065,47 +4647,39 @@ typedef struct {
     s16 unk62;
 } D_8009A1F8_5E_t;
 
-/* src/rockx5/ovl21/func_800EF2B8_ovl21.c */
 typedef struct {
     u8 b[10];
 } Buf800EF2B8;
 
-/* src/rockx5/ovl18/func_800F6A94_ovl18.c */
 typedef struct {
     u8 pad0[0x26];
     s8 f26[16];
 } D1C00_800F6A94;
 
-/* src/rockx5/ovl12/func_800EF124_ovl12.c */
 typedef struct {
     s16 a[3][5];
 } Tbl800EE974;
 
-/* src/rockx5/ovl03/func_800F6160_ovl03.c */
 typedef struct {
     s16 v[25];
 } Tbl6160A;
 
-/* src/rockx5/ovl04/func_800F73B4_ovl04.c */
 typedef struct {
     u8 pad0[3];
     u8 x3;
     s32 x4;
 } Ent73B4;
 
-/* src/slus/func_8003322C.c */
 typedef struct {
     u8 pad0[0xAA];
     u8 unkAA[1];
 } D1C00_8003322C;
 
-/* src/rockx5/ovl20/func_800EEA98_ovl20.c */
 /* 0x100-byte block copied from the scratchpad buffer */
 typedef struct {
     u8 d[0x100];
 } Blk100;
 
-/* src/rockx5/ovl20/func_800F4990_ovl20.c */
 typedef struct {
     u8 pad[0xC2];
     s8 c2[4];
@@ -5114,7 +4688,6 @@ typedef struct {
     u8 cb;
 } View800F4990;
 
-/* src/slus/func_8001C904.c */
 typedef struct {
     u8 pad0[0x44];
     u8 f44;
@@ -5168,7 +4741,6 @@ typedef struct {
     u8 pad1BB;
 } D_800D1C00_t8001C904;
 
-/* src/slus/func_8001C904.c */
 typedef struct {
     u8 pad0;
     u8 f1;
@@ -5209,7 +4781,6 @@ typedef struct {
     u8 f153;
 } D_800E81E4_t8001C904;
 
-/* src/rockx5/ovl00/func_800EECA4_ovl00.c */
 /* local views; fields by offset from this function's accesses only */
 typedef struct {
     u8 pad0[0x80];
@@ -5228,7 +4799,6 @@ typedef struct {
     s16 f96;
 } X5Scr;
 
-/* src/rockx5/ovl00/func_800EECA4_ovl00.c */
 typedef struct {
     u8 pad0;
     s8 f1;
@@ -5269,7 +4839,6 @@ typedef struct {
     u8 f70;
 } X5Ent;
 
-/* src/rockx5/ovl11/func_800EF48C_ovl11.c */
 typedef struct {
     /* 0x00 */ u8 pad0[3];
     /* 0x03 */ u8 unk3;
@@ -5280,7 +4849,6 @@ typedef struct {
     /* 0x60 */ u8 unk60;
 } Obj800EF48C;
 
-/* src/rockx5/ovl20/func_800F3D58_ovl20.c */
 typedef struct {
     u8 pad0[0x2A];
     s8 idx;
@@ -5288,7 +4856,6 @@ typedef struct {
     s32 mask[1];
 } D1C00_800F3D58;
 
-/* src/rockx5/ovl09/func_800F9630_ovl09.c */
 typedef struct Obj9630 {
     u8 pad0[2];
     s8 unk2;
@@ -5321,7 +4888,6 @@ typedef struct Obj9630 {
     s32 unk68;
 } Obj9630;
 
-/* src/rockx5/ovl49/func_800FB500_ovl49.c */
 /* D_8009A1F8 view: the flags at 0x3/0x57/0xA0/0xAB and the words at 0x5C/0x60 */
 typedef struct {
     u8 pad0[3];
@@ -5337,23 +4903,19 @@ typedef struct {
     u8 unkAB;
 } D_8009A1F8_5C_t;
 
-/* src/rockx5/ovl09/func_800F50B8_ovl09.c */
 typedef struct {
     s16 v[11];
 } S16x11;
 
-/* src/rockx5/ovl09/func_800F50B8_ovl09.c */
 typedef struct {
     s32 v[3];
 } S32x3;
 
-/* src/slus/func_80018400.c */
 typedef struct {
     u8 pad[0x16];
     u8 f16[1];
 } D4F40_80018400;
 
-/* src/slus/func_8003F4C4.c */
 typedef struct {
     u8 pad0[0x94];
     u8 x94[7];
@@ -5361,14 +4923,14 @@ typedef struct {
 } Obj8003F4C4;
 /* lift: end */
 
-/* X4 object views shared by the W15 X6 ports (adapted from mmx6 x4.h, AGPL-3.0, THIRD_PARTY.md); fields only where
- * a draft touches them (T3.c3). */
+/* X4 object views shared by the X6 ports (adapted from mmx6 x4.h, AGPL-3.0, THIRD_PARTY.md); fields only where
+ * a draft touches them. */
 typedef struct {
     s16 lo;
     s16 hi;
 } X4_S16Pair;
 
-/* src/rockx5/ovl03/func_800F6160_ovl03.c (after X4_S16Pair, W95) */
+/* after X4_S16Pair */
 typedef struct {
     X4_S16Pair p[30];
 } Tbl6160B;
@@ -5380,7 +4942,7 @@ typedef union {
     u8 bytes[4];
 } X4_f32; /* 16.16 fixed */
 
-/* src/rockx5/ovl52/func_800FA99C_ovl52.c (after X4_f32) */
+/* after X4_f32 */
 typedef struct {
     u8 pad0[0x5E];
     s16 unk5E;
@@ -5441,7 +5003,7 @@ typedef struct X4_Obj {
     /* 0x8C */ s8 afterimage; /* player */
 } X4_Obj;
 
-/* src/rockx5/ovl02/func_800F0DAC_ovl02.c (after X4_f32; X4_Obj differs in field types) */
+/* after X4_f32 (X4_Obj differs in field types) */
 typedef struct Obj0DAC {
     /* 0x00 */ u8 pad0[2];
     /* 0x02 */ signed char unk2;
@@ -5479,7 +5041,7 @@ typedef struct Obj0DAC {
     /* 0x70 */ u8 unk70;
 } Obj0DAC;
 
-/* D_800D1C00 / D_8009A420 */
+/* g_playthrough_state / D_8009A420 */
 typedef struct X4_EngineObj {
     /* 0x00 */ u8 pad0[7];
     /* 0x07 */ s8 unk7;
@@ -5536,28 +5098,20 @@ typedef struct X4_BackgroundObj {
     /* 0x4C */ u8 pad4C[8];
 } X4_BackgroundObj; /* 0x54 */
 
-// from slus 8001A628: the 0x14-byte display env copied out of the double buffer (2-aligned: lwl/lwr)
+// the 0x14-byte display env copied out of the double buffer (2-aligned: lwl/lwr)
 typedef struct {
     /* 0x00 */ Ovl50Pos disp;
     /* 0x08 */ Ovl50Pos screen;
     /* 0x10 */ u8 pad10[4];
 } DbDispEnv; /* 0x14 */
 
-// from slus 8001728C (X6 X4_RectPtrPair): 0xC-byte rect + pointer pair
+// 0xC-byte rect + pointer pair (X6 X4_RectPtrPair)
 typedef struct {
     /* 0x00 */ Ovl50Pos rect;
     /* 0x08 */ void* ptr;
 } RectPtrPair; /* 0x0C */
 
-// from slus 8002DB3C: 0x30-byte effect slot table entry (X4_Obj is 0x90 in X5)
-typedef struct EffectSlot30 {
-    /* 0x00 */ s8 active;
-    /* 0x01 */ s8 id;
-    /* 0x02 */ s8 unk2;
-    /* 0x03 */ u8 pad3[0x2D];
-} EffectSlot30; /* 0x30 */
-
-// from rockx5 800EECF8_ovl29 (shared with 800EEF84_ovl29): X4_Obj-like, 0x61/0x67 bytes, 0x8C s32
+// X4_Obj-like, 0x61/0x67 bytes, 0x8C s32
 typedef struct ObjEECF8 {
     /* 0x00 */ u8 pad0[2];
     /* 0x02 */ s8 unk2;
@@ -5602,7 +5156,6 @@ typedef struct ObjEECF8 {
     /* 0x8C */ s32 unk8C;
 } ObjEECF8;
 
-/* src/rockx5/ovl27/func_800F5308_ovl27.c, func_800F50BC_ovl27.c */
 typedef struct Scr5308 {
     /* 0x00 */ u8 pad0[0x80];
     /* 0x80 */ s32 unk80;
@@ -5613,7 +5166,6 @@ typedef struct Scr5308 {
     /* 0x89 */ u8 unk89;
 } Scr5308;
 
-/* src/rockx5/ovl03/func_800EF094_ovl03.c, func_800EF220_ovl03.c */
 typedef struct ObjEF094 {
     /* 0x00 */ u8 unk0;
     /* 0x01 */ u8 pad1;
@@ -5657,13 +5209,13 @@ typedef struct ObjEF094 {
     /* 0x94 */ s32 unk94;
 } ObjEF094;
 
-// from rockx5 800F1334_ovl05: scratchpad slot holding the last spawned child
+// scratchpad slot holding the last spawned child
 typedef struct Scr1334 {
     /* 0x00 */ u8 pad0[0x80];
     /* 0x80 */ void* unk80;
 } Scr1334;
 
-// from rockx5 800F1334_ovl05: spawned child copies the parent's 0x14/0x15/0x3C/0x40/0x42
+// spawned child copies the parent's 0x14/0x15/0x3C/0x40/0x42
 typedef struct Obj1334 {
     /* 0x00 */ u8 unk0;
     /* 0x01 */ u8 unk1;
@@ -5688,7 +5240,6 @@ typedef struct Obj1334 {
     /* 0x91 */ u8 unk91;
 } Obj1334;
 
-// from rockx5 800F1B8C_ovl05
 typedef struct Obj1B8C {
     /* 0x00 */ u8 pad0[2];
     /* 0x02 */ s8 unk2;
@@ -5709,13 +5260,12 @@ typedef struct Obj1B8C {
     /* 0x92 */ s8 unk92;
 } Obj1B8C;
 
-// from rockx5 800F24D4_ovl02: scratchpad slot 0x1F80004C view
+// scratchpad slot 0x1F80004C view
 typedef struct Scr24D4 {
     /* 0x00 */ u8 pad0[0x88];
     /* 0x88 */ s16 unk88;
 } Scr24D4;
 
-/* src/rockx5/ovl29/func_800EF82C_ovl29.c */
 typedef struct ObjEF82C {
     /* 0x00 */ u8 pad0[5];
     /* 0x05 */ s8 unk5;
@@ -5736,7 +5286,7 @@ typedef struct ObjEF82C {
     /* 0x84 */ s32 unk84;
 } ObjEF82C;
 
-// from rockx5 800F5B44: spawned child placed beside its parent, facing-dependent offset
+// spawned child placed beside its parent, facing-dependent offset
 typedef struct {
     /* 0x00 */ u8 unk0;
     /* 0x01 */ u8 unk1;
@@ -5759,7 +5309,7 @@ typedef struct {
     /* 0x7C */ void* unk7C; /* the parent ObjF5B44 */
 } ObjF5B44;
 
-// from rockx5 800F5CA0: init state of an object whose variant (unk2) picks animation and velocity
+// init state of an object whose variant (unk2) picks animation and velocity
 typedef struct ObjF5CA0 {
     /* 0x00 */ u8 pad0[2];
     /* 0x02 */ s8 unk2;
@@ -5788,7 +5338,6 @@ typedef struct ObjF5CA0 {
     /* 0x68 */ void* unk68;
 } ObjF5CA0;
 
-/* src/rockx5/ovl27/func_800F50BC_ovl27.c */
 typedef struct Ent50BC {
     /* 0x00 */ u8 pad0[3];
     /* 0x03 */ u8 unk3;
@@ -5809,7 +5358,6 @@ typedef struct Ent50BC {
     /* 0x7E */ s16 unk7E;
 } Ent50BC;
 
-/* src/rockx5/ovl27/func_800F5308_ovl27.c */
 typedef struct Ent5308 {
     /* 0x00 */ u8 pad0[3];
     /* 0x03 */ u8 unk3;
@@ -5844,12 +5392,12 @@ typedef struct Ent5308 {
     /* 0x68 */ s32 unk68;
 } Ent5308;
 
-// memory-card path "buXY:" head, copied by value (slus 8001D6BC, 8001D8B4; X6/X4 X4_MemcardPath)
+// memory-card path "buXY:" head, copied by value (X6/X4 X4_MemcardPath)
 typedef struct MemcardPath {
     u8 path[6];
 } MemcardPath;
 
-// from rockx5 800F2074_ovl26: pointee of scratchpad view Scr2074.unk80
+// pointee of scratchpad view Scr2074.unk80
 typedef struct Sub2074 {
     /* 0x00 */ u8 pad0[0x88];
     /* 0x88 */ s32 unk88;
@@ -5859,7 +5407,7 @@ typedef struct Sub2074 {
     /* 0x92 */ u8 unk92;
 } Sub2074;
 
-// from rockx5 800F2074_ovl26: scratchpad slot 0x1F80004C view
+// scratchpad slot 0x1F80004C view
 typedef struct Scr2074 {
     /* 0x00 */ u8 pad0[0x80];
     /* 0x80 */ Sub2074* unk80;
@@ -5879,7 +5427,6 @@ typedef struct Scr2074 {
     /* 0x97 */ u8 unk97;
 } Scr2074;
 
-// from rockx5 800F6864_ovl26 (W22 hoist, T10.c13)
 typedef struct {
     /* 0x00 */ u8 pad0[2];
     /* 0x02 */ s8 unk2;
@@ -5915,7 +5462,6 @@ typedef struct {
     /* 0x68 */ s32 unk68;
 } Ent6864;
 
-// from rockx5 800F6A48_ovl26 (W22 hoist, T10.c13)
 typedef struct {
     /* 0x00 */ u8 pad0[2];
     /* 0x02 */ s8 unk2;
@@ -5945,7 +5491,6 @@ typedef struct {
     /* 0x68 */ u8* unk68;
 } Ent6A48;
 
-// from rockx5 800F48B0_ovl09 (shared with func_800FCDBC_ovl35) (W22 hoist, T10.c13)
 typedef struct Ent48B0 {
     /* 0x00 */ u8 pad0[2];
     /* 0x02 */ s8 unk2;
@@ -5989,7 +5534,6 @@ typedef struct Ent48B0 {
     /* 0x8C */ s32 unk8C;
 } Ent48B0;
 
-// from rockx5 800F7240_ovl03 (shared with func_800FE22C_ovl31) (W22 hoist, T10.c13)
 typedef struct Ent7240 {
     /* 0x00 */ u8 pad0[2];
     /* 0x02 */ s8 unk2;
@@ -6031,7 +5575,6 @@ typedef struct Ent7240 {
     /* 0x84 */ s32 unk84;
 } Ent7240;
 
-// from rockx5 800F3160_ovl09 (shared with func_800FB66C_ovl35) (W22 hoist, T10.c13)
 typedef struct Ent3160 {
     /* 0x00 */ u8 pad0[6];
     /* 0x06 */ u8 unk6;
@@ -6058,7 +5601,6 @@ typedef struct Ent3160 {
     /* 0x91 */ u8 unk91;
 } Ent3160;
 
-// from rockx5 800EFDDC_ovl09 (W22 hoist, T10.c13)
 typedef struct {
     u8 pad0[0x2];
     s8 unk2;
@@ -6104,7 +5646,6 @@ typedef struct {
     s32 unk90;
 } ObjEFDDC;
 
-// from rockx5 800F2074_ovl26 (W22 hoist, T10.c13)
 typedef struct {
     /* 0x00 */ u8 pad0[0x2];
     /* 0x02 */ signed char unk2;
@@ -6144,7 +5685,6 @@ typedef struct {
     /* 0x68 */ s32 unk68;
 } Ent2074;
 
-// from rockx5 800F6E48_ovl26 (W22 hoist, T10.c13)
 typedef struct {
     /* 0x00 */ u8 pad0[2];
     /* 0x02 */ s8 unk2;
@@ -6157,4 +5697,20 @@ typedef struct {
     /* 0x16 */ u8 unk16;
 } Ent6E48;
 
-#endif /* TYPES_H */
+typedef struct {
+    u8 pad0;
+    s8 y;
+    u8 w;
+    u8 h;
+} Hit800EF57C;
+
+typedef struct {
+    u8 pad0[0xA];
+    s16 x;
+    u8 pad1[2];
+    s16 y;
+    u8 pad2[0x58];
+    Hit800EF57C* hit;
+} Obj800EF57C;
+
+#endif

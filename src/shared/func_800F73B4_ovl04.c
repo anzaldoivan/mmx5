@@ -9,7 +9,6 @@ extern s32 func_800326BC(u8* a0);
 extern void func_800F64F8_ovl04(s32, void*, u8*, s32);
 extern void func_80032F70(u8* a0);
 extern s32 func_8003240C(u8* a0);
-extern signed char D_800D1C0C;
 extern u8 D_801026A0_ovl04[];
 extern void* D_801026B4_ovl04[];
 
@@ -25,7 +24,7 @@ void func_800F73B4_ovl04(u8* o) {
     u8* h;
     u8* r;
 
-    if (D_800D1C0C != 12) {
+    if (D_800D1C0C.s != 12) {
         lo = 0x1540;
         hi = 0x16E0;
     } else {

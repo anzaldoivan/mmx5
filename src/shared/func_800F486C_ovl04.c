@@ -6,7 +6,6 @@
 #include "mmx5/graphics.h"
 
 extern s32 func_8002DFB0(void);
-extern s8 D_800D1C00[];
 extern s16 D_8009A0AE;
 
 void func_800F486C_ovl04(u8* obj) {
@@ -114,11 +113,11 @@ void func_800F486C_ovl04(u8* obj) {
         } else if (t < D_8009A0AE) {
             *(s16*)(obj + 0x94) = *(s16*)(obj + 0xE) + 0x20;
         }
-        g = (s32)
-            D_800D1C00; // !FAKE: base set in each arm keeps the lui/addiu pair and lb 0xC
+        g = (s32)g_playthrough_state
+                .s; // !FAKE: base set in each arm keeps the lui/addiu pair and lb 0xC
     } else {
-        g = (s32)
-            D_800D1C00; // !FAKE: base set in each arm keeps the lui/addiu pair and lb 0xC
+        g = (s32)g_playthrough_state
+                .s; // !FAKE: base set in each arm keeps the lui/addiu pair and lb 0xC
     }
     m = 0xC; // !FAKE: compare constant in the 0x94 local keeps it in v1
     t = *(s8*)(g + 0xC);

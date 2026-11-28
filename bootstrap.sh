@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # bootstrap.sh <dump.cue> — fresh clone to a verified extraction in one command:
 #   tools/bootstrap.sh (packages check, venv, binutils, cc1 candidates) → tools/refs_fetch.sh (maspsx, decomp-permuter, old-gcc
-#   at the config/refs.toml pins) → make extract CUE=<dump.cue> → extracted/retail/manifest.jsonl must equal the tracked one.
+#   at the config/refs.toml pins) → make extract CUE=<dump.cue> → extracted/us/manifest.jsonl must equal the tracked one.
 #   Dev setup (not here): `bash tools/codegen/stage.sh` stages refs/gcc-2.95.2-psx for tools-health's cites rung.
 # Idempotent. PY (default python3) runs the Python steps.
 set -euo pipefail
@@ -14,8 +14,8 @@ if (($# < 1)); then
     exit 2
 fi
 make --no-print-directory extract CUE="$1" PY="$PY"
-if ! git diff --exit-code --quiet -- extracted/retail/manifest.jsonl; then
-    echo "bootstrap: FAILED — extracted/retail/manifest.jsonl differs from the tracked one (not the Redump #7437 dump?)" >&2
+if ! git diff --exit-code --quiet -- extracted/us/manifest.jsonl; then
+    echo "bootstrap: FAILED — extracted/us/manifest.jsonl differs from the tracked one (not the Redump #7437 dump?)" >&2
     exit 1
 fi
 mkdir -p .run && realpath "$1" > .run/dump-cue  # make extract/check default CUE (Makefile)

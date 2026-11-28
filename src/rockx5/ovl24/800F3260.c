@@ -29,7 +29,6 @@ void func_800F3260_ovl24(u8* arg0) {
 
 extern s32 func_8001D7E8(u8);
 extern u8 D_8009A427;
-extern u16 D_800C9320;
 extern u8* D_800F5F84_ovl24;
 
 void func_800F32F4_ovl24(u8* arg0) {
@@ -57,7 +56,7 @@ void func_800F32F4_ovl24(u8* arg0) {
     } else {
         ret = 0;
     }
-    if (ret == 0 && (D_800C9320 & 0x40)) {
+    if (ret == 0 && (D_800C9320.h & 0x40)) {
         play_sound(0, 0x22, 0);
         st = 7;
         arg0[3] = st;
@@ -76,7 +75,6 @@ void func_800F32F4_ovl24(u8* arg0) {
 
 extern s32 func_8001D7E8(u8);
 extern u8 D_8009A427;
-extern u16 D_800C9320;
 
 void func_800F33DC_ovl24(u8* arg0) {
     u8* obj = D_800E81D8;
@@ -100,7 +98,7 @@ void func_800F33DC_ovl24(u8* arg0) {
     } else {
         ret = 0;
     }
-    if (ret == 0 && (D_800C9320 & 0x40)) {
+    if (ret == 0 && (D_800C9320.h & 0x40)) {
         play_sound(0, 0x22, 0);
         arg0[2]++;
         st = 11;
@@ -157,7 +155,6 @@ void func_800F34AC_ovl24(u8* arg0) {
 
 extern s32 func_8001D7E8(u8);
 extern u8 D_8009A427;
-extern u16 D_800C9320;
 
 static inline s32 func_800F3588_inl(u8* arg0) {
     u8* obj = D_800E81D8;
@@ -184,7 +181,7 @@ static inline s32 func_800F3588_inl(u8* arg0) {
 }
 
 void func_800F3588_ovl24(u8* arg0) {
-    if (func_800F3588_inl(arg0) == 0 && (D_800C9320 & 0x40)) {
+    if (func_800F3588_inl(arg0) == 0 && (D_800C9320.h & 0x40)) {
         play_sound(0, 0x22, 0);
         ((s32(*)())func_8002C50C)();
         D_8009A427 = 0;

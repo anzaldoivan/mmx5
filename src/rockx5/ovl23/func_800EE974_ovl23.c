@@ -1,7 +1,7 @@
 #include "types.h"
+#include "mmx5/globals.h"
 #include "mmx5/sound.h"
 
-extern u16 D_800C9320;
 extern s32 D_800EF894_ovl23[];
 
 void func_800EE974_ovl23(s32 arg0) {
@@ -9,7 +9,7 @@ void func_800EE974_ovl23(s32 arg0) {
 
     switch (D_800EF894_ovl23[arg0]) {
     case 0 ... 1:
-        x = D_800C9320;
+        x = D_800C9320.h;
         if (x & 0x1000) {
             D_800EF894_ovl23[arg0]++;
         } else if (x & 0x4000) {
@@ -17,14 +17,14 @@ void func_800EE974_ovl23(s32 arg0) {
         }
         break;
     case 2 ... 10:
-        if (D_800C9320 & 0x4000) {
+        if (D_800C9320.h & 0x4000) {
             if (++D_800EF894_ovl23[arg0] == 0xB) {
                 play_sound(5, 1, 0);
             }
         }
         break;
     default:
-        if (D_800C9320 & 0x5000) {
+        if (D_800C9320.h & 0x5000) {
             D_800EF894_ovl23[arg0] = 0;
         }
         break;

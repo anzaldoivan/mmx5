@@ -86,6 +86,6 @@ typedef union {
 #define D_801F300C (*(s32*)0x801F300C)
 #define D_801F3018 (*(s32*)0x801F3018)
 #define D_801F8100 ((u8*)0x801F8100)
-#define D_801F8300 (*(u8**)0x801F8300)
+#define g_cur_task_slot (*(u8**)0x801F8300)
 
 #endif

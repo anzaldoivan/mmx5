@@ -62,10 +62,10 @@ jobs:
         run: bash tools/bootstrap.sh
       - name: maspsx at the config/refs.toml pin
         run: PY=python bash tools/refs_fetch.sh maspsx
-      - name: make compile-only — every src/**/*.c with mk/slus.mk's C flags
+      - name: make compile-only — every src/**/*.c with mk/main.mk's C flags
         run: make compile-only PY=python
       - name: readability-check — tools/readability/scan.py over include/, src/, config/ (game-free)
         run: make readability-check PY=python
       # the public selftests only (SELFTESTS_PUBLIC, mk/fleet.mk); SELFTESTS_DEV= drops the dev tier even where present
-      - name: selftest — readability/rockx5/shift-scan/assets tools on synthetic fixtures, each must print its control OK line
+      - name: selftest — readability/rockx5/shift-scan/assets/replay tools on synthetic fixtures, each must print its control OK line
         run: make selftest PY=python SELFTESTS_DEV=

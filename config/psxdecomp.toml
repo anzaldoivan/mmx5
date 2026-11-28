@@ -45,7 +45,7 @@ repo = "anzaldoivan/mmx5"
 dev_branch = "main"
 checks = ["build SLUS_013.34", "public-clean audit (no game bytes)", "compile-only (pinned cc1 + maspsx + binutils, no game bytes)"]
 private_repo = "anzaldoivan/mmx5-private"
-private_rev = "71bf87c23a3ea48b5ad0efdd96d688cbbdc8a908"   # the -private commit CI reads
+private_rev = "c2e5921fb22a43028b56dc36cb90ecc28ea66af2"   # the -private commit CI reads
 image = "ghcr.io/anzaldoivan/mmx5-toolchain@sha256:7653d6d8b35c14458798bb160ad1a93ef99faf9da7591e3542c412cd0ff85c3f"
 land_check = ["bash", "tools/land_check.sh", "{tree}"]
 # never public, beyond the agent files: the agents' wave drafts and the flip-era records

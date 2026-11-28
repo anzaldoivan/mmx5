@@ -5,7 +5,6 @@
 #include "mmx5/graphics.h"
 #include "addr.h"
 
-extern X4_BackgroundObj D_8009A1F8[];
 extern u16 D_800FA05E_ovl11;
 
 void func_800F5DF4_ovl11(u8* arg0) {
@@ -15,7 +14,7 @@ void func_800F5DF4_ovl11(u8* arg0) {
 
     move_object(arg0);
     animate_object(arg0);
-    dist = *(u16*)(arg0 + 0xE) - D_8009A1F8[*(s8*)(arg0 + 0x14)].y_pos.i.hi;
+    dist = *(u16*)(arg0 + 0xE) - D_8009A1F8.bg[*(s8*)(arg0 + 0x14)].y_pos.i.hi;
     func_8002D9EC(arg0, 0x40, 0x40);
     if (*(s8*)(arg0 + 3) == 0) {
         arg0[0x9A] = 0;

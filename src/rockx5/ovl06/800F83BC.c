@@ -7,8 +7,6 @@
 extern s32 ratan2(s32, s32);
 extern s32 rcos(s32);
 extern s32 rsin(s32);
-extern s32 D_800FF1DC_ovl06[];
-extern s32 D_800FF1E0_ovl06[];
 extern s16 D_800FF4F4_ovl06[][2];
 
 void func_800F83BC_ovl06(u8* obj) {
@@ -20,8 +18,8 @@ void func_800F83BC_ovl06(u8* obj) {
     s32 w;
 
     set_animation(obj, 0x13);
-    *(s32**)(obj + 0x50) = D_800FF1DC_ovl06;
-    ((s32**)obj)[0x54 / 4] = D_800FF1E0_ovl06;
+    *(s32**)(obj + 0x50) = D_800FF1DC_ovl06.w;
+    ((s32**)obj)[0x54 / 4] = D_800FF1E0_ovl06.w;
     i = 0;
     if (D_8009A0AA > D_800FF94C_ovl06 + 0x1260) {
         obj[0x15] = 0x40;

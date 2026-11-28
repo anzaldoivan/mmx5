@@ -24,16 +24,13 @@ void func_800F012C_ovl04(u8* a0) {
 #include "shared/func_800EFD54_ovl04.c"
 #undef func_800EFD54_ovl04
 
-extern u8 D_800D1C00[];
-extern u8 D_8009A1F8[];
-
 void func_800F01F8_ovl04(u8* obj) {
-    u8* g = D_800D1C00;
+    u8* g = g_playthrough_state.u;
     u8* b;
 
     if (g[0x26] & 4) {
         obj[6]++;
-        b = D_8009A1F8;
+        b = D_8009A1F8.u;
         ((s8*)b)[0xA6] = -1;
         *(s16*)(b + 0x5E) = 0;
         *(s16*)(b + 0x62) = 0;

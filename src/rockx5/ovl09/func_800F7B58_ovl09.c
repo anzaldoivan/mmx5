@@ -36,7 +36,7 @@ void func_800F7B58_ovl09(u8* obj) {
     *(s32*)(obj + 0x1C) = y;
     switch (kind) {
     case 0:
-        func_8002C338(0x13C, D_1F800030, 4);
+        load_palette(0x13C, D_1F800030, 4);
         obj[3] = 0;
         obj[0x5C] = 0;
         obj[0x60] = 0;

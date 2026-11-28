@@ -15,13 +15,17 @@ for p in extracted tools/bin .venv refs; do
     rm -rf "${work:?}/$p" && ln -s "$dev/$p" "$work/$p"
 done
 cd "$work"
+PY="${PY:-python3}"
+splat=$("$PY" tools/build/layout.py path config splat.)
+asm=$("$PY" tools/build/layout.py path asm)
 n=0; t=0
-for cfg in config/splat.*.yaml; do
-    a=${cfg#config/splat.}; a=${a%.yaml}; t=$((t + 1))
-    if make --no-print-directory split build BINARY="$a" > "$work/$a.log" 2>&1 && sha1sum --quiet -c "config/check.$a.sha"; then
+for cfg in "$splat"*.yaml; do
+    a=${cfg#"$splat"}; a=${a%.yaml}; t=$((t + 1))
+    sha=$("$PY" tools/build/layout.py path config "check.$a.sha")
+    if make --no-print-directory split build BINARY="$a" > "$work/$a.log" 2>&1 && sha1sum --quiet -c "$sha"; then
         n=$((n + 1))
     else
-        echo "LAND-CHECK $a FAIL"; grep -v 'asm/\|\.s:' "$work/$a.log" | tail -5
+        echo "LAND-CHECK $a FAIL"; grep -v "$asm/\|\.s:" "$work/$a.log" | tail -5
     fi
 done
 echo "LAND-CHECK $n of $t"

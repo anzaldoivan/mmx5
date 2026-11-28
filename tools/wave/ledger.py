@@ -5,7 +5,7 @@
   ledger.py --selftest
 
 Inputs waves/W<k>/{wave.json, verdicts.jsonl, attempts.jsonl, drafts/<alias>_<name>.c} for every W<k>, and
-.run/census/inventory.jsonl ({alias,module,name,vram,status:asm|c}; absent -> nothing is c). Row:
+.run/census/<v>/inventory.jsonl ({alias,module,name,vram,status:asm|c}; absent -> nothing is c). Row:
   {alias, name, vram, insns, wave, class, closeness, best_draft, blocker, tries, ctx_k, date}
 one per non-banked verdict row whose target is not c; a target is keyed (alias, ovl, vram int) -- ovl the module's
 `ovl..` segment, else "" (rockx5 overlays share vram) -- so a rename keeps it matched; an attempts row
@@ -14,7 +14,7 @@ resolves its vram through wave.json targets, then the wave's verdict rows, else 
 path; closeness the attempts try_line (T4 rows) or best (T2 rows), verbatim; blocker/date from the verdict; tries,
 ctx_k from the last attempts row (ctx_k may be null). class: attempts plateau if in PLATEAUS, else verdict
 no-verdict -> no-verdict, else tries >= 30 -> capped, else plumbing.
-Plus one dup-member row per member of a .run/census/groups.jsonl dup group (beside the inventory; absent -> none),
+Plus one dup-member row per member of a .run/census/<v>/groups.jsonl dup group (beside the inventory; absent -> none),
 members resolved (alias, name) through the inventory: a group with a c member is skipped; heads = rows keyed by a
 member's tkey (the closest by closeness() if several); each kind-game asm member without its own row gets {alias,
 name, vram, insns} of the member, {wave, closeness, best_draft, date} of the head, blocker `head <a>_<name>: <head
@@ -39,9 +39,12 @@ import sys
 from collections import Counter
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "build"))
+import layout  # noqa: E402  (the exe alias; a caller's path serves the same module)
+
 ROOT = Path(__file__).resolve().parents[2]
 FIX = Path(__file__).resolve().parent / "fixtures" / "ledger"
-INV = ROOT / ".run/census/inventory.jsonl"
+INV = ROOT / layout.census_dir() / "inventory.jsonl"
 PLATEAUS = {"seed-structural", "missing-transform", "mis-classified", "wall"}
 RUMOUR = ("INCLUDE_ASM", "__asm__", ".word", "glabel")
 COLS = ["alias", "name", "vram", "insns", "wave", "class", "closeness", "best_draft", "blocker", "tries", "ctx_k",
@@ -54,12 +57,15 @@ def jsonl(p):
 
 
 def an(r):  # T2 {alias,name,...} or T4 {target:"<alias>_<name>",...} -> (alias, name)
-    return (r["alias"], r["name"]) if "alias" in r else tuple(r["target"].split("_", 1))
+    if "alias" in r:
+        return layout.binary(r["alias"]), r["name"]
+    a, _, name = r["target"].partition("_")
+    return layout.binary(a), name
 
 
 def tkey(alias, module, vram):  # -> (alias, ovl, vram int); rockx5 overlays share vram, so ovl disambiguates
     seg = (module or "").split("/")[-1].split("_")[0]
-    return (alias, seg if seg.startswith("ovl") else "", int(str(vram).lower().removeprefix("0x"), 16))
+    return (layout.binary(alias), seg if seg.startswith("ovl") else "", int(str(vram).lower().removeprefix("0x"), 16))
 
 
 def key(r, where=None):  # -> target key; a row without vram resolves (alias,name) through `where`, else by name
@@ -75,6 +81,11 @@ def rel(p):
     return str(p.relative_to(ROOT)) if p.is_relative_to(ROOT) else str(p)
 
 
+def draft(wdir, al, nm):  # the draft file under any spelling a kept record used for the alias
+    ps = [wdir / "drafts" / f"{a}_{nm}.c" for a in layout.spellings(al)]
+    return next((p for p in ps if p.exists()), ps[0])
+
+
 def collect(waves, inv):
     """-> (ledger rows, {attempted key: "<alias>_<name>"}, c keys)."""
     cs = {key(r) for r in jsonl(inv) if r.get("status") == "c"}
@@ -83,8 +94,9 @@ def collect(waves, inv):
         wj = wdir / "wave.json"
         tg = json.loads(wj.read_text())["targets"] if wj.exists() else []
         verd = jsonl(wdir / "verdicts.jsonl")
-        where = {(t["alias"], t["name"]): t for t in verd if t.get("vram") is not None}
-        where.update({(t["alias"], t["name"]): t for t in tg})  # wave.json first, verdict rows as fallback
+        where = {(layout.binary(t["alias"]), t["name"]): t for t in verd if t.get("vram") is not None}
+        # wave.json first, verdict rows as fallback (a kept record's alias read as the binary it names today)
+        where.update({(layout.binary(t["alias"]), t["name"]): t for t in tg})
         insns = {key(t): t["insns"] for t in tg}
         att = {}
         for r in jsonl(wdir / "attempts.jsonl"):
@@ -102,7 +114,7 @@ def collect(waves, inv):
                    else "capped" if (tries or 0) >= 30 else "plumbing")
             rows.append({"alias": al, "name": nm, "vram": v.get("vram"), "insns": insns.get(k), "wave": wdir.name,
                          "class": cls, "closeness": a.get("try_line") or a.get("best"),
-                         "best_draft": rel(wdir / "drafts" / f"{al}_{nm}.c"), "blocker": v.get("reason"),
+                         "best_draft": rel(draft(wdir, al, nm)), "blocker": v.get("reason"),
                          "tries": tries, "ctx_k": a.get("ctx_k"), "date": v.get("date"), "key": k})
     best = {}  # a target re-drawn in a later wave keeps one row: fewest differing words, tie -> later wave
     for r in rows:
@@ -131,7 +143,7 @@ def members(best, inv, groups):  # -> dup-member rows: game asm members of a no-
             k = tkey(m["alias"], m.get("module"), m["vram"])
             if m.get("kind") != "game" or m.get("status") != "asm" or k in best:
                 continue
-            out.append({"alias": m["alias"], "name": m["name"], "vram": m["vram"], "insns": m.get("insns"),
+            out.append({"alias": layout.binary(m["alias"]), "name": m["name"], "vram": m["vram"], "insns": m.get("insns"),
                         "wave": h["wave"], "class": "dup-member", "closeness": h["closeness"],
                         "best_draft": h["best_draft"], "blocker": f"head {h['alias']}_{h['name']}: {h['blocker']}",
                         "tries": None, "ctx_k": None, "date": h["date"], "key": k})
@@ -215,10 +227,10 @@ def selftest():
     assert rc == 0 and "ledger: 5 rows, 0 unledgered, 0 without draft, 0 without blocker" in o, o
     rows = {r["name"]: r for r in collect(good, inv)[0]}
     fh, fb = rows["fh"], rows["fb"]  # dup-member of ledgered head fb
-    assert fh["class"] == "dup-member" and fh["blocker"] == "head slus_fb: word 2 (+0x8) differs", fh
+    assert fh["class"] == "dup-member" and fh["blocker"] == f"head {layout.MAIN}_fb: word 2 (+0x8) differs", fh
     assert (fh["best_draft"], fh["wave"], fh["closeness"], fh["insns"]) == (
         fb["best_draft"], "W0", fb["closeness"], 4) and fh["tries"] is None, fh
-    assert rows["fi"]["blocker"].startswith("head slus_fe:"), rows["fi"]  # head named fe in W0, fe_inv in inventory
+    assert rows["fi"]["blocker"].startswith(f"head {layout.MAIN}_fe:"), rows["fi"]  # head named fe in W0, fe_inv in inventory
     assert "fk" not in rows, rows["fk"]  # planted: group with c member fl stays unledgered
     assert rows["fb"]["class"] == "wall" and rows["fb"]["ctx_k"] == 41, rows["fb"]
     assert rows["fc"]["class"] == "capped" and rows["fc"]["closeness"].startswith("try: fc diff"), rows["fc"]
@@ -235,7 +247,7 @@ def selftest():
                             "date": "2026-10-05"}) + "\n")
     call(cmd_build, good, out, inv)
     rc, o = call(cmd_check, good, out, inv)
-    assert rc == 1 and "refused slus_fz W0 -- draft missing" in o and "1 without draft" in o, o
+    assert rc == 1 and f"refused {layout.MAIN}_fz W0 -- draft missing" in o and "1 without draft" in o, o
     (good / "W0/drafts/slus_fz.c").write_text('INCLUDE_ASM("asm", fz);\n')
     rc, o = call(cmd_check, good, out, inv)
     assert rc == 1 and "draft holds INCLUDE_ASM" in o, o
@@ -243,7 +255,7 @@ def selftest():
         f.write(json.dumps({"target": "slus_fy", "try_line": "try: fy diff 2 of 4 words", "tries": 1, "ctx_k": None,
                             "plateau": None, "minutes": 1}) + "\n")
     rc, o = call(cmd_check, good, out, inv)
-    assert rc == 1 and "unledgered slus_fy" in o, o
+    assert rc == 1 and f"unledgered {layout.MAIN}_fy" in o, o
     w1 = good / "W1"  # fc re-drawn in W1, closer: one row, the W1 draft
     (w1 / "drafts").mkdir(parents=True)
     shutil.copy(good / "W0/drafts/slus_fc.c", w1 / "drafts/slus_fc.c")
@@ -257,7 +269,7 @@ def selftest():
     with (w1 / "verdicts.jsonl").open("a") as f:  # planted: a failed row with an empty reason
         f.write(json.dumps({"alias": "slus", "name": "fg", "vram": "80001050", "verdict": "failed", "reason": ""}) + "\n")
     rc, o = call(cmd_check, good, out, inv)
-    assert rc == 1 and "refused slus_fg W1 -- no blocker" in o and "1 without blocker" in o, o
+    assert rc == 1 and f"refused {layout.MAIN}_fg W1 -- no blocker" in o and "1 without blocker" in o, o
     print("ledger: control OK -- rumour refused")
     return 0
 

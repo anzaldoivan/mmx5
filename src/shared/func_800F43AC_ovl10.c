@@ -1,6 +1,5 @@
 #include "types.h"
-
-extern u8 D_800FBE00_ovl10[];
+#include "mmx5/ovl10.h"
 
 void func_800F43AC_ovl10(u8* o) {
     if (*(s8*)(*(u8**)(o + 0x80) + 6) == 6) {
@@ -16,16 +15,16 @@ void func_800F43AC_ovl10(u8* o) {
             o[6] = 0;
             return;
         }
-        o[5] = D_800FBE00_ovl10[++o[0x88] + (o[0x8A] * 2 + o[0x89]) * 5];
+        o[5] = D_800FBE00_ovl10.u[++o[0x88] + (o[0x8A] * 2 + o[0x89]) * 5];
         o[6] = 0;
         return;
     }
     if (o[0x8E] != 0) {
         o[0x8E] = 0;
         o[0x88] = 0;
-        o[5] = D_800FBE00_ovl10[(o[0x8A] * 2 + o[0x89]) * 5];
+        o[5] = D_800FBE00_ovl10.u[(o[0x8A] * 2 + o[0x89]) * 5];
     } else {
-        o[5] = D_800FBE00_ovl10[++o[0x88] + (o[0x8A] * 2 + o[0x89]) * 5];
+        o[5] = D_800FBE00_ovl10.u[++o[0x88] + (o[0x8A] * 2 + o[0x89]) * 5];
     }
     o[6] = 0;
 }

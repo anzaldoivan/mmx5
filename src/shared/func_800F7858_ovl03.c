@@ -3,7 +3,6 @@
 #include "mmx5/movement.h"
 #include "mmx5/globals.h"
 
-extern D_8009A1F8_t D_8009A1F8;
 extern s32 func_80044DE0();
 
 void func_800F7858_ovl03(Ent8EF0* obj) {
@@ -11,7 +10,7 @@ void func_800F7858_ovl03(Ent8EF0* obj) {
         func_8002D9EC(obj, 0x40, 0x40);
         return;
     }
-    D_8009A1F8.unk26 = obj->unk94;
+    D_8009A1F8.t.unk26 = obj->unk94;
     if (obj->unk5C < D_800D1CA2) {
         if (--obj->unk7C == 0) {
             play_sound(0, 0xE, 0);
@@ -21,7 +20,7 @@ void func_800F7858_ovl03(Ent8EF0* obj) {
         func_8002D9EC(obj, 0x40, 0x40);
         return;
     }
-    D_8009A1F8.unk48 = 8;
+    D_8009A1F8.t.unk48 = 8;
     func_8003D2C4();
     animate_object(obj);
     apply_object_motion(obj);

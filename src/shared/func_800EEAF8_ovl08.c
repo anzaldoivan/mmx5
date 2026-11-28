@@ -1,4 +1,5 @@
 #include "types.h"
+#include "mmx5/object.h"
 #include "mmx5/graphics.h"
 #include "mmx5/globals.h"
 #include "mmx5/ovl08.h"
@@ -64,8 +65,6 @@ void func_800EEAF8_ovl08(X4_Obj* self) {
     }
 }
 
-extern Obj8002CC08 D_80098120[];
-
 void func_800EEC98_ovl08(u8* o) {
     Obj8002CC08* p;
 
@@ -79,7 +78,7 @@ void func_800EEC98_ovl08(u8* o) {
         o[0x82]--;
         return;
     }
-    for (p = D_80098120; p < D_80098120 + 32; p++) {
+    for (p = D_80098120.cc08; p < D_80098120.cc08 + 32; p++) {
         if (p->active == 0) {
             continue;
         }

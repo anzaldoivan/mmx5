@@ -1,13 +1,10 @@
 #include "types.h"
-
-extern u8 D_800C9310;
-extern u16 D_800D50DE;
-extern u16 D_8009A42E;
-extern u16 D_80093E68;
+#include "mmx5/globals.h"
+#include "mmx5/object.h"
 
 void func_800EFB34_ovl11(u8* p) {
     if (--p[0x19] == 0) {
-        D_800C9310 |= 1;
+        D_800C9310.b |= 1;
         p[0x18] = 0x5A;
         p[0x19] = 4;
         p[0x1E] ^= 1;
@@ -22,14 +19,9 @@ void func_800EFB34_ovl11(u8* p) {
     }
 }
 
-extern u8 D_800C9310;
-extern u16 D_800D50DE;
-extern u16 D_8009A42E;
-extern u16 D_80093E68;
-
 void func_800EFBC0_ovl11(u8* p) {
     if (--p[0x19] == 0) {
-        D_800C9310 |= 1;
+        D_800C9310.b |= 1;
         p[0x18] = 0x28;
         p[0x19] = 4;
         p[0x1E] ^= 1;

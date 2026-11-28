@@ -6,7 +6,6 @@ void func_800FEFA8_ovl04(u8* a0) {
     func_8002D9EC(a0, 0x10, 0x10);
 }
 
-extern u8 D_800D1C00[];
 extern u8 D_80102AC8_ovl04[];
 
 void func_800FEFCC_ovl04(u8* obj) {
@@ -17,7 +16,7 @@ void func_800FEFCC_ovl04(u8* obj) {
     if (t > 300) {
         set_animation(obj, 0x14);
         obj[3] = 1;
-        D_800D1C00[0x2A] &= 0xFE;
+        g_playthrough_state.u[0x2A] &= 0xFE;
         obj[0x5C] = 0x10;
         *(u8**)(obj + 0x54) = D_80102AC8_ovl04;
         obj[5]--;

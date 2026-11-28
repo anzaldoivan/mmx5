@@ -1,15 +1,14 @@
 #include "types.h"
+#include "mmx5/ovl03.h"
 #include "mmx5/globals.h"
 
 extern void (*D_800F9DDC_ovl03[])(u8*);
-extern s8 D_800FA238_ovl03;
-extern u8 D_8009A1F8[];
 
 void func_800F2BD4_ovl03(u8* obj) {
     u8* p;
 
     D_800F9DDC_ovl03[(s8)obj[5]](obj);
-    if (D_800FA238_ovl03 != 0) {
+    if (D_800FA238_ovl03.s != 0) {
         if (obj[0x47] == 14) {
             animate_object(obj);
         }
@@ -23,7 +22,7 @@ void func_800F2BD4_ovl03(u8* obj) {
     if (D_8009A0AA < 0x1081) {
         return;
     }
-    p = D_8009A1F8;
+    p = D_8009A1F8.u;
     if ((s8)p[0xAC] != 2) {
         p[0xAC] = 2;
         p[0xF4] = 1;

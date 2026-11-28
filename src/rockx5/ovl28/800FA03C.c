@@ -72,15 +72,13 @@ void func_800FA0DC_ovl28(u8* obj) {
 #undef U16
 #undef S8
 
-extern u8 D_800D1C00[];
-
 void func_800FA1F0_ovl28(u8* a0) {
     u8* g;
     u8* p;
 
     animate_object(a0);
     func_8002D9EC(a0, 0x30, 0x30);
-    g = D_800D1C00;
+    g = g_playthrough_state.u;
     if (((s8*)g)[0x2A] == 1) {
         g[0x2A] = 2;
         p = func_8002D1A4();
@@ -91,14 +89,13 @@ void func_800FA1F0_ovl28(u8* a0) {
             *(u8**)(p + 0x7C) = a0;
         }
     }
-    p = D_800D1C00;
+    p = g_playthrough_state.u;
     if (((s8*)p)[0x2A] == 2) {
         p[0x2A] = 0;
         a0[5] = 3;
     }
 }
 
-extern u16 D_800D50DE;
 extern u8 D_8009A0B5;
 
 void func_800FA294_ovl28(u8* obj) {
@@ -110,8 +107,6 @@ void func_800FA294_ovl28(u8* obj) {
         obj[5] = 4;
     }
 }
-
-extern u16 D_800D50DE;
 
 void func_800FA2FC_ovl28(u8* obj) {
     animate_object(obj);
@@ -127,8 +122,6 @@ void func_800FA2FC_ovl28(u8* obj) {
 }
 
 extern u8 D_80091C44;
-extern u8 D_800D1C00[];
-extern u8 D_8009A1F8[];
 
 void func_800FA38C_ovl28(u8* obj) {
     u8* p;
@@ -137,8 +130,8 @@ void func_800FA38C_ovl28(u8* obj) {
     animate_object(obj);
     func_8002D9EC(obj, 0x30, 0x30);
     if (D_80091C44 == 0) {
-        p = D_800D1C00;
-        q = D_8009A1F8;
+        p = g_playthrough_state.u;
+        q = D_8009A1F8.u;
         p[0xF] = 0x10;
         p[0x24] = 0;
         *(s32*)(p + 0x20) = 0;

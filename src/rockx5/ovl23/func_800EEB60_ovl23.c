@@ -16,10 +16,10 @@ void func_800EEB60_ovl23(u8* arg0) {
     s8 m;
 
     old = *(s8*)(arg0 + 0x44);
-    if (D_800C931C[2] & 0x8000) {
+    if (g_pad1_buttons[2] & 0x8000) {
         *(s8*)(arg0 + 0x44) = 0;
     }
-    if (D_800C931C[2] & 0x2000) {
+    if (g_pad1_buttons[2] & 0x2000) {
         *(s8*)(arg0 + 0x44) = 1;
     }
     if (old != *(s8*)(arg0 + 0x44)) {
@@ -40,7 +40,7 @@ void func_800EEB60_ovl23(u8* arg0) {
         arg0[0x49] = 5;
         arg0[0x1BA] = 1;
     }
-    x = D_800C931C[2];
+    x = g_pad1_buttons[2];
     if (x & 0x840) {
         arg0[1]++;
         func_800132F8(8);

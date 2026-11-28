@@ -1,9 +1,9 @@
 #include "types.h"
+#include "mmx5/globals.h"
 #include "mmx5/object.h"
 
 extern signed char D_8009A424;
 extern u8* D_800FB59C_ovl53;
-extern u8 D_8009A1F8[];
 
 void func_800FA528_ovl53(Ovl45State* s) {
     u8* p;
@@ -20,7 +20,7 @@ void func_800FA528_ovl53(Ovl45State* s) {
             p[2] = 0;
             *(s32*)(p + 0x38) = 0x1E;
         }
-        q = D_8009A1F8;
+        q = D_8009A1F8.u;
         *(s16*)(q + 0xB2) = 0;
         *(s16*)(q + 0xB6) = 0;
         q[0xAB] = 1;

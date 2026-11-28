@@ -12,7 +12,6 @@ extern u16 D_80103090_ovl04;
 extern u16 D_80103092_ovl04;
 extern u8 D_8009A29E;
 extern s8 D_800D1C2C;
-extern u8 D_800D1C00[];
 extern u8 D_80076920[];
 extern u8 D_80102A78_ovl04[];
 extern u8 D_8010295C_ovl04[];
@@ -27,7 +26,6 @@ extern u8 D_80102A90_ovl04[];
 extern u8 D_800750C0[];
 extern u8 D_80102A94_ovl04[];
 extern u8 D_80102A98_ovl04[];
-extern u8 D_8009A1F8[];
 extern u8 D_80102AA4_ovl04[];
 extern u8 D_80102AA8_ovl04[];
 extern u8 D_80102AAC_ovl04[];
@@ -105,7 +103,7 @@ void func_800F80CC_ovl04(u8* obj) {
     case 1: {
         u8* p;
 
-        p = D_800D1C00;
+        p = g_playthrough_state.u;
         p[0x27] = 0;
         p[0x2A] = 0;
         p[0x28] = 0;
@@ -233,13 +231,13 @@ void func_800F80CC_ovl04(u8* obj) {
         u8* p;
         u8* q;
 
-        p = D_800D1C00;
+        p = g_playthrough_state.u;
         p[0x27] = 0;
         p[0x2A] = 0;
         p[0x28] = 0;
         p[0x29] = 0;
         p[0x2B] = 0;
-        q = D_8009A1F8;
+        q = D_8009A1F8.u;
         *(s32*)(obj + 0x84) = 0;
         obj[0x8C] = 0;
         obj[0x90] = 0x40;
@@ -330,11 +328,11 @@ void func_800F80CC_ovl04(u8* obj) {
         }
         break;
     case 16: {
-        D_800D1C00[0x27] = 0;
-        D_800D1C00[0x2A] = 0;
-        D_800D1C00[0x28] = 0;
-        D_800D1C00[0x29] = 0;
-        D_800D1C00[0x2B] = 0;
+        g_playthrough_state.u[0x27] = 0;
+        g_playthrough_state.u[0x2A] = 0;
+        g_playthrough_state.u[0x28] = 0;
+        g_playthrough_state.u[0x29] = 0;
+        g_playthrough_state.u[0x2B] = 0;
         obj[0x5C] = 0x7F;
         obj[0x60] = 6;
         *(s16*)(obj + 0xA) = 0x1360;

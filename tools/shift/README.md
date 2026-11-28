@@ -1,6 +1,6 @@
-# tools/shift — exe shiftability
+# tools/shift: exe shiftability
 
-`scan.py` finds values in the exe ELF (`slus`) and the overlay ELF (`rockx5`). It finds every value that points into
+`scan.py` finds values in the exe ELF (`main`) and the overlay ELF (`rockx5`). It finds every value that points into
 SLUS_013.34's range or an overlay region and that no relocation symbolizes. Phase 2.3 drove the exe-target findings to 0 so that the
 exe can be padded and relinked. Phase 2.4 adds the overlay targets (directions exe->exe, exe->ovl, ovl->exe, ovl->ovl).
 
@@ -9,11 +9,11 @@ exe can be padded and relinked. Phase 2.4 adds the overlay targets (directions e
 - Run `make shift-scan PY=…`. With `SCAN_FLAGS=--baseline`, the command exits 0 whatever the count is.
 - `make check` runs `make shift-scan` on the retail pair after the fleet line. If the scan finds a word or misses a
   plant, `make check` fails.
-- `PY tools/shift/scan.py [--exe ELF] [--ovl ELF] [--allow config/shift/not_pointers.txt] [--report .run/shift/scan.txt] [--no-plant] [--baseline]`
+- `PY tools/shift/scan.py [--exe ELF] [--ovl ELF] [--allow config/us/shift/not_pointers.txt] [--report .run/shift/scan.txt] [--no-plant] [--baseline]`
 - `PY tools/shift/scan.py --selftest` prints `shift-scan: control OK`. The selftest uses a synthetic ELF and is
   game-free. It is in `make tools-selftest`.
 
-The inputs are ELFs linked with `ld -q` (`--emit-relocs`, mk/slus.mk `link`), so `.rel.*` survive. The ld map beside
+The inputs are ELFs linked with `ld -q` (`--emit-relocs`, mk/main.mk `link`), so `.rel.*` survive. The ld map beside
 each ELF (`<name>.map`) tells text from data.
 
 ## Range
@@ -81,17 +81,17 @@ rescan must report the plant as `data` with its direction. `scan.py` prints
 
 ## Allowlist
 
-Each line of `config/shift/not_pointers.txt` is `<alias> <site vaddr> <value> -- <reason>` (hex). `#` marks a comment.
+Each line of `config/us/shift/not_pointers.txt` is `<alias> <site vaddr> <value> -- <reason>` (hex). `#` marks a comment.
 `scan.py` does not count a listed site with that value, in any rockx5 overlay with that site. Every line needs a
 reason. The shifted replay arbitrates.
 
-The sites are retail vaddrs. With `--retail-exe ELF`, `scan.py` moves each slus site to the scanned exe by retail
-symbol+offset. `make shift-scan SHIFT=1` passes the ELF of build/slus. If a name is missing in either ELF, `scan.py`
+The sites are retail vaddrs. With `--retail-exe ELF`, `scan.py` moves each main site to the scanned exe by retail
+symbol+offset. `make shift-scan SHIFT=1` passes the ELF of build/main. If a name is missing in either ELF, `scan.py`
 exits 1.
 
 ## Regions and bounds (2.4 T2)
 
-`config/shift/regions.txt` has one line per region:
+`config/us/shift/regions.txt` has one line per region:
 `<name> vram=<hex> members=<ovl list> max_end=<hex>(<ovl>) bound=<hex> slack=<hex> verified=<static|live|no> source=<evidence>`.
 The `#` comments carry the evidence.
 
@@ -102,7 +102,7 @@ The `#` comments carry the evidence.
 - The link enforces the bounds (2.4 T5). Every rockx5 link (default and SHIFT) goes through `pad_ld.py`. After each
   of the 59 overlays, the script emits `ASSERT(ovlNN_VRAM_END <= bound, "region bound: ovlNN overruns <bound>")`.
   The A.lo members take 800FA000. The other A members and the B members take 80105000.
-- `make shift-oversize` first builds the SHIFT=1 slus and rockx5 pair when it is absent. Then it relinks the
+- `make shift-oversize` first builds the SHIFT=1 main and rockx5 pair when it is absent. Then it relinks the
   shifted rockx5 with pad 0x2000 into .run/shift-oversize/. The pad is larger than the smallest slack (0x1F08,
   ovl18).
   - If ld fails on that ASSERT, the target prints `shift-oversize: link failed as planted (ovlNN)` and exits 0.
@@ -115,33 +115,33 @@ The `#` comments carry the evidence.
 - The objects, the ELF and the map are in build/shift/<a>/ and are never shared with build/<a>/. The shifted build
   reads the split outputs (splat ld, undefined_*_auto.txt) from build/<a>/. There is no sha1 gate (the bytes differ by
   design). `make clean` removes build/ (including build/shift).
-- rockx5 uses `--just-symbols` + exe_syms.ld from the build/shift/slus ELF (build/shift/rockx5/exe_syms.{txt,ld}). Its
+- rockx5 uses `--just-symbols` + exe_syms.ld from the build/shift/main ELF (build/shift/rockx5/exe_syms.{txt,ld}). Its
   split still names exe addresses from build/rockx5/exe_syms.txt (unshifted ELF). Recursive exe builds pass `SHIFT=` /
   `SHIFT=1` explicitly (mk/rockx5.mk).
-- exe->ovl (T4.1): the exe relocs (config/reloc_addrs.slus.txt) name the symbol of the owner overlay.
-  config/shift/ovl_syms.ld defines that symbol in the exe at the retail vram. The symbol is pinned: the exe does not
+- exe->ovl (T4.1): the exe relocs (config/us/reloc_addrs.main.txt) name the symbol of the owner overlay.
+  config/us/shift/ovl_syms.ld defines that symbol in the exe at the retail vram. The symbol is pinned: the exe does not
   follow a shifted overlay. The rockx5 regions are placed at the exe's g_ovl_a_vram/g_ovl_b_vram (in-section exe globals).
   28 HELD words stay raw (logs/T4.1.owners.txt).
 - The SHIFT rockx5 link has two passes (T8, mk/rockx5.mk LINK_POST).
   - `ovl_syms.py gen` rewrites the pinned names to the shifted rockx5 map (build/shift/ovl_syms.ld).
-  - slus relinks with `OVL_SYMS=` set to that file. The pass-1 exe stays as `*.pass1.elf`. Then rockx5 relinks
+  - main relinks with `OVL_SYMS=` set to that file. The pass-1 exe stays as `*.pass1.elf`. Then rockx5 relinks
     (`PASS2=1`).
   - `ovl_syms.py check` runs after each relink. The non-pinned exe symbols and ovlA/B_VRAM must be unchanged from
     pass 1 to pass 2. Every pinned name in the exe must equal its rockx5 map address. If not, the check exits 1 and
     names the differences.
 - For the disc, the shifted build uses `rockx5.py pack --ref ''` (no cmp) and
-  `disc.py build --out build/shift/disc --slus … --rockx5 … --no-gate`.
+  `disc.py build --out build/shift/disc --main … --rockx5 … --no-gate`.
 
 The link recipe runs `pad_ld.py <alias> <in.ld> <out.ld> [--pad N] [--objdir DIR]`.
 
-- For slus, N = `SHIFT_PAD ?= 0`, and the recipe runs the script under SHIFT only.
+- For main, N = `SHIFT_PAD ?= 0`, and the recipe runs the script under SHIFT only.
 - For rockx5, every link runs the script. Under SHIFT (both T8 passes), N = `SHIFT_OVL_PAD ?= 0x10`. If not, N is 0
   and the script writes the default build/rockx5/ROCK_X5.BIN.pad.ld.
 - The script changes the object paths from build/<a>/ to DIR/. make passes B_DIR. The default is build/shift/<a>/.
 - For rockx5 only, the script puts `. += N` before the RODATA, TEXT and DATA of each code overlay. It does not pad
   the data overlays 13/15/17/19 or pad/toc. It also emits the region-bound ASSERTs above.
-- For slus only, `.main` becomes `. += N`, TEXT, `. += N`, DATA minus the tail object, `. += N`, RODATA,
-  `ASSERT(. <= 0x80091C30)`, advance to 0x80091C30, tail (82430.data.o, 0x3D0), `ASSERT(. <= 0x80092000)`. The script
+- For main only, `.main` becomes `. += N`, TEXT, `. += N`, DATA minus the tail object, `. += N`, RODATA,
+  `ASSERT(. <= 0x80091C30)`, advance to 0x80091C30, tail (func_800203F0.o .data, 0x3D0), `ASSERT(. <= 0x80092000)`. The script
   also puts `. = 0x80092000` before `.main_bss`.
 
 The free trailing fill is 0, so the script reorders `.main` and does not pad it. Every address below the tail moves

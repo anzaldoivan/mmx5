@@ -4,9 +4,6 @@
 
 extern void func_800EF5A0_ovl11(u8* arg0);
 extern void func_800EFC54_ovl11(s32);
-extern u16 D_800D50DE;
-extern u16 D_8009A42E;
-extern u16 D_80093E68;
 
 void func_800EF890_ovl11(u8* p) {
     if (p[0x19] != 0) {
@@ -50,7 +47,6 @@ void func_800EF978_ovl11(u8* arg0) {
 }
 
 void func_800EF5A0_ovl11(u8* arg0);
-extern u8 D_8009A1F8[];
 extern void* D_800F96B0_ovl11[];
 
 void func_800EF9F8_ovl11(u8* o) {
@@ -68,7 +64,7 @@ void func_800EF9F8_ovl11(u8* o) {
             o[0x1F] = 1;
         }
     }
-    b = D_8009A1F8;
+    b = D_8009A1F8.u;
     *(s16*)(o + 0xA) = *(u16*)(b + 0xA) + 0xA0;
     *(s16*)(o + 0xE) = *(u16*)(b + 0xE) + 0x80;
     p[6] = o[0x1A] - 1;

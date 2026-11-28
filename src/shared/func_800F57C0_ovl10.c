@@ -1,4 +1,5 @@
 #include "types.h"
+#include "mmx5/ovl10.h"
 #include "mmx5/graphics.h"
 #include "mmx5/globals.h"
 #include "mmx5/system.h"
@@ -22,8 +23,6 @@ void func_800F5808_ovl10(u8* obj) {
         obj[6] = 2;
     }
 }
-
-extern u8 D_800FBE00_ovl10[];
 
 void func_800F5854_ovl10(u8* obj) {
     animate_object(obj);
@@ -51,6 +50,6 @@ void func_800F5854_ovl10(u8* obj) {
         }
         break;
     }
-    obj[5] = D_800FBE00_ovl10[obj[0x88] + (obj[0x8A] * 2 + obj[0x89]) * 5];
+    obj[5] = D_800FBE00_ovl10.u[obj[0x88] + (obj[0x8A] * 2 + obj[0x89]) * 5];
     obj[6] = 0;
 }

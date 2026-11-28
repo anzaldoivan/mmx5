@@ -1,14 +1,12 @@
 #include "types.h"
 #include "mmx5/globals.h"
 
-extern u8 D_800D1C00[];
-
 void func_800F0E88_ovl20(u8* arg0) {
     u8* p;
 
     *(s16*)(arg0 + 8) += 1;
     if (*(s16*)(arg0 + 8) >= 10) {
-        p = D_800D1C00;
+        p = g_playthrough_state.u;
         p[0x26] = 0;
         *(s16*)(arg0 + 8) = 0;
         arg0[2]++;
@@ -17,12 +15,11 @@ void func_800F0E88_ovl20(u8* arg0) {
     }
 }
 
-extern u8 D_800D1C00[];
 extern u8 D_800F6DF0_ovl20[];
 extern u8 D_800F6DF8_ovl20;
 
 void func_800F0ED8_ovl20(u8* arg0) {
-    u8* p = D_800D1C00;
+    u8* p = g_playthrough_state.u;
     u8* obj;
     u8 idx;
 
@@ -48,18 +45,14 @@ void func_800F0ED8_ovl20(u8* arg0) {
     D_800F6DF8_ovl20 = 0x1F;
 }
 
-extern u8 D_800D1C32;
-
 void func_800F0F98_ovl20(u8* arg0) {
-    D_800D1C32 = 1;
+    D_800D1C32.u = 1;
     *(s16*)(arg0 + 8) = 0;
     arg0[2]++;
 }
 
-extern u8 D_800D1C00[];
-
 void func_800F0FB8_ovl20(u8* arg0) {
-    u8* p = D_800D1C00;
+    u8* p = g_playthrough_state.u;
 
     p[0x2B] = 1;
     p[0x31] = 1;

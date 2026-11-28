@@ -1,10 +1,10 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
-extern u8 D_8009A1F8[];
 extern void func_80013288(s32);
 
 void func_800FA0E4_ovl40(UnkObj* obj) {
-    u8* p = D_8009A1F8;
+    u8* p = D_8009A1F8.u;
 
     p[0x3] = 0;
     p[0x57] = 0;

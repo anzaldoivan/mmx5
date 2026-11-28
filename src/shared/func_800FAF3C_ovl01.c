@@ -1,7 +1,7 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
 extern u8 D_80074EE0[];
-extern signed char D_800D1C0C;
 extern u8 D_800FD608_ovl01[];
 extern void (*D_800FDB88_ovl01[])(u8*);
 
@@ -13,7 +13,7 @@ void func_800FAF3C_ovl01(u8* arg0) {
     }
     *(u8**)(arg0 + 0x58) = D_80074EE0;
     lim = 0x40;
-    if (D_800D1C0C != 0xC) {
+    if (D_800D1C0C.s != 0xC) {
         lim = 0x120;
     }
     if (lim < *(s16*)(arg0 + 0xE)) {

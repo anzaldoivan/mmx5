@@ -1,12 +1,8 @@
 #include "types.h"
+#include "mmx5/object.h"
 #include "addr.h"
 #include "mmx5/globals.h"
 #include "mmx5/sound.h"
-
-extern u16 D_800D50DE;
-extern u16 D_8009A42E;
-extern u16 D_80093E68;
-extern u8 D_8009A1F8[];
 
 void func_800FC214_ovl39(u8* arg0) {
     if ((s16)(++*(s16*)(arg0 + 0x7C) % 5) == 0) {
@@ -17,9 +13,9 @@ void func_800FC214_ovl39(u8* arg0) {
             *(u16*)(arg0 + 0x7C) = 0x78;
             *(u16*)(arg0 + 0x7E) = 0;
             arg0[6]++;
-            D_8009A1F8[0x3] = 0;
-            D_8009A1F8[0x57] = 0;
-            D_8009A1F8[0xAB] = 0;
+            D_8009A1F8.u[0x3] = 0;
+            D_8009A1F8.u[0x57] = 0;
+            D_8009A1F8.u[0xAB] = 0;
         }
     }
 }
@@ -71,10 +67,8 @@ void func_800FC41C_ovl39(u8* arg0) {
     }
 }
 
-extern u8 D_800D1C00[];
-
 void func_800FC468_ovl39(u8* obj) {
-    u8* p = D_800D1C00;
+    u8* p = g_playthrough_state.u;
     func_8002385C(0x49, 0xFF, p[0x2F]);
     p[0x2F] = 1;
     obj[6]++;
@@ -86,27 +80,21 @@ void func_800FC468_ovl39(u8* obj) {
 
 extern s32 func_80044DE0();
 extern u8 D_800FEB60_ovl39[];
-extern u8 D_8009A1F8[];
 
 void func_800FC500_ovl39(u8* arg0) {
     if (func_80044DE0() == 0) {
         func_80028B18(0, 0x1170, 0x790, D_800FEB60_ovl39);
-        D_8009A1F8[0x3] = 1;
-        D_8009A1F8[0x57] = 1;
-        D_8009A1F8[0xAB] = 1;
-        D_8009A1F8[0x58] = 2;
-        *(s16*)(D_8009A1F8 + 0x94) = 0;
-        *(s16*)(D_8009A1F8 + 0x96) = 0;
-        D_8009A1F8[0xA0] = 1;
-        D_8009A1F8[0x4C] = 1;
+        D_8009A1F8.u[0x3] = 1;
+        D_8009A1F8.u[0x57] = 1;
+        D_8009A1F8.u[0xAB] = 1;
+        D_8009A1F8.u[0x58] = 2;
+        *(s16*)(D_8009A1F8.u + 0x94) = 0;
+        *(s16*)(D_8009A1F8.u + 0x96) = 0;
+        D_8009A1F8.u[0xA0] = 1;
+        D_8009A1F8.u[0x4C] = 1;
         arg0[6]++;
     }
 }
-
-extern u8 D_800C9310;
-extern u16 D_800D50DE;
-extern u16 D_8009A42E;
-extern u16 D_80093E68;
 
 void func_800FC580_ovl39(u8* arg0) {
     if ((s16)(++*(s16*)(arg0 + 0x7C) % 5) == 0) {
@@ -114,16 +102,14 @@ void func_800FC580_ovl39(u8* arg0) {
         D_8009A42E -= 0x20;
         D_80093E68 -= 0x400;
         if (D_800D50DE == 0) {
-            D_800C9310 = 1;
+            D_800C9310.b = 1;
             arg0[6]++;
         }
     }
 }
 
-extern u8 D_800D1C00[];
-
 void func_800FC624_ovl39(u8* obj) {
-    u8* p = D_800D1C00;
+    u8* p = g_playthrough_state.u;
     func_8002385C(0x54, 0xFF, p[0x30]);
     p[0x30] = 1;
     obj[6]++;
@@ -131,12 +117,11 @@ void func_800FC624_ovl39(u8* obj) {
 
 extern s32 func_80024548(s32);
 extern u8 D_80091C44;
-extern u8 D_800D1C00[];
 
 void func_800FC678_ovl39(u8* obj) {
     u8* p;
     if (D_80091C44 == 0) {
-        p = D_800D1C00;
+        p = g_playthrough_state.u;
         p[0x24] = 1;
         p[0x25] = 1;
         *(u8**)(p + 0x20) = obj;

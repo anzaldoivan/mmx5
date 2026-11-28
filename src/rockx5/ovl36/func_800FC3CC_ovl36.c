@@ -1,4 +1,6 @@
 #include "types.h"
+#include "mmx5/ovl10.h"
+#include "mmx5/ovl36.h"
 
 #define D_800FBE00_ovl10 D_800FECC8_ovl36
 

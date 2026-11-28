@@ -2,7 +2,6 @@
 #include "mmx5/globals.h"
 
 extern u8* func_8002C938();
-extern u8 D_8009A1F8[];
 extern s8 D_800D1C0F;
 
 void func_800F7640_ovl03(u8* arg0) {
@@ -12,7 +11,7 @@ void func_800F7640_ovl03(u8* arg0) {
 
     if (D_800D1C0F == 0) {
         if (*(s16*)(arg0 + 0x7C) == 0x28) {
-            b = D_8009A1F8;
+            b = D_8009A1F8.u;
             *(s32*)(arg0 + 0x94) = *(s16*)(b + 0x26);
             *(s16*)(b + 0x26) = *(u16*)(b + 0x24) - 0x10;
         }

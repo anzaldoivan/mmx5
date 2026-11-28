@@ -7,8 +7,6 @@ void func_800FF188_ovl04(u8* arg0) {
     }
 }
 
-/* W28 draft: copy parent's 0x8000 flag, then clear it on D_800D1C2A bit 2 (rockx5 ovl04; twin of func_800FEAC0). */
-
 extern u8 D_800D1C2A;
 
 void func_800FF1BC_ovl04(EntFEAC0* o) {

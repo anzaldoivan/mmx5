@@ -120,25 +120,25 @@ void func_800F2F14_ovl28(u8* obj) {
     q = D_1F80004C.bytes;
     if (D_800FE198_ovl28[q[0x89]][q[0x8A]] == 11) {
         q[0x8B] = 11;
-        func_8002C338(0x13C, D_1F800030 + 0xA0, 1);
-        func_8002C338(0x13D, D_1F800030 + 0xC0, 1);
+        load_palette(0x13C, D_1F800030 + 0xA0, 1);
+        load_palette(0x13D, D_1F800030 + 0xC0, 1);
     } else {
         c = D_800FE198_ovl28[q[0x89]][q[0x8A] + 1];
         switch (c) {
         case 5:
             q[0x8B] = c;
-            func_8002C338(0x13C, D_1F800030 + 0x60, 1);
-            func_8002C338(0x13D, D_1F800030 + 0x80, 1);
+            load_palette(0x13C, D_1F800030 + 0x60, 1);
+            load_palette(0x13D, D_1F800030 + 0x80, 1);
             break;
         case 9:
             q[0x8B] = c;
-            func_8002C338(0x13C, D_1F800030 + 0x120, 1);
-            func_8002C338(0x13D, D_1F800030 + 0x140, 1);
+            load_palette(0x13C, D_1F800030 + 0x120, 1);
+            load_palette(0x13D, D_1F800030 + 0x140, 1);
             break;
         case 10:
             q[0x8B] = c;
-            func_8002C338(0x13C, D_1F800030 + 0xE0, 1);
-            func_8002C338(0x13D, D_1F800030 + 0x100, 1);
+            load_palette(0x13C, D_1F800030 + 0xE0, 1);
+            load_palette(0x13D, D_1F800030 + 0x100, 1);
             break;
         }
     }

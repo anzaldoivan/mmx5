@@ -1,4 +1,5 @@
 #include "types.h"
+#include "mmx5/ovl10.h"
 #include "mmx5/globals.h"
 #include "mmx5/movement.h"
 #include "mmx5/graphics.h"
@@ -38,7 +39,6 @@ void func_800F59EC_ovl10(u8* obj) {
 }
 
 extern void func_800F6250_ovl10(void*);
-extern u8 D_800FBE00_ovl10[];
 
 void func_800F5AE0_ovl10(u8* obj) {
     u8 v;
@@ -52,10 +52,11 @@ void func_800F5AE0_ovl10(u8* obj) {
         } else if (obj[0x8E] != 0) {
             obj[0x8E] = 0;
             obj[0x88] = 0;
-            obj[5] = D_800FBE00_ovl10[(obj[0x8A] * 2 + obj[0x89]) * 5];
+            obj[5] = D_800FBE00_ovl10.u[(obj[0x8A] * 2 + obj[0x89]) * 5];
             goto end;
         } else {
-            v = D_800FBE00_ovl10[++obj[0x88] + (obj[0x8A] * 2 + obj[0x89]) * 5];
+            v = D_800FBE00_ovl10
+                    .u[++obj[0x88] + (obj[0x8A] * 2 + obj[0x89]) * 5];
         }
         obj[5] = v;
     end:

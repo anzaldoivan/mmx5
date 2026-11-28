@@ -1,14 +1,12 @@
 #include "types.h"
 #include "mmx5/globals.h"
 
-extern u8 D_800D1C00[];
-
 void func_800FEA28_ovl04(u8* a0) {
     u8* child = *(u8**)(a0 + 0x80);
     u8* g;
 
     if (func_80031DD0(a0) != 0) {
-        g = D_800D1C00;
+        g = g_playthrough_state.u;
         g[0x27] |= 1;
     }
     *(u16*)(a0 + 0x42) &= 0x7FFF;
@@ -18,8 +16,6 @@ void func_800FEA28_ovl04(u8* a0) {
         a0[5]++;
     }
 }
-
-/* W27 draft: copy parent's 0x8000 flag, then clear it on a D_800D1C2A mask (rockx5 ovl04). */
 
 extern u8 D_800D1C2A;
 

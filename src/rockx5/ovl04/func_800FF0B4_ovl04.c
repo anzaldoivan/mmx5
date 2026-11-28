@@ -1,4 +1,3 @@
-/* T4 probe: u8 flag test, short-circuit and branchy tail (rockx5 ovl04). */
 #include "types.h"
 #include "mmx5/globals.h"
 #define D_8009A420_as_s32 (*(s32*)&D_8009A420)

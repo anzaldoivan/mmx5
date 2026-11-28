@@ -1,10 +1,8 @@
 #include "types.h"
 #include "mmx5/globals.h"
 
-extern u8 D_8009A1F8[];
-
 void func_800EF4D0_ovl01(u8* arg0) {
-    u8* p = D_8009A1F8;
+    u8* p = D_8009A1F8.u;
 
     p[0x57] = 0;
     p[0xAB] = 0;

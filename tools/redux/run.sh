@@ -1,20 +1,25 @@
 #!/usr/bin/env bash
-# run.sh -- run a Lua script in the pinned PCSX-Redux against the retail disc (T3).
+# run.sh -- run a Lua script in the pinned PCSX-Redux against the retail disc.
 #
 #   tools/redux/run.sh <script.lua> [extra emulator args]
 #
 # Env: REDUX_ADDR (default 0x80010000), REDUX_EXPECT_ADDR (file slice compared; default REDUX_ADDR),
-#      REDUX_FRAMES, REDUX_TIMEOUT (s, default 120), REDUX_CUE (disc cue; default the retail disc; relative = repo root). Exit = the script's PCSX.quit(code); 124 = timed out.
+#      REDUX_FRAMES, REDUX_TIMEOUT (s, default 120), REDUX_CUE (disc cue; default the retail disc; relative = repo root),
+#      REDUX_BIOS (default disks/bios/SCPH1001.BIN, USA SCPH-1001; sha256 pinned in tools/bin/scph1001.sha256). Exit = the script's PCSX.quit(code); 124 = timed out.
 # Output (stdout of the emulator) goes to .run/redux/<script>.log. Pin: tools/bin/pcsx-redux.sha256.
 set -u
 ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
 APP="$ROOT/tools/bin/PCSX-Redux-ff4033ac-x86_64.AppImage"
 CUE="${REDUX_CUE:-$ROOT/disks/Megaman X5 (U) [SLUS-01334].cue}"
 case "$CUE" in /*) ;; *) CUE="$ROOT/$CUE" ;; esac  # relative = repo root (we cd to .run/redux below)
-EXE="$ROOT/extracted/retail/SLUS_013.34"
+EXE="$ROOT/extracted/us/SLUS_013.34"
+BIOS="${REDUX_BIOS:-$ROOT/disks/bios/SCPH1001.BIN}"
 SCRIPT="$(realpath "${1:?usage: run.sh <script.lua> [args]}")"; shift
 OUT="$ROOT/.run/redux"; mkdir -p "$OUT"
 [ -x "$APP" ] || { echo "redux: missing $APP (fetch: docs/ops/oracles.md)"; exit 2; }
+[ -f "$BIOS" ] || { echo "redux: missing BIOS $BIOS (SCPH-1001; docs/ops/oracles.md)"; exit 2; }
+BIOS_PIN="$(cut -d' ' -f1 "$ROOT/tools/bin/scph1001.sha256")"
+[ "$(sha256sum "$BIOS" | cut -d' ' -f1)" = "$BIOS_PIN" ] || { echo "redux: BIOS $BIOS sha256 differs from tools/bin/scph1001.sha256 (not SCPH-1001)"; exit 2; }
 [ -f "$SCRIPT" ] || { echo "redux: missing script $SCRIPT (a missing -dofile hangs to the timeout)"; exit 2; }
 
 export REDUX_ADDR="${REDUX_ADDR:-0x80010000}"
@@ -36,7 +41,7 @@ grep -q '^-- Needs `-interpreter`' "$SCRIPT" && set -- -interpreter "$@"
 LOG="$OUT/$(basename "$SCRIPT" .lua).log"
 cd "$OUT"
 # timeout signals its whole process group, so the AppImage runtime's child dies with it
-timeout -k 10 "${REDUX_TIMEOUT:-120}" "$APP" -no-ui -stdout -fastboot -iso "$CUE" -run -dofile "$SCRIPT" "$@" >"$LOG" 2>&1
+timeout -k 10 "${REDUX_TIMEOUT:-120}" "$APP" -no-ui -stdout -fastboot -bios "$BIOS" -iso "$CUE" -run -dofile "$SCRIPT" "$@" >"$LOG" 2>&1
 rc=$?
 grep '^redux:' "$LOG"
 [ $rc -eq 124 ] && echo "redux: timed out after ${REDUX_TIMEOUT:-120}s (log $LOG)"

@@ -1,4 +1,4 @@
-# NOTICE — the sources under `src/`
+# NOTICE: the sources under `src/`
 
 The C files under `src/` are a **reimplementation of the executable code of *Mega Man X5*** (Sony PlayStation (PS1),
 USA SLUS-01334). The authors wrote them so that the game's own compiler turns them back into the original machine code

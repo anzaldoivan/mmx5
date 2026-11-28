@@ -1,4 +1,6 @@
 #include "types.h"
+#include "mmx5/ovl05.h"
+#include "mmx5/globals.h"
 #include "mmx5/system.h"
 #include "mmx5/graphics.h"
 #include "addr.h"
@@ -6,8 +8,6 @@
 extern s32 func_8002B5B4(s32);
 extern u32* D_80098118;
 extern u8 D_8009A0B4;
-extern u8 D_8009A1F8[];
-extern u8 D_800F57DC_ovl05[];
 extern s32 D_800F581C_ovl05[];
 extern s32 D_800F583C_ovl05[];
 
@@ -30,14 +30,14 @@ void func_800F2798_ovl05(u8* a0) {
                 ((r * 4 + 0x18) % 16) | (((r + 6) / 4 + 0x1E0) << 6);
             a0[0x14] = D_8009A0B4;
             a0[0x16] = 0;
-            *(u8**)(a0 + 0x30) = D_800F57DC_ovl05;
+            *(u8**)(a0 + 0x30) = D_800F57DC_ovl05.u;
             *(u16*)(a0 + 0xA) = *(u16*)(*(u8**)(a0 + 0x50) + 0xA);
             if (random_byte() & 4) {
-                g = D_8009A1F8;
+                g = D_8009A1F8.u;
                 *(u16*)(a0 + 0xE) =
                     *(u16*)(g + 0xE) - ((random_byte() & 0x3F) - 0x78);
             } else {
-                h = D_8009A1F8;
+                h = D_8009A1F8.u;
                 *(u16*)(a0 + 0xE) =
                     *(u16*)(h + 0xE) + ((random_byte() & 0x3F) + 0x78);
             }
@@ -52,7 +52,7 @@ void func_800F2798_ovl05(u8* a0) {
             a0[0x15] = 0;
             set_animation(a0, (random_byte() & 3) + 5);
             a0[5] = 1;
-            k = D_8009A1F8;
+            k = D_8009A1F8.u;
             if (*(s16*)(k + 0xE) < 0xA60) {
                 a0[4]++;
             }

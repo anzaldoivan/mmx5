@@ -1,8 +1,8 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
 extern s32 rsin(s32);
 extern s32 D_800FB964_ovl52;
-extern u8 D_8009A1F8[];
 
 void func_800FAC54_ovl52(UnkObj* arg0) {
     s32 s;
@@ -15,7 +15,7 @@ void func_800FAC54_ovl52(UnkObj* arg0) {
     if (v != 0) {
         v = s << 8;
     }
-    p = D_8009A1F8;
+    p = D_8009A1F8.u;
     *(s32*)(p + 0xB4) = 0x2000000 - v;
     p[0xF4] = 1;
     arg0->unk4++;

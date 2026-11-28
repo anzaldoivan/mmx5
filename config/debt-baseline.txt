@@ -27,17 +27,22 @@ raise protected 1 2026-11-14 T5 dup-member ledger rows
 raise protected 1 2026-11-16 T8 scan.py basis maps ovlNN names to rockx5
 raise protected 1 2026-11-18 4.2 T1 no-rom.yml runs the public tier only (R112)
 raise protected 1 2026-11-21 AI policy text: drop the last sentence
+raise protected 1 2026-11-22 4.8 T2: scan.py taskid/banner/endmarker classes and OVL basis
+raise protected 1 2026-11-27 T3: ledger.py reads the former alias slus through layout.binary()
+raise protected 1 2026-11-27 T5: ledger.py reads census data via layout.census_dir()
+raise protected 2 2026-11-27 T6: build.yml reads the version's check lists; no-rom.yml step names mk/main.mk
+raise protected 4 2026-11-27 T1: scan.py reads config/<v>/symbols; the progress note drops its rules/ cite; B3
 raise asm 2 2026-10-26 first public release with the floor: header.s and game_80013348.s were already counted in dev's baseline
 raise asm 2 2026-10-26 first public release with the floor: header.s and game_80013348.s were already counted in dev's baseline
 74 pin
-233 goto
+238 goto
 21 goto-unmarked
-22429 offset
-42 address
+22898 offset
+45 address
 11 cast
-10171 field
+10219 field
 2 asm
-4226 placeholder
-29384 placeholder-use
-10404 extern
-4718 filename
+4260 placeholder
+26914 placeholder-use
+9072 extern
+4102 filename

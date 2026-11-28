@@ -3,8 +3,6 @@
 
 extern u8 D_800D1F3C;
 extern signed char D_8009A424;
-extern u8 D_8009A1F8[];
-extern u8 D_800D1C00[];
 
 void func_800FAC64_ovl54(u8* arg0) {
     s32 i;
@@ -12,9 +10,9 @@ void func_800FAC64_ovl54(u8* arg0) {
 
     if (D_800D1F3C == 0 && D_8009A424 == 0) {
         func_8001E668();
-        D_8009A1F8[0x3] = 0;
-        D_8009A1F8[0x57] = 0;
-        D_8009A1F8[0xAB] = 0;
+        D_8009A1F8.u[0x3] = 0;
+        D_8009A1F8.u[0x57] = 0;
+        D_8009A1F8.u[0xAB] = 0;
         func_8002C50C();
         i = 15;
         p = arg0 + 0x35;
@@ -23,7 +21,7 @@ void func_800FAC64_ovl54(u8* arg0) {
         }
         arg0[0xC] = 0x12;
         arg0[0xD] = 0;
-        D_800D1C00[0x27] = 0;
+        g_playthrough_state.u[0x27] = 0;
         arg0[0] = 0xB;
         arg0[1] = 0;
         arg0[2] = 0;

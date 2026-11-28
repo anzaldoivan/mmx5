@@ -57,3 +57,20 @@ void func_800FC740_ovl32(u8* obj) {
 #undef D_80101CEC_ovl04
 #undef func_800F6CC0_ovl04
 #undef func_800F6CF8_ovl04
+
+#define func_800F6D44_ovl04 func_800FC978_ovl32
+#define D_80101CEC_ovl04 D_800FE518_ovl32
+#include "shared/func_800F6D44_ovl04.c"
+#undef func_800F6D44_ovl04
+#undef D_80101CEC_ovl04
+
+#define D_8007BD4C D_800FE544_ovl32
+
+#define func_800532E0 func_800FCA30_ovl32
+#include "shared/func_800532E0.c"
+#undef func_800532E0
+#undef D_8007BD4C
+
+#define func_800F6E38_ovl04 func_800FCA6C_ovl32
+#include "shared/func_800F6E38_ovl04.c"
+#undef func_800F6E38_ovl04

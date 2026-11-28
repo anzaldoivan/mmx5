@@ -4,7 +4,6 @@
 #include "mmx5/globals.h"
 #include "mmx5/graphics.h"
 
-extern u8 D_8009A1F8[];
 extern u8 D_800FA4DC_ovl29[];
 extern u16 D_800FA504_ovl29[];
 
@@ -27,7 +26,7 @@ void func_800F6FE4_ovl29(u8* obj) {
         set_animation(obj, 0x1E);
         *(u8**)(obj + 0x54) = D_800FA4DC_ovl29;
         r = random_byte() & 0x1F;
-        g = D_8009A1F8;
+        g = D_8009A1F8.u;
         idx = obj[7];
         *(s16*)(obj + 0xA) = *(u16*)(g + 0xA) + D_800FA504_ovl29[idx] + r;
         *(s16*)(obj + 0xE) = *(u16*)(g + 0xE) - 0x20;
@@ -40,7 +39,6 @@ void func_800F6FE4_ovl29(u8* obj) {
 }
 
 extern void func_8002A600(s32, s32, s32);
-extern s8 D_800D1C0C;
 
 void func_800F70E0_ovl29(u8* arg0) {
     u16 u;
@@ -60,7 +58,7 @@ void func_800F70E0_ovl29(u8* arg0) {
     func_800317B8(arg0);
     move_object(arg0);
     animate_object(arg0);
-    if (D_800D1C0C == 0xC) {
+    if (D_800D1C0C.s == 0xC) {
         if (*(s16*)(arg0 + 0xE) >= 0x6C9) {
             set_animation(arg0, 0x20);
             *(s16*)(arg0 + 0xE) = 0x6C8;

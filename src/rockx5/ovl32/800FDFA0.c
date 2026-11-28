@@ -1,4 +1,5 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
 extern void func_8002C1C8(void);
 
@@ -40,10 +41,6 @@ void func_800FDFA0_ovl32(u8* arg0) {
     D_800D50DC = 0;
     func_8002C1C8();
 }
-
-extern u16 D_800D50DE;
-extern u16 D_8009A42E;
-extern u16 D_80093E68;
 
 void func_800FE038_ovl32(u8* arg0) {
     u16 r = D_800D50DE + 0x11;

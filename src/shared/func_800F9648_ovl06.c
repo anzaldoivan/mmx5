@@ -1,4 +1,3 @@
-/* Twin of func_800F6B60_ovl11 (dup0771), child stored at +0x80. */
 #include "types.h"
 #include "mmx5/globals.h"
 #include "addr.h"

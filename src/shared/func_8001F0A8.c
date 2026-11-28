@@ -3,8 +3,8 @@
 
 #define M2C_UNK s32
 
-M2C_UNK create_task(M2C_UNK, M2C_UNK*); /* extern */
-M2C_UNK func_80012EAC();                /* extern */
+M2C_UNK create_task(M2C_UNK, M2C_UNK*);
+M2C_UNK func_80012EAC();
 extern M2C_UNK func_80020904;
 
 void func_8001F0A8(void) {

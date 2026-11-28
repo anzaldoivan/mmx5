@@ -6,7 +6,6 @@
 
 extern void func_8002A600(s32, s32, s32);
 extern u16 D_8009A22C;
-extern u8 D_800D1C00[];
 
 void func_800FCDD8_ovl04(u8* a0) {
     u8* p;
@@ -22,12 +21,12 @@ void func_800FCDD8_ovl04(u8* a0) {
     }
     if (*(s16*)(a0 + 0xE) < 0x471) {
         a0[5]++;
-        D_800D1C00[0x27] = 0;
-        D_800D1C00[0x2A] = 0;
-        D_800D1C00[0x28] = 0;
-        D_800D1C00[0x29] = 0;
-        D_800D1C00[0x2B] = 0;
-        D_800D1C00[0x26] = 1;
+        g_playthrough_state.u[0x27] = 0;
+        g_playthrough_state.u[0x2A] = 0;
+        g_playthrough_state.u[0x28] = 0;
+        g_playthrough_state.u[0x29] = 0;
+        g_playthrough_state.u[0x2B] = 0;
+        g_playthrough_state.u[0x26] = 1;
         a0[0x8D] = 0x3C;
         r = random_byte();
         *(s16*)(a0 + 0x8A) = 0;

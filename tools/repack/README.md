@@ -1,7 +1,7 @@
 # tools/repack
 `rockx5.py` rebuilds `ROCK_X5.BIN` (overlay archive) from the linked image and generates the sector-0 TOC.
 
-    rockx5.py pack --map build/rockx5/ROCK_X5.BIN.map --elf-bin build/rockx5/ROCK_X5.BIN --out build/disc/ROCK_X5.BIN [--ref extracted/retail/ROCK_X5.BIN]
+    rockx5.py pack --map build/rockx5/ROCK_X5.BIN.map --elf-bin build/rockx5/ROCK_X5.BIN --out build/disc/ROCK_X5.BIN [--ref extracted/us/ROCK_X5.BIN]
     rockx5.py --selftest
 
 - `pack` cuts the blobs ovl00..ovl58 by `<name>_ROM_START/_ROM_END` in the map. The layout: ovl00 is at 0x800, each

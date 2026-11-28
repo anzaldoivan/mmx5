@@ -12,7 +12,6 @@ extern u8 D_800FA244_ovl29[];
 extern u8 D_800F9894_ovl29[];
 extern u8 D_80075A20[];
 extern u32* D_80098118;
-extern u8 D_800D1C00[];
 
 void func_800F3444_ovl29(ObjF3444* obj) {
     u8* p;
@@ -45,7 +44,7 @@ void func_800F3444_ovl29(ObjF3444* obj) {
     obj->unk28 = 0;
     obj->unk2C = 0;
     obj->unk40 = (t >> 7) + 0x160;
-    p = D_800D1C00;
+    p = g_playthrough_state.u;
     *(ObjF3444**)(p + 0x20) = obj;
     p[0xA2] = 0x20;
     func_80024548(z);

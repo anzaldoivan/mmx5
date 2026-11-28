@@ -9,6 +9,9 @@ Layout + TOC: docs/formats.md "ROCK_X5.BIN TOC (inverse)". TOC semantics: tools/
 import argparse, re, struct, sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "build"))
+import layout as paths  # noqa: E402  (this file defines layout())
+
 SECTOR = 2048
 NOVL = 59  # exe: addiu a2,zero,0x3a -> 0x3a+1 rows
 ROM_RE = re.compile(r"^\s*0x([0-9a-fA-F]+)\s+(\w+)_ROM_(START|END) = __romPos\s*$")
@@ -162,8 +165,8 @@ def main():
     p.add_argument("--map", required=True)
     p.add_argument("--elf-bin", required=True)
     p.add_argument("--out", required=True)
-    p.add_argument("--ref", default="extracted/retail/ROCK_X5.BIN")
-    p.add_argument("--retail", default="extracted/retail/ROCK_X5.BIN")  # shift report only, read-only
+    p.add_argument("--ref", default=str(paths.extracted_dir() / "ROCK_X5.BIN"))
+    p.add_argument("--retail", default=str(paths.extracted_dir() / "ROCK_X5.BIN"))  # shift report only, read-only
     return pack(ap.parse_args())
 
 

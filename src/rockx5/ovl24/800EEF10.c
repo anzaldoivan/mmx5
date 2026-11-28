@@ -46,13 +46,13 @@ extern s8 D_800F5F7A_ovl24;
 void func_800EF028_ovl24(s32 arg0) {
     u16* pad;
 
-    if (D_800C931C[2] & 0x5000) {
+    if (g_pad1_buttons[2] & 0x5000) {
         if (D_800F5F80_ovl24_as_s8 != 0) {
             play_sound(0, 0xC, 0);
         }
         D_8009A420[7] ^= 1;
     }
-    pad = D_800C931C;
+    pad = g_pad1_buttons;
     if (D_800F5F80_ovl24_as_s8 != 0) {
         if (!(pad[2] & 0x40)) {
             return;
@@ -81,14 +81,13 @@ void func_800EF028_ovl24(s32 arg0) {
 
 extern void func_800F0C58_ovl24(u8* a0, s32 a1, s32 a2, s32 a3);
 extern u8 D_8009A169;
-extern u8 D_800D1C00[];
 extern u16 D_800F4E74_ovl24;
 extern u16 D_800F5F74_ovl24;
 extern s16 D_800F5F76_ovl24;
 extern s16 D_800F5F78_ovl24;
 
 void func_800EF14C_ovl24(u8* arg0) {
-    u8* p = D_800D1C00;
+    u8* p = g_playthrough_state.u;
 
     p[0x28] = 1;
     if (p[0xA1] != p[0xCC]) {

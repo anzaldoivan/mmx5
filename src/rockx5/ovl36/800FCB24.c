@@ -1,4 +1,6 @@
 #include "types.h"
+#include "mmx5/ovl10.h"
+#include "mmx5/ovl36.h"
 #include "mmx5/globals.h"
 #include "mmx5/movement.h"
 #include "mmx5/graphics.h"

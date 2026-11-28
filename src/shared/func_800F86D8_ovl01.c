@@ -1,11 +1,10 @@
 #include "types.h"
+#include "mmx5/ovl01.h"
 #include "mmx5/globals.h"
 
 extern u8 D_80074EE0[];
 extern u8 D_80075C00[];
 extern u8 D_8009A11A;
-extern u8 D_800D1C00[];
-extern u8 D_800FDA5C_ovl01[];
 extern void* D_800FDAC4_ovl01[];
 
 void func_800F86D8_ovl01(u8* a0) {
@@ -16,12 +15,12 @@ void func_800F86D8_ovl01(u8* a0) {
 
     *(s32*)(a0 + 0x18) = *(s32*)(a0 + 0x8);
     *(s32*)(a0 + 0x1C) = *(s32*)(a0 + 0xC);
-    base = D_800D1C00;
+    base = g_playthrough_state.u;
     x = 0x1F0;
     if (*(s8*)(base + 0xC) != 0xC) {
         x = 0x24F0;
     }
-    c = D_800FDA5C_ovl01[((*(s16*)(a0 + 0xA) - x) / 16) * 2];
+    c = D_800FDA5C_ovl01.u[((*(s16*)(a0 + 0xA) - x) / 16) * 2];
     a0[3] = 0;
     a0[0x7A] = 1;
     a0[0x92] = c;

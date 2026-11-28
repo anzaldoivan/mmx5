@@ -1,5 +1,5 @@
-/* rockx5 func_800FD604_ovl34: twin of func_800FD23C_ovl07 (dup1127), tables at D_800FFF74_ovl34.. */
 #include "types.h"
+#include "mmx5/globals.h"
 #include "mmx5/graphics.h"
 
 extern u8 D_80074E40[];
@@ -12,7 +12,6 @@ extern u8 D_800FFF90_ovl34[];
 extern u8 D_800FFF98_ovl34[];
 extern u8 D_800FFF9C_ovl34[];
 extern u8 D_800FFFA0_ovl34[];
-extern signed char D_800D1C0C;
 
 void func_800FD604_ovl34(Obj800FD23C* o) {
     o->unk60 = 4;
@@ -107,7 +106,7 @@ void func_800FD604_ovl34(Obj800FD23C* o) {
         break;
     }
 
-    if (D_800D1C0C != 12) {
+    if (D_800D1C0C.s != 12) {
         o->unk84[0] = 0;
         o->unk84[1] = 0;
     } else {

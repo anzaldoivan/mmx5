@@ -6,7 +6,7 @@
 #include "shared/func_800F15AC_ovl26.c"
 #undef func_800F15AC_ovl26
 
-/* Standalone twin of func_800F15AC_ovl26 (src/shared/func_800F15AC_ovl26.c): D_8009A202 + 0x100. */
+/* Standalone twin of func_800F15AC_ovl26: D_8009A202 + 0x100. */
 
 extern s16 D_8009A202;
 

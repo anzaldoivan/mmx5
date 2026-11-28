@@ -1,9 +1,9 @@
 #include "types.h"
+#include "mmx5/globals.h"
 #include "mmx5/sound.h"
 #include "mmx5/graphics.h"
 
 extern u8 D_80074DA0[];
-extern signed char D_800D1C0C;
 extern u8 D_800FBF30_ovl10[];
 extern u8 D_800FBF38_ovl10[];
 
@@ -18,7 +18,7 @@ void func_800F7120_ovl10(u8* obj) {
     obj[0x5C] = 4;
     obj[0x60] = 4;
     *(s16*)(obj + 0x88) = 0x15E;
-    if (D_800D1C0C != 12) {
+    if (D_800D1C0C.s != 12) {
         if (*(s16*)(obj + 0xA) < 0x1F61) {
             *(s16*)(obj + 0xA) = 0x1F70;
         } else if (*(s16*)(obj + 0xA) >= 0x20A0) {

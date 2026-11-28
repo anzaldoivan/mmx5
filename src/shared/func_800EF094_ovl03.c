@@ -8,7 +8,6 @@ extern u8 D_800750C0[];
 extern u8 D_800F9624_ovl03[];
 extern u8 D_800F959C_ovl03[];
 extern u8 D_800F95A4_ovl03[];
-extern u16 D_800D1C0C;
 
 void func_800EF094_ovl03(ObjEF094* e) {
     e->unk0 = 0x41;
@@ -58,7 +57,7 @@ void func_800EF094_ovl03(ObjEF094* e) {
         break;
     }
     e->unk6 = 0;
-    if (D_800D1C0C == 2) {
+    if (D_800D1C0C.h == 2) {
         e->unk7 = e->unk5;
         e->unk5 = 9;
         e->unk54 = 0;

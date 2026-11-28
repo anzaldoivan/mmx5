@@ -18,7 +18,7 @@ Unchanged:
 - crush damage (`D_8009A199`, `func_800389E8`): does not go through the scaler, not in v1
 
 Files:
-- `slus/func_80031670.c`: replaces `src/slus/func_80031670.c` in a patched build
+- `main/func_80031670.c`: replaces `src/main/func_80031670.c` in a patched build
 - `checkpoint`: first replay checkpoint expected to diverge
 
 Build: `make disc SHIFT=1 PATCHES=halfdmg PY=…`

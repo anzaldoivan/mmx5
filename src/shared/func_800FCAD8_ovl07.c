@@ -22,7 +22,7 @@ void func_800FCAD8_ovl07(ObjCAD8* arg0, s16 arg1, s16 arg2, u8 arg3, u8 arg4) {
     }
 }
 
-// from rockx5 800FCB98: spawned child copies the parent's state, keeps the parent at 0x50
+// spawned child copies the parent's state, keeps the parent at 0x50
 
 void func_800FCB98_ovl07(ObjFAF38* arg0, s16 arg1, s16 arg2, u8 arg3) {
     ObjFAF38* obj = func_8002D27C();
@@ -44,12 +44,11 @@ void func_800FCB98_ovl07(ObjFAF38* arg0, s16 arg1, s16 arg2, u8 arg3) {
     }
 }
 
-extern signed char D_800D1C0C;
 extern s32 D_80093DD0[];
 extern s32 D_80093DD8;
 
 void func_800FCC54_ovl07(void) {
-    if (D_800D1C0C == 12) {
+    if (D_800D1C0C.s == 12) {
         D_80093DD8 = 0x9000C000;
         return;
     }

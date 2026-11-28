@@ -2,7 +2,6 @@
 #include "mmx5/globals.h"
 
 extern void set_stand_animation_by_hp(u8* obj);
-extern u8 D_800D1C00[];
 extern s16 D_80100540_ovl07[][2];
 
 void func_800EEA88_ovl07(u8* obj) {
@@ -11,7 +10,7 @@ void func_800EEA88_ovl07(u8* obj) {
     s32 c;
 
     if (*(s8*)(obj + 6) == 0) {
-        g = D_800D1C00;
+        g = g_playthrough_state.u;
         if (*(s8*)(g + 0x26) == *(s8*)(obj + 7)) {
             g[0x27] |= 2;
             set_stand_animation_by_hp(obj);

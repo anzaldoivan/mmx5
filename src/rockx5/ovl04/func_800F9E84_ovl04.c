@@ -2,7 +2,6 @@
 #include "mmx5/globals.h"
 #include "mmx5/graphics.h"
 
-extern u8 D_800D1C00[];
 extern void* D_80102BD0_ovl04[];
 
 void func_800F9E84_ovl04(u8* obj) {
@@ -26,7 +25,7 @@ void func_800F9E84_ovl04(u8* obj) {
         *(s32*)(obj + 0x54) = 0;
         *(s32*)(obj + 0x50) = 0;
         *(s32*)(obj + 0x84) = 0;
-        D_800D1C00[0x27] |= 1;
+        g_playthrough_state.u[0x27] |= 1;
         k = obj[2];
         if (k == 5) {
             set_animation(obj, 8);
@@ -38,11 +37,11 @@ void func_800F9E84_ovl04(u8* obj) {
             set_animation(obj, 0x36);
         }
     } else if (r > 0) {
-        D_800D1C00[0x27] |= 1;
+        g_playthrough_state.u[0x27] |= 1;
     } else if (*(u16*)(parent + 0x42) & 0x8000) {
         *(u16*)(obj + 0x42) |= 0x8000;
     }
-    g = D_800D1C00;
+    g = g_playthrough_state.u;
     f = g[0x2A];
     if ((f & obj[0x92]) || (f & 4)) {
         if ((s8)obj[5] != 6) {
@@ -56,7 +55,7 @@ void func_800F9E84_ovl04(u8* obj) {
         }
         obj[5] = 6;
     }
-    if (D_800D1C00[0x2A] & 8) {
+    if (g_playthrough_state.u[0x2A] & 8) {
         obj[4]++;
     }
 }

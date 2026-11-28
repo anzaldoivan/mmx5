@@ -6,7 +6,6 @@
 
 extern void func_8004D4F4(s32 a0, void* a1, u8* a2);
 extern s8 D_8009A0A5;
-extern u16 D_8009A206;
 extern u8 D_800D1C26;
 extern u8 D_80102ED8_ovl04[];
 extern u8 D_80102EE0_ovl04[];
@@ -22,7 +21,7 @@ void func_800FF8B8_ovl04(u8* obj) {
     if (state == 0) {
         t = *(u16*)(obj + 0xA) - 1;
         *(s16*)(obj + 0xA) = t;
-        y = D_8009A206 + *(u16*)(obj + 0x24);
+        y = D_8009A206.u + *(u16*)(obj + 0x24);
         *(s16*)(obj + 0xE) = y;
         base = g_Player;
         if (*(s16*)(base + 0xA) >= (s16)t) {

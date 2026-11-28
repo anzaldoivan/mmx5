@@ -9,7 +9,6 @@ extern s32 func_8003240C(Obj0C8*);
 extern s32 func_800326BC(Obj0C8*);
 extern void func_8003258C(Obj0C8*);
 extern void (*D_800F44C0_ovl02[])(Obj0C8*);
-extern signed char D_800D1C0C;
 
 void func_800EF0C8_ovl02(Obj0C8* o) {
     s32 t;
@@ -46,7 +45,7 @@ void func_800EF0C8_ovl02(Obj0C8* o) {
         }
     }
     func_800326BC(o);
-    if (D_800D1C0C != 4) {
+    if (D_800D1C0C.s != 4) {
         func_8003258C(o);
     }
     if (o->unk72 & 8) {

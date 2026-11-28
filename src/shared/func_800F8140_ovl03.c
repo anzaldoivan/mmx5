@@ -1,4 +1,5 @@
 #include "types.h"
+#include "mmx5/object.h"
 #include "mmx5/globals.h"
 #include "mmx5/movement.h"
 #include "mmx5/graphics.h"
@@ -13,10 +14,6 @@ void func_800F8140_ovl03(Obj8140* e) {
     func_8002D9EC(e, 0x64, 0x64);
 }
 
-extern u16 D_8009A42E;
-extern u8 D_800C9310;
-extern u16 D_800D50DE;
-extern u16 D_80093E68;
 extern u8 D_800F9E68_ovl03[];
 extern u8 D_800F9E6C_ovl03[];
 
@@ -31,7 +28,7 @@ void func_800F81AC_ovl03(u8* p) {
     *(u8**)(p + 0x50) = D_800F9E68_ovl03;
     func_8002C218();
     D_800D50DE = 0;
-    D_800C9310 |= 1;
+    D_800C9310.b |= 1;
     D_8009A42E = 0;
     D_80093E68 = 0;
     *(u8**)(p + 0x54) = D_800F9E6C_ovl03;

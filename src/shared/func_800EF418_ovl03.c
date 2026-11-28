@@ -5,11 +5,10 @@
 #define M2C_UNK s32
 #define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8*)(expr) + (offset)))
 
-M2C_UNK func_8002D7A0(void*, void*); /* extern */
-extern u16 D_800D1C0C;
+M2C_UNK func_8002D7A0(void*, void*);
 
 void func_800EF418_ovl03(void* arg0) {
-    if ((D_800D1C0C == 2) || (M2C_FIELD(arg0, s8*, 4) == 3)) {
+    if ((D_800D1C0C.h == 2) || (M2C_FIELD(arg0, s8*, 4) == 3)) {
         func_8002D7A0(arg0, arg0);
         return;
     }

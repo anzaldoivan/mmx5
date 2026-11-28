@@ -12,7 +12,6 @@ extern u8 D_800FE62C_ovl06[];
 extern u8 D_8009A244;
 extern u8 D_80074EE0[];
 extern u8 D_80075660[];
-extern u8 D_8009A1F8[];
 
 void func_800F3FC8_ovl06(u8* obj) {
     u8* q2;
@@ -79,7 +78,7 @@ void func_800F3FC8_ovl06(u8* obj) {
         }
         ((void (*)(u8*))D_800FE664_ovl06[(s8)obj[5]])(obj);
         func_80031DD0(obj);
-        q = D_8009A1F8;
+        q = D_8009A1F8.u;
         if (*(s16*)(obj + 0xA) - *(s16*)(q + 0xA) >= 0x31) {
             *(s16*)(obj + 0xA) = *(s16*)(q + 0xA) + 0x30;
         }
@@ -96,7 +95,7 @@ void func_800F3FC8_ovl06(u8* obj) {
             *(s16*)(obj + 0xE) = *(s16*)(obj + 0xE) - 0x3C;
         }
         if (*(s16*)(obj + 0xA) >= 0x9D0) {
-            q2 = D_8009A1F8;
+            q2 = D_8009A1F8.u;
             if (*(s16*)(obj + 0xE) - *(s16*)(q2 + 0xE) > 0x80) {
                 (*(s16*)(obj + 0xE))--;
             }

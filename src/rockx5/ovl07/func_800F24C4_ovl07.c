@@ -1,12 +1,11 @@
 #include "types.h"
+#include "mmx5/ovl07.h"
 #include "mmx5/object.h"
 #include "mmx5/graphics.h"
 
 extern s8 D_8009A0A2;
 extern u8 D_80100F9C_ovl07[];
 extern u8 D_80100FE0_ovl07[];
-
-extern D1030 D_80101030_ovl07;
 
 void func_800F24C4_ovl07(u8* obj) {
     s32 d;
@@ -43,7 +42,7 @@ void func_800F24C4_ovl07(u8* obj) {
                     *(s16*)(obj + 0xA) = *(u16*)(obj + 0x7C) - 0x40;
                 }
             }
-            t = D_80101030_ovl07.f4[D_8009A0A2];
+            t = D_80101030_ovl07.t.f4[D_8009A0A2];
             obj[5] = 4;
             obj[6] = 0;
             *(u16*)(obj + 0x88) = t;

@@ -89,31 +89,31 @@ void func_800F47A4_ovl28(u8* obj) {
         if (t >= 2) {
             switch (p[0x8B]) {
             case 5:
-                func_8002C338(0x13C, D_1F800030 + 0x60, 1);
-                func_8002C338(0x13D, D_1F800030 + 0x80, 1);
+                load_palette(0x13C, D_1F800030 + 0x60, 1);
+                load_palette(0x13D, D_1F800030 + 0x80, 1);
                 break;
             case 9:
-                func_8002C338(0x13C, D_1F800030 + 0x120, 1);
-                func_8002C338(0x13D, D_1F800030 + 0x140, 1);
+                load_palette(0x13C, D_1F800030 + 0x120, 1);
+                load_palette(0x13D, D_1F800030 + 0x140, 1);
                 break;
             case 10:
-                func_8002C338(0x13C, D_1F800030 + 0xE0, 1);
-                func_8002C338(0x13D, D_1F800030 + 0x100, 1);
+                load_palette(0x13C, D_1F800030 + 0xE0, 1);
+                load_palette(0x13D, D_1F800030 + 0x100, 1);
                 break;
             case 11:
-                func_8002C338(0x13C, D_1F800030 + 0xA0, 1);
-                func_8002C338(0x13D, D_1F800030 + 0xC0, 1);
+                load_palette(0x13C, D_1F800030 + 0xA0, 1);
+                load_palette(0x13D, D_1F800030 + 0xC0, 1);
                 break;
             }
             *(s16*)(obj + 0x42) = 0x7CCC;
         } else {
             if (((s8*)obj)[0x60] != 0 || ((s8*)p)[7] >= 2) {
                 if (p[0x8B] != 5) {
-                    func_8002C338(0x13C, D_1F800030 + 0x1A0, 1);
-                    func_8002C338(0x13D, D_1F800030 + 0x1C0, 1);
+                    load_palette(0x13C, D_1F800030 + 0x1A0, 1);
+                    load_palette(0x13D, D_1F800030 + 0x1C0, 1);
                 } else {
-                    func_8002C338(0x13C, D_1F800030 + 0x220, 1);
-                    func_8002C338(0x13D, D_1F800030 + 0x240, 1);
+                    load_palette(0x13C, D_1F800030 + 0x220, 1);
+                    load_palette(0x13D, D_1F800030 + 0x240, 1);
                 }
                 t = obj[0x60] - 1;
                 obj[0x60] = t;
@@ -121,8 +121,8 @@ void func_800F47A4_ovl28(u8* obj) {
                     p[7] = 2;
                 }
             } else {
-                func_8002C338(0x13C, D_1F800030 + 0x160, 1);
-                func_8002C338(0x13D, D_1F800030 + 0x180, 1);
+                load_palette(0x13C, D_1F800030 + 0x160, 1);
+                load_palette(0x13D, D_1F800030 + 0x180, 1);
             }
             *(s16*)(obj + 0x42) = 0x7CCC;
         }
@@ -131,20 +131,20 @@ void func_800F47A4_ovl28(u8* obj) {
         obj[3] = 0;
         switch (p[0x8B]) {
         case 5:
-            func_8002C338(0x13C, D_1F800030 + 0x60, 1);
-            func_8002C338(0x13D, D_1F800030 + 0x80, 1);
+            load_palette(0x13C, D_1F800030 + 0x60, 1);
+            load_palette(0x13D, D_1F800030 + 0x80, 1);
             break;
         case 9:
-            func_8002C338(0x13C, D_1F800030 + 0x120, 1);
-            func_8002C338(0x13D, D_1F800030 + 0x140, 1);
+            load_palette(0x13C, D_1F800030 + 0x120, 1);
+            load_palette(0x13D, D_1F800030 + 0x140, 1);
             break;
         case 10:
-            func_8002C338(0x13C, D_1F800030 + 0xE0, 1);
-            func_8002C338(0x13D, D_1F800030 + 0x100, 1);
+            load_palette(0x13C, D_1F800030 + 0xE0, 1);
+            load_palette(0x13D, D_1F800030 + 0x100, 1);
             break;
         case 11:
-            func_8002C338(0x13C, D_1F800030 + 0xA0, 1);
-            func_8002C338(0x13D, D_1F800030 + 0xC0, 1);
+            load_palette(0x13C, D_1F800030 + 0xA0, 1);
+            load_palette(0x13D, D_1F800030 + 0xC0, 1);
             break;
         }
         obj[4]++;

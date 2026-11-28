@@ -7,7 +7,6 @@ extern void start_pad_vibration(s32);
 extern void silence_sound(s32, s32);
 extern s32 func_8002A5C4(s32, s32, s32);
 extern u8 D_8009A244;
-extern s8 D_800D1C00[];
 extern u8 D_800F9BB8_ovl11[];
 extern u8 D_800F9BC0_ovl11[];
 extern u8 D_800F9BC8_ovl11[];
@@ -42,16 +41,16 @@ void func_800F36E8_ovl11(u8* a0) {
         D_8009A244 = 1;
     }
     h = g_Player;
-    if (*(s16*)(h + 0xA) >= 0x930 && D_800D1C00[0x29] == 0) {
+    if (*(s16*)(h + 0xA) >= 0x930 && g_playthrough_state.s[0x29] == 0) {
         silence_sound(5, 0x1D);
-        D_800D1C00[0x29] = 1;
+        g_playthrough_state.s[0x29] = 1;
     }
     if (*(s16*)(a0 + 0xE) >= 0x850) {
         a0[5] = 8;
-        if (D_800D1C00[0x1D] < 2) {
-            if (D_800D1C00[0x29] == 0) {
+        if (g_playthrough_state.s[0x1D] < 2) {
+            if (g_playthrough_state.s[0x29] == 0) {
                 silence_sound(5, 0x1D);
-                D_800D1C00[0x29] = 1;
+                g_playthrough_state.s[0x29] = 1;
             }
             play_sound(5, 0x1B, a0);
             func_8002A5C4(0x20, 4, 1);

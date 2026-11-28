@@ -51,7 +51,7 @@
 ## Image rebuild (inverse)
 - Tool: `make disc` → `tools/repack/disc.py build` → `build/disc/mmx5.bin/.cue`.
 - Layout: `dumpsxiso -s` of the original → `build/disc/ref/layout.xml` (order, dates, license, trailing `<dummy sectors="150">` of zeros).
-  The track has `xa_edc="false"`. Every `<file>` gets an absolute `source=`: `extracted/retail/<path>`, except ROCK_X5.BIN (`build/disc/`) and SLUS_013.34 (`build/slus/`).
+  The track has `xa_edc="false"`. Every `<file>` gets an absolute `source=`: `extracted/retail/<path>`, except ROCK_X5.BIN (`build/disc/`) and SLUS_013.34 (`build/us/main/`).
 - `type="mixed"` sources (STR, XA) are 2336-B-per-sector payloads (= extractor's mixed payload). The mkpsxiso tool regenerates headers/EDC.
 - Gate: sha1 of the image vs `config/medium.sha1` line 1. If they differ, exit 1 with first differing LBA, manifest extent, form (subheader byte 18 & 0x20).
 - Override: `disc.py build --file <discpath>=<src>` (repeatable, applied last). `make disc-assets` re-imports ROCK_X5.DAT (`assets.py export` + `import`) and packs it → `build/assets/disc/mmx5.bin/.cue`, same sha gate.
@@ -63,8 +63,8 @@
 - `/`, `STR`, `XA` (dir): class dir. Admitted no: mkpsxiso regenerates the directory extents from the layout.
 - `SYSTEM.CNF` (68 B, form1): class config text. Admitted no: boot config, passthrough. Nothing to convert.
 - `ROCK_X5.DAT` (form1, LBA 26, 23,406 sectors): class data container. Admitted yes: the one asset archive. Layout below.
-- `SLUS_013.34`: class code. Admitted no: built from src/ (`make split build BINARY=slus`).
-- `ROCK_X5.BIN`: class code (overlay archive). Admitted no: built from src/ + `rockx5.py pack`. Data overlays ovl13/15/17/19 (loadmap kind `data`, 1344 B each) are linked from our split (`config/splat.rockx5.yaml`), not assets.
+- `SLUS_013.34`: class code. Admitted no: built from src/ (`make split build BINARY=main`).
+- `ROCK_X5.BIN`: class code (overlay archive). Admitted no: built from src/ + `rockx5.py pack`. Data overlays ovl13/15/17/19 (loadmap kind `data`, 1344 B each) are linked from our split (`config/us/splat.rockx5.yaml`), not assets.
 - `STR/CAPLOGO.STR`, `STR/X5OP.STR` (mixed, 2336 B/sector): class video stream. Admitted no: passthrough. MDEC/XA re-encoders (psxavenc, jPSXdec) are lossy, never byte-identical (cookbook C0007).
 - `XA/BGM.XA` (mixed): class XA audio stream. Admitted no: same reason as STR.
 - `ZNULL.DAT` (37,044,000 B): class filler, all zero (manifest `trivial`). Admitted no: nothing to edit.
@@ -74,7 +74,7 @@
 - TOC (sector 0): `struct.pack('<II', start_sector, size_bytes)` x172, then `(0,0)`, rest of sector 0 zero. Same row form as the ROCK_X5.BIN TOC.
 - Layout: member 0 at sector 1. Member i at `start_sector*2048`, length `size_bytes`. Next member at the next 2048 boundary. Gap = rounding remainder, zero. Last member ends at the file end (23,406 sectors).
 - Reader: `load_rock_dat_file_table` (0x80013EE8). `CdSearchFile("\ROCK_X5.DAT;1")` at 0x80013F1C (name `D_80010004`), `CdRead` of 1 sector to 0x80105000, then copies the 172 rows into the file table `D_800E5C08[175][2]` as `{DAT LBA + start_sector, size}`. Rows 172-174 come from `CdSearchFile` on the name table `D_8006F3FC` (22-byte stride): `\STR\CAPLOGO.STR;1`, `\STR\X5OP.STR;1`, `\XA\BGM.XA;1`.
-- Indexing (R5): proven for the exe. The only DAT LBA source is the TOC copy above. `D_800E5C08` consumers are all in slus: `func_80014574` (x2), `func_80015A00`, `func_80015BA4`, `pump_file_loads`. No `D_800E5C08` reference in asm/rockx5. A member that changes size moves later members, and the game follows that through the TOC. Unproven: whether any overlay keeps its own copy of an LBA.
+- Indexing (R5): proven for the exe. The only DAT LBA source is the TOC copy above. `D_800E5C08` consumers are all in main: `start_cd_read` (x2), `func_80015A00`, `func_80015BA4`, `pump_file_loads`. No `D_800E5C08` reference in asm/rockx5. A member that changes size moves later members, and the game follows that through the TOC. Unproven: whether any overlay keeps its own copy of an LBA.
 - Pack form (165 of 172 members): `u32 count, u32 total_size (== member size)`, then `count` rows `<II (type, size)>`. Header padded with zero to 2048. Entry k starts at `2048 + sum(align2048(size_j), j<k)`. Each entry is zero-padded to 2048. `total_size == 2048 + sum(align2048(size))`. Offsets are implicit (no offset table), padding byte 0x00 everywhere (header and entries).
 - Entry `type`: low 16 bits = kind, high 16 bits = class (observed 0, 1, 2). Per-class counts, sizes, kinds and readings: `### Entry taxonomy`.
 - Non-pack members (7, kind raw): 78 (u32 count 28 + ascending u32 table). 89 and 91 (u32 8, u32 0x474, `pQES` SEQ magic at +8). 96-99 (8192 B each, other form). Not decoded.
@@ -92,4 +92,4 @@
 - `<out>/dat/index.json` = `{"toc":[{"idx","sector","size","kind","sha1","entries":[{"sub","type","kind","class","size","sha1"}]}]}`. `entries` only for packs. `type` is the full u32 type word. `kind` = `type & 0xFFFF`, `class` = `type >> 16` (ints, written by export). Import reads only `type`.
 - `<out>/manifest.jsonl`: `{"path","sha1","class":"container"}` per `.bin`, sorted by path. Retail: 898 files (891 pack entries + 7 raw members).
 - `import [--src assets/retail] [--out build/assets]`: pack header rebuilt from index.json (count, total, type, size), never from member bytes. All padding is zero. TOC regenerated contiguous from sector 1, then `(0,0)`. A `.bin` whose size differs from index.json → exit 1, `assets: <path> size changed, relayout not proven`.
-- `roundtrip`: export + import under `.run/assets-rt/`, per-entry compare, then whole-DAT sha1 vs retail. Retail matches the layout rule exactly (no TOC deviation, gap or tail).
+- `roundtrip`: export + import under a scratch folder, per-entry compare, then whole-DAT sha1 vs retail. Retail matches the layout rule exactly (no TOC deviation, gap or tail).

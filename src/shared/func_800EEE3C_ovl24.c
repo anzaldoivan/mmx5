@@ -3,18 +3,16 @@
 #include "mmx5/globals.h"
 #define D_800D1C28_as_s8 (*(s8*)&D_800D1C28)
 
-extern u16 D_800C9320;
 extern u16 D_800F4E60_ovl24;
 extern u16 D_800F5F74_ovl24;
 extern s16 D_800F5F76_ovl24;
 extern s16 D_800F5F78_ovl24;
 
 void func_800EEE3C_ovl24(u8* self) {
-    extern u8 D_800D1C00[];
     s8* e;
     s32 t;
 
-    if (D_800C9320 & 0x8FF) {
+    if (D_800C9320.h & 0x8FF) {
         D_800D1C28_as_s8 = D_800F5F78_ovl24;
         self[2]++;
         return;
@@ -22,7 +20,7 @@ void func_800EEE3C_ovl24(u8* self) {
     t = D_800F5F74_ovl24 - 1;
     D_800F5F74_ovl24 = t;
     if ((t << 16) == 0) {
-        e = (s8*)D_800D1C00;
+        e = (s8*)g_playthrough_state.u;
         if (++e[0x28] >= D_800F5F78_ovl24) {
             self[2]++;
             e[0x28] = D_800F5F78_ovl24;

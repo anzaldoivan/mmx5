@@ -1,11 +1,11 @@
 #include "types.h"
+#include "mmx5/globals.h"
 #include "mmx5/system.h"
 #include "mmx5/graphics.h"
 
 extern s32 func_8002DFB0(void);
 extern s32 D_80101C4C_ovl04[];
 extern s32 D_80101C6C_ovl04[];
-extern D_8009A1F8_t D_8009A1F8;
 
 void func_800F5E5C_ovl04(Obj5E5C* o) {
     o->unk3 = 1;
@@ -21,8 +21,8 @@ void func_800F5E5C_ovl04(Obj5E5C* o) {
         o->unk28 = 0;
         break;
     case 1:
-        o->unkA = D_8009A1F8.unkA + (random_byte() & 0xFFFF) * 2 % 320;
-        o->unkE = D_8009A1F8.unkE + 0x104;
+        o->unkA = D_8009A1F8.t.unkA + (random_byte() & 0xFFFF) * 2 % 320;
+        o->unkE = D_8009A1F8.t.unkE + 0x104;
         o->unk20 = 0;
         o->unk28 = 0;
         o->unk2C = 0;
@@ -32,8 +32,8 @@ void func_800F5E5C_ovl04(Obj5E5C* o) {
         o->unk7 = func_8002DFB0() % 120;
         break;
     case 2:
-        o->unkA = D_8009A1F8.unkA + (random_byte() & 0xFFFF) * 2 % 320;
-        o->unkE = D_8009A1F8.unkE + 0x104;
+        o->unkA = D_8009A1F8.t.unkA + (random_byte() & 0xFFFF) * 2 % 320;
+        o->unkE = D_8009A1F8.t.unkE + 0x104;
         o->unk20 = 0;
         o->unk28 = 0;
         o->unk2C = 0;
@@ -52,8 +52,8 @@ void func_800F5E5C_ovl04(Obj5E5C* o) {
         o->unk7 = func_8002DFB0() % 10;
         break;
     case 4:
-        o->unkA = D_8009A1F8.unkA + (random_byte() & 0xFFFF) * 2 % 360 - 0x28;
-        o->unkE = D_8009A1F8.unkE + 0x104;
+        o->unkA = D_8009A1F8.t.unkA + (random_byte() & 0xFFFF) * 2 % 360 - 0x28;
+        o->unkE = D_8009A1F8.t.unkE + 0x104;
         o->unk28 = 0;
         o->unk2C = 0;
         o->unk24 = 0x10000;
@@ -62,8 +62,8 @@ void func_800F5E5C_ovl04(Obj5E5C* o) {
         o->unk7 = func_8002DFB0() % 60;
         break;
     case 5:
-        o->unkA = D_8009A1F8.unkA - 0x28;
-        o->unkE = D_8009A1F8.unkE + (random_byte() & 0xFFFF) * 2 % 240 + 0x14;
+        o->unkA = D_8009A1F8.t.unkA - 0x28;
+        o->unkE = D_8009A1F8.t.unkE + (random_byte() & 0xFFFF) * 2 % 240 + 0x14;
         o->unk28 = 0;
         o->unk2C = 0;
         o->unk24 = 0x10000;

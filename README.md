@@ -20,7 +20,7 @@ with their own dump can rebuild the binaries from this README alone.
 |---|---|---|---|
 | USA | SLUS-01334 | `SLUS_013.34` | `10709231f857636b5ccd3cd9acebc91458dcb5fd` |
 
-The target `SLUS_013.34` has SHA-1 `476e55ff4ac698a1ee0654c0f08804a5837bd2f3` (`config/check.slus.sha`). Every build checks its rebuild against it.
+The target `SLUS_013.34` has SHA-1 `476e55ff4ac698a1ee0654c0f08804a5837bd2f3` (`config/check.us.main.sha`). Every build checks its rebuild against it.
 <!-- psxdecomp:disc:end -->
 
 > [!IMPORTANT]
@@ -102,7 +102,7 @@ The target `SLUS_013.34` has SHA-1 `476e55ff4ac698a1ee0654c0f08804a5837bd2f3` (`
 
 </details>
 
-The published number is the matched code of the `game` category, in bytes. The `sdk` row counts the SDK libraries apart. A complete unit is a C file whose code and data all match. It is not a finished file (`rules/FIN1.md`).
+The published number is the matched code of the `game` category, in bytes. The `sdk` row counts the SDK libraries apart. A complete unit is a C file whose code and data all match. It is not a finished file, which also holds no readability debt.
 
 Progress bars powered by [decomp.dev][psxd-progress].
 
@@ -135,7 +135,7 @@ On a good build, `make check` prints `check: 2 of 2 green, 0 failed`. The detail
 
 | Path | Contents |
 |---|---|
-| `src/` | Decompiled C, one directory per binary (`src/slus/`, `src/rockx5/`) and the code they share (`src/shared/`). `src/rockx5/` has one folder for each overlay (`src/rockx5/ovlNN/`). A `slus` unit with names of one system is in `src/slus/<system>/` |
+| `src/` | Decompiled C, one directory per binary (`src/main/`, `src/rockx5/`) and the code they share (`src/shared/`). `src/rockx5/` has one folder for each overlay (`src/rockx5/ovlNN/`). A `main` unit with names of one system is in `src/main/<system>/` |
 | `include/` | Headers and assembler macros |
 | `config/` | splat configurations, symbol files, hash checks, the firewall's rules |
 | `tools/` | Extraction, build, repack, asset, replay and shift tools |
@@ -180,24 +180,24 @@ project stands on the work of others. Every fact taken from them is tracked with
 [`docs/prior-art.md`](docs/prior-art.md). A fact from another project stays a lead until this project's own bytes
 prove it.
 
-- **[sozud](https://github.com/sozud)** — [**mmx4**](https://github.com/sozud/mmx4), the matching decompilation of
+- [sozud](https://github.com/sozud) wrote [mmx4](https://github.com/sozud/mmx4), the matching decompilation of
   *Mega Man X4* (AGPL-3.0), the same engine line. This project shares its license so that code proven shared between
   the games can be adapted with attribution ([`THIRD_PARTY.md`](THIRD_PARTY.md)).
-- **[mstan](https://github.com/mstan)** — [MegaManX5Recomp](https://github.com/mstan/MegaManX5Recomp) (PolyForm
+- [mstan](https://github.com/mstan) wrote [MegaManX5Recomp](https://github.com/mstan/MegaManX5Recomp) (PolyForm
   Noncommercial), a static recompilation of this disc. Its disc and layout facts are leads. Its code is not used.
-- **acediez** — the [MMX5 Improvement Project addendum](https://archive.org/details/mmx5_improvement_project_addendum)
+- acediez wrote the [MMX5 Improvement Project addendum](https://archive.org/details/mmx5_improvement_project_addendum)
   and its documentation of the retail disc's tables.
-- **[ChrisNonyminus](https://github.com/ChrisNonyminus)** — [mml1](https://github.com/ChrisNonyminus/mml1), a Mega Man
-  Legends decompilation (facts only).
-- **[Almar's Guides](https://almarsguides.com/retro/walkthroughs/ps1/games/megamanx5/codebreaker/)** — NTSC-U codes,
-  used as RAM-map leads.
+- [ChrisNonyminus](https://github.com/ChrisNonyminus) wrote [mml1](https://github.com/ChrisNonyminus/mml1), a Mega
+  Man Legends decompilation (facts only).
+- [Almar's Guides](https://almarsguides.com/retro/walkthroughs/ps1/games/megamanx5/codebreaker/) published NTSC-U
+  codes. This project uses them as RAM-map leads.
 
 The governance and method come from ProjectArchitect 3 and the decomp-architect kit distilled from a finished
 matching decompilation.
 
 ## License
 
-The project's own work — the tooling, the build system, the documentation — is licensed under AGPL-3.0
+The project's own work (the tooling, the build system, the documentation) is licensed under AGPL-3.0
 ([`LICENSE`](LICENSE)). No rights are claimed over Capcom's game. **No license is asserted over the reimplemented
 sources under `src/`** ([`src/NOTICE.md`](src/NOTICE.md)). Third-party components keep their own licenses
 ([`THIRD_PARTY.md`](THIRD_PARTY.md)). *Mega Man X5* is the property of its rights holder.

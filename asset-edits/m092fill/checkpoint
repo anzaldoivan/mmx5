@@ -1,2 +1,2 @@
-# basis: .run/replay/try-m092fill/run1 vs .run/replay/original/run1 (T6.c1): 8 checkpoints, 1 divergence, first mid_stage
+# basis: replay run try-m092fill/run1 vs original/run1 (T6.c1, scratch replay output): 8 checkpoints, 1 divergence, first mid_stage
 mid_stage

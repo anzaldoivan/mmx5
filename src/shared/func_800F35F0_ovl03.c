@@ -5,23 +5,22 @@
 #include "mmx5/system.h"
 #include "mmx5/ovl03.h"
 
-extern s32 func_8002DC14(void);
-extern u8 D_800D1C00[];
+extern s32 get_launch_variant(void);
 
 void func_800F35F0_ovl03(u8* obj) {
     s8* p;
 
     if (*(s8*)(obj + 0x46) == 0) {
-        p = (s8*)D_800D1C00;
+        p = (s8*)g_playthrough_state.u;
         if (p[0xC] != 0xC) {
-            if (func_8002DC14() == 0) {
+            if (get_launch_variant() == 0) {
                 func_8002385C(0x6B, 0xFF, p[0x2E]);
-            } else if (func_8002DC14() == 1) {
+            } else if (get_launch_variant() == 1) {
                 func_8002385C(0x30, 0xFF, p[0x2E]);
             } else {
                 func_8002385C(0x62, 0xFF, p[0x2E]);
             }
-            D_800D1C00[0x2E] = 1;
+            g_playthrough_state.u[0x2E] = 1;
         }
         set_animation(obj, 1);
         *(s32*)(obj + 0x24) = 0;

@@ -1,9 +1,8 @@
 #include "types.h"
-
-extern u8 D_8009A1F8[];
+#include "mmx5/globals.h"
 
 void func_800F7194_ovl09(u8* arg0) {
-    u8* p = D_8009A1F8;
+    u8* p = D_8009A1F8.u;
     u8* q;
     u8* r;
     s32 d;
@@ -39,13 +38,13 @@ void func_800F7194_ovl09(u8* arg0) {
                 arg0[0x14] = 0;
             }
         shared: // !FAKE: label kept for the matching branch layout
-            q = D_8009A1F8;
+            q = D_8009A1F8.u;
             m = ((s8*)arg0)[0x14];
             q[0xA0] = 1;
             *(s16*)(q + 0x5E) = m << 9;
             arg0[0x15] = 0;
         }
-        r = D_8009A1F8;
+        r = D_8009A1F8.u;
         *(s16*)(r + 0x62) = *(u16*)(r + 0xE) - 0x160;
     }
 }

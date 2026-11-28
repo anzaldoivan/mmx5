@@ -74,9 +74,7 @@ void func_800EF078_ovl20(u8* a0) {
 
 extern u8 D_800F5FE9_ovl20;
 extern u8 D_800F5FE0_ovl20[];
-extern u8 D_800D1C00[];
 extern s16 D_800F5108_ovl20[];
-extern u8 D_8009A1F8[];
 extern u8 D_800F5194_ovl20[];
 extern u8 D_800F50B0_ovl20[][8];
 extern u8 D_800F5058_ovl20[][8];
@@ -123,17 +121,17 @@ void func_800EF2AC_ovl20(u8* arg0) {
     } else {
         m = n;
     }
-    if (n < 8 && ((D_800D1C00[0x4C] >> D_800F5194_ovl20[n]) & 1)) {
+    if (n < 8 && ((g_playthrough_state.u[0x4C] >> D_800F5194_ovl20[n]) & 1)) {
         func_80028B18(1, D_800F5108_ovl20[n * 2], (&D_800F5108_ovl20[n * 2])[1],
                       D_800F50B0_ovl20[m]);
     } else {
         func_80028B18(1, D_800F5108_ovl20[n * 2], (&D_800F5108_ovl20[n * 2])[1],
                       D_800F5058_ovl20[m]);
     }
-    D_8009A1F8[0xA0] = 1;
+    D_8009A1F8.u[0xA0] = 1;
     *(s16*)(arg0 + 8) = 0;
     *(s16*)(arg0 + 0xA) += 1;
-    D_800D1C00[0x27] = 0x20;
+    g_playthrough_state.u[0x27] = 0x20;
     p = alloc_class6_slot();
     if (p != 0) {
         p[0] = 0x51;
@@ -150,11 +148,11 @@ void func_800EF2AC_ovl20(u8* arg0) {
     if (D_800F5FE9_ovl20 == 9) {
         func_80028B18(1, 0x2E0, 0x90,
                       D_800F512C_ovl20[func_800EF2AC_ovl20_sel(arg0)]);
-        D_800D1C00[0x28] = 8;
+        g_playthrough_state.u[0x28] = 8;
     } else {
         func_80028B18(1, 0x2E0, 0x90, D_800F512C_ovl20);
     }
-    if (D_800D1C00[0xCB] & 1) {
+    if (g_playthrough_state.u[0xCB] & 1) {
         func_80028B18(1, 0xA0, 0x10, D_800F518C_ovl20);
         func_80028B18(1, 0x460, 0x10, D_800F518C_ovl20);
     } else {

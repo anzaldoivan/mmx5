@@ -8,7 +8,6 @@
 
 extern u8 D_80101D4C_ovl04[];
 extern u8 D_800767E0[];
-extern signed char D_800D1C0C;
 extern u8 D_80101D50_ovl04[];
 extern u8 D_80101D54_ovl04[];
 extern u8 D_80101D5C_ovl04[];
@@ -43,7 +42,7 @@ void func_800F6E78_ovl04(Ob6E78* o) {
     if (((Ob6E78*)o->x7C)->x90 > 0) {
         set_animation(o, 0x12);
         o->x68 = &D_80101D60_ovl04[o->x82][o->x2].v;
-        if (D_800D1C0C != 12) {
+        if (D_800D1C0C.s != 12) {
             o->xE = D_80101D60_ovl04[o->x82][o->x2].h;
         } else {
             o->xE = D_80101D60_ovl04[o->x82][o->x2].h + 16;
@@ -154,7 +153,7 @@ void func_800F6E78_ovl04(Ob6E78* o) {
     } else {
         set_animation(o, 0x16);
         o->x68 = &D_80101D60_ovl04[o->x82][o->x2].v;
-        if (D_800D1C0C != 12) {
+        if (D_800D1C0C.s != 12) {
             o->xE = D_80101D60_ovl04[o->x82][o->x2].h;
         } else {
             o->xE = D_80101D60_ovl04[o->x82][o->x2].h + 16;

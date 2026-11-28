@@ -1,7 +1,7 @@
 /* include_asm.h — INCLUDE_ASM / INCLUDE_RODATA for splat `use_legacy_include_asm: False`.
  * Splat writes a not-yet-decompiled function to asm/<alias>/nonmatchings/<seg>/<name>.s;
  * the C TU pulls it back in with INCLUDE_ASM("asm/<alias>/nonmatchings/<seg>", name);
- * First exercised by tools/dedup/carve.py (phase 1.6 T4): the path holds; macro.inc (glabel/endlabel) comes
+ * macro.inc (glabel/endlabel) comes
  * from CC_ASFLAGS -I asm/<alias>/include; noreorder/noat as the split .s files assume, restored after. */
 #ifndef INCLUDE_ASM_H
 #define INCLUDE_ASM_H
@@ -21,4 +21,4 @@
             "\t.include \"" FOLDER "/" #NAME ".s\"\n"                          \
             ".section .text\n")
 
-#endif /* INCLUDE_ASM_H */
+#endif

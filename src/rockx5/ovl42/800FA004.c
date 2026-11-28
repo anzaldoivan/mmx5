@@ -27,13 +27,12 @@ void func_800FA004_ovl42(u8* arg0) {
 #undef func_800FA078_ovl40
 
 extern void func_80013288(s32);
-extern u8 D_8009A1F8[];
 
 void func_800FA0E4_ovl42(u8* arg0) {
     u8* p;
 
-    D_8009A1F8[3] = 0;
-    D_8009A1F8[0x57] = 0;
+    D_8009A1F8.u[3] = 0;
+    D_8009A1F8.u[0x57] = 0;
     p = alloc_class6_slot();
     if (p != 0) {
         p[0] = 1;
@@ -58,11 +57,10 @@ void func_800FA150_ovl42(Ovl45State* s) {
 
 #include "shared/func_800FA190_ovl42.c"
 
-extern u8 D_8009A1F8[];
 extern s32 D_800FA43C_ovl42;
 
 void func_800FA1C0_ovl42(u8* arg0) {
-    u8* p = D_8009A1F8;
+    u8* p = D_8009A1F8.u;
 
     *(s32*)(p + 0xB4) += 0x15555;
     if (++*(s16*)(arg0 + 4) >= 0x60) {
@@ -77,5 +75,59 @@ void func_800FA1C0_ovl42(u8* arg0) {
         p[0x57] = 1;
         func_8002385C(0xC, 0xFF, 0);
         arg0[1]++;
+    }
+}
+
+extern u8 D_80091C44;
+extern s32 D_800FA43C_ovl42;
+
+void func_800FA280_ovl42(UnkObj* arg0) {
+    u8* p;
+    s32 odd;
+
+    if (D_80091C44 == 0) {
+        p = D_8009A1F8.u;
+        arg0->unk4--;
+        ((D_8009A1F8_t*)p)->unk5E = 0x200;
+        odd = arg0->unk4 & 1;
+        D_800FA43C_ovl42 += 0xFFFE23D8;
+        if (odd) {
+            *(s32*)(p + 0x5C) -= D_800FA43C_ovl42;
+        } else {
+            *(s32*)(p + 0x5C) += D_800FA43C_ovl42;
+        }
+        D_8009A1F8.u[0xA0] = 1;
+        if (arg0->unk4 == 0) {
+            *(s16*)(D_8009A1F8.u + 0x5E) = 0x200;
+            func_8002385C(0xD, 0xFF, 0);
+            arg0->unk1++;
+        }
+    }
+}
+
+#define func_800FA2C0_ovl43 func_800FA348_ovl42
+#include "shared/func_800FA2C0_ovl43.c"
+#undef func_800FA2C0_ovl43
+
+extern u8 D_800D1F3C;
+extern signed char D_8009A424;
+
+void func_800FA394_ovl42(u8* arg0) {
+    s32 i;
+    u8* p;
+
+    if (D_800D1F3C == 0 && D_8009A424 == 0) {
+        func_8001E668();
+        D_8009A1F8.u[0x3] = 0;
+        D_8009A1F8.u[0x57] = 0;
+        D_8009A1F8.u[0xAB] = 0;
+        func_8002C50C();
+        i = 15;
+        p = arg0 + 0x35;
+        for (; i >= 0; i--) {
+            *p-- = 0;
+        }
+        arg0[0x10F] = 1;
+        arg0[0] = 0x15;
     }
 }

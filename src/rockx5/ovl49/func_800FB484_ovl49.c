@@ -1,10 +1,6 @@
 #include "types.h"
 #include "mmx5/globals.h"
 
-extern u16 D_800D50DE;
-extern u16 D_80093E68;
-extern u16 D_8009A42E;
-
 void func_800FB484_ovl49(u8* arg0) {
     u16 t = ++D_800D50DE;
 

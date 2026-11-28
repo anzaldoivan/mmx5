@@ -1,7 +1,7 @@
 #include "types.h"
+#include "mmx5/globals.h"
 #include "mmx5/object.h"
 
-extern D_8009A1F8_t D_8009A1F8;
 extern void func_8002C1C8(void);
 
 void func_800FAC04_ovl58(UnkObj* arg0) {
@@ -20,7 +20,7 @@ void func_800FAC04_ovl58(UnkObj* arg0) {
             s[2] = 3;
             *(s32*)(s + 0x38) = 0x1E;
         }
-        p = &D_8009A1F8;
+        p = &D_8009A1F8.t;
         *(s16*)&p->padA1[0xB2 - 0xA1] = 0;
         p->unkB6 = 0x200;
         p->unkF4 = 1;

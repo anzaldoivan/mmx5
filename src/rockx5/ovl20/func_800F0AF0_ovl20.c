@@ -3,8 +3,6 @@
 #include "mmx5/globals.h"
 
 extern u8 D_80091C44;
-extern s8 D_8009A298;
-extern u8 D_800D1C00[];
 extern u8 D_800F5058_ovl20[][8];
 extern u8 D_800F50B0_ovl20[][8];
 extern s16 D_800F5108_ovl20[];
@@ -25,15 +23,16 @@ void func_800F0AF0_ovl20(u8* arg0) {
             arg0[2]++;
             return;
         }
-        if (n < 8 && ((D_800D1C00[0x4C] >> D_800F5194_ovl20[n]) & 1)) {
+        if (n < 8 &&
+            ((g_playthrough_state.u[0x4C] >> D_800F5194_ovl20[n]) & 1)) {
             func_80028B18(1, D_800F5108_ovl20[n * 2],
                           (&D_800F5108_ovl20[n * 2])[1], D_800F50B0_ovl20[n]);
         } else {
             func_80028B18(1, D_800F5108_ovl20[n * 2],
                           (&D_800F5108_ovl20[n * 2])[1], D_800F5058_ovl20[n]);
         }
-        D_8009A298 = 1;
-        D_800D1C00[0x28] = n;
+        D_8009A298.s = 1;
+        g_playthrough_state.u[0x28] = n;
         p = alloc_class6_slot();
         if (p != 0) {
             p[0] = 0x51;

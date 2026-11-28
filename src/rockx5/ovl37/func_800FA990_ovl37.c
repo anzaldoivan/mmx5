@@ -1,8 +1,0 @@
-#include "types.h"
-
-#define D_800FA05C_ovl11 D_800FDC90_ovl37
-#define func_800F81F4_ovl11 func_800FD22C_ovl37
-
-#define func_800F5958_ovl11 func_800FA990_ovl37
-#include "shared/func_800F5958_ovl11.c"
-#undef func_800F5958_ovl11

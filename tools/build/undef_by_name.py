@@ -5,7 +5,7 @@ usage: undef_by_name.py [--just-symbols <exe.elf>] <out.ld> <obj>...   (readelf 
        undef_by_name.py exe-syms <exe.elf> <out.txt>   splat symbol_addrs of the exe's globals (rockx5 split),
                                                        and <out>.ld: the same names as ld assignments
 --just-symbols: names that ELF defines are skipped; any other undefined name whose vram is in the exe range
-[0x80010000, 0x800EE970) is listed and the exit is non-zero (it needs an exe label, config/symbols.slus.txt).
+[0x80010000, 0x800EE970) is listed and the exit is non-zero (it needs an exe label, config/us/symbols.main.txt).
 All-asm overlay splits leave splat-named refs unresolved where spimdisasm typed a target as data inside text
 (e.g. `.L800EEB40_ovl00` inside `D_800EEB14_ovl00`) or as a func in another naming (`func_800EEB64` vs `D_`).
 Names are `<prefix><8 hex vram>[_<seg>]`, so the address is exact; bytes only depend on it. Unparseable names are
@@ -15,6 +15,9 @@ import os
 import re
 import subprocess
 import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import layout  # noqa: E402
 
 BU = "tools/bin/binutils/usr"
 READELF = f"{BU}/bin/mipsel-linux-gnu-readelf"
@@ -42,7 +45,7 @@ def exe_syms(elf, out):
     (gas-local), no `*.NON_MATCHING`. The .ld twin works around bfd: MIPS ELF32 --just-symbols values are
     sign-extended (0xFFFFFFFF8...), so every R_MIPS_26 to one fails "relocation truncated to fit" (bits are right);
     a script assignment of the same name overrides it with the zero-extended value. Region bases g_ovl_<x>_vram (exe
-    in-section, at/after the exe's end; rockx5 places its segments there) go to the .ld only, not to splat (T4.1)."""
+    in-section, at/after the exe's end; rockx5 places its segments there) go to the .ld only, not to splat."""
     best, region = {}, {}
     for v, _, t, b, x, n in symbols(elf):
         if b == "GLOBAL" and x not in ("UND", "ABS") and re.fullmatch(r"g_ovl_[a-z]_vram", n):
@@ -90,7 +93,8 @@ def main():
     for name in exe:
         print(f"undef_by_name: exe-range name not in {just}: {name}", file=sys.stderr)
     if exe:
-        sys.exit(f"undef_by_name: {len(exe)} exe-range undefined names (label them in config/symbols.slus.txt)")
+        sys.exit(f"undef_by_name: {len(exe)} exe-range undefined names "
+                 f"(label them in {layout.config_path('symbols.%s.txt' % layout.MAIN)})")
 
 
 if __name__ == "__main__":

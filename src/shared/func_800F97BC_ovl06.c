@@ -6,14 +6,13 @@
 extern u8* alloc_class3_slot(void);
 extern signed char D_8009A0A5;
 extern u8 D_8009A23F;
-extern signed char D_800D1C0C;
 
 void func_800F97BC_ovl06(Obj* a) {
     u8* p;
 
     if (D_8009A0A5 == 0x14) {
         D_8009A23F = 2;
-        if (D_800D1C0C != 0xC) {
+        if (D_800D1C0C.s != 0xC) {
             func_8003D29C(0x1D, 0x40);
         }
         a->timer = 0x3C;

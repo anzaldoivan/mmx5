@@ -2,7 +2,7 @@
 #include "mmx5/globals.h"
 #include "mmx5/sound.h"
 #define D_8009A420_as_Sel800218E0 (*(Sel800218E0*)&D_8009A420)
-#define D_800C931C_as_Pad800218E0 (*(Pad800218E0*)&D_800C931C)
+#define D_800C931C_as_Pad800218E0 (*(Pad800218E0*)&g_pad1_buttons)
 
 extern void func_800132F8(s8 arg);
 

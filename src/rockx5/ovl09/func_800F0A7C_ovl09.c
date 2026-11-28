@@ -1,4 +1,5 @@
 #include "types.h"
+#include "mmx5/object.h"
 #include "mmx5/globals.h"
 #include "mmx5/system.h"
 #include "mmx5/graphics.h"
@@ -8,14 +9,9 @@ extern s32 func_8002DFB0(void);
 extern s32 func_8002B5B4(s32);
 extern u8* find_free_visual_obj(void);
 extern void func_8004D4F4(s32 a0, void* a1, u8* a2);
-extern u16 D_800D50DE;
-extern u8 D_800C9310;
-extern u16 D_8009A42E;
-extern u16 D_80093E68;
 extern u32* D_80098118;
 extern u8 D_8009A0B4;
 extern u8 D_800FAAF0_ovl09[];
-extern u8 D_8009A1F8[];
 extern u8 D_800FAAE8_ovl09[];
 
 void func_800F0A7C_ovl09(u8* obj) {
@@ -31,7 +27,7 @@ void func_800F0A7C_ovl09(u8* obj) {
             D_800D50DE = 0;
             D_8009A42E = 0;
             D_80093E68 = 0;
-            D_800C9310 |= 1;
+            D_800C9310.b |= 1;
             for (i = 0x17; i >= 0; i--) {
                 p = func_8002D27C();
                 if (p != 0) {
@@ -70,7 +66,7 @@ void func_800F0A7C_ovl09(u8* obj) {
                 }
             }
             func_80028B18(0, 0x9C0, 0x610, D_800FAAF0_ovl09);
-            D_8009A1F8[0x4C] = 1;
+            D_8009A1F8.u[0x4C] = 1;
             obj[4]++;
         }
     } else {
@@ -78,7 +74,7 @@ void func_800F0A7C_ovl09(u8* obj) {
             D_800D50DE = 0;
             D_8009A42E = 0;
             D_80093E68 = 0;
-            D_800C9310 |= 1;
+            D_800C9310.b |= 1;
         }
         if ((obj[0x7C] & 7) == 0) {
             q = find_free_visual_obj();
@@ -108,7 +104,7 @@ void func_800F0A7C_ovl09(u8* obj) {
             if (((s8*)obj)[2] == 2 && (obj[0x7C] & 0xF) == 0) {
                 D_800D50DE = 0x1F;
                 D_8009A42E = 0x3E0;
-                D_800C9310 |= 1;
+                D_800C9310.b |= 1;
                 D_80093E68 = 0x7C00;
             }
         }

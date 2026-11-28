@@ -1,11 +1,9 @@
 #include "types.h"
 #include "mmx5/globals.h"
 
-extern u8 D_8009A1F8[];
-
 void func_800F02CC_ovl04(void) {
     u8* a = g_Player;
-    u8* b = D_8009A1F8;
+    u8* b = D_8009A1F8.u;
     s16 dx = *(u16*)(a + 0xA) - *(u16*)(b + 0xA);
     u16 by = *(u16*)(b + 0xE);
 

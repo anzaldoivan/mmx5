@@ -12,13 +12,11 @@ void func_800FEEF0_ovl04(u8* a0) {
 }
 #undef D_800D1C28_as_u8
 
-extern u8 D_800D1C00[];
-
 void func_800FEF40_ovl04(u8* obj) {
     s32 limit = 300;
 
-    D_800D1C00[0x28] &= ~obj[0x93];
-    if (D_800D1C00[0x26] & 2) {
+    g_playthrough_state.u[0x28] &= ~obj[0x93];
+    if (g_playthrough_state.u[0x26] & 2) {
         limit = 50;
     }
     if (++*(s32*)(obj + 0x84) >= limit) {

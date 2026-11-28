@@ -4,7 +4,6 @@
 extern s32 ratan2(s32, s32);
 extern s32 rcos(s32);
 extern s32 rsin(s32);
-extern s8 D_800D1C00[];
 
 void func_800F2A58_ovl28(u8* obj) {
     u8* p;
@@ -17,9 +16,9 @@ void func_800F2A58_ovl28(u8* obj) {
 
     animate_object(obj);
     func_8002D9EC(obj, 0x60, 0x60);
-    st = D_800D1C00[0x2A];
+    st = g_playthrough_state.s[0x2A];
     if (st == 1) {
-        D_800D1C00[0x2A] = 2;
+        g_playthrough_state.s[0x2A] = 2;
         p = func_8002D1A4();
         if (p != 0) {
             p[0] = 0x61;
@@ -59,9 +58,9 @@ void func_800F2A58_ovl28(u8* obj) {
         }
         *(s16*)(obj + 0x7E) = v;
     }
-    if (D_800D1C00[0x2A] == 2) {
+    if (g_playthrough_state.s[0x2A] == 2) {
         *(u16*)(obj + 0x42) &= 0x7FFF;
-        D_800D1C00[0x2A] = 0;
+        g_playthrough_state.s[0x2A] = 0;
         obj[5] = 3;
     }
 }

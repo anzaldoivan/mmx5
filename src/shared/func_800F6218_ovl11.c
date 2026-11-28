@@ -5,7 +5,6 @@
 #include "mmx5/graphics.h"
 #include "addr.h"
 
-extern u8 D_8009A1F8[];
 extern s16 D_800FA060_ovl11;
 
 void func_800F6218_ovl11(u8* arg0) {
@@ -22,7 +21,7 @@ void func_800F6218_ovl11(u8* arg0) {
         arg0[0x9A] = 1;
     }
     arg0[0x3] = 1;
-    b = (s32)D_8009A1F8;
+    b = (s32)D_8009A1F8.u;
     if ((s16)(*(u16*)(arg0 + 0xE) -
               *(u16*)(((s8*)arg0)[0x14] * 0x54 + b + 0xE)) < -0x40) {
         *(s32*)(arg0 + 0x54) = 0;

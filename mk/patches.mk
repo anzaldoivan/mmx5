@@ -1,8 +1,8 @@
-# patches.mk — `PATCHES=<name>` (SHIFT=1 only): patches/<name>/<alias>/<f>.c replaces its twin src/<alias>/<f>.c
-# in a build of its own, build/shift-<name>/<alias>/ (`make split build SHIFT=1 PATCHES=<n> BINARY=<a>`,
-# `make disc SHIFT=1 PATCHES=<n>` -> build/shift-<n>/disc/mmx5.cue). `make replay-patch PATCHES=<n>`: mk/replay.mk.
-# Read before rockx5.mk/shift.mk/slus.mk (mk/*.mk sorts patches first): SH is their shifted build root.
-SH := build/shift$(if $(PATCHES),-$(PATCHES))
+# `PATCHES=<name>` (SHIFT=1 only): patches/<name>/<alias>/<f>.c replaces its twin src/<alias>/<f>.c
+# in a build of its own, $(B)/shift-<name>/<alias>/ (`make split build SHIFT=1 PATCHES=<n> BINARY=<a>`,
+# `make disc SHIFT=1 PATCHES=<n>` -> $(B)/shift-<n>/disc/mmx5.cue). `make replay-patch PATCHES=<n>`: mk/replay.mk.
+# Read before rockx5.mk/shift.mk/main.mk (mk/*.mk sorts patches first): SH is their shifted build root.
+SH := $(B)/shift$(if $(PATCHES),-$(PATCHES))
 
 ifneq ($(PATCHES),)
 # replay-patch only reads the built cue; every other goal builds and needs SHIFT=1.
@@ -13,14 +13,14 @@ $(if $(wildcard patches/$(PATCHES)/),,$(error PATCHES=$(PATCHES): no directory p
 P_C := $(shell find patches/$(PATCHES) -name '*.c')
 P_ORPHAN := $(filter-out $(patsubst src/%,patches/$(PATCHES)/%,$(wildcard $(patsubst patches/$(PATCHES)/%,src/%,$(P_C)))),$(P_C))
 $(if $(P_ORPHAN),$(error PATCHES=$(PATCHES): no src/ twin for $(P_ORPHAN)))
-BINARY ?= slus
+BINARY ?= $(MAIN)
 
-# Shorter stem than mk/slus.mk's `$(B_DIR)/%.o: %.c`, so it wins where a patch exists; falls back to src/ elsewhere.
+# Shorter stem than mk/main.mk's `$(B_DIR)/%.o: %.c`, so it wins where a patch exists; falls back to src/ elsewhere.
 # Its root-relative includes (shared/*.c) resolve through CPPFLAGS' -I src, as they do from src/; sed names the
 # twin in cpp's line markers (the object's .file), so an identical patch gives a cmp-equal object.
-# Depfile as in mk/slus.mk's C rule (DEPFILE); its -include there covers these objects' paths.
+# Depfile as in mk/main.mk's C rule (DEPFILE); its -include there covers these objects' paths.
 $(SH)/$(BINARY)/src/%.o: patches/$(PATCHES)/%.c $(wildcard include/*.h)
 	@mkdir -p $(dir $@)
-	$(CPP) $(CPPFLAGS) -MMD $@.dt $< | sed 's|"$<"|"src/$*.c"|' | $(CC1) $(CFLAGS) | $(MASPSX) | $(AS) $(CC_ASFLAGS) -o $@
+	$(CPP) $(CPPFLAGS) $(VERSION_CPPFLAGS) $(OVL_CPPFLAGS) -MMD $@.dt $< | sed 's|"$<"|"src/$*.c"|' | $(CC1) $(CFLAGS) | $(MASPSX) | $(AS) $(CC_ASFLAGS) -o $@
 	@$(DEPFILE)
 endif

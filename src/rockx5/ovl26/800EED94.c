@@ -1,18 +1,17 @@
 #include "types.h"
 #include "mmx5/globals.h"
 
-extern s8 D_800D1C00[];
 extern u8 D_800F8BB0_ovl26[];
 extern void func_800EEE34_ovl26(u8*);
 
 void func_800EED94_ovl26(u8* a0) {
-    if (D_800D1C00[0x1D] >= 3) {
+    if (g_playthrough_state.s[0x1D] >= 3) {
         *(s16*)(a0 + 0x1A) = 1;
         a0[5] = 1;
     } else {
         a0[5] = 0;
     }
-    if (D_800D1C00[0x1D] == 2) {
+    if (g_playthrough_state.s[0x1D] == 2) {
         *(s16*)(a0 + 0x1A) = 1;
         func_80028B18(0, 0x3C0, 0x11A0, D_800F8BB0_ovl26);
     }
@@ -23,7 +22,6 @@ void func_800EED94_ovl26(u8* a0) {
     func_800EEE34_ovl26(a0);
 }
 
-extern s16 D_8009A206;
 extern u8 D_800F8BB0_ovl26[];
 extern void* D_800F8C44_ovl26[];
 
@@ -35,7 +33,7 @@ void func_800EEE34_ovl26(u8* a0) {
         *(u16*)(a0 + 0x14) += 1;
     }
     if (*(s16*)(a0 + 0x1A) == 0 && (u16)(*(u16*)(g + 0xA) - 0x3C0) < 0x140 &&
-        (u16)(*(u16*)(g + 0xE) - 0x11E0) < 0xB0 && D_8009A206 >= 0x11B0) {
+        (u16)(*(u16*)(g + 0xE) - 0x11E0) < 0xB0 && D_8009A206.s >= 0x11B0) {
         ((s32(*)())func_80028B18)(0, 0x3C0, 0x11A0, D_800F8BB0_ovl26);
         *(s16*)(a0 + 0x1A) = 1;
     }

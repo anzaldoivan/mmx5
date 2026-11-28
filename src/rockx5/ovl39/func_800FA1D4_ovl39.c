@@ -4,7 +4,6 @@
 
 extern u8* find_free_visual_obj(void);
 extern void func_800FCE1C_ovl39(void* arg0, u8 arg1);
-extern u8 D_8009A1F8[];
 extern u8 D_800FE804_ovl39[];
 extern void* D_800FEB74_ovl39[];
 extern u8 D_800766A0[];
@@ -17,7 +16,7 @@ void func_800FA1D4_ovl39(u8* a0) {
     u8* d;
     u8 t;
 
-    d = D_8009A1F8;
+    d = D_8009A1F8.u;
     if (*(s16*)(d + 0x96) != 0x100) {
         *(u8**)(a0 + 0x54) = D_800FE804_ovl39;
     } else {
@@ -25,14 +24,14 @@ void func_800FA1D4_ovl39(u8* a0) {
     }
     if (D_1F80004C.bytes[0x8F] != 0) {
         if (!(D_1F80004C.bytes[0x8F] & 1)) {
-            u8* d1 = D_8009A1F8;
+            u8* d1 = D_8009A1F8.u;
             *(s16*)(d1 + 0x94) = 4;
         } else {
-            u8* d2 = D_8009A1F8;
+            u8* d2 = D_8009A1F8.u;
             *(s16*)(d2 + 0x94) = 0;
         }
         {
-            u8* d3 = D_8009A1F8;
+            u8* d3 = D_8009A1F8.u;
             d3[0xA0] = 1;
         }
         if (--D_1F80004C.bytes[0x8F] == 0) {
@@ -84,7 +83,7 @@ void func_800FA1D4_ovl39(u8* a0) {
     if (t != 0) {
         D_1F80004C.bytes[0x84] = t + 0xFF;
         if (t & 2) {
-            u8* d4 = D_8009A1F8;
+            u8* d4 = D_8009A1F8.u;
             *(s16*)(d4 + 0x96) = 0x200;
             d4[0xA0] = 1;
         } else {

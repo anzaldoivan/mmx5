@@ -1,10 +1,8 @@
 #include "types.h"
 #include "mmx5/globals.h"
 
-extern D_8009A1F8_t D_8009A1F8;
-
 void func_800FA88C_ovl58(UnkObj* arg0) {
-    D_8009A1F8_t* p = &D_8009A1F8;
+    D_8009A1F8_t* p = &D_8009A1F8.t;
 
     p->pad49[0x4C - 0x49] = 1;
     *(s32*)&p->pad0[8] += 0x160000;

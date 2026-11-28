@@ -3,7 +3,6 @@
 #include "addr.h"
 
 extern s16 D_8009A202;
-extern u8 D_800D1C00[];
 extern u8 D_800FB47C_ovl09[];
 
 void func_800F83C4_ovl09(u8* arg0) {
@@ -20,8 +19,8 @@ void func_800F83C4_ovl09(u8* arg0) {
         func_80028B18(0, 0x700, 0x870, D_800FB47C_ovl09 + 0x10);
         func_80028B18(0, 0x750, 0x870, D_800FB47C_ovl09 + 0x18);
         *(s16*)(arg0 + 0x7C) = 0xB4;
-        D_800D1C00[0x24] = 0;
-        *(s32*)(D_800D1C00 + 0x20) = 0;
+        g_playthrough_state.u[0x24] = 0;
+        *(s32*)(g_playthrough_state.u + 0x20) = 0;
         arg0[5]++;
     }
 }
@@ -47,14 +46,13 @@ void func_800F84B8_ovl09(u8* a0) {
 }
 
 extern s8 D_800D1C26;
-extern u8 D_8009A1F8[];
 
 void func_800F8560_ovl09(u8* arg0) {
     u8* q;
 
     if (--*(s16*)(arg0 + 0x7C) == 0) {
         ((s32(*)())func_8003D2C4)();
-        q = D_8009A1F8;
+        q = D_8009A1F8.u;
         D_800D1C26 = 0;
         *(u16*)(q + 0x26) = *(u16*)(D_1F80004C.bytes + 0x80);
         *(u16*)(q + 0x24) = *(u16*)(D_1F80004C.bytes + 0x82);

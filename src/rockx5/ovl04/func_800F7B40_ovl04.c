@@ -7,7 +7,6 @@
 extern s32 func_8002B5B4(s32);
 extern u8 D_8010295C_ovl04[];
 extern u32* D_80098118;
-extern u8 D_8009A1F8[];
 
 void func_800F7B40_ovl04(u8* obj) {
     s32 a;
@@ -33,7 +32,7 @@ void func_800F7B40_ovl04(u8* obj) {
     switch (*(s8*)(obj + 2)) {
     case 0:
         t = random_byte() * 2;
-        p0 = D_8009A1F8;
+        p0 = D_8009A1F8.u;
         *(s16*)(obj + 0xA) = *(u16*)(p0 + 0xA) + t % 320;
         *(s16*)(obj + 0xE) = *(u16*)(p0 + 0xE) + 0xF0;
         *(s32*)(obj + 0x20) = 0;

@@ -1,0 +1,3 @@
+# config/versions.tsv: the version registry. serial joins config/discs.tsv. triple is the compiler pin (docs/ops/compiler-pin.md).
+version	serial	triple
+us	SLUS-01334	L3-gcc2952psx-as286

@@ -2,8 +2,6 @@
 #include "mmx5/object.h"
 #include "mmx5/globals.h"
 
-extern u8 D_800D1C00[];
-
 void func_800F6700_ovl09(u8* arg0) {
     signed char* p;
     u8* d;
@@ -18,7 +16,7 @@ void func_800F6700_ovl09(u8* arg0) {
             func_8002D9EC(arg0, 0x40, 0x40);
         }
     } else {
-        d = D_800D1C00;
+        d = g_playthrough_state.u;
         if (*(signed char*)(d + 0xC) != 12) {
             *(signed char*)(d + 0xF) = 0x10;
         } else {

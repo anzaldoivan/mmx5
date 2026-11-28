@@ -11,11 +11,10 @@ void func_800F2948_ovl20(u8* obj) {
     }
 }
 
-extern u8 D_800D1C00[];
 extern void set_animation_frame(u8* a0, s32 a1, s32 a2);
 
 void func_800F29A0_ovl20(u8* a0) {
-    s8* p = (s8*)D_800D1C00;
+    s8* p = (s8*)g_playthrough_state.u;
     s32 v = p[0x28];
 
     if (v < 8 && p[0x2D] == 0) {

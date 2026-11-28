@@ -88,11 +88,11 @@ void func_800F42F8_ovl28(u8* obj) {
         animate_object(obj);
         func_800317B8(obj);
         if (D_8009A420_as_s32 & 1) {
-            func_8002C338(
+            load_palette(
                 0x13E,
                 (void*)((s32)D_1F800024 + (D_800FE310_ovl28[obj[0x8F]] << 5)),
                 1);
-            func_8002C338(
+            load_palette(
                 0x13F,
                 (void*)((s32)D_1F800024 + (D_800FE310_ovl28[obj[0x8F]] << 5)),
                 1);

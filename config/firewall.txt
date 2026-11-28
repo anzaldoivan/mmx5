@@ -26,36 +26,33 @@ glob:  *.toc
 # PCSX-Redux savestates (emulated RAM/VRAM = game bytes; tools/replay/README.md)
 glob:  *.sstate
 purge: SLUS_013.34
-# extracted/: every path is forbidden except extracted/retail/manifest.jsonl and manifest.sha1 (tracked, hashes only).
+# extracted/: every path is forbidden except extracted/<v>/manifest.jsonl and manifest.sha1 (tracked, hashes only).
+# <v> is any two-letter version folder (config/versions.tsv), so a new version's folder is covered too.
 # fnmatchcase has no negation and `*` crosses `/`, so the exception is a divergence chain: each line forbids the paths
 # that leave an allowed name at one position. Ceiling: a path that is a proper prefix of an allowed name
-# (e.g. extracted/retail/manifest.json) passes the path rule; the content-hash rule still applies to it.
-glob:  extracted/[!r]*
-glob:  extracted/r[!e]*
-glob:  extracted/re[!t]*
-glob:  extracted/ret[!a]*
-glob:  extracted/reta[!i]*
-glob:  extracted/retai[!l]*
-glob:  extracted/retail[!/]*
-glob:  extracted/retail/[!m]*
-glob:  extracted/retail/m[!a]*
-glob:  extracted/retail/ma[!n]*
-glob:  extracted/retail/man[!i]*
-glob:  extracted/retail/mani[!f]*
-glob:  extracted/retail/manif[!e]*
-glob:  extracted/retail/manife[!s]*
-glob:  extracted/retail/manifes[!t]*
-glob:  extracted/retail/manifest[!.]*
-glob:  extracted/retail/manifest.[!js]*
-glob:  extracted/retail/manifest.j[!s]*
-glob:  extracted/retail/manifest.js[!o]*
-glob:  extracted/retail/manifest.jso[!n]*
-glob:  extracted/retail/manifest.json[!l]*
-glob:  extracted/retail/manifest.jsonl?*
-glob:  extracted/retail/manifest.s[!h]*
-glob:  extracted/retail/manifest.sh[!a]*
-glob:  extracted/retail/manifest.sha[!1]*
-glob:  extracted/retail/manifest.sha1?*
+# (e.g. extracted/us/manifest.json) passes the path rule; the content-hash rule still applies to it.
+glob:  extracted/[!a-z]*
+glob:  extracted/?[!a-z]*
+glob:  extracted/??[!/]*
+glob:  extracted/??/[!m]*
+glob:  extracted/??/m[!a]*
+glob:  extracted/??/ma[!n]*
+glob:  extracted/??/man[!i]*
+glob:  extracted/??/mani[!f]*
+glob:  extracted/??/manif[!e]*
+glob:  extracted/??/manife[!s]*
+glob:  extracted/??/manifes[!t]*
+glob:  extracted/??/manifest[!.]*
+glob:  extracted/??/manifest.[!js]*
+glob:  extracted/??/manifest.j[!s]*
+glob:  extracted/??/manifest.js[!o]*
+glob:  extracted/??/manifest.jso[!n]*
+glob:  extracted/??/manifest.json[!l]*
+glob:  extracted/??/manifest.jsonl?*
+glob:  extracted/??/manifest.s[!h]*
+glob:  extracted/??/manifest.sh[!a]*
+glob:  extracted/??/manifest.sha[!1]*
+glob:  extracted/??/manifest.sha1?*
 purge: asm/
 purge: assets/
 purge: build/
@@ -72,11 +69,11 @@ glob:  **/*.safetensors
 
 # ---- hash sources ----
 fixture:  config/firewall-fixture.sha1
-required: extracted/retail/manifest.jsonl
+required: extracted/us/manifest.jsonl
 required: config/medium.sha1
-required: config/check.slus.sha                   # per-binary contracts: one line each (a glob is satisfied by any match)
-required: config/check.rockx5.sha
-# optional: assets/retail/manifest.jsonl          # exported DAT entries; loaded by audit_public.py when present (no rule kind)
+required: config/check.us.main.sha                # per-binary contracts: one line each (a glob is satisfied by any match)
+required: config/check.us.rockx5.sha
+# optional: assets/us/retail/manifest.jsonl         # exported DAT entries; loaded by audit_public.py when present (no rule kind)
 
 # ---- psxdecomp: the reference library (upstream clones; never tracked) ----
 purge: refs/

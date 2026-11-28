@@ -1,6 +1,8 @@
 #include "types.h"
 #include "addr.h"
 #include "mmx5/graphics.h"
+#include "mmx5/globals.h"
+#include "mmx5/movement.h"
 
 #define D_8007BD4C D_800FCC54_ovl27
 
@@ -24,3 +26,18 @@
 #define func_800532E0 func_800F196C_ovl27
 #include "shared/func_800532E0.c"
 #undef func_800532E0
+#undef D_8007BD4C
+
+#define func_800F0B84_ovl00 func_800F19A8_ovl27
+#define D_800FA75C_ovl00 D_800FCA98_ovl27
+#define D_800FA77C_ovl00 D_800FCAB8_ovl27
+#include "shared/func_800F0B84_ovl00.c"
+#undef func_800F0B84_ovl00
+#undef D_800FA75C_ovl00
+#undef D_800FA77C_ovl00
+
+#define D_800FA870_ovl00 D_800FCBAC_ovl27
+
+#define func_800F0BCC_ovl00 func_800F19F0_ovl27
+#include "shared/func_800F0BCC_ovl00.c"
+#undef func_800F0BCC_ovl00

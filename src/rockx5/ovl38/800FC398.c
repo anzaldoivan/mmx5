@@ -67,7 +67,7 @@ void func_800FC504_ovl38(ObjFC3F8* arg0) {
     }
 }
 
-/* Standalone twin of func_800F28B4_ovl00 (src/shared/func_800F28B4_ovl00.c): flag byte 0x92. */
+/* Standalone twin of func_800F28B4_ovl00: flag byte 0x92. */
 
 #define G D_1F80004C.bytes
 void func_800FAC40_ovl38(void);

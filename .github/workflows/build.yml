@@ -82,6 +82,11 @@ jobs:
               print("%s=%s" % (key.upper(), pub[key]))
           EOF
           python3 -I "$RUNNER_TEMP/psxd_publish.py" check-public .
+          # The job's version: the executable's serial in config/discs.tsv, then its row in config/versions.tsv
+          serial=$(git show "$rev:config/discs.tsv" | awk -F'\t' -v e="$EXE" '$3 == e { print $2 }')
+          version=$(git show "$rev:config/versions.tsv" | awk -F'\t' -v s="$serial" 's != "" && $2 == s { print $1 }')
+          [ -n "$version" ] || { echo "::error::$EXE has no version in config/discs.tsv and config/versions.tsv"; exit 1; }
+          echo "VERSION=$version" >> "$GITHUB_ENV"
           git ls-files -z > "$RUNNER_TEMP/tracked.z"
           mkdir "$RUNNER_TEMP/work"
           git archive HEAD | tar -x -C "$RUNNER_TEMP/work"
@@ -119,18 +124,18 @@ jobs:
         run: |
           set -euo pipefail
           tr '\0' '\n' < "$RUNNER_TEMP/tracked.z" > "$RUNNER_TEMP/work/.psxd-tracked"
-          id=$(docker run -d --network none -e EXE -v "$RUNNER_TEMP/work:/work" -w /work "$IMAGE" sh -c \
-            '{ xargs python3 tools/audit_public.py --paths < .psxd-tracked && make split build BINARY=slus SPLAT="python3 -m splat" AS=mipsel-linux-gnu-as LD=mipsel-linux-gnu-ld OBJCOPY=mipsel-linux-gnu-objcopy MASPSX="python3 /opt/maspsx/maspsx.py --aspsx-version=2.86" && make split build BINARY=rockx5 SPLAT="python3 -m splat" AS=mipsel-linux-gnu-as LD=mipsel-linux-gnu-ld OBJCOPY=mipsel-linux-gnu-objcopy MASPSX="python3 /opt/maspsx/maspsx.py --aspsx-version=2.86" AS_MARCH=mips4; } > build.log 2>&1')
+          id=$(docker run -d --network none -e EXE -e VERSION -v "$RUNNER_TEMP/work:/work" -w /work "$IMAGE" sh -c \
+            '{ xargs python3 tools/audit_public.py --paths < .psxd-tracked && make split build BINARY=main VERSION="$VERSION" SPLAT="python3 -m splat" AS=mipsel-linux-gnu-as LD=mipsel-linux-gnu-ld OBJCOPY=mipsel-linux-gnu-objcopy MASPSX="python3 /opt/maspsx/maspsx.py --aspsx-version=2.86" && make split build BINARY=rockx5 VERSION="$VERSION" SPLAT="python3 -m splat" AS=mipsel-linux-gnu-as LD=mipsel-linux-gnu-ld OBJCOPY=mipsel-linux-gnu-objcopy MASPSX="python3 /opt/maspsx/maspsx.py --aspsx-version=2.86" AS_MARCH=mips4; } > build.log 2>&1')
           rc=$(docker wait "$id"); docker rm "$id" > /dev/null
           python3 -I "$RUNNER_TEMP/psxd_publish.py" ci-log "$RUNNER_TEMP/work/build.log"
           exit "$rc"
 
-      # Against the private repository's list, never the PR's copy
+      # Against the private repository's lists for the job's version, never the PR's copy
       - name: Byte check
         working-directory: ${{ runner.temp }}/work
         run: |
-          sha1sum --strict --quiet -c "$RUNNER_TEMP/private/check/$EXE.sha1"
-          sha1sum --strict --quiet -c "$RUNNER_TEMP/private/check/ROCK_X5.BIN.sha1"
+          sha1sum --strict --quiet -c "$RUNNER_TEMP/private/check/$VERSION/$EXE.sha1"
+          sha1sum --strict --quiet -c "$RUNNER_TEMP/private/check/$VERSION/ROCK_X5.BIN.sha1"
 
       # Phase 9 decides the generator. The report steps start with config/categories.tsv; before it the job is the byte
       # check alone. The report is validated by the base's tools (no game bytes, the arithmetic, the artifact name).

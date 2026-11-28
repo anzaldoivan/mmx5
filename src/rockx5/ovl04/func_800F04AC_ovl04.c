@@ -71,7 +71,7 @@ void func_800F04AC_ovl04(u8* a0) {
         H(a0, 0x40) = D_80098118[func_8002B5B4(SB(a0, 0x1))] >> 7;
         W(a0, 0x3C) = (s32)SCR20 + SCR20[func_8002B5B4(SB(a0, 0x1))];
         H(a0, 0x42) = 0x7CCC;
-        func_8002C338(0x13C, D_1F800030, 4);
+        load_palette(0x13C, D_1F800030, 4);
         B(a0, 0x16) = 0x23;
         B(a0, 0x15) = 0x40;
         B(a0, 0x5) = 0xA;

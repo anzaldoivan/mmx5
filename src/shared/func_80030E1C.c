@@ -4,7 +4,7 @@
 
 #define M2C_UNK s32
 
-M2C_UNK func_80030EA4(s32); /* extern */
+M2C_UNK func_80030EA4(s32);
 
 void func_80030E1C(s32 arg0) {
     if ((func_800311CC() != 0) && (func_8003049C(arg0) != 0)) {

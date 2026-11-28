@@ -56,8 +56,6 @@ extern void start_pad_vibration(s32);
 extern void func_8002A600(s32, s32, s32);
 extern u8 D_800FF1CC_ovl06[];
 extern u8 D_800FF1D0_ovl06[];
-extern s32 D_800FF1DC_ovl06[];
-extern s32 D_800FF1E0_ovl06[];
 
 void func_800F8864_ovl06(u8* obj) {
     u8 flags;
@@ -91,8 +89,8 @@ void func_800F8864_ovl06(u8* obj) {
         start_pad_vibration(5);
         func_8002A600(0x5A, 4, 2);
         set_animation(obj, 0x14);
-        *(s32**)(obj + 0x50) = D_800FF1DC_ovl06;
-        *(s32**)(obj + 0x54) = D_800FF1E0_ovl06;
+        *(s32**)(obj + 0x50) = D_800FF1DC_ovl06.w;
+        *(s32**)(obj + 0x54) = D_800FF1E0_ovl06.w;
         *(s32*)(obj + 0x20) = 0;
         *(s32*)(obj + 0x28) = 0;
         *(s32*)(obj + 0x24) = 0;

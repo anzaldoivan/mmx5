@@ -6,7 +6,6 @@
 #define g_Player_as_Scr5F70 (*(Scr5F70*)&g_Player)
 
 extern s16 D_800FA05A_ovl11;
-extern Row5C8C D_8009A1F8[];
 
 void func_800F5F70_ovl11(Obj5C8C* obj) {
     s32 r;
@@ -22,11 +21,11 @@ void func_800F5F70_ovl11(Obj5C8C* obj) {
     if (obj->unkA > D_800FA05A_ovl11) {
         obj->unk15 = 0;
         obj->unk20 = 0xFFFA0000;
-        obj->unkA = (obj->unk14 + D_8009A1F8)->unkA + 0x180;
+        obj->unkA = (obj->unk14 + D_8009A1F8.row)->unkA + 0x180;
     } else {
         obj->unk15 = 0x40;
         obj->unk20 = 0x60000;
-        obj->unkA = (obj->unk14 + D_8009A1F8)->unkA - 0x40;
+        obj->unkA = (obj->unk14 + D_8009A1F8.row)->unkA - 0x40;
     }
     obj->unk24 = 0;
     r = random_byte();

@@ -1,0 +1,33 @@
+#include "types.h"
+#include "mmx5/globals.h"
+
+extern u8* alloc_class3_slot(void);
+
+void func_80020950(void) {
+    s8* p = g_playthrough_state.s;
+    u8* o;
+
+    if (p[0xC] == 5 && p[0x1D] == 0) {
+        p[0x1E] = 1;
+        return;
+    }
+    if (p[0xC] == 0xC && p[0xD] != 0 && p[0x1D] == 0) {
+        p[0x1E] = -2;
+        if (g_playthrough_state.s[0x44] != 0) {
+            o = func_8002D27C();
+            if (o != 0) {
+                o[0] = 0x41;
+                o[1] = 0x34;
+                o[2] = 1;
+            }
+        }
+    } else if (p[0x1E] == 0) {
+        o = alloc_class3_slot();
+        if (o != 0) {
+            o[0] = 1;
+            o[1] = 0x1B;
+        } else {
+            p[0x1E] = 1;
+        }
+    }
+}

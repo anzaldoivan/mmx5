@@ -8,8 +8,8 @@
 extern s32 D_8009A0A8;
 
 void func_800F4E30_ovl28(u8* obj) {
-    func_8002C338(0x13C, D_1F800030 + 0x60, 1);
-    func_8002C338(0x13D, D_1F800030 + 0x80, 1);
+    load_palette(0x13C, D_1F800030 + 0x60, 1);
+    load_palette(0x13D, D_1F800030 + 0x80, 1);
     *(u16*)(obj + 0x42) = 0x7CCC;
     play_sound(2, 0x6C, obj);
     func_8003D29C(0x14, (D_8009A0A8 <= *(s32*)(obj + 8)) << 6);
@@ -77,7 +77,6 @@ void func_800F4F20_ovl28(u8* obj) {
 #undef S8
 #undef G
 
-extern u16 D_800D50DE;
 extern u8 D_8009A0B5;
 
 void func_800F5040_ovl28(u8* obj) {
@@ -90,8 +89,6 @@ void func_800F5040_ovl28(u8* obj) {
     }
 }
 
-extern u16 D_800D50DE;
-
 void func_800F50A8_ovl28(u8* obj) {
     animate_object(obj);
     func_8002D9EC(obj, 0x60, 0x60);
@@ -102,13 +99,11 @@ void func_800F50A8_ovl28(u8* obj) {
 }
 
 extern u8 D_80091C44;
-extern u8 D_8009A1F8[];
-extern u8 D_800D1C00[];
 
 void func_800F5110_ovl28(void) {
     if (D_80091C44 == 0) {
-        u8* o = D_800D1C00;
-        u8* b = D_8009A1F8;
+        u8* o = g_playthrough_state.u;
+        u8* b = D_8009A1F8.u;
         o[0xF] = 0x10;
         o[0x24] = 0;
         *(s32*)(o + 0x20) = 0;

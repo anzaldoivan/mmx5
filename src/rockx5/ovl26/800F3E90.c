@@ -1,4 +1,5 @@
 #include "types.h"
+#include "mmx5/ovl26.h"
 #include "mmx5/globals.h"
 #include "addr.h"
 #include "mmx5/system.h"
@@ -8,14 +9,13 @@
 extern u8* alloc_class3_slot(void);
 extern s8 D_800D1C0F;
 extern signed char D_8009A0A5;
-extern u8 D_8009A1F8[];
 
 void func_800F3EC8_ovl26(u8* a0) {
     u8* g;
     u8* p;
 
     if (D_800D1C0F == 0 && D_8009A0A5 == 0x14) {
-        g = D_8009A1F8;
+        g = D_8009A1F8.u;
         *(s32*)(a0 + 0x90) = (s8)g[0x48];
         g[0x48] = 1;
         g[0x47] = 2;
@@ -32,13 +32,12 @@ void func_800F3EC8_ovl26(u8* a0) {
 }
 
 extern s32 func_80044DE0();
-extern u8 D_8009A1F8[];
 
 void func_800F3F78_ovl26(u8* a0) {
     u8* g;
 
     if (func_80044DE0(a0) == 0) {
-        g = D_8009A1F8;
+        g = D_8009A1F8.u;
         *(s16*)(g + 0x26) = 0x8B0;
         if ((s8)++a0[0x5C] == D_800D1CA2) {
             D_1F80004C.bytes[0x95] = D_800D1CA2;
@@ -59,8 +58,6 @@ void func_800F4014_ovl26(u8* obj) {
     obj[6]++;
 }
 
-extern u16 D_800F9F24_ovl26[][32];
-
 void func_800F407C_ovl26(u8* o) {
     u8* c;
 
@@ -75,7 +72,7 @@ void func_800F407C_ovl26(u8* o) {
         *(s32*)(c + 0x3C) = *(s32*)(o + 0x3C);
         *(s16*)(c + 0xA) = 0x8A0;
         *(u16*)(c + 0xE) =
-            D_800F9F24_ovl26[D_1F80004C.bytes[0x94]][*(s16*)(o + 0x7C) * 2];
+            D_800F9F24_ovl26.h[D_1F80004C.bytes[0x94]][*(s16*)(o + 0x7C) * 2];
         *(s32*)(c + 0x20) = 0x60000;
         *(s32*)(c + 0x28) = 0;
         *(s32*)(c + 0x24) = 0;

@@ -2,7 +2,6 @@
 #include "mmx5/globals.h"
 
 extern u8* func_8002D210();
-extern signed char D_800D1C0C;
 extern u8 D_801017F0_ovl04[];
 
 void func_800F4390_ovl04(u8* a0) {
@@ -14,7 +13,7 @@ void func_800F4390_ovl04(u8* a0) {
     u8* tbl;
 
     y = 0x410;
-    if (D_800D1C0C != 12) {
+    if (D_800D1C0C.s != 12) {
         y = 0x1520;
     }
     o = func_8002D210();

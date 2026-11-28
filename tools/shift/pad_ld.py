@@ -4,8 +4,8 @@
 usage: pad_ld.py <alias> <in.ld> <out.ld> [--pad N] [--objdir DIR]
 Every object path build/<alias>/ -> DIR/ (default build/shift/<alias>; shifted objects never share build/<alias>/).
 rockx5 only: `. += N` before each code overlay's RODATA, TEXT, DATA (never data overlays 13/15/17/19, pad/toc), and
-after every overlay `ASSERT(ovlNN_VRAM_END <= bound)`, bound from config/shift/regions.txt (A.lo overrides A; B).
-slus only: .main reordered TEXT, DATA (minus the zero tail 82430.data.o), RODATA, `. += N` before each block;
+after every overlay `ASSERT(ovlNN_VRAM_END <= bound)`, bound from config/us/shift/regions.txt (A.lo overrides A; B).
+main only: .main reordered TEXT, DATA (minus the zero tail func_800203F0.o(.data)), RODATA, `. += N` before each block;
 ASSERT the three end at or below the pinned tail 0x80091C30 (_gp), advance there, the tail, ASSERT <= 0x80092000;
 `. = 0x80092000` before .main_bss. The tail is bss-like (docs/memory-map.md), so it stays with bss. Every
 other address moves; with N = 0 the image size is unchanged (free fill is 0, so any N > 0 fails the ASSERT).
@@ -13,11 +13,16 @@ Inside an output section `.` is a section offset (ABSOLUTE(.) and ADDR(.main) fa
 """
 import argparse
 import re
+import sys
+from pathlib import Path
 
-TAIL_OBJ = "/data/82430.data.o("  # config/splat.slus.yaml [0x82430, data, 82430]
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "build"))
+import layout  # noqa: E402
+
+TAIL_OBJ = "/func_800203F0.o(.data)"  # config/us/splat.main.yaml [0x82430, .data, func_800203F0]
 MAIN_VRAM, TAIL_VRAM, BSS_VRAM = 0x80010000, 0x80091C30, 0x80092000
-DATA_OVLS = {13, 15, 17, 19}  # data-only overlays (config/splat.rockx5.yaml)
-REGIONS = "config/shift/regions.txt"
+DATA_OVLS = {13, 15, 17, 19}  # data-only overlays (config/us/splat.rockx5.yaml)
+REGIONS = str(layout.config_path("shift/regions.txt"))
 
 
 def block(lines, start, end):
@@ -90,10 +95,10 @@ def main():
     ap.add_argument("--pad", type=lambda s: int(s, 0), default=0)
     ap.add_argument("--objdir")
     a = ap.parse_args()
-    objdir = (a.objdir or f"build/shift/{a.alias}").rstrip("/") + "/"
-    lines = [s.replace(f"build/{a.alias}/", objdir)
+    objdir = (a.objdir or str(layout.build_dir("shift") / a.alias)).rstrip("/") + "/"
+    lines = [s.replace(f"{layout.build_dir(a.alias)}/", objdir)
              for s in open(a.src, encoding="utf-8").readlines()]
-    if a.alias == "slus":
+    if a.alias == layout.MAIN:
         lines = reorder(lines, a.pad)
     elif a.alias == "rockx5":
         lines = pad_ovls(lines, a.pad)

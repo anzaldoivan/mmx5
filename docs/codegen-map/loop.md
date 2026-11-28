@@ -1,4 +1,4 @@
-# loop.md — loop optimiser: pass → residual → lever (gcc-2.95.2-psx pin)
+# loop.md (loop optimiser): pass → residual → lever (gcc-2.95.2-psx pin)
 
 This file translates the kit's `gcc-2.7.2-map/loop.md` (L0-L8, routing, movables order, giv-init fence) to our pin.
 The kit was consulted, not copied. Every claim was re-derived on the staged tree `refs/gcc-2.95.2-psx/` (cites
@@ -6,12 +6,12 @@ audited by `cites.py check`).
 
 Status: `transfers` · `changed` · `absent in 2.95.2`.
 
-The experiments are in `.run/t4/c1/*.c` (scratch, pin compile + `levers.py dump`). The byte-proven levers are in
+The experiments are in `docs/codegen-map/evidence/loop/*.c` (pin compile + `levers.py dump`). The byte-proven levers are in
 `levers.yaml` (group `loop`).
 
 The kit's 2.7.2-vs-2.8.1 caveat table mostly lands on the 2.8.1 side here: 2.95.2 descends from 2.8/egcs.
 
-## 0. L0 — flags, pass order, thresholds, dump tells · changed
+## 0. L0: flags, pass order, thresholds, dump tells · changed
 
 - -O2 sets gcc/toplev.c:4863 flag_strength_reduce and gcc/toplev.c:4865 flag_rerun_loop_opt.
   Unroll is off: gcc/toplev.c:505 flag_unroll_loops (no -O2 default). `-funroll-loops` forces strength reduce
@@ -27,19 +27,19 @@ The kit's 2.7.2-vs-2.8.1 caveat table mostly lands on the 2.8.1 side here: 2.95.
   gcc/loop.c:419 copy_cost.
 - The giv worth-while test (`lifetime*threshold*benefit < insn_count` → ignored) is at gcc/loop.c:4714
   flag_reduce_all_givs. The benefit is already net of `add_cost*biv_count` (gcc/loop.c:4677 add_cost).
-- Dump phrases (verified in `.run/codegen/dumps/<stem>/<stem>.c.loop`): `Can reverse loop`, `Reversed loop and
+- Dump phrases (verified in the `levers.py dump` file `<stem>.c.loop`): `Can reverse loop`, `Reversed loop and
   added reg_nonneg`, `biv N can be eliminated.`, `Cannot eliminate biv N: biv used in insn M.`,
   `giv of insn N not worth while, P vs I.`, `Insn N: regno R (life L), ... moved to M`, NEW `Sorted combine
   statistics:` + `giv at X combined with giv at Y`.
 
 ## 1. Residual classes
 
-### L1 — IV count & shape (bivs, givs, combine_givs anchor) · changed
+### L1: IV count & shape (bivs, givs, combine_givs anchor) · changed
 - Pass: gcc/loop.c:5928 basic_induction_var. gcc/loop.c:5220 find_mem_givs. gcc/loop.c:6867 combine_givs_p
   (gcc/loop.c:6808 express_from). gcc/loop.c:6931 combine_givs is called at gcc/loop.c:4643 combine_givs.
 - Transfers: each separately incremented pointer/index is its own biv. Bivs never merge.
 - Changed (1): bare `*q` (mult 1, add 0) IS a mem giv now. The exclusion is removed (gcc/loop.c:5257 GIVs comment).
-  Experiment `.run/t4/c1/f1.c` vs `f2.c` (walked `q += 32` read as `*q,q[8],q[20]` vs `q[4],q[8],q[20]`):
+  Experiment `evidence/loop/f1.c` vs `f2.c` (walked `q += 32` read as `*q,q[8],q[20]` vs `q[4],q[8],q[20]`):
   the IV set is identical (q biv + reversed counter), with no extra IV. The kit's "bare deref → 3 IVs" does not
   reproduce.
 - Changed (2): anchor choice. 2.95.2 sorts givs by total benefit, descending, ties by giv number:
@@ -47,11 +47,11 @@ The kit's 2.7.2-vs-2.8.1 caveat table mostly lands on the 2.8.1 side here: 2.95.
   does not hold. The highest-benefit giv anchors. Giv recombination is compiled out
   (gcc/loop.c:4796 recombine_givs under `#if 0`).
 - Tell: preheader `addiu rIV,rBASE,A` + offset cluster `k(rIV)` = combined givs. Parallel `addiu` per biv.
-- Lever: as kit — one walked pointer with all fields as offsets for one IV. Two walked pointers for two IVs.
+- Lever: as kit. One walked pointer with all fields as offsets for one IV. Two walked pointers for two IVs.
   Anchor = benefit order (use counts per giv), not emission order. Experiment for the anchor: index-derived
   `base + i*S` with fields of differing use counts. Read `Sorted combine statistics` in the `.loop` dump.
 
-### L2 — index-biv elimination / endtest rewrite · changed
+### L2: index-biv elimination / endtest rewrite · changed
 - Pass: gcc/loop.c:8188 maybe_eliminate_biv → gcc/loop.c:8333 maybe_eliminate_biv_1. It is executed only when
   gcc/loop.c:5089 all_reduced. The bound placement is gcc/loop.c:8204 where (preheader iff threshold ≥ insn_count).
 - Changed (as kit's 2.8.1 column): compare-vs-constant needs the giv's add to be symbol/label/const or a
@@ -60,16 +60,16 @@ The kit's 2.7.2-vs-2.8.1 caveat table mostly lands on the 2.8.1 side here: 2.95.
   So variable-bound `i < n` loops do NOT eliminate i through a giv. But see L3: they usually get reversed onto n.
 - Tell: `slt rI,rN` up-count + separate pointer IV = biv kept. `sltu rP,rEnd` = pointer walk written in C.
 - Lever: the pointer form `for (p = a; p < a + n; p++)` gives the `sll/addu` end + `sltu` endtest
-  (experiment `.run/t4/c1/a2.c`). The index form gives the L3 NE count-down (lever `loop_rev_ne_vtop` before).
+  (experiment `evidence/loop/a2.c`). The index form gives the L3 NE count-down (lever `loop_rev_ne_vtop` before).
 
-### L3 — loop reversal → count-down (check_dbra_loop) · changed
+### L3: loop reversal → count-down (check_dbra_loop) · changed
 - Pass: gcc/loop.c:7654 check_dbra_loop. The counting-only detection is gcc/loop.c:7792 no_use_except_counting.
 - Changed (1): general reversal disjunct still needs no call (gcc/loop.c:7873 loop_has_call), BUT a
   counting-only biv reverses regardless (`|| no_use_except_counting`), call or not.
-- Changed (2): nonzero constant start is normalized when counting-only (gcc/loop.c:7938 no_use_except_counting)
-  — kit's "start must be literal 0" is 2.7.2-only. Vanilla GE reversal gcc/loop.c:7959 initial_value,
+- Changed (2): nonzero constant start is normalized when counting-only (gcc/loop.c:7938 no_use_except_counting).
+  The kit's "start must be literal 0" is 2.7.2-only. Vanilla GE reversal gcc/loop.c:7959 initial_value,
   gcc/loop.c:7979 cmp_code → `li N-1 … addiu -1; bgez`, REG_NONNEG note gcc/loop.c:8148 REG_NONNEG.
-- NEW: NE reversal gcc/loop.c:7986 cmp_code — increment 1, loop has a VTOP note (rotated while/for), biv
+- NEW: NE reversal gcc/loop.c:7986 cmp_code: increment 1, loop has a VTOP note (rotated while/for), biv
   counting-only. The counter is loaded with the trip count and counted to 0
   (`addu rN,rN,-1; bne rN,$0`), even with a VARIABLE bound. Do-while loops have no VTOP → no NE reversal.
 - Experiments: lever `loop_rev_counting_only` (byte-proven): `for (i = 1; i < 10; i++) ext(0)` → `li 8 … bgez`
@@ -81,7 +81,7 @@ The kit's 2.7.2-vs-2.8.1 caveat table mostly lands on the 2.8.1 side here: 2.95.
 - decrement_and_branch_on_count/BCT: absent in 2.95.2 for MIPS (gcc/loop.c:5162
   HAVE_decrement_and_branch_on_count). mips.md defines no such pattern.
 
-### L4 — invariant hoisting / preheader copies · changed
+### L4: invariant hoisting / preheader copies · changed
 - Pass: gcc/loop.c:634 scan_loop (trap guard gcc/loop.c:894 may_trap_p), gcc/loop.c:1444 combine_movables,
   gcc/loop.c:1739 move_movables (`not desirable` gcc/loop.c:2211 loop_dump_stream), gcc/loop.c:3187 invariant_p.
 - Transfers: a non-const call sets unknown_address_altered (gcc/loop.c:2451 CONST_CALL_P → plain loads not
@@ -90,7 +90,7 @@ The kit's 2.7.2-vs-2.8.1 caveat table mostly lands on the 2.8.1 side here: 2.95.
   (gcc/loop.c:913 loop_has_call). So an in-loop `la`/`lui` at the call-arg site is this, not a missed hoist.
 - Changed: the RTX_UNCHANGING exception (gcc/loop.c:3254 RTX_UNCHANGING_P) holds for `const` OBJECTS, not for
   `const T *` pointees: `extern const int K` hoists out of a call loop. `const int *p; … *p` does NOT
-  (experiment `.run/t4/c1/d1.c` vs `d2.c`: identical in-loop `lw 0($19)`). The kit's `const int *p` proof is
+  (experiment `evidence/loop/d1.c` vs `d2.c`: identical in-loop `lw 0($19)`). The kit's `const int *p` proof is
   2.7.2-only.
 - Experiment: lever `loop_const_hoist` (byte-proven): plain `extern int K` → `lw $2,%lo(K)` at loop head every
   iteration. `extern const int K` → load in preheader, and `s += K` then becomes a biv with pre-add/post-sub
@@ -98,13 +98,13 @@ The kit's 2.7.2-vs-2.8.1 caveat table mostly lands on the 2.8.1 side here: 2.95.
 - NEW (2.95.2): memory promotion gcc/loop.c:9475 load_mems (via gcc/loop.c:1170
   load_mems_and_recount_loop_regs_set). Gate: no unknown_address_altered, no call, no alloca, single exit
   (gcc/loop.c:2519 loop_has_call). Effect: a global read-modify-written in the loop lives in a register, one
-  load in the preheader, one store after the loop. Experiment `.run/t4/c1/c1.c` (`g += a[i]`, no call: `lw` before,
+  load in the preheader, one store after the loop. Experiment `evidence/loop/c1.c` (`g += a[i]`, no call: `lw` before,
   `sw` after loop) vs `c3.c` (call in loop: `lw/addu/sw` every iteration).
 - Tell: preheader `lw` of a global + post-loop `sw` = load_mems. In-loop reload + `jal` = unknown_address_altered.
 - Lever: add/remove a call or second exit, or make the object `const`. Caching in a local in C is usually
   redundant with load_mems in call-free loops.
 
-### L5 — giv replaceability / final-value compensation · transfers
+### L5: giv replaceability / final-value compensation · transfers
 - Pass: gcc/loop.c:5413 record_giv, gcc/loop.c:5659 check_final_value, final values from
   gcc/unroll.c:3270 final_biv_value, gcc/unroll.c:3347 final_giv_value (iterations: gcc/unroll.c:3584 loop_iterations).
 - Tell: `addiu rX,rX,±K` straddling the loop boundary. `move rOld,rIV` after a non-replaceable giv.
@@ -112,23 +112,23 @@ The kit's 2.7.2-vs-2.8.1 caveat table mostly lands on the 2.8.1 side here: 2.95.
 - Lever (soft, as kit): keep a derived value's uses on one side of the increment. If the target shows the
   compensation, create the crossing.
 
-### L6 — reduced-giv increment placement · transfers
+### L6: reduced-giv increment placement · transfers
 - Pass: gcc/loop.c:4928 insert_before (`tv->insn`: each reduced giv's add goes right before its biv increment).
   Auto-inc variants are unreachable on MIPS. Order after that = sched (see sched.md). This is intrinsic. Route it
   to sched/permuter.
 
-### L7 — whole loop skipped (invalid) · transfers
+### L7: whole loop skipped (invalid) · transfers
 - Pass: gcc/loop.c:2592 find_and_verify_loops. A loop is invalid on setjmp gcc/loop.c:2632 loop_invalid,
   forced/computed labels gcc/loop.c:2706 forced_labels, jump into the loop from outside. Invalid → no
   hoist/reduce/reverse.
-- Tell/lever: as kit — an -O0-looking loop in an -O2 function: look for an into-loop jump, reproduce it.
+- Tell/lever: as kit. An -O0-looking loop in an -O2 function: look for an into-loop jump, reproduce it.
 
-### L8 — not_every_iteration / increment position · changed
+### L8: not_every_iteration / increment position · changed
 - Pass: biv scan gcc/loop.c:3862 not_every_iteration, giv scan gcc/loop.c:4516 not_every_iteration.
   The reset is at gcc/loop.c:3873 NOTE_INSN_LOOP_VTOP / LOOP_CONT.
 - Changed: a jump whose target is a loop exit label does NOT set the flag (gcc/loop.c:3855
   loop_number_exit_labels). This is the 2.8.1 behaviour. 2.7.2 set it on any jump.
-- Lever: as kit — position of `p += K`/`i++` relative to non-exit branches, `continue` placement.
+- Lever: as kit. Position of `p += K`/`i++` relative to non-exit branches, `continue` placement.
 
 ## 2. Kit appendices
 
@@ -149,7 +149,7 @@ The kit's 2.7.2-vs-2.8.1 caveat table mostly lands on the 2.8.1 side here: 2.95.
 - Unrolling: gcc/unroll.c:223 unroll_loop is reached only with unroll_p (gcc/loop.c:3950 unroll_loop), i.e.
   `-funroll-loops`. It is dead at -O2. unroll.c supplies loop_iterations and final values to L3/L5.
 
-## 4. Rejected lever candidates (scratch, `.run/t4/c1/`)
+## 4. Rejected lever candidates (`evidence/loop/`)
 - `const int *p` hoist (d1/d2): no codegen change at the pin (L4 changed).
 - bare vs offset deref of a walked pointer (f1/f2): same IV set (L1 changed).
 - load_mems call/no-call (c1/c3): proven difference, but the C change (adding a call) is not a lever.

@@ -1,4 +1,6 @@
 #include "types.h"
+#include "mmx5/ovl01.h"
+#include "mmx5/ovl30.h"
 #include "mmx5/globals.h"
 #include "mmx5/graphics.h"
 #include "mmx5/movement.h"
@@ -52,7 +54,6 @@ extern u8 D_800FD7A8_ovl30[];
 extern u8 D_800FD7AC_ovl30[];
 extern u8 D_800FD7B0_ovl30[];
 extern u8 D_800FD7B4_ovl30[];
-extern u8 D_800FDBB4_ovl30[];
 
 void func_800FC3D8_ovl30(u8* obj) {
     u8* a;

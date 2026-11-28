@@ -61,7 +61,6 @@ void func_800FB5C8_ovl38(u8* obj) {
 #undef S8
 
 extern u8 D_8009A11A;
-extern u8 D_800D1C00[];
 
 #define S16(p, o) (*(s16*)((p) + (o)))
 #define U16(p, o) (*(u16*)((p) + (o)))
@@ -82,7 +81,7 @@ void func_800FB6D0_ovl38(u8* obj) {
             func_8002D9EC(obj, 0x60, 0x60);
         }
     } else {
-        g = D_800D1C00;
+        g = g_playthrough_state.u;
         g[0x24] = 0;
         *(s32*)(g + 0x20) = 0;
         D_8009A11A = 0;

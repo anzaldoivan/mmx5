@@ -1,7 +1,6 @@
 #include "types.h"
+#include "mmx5/globals.h"
 #include "mmx5/system.h"
-
-extern s8 D_800D1C00[];
 
 void func_800FA004_ovl44(u8* obj) {
     s32 sum;
@@ -13,11 +12,11 @@ void func_800FA004_ovl44(u8* obj) {
 
     sum = 0;
     for (i = 0; i < 4; i++) {
-        sum += D_800D1C00[0xC2 + i];
+        sum += g_playthrough_state.s[0xC2 + i];
     }
     sum *= 4;
     sum >>= 1;
-    sum += D_800D1C00[0xCA];
+    sum += g_playthrough_state.s[0xCA];
     if (sum >= 0x51) {
         amt = 0xD2F00;
     } else if (sum >= 0x3D) {
@@ -33,7 +32,7 @@ void func_800FA004_ovl44(u8* obj) {
     }
     obj[0xCB] = 1;
     *(s32*)(obj + 0xAC) += amt;
-    D_800D1C00[0xCA] = 0;
+    g_playthrough_state.s[0xCA] = 0;
     r = (random_byte() >> 2) & 0xF;
     hit = 0;
     if (sum >= 0x51) {

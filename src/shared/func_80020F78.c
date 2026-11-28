@@ -3,8 +3,8 @@
 
 #define M2C_UNK s32
 
-M2C_UNK func_80034A04();     /* extern */
-M2C_UNK read_player_input(); /* extern */
+M2C_UNK func_80034A04();
+M2C_UNK read_player_input();
 
 void func_80020F78(void) {
     read_player_input();

@@ -1,8 +1,6 @@
 #include "types.h"
 #include "mmx5/globals.h"
 
-extern u8 D_800D1C00[];
-
 void func_800EFCFC_ovl24(u8* p) {
     s32 flags;
     s32 i;
@@ -14,7 +12,7 @@ void func_800EFCFC_ovl24(u8* p) {
     u8 cb;
 
     flags = 0;
-    g = D_800D1C00;
+    g = g_playthrough_state.u;
     st = g[0x26];
     if ((u32)(st - 1) < 8 && ((s8*)g)[0x27] == 0 &&
         !((g_Player[0xC9] >> ((s8)st - 1)) & 1)) {

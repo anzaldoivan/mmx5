@@ -1,19 +1,18 @@
 #include "types.h"
+#include "mmx5/globals.h"
 #include "mmx5/system.h"
 
 extern s32 func_800F033C_ovl04(void);
-extern s16 D_8009A206;
-extern s8 D_800D1C00[];
 
 void func_800FBEF8_ovl04(u8* o) {
     s8* g;
     s32 v;
 
     if (func_800F033C_ovl04() != 0) {
-        if (D_8009A206 == 0x170 || D_8009A206 == 0x320) {
+        if (D_8009A206.s == 0x170 || D_8009A206.s == 0x320) {
             *(s8*)(o + 0x8C) = 1;
             *(s16*)(o + 0x88) = (((u32(*)())random_byte)() & 1) + 8;
-        } else if (D_8009A206 == 0x280) {
+        } else if (D_8009A206.s == 0x280) {
             *(s8*)(o + 0x8C) = -1;
             *(s16*)(o + 0x88) = (u8)(((u32(*)())random_byte)() % 50) + 0x28;
         }
@@ -22,7 +21,7 @@ void func_800FBEF8_ovl04(u8* o) {
         } else if (*(s8*)(o + 0x8C) == -1) {
             *(s32*)(o + 0x84) += -0x10000;
         }
-        g = D_800D1C00;
+        g = g_playthrough_state.s;
         if (g[0x27] != 0) {
             *(s32*)(o + 0x84) += -0x10000;
             g[0x27] = 0;

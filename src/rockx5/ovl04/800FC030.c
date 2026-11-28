@@ -4,8 +4,6 @@
 
 extern void func_800FBA74_ovl04(u8* o);
 extern void func_800FBEF8_ovl04(u8* o);
-extern u8 D_8009A1F8[];
-extern u8 D_800D1C00[];
 extern u8 D_80102B30_ovl04[][2];
 
 void func_800FC030_ovl04(u8* o) {
@@ -17,7 +15,7 @@ void func_800FC030_ovl04(u8* o) {
 
     func_800FBEF8_ovl04(o);
     func_800FBA74_ovl04(o);
-    p = D_800D1C00;
+    p = g_playthrough_state.u;
     if (*(u16*)(p + 0x28) == 0) {
         if (o[0x8D] == 0 || --o[0x8D] == 0) {
             i = random_byte() & 0xF;
@@ -26,7 +24,7 @@ void func_800FC030_ovl04(u8* o) {
             o[0x8D] = 0x78;
         }
     }
-    r = D_800D1C00;
+    r = g_playthrough_state.u;
     if (r[0x26] & 2) {
         ((s32(*)())func_8003D29C)(0x14, 0x40);
         o[5]++;
@@ -34,7 +32,7 @@ void func_800FC030_ovl04(u8* o) {
         o[0x90] = 0x40;
         o[0x91] = 0x40;
     }
-    q = D_8009A1F8;
+    q = D_8009A1F8.u;
     t = *(s16*)(o + 0x86) - 0x120;
     *(s16*)(o + 0xA) = *(u16*)(q + 0xA) - t;
     *(s16*)(o + 0xE) = *(u16*)(q + 0xE) + 0x58;
@@ -45,13 +43,11 @@ extern u8* alloc_class3_slot(void);
 extern s32 func_800F033C_ovl04(void);
 extern u8 D_80074EE0[];
 extern u8 D_80102A9C_ovl04[];
-extern u8 D_800D1C00[];
 extern u8 D_80102AA0_ovl04[];
 extern u8 D_800755C0[];
 extern u8 D_8009A0B5;
 extern s8 D_8009A23C[];
 extern u8* D_8010308C_ovl04;
-extern u8 D_8009A1F8[];
 extern u8 D_80102B50_ovl04[][2];
 
 void func_800FC144_ovl04(u8* o) {
@@ -72,11 +68,11 @@ void func_800FC144_ovl04(u8* o) {
         *(u8**)(o + 0x58) = D_80074EE0;
         *(u8**)(o + 0x54) = D_80102A9C_ovl04;
         if (func_80031DD0(o)) {
-            D_800D1C00[0x27] |= 1;
+            g_playthrough_state.u[0x27] |= 1;
         }
         *(u8**)(o + 0x54) = D_80102AA0_ovl04;
         if (func_80031DD0(o)) {
-            D_800D1C00[0x27] |= 1;
+            g_playthrough_state.u[0x27] |= 1;
         }
         if (o[0x8F]-- & 2) {
             *(u16*)(o + 0x42) |= 0x8000;
@@ -89,14 +85,14 @@ void func_800FC144_ovl04(u8* o) {
     } else {
         flag = 0;
         *(u8**)(o + 0x58) = D_800755C0;
-        if (!(D_800D1C00[0x2A] & 1)) {
+        if (!(g_playthrough_state.u[0x2A] & 1)) {
             *(u8**)(o + 0x54) = D_80102A9C_ovl04;
             o[0x5C] = o[0x90];
             r = func_80031DD0(o);
             if (r < 0) {
                 flag = 1;
-                D_800D1C00[0x2A] |= 1;
-                D_800D1C00[0x27] |= 1;
+                g_playthrough_state.u[0x2A] |= 1;
+                g_playthrough_state.u[0x27] |= 1;
                 o[0x90] = 0;
                 func_8004FD24(o);
                 func_8004FD90(o, 1, 0x3F, 0x3F);
@@ -108,7 +104,7 @@ void func_800FC144_ovl04(u8* o) {
             }
             if (r > 0) {
                 flag |= 1;
-                D_800D1C00[0x27] |= 1;
+                g_playthrough_state.u[0x27] |= 1;
                 if (r != 0x7F) {
                     if (r == 0x19 || r == 0x1A) {
                         o[0x8F] = 2;
@@ -119,8 +115,8 @@ void func_800FC144_ovl04(u8* o) {
                 o[0x90] = o[0x5C];
             }
         }
-        if (!(D_800D1C00[0x2A] & 2)) {
-            if (((s8*)D_800D1C00)[0x27] != 0) {
+        if (!(g_playthrough_state.u[0x2A] & 2)) {
+            if (((s8*)g_playthrough_state.u)[0x27] != 0) {
                 *(u8**)(o + 0x58) = D_80074EE0;
             }
             *(u8**)(o + 0x54) = D_80102AA0_ovl04;
@@ -128,8 +124,8 @@ void func_800FC144_ovl04(u8* o) {
             r = func_80031DD0(o);
             if (r < 0) {
                 flag |= 1;
-                D_800D1C00[0x2A] |= 2;
-                D_800D1C00[0x27] |= 1;
+                g_playthrough_state.u[0x2A] |= 2;
+                g_playthrough_state.u[0x27] |= 1;
                 x = *(s32*)(o + 0x8);
                 z = *(s32*)(o + 0xC);
                 o[0x91] = 0;
@@ -147,7 +143,7 @@ void func_800FC144_ovl04(u8* o) {
             }
             if (r > 0) {
                 flag |= 1;
-                D_800D1C00[0x27] |= 1;
+                g_playthrough_state.u[0x27] |= 1;
                 if (r != 0x7F) {
                     if (r == 0x19 || r == 0x1A) {
                         o[0x8F] = 2;
@@ -169,15 +165,15 @@ void func_800FC144_ovl04(u8* o) {
     if ((s8)sum == -0x80) {
         o[0x5C] = 0x7F;
     }
-    if ((D_800D1C00[0x2A] & 3) == 3) {
+    if ((g_playthrough_state.u[0x2A] & 3) == 3) {
         start_pad_vibration(10);
-        D_800D1C00[0x2A] |= 4;
+        g_playthrough_state.u[0x2A] |= 4;
         func_8003D29C(0x14, D_8009A0B5);
         h = *(u16*)(o + 0x42);
         o[5] += 1;
         h &= 0x7FFF;
         *(u16*)(o + 0x42) = h;
-        D_800D1C00[0x24] = 0;
+        g_playthrough_state.u[0x24] = 0;
         D_8009A23C[0] = 1;
         *(s16*)(o + 0x7C) = 0;
         p = alloc_class3_slot();
@@ -195,7 +191,7 @@ void func_800FC144_ovl04(u8* o) {
             *(s32*)(o + 0x84) = 0x200000;
         }
     }
-    g = D_800D1C00;
+    g = g_playthrough_state.u;
     if (((s8*)g)[0x27] != 0) {
         g[0x27] = 0;
     }
@@ -207,7 +203,7 @@ void func_800FC144_ovl04(u8* o) {
             o[0x8D] = 0x3C;
         }
     }
-    q = D_8009A1F8;
+    q = D_8009A1F8.u;
     w = *(s16*)(o + 0x86) - 0x120;
     *(s16*)(o + 0xA) = *(u16*)(q + 0xA) - w;
     *(s16*)(o + 0xE) = *(u16*)(q + 0xE) + 0x58;
@@ -217,7 +213,6 @@ void func_800FC144_ovl04(u8* o) {
 
 extern void func_8002A600(s32, s32, s32);
 extern u16 D_8009A22C;
-extern u8 D_800D1C00[];
 extern u8* D_8010308C_ovl04;
 
 void func_800FC6A0_ovl04(u8* a0) {
@@ -242,7 +237,7 @@ void func_800FC6A0_ovl04(u8* a0) {
         func_8002A600(0x10, 3, 2);
     }
     if (*(s16*)(a0 + 0xA) >= 0xCC0) {
-        D_800D1C00[0x2A] |= 8;
+        g_playthrough_state.u[0x2A] |= 8;
         if (D_8010308C_ovl04 != 0) {
             D_8010308C_ovl04[4] = 2;
         }
