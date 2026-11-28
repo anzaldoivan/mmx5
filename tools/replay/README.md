@@ -1,4 +1,4 @@
-# tools/replay — deterministic pad-script replay in PCSX-Redux 298 (T1 phase 2.2)
+# tools/replay: deterministic pad-script replay in PCSX-Redux 298 (T1 phase 2.2)
 
 `replay.lua` (Redux side, `-interpreter`, C0104) + `replay.py` (driver, stdlib). Outputs only under `.run/` (G12).
 

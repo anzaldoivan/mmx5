@@ -32,7 +32,7 @@ else
     say "no dpkg on this system — install the equivalents of: $PKGS"
 fi
 
-# 2) The venv installs pinned requirements. Phase 1 created the file with the extractor's dependencies.
+# 2) The venv installs pinned requirements.
 
 if [ ! -x .venv/bin/python ]; then
     say "creating .venv"
@@ -52,7 +52,7 @@ fi
 say "mipsel binutils — preferred system route: sudo apt-get install binutils-mipsel-linux-gnu"
 if command -v mipsel-linux-gnu-as >/dev/null 2>&1 && command -v mipsel-linux-gnu-objdump >/dev/null 2>&1; then
     say "mipsel binutils: present ($(command -v mipsel-linux-gnu-as))"
-    # mk/slus.mk:9-11 calls tools/bin/mipsel-linux-gnu-*. A fresh clone needs links there to the PATH tools.
+    # mk/main.mk:9-11 calls tools/bin/mipsel-linux-gnu-*. A fresh clone needs links there to the PATH tools.
 
     for t in as ld objcopy; do
         [ -e "tools/bin/mipsel-linux-gnu-$t" ] || ln -s "$(command -v mipsel-linux-gnu-$t)" "tools/bin/mipsel-linux-gnu-$t"

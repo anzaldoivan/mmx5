@@ -2,8 +2,6 @@
 #include "mmx5/globals.h"
 #include "mmx5/graphics.h"
 
-extern u8 D_800D1C00[];
-
 void func_800FDD58_ovl04(u8* obj) {
     animate_object(obj);
     if (*(s8*)(obj + 0x46) == 0) {
@@ -11,8 +9,8 @@ void func_800FDD58_ovl04(u8* obj) {
             set_animation(obj, 0);
         }
         obj[0x6] = 0;
-        D_800D1C00[0x28] &= obj[0x95];
-        D_800D1C00[0x29] &= obj[0x96];
+        g_playthrough_state.u[0x28] &= obj[0x95];
+        g_playthrough_state.u[0x29] &= obj[0x96];
     }
 }
 
@@ -46,8 +44,6 @@ void func_800FDDDC_ovl04(u8* arg0) {
     }
 }
 
-/* W40 draft: after 61 ticks, flag D_800D1C2A[1] and spawn two 0x41/0xB children (rockx5 ovl04). */
-
 extern u8 D_800D1C2A;
 
 void func_800FDED4_ovl04(u8* o) {
@@ -74,8 +70,6 @@ void func_800FDED4_ovl04(u8* o) {
     }
 }
 
-/* W47 draft: unless D_800D1C2A[1] or o[0x46] is set, set state 0x3A (o[5]==2) or 0x3C and advance o[6] (rockx5 ovl04). */
-
 extern u8 D_800D1C2A;
 
 void func_800FDF84_ovl04(u8* o) {
@@ -90,13 +84,11 @@ void func_800FDF84_ovl04(u8* o) {
     }
 }
 
-extern u8 D_800D1C00[];
-
 void func_800FE004_ovl04(u8* obj) {
     animate_object(obj);
     if (*(s8*)(obj + 0x46) == 0) {
         obj[0x6] = 0;
-        D_800D1C00[0x28] &= obj[0x95];
-        D_800D1C00[0x29] &= obj[0x96];
+        g_playthrough_state.u[0x28] &= obj[0x95];
+        g_playthrough_state.u[0x29] &= obj[0x96];
     }
 }

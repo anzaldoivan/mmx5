@@ -8,7 +8,6 @@ extern void func_8002906C(void);
 extern s32 func_80027238(void);
 extern void func_800177B0(s32, s32);
 extern void func_80013288(s32);
-extern u8 D_8009A1F8[];
 extern s32 D_800EF894_ovl23[];
 
 void func_800EED50_ovl23(u8* arg0) {
@@ -27,9 +26,9 @@ void func_800EED50_ovl23(u8* arg0) {
     init_checkpoint_positions();
     func_8002906C();
     func_80027238();
-    D_8009A1F8[3] = 0;
-    D_8009A1F8[0x57] = 0;
-    D_8009A1F8[0xAB] = 1;
+    D_8009A1F8.u[3] = 0;
+    D_8009A1F8.u[0x57] = 0;
+    D_8009A1F8.u[0xAB] = 1;
     func_800177B0(0x15, 0x70);
     for (i = 2; i < 8; i++) {
         p = func_8002D27C();
@@ -71,10 +70,6 @@ void func_800EEE74_ovl23(u8* a0) {
     }
 }
 
-extern u16 D_800D50DE;
-extern u16 D_8009A42E;
-extern u16 D_80093E68;
-
 extern void func_8002C1C8(void);
 
 void func_800EEF0C_ovl23(u8* arg0) {
@@ -92,14 +87,13 @@ void func_800EEF0C_ovl23(u8* arg0) {
 }
 
 extern signed char D_8009A424;
-extern u8 D_8009A1F8[];
 
 void func_800EEF78_ovl23(u8* a0) {
     if (D_8009A424 == 0) {
         ((s32(*)())func_8001E668)();
-        D_8009A1F8[3] = 0;
-        D_8009A1F8[0x57] = 0;
-        D_8009A1F8[0xAB] = 0;
+        D_8009A1F8.u[3] = 0;
+        D_8009A1F8.u[0x57] = 0;
+        D_8009A1F8.u[0xAB] = 0;
         ((s32(*)())func_8002C50C)();
         if (a0[0x79] == 0) {
             a0[0] = 0x13;

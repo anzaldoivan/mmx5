@@ -1,19 +1,18 @@
 #include "types.h"
-
-extern s16 D_8009A1F8[];
+#include "mmx5/globals.h"
 
 void func_8002979C(s16* p) {
     s16 t;
     s16 a;
     s16 d;
 
-    t = D_8009A1F8[5] >> 1;
-    t = t + D_8009A1F8[5];
+    t = D_8009A1F8.h[5] >> 1;
+    t = t + D_8009A1F8.h[5];
     a = t + p[0x20];
     p[5] = a;
     d = a - p[0xB];
-    t = D_8009A1F8[7] >> 1;
-    t = t + D_8009A1F8[7];
+    t = D_8009A1F8.h[7] >> 1;
+    t = t + D_8009A1F8.h[7];
     p[7] = t + p[0x21];
     if (d >= 0) {
         if (d >= 0x10) {

@@ -9,6 +9,9 @@ Kinds, range, plant, allowlist: tools/shift/README.md. Exit 0 iff 0 unsymbolized
 import argparse, bisect, re, struct, sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "build"))
+import layout  # noqa: E402
+
 EXE_LO, IMAGE_END, OVL_VRAM, GP = 0x80010000, 0x80092000, 0x800EE970, 0x80091C30
 SHF_ALLOC, SHF_EXEC, SHT_SYMTAB, SHT_NOBITS, SHT_REL, SHN_ABS = 2, 4, 2, 8, 9, 0xFFF1
 R32, R26, HI16, LO16, GPREL16 = 2, 4, 5, 6, 7
@@ -79,7 +82,7 @@ def ovl_regions(ovl):
 
 
 def direction(f, rng):
-    return ("exe" if f[0] == "slus" else "ovl") + "->" + ("exe" if rng[0] <= f[3] < rng[1] else "ovl")
+    return ("exe" if f[0] == layout.MAIN else "ovl") + "->" + ("exe" if rng[0] <= f[3] < rng[1] else "ovl")
 
 
 def text_ranges(map_path):
@@ -195,7 +198,7 @@ def abs_in_data(elf, found):
     masks = {i: text_mask(elf, s) for i, s in enumerate(elf["secs"]) if s["flags"] & SHF_ALLOC and s["bytes"]}
     n = 0
     for al, k, va, *_ in found:
-        if al == "slus" and k == "abs":
+        if al == layout.MAIN and k == "abs":
             i = next((i for i in masks if 0 <= va - elf["secs"][i]["addr"] < len(elf["secs"][i]["bytes"])), None)
             n += i is None or not masks[i][(va - elf["secs"][i]["addr"]) // 4]
     return n
@@ -206,7 +209,7 @@ def run(exe, ovl, allow, report, plant=True):
     rng = exe_range(exe)
     regs = ovl_regions(ovl) if ovl else []
     rngs, oglob = [rng] + regs, ovl["glob"] if ovl else frozenset()
-    found = scan(exe, "slus", rngs, exe_glob=oglob) + (scan(ovl, "rockx5", rngs, exe_glob=exe["glob"] | oglob) if ovl else [])
+    found = scan(exe, layout.MAIN, rngs, exe_glob=oglob) + (scan(ovl, "rockx5", rngs, exe_glob=exe["glob"] | oglob) if ovl else [])
     found = [f for f in found if (f[0], f[2], f[3]) not in allow]
 
     def caught(elf, alias, glob, site, d):
@@ -215,14 +218,14 @@ def run(exe, ovl, allow, report, plant=True):
     plants = []
     if plant:
         site = plant_site(exe, [rng])  # exe->exe: drop the reloc
-        plants.append(("exe->exe", site, caught(exe, "slus", oglob, site, "exe->exe")))
+        plants.append(("exe->exe", site, caught(exe, layout.MAIN, oglob, site, "exe->exe")))
         if site and regs:  # exe->ovl: same word patched to an overlay-region address, reloc dropped
             sec = dict(exe["secs"][site[0]])
             b = bytearray(sec["bytes"])
             struct.pack_into("<I", b, site[1] - sec["addr"], regs[0][0])
             sec["bytes"] = bytes(b)
             pat = dict(exe, secs=exe["secs"][:site[0]] + [sec] + exe["secs"][site[0] + 1:])
-            plants.append(("exe->ovl", site, caught(pat, "slus", oglob, site, "exe->ovl")))
+            plants.append(("exe->ovl", site, caught(pat, layout.MAIN, oglob, site, "exe->ovl")))
         else:
             plants.append(("exe->ovl", None, False))
         site = plant_site(ovl, regs) if ovl else None  # ovl->ovl: drop a rockx5 reloc into an overlay region
@@ -262,7 +265,7 @@ def load_allow(path):
 
 
 def translate_allow(allow, retail, exe):
-    """slus allowlist sites keyed by retail vaddr -> the scanned exe's: retail symbol containing the site (largest
+    """main allowlist sites keyed by retail vaddr -> the scanned exe's: retail symbol containing the site (largest
     value <= site within size, else nearest preceding global) + offset, same name resolved in `exe`. Missing: exit 1."""
     def named(elf):
         return [(v, z, n) for n, v, z, t, x in elf["syms"] if n and t not in (STT_SECTION, STT_FILE) and x not in (0, SHN_ABS)]
@@ -273,7 +276,7 @@ def translate_allow(allow, retail, exe):
         where.setdefault(n, set()).add(v)
     out = set()
     for al, site, val in allow:
-        if al != "slus":
+        if al != layout.MAIN:
             out.add((al, site, val))
             continue
         hit = [(v, n) for v, z, n in rs if v <= site < v + z]
@@ -282,10 +285,10 @@ def translate_allow(allow, retail, exe):
         else:
             k = bisect.bisect_right(glob, (site, "￿")) - 1
             if k < 0:
-                raise SystemExit(f"shift-scan: allow slus {site:08X}: no retail symbol at or before it")
+                raise SystemExit(f"shift-scan: allow {layout.MAIN} {site:08X}: no retail symbol at or before it")
             v, n = glob[k]
         if len(where.get(n, ())) != 1:
-            raise SystemExit(f"shift-scan: allow slus {site:08X}: {n} {'missing' if n not in where else 'ambiguous'}"
+            raise SystemExit(f"shift-scan: allow {layout.MAIN} {site:08X}: {n} {'missing' if n not in where else 'ambiguous'}"
                              " in the scanned exe")
         out.add((al, next(iter(where[n])) + site - v, val))
     return out
@@ -295,9 +298,9 @@ def summary(found, rng, regs, plants, absd=0):
     c = {k: sum(f[1] == k for f in found) for k in KINDS}
     print(f"shift-scan: range {rng[0]:08X}..{rng[1]:08X}")
     print("shift-scan: ovl regions " + (", ".join(f"{lo:08X}..{hi:08X}" for lo, hi in regs) or "none"))
-    print(f"shift-scan: {len(found)} unsymbolized (exe {sum(f[0] == 'slus' for f in found)}, "
+    print(f"shift-scan: {len(found)} unsymbolized (exe {sum(f[0] == layout.MAIN for f in found)}, "
           f"rockx5 {sum(f[0] == 'rockx5' for f in found)}; " + ", ".join(f"{k} {c[k]}" for k in KINDS) + f"); exe data "
-          f"{sum(f[0] == 'slus' and f[1] == 'data' for f in found)}, abs-in-data {absd}")
+          f"{sum(f[0] == layout.MAIN and f[1] == 'data' for f in found)}, abs-in-data {absd}")
     for d in DIRS:
         fs = [f for f in found if direction(f, rng) == d]
         print(f"shift-scan: {d} {len(fs)} (" + ", ".join(f"{k} {sum(f[1] == k for f in fs)}" for k in KINDS) + ")")
@@ -344,8 +347,8 @@ def selftest():
                  ("ovl00_ROM_END", 0x810, 0, 0, SHN_ABS), ("o", O, 0, 1, 1)])
     found, rng, regs, plants = run(parse(elf), parse(ovl), set(), None)
     got = {(f[0], f[1], f[2], direction(f, rng)) for f in found}
-    want = {("slus", "hilo", T, "exe->exe"), ("slus", "gprel", T + 8, "exe->exe"), ("slus", "data", D, "exe->exe"),
-            ("slus", "abs", D + 8, "exe->exe"), ("slus", "data", D + 12, "exe->ovl"),
+    want = {(layout.MAIN, "hilo", T, "exe->exe"), (layout.MAIN, "gprel", T + 8, "exe->exe"), (layout.MAIN, "data", D, "exe->exe"),
+            (layout.MAIN, "abs", D + 8, "exe->exe"), (layout.MAIN, "data", D + 12, "exe->ovl"),
             ("rockx5", "abs", O + 4, "ovl->exe"), ("rockx5", "data", O + 8, "ovl->ovl")}
     if abs_in_data(parse(elf), found) != 1:
         raise SystemExit("shift-scan: selftest FAIL abs-in-data")
@@ -353,8 +356,8 @@ def selftest():
             ("exe->exe", (2, D + 4), True), ("exe->ovl", (2, D + 4), True), ("ovl->ovl", (1, O + 12), True)]:
         raise SystemExit(f"shift-scan: selftest FAIL got {sorted(got)} range {rng} regions {regs} plants {plants}")
     moved = dict(syms=[("f", T + 0x40, len(text), STT_FUNC, 1), ("d", D + 0x40, 0, 1, 2)])
-    if translate_allow({("slus", T + 4, 1), ("slus", D + 8, 2), ("rockx5", O, 3)}, parse(elf), moved) != {
-            ("slus", T + 0x44, 1), ("slus", D + 0x48, 2), ("rockx5", O, 3)}:
+    if translate_allow({(layout.MAIN, T + 4, 1), (layout.MAIN, D + 8, 2), ("rockx5", O, 3)}, parse(elf), moved) != {
+            (layout.MAIN, T + 0x44, 1), (layout.MAIN, D + 0x48, 2), ("rockx5", O, 3)}:
         raise SystemExit("shift-scan: selftest FAIL retail-exe allow translation")
     print("shift-scan: control OK")
 
@@ -363,13 +366,13 @@ def main():
     if "--selftest" in sys.argv[1:]:
         return selftest()
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    ap.add_argument("--exe", default="build/slus/SLUS_013.34.elf")
-    ap.add_argument("--ovl", default="build/rockx5/ROCK_X5.BIN.elf")
-    ap.add_argument("--allow", default="config/shift/not_pointers.txt")
+    ap.add_argument("--exe", default=str(layout.build_dir(layout.MAIN) / "SLUS_013.34.elf"))
+    ap.add_argument("--ovl", default=str(layout.build_dir("rockx5") / "ROCK_X5.BIN.elf"))
+    ap.add_argument("--allow", default=str(layout.config_path("shift/not_pointers.txt")))
     ap.add_argument("--report", default=".run/shift/scan.txt")
     ap.add_argument("--no-plant", action="store_true")
     ap.add_argument("--baseline", action="store_true")
-    ap.add_argument("--retail-exe", help="retail-linked exe ELF: slus allowlist sites translated by symbol+offset")
+    ap.add_argument("--retail-exe", help="retail-linked exe ELF: main allowlist sites translated by symbol+offset")
     a = ap.parse_args()
     exe = load(a.exe)
     allow = load_allow(a.allow)

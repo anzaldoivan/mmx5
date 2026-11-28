@@ -1,4 +1,5 @@
 #include "types.h"
+#include "mmx5/object.h"
 #include "mmx5/globals.h"
 #include "mmx5/sound.h"
 
@@ -7,13 +8,10 @@
 extern void func_800F2AE8_ovl05(void);
 extern void func_800F2C44_ovl05(u8*);
 extern void func_80012BF4(s32);
-extern u8 D_8009A1F8[];
 extern s16 D_800F595C_ovl05;
 extern s16 D_800F595E_ovl05;
 extern s16 D_800F5960_ovl05;
 extern s16 D_800F5962_ovl05;
-extern u8 D_80092090[];
-extern u8 D_80096D98[];
 extern u8 D_800F5964_ovl05[];
 extern u16 D_800F5894_ovl05[];
 extern u8 D_800F589C_ovl05[];
@@ -30,7 +28,7 @@ void func_800F302C_ovl05(u8* o) {
 
     ((s16*)o)[0x3E] += 1;
     ((s16*)o)[5] += 0x10;
-    d = D_8009A1F8;
+    d = D_8009A1F8.u;
     ((s16*)d)[0x2F] = D_800F595C_ovl05 - ((s16*)o)[5];
     ((s16*)d)[0x31] = D_800F595E_ovl05 - ((s16*)o)[7];
     D_800F5960_ovl05 = ((s16*)d)[5] - 0x40;
@@ -43,7 +41,7 @@ void func_800F302C_ovl05(u8* o) {
         }
         p += 0x9C;
     }
-    p = D_80096D98;
+    p = g_projectiles.u;
     for (i = 0; i < 32; i++) {
         if (((s8*)p)[0] != 0 && ((s8*)p)[1] == 9 && ((s8*)p)[4] == 1) {
             func_800F2C44_ovl05(p);
@@ -51,7 +49,7 @@ void func_800F302C_ovl05(u8* o) {
         p += 0x9C;
     }
     *(u8*)(D_800F5964_ovl05 + 1) = 1;
-    e = D_8009A1F8;
+    e = D_8009A1F8.u;
     if (((s16*)o)[5] >= *(s16*)(e + 0xA) + 0x140) {
         e[0xA1] = 2;
         e[0xA2] = 5;
@@ -61,7 +59,7 @@ void func_800F302C_ovl05(u8* o) {
         *(s16*)(e + 0x5E) += *(s16*)(e + 0xA);
         o[6]++;
         for (n = o[0x80]; n < 3; n++) {
-            g = D_8009A1F8;
+            g = D_8009A1F8.u;
             dx = D_800F5894_ovl05[n] - *(u16*)(g + 0xA);
             if ((u16)dx < 0x141) {
                 q = func_8002D27C();
@@ -98,11 +96,8 @@ extern void func_800F2AE8_ovl05(void);
 extern void func_800F2C44_ovl05(u8*);
 extern void func_80012BF4(s32);
 extern void func_80012BD8(void);
-extern u8 D_8009A1F8[];
 extern s16 D_800F5960_ovl05;
 extern s16 D_800F5962_ovl05;
-extern u8 D_80092090[];
-extern u8 D_80096D98[];
 extern u8 D_800D1DBC;
 
 void func_800F3338_ovl05(u8* o) {
@@ -112,7 +107,7 @@ void func_800F3338_ovl05(u8* o) {
     s32 i;
 
     ((s16*)o)[0x3E] += 1;
-    d = D_8009A1F8;
+    d = D_8009A1F8.u;
     ((s16*)d)[0x2F] -= 0x10;
     func_80012BF4(2);
     D_800F5960_ovl05 = ((s16*)d)[5] - 0x40;
@@ -125,7 +120,7 @@ void func_800F3338_ovl05(u8* o) {
         }
         p += 0x9C;
     }
-    p = D_80096D98;
+    p = g_projectiles.u;
     for (i = 0; i < 32; i++) {
         if (((s8*)p)[0] != 0 && ((s8*)p)[1] == 9 && ((s8*)p)[4] == 1) {
             func_800F2C44_ovl05(p);
@@ -134,7 +129,7 @@ void func_800F3338_ovl05(u8* o) {
     }
     if (((s16*)o)[0x3E] >= 0xD2) {
         func_80012BD8();
-        e = D_8009A1F8;
+        e = D_8009A1F8.u;
         e[0xA0] = 1;
         e[0xA1] = 0;
         *(s16*)(e + 0x5E) = (*(s16*)(e + 0x5E) & 0x7F) | 0x380;
@@ -153,7 +148,6 @@ void func_800F3338_ovl05(u8* o) {
 
 extern s32 func_8002B5B4(s32);
 extern void func_8002C3CC(void*, void*, s32, s32, s32);
-extern u8 D_8009A1F8[];
 extern u8 D_800F5648_ovl05[];
 extern u8 D_800F5668_ovl05[];
 extern u8 D_800F58BC_ovl05[];
@@ -168,7 +162,7 @@ void func_800F354C_ovl05(u8* arg0) {
 
     id = ((func_8002B5B4(0x25) << 16) >> 14) + 0x1A;
     *(u16*)(arg0 + 0x7C) += 1;
-    g = D_8009A1F8;
+    g = D_8009A1F8.u;
     *(s16*)(g + 0x5E) -= 0x10;
     if (*(s16*)(g + 0x5E) + 0x140 < 0x1F0) {
         g[0xA6] = 0;
@@ -176,16 +170,16 @@ void func_800F354C_ovl05(u8* arg0) {
         *(s16*)(arg0 + 0x7C) = 0;
         arg0[5] = 0;
         arg0[6] = 0;
-        func_8002C338(0x61, D_800F5648_ovl05, 1);
-        func_8002C338(id, D_800F5668_ovl05, 1);
+        load_palette(0x61, D_800F5648_ovl05, 1);
+        load_palette(id, D_800F5668_ovl05, 1);
         D_800F5964_ovl05[1] = 0;
     } else {
         func_8002C3CC(D_800F591C_ovl05, D_800F5648_ovl05, 0x10,
                       *(s16*)(arg0 + 0x7C), *(s16*)(arg0 + 0x7E));
-        func_8002C338(0x61, D_800F591C_ovl05, 1);
+        load_palette(0x61, D_800F591C_ovl05, 1);
         func_8002C3CC(D_800F593C_ovl05, D_800F5668_ovl05, 0x10,
                       *(s16*)(arg0 + 0x7C), *(s16*)(arg0 + 0x7E));
-        func_8002C338(id, D_800F593C_ovl05, 1);
+        load_palette(id, D_800F593C_ovl05, 1);
     }
     arg0[0x81]++;
     if (arg0[0x81] >= 8) {
@@ -194,6 +188,6 @@ void func_800F354C_ovl05(u8* arg0) {
     t = arg0[0x81];
     if (!(t & 1)) {
         func_80028B18(1, 0x1F0, 0x900, D_800F58BC_ovl05 + (t >> 1) * 8);
-        D_8009A1F8[0xA0] = 1;
+        D_8009A1F8.u[0xA0] = 1;
     }
 }

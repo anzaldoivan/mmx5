@@ -1,10 +1,10 @@
 #include "types.h"
+#include "mmx5/object.h"
+#include "mmx5/globals.h"
 #include "mmx5/ovl07.h"
 #include "addr.h"
 
 extern s32 D_80093DD0[];
-extern u8 D_800C9310;
-extern s8 D_800D1C00[];
 
 void func_800FB5A4_ovl07(void) {
     s32 i;
@@ -15,12 +15,12 @@ void func_800FB5A4_ovl07(void) {
                 for (i = 0; i < 16; i++) {
                     D_80093DD0[i] = 0;
                 }
-                D_800C9310 |= 1;
+                D_800C9310.b |= 1;
             } else {
                 for (i = 2; i < 16; i++) {
                     D_80093DD0[i] = 0;
                 }
-                if (D_800D1C00[0xC] == 0xC) {
+                if (g_playthrough_state.s[0xC] == 0xC) {
                     D_80093DD0[2] = 0x9000C000;
                 } else {
                     D_80093DD0[0] = 0xF0;
@@ -29,7 +29,7 @@ void func_800FB5A4_ovl07(void) {
                     D_80093DD0[3] = 0xA0004000;
                     D_80093DD0[4] = 0x40000000;
                 }
-                D_800C9310 |= 1;
+                D_800C9310.b |= 1;
             }
             D_1F80004C.bytes[0x95] = D_80101C10_ovl07[D_1F80004C.s8s[0x97]][1];
             D_1F80004C.bytes[0x96]--;

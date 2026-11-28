@@ -5,7 +5,7 @@
 
 extern s32 rsin(s32);
 
-// from rockx5 800F5AB4: advance the scratchpad state's phase by a random step, set y from its sine
+// advance the scratchpad state's phase by a random step, set y from its sine
 void func_800F5AB4_ovl27(u8* e) {
     s32 t;
     s32 r;

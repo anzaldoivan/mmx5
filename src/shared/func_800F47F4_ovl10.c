@@ -1,8 +1,8 @@
 #include "types.h"
+#include "mmx5/globals.h"
 #include "mmx5/graphics.h"
 
 extern u8 D_8009A0B4;
-extern s8 D_800D1C0C;
 
 void func_800F47F4_ovl10(u8* obj) {
     obj[0x14] = D_8009A0B4;
@@ -10,7 +10,7 @@ void func_800F47F4_ovl10(u8* obj) {
     case 0:
         obj[0x16] = 5;
         set_animation(obj, 0x12);
-        if (D_800D1C0C != 0xC) {
+        if (D_800D1C0C.s != 0xC) {
             *(s16*)(obj + 0xA) = 0x2060;
             *(s16*)(obj + 0xE) = 0x480;
         } else {

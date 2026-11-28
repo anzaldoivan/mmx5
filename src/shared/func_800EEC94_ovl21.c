@@ -5,7 +5,7 @@
 #define M2C_UNK s32
 #endif
 
-M2C_UNK func_80013288(M2C_UNK); /* extern */
+M2C_UNK func_80013288(M2C_UNK);
 
 void func_800EEC94_ovl21(u8* arg0) {
     // !FAKE: pins temp to $2; gcc 2.7.2 allocates another register without it (byte mismatch)

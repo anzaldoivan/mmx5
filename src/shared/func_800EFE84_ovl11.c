@@ -2,8 +2,6 @@
 #include "mmx5/sound.h"
 #include "mmx5/globals.h"
 
-extern u8 D_800D1C00[];
-
 void func_800EFE84_ovl11(u8* a0) {
     u8* p;
     u8* q;
@@ -23,7 +21,7 @@ void func_800EFE84_ovl11(u8* a0) {
             t = g_Player;
             v = t[0x5C];
             hi = v & 0x80;
-            r = D_800D1C00;
+            r = g_playthrough_state.u;
             tbl = r + 0x47;
             q = tbl;
             if ((v & 0x7F) >= ((s8*)tbl)[((s8*)t)[2]]) {

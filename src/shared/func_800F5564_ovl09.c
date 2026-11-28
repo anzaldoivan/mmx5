@@ -3,10 +3,6 @@
 #include "mmx5/graphics.h"
 #include "mmx5/movement.h"
 
-extern u16 D_800D50DE;
-extern u16 D_8009A42E;
-extern u16 D_80093E68;
-
 void func_800F5564_ovl09(u8* arg0) {
     if ((s16)(++*(s16*)(arg0 + 0x7C) % 5) == 0) {
         D_800D50DE++;

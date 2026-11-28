@@ -12,10 +12,8 @@
 
 #include "shared/func_800F3178_ovl24.c"
 
-extern u16 D_800C9320;
-
 void func_800F3200_ovl24(u8* arg0) {
-    if (D_800C9320 & 0x40) {
+    if (D_800C9320.h & 0x40) {
         play_sound(0, 0x22, 0);
         ((s32(*)())func_8002C50C)();
         arg0[0] = 0xE;

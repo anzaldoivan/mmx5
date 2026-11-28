@@ -19,6 +19,10 @@ import random
 import shutil
 import struct
 import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "build"))
+import layout  # noqa: E402
 
 SECTOR = 2048
 
@@ -283,16 +287,16 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     sub = ap.add_subparsers(dest="cmd", required=True)
     s = sub.add_parser("survey", help="TOC + pack census of ROCK_X5.DAT")
-    s.add_argument("--dat", default="extracted/retail/ROCK_X5.DAT")
+    s.add_argument("--dat", default=str(layout.extracted_dir() / "ROCK_X5.DAT"))
     s = sub.add_parser("export", help="DAT -> .bin files + dat/index.json + manifest.jsonl")
-    s.add_argument("--src", default="extracted/retail")
-    s.add_argument("--out", default="assets/retail")
+    s.add_argument("--src", default=str(layout.extracted_dir()))
+    s.add_argument("--out", default=str(layout.assets_dir("retail")))
     s = sub.add_parser("import", help="export tree -> <out>/ROCK_X5.DAT")
-    s.add_argument("--src", default="assets/retail")
-    s.add_argument("--out", default="build/assets")
+    s.add_argument("--src", default=str(layout.assets_dir("retail")))
+    s.add_argument("--out", default=str(layout.build_dir("assets")))
     s = sub.add_parser("apply", help="copy export tree, apply asset-edits/<name>/edit.json")
     s.add_argument("name")
-    s.add_argument("--src", default="assets/retail")
+    s.add_argument("--src", default=str(layout.assets_dir("retail")))
     s.add_argument("--out")
     sub.add_parser("roundtrip", help="export+import under .run/assets-rt, compare to retail")
     a = ap.parse_args()
@@ -303,9 +307,9 @@ def main():
     elif a.cmd == "import":
         import_(a.src, a.out)
     elif a.cmd == "apply":
-        apply(a.name, a.src, a.out or f"assets/work/{a.name}")
+        apply(a.name, a.src, a.out or str(layout.assets_dir("work") / a.name))
     elif a.cmd == "roundtrip":
-        return 1 if roundtrip("extracted/retail", ".run/assets-rt") else 0
+        return 1 if roundtrip(str(layout.extracted_dir()), ".run/assets-rt") else 0
 
 
 if __name__ == "__main__":

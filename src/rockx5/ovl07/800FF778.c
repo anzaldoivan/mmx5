@@ -1,0 +1,55 @@
+#include "types.h"
+#include "mmx5/globals.h"
+
+void func_800FF778_ovl07(u8* arg0) {
+    s8* p;
+    s8* q;
+    s8 v;
+
+    p = g_playthrough_state.s;
+    if (p[0x28] != 0) {
+        *(u16*)(arg0 + 0x42) |= 0x8000;
+        arg0[0x54]++;
+        p[0x28] = 0;
+    } else {
+        *(u16*)(arg0 + 0x42) &= 0x7FFF;
+    }
+    v = ((s8*)arg0)[0x54];
+    q = g_playthrough_state.s;
+    if (v == 8) {
+        ((s32(*)())func_8004FD90)(arg0, 1, 0, 0x30);
+        ((s32(*)())func_8004FD90)(arg0, 1, 0, 0x30);
+        arg0[0x55] = 0;
+        arg0[0x5]++;
+        return;
+    }
+    if (v == q[0x26]) {
+        ((u8*)q)[0x27] |= 1;
+        arg0[0x4]++;
+    }
+}
+
+extern u8 D_8009A244;
+extern u8 D_80101FBC_ovl07[];
+
+void func_800FF85C_ovl07(u8* arg0) {
+    s32 t;
+    u8* p;
+
+    *(u16*)(arg0 + 0x42) &= 0x7FFF;
+    t = arg0[0x55] + 1;
+    arg0[0x55] = t;
+    if ((s8)t == 20) {
+        func_8004FD90(arg0, 1, 0, 0x30);
+        func_8004FD90(arg0, 1, 0, 0x30);
+        func_8004FD90(arg0, 1, 0, 0x30);
+        func_8004FD90(arg0, 1, 0, 0x30);
+    } else if ((s8)t == 24) {
+        func_80028B18(0, 0x1F20, 0x80, D_80101FBC_ovl07);
+        D_8009A244 = 1;
+    } else if ((s8)t == 44) {
+        p = g_playthrough_state.u;
+        p[0x27] |= 1;
+        arg0[4]++;
+    }
+}

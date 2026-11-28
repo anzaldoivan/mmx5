@@ -1,8 +1,8 @@
 #include "types.h"
+#include "mmx5/globals.h"
 #include "mmx5/graphics.h"
 
 extern s32 D_8009A0A8;
-extern s8 D_800D1C0C;
 
 void func_800F3AF0_ovl10(u8* obj) {
     s32 hi;
@@ -10,7 +10,7 @@ void func_800F3AF0_ovl10(u8* obj) {
     s32 d;
     s32 v;
 
-    if (D_800D1C0C != 0xC) {
+    if (D_800D1C0C.s != 0xC) {
         hi = 0x20000000;
         lo = 0x1F800000;
     } else {

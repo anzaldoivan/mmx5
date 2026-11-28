@@ -1,8 +1,8 @@
 #include "types.h"
+#include "mmx5/globals.h"
 #include "mmx5/object.h"
 
 extern u8 D_80091C44;
-extern u8 D_8009A1F8[];
 
 void func_800FA4F8_ovl44(u8* arg0) {
     u8* q;
@@ -16,7 +16,7 @@ void func_800FA4F8_ovl44(u8* arg0) {
             q[0x36] = 2;
             q[2] = 0;
         }
-        p = D_8009A1F8;
+        p = D_8009A1F8.u;
         p[0x57] = 0;
         *(s32*)(p + 8) = 0x80000;
         *(s32*)(p + 0xC) = 0x800000;

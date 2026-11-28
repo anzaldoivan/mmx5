@@ -6,7 +6,6 @@
 extern u8 D_80075D40[];
 extern u32* D_80098118;
 extern u8 D_8009A0B4;
-extern s8 D_800D1C00[];
 extern u8 D_80101804_ovl07[];
 extern u8 D_80101808_ovl07[];
 extern u8 D_80101814_ovl07[];
@@ -26,10 +25,10 @@ void func_800F96D0_ovl07(u8* o) {
     o[0x5C] = 0;
     o[0x61] = 0;
     *(u8**)(o + 0x58) = D_80075D40;
-    if (D_800D1C00[0xC] != 0xC) {
+    if (g_playthrough_state.s[0xC] != 0xC) {
         *(s16*)(o + 0x40) = (*D_80098118 >> 7) + 0xB0;
         *(s16*)(o + 0x42) = 0x7CCC;
-        func_8002C338(0x13C, D_1F800030, 4);
+        load_palette(0x13C, D_1F800030, 4);
     } else {
         *(s16*)(o + 0x40) = (*D_80098118 >> 7) + 0x210;
         p = D_1F80009C;
@@ -69,7 +68,7 @@ void func_800F96D0_ovl07(u8* o) {
     o[0x3] = 0;
     o[0x65] = 0;
     set_animation(o, 2);
-    if (D_800D1C00[0xC] != 0xC) {
+    if (g_playthrough_state.s[0xC] != 0xC) {
         D_80102014_ovl07 = 0;
         D_80102016_ovl07 = 0;
     } else {

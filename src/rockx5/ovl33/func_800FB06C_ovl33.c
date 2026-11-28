@@ -3,8 +3,6 @@
 #include "mmx5/globals.h"
 #include "mmx5/graphics.h"
 
-extern s32 D_800FEADC_ovl33[];
-extern s32 D_800FEAE0_ovl33[];
 extern s16 D_800FEDFC_ovl33[];
 extern s16 D_800FEDFE_ovl33[];
 
@@ -12,8 +10,8 @@ void func_800FB06C_ovl33(Obj8AA8* o) {
     s32 d;
 
     set_animation(o, 0x13);
-    o->unk50 = D_800FEADC_ovl33;
-    o->unk54 = D_800FEAE0_ovl33;
+    o->unk50 = D_800FEADC_ovl33.w;
+    o->unk54 = D_800FEAE0_ovl33.w;
     if (D_8009A0AA > D_800FF054_ovl33 + 0x1260) {
         o->unk15 = 0x40;
         o->unk20 = -0x60000;

@@ -6,11 +6,10 @@
 
 extern s32 func_8002DFB0(void);
 extern void func_8004FF94(s32, s32, s32, s32);
-extern u8 D_8009A1F8[];
 extern s32 D_800F96B8_ovl11[];
 
 void func_800EF5A0_ovl11(u8* arg0) {
-    u8* base = D_8009A1F8;
+    u8* base = D_8009A1F8.u;
     s16 x;
     s16 y;
 

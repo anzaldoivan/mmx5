@@ -24,14 +24,13 @@ void func_800F48F8_ovl11(u8* a0) {
 }
 
 extern void start_pad_vibration(s32);
-extern u8 D_8009A1F8[];
 
 void func_800F4968_ovl11(u8* arg0) {
     u8* p = g_Player;
     u8* r;
 
     if (*(s16*)(p + 0xA) >= 0xE21) {
-        u8* q = D_8009A1F8;
+        u8* q = D_8009A1F8.u;
         arg0[0x83] = 0x1E;
         arg0[0x87] = 1;
         *(s16*)(q + 0x26) = 0xDC0;
@@ -41,7 +40,7 @@ void func_800F4968_ovl11(u8* arg0) {
         start_pad_vibration(6);
         play_sound(5, 0x1A, arg0);
     }
-    r = D_8009A1F8;
+    r = D_8009A1F8.u;
     if (*(s16*)(p + 0xE) < *(s16*)(r + 0xE) - 4) {
         *(s16*)(p + 0xE) = *(s16*)(r + 0xE) - 4;
     }
@@ -55,15 +54,14 @@ void func_800F4968_ovl11(u8* arg0) {
 #undef D_8007BD4C
 
 extern void* D_800F9C9C_ovl11[];
-extern s16 D_8009A206;
 
 void func_800F4A5C_ovl11(u8* arg0) {
     u8* p;
 
     ((void (*)(u8*))D_800F9C9C_ovl11[(s8)arg0[6]])(arg0);
     p = g_Player;
-    if (*(s16*)(p + 0xE) < D_8009A206 + 4) {
-        *(s16*)(p + 0xE) = D_8009A206 + 4;
+    if (*(s16*)(p + 0xE) < D_8009A206.s + 4) {
+        *(s16*)(p + 0xE) = D_8009A206.s + 4;
     }
 }
 

@@ -2,7 +2,6 @@
 #include "mmx5/globals.h"
 #include "mmx5/graphics.h"
 
-extern u8 D_800D1C00[];
 extern void* D_80102CAC_ovl04[];
 
 void func_800FB6F4_ovl04(u8* obj) {
@@ -42,13 +41,13 @@ void func_800FB6F4_ovl04(u8* obj) {
     }
     if (r > 0) {
     set:
-        D_800D1C00[0x27] |= 1;
+        g_playthrough_state.u[0x27] |= 1;
     } else {
         if (*(u16*)(parent + 0x42) & 0x8000) {
             *(u16*)(obj + 0x42) |= 0x8000;
         }
     }
-    if (D_800D1C00[0x2A] & obj[0x92]) {
+    if (g_playthrough_state.u[0x2A] & obj[0x92]) {
         s = obj[5];
         if (s != 6) {
             if (s != 4) {
@@ -59,7 +58,7 @@ void func_800FB6F4_ovl04(u8* obj) {
             obj[5] = 6;
         }
     }
-    if (D_800D1C00[0x2A] & 4) {
+    if (g_playthrough_state.u[0x2A] & 4) {
         obj[4]++;
     }
 }

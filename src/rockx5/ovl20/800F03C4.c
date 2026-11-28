@@ -2,7 +2,6 @@
 #include "mmx5/globals.h"
 #include "mmx5/sound.h"
 
-extern s8 D_800D1C00[];
 extern s32 D_800F51F0_ovl20[];
 extern u8 D_800F5230_ovl20[];
 
@@ -16,7 +15,7 @@ void func_800F03C4_ovl20(u8* obj) {
     s8 n;
     s8 last;
 
-    D_800D1C00[0x32] = -1;
+    g_playthrough_state.s[0x32] = -1;
     for (i = 0; i < 0x10; i++) {
         if (*(s32*)(obj + 0x84) & D_800F51F0_ovl20[i]) {
             p = func_8002D27C();
@@ -25,8 +24,8 @@ void func_800F03C4_ovl20(u8* obj) {
                 p[1] = 0x28;
                 p[2] = i;
             }
-            if (D_800D1C00[0x32] == -1) {
-                D_800D1C00[0x32] = i;
+            if (g_playthrough_state.s[0x32] == -1) {
+                g_playthrough_state.s[0x32] = i;
             }
         }
     }
@@ -50,19 +49,18 @@ void func_800F03C4_ovl20(u8* obj) {
     }
     last = 0;
     n = 0;
-    k = D_800D1C00[0x2A];
-    D_800D1C00[0x30] = D_800F5230_ovl20[k];
+    k = g_playthrough_state.s[0x2A];
+    g_playthrough_state.s[0x30] = D_800F5230_ovl20[k];
     mask = *(s32*)((u8*)w + (k << 2));
     for (j = 0; j < 0x10; j++) {
         if (mask & D_800F51F0_ovl20[j]) {
             last = ++n;
         }
     }
-    D_800D1C00[0x31] = last;
+    g_playthrough_state.s[0x31] = last;
     obj[2]++;
 }
 
-extern s8 D_800D1C00[];
 extern s32 D_800F51F0_ovl20[];
 extern s8 D_800F5238_ovl20[];
 
@@ -82,80 +80,81 @@ void func_800F05A0_ovl20(u8* obj) {
     s8 old;
     u16 pad;
 
-    if (D_800D1C00[0x32] != -1) {
-        if (D_800C931C[2] & 0xF000) {
+    if (g_playthrough_state.s[0x32] != -1) {
+        if (g_pad1_buttons[2] & 0xF000) {
             play_sound(5, 0, 0);
-            pad = D_800C931C[2];
+            pad = g_pad1_buttons[2];
             if (pad & 0x8000) {
-                switch (D_800D1C00[0x32]) {
+                switch (g_playthrough_state.s[0x32]) {
                 case 0:
                 case 4:
                 case 8:
                 case 12:
-                    D_800D1C00[0x32] += 3;
+                    g_playthrough_state.s[0x32] += 3;
                     break;
                 default:
-                    D_800D1C00[0x32] -= 1;
+                    g_playthrough_state.s[0x32] -= 1;
                     break;
                 }
             } else if (pad & 0x2000) {
-                switch (D_800D1C00[0x32]) {
+                switch (g_playthrough_state.s[0x32]) {
                 case 3:
                 case 7:
                 case 11:
                 case 15:
-                    D_800D1C00[0x32] -= 3;
+                    g_playthrough_state.s[0x32] -= 3;
                     break;
                 default:
-                    D_800D1C00[0x32] += 1;
+                    g_playthrough_state.s[0x32] += 1;
                     break;
                 }
             } else if (pad & 0x1000) {
-                switch (D_800D1C00[0x32]) {
+                switch (g_playthrough_state.s[0x32]) {
                 case 0 ... 3:
-                    D_800D1C00[0x32] += 12;
+                    g_playthrough_state.s[0x32] += 12;
                     break;
                 default:
-                    D_800D1C00[0x32] -= 4;
+                    g_playthrough_state.s[0x32] -= 4;
                     break;
                 }
             } else if (pad & 0x4000) {
-                switch (D_800D1C00[0x32]) {
+                switch (g_playthrough_state.s[0x32]) {
                 case 12 ... 15:
-                    D_800D1C00[0x32] -= 12;
+                    g_playthrough_state.s[0x32] -= 12;
                     break;
                 default:
-                    D_800D1C00[0x32] += 4;
+                    g_playthrough_state.s[0x32] += 4;
                     break;
                 }
             }
         }
-        if (D_800C931C[2] & 0x840) {
+        if (g_pad1_buttons[2] & 0x840) {
             tbl = D_800F51F0_ovl20;
-            idx = D_800D1C00[0x32];
+            idx = g_playthrough_state.s[0x32];
             have = *(s32*)(obj + 0x84);
             mask = tbl[idx];
             if (have & mask) {
-                if (D_800F5238_ovl20[idx + D_800D1C00[0x2A] * 16] != 0) {
-                    old = D_800D1C00[0x31];
-                    off = D_800D1C00[0x2A] << 2;
+                if (D_800F5238_ovl20[idx + g_playthrough_state.s[0x2A] * 16] !=
+                    0) {
+                    old = g_playthrough_state.s[0x31];
+                    off = g_playthrough_state.s[0x2A] << 2;
                     base = (s32)obj + 0x88;
                     slot = (s32*)(base + off);
                     if (*slot & mask) {
                         *slot &= ~mask;
-                    } else if (old < D_800D1C00[0x30]) {
+                    } else if (old < g_playthrough_state.s[0x30]) {
                         *slot |= mask;
                     }
                     w = (s32)obj + 0x88;
                     last = 0;
                     n = 0;
-                    bits = *(s32*)(w + (D_800D1C00[0x2A] << 2));
+                    bits = *(s32*)(w + (g_playthrough_state.s[0x2A] << 2));
                     for (j = 0; j < 0x10; j++) {
                         if (bits & D_800F51F0_ovl20[j]) {
                             last = ++n;
                         }
                     }
-                    D_800D1C00[0x31] = last;
+                    g_playthrough_state.s[0x31] = last;
                     if (last != old) {
                         play_sound(5, 1, 0);
                     }
@@ -163,7 +162,7 @@ void func_800F05A0_ovl20(u8* obj) {
             }
         }
     }
-    if (D_800C931C[2] & 0x10) {
+    if (g_pad1_buttons[2] & 0x10) {
         play_sound(5, 1, 0);
         obj[1] = 5;
         obj[2] = 3;

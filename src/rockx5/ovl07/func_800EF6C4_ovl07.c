@@ -10,7 +10,6 @@ extern void func_800F071C_ovl07(u8* p);
 extern void func_800F05D8_ovl07(u8* obj);
 extern void func_800EFC30_ovl07(u8* obj);
 extern void func_800EFCE4_ovl07(u8* obj, s32 arg1);
-extern u8 D_8009A1F8[];
 extern u8 D_801008B0_ovl07[];
 extern u8 D_801008B4_ovl07[];
 extern u8 D_801008B8_ovl07[];
@@ -52,7 +51,7 @@ void func_800EF6C4_ovl07(u8* obj) {
         obj[0x80] |= 1;
         *(s32*)(obj + 0x90) = 0x1000;
         *(s32*)(obj + 0x94) = 0;
-        D_8009A1F8[*(s8*)(obj + 0x14) * 0x54 + 0x47] = 8;
+        D_8009A1F8.u[*(s8*)(obj + 0x14) * 0x54 + 0x47] = 8;
         set_animation(obj, D_801008B0_ovl07[obj[0x82]]);
         func_800EF6C4_ovl07_snd(D_801008BC_ovl07[obj[0x82]]);
         apply_object_motion(obj);
@@ -137,7 +136,7 @@ void func_800EF6C4_ovl07(u8* obj) {
         obj[5] = 1;
         obj[6] = 0;
         obj[0x7D] = 0;
-        D_8009A1F8[*(s8*)(obj + 0x14) * 0x54 + 0x47] = 6;
+        D_8009A1F8.u[*(s8*)(obj + 0x14) * 0x54 + 0x47] = 6;
         set_animation(obj, D_801008B8_ovl07[obj[0x82]]);
         func_800EF6C4_ovl07_snd(D_801008C4_ovl07[obj[0x82]]);
         apply_object_motion(obj);

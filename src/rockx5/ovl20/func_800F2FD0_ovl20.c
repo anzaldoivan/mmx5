@@ -1,10 +1,10 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
-extern u8 D_800D1C00[];
 void func_80032CEC();
 
 void func_800F2FD0_ovl20(u8* arg0) {
-    u8* p = D_800D1C00;
+    u8* p = g_playthrough_state.u;
     s32 t = ((s8*)p)[0x27];
     u16 c;
 

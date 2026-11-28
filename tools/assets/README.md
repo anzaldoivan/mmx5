@@ -2,7 +2,7 @@
 
 ROCK_X5.DAT asset tool (stdlib only). Format: docs/formats.md `## ROCK_X5.DAT (inverse)`.
 
-`PY tools/assets/assets.py survey [--dat extracted/retail/ROCK_X5.DAT]`
+`PY tools/assets/assets.py survey [--dat extracted/us/ROCK_X5.DAT]`
 
 Output:
 - one line per TOC member: `idx sector size kind`, kind ∈ pack|tim|raw|zero (classify order zero, pack, tim, raw).
@@ -12,7 +12,7 @@ Output:
 
 Prints offsets, sizes and counts only. No game bytes.
 
-`PY tools/assets/assets.py export [--src extracted/retail] [--out assets/retail]` → `assets: exported <n> files (container)`
+`PY tools/assets/assets.py export [--src extracted/us] [--out assets/retail]` → `assets: exported <n> files (container)`
 
 `PY tools/assets/assets.py import [--src assets/retail] [--out build/assets]` → `assets: imported ROCK_X5.DAT <m> members`
 

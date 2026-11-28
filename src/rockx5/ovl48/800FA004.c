@@ -1,7 +1,8 @@
 #include "types.h"
+#include "mmx5/globals.h"
 #include "mmx5/system.h"
 
-extern D_800D1C00_t D_800D1C00;
+#define D_800D1C00_as_D_800D1C00_t (*(D_800D1C00_t*)&g_playthrough_state)
 
 void func_800FA004_ovl48(u8* obj) {
     s32 sum;
@@ -12,10 +13,10 @@ void func_800FA004_ovl48(u8* obj) {
 
     sum = 0;
     for (i = 0; i < 4; i++) {
-        sum += D_800D1C00.c6[i];
+        sum += D_800D1C00_as_D_800D1C00_t.c6[i];
     }
     sum *= 4;
-    sum += D_800D1C00.ca;
+    sum += D_800D1C00_as_D_800D1C00_t.ca;
     id = obj[0xA9];
     if (id == 0xD) {
         sum = 0;
@@ -65,3 +66,18 @@ void func_800FA120_ovl48(u8* arg0) {
     func_8002BD8C();
     func_800272B4();
 }
+
+extern void func_800FA194_ovl48(u8*);
+extern void func_800FA214_ovl48(u8*);
+extern void func_800FA24C_ovl48(u8*);
+extern void func_800FA2D4_ovl48(u8*);
+extern void func_800FA32C_ovl48(u8*);
+extern void func_800FA374_ovl48(u8*);
+extern void func_800FA3F8_ovl48(u8*);
+extern void func_800FA444_ovl48(u8*);
+
+void (*D_800FA510_ovl48[])(u8*) = {
+    func_800FA194_ovl48, func_800FA214_ovl48, func_800FA24C_ovl48,
+    func_800FA2D4_ovl48, func_800FA32C_ovl48, func_800FA374_ovl48,
+    func_800FA3F8_ovl48, func_800FA444_ovl48,
+};

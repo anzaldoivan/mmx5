@@ -3,7 +3,6 @@
 
 extern u8 D_800D1F3C;
 extern signed char D_8009A424;
-extern u8 D_800D1C00[];
 
 void func_800EF1E0_ovl21(u8* a0) {
     s32 i;
@@ -11,8 +10,8 @@ void func_800EF1E0_ovl21(u8* a0) {
 
     if (D_800D1F3C == 0 && D_8009A424 == 0) {
         func_8001E668();
-        a0[0xC] = D_800D1C00[0x26];
-        a0[0xD] = D_800D1C00[0x27];
+        a0[0xC] = g_playthrough_state.u[0x26];
+        a0[0xD] = g_playthrough_state.u[0x27];
         a0[0] = 7;
         a0[1] = 0;
         a0[2] = 0;

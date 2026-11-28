@@ -54,7 +54,6 @@ void func_800F8E6C_ovl01(u8* obj) {
 
 extern void start_pad_vibration(s32);
 extern void func_8002A600(s32, s32, s32);
-extern signed char D_800D1C0C;
 extern u8 D_800FD578_ovl01[];
 extern u8 D_800FD57C_ovl01[];
 extern u8 D_800FD608_ovl01[];
@@ -63,7 +62,7 @@ void func_800F905C_ovl01(u8* obj) {
     s32 lim;
 
     lim = 0x40;
-    if (D_800D1C0C != 0xC) {
+    if (D_800D1C0C.s != 0xC) {
         lim = 0x120;
     }
     if (lim < *(s16*)(obj + 0xE)) {

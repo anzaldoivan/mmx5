@@ -1,11 +1,10 @@
 #include "types.h"
+#include "mmx5/ovl09.h"
 #include "mmx5/sound.h"
 #include "mmx5/movement.h"
 #include "mmx5/globals.h"
 
-extern D_8009A1F8_t D_8009A1F8;
 extern u8 D_800FB65C_ovl09;
-extern u16 D_800FB660_ovl09;
 extern s32 func_80044DE0();
 
 void func_800F57B4_ovl09(Ent57B4* obj) {
@@ -13,7 +12,7 @@ void func_800F57B4_ovl09(Ent57B4* obj) {
         func_8002D9EC(obj, 0x40, 0x40);
         return;
     }
-    D_8009A1F8.unk26 = D_800FB660_ovl09;
+    D_8009A1F8.t.unk26 = D_800FB660_ovl09.h;
     if (obj->unk5C < D_800D1CA2) {
         if (--obj->unk7C == 0) {
             play_sound(0, 0xE, 0);
@@ -23,7 +22,7 @@ void func_800F57B4_ovl09(Ent57B4* obj) {
         func_8002D9EC(obj, 0x40, 0x40);
         return;
     }
-    D_8009A1F8.unk48 = D_800FB65C_ovl09;
+    D_8009A1F8.t.unk48 = D_800FB65C_ovl09;
     func_8003D2C4();
     animate_object(obj);
     apply_object_motion(obj);

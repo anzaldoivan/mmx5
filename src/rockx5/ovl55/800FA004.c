@@ -58,7 +58,6 @@ void func_800FA004_ovl55(u8* arg0) {
 #undef D_800FCEB8_ovl55_as_Blk200
 
 extern void func_8002C3CC(void*, void*, s32, s32, s32);
-extern u8 D_8009A1F8[];
 extern u8 D_800FBCB8_ovl55[];
 extern u8 D_800FC0B8_ovl55[];
 extern u8 D_800FC4B8_ovl55[];
@@ -71,28 +70,28 @@ void func_800FA478_ovl55(u8* arg0) {
     t = *(u16*)(arg0 + 4) + 1;
     *(u16*)(arg0 + 4) = t;
     if (t & 1) {
-        u8* p = D_8009A1F8;
+        u8* p = D_8009A1F8.u;
         *(s16*)(p + 0xA) = random_byte() % 9;
         *(s16*)(p + 0xE) = random_byte() % 5;
     } else {
-        u8* q = D_8009A1F8;
+        u8* q = D_8009A1F8.u;
         *(s16*)(q + 0xA) = 0;
         *(s16*)(q + 0xE) = 0;
     }
-    r = D_8009A1F8;
+    r = D_8009A1F8.u;
     r[0x4C] = 1;
     func_8002C3CC(D_800FC0B8_ovl55, D_800FBEB8_ovl55, 0x100, *(s16*)(arg0 + 4),
                   0x1E);
-    func_8002C338(0x100, D_800FC0B8_ovl55, 0x10);
+    load_palette(0x100, D_800FC0B8_ovl55, 0x10);
     func_8002C3CC(D_800FC4B8_ovl55, D_800FC2B8_ovl55, 0x100, *(s16*)(arg0 + 4),
                   0x1E);
-    func_8002C338(0x50, D_800FC4B8_ovl55, 0x10);
+    load_palette(0x50, D_800FC4B8_ovl55, 0x10);
     func_8002C3CC(D_800FC8B8_ovl55, D_800FC6B8_ovl55, 0x100, *(s16*)(arg0 + 4),
                   0x1E);
-    func_8002C338(0x40, D_800FC8B8_ovl55, 0x10);
+    load_palette(0x40, D_800FC8B8_ovl55, 0x10);
     func_8002C3CC(D_800FBCB8_ovl55, D_800FBAB8_ovl55, 0x100,
                   0x1E - *(s16*)(arg0 + 4), 0x1E);
-    func_8002C338(0x60, D_800FBCB8_ovl55, 0x10);
+    load_palette(0x60, D_800FBCB8_ovl55, 0x10);
     r[3] = 1;
     if (*(s16*)(arg0 + 4) >= 0x1E) {
         *(u16*)(arg0 + 4) = 0;
@@ -102,7 +101,6 @@ void func_800FA478_ovl55(u8* arg0) {
 
 extern void func_8002C3CC(void*, void*, s32, s32, s32);
 extern s32 rsin(s32);
-extern u8 D_8009A1F8[];
 extern u8 D_800FCCB8_ovl55[];
 extern u8 D_800FD0B8_ovl55[];
 extern s32 D_800FD2BC_ovl55;
@@ -118,15 +116,15 @@ void func_800FA660_ovl55(u8* arg0) {
     if (v != 0) {
         v = s << 8;
     }
-    p = D_8009A1F8;
+    p = D_8009A1F8.u;
     *(s32*)(p + 0xB4) = 0x02000000 - v;
     p[0xF4] = 1;
     func_8002C3CC(D_800FCCB8_ovl55, D_800FCAB8_ovl55, 0x100,
                   ++*(s16*)(arg0 + 4), 0x78);
-    ((s32(*)())func_8002C338)(0x90, D_800FCCB8_ovl55, 0x10);
+    ((s32(*)())load_palette)(0x90, D_800FCCB8_ovl55, 0x10);
     func_8002C3CC(D_800FD0B8_ovl55, D_800FCEB8_ovl55, 0x100,
                   0x78 - *(s16*)(arg0 + 4), 0x78);
-    ((s32(*)())func_8002C338)(0xA0, D_800FD0B8_ovl55, 0x10);
+    ((s32(*)())load_palette)(0xA0, D_800FD0B8_ovl55, 0x10);
     if (*(s16*)(arg0 + 4) >= 0x78) {
         func_8002385C(0x49, 0xFF, 0);
         arg0[1]++;
@@ -135,7 +133,6 @@ void func_800FA660_ovl55(u8* arg0) {
 
 extern s32 rsin(s32);
 extern u8 D_80091C44;
-extern u8 D_8009A1F8[];
 extern s32 D_800FD2BC_ovl55;
 
 void func_800FA788_ovl55(u8* arg0) {
@@ -149,7 +146,7 @@ void func_800FA788_ovl55(u8* arg0) {
     if (v != 0) {
         v = s << 8;
     }
-    p = D_8009A1F8;
+    p = D_8009A1F8.u;
     *(s32*)(p + 0xB4) = 0x02000000 - v;
     p[0xF4] = 1;
     if (D_80091C44 == 0) {

@@ -167,7 +167,6 @@ extern s16 D_800FA248_ovl03;
 extern s16 D_800FA240_ovl03;
 extern s16 D_800FA242_ovl03;
 extern s16 D_800FA244_ovl03;
-extern u8 D_800D1C00[];
 
 void func_800F4C10_ovl03(u8* obj) {
     u8* p;
@@ -211,7 +210,7 @@ void func_800F4C10_ovl03(u8* obj) {
             set_animation(obj, 1);
         }
         {
-            u8* q = D_800D1C00;
+            u8* q = g_playthrough_state.u;
             if (((s8*)obj)[0x5C] <= ((s8*)q)[0xA2] - 2) {
                 obj[0x5C] += 2;
             } else {
@@ -219,7 +218,7 @@ void func_800F4C10_ovl03(u8* obj) {
             }
         }
         {
-            u8* q = D_800D1C00;
+            u8* q = g_playthrough_state.u;
             if (((s8*)obj)[0x5C] > ((s8*)q)[0xA2]) {
                 obj[0x5C] = q[0xA2];
             }

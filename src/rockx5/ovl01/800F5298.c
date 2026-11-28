@@ -13,7 +13,6 @@ extern u8 D_800FCEF0_ovl01[];
 extern u8 D_800FCD88_ovl01[];
 extern u8 D_800FCD84_ovl01[];
 extern u8 D_800752A0[];
-extern s8 D_800D1C00[];
 extern u8 D_800FCD80_ovl01[];
 extern u16 D_800FD1A0_ovl01[];
 
@@ -72,11 +71,11 @@ void func_800F5298_ovl01(u8* obj) {
         obj[0x5C] = 0x1F;
         *(u16*)(D_1F80004C.bytes + 0x88) = *(u16*)(obj + 0x42);
         t = obj[2] & 0xF;
-        if ((D_800D1C00[0x26] >> t) & 1) {
+        if ((g_playthrough_state.s[0x26] >> t) & 1) {
             obj[4] = 6;
             return;
         }
-        D_800D1C00[0x26] |= 1 << t;
+        g_playthrough_state.s[0x26] |= 1 << t;
         *(u8**)(obj + 0x54) = D_800FCD80_ovl01;
         *(s32*)(obj + 0x50) = 0;
         set_animation(obj, 8);
@@ -203,7 +202,6 @@ extern void func_8004D4F4(s32 a0, void* a1, u8* a2);
 extern void func_800F6110_ovl01(u8* a0);
 extern void func_800F6EE8_ovl01(u8* a0);
 extern s32 func_800F71E8_ovl01(s32 a0, s32 a1);
-extern u8 D_8009A1F8[];
 extern u16 D_8009A202;
 extern u8 D_8009A244;
 extern s8 D_800D1C44;
@@ -239,8 +237,8 @@ void func_800F58BC_ovl01(u8* obj) {
         if (*(s16*)(d + 0xA) >= *(s16*)(obj + 0xA) - 0x180) {
             scr[0x8A] = 1;
             if ((*(s8*)(obj + 2) & 0xF) < 4) {
-                D_8009A1F8[0x47] = 1;
-                *(s16*)(D_8009A1F8 + 0x24) = *(u16*)(obj + 0xA) - 0xDC;
+                D_8009A1F8.u[0x47] = 1;
+                *(s16*)(D_8009A1F8.u + 0x24) = *(u16*)(obj + 0xA) - 0xDC;
             }
         }
     }
@@ -253,7 +251,7 @@ void func_800F58BC_ovl01(u8* obj) {
     if (func_80031DD0(obj) < 0) {
         obj[3] = 0;
         func_8004D4F4(4, D_800FCF84_ovl01, obj);
-        g = D_8009A1F8;
+        g = D_8009A1F8.u;
         g[0x47] = 1;
         *(s16*)(g + 0x24) = 0x2340;
         if ((obj[2] & 0xF) == 2) {
@@ -280,7 +278,6 @@ void func_800F58BC_ovl01(u8* obj) {
     func_8002D9EC(obj, 0x40, 0x20);
 }
 
-extern u8 D_8009A1F8[];
 extern s8 D_800D1C44;
 extern s16 D_800FD1AC_ovl01[][4];
 extern s16 D_800FD204_ovl01[][2];
@@ -305,7 +302,7 @@ void func_800F5B38_ovl01(u8* o) {
     s32 idx;
     s32 left, right, top, bottom;
 
-    d = D_8009A1F8;
+    d = D_8009A1F8.u;
     cam = *(s16*)(d + 0xA);
     camr = *(u16*)(d + 0xA) + 0x140;
     x1 = D_800FD1AC_ovl01[o[2] & 0xF][1];
@@ -332,7 +329,7 @@ void func_800F5B38_ovl01(u8* o) {
     if (((s8*)o)[7] == 0) {
         if (idx < 4) {
             *(u16*)(o + 0x42) &= 0x7FFF;
-            q = D_8009A1F8;
+            q = D_8009A1F8.u;
             q[0x4C] = 1;
             o[7]++;
             return;
@@ -410,7 +407,7 @@ void func_800F5B38_ovl01(u8* o) {
                           D_800FCF90_ovl01[43], &D_800FCF90_ovl01[44]);
             break;
         }
-        r = D_8009A1F8;
+        r = D_8009A1F8.u;
         r[0x4C] = 1;
         D_1F80004C.bytes[0x87] = 3;
         *(u16*)(o + 0x7C) = 0x5F;

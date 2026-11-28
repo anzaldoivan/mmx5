@@ -9,10 +9,8 @@
 #undef func_800EEB64_ovl00
 #undef D_800FA214_ovl00
 
-extern u8 D_8009A1F8[];
-
 void func_800FC09C_ovl39(u8* a0) {
-    u8* p = D_8009A1F8;
+    u8* p = D_8009A1F8.u;
     u8* q = g_Player;
     u8* r;
 
@@ -32,13 +30,12 @@ void func_800FC09C_ovl39(u8* a0) {
 }
 
 extern u8 D_80091C44;
-extern u8 D_8009A1F8[];
 
 void func_800FC140_ovl39(u8* a0) {
     u8* p;
 
     if (D_80091C44 == 0) {
-        p = D_8009A1F8;
+        p = D_8009A1F8.u;
         a0[5]++;
         *(s16*)(p + 0x96) = 0;
         p[0xA0] = 1;
@@ -50,10 +47,9 @@ void func_800FC140_ovl39(u8* a0) {
 }
 
 extern u8 D_8009A11A;
-extern u8 D_800D1C00[];
 
 void func_800FC19C_ovl39(void) {
-    u8* p = D_800D1C00;
+    u8* p = g_playthrough_state.u;
 
     p[0xF] = 0x10;
     p[0x24] = 0;

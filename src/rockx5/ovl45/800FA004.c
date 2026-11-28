@@ -4,7 +4,6 @@
 #include "mmx5/object.h"
 
 extern u8 D_80091C44;
-extern s8 D_8009A298;
 extern s16 D_800FA6CC_ovl45[][2];
 extern u8 D_800FA6E0_ovl45[][8];
 
@@ -17,7 +16,7 @@ void func_800FA004_ovl45(u8* arg0) {
             func_80028B18(1, D_800FA6CC_ovl45[(s16)t / 4][0],
                           D_800FA6CC_ovl45[(s16)t / 4][1],
                           D_800FA6E0_ovl45[(s16)t / 4]);
-            D_8009A298 = 1;
+            D_8009A298.s = 1;
             if (*(s16*)(arg0 + 4) >= 0x10) {
                 func_8002385C(0x18, 0xFF, 0);
                 *(u16*)(arg0 + 4) = 0;
@@ -74,10 +73,6 @@ void func_800FA22C_ovl45(u8* arg0) {
     }
 }
 
-extern u16 D_800D50DE;
-extern u16 D_80093E68;
-extern u16 D_8009A42E;
-
 void func_800FA2A4_ovl45(u8* arg0) {
     u16 n;
 
@@ -95,7 +90,6 @@ void func_800FA2A4_ovl45(u8* arg0) {
 
 extern void func_8002C1C8(void);
 extern u8 D_80091C44;
-extern u8 D_8009A1F8[];
 
 void func_800FA344_ovl45(u8* arg0) {
     u8* p;
@@ -109,7 +103,7 @@ void func_800FA344_ovl45(u8* arg0) {
             p[0x36] = 50;
             p[2] = 0;
         }
-        b = D_8009A1F8;
+        b = D_8009A1F8.u;
         *(s16*)(b + 0xB2) = 0;
         *(s16*)(b + 0xB6) = 0x100;
         b[0xF4] = 1;
@@ -129,7 +123,6 @@ void func_800FA344_ovl45(u8* arg0) {
 }
 
 extern void func_800177B0(s32, s32);
-extern u8 D_8009A1F8[];
 
 void func_800FA410_ovl45(Ovl45State* arg0) {
     u8* p;
@@ -138,7 +131,7 @@ void func_800FA410_ovl45(Ovl45State* arg0) {
         func_800177B0(0x1A, 0x7F);
         play_sound(2, 0x4D, 0);
         func_8002385C(0x17, 0xFF, 0);
-        p = D_8009A1F8;
+        p = D_8009A1F8.u;
         *(s16*)(p + 0x5E) = 0;
         *(s16*)(p + 0x62) = 0;
         p[0x57] = 1;
@@ -155,10 +148,8 @@ void func_800FA410_ovl45(Ovl45State* arg0) {
 #include "shared/func_800FA2B8_ovl47.c"
 #undef func_800FA2B8_ovl47
 
-extern u8 D_8009A1F8[];
-
 void func_800FA4F0_ovl45(Ovl45State* s) {
-    u8* p = D_8009A1F8;
+    u8* p = D_8009A1F8.u;
     UnkSpawn* c;
 
     *(s32*)(p + 0x60) += 0xCCCCC;

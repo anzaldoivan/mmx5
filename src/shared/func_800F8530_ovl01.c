@@ -1,9 +1,9 @@
 #include "types.h"
+#include "mmx5/globals.h"
 #include "addr.h"
 
 extern u32* D_80098118;
 extern u8 D_8009A0B4;
-extern s8 D_800D1C00[];
 extern u8 D_800FD57C_ovl01[];
 extern u8 D_800FDA14_ovl01[];
 extern u16 D_800FDA98_ovl01[];
@@ -19,7 +19,7 @@ void func_800F8530_ovl01(u8* arg0) {
     arg0[0x5C] = 0;
     arg0[0x61] = 0;
     *(s32*)(arg0 + 0x58) = 0;
-    if (D_800D1C00[0xC] != 0xC) {
+    if (g_playthrough_state.s[0xC] != 0xC) {
         *(u16*)(arg0 + 0x40) = (*D_80098118 >> 7) + 0xB0;
     } else {
         *(u16*)(arg0 + 0x40) = (*D_80098118 >> 7) + 0x210;
@@ -29,7 +29,7 @@ void func_800F8530_ovl01(u8* arg0) {
         *(u8**)(arg0 + 0x3C) = p + off;
     }
     arg0[0x14] = D_8009A0B4;
-    if (D_800D1C00[0xC] != 0xC) {
+    if (g_playthrough_state.s[0xC] != 0xC) {
         *(s16*)(arg0 + 0xA) = 0x26A0;
         *(s16*)(arg0 + 0xE) = 0xC0;
     } else {

@@ -1,7 +1,8 @@
 #include "types.h"
+#include "mmx5/globals.h"
 #include "mmx5/system.h"
 
-extern D_800D1C00_t D_800D1C00;
+#define D_800D1C00_as_D_800D1C00_t (*(D_800D1C00_t*)&g_playthrough_state)
 
 void func_800EE974_ovl20(u8* obj) {
     s32 sum;
@@ -12,10 +13,10 @@ void func_800EE974_ovl20(u8* obj) {
 
     sum = 0;
     for (i = 0; i < 4; i++) {
-        sum += D_800D1C00.c6[i];
+        sum += D_800D1C00_as_D_800D1C00_t.c6[i];
     }
     sum *= 4;
-    sum += D_800D1C00.ca;
+    sum += D_800D1C00_as_D_800D1C00_t.ca;
     id = obj[0xA9];
     if (id == 0xD) {
         sum = 0;

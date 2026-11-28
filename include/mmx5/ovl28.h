@@ -3,6 +3,8 @@
 
 #include "types.h"
 
+extern s16 D_800FD9CC_ovl28[];
+
 extern Ent800F43E8 D_800FE8F0_ovl28[];
 
 void func_800EF064_ovl28();

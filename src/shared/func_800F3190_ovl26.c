@@ -1,8 +1,7 @@
 #include "types.h"
+#include "mmx5/ovl26.h"
 #include "mmx5/globals.h"
 #include "addr.h"
-
-extern X4_S16Pair D_800F9F24_ovl26[][16];
 
 void func_800F3190_ovl26(u8* o) {
     u8* p;
@@ -24,11 +23,11 @@ void func_800F3190_ovl26(u8* o) {
             if (s[0x96] != 0) {
                 *(u16*)(p + 0xA) =
                     *(u16*)(o + 0xA) +
-                    D_800F9F24_ovl26[s[0x94]][*(s16*)(o + 0x7C)].hi;
+                    D_800F9F24_ovl26.p[s[0x94]][*(s16*)(o + 0x7C)].hi;
             } else {
                 *(u16*)(p + 0xA) =
                     *(u16*)(o + 0xA) -
-                    D_800F9F24_ovl26[s[0x94]][*(s16*)(o + 0x7C)].hi;
+                    D_800F9F24_ovl26.p[s[0x94]][*(s16*)(o + 0x7C)].hi;
             }
             *(s16*)(p + 0xE) = 0x1280;
             *(s32*)(p + 0x20) = 0;

@@ -1,18 +1,18 @@
 #!/usr/bin/env python3
 """gen_objdiff.py — objdiff.json for the byte-matching build of the boot executable (stdlib only; modelled on mmx6's
-tools/gen_objdiff.py, itself on sozud/mmx4's). Run after `make split build BINARY=slus` and `BINARY=rockx5`, from the
+tools/gen_objdiff.py, itself on sozud/mmx4's). Run after `make split build BINARY=main` and `BINARY=rockx5`, from the
 repository root.
 
-Reads config/splat.slus.yaml + config/splat.rockx5.yaml (tracked) and the objects under build/slus/, build/rockx5/.
+Reads config/us/splat.main.yaml + config/us/splat.rockx5.yaml (tracked) and the objects under build/main/, build/rockx5/.
 
 Unit = one code subsegment (`c` or `asm`) of the splat config -> one object:
           c   -> build/<alias>/src/<alias>/<name>.o
           asm -> build/<alias>/asm/<alias>/<name>.o   (an unnamed rockx5 subsegment is named by its hex offset, as splat does)
-Unit names: slus `main/<name>`, rockx5 `rock/<ovl>/<name>`.
+Unit names: main `main/<name>`, rockx5 `rock/<ovl>/<name>`.
 target_path = that object (the build is byte-identical to the disc, so it IS the expected object).
 base_path   = c unit: the same object (splat's `nonmatching` macro emits <func>.NON_MATCHING for an INCLUDE_ASM body,
               so objdiff drops that function on the base side: it counts as not matched);
-              asm unit: build/slus/empty.o (nothing decompiled).
+              asm unit: build/main/empty.o (nothing decompiled).
 Categories (config/categories.tsv; ids are frozen once published): a PsyQ library object (LIB*, libgap*) is `sdk`,
 every other unit is `game` + `main`; a ROCK_X5.BIN unit is `game` + `rock` + `rock.<ovl>` (one id per overlay with code).
 build_base/build_target are false: objdiff-cli never runs make.
@@ -29,7 +29,7 @@ import sys
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "build"))
 import layout  # noqa: E402
 
-EXE, ALIAS = "SLUS_013.34", "slus"
+EXE, ALIAS = "SLUS_013.34", layout.MAIN
 SUB = re.compile(r"^\s*- \[0x([0-9A-Fa-f]+),\s*(c|asm)(?:,\s*([\w.]+))?\]")
 SEG = re.compile(r"^  - name: (\w+)")
 SDK = re.compile(r"^(LIB[A-Z0-9]+_|libgap_)")
@@ -41,7 +41,7 @@ CATEGORIES = ["# config/categories.tsv -- from tools/gen_objdiff.py. id parent n
 def units(alias, root=None):
     """The yaml's code units of `alias`. A root other than None reads that tree's config (selftest fixtures)."""
     out, seg, kw = [], None, {} if root is None else {"root": root}
-    for line in open(os.path.join(root or "", "config/splat.%s.yaml" % alias)):
+    for line in open(os.path.join(root or "", layout.config_path("splat.%s.yaml" % alias))):
         m = SEG.match(line)
         if m:
             seg = m.group(1)
@@ -55,13 +55,13 @@ def units(alias, root=None):
                 uname, cats = "rock/%s/%s" % (seg, name), ["game", "rock", "rock." + seg]
             # seg: a merged unit's first address can start a unit in two overlays (C0422)
             src = (layout.locate if kind == "c" else layout.asm_s)(alias, name, seg=seg, **kw)
-            obj = os.path.join("build", alias, str(src.with_suffix(".o")))
+            obj = os.path.join(layout.build_dir(alias), str(src.with_suffix(".o")))
             out.append(dict(name=uname, kind=kind, src=str(src), obj=obj, cats=cats))
     return out
 
 
 def ensure_empty():
-    p = "build/%s/empty.o" % ALIAS
+    p = str(layout.build_dir(ALIAS) / "empty.o")
     if not os.path.exists(p):
         local = "tools/bin/mipsel-linux-gnu-as"
         subprocess.run([local if os.path.exists(local) else "mipsel-linux-gnu-as", "-EL", "-march=r3000", "-o", p,
@@ -77,7 +77,7 @@ def main():
     us = units(ALIAS) + units("rockx5")
     missing = [u["obj"] for u in us if not os.path.exists(u["obj"])]
     if missing or not us:
-        sys.exit("missing objects (did `make split build BINARY=slus|rockx5` run?): %d, e.g. %s" % (len(missing), missing[:3]))
+        sys.exit("missing objects (did `make split build BINARY=main|rockx5` run?): %d, e.g. %s" % (len(missing), missing[:3]))
     assert len({u["name"] for u in us}) == len(us), "duplicate unit names"
     ovls = sorted({u["cats"][2] for u in us if len(u["cats"]) == 3})
     rows = CATEGORIES + ["%s\trock\tOverlay %s\tactive" % (o, o[len("rock.ovl"):]) for o in ovls]

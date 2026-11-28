@@ -5,14 +5,13 @@
 
 extern s32 func_80024548(s32);
 extern signed char D_8009A0A5;
-extern u8 D_800D1C00[];
 extern u8 D_80102A50_ovl04[];
 
 void func_800FE66C_ovl04(u8* arg0) {
     u8* g;
 
     if (D_8009A0A5 == 0x14) {
-        g = D_800D1C00;
+        g = g_playthrough_state.u;
         g[0x24] = 1;
         g[0x25] = 0;
         *(u8**)(g + 0x20) = arg0;
@@ -88,11 +87,10 @@ void func_800FE7E4_ovl04(u8* p) {
 #undef D_8009A420_as_s32
 
 extern u16 D_8009A22C;
-extern u8 D_800D1C00[];
 
 void func_800FE8F8_ovl04(void) {
     if (D_8009A22C == 0) {
-        u8* p = D_800D1C00;
+        u8* p = g_playthrough_state.u;
         p[0x26] |= 4;
         clear_object_slot();
     }

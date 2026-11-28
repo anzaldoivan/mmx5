@@ -5,7 +5,6 @@
 extern u8 D_80101D9C_ovl07[];
 extern u8 D_80101D90_ovl07[];
 extern u8 D_800767E0[];
-extern signed char D_800D1C0C;
 
 void func_800FCCAC_ovl07(u8* obj) {
     s32 c;
@@ -44,7 +43,7 @@ void func_800FCCAC_ovl07(u8* obj) {
     } else {
         set_animation(obj, 5);
     }
-    if (D_800D1C0C != 12) {
+    if (D_800D1C0C.s != 12) {
         *(s16*)(obj + 0x82) = 0;
         *(s16*)(obj + 0x84) = 0;
     } else {
@@ -59,7 +58,6 @@ extern s32 func_80032F70(u8* a0);
 extern s32 func_8003240C(u8* a0);
 extern s32 func_800326BC(u8* a0);
 
-extern signed char D_800D1C0C;
 extern u8 D_8009A244;
 extern u8 D_8009A198;
 extern s16 D_80101D3C_ovl07[][2];
@@ -81,7 +79,7 @@ void func_800FCDD0_ovl07(u8* o) {
 
     if (p[0x8E] != 0) {
         p[0x8E] = 2;
-        if (D_800D1C0C != 12) {
+        if (D_800D1C0C.s != 12) {
             func_80028B18(
                 ((s8*)o)[0x14],
                 (s16)(D_80101D3C_ovl07[o[2] & 0x1F][0] + *(u16*)(o + 0x82)),
@@ -107,7 +105,7 @@ void func_800FCDD0_ovl07(u8* o) {
             func_8003240C(o);
         }
         func_800326BC(o);
-        if (D_800D1C0C != 12) {
+        if (D_800D1C0C.s != 12) {
             func_80028B18(
                 ((s8*)o)[0x14],
                 (s16)(D_80101D18_ovl07[o[2] & 0x1F][0] + *(u16*)(o + 0x82)),
@@ -141,7 +139,7 @@ void func_800FCDD0_ovl07(u8* o) {
         }
         func_800326BC(o);
         o[0x66] = 0;
-        if (D_800D1C0C != 12) {
+        if (D_800D1C0C.s != 12) {
             func_80028B18(
                 ((s8*)o)[0x14],
                 (s16)(D_80101D3C_ovl07[o[2] & 0x1F][0] + *(u16*)(o + 0x82)),

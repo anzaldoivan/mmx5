@@ -1,10 +1,9 @@
 #include "types.h"
+#include "mmx5/globals.h"
 #include "mmx5/system.h"
 
-extern u8 D_800D1C00[];
-
 void func_800FF2F8_ovl04(u8* arg0) {
-    u8* g = D_800D1C00;
+    u8* g = g_playthrough_state.u;
 
     if (((s8*)g)[0x28] == 0) {
         if (arg0[0x8D] == 0 || --arg0[0x8D] == 0) {

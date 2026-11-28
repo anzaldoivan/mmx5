@@ -6,7 +6,6 @@
 
 extern void func_8002A600(s32, s32, s32);
 extern u16 D_8009A22C;
-extern u8 D_800D1C00[];
 
 void func_800FA1E0_ovl04(u8* obj) {
     u8* spawn;
@@ -20,12 +19,12 @@ void func_800FA1E0_ovl04(u8* obj) {
     if (*(s16*)(obj + 0xA) >= 0x230) {
         play_sound(5, 0x14, 0);
         obj[0x5]++;
-        D_800D1C00[0x27] = 0;
-        D_800D1C00[0x2A] = 0;
-        D_800D1C00[0x28] = 0;
-        D_800D1C00[0x29] = 0;
-        D_800D1C00[0x2B] = 0;
-        D_800D1C00[0x26] = 1;
+        g_playthrough_state.u[0x27] = 0;
+        g_playthrough_state.u[0x2A] = 0;
+        g_playthrough_state.u[0x28] = 0;
+        g_playthrough_state.u[0x29] = 0;
+        g_playthrough_state.u[0x2B] = 0;
+        g_playthrough_state.u[0x26] = 1;
         *(s32*)(obj + 0x84) = 0;
         obj[0x8C] = 0;
         obj[0x8D] = 0xB4;

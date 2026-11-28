@@ -5,7 +5,6 @@
 
 extern void silence_sound(s32, s32);
 extern s32 func_8002A5C4(s32, s32, s32);
-extern u8 D_8009A1F8[];
 extern s8 D_800D1C1D;
 extern u8 D_800F9BE8_ovl11[];
 
@@ -22,7 +21,7 @@ void func_800F3930_ovl11(u8* a0) {
     s32 x;
     s32 y;
 
-    f = D_8009A1F8;
+    f = D_8009A1F8.u;
     if (*(s16*)(f + 0x28) == 0x750) {
         func_80028B18(0, 0x920, 0x840, D_800F9BE8_ovl11);
     }
@@ -33,7 +32,7 @@ void func_800F3930_ovl11(u8* a0) {
     if (d >= 0 ? d < 0x60 : (y - x) < 0x60) {
         g = g_Player;
         if (((s8*)g)[0xF3] == 0) {
-            h = D_8009A1F8;
+            h = D_8009A1F8.u;
             t = a0[0x85] + 1;
             a0[0x85] = t;
             c = *(u16*)(h + 0x28);
@@ -42,12 +41,12 @@ void func_800F3930_ovl11(u8* a0) {
                     *(s16*)(h + 0x28) = c - 1;
                 }
             } else {
-                k = D_8009A1F8;
+                k = D_8009A1F8.u;
                 *(s16*)(k + 0x28) = 0x5A0;
             }
             move_object(a0, h, t, c);
         } else if ((u32)(g[0xFA] - 2) >= 2U) {
-            h = D_8009A1F8;
+            h = D_8009A1F8.u;
             t = a0[0x85] + 1;
             a0[0x85] = t;
             c = *(u16*)(h + 0x28);
@@ -56,7 +55,7 @@ void func_800F3930_ovl11(u8* a0) {
                     *(s16*)(h + 0x28) = c - 1;
                 }
             } else {
-                m = D_8009A1F8;
+                m = D_8009A1F8.u;
                 *(s16*)(m + 0x28) = 0x5A0;
             }
             move_object(a0, h, t, c);

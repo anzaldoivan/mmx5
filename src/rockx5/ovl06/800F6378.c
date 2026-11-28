@@ -56,7 +56,6 @@ void func_800F6378_ovl06(u8* a0) {
     }
 }
 
-extern u8 D_8009A1F8[];
 extern s32 D_800FE9F8_ovl06[];
 extern s32 D_800FEA18_ovl06[];
 
@@ -72,7 +71,7 @@ void func_800F652C_ovl06(u8* arg0) {
         n = 6;
     }
     if (((s8*)arg0)[2] >= 8) {
-        p = D_8009A1F8;
+        p = D_8009A1F8.u;
         *(u16*)(p + 0x24) = *(u16*)(arg0 + 0x82);
         x = ((s8*)arg0)[2];
         n = 8;

@@ -1,0 +1,51 @@
+#include "types.h"
+#include "mmx5/object.h"
+
+extern Obj8002CC08 D_80099404[];
+
+Obj8002CC08* func_8002CC08(Obj8002CC08* p, s32 backward) {
+    u8* q;
+    s32 i;
+
+    if (backward == 0) {
+        if (p == 0) {
+            p = D_80098120.cc08;
+        } else {
+            p++;
+        }
+        for (; p < D_800994A0.cc08; p++) {
+            if (p->active == 0) {
+                q = (u8*)p;
+                for (i = sizeof(Obj8002CC08) - 1; i != -1; i--) {
+                    *q++ = 0;
+                }
+                p->unk50 = 0;
+                p->unk54.w = 0;
+                p->unk68 = 0;
+                return p;
+            }
+        }
+    } else {
+        if (p == 0) {
+            p = D_80099404;
+        } else {
+            if (p == D_80098120.cc08) {
+                return 0;
+            }
+            p--;
+        }
+        for (; p >= D_80098120.cc08; p--) {
+            if (p->active == 0) {
+                q = (u8*)p;
+                for (i = sizeof(Obj8002CC08) - 1; i != -1; i--) {
+                    *q++ = 0;
+                }
+                p->unk50 = 0;
+                p->unk54.w = 0;
+                p->unk68 = 0;
+                return p;
+            }
+        }
+    }
+    return 0;
+}

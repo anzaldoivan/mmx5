@@ -6,7 +6,7 @@
 
 #define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8*)(expr) + (offset)))
 
-X4_Obj* find_free_visual_obj(void); /* extern */
+X4_Obj* find_free_visual_obj(void);
 void func_800F0C8C_ovl06(void* arg0);
 void func_800F0EB4_ovl06(void* arg0);
 

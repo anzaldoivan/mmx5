@@ -4,7 +4,6 @@
 
 extern void func_800F81F4_ovl11(u8* obj);
 extern s32 func_8002B5B4(s32);
-extern signed char D_800D1C0C;
 
 void func_800F6660_ovl11(u8* obj) {
     u8* p;
@@ -23,7 +22,7 @@ void func_800F6660_ovl11(u8* obj) {
         p[1] = 5;
         p[2] = 0;
         *(u16*)(p + 0x40) = *(u16*)(obj + 0x40);
-        if (D_800D1C0C == 12) {
+        if (D_800D1C0C.s == 12) {
             v = 0x7CCA;
         } else {
             a = func_8002B5B4(*(s8*)(obj + 1));

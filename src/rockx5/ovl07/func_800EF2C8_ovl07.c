@@ -6,7 +6,6 @@
 
 extern u8* func_8002D078();
 extern s32 func_8002B5B4(s32);
-extern u8 D_8009A1F8[];
 
 static inline void func_800EF2C8_ovl07_snd(s32 v) {
     g_Player[0xD8] = v;
@@ -20,7 +19,7 @@ void func_800EF2C8_ovl07(u8* obj) {
     s32 r;
     s16 d;
 
-    e = D_8009A1F8;
+    e = D_8009A1F8.u;
     d = *(u16*)(obj + 0xA) - *(u16*)(e + *(s8*)(obj + 0x14) * 0x54 + 0xA);
     switch (*(s8*)(obj + 6)) {
     case 0:

@@ -29,6 +29,5 @@ git ls-files -co --exclude-standard -z \
         .venv/bin/python -c "" 2>/dev/null || { rm -rf .venv; "$(uv python find 3.14)" -m venv .venv; }
         bash tools/bootstrap.sh
         PY=.venv/bin/python bash tools/refs_fetch.sh maspsx decomp-permuter old-gcc
-        bash tools/codegen/stage.sh
       } > .run/no_rom.setup.log 2>&1 || { tail -5 .run/no_rom.setup.log; echo "no_rom.sh: setup FAILED"; exit 1; }
       PATH=/work/.venv/bin:$PATH make --no-print-directory no-rom'

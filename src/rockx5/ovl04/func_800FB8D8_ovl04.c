@@ -7,8 +7,6 @@
 extern void func_8002A600(s32, s32, s32);
 extern u16 D_8009A22C;
 
-extern u8 D_800D1C00[];
-
 void func_800FB8D8_ovl04(u8* o) {
     s16 y;
     u32 r;
@@ -27,7 +25,7 @@ void func_800FB8D8_ovl04(u8* o) {
             func_8002A600(0x10, 3, 2);
         }
     } else if (y < 0xC41) {
-        p = D_800D1C00;
+        p = g_playthrough_state.u;
         do { // !FAKE: loop notes order the base setup before the counter
             o[5]++;
             k = 0x200000;

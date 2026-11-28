@@ -2,9 +2,9 @@
 """disc.py — rebuild the CD image from built + extracted files; gate on the track sha1.
 
 build: dumpsxiso -s the original image -> build/disc/ref/layout.xml (layout, dates, license, trailing dummy);
-       point every <file> at extracted/retail/<path> (ROCK_X5.BIN, SLUS_013.34 at our builds);
+       point every <file> at extracted/us/<path> (ROCK_X5.BIN, SLUS_013.34 at our builds);
        mkpsxiso -> build/disc/mmx5.bin/.cue; sha1 vs config/medium.sha1 line 1.
-build --out D --slus F --rockx5 F --no-gate: same into D/ from other inputs, no sha1 (make disc SHIFT=1).
+build --out D --main F --rockx5 F --no-gate: same into D/ from other inputs, no sha1 (make disc SHIFT=1).
 build --file DISCPATH=SRC (repeatable): pack SRC (repo-relative) at DISCPATH, applied last (make disc-assets).
 compare --image <bin>: the sha1 gate alone (exit 1 names first differing LBA, manifest extent, form).
 """
@@ -18,18 +18,24 @@ import sys
 import xml.etree.ElementTree as ET
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.join(ROOT, "tools", "build"))
+import layout  # noqa: E402
+
+DISC = layout.build_dir("disc")
 TOOLS = os.path.join(ROOT, ".run/tools/mkpsxiso-2.30/mkpsxiso-2.30-Linux/bin")
-REF = os.path.join(ROOT, "build/disc/ref")
-OUT_BIN = os.path.join(ROOT, "build/disc/mmx5.bin")
-OUT_CUE = os.path.join(ROOT, "build/disc/mmx5.cue")
-XML = os.path.join(ROOT, "build/disc/mmx5.xml")
-OVERRIDE = {"ROCK_X5.BIN": "build/disc/ROCK_X5.BIN", "SLUS_013.34": "build/slus/SLUS_013.34"}
+REF = os.path.join(ROOT, DISC / "ref")
+OUT_BIN = os.path.join(ROOT, DISC / "mmx5.bin")
+OUT_CUE = os.path.join(ROOT, DISC / "mmx5.cue")
+XML = os.path.join(ROOT, DISC / "mmx5.xml")
+OVERRIDE = {"ROCK_X5.BIN": str(DISC / "ROCK_X5.BIN"), "SLUS_013.34": str(layout.build_dir(layout.MAIN) / "SLUS_013.34")}
 SECTOR = 2352
 
 
 def dump(ext):
     """The dump's .cue/.bin: beside bootstrap.sh's .run/dump-cue (as `make extract`), else disks/."""
     cue = os.path.join(ROOT, ".run/dump-cue")
+    if not os.path.exists(cue) and not glob.glob(os.path.join(ROOT, "disks", "*." + ext)):
+        sys.exit(f"disc: no dump .{ext}: .run/dump-cue missing and none in disks/: run bash bootstrap.sh <dump.cue>")
     base = glob.escape(os.path.dirname(open(cue).read().strip())) if os.path.exists(cue) else "disks"
     return one(os.path.join(base, "*." + ext))
 
@@ -53,7 +59,7 @@ def rewrite(src, dst, ref, override):
                 walk(child, prefix + child.get("name") + "/")
             elif child.tag == "file":
                 path = prefix + child.get("name")
-                child.set("source", os.path.join(ROOT, override.get(path, "extracted/retail/" + path)))
+                child.set("source", os.path.join(ROOT, override.get(path, str(layout.extracted_dir() / path))))
 
     walk(root.find(".//directory_tree"), "")
     tree.write(dst, encoding="utf-8", xml_declaration=True)
@@ -81,7 +87,7 @@ def compare(image):
                 return 1
             lba += 1
     where = "unmapped"
-    with open(os.path.join(ROOT, "extracted/retail/manifest.jsonl")) as m:
+    with open(os.path.join(ROOT, layout.extracted_dir(), "manifest.jsonl")) as m:
         for line in m:
             r = json.loads(line)
             if r["lba"] <= lba < r["lba"] + r["sectors"]:
@@ -101,6 +107,8 @@ def build(out=None, slus=None, rockx5=None, gate=True, files=None):
         ref, xml, out_bin, out_cue = (os.path.join(d, n) for n in ("ref", "mmx5.xml", "mmx5.bin", "mmx5.cue"))
     override = dict(OVERRIDE, **{k: v for k, v in (("SLUS_013.34", slus), ("ROCK_X5.BIN", rockx5)) if v})
     override.update(files or {})
+    if not os.path.exists(os.path.join(TOOLS, "dumpsxiso")):
+        sys.exit("disc: dumpsxiso/mkpsxiso missing under .run/tools/mkpsxiso-2.30: run bash tools/bootstrap.sh")
     os.makedirs(ref, exist_ok=True)
     layout = os.path.join(ref, "layout.xml")
     subprocess.run([os.path.join(TOOLS, "dumpsxiso"), "-q", "-x", ref, "-s", layout, dump("cue")], check=True)
@@ -116,9 +124,9 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest="cmd", required=True)
     b = sub.add_parser("build")
-    b.add_argument("--out", help="output dir (default build/disc)")
-    b.add_argument("--slus", help="SLUS_013.34 to pack (default build/slus/SLUS_013.34)")
-    b.add_argument("--rockx5", help="ROCK_X5.BIN to pack (default build/disc/ROCK_X5.BIN)")
+    b.add_argument("--out", help=f"output dir (default {DISC})")
+    b.add_argument("--slus", help=f"SLUS_013.34 to pack (default {OVERRIDE['SLUS_013.34']})")
+    b.add_argument("--rockx5", help=f"ROCK_X5.BIN to pack (default {OVERRIDE['ROCK_X5.BIN']})")
     b.add_argument("--no-gate", action="store_true", help="skip the config/medium.sha1 compare")
     b.add_argument("--file", action="append", default=[], metavar="DISCPATH=SRC",
                    help="pack SRC (repo-relative) at DISCPATH; repeatable, applied last")

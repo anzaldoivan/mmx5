@@ -440,7 +440,7 @@ def progress_row(slug: str, r: dict) -> str:
 # The one published number, said once under the table (generated: the README's prose never types a number).
 PROGRESS_NOTE = ("The published number is the matched code of the `game` category, in bytes. The `sdk` row counts "
                  "the SDK libraries apart. A complete unit is a C file whose code and data all match. It is not a "
-                 "finished file (`rules/FIN1.md`).")
+                 "finished file, which also holds no readability debt.")
 NUMBER_RE = re.compile(r"(?<![\w.])(?!100(?:\.0+)?\s?%)\d[\d,]*(?:\.\d+)?\s?%|(?<![\w.])\d[\d,]*\s+of\s+\d[\d,]*(?![\w])")
 # `phase 1 of 3`, `disc 1 of 2`: a place in a series, not a count of the work
 SERIES_RE = re.compile(r"\b(?:phase|step|part|page|disc|disk|stage|chapter|volume|track|day|week)\s+\d+\s+of\s+\d+\b", re.I)

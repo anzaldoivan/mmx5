@@ -1,11 +1,7 @@
 #include "types.h"
+#include "mmx5/object.h"
 #include "mmx5/globals.h"
 #include "mmx5/graphics.h"
-
-extern u16 D_8009A42E;
-extern u8 D_800C9310;
-extern u16 D_800D50DE;
-extern u16 D_80093E68;
 
 void func_800F83D0_ovl03(u8* p) {
     u8* g = g_Player;
@@ -16,7 +12,7 @@ void func_800F83D0_ovl03(u8* p) {
     set_animation(p, 0xC);
     func_8002C218();
     D_8009A42E = 0;
-    D_800C9310 |= 1;
+    D_800C9310.b |= 1;
     D_800D50DE = 0;
     D_80093E68 = 0;
     *(s16*)(p + 0x7C) = 0x7F;

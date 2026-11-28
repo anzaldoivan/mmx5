@@ -1,8 +1,8 @@
 #include "types.h"
+#include "mmx5/ovl24.h"
+#include "mmx5/globals.h"
 
-extern u8 D_800D1C00[];
 extern s32 D_800F4ED0_ovl24[][2];
-extern s8 D_800F5F7F_ovl24;
 
 s32 func_800EFAF8_ovl24(u8* arg0, s8 arg1) {
     s32 i;
@@ -19,7 +19,7 @@ s32 func_800EFAF8_ovl24(u8* arg0, s8 arg1) {
     if (t == 0) {
         return 0;
     }
-    g = D_800D1C00;
+    g = g_playthrough_state.u;
     lim = *(s32*)(g + 0xB0) + 0x34BC0;
     if (lim >= t) {
         *slot = 0;
@@ -29,12 +29,12 @@ s32 func_800EFAF8_ovl24(u8* arg0, s8 arg1) {
             if (!(old & bit)) {
                 *(s32*)(arg0 + 0x80) = old | bit;
                 if ((u8)arg1 < 8) {
-                    if (D_800F5F7F_ovl24 == 0) {
+                    if (D_800F5F7F_ovl24.s == 0) {
                         g[0x47] += 2;
                     } else {
                         g[0x48] += 2;
                     }
-                } else if (D_800F5F7F_ovl24 == 0) {
+                } else if (D_800F5F7F_ovl24.s == 0) {
                     g[0x53] += 2;
                 } else {
                     g[0x54] += 2;

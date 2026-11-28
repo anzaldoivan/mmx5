@@ -2,16 +2,15 @@
 #include "mmx5/globals.h"
 
 extern void func_800EED68_ovl18(u8* arg0);
-extern u8 D_8009A1F8[];
 extern u8 D_8009A24C[];
-extern s8 D_800D1C00[];
 extern u8 D_800F6CCC_ovl18[];
 
 void func_800EEA50_ovl18(u8* arg0) {
-    if ((u8)((u8)D_800D1C00[0x1D] - 2) < 8) {
+    if ((u8)((u8)g_playthrough_state.s[0x1D] - 2) < 8) {
         D_8009A24C[3] = 0;
     }
-    if (D_800D1C00[0x1D] == 1 || (u8)((u8)D_800D1C00[0x1D] - 0xB) < 8) {
+    if (g_playthrough_state.s[0x1D] == 1 ||
+        (u8)((u8)g_playthrough_state.s[0x1D] - 0xB) < 8) {
         func_80028B18(0, 0xD30, 0x590, D_800F6CCC_ovl18);
         *(s16*)(arg0 + 0x1A) = 1;
         arg0[0x1C] = 2;
@@ -19,15 +18,15 @@ void func_800EEA50_ovl18(u8* arg0) {
         *(s16*)(arg0 + 0x1A) = 0;
         arg0[0x1C] = 0;
     }
-    if (D_800D1C00[0x1D] >= 0x15) {
-        D_8009A1F8[0x58] = 2;
-        *(s16*)(D_8009A1F8 + 0x94) = -0x7EE;
-        *(s16*)(D_8009A1F8 + 0x96) = -0x150;
-        D_8009A1F8[0xAC] = 1;
-        *(s16*)(D_8009A1F8 + 0xE8) = 0xA90;
-        *(s16*)(D_8009A1F8 + 0xEA) = 0x590;
-        D_8009A1F8[0xA0] = 1;
-        D_8009A1F8[0xF4] = 1;
+    if (g_playthrough_state.s[0x1D] >= 0x15) {
+        D_8009A1F8.u[0x58] = 2;
+        *(s16*)(D_8009A1F8.u + 0x94) = -0x7EE;
+        *(s16*)(D_8009A1F8.u + 0x96) = -0x150;
+        D_8009A1F8.u[0xAC] = 1;
+        *(s16*)(D_8009A1F8.u + 0xE8) = 0xA90;
+        *(s16*)(D_8009A1F8.u + 0xEA) = 0x590;
+        D_8009A1F8.u[0xA0] = 1;
+        D_8009A1F8.u[0xF4] = 1;
         arg0[5] = 1;
         arg0[6] = 0;
         arg0[4]++;

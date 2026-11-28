@@ -7,7 +7,6 @@
 #define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8*)(expr) + (offset)))
 
 extern u8 D_8009A0B4;
-extern u32* D_8007B2E8[];
 
 void func_800F4434_ovl28(void* self) {
     u8* p;
@@ -27,8 +26,8 @@ void func_800F4434_ovl28(void* self) {
         M2C_FIELD(self, u8*, 6) = 0;
         break;
     case 2:
-        func_8002C338(0x13E, D_1F800030 + 0x200, 1);
-        func_8002C338(0x13F, D_1F800030 + 0x200, 1);
+        load_palette(0x13E, D_1F800030 + 0x200, 1);
+        load_palette(0x13F, D_1F800030 + 0x200, 1);
         M2C_FIELD(self, u8*, 0x16) = 2;
         set_animation(self, 0xD);
         M2C_FIELD(self, u8*, 6) = 3;
@@ -57,7 +56,7 @@ void func_800F4434_ovl28(void* self) {
         M2C_FIELD(self, s32*, 0x38) = 0;
         p = D_1F80001C.bytes;
         M2C_FIELD(self, u8**, 0x3C) = p + M2C_FIELD(p, s32*, 4);
-        M2C_FIELD(self, void**, 0x30) = D_8007B2E8;
+        M2C_FIELD(self, void**, 0x30) = g_visual_animation_tables.p;
         M2C_FIELD(self, u8*, 0x16) = 1;
         M2C_FIELD(self, u16*, 0x42) = 0x7804;
         M2C_FIELD(self, u16*, 0x40) = 0;

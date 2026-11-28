@@ -1,4 +1,4 @@
--- replay.lua -- deterministic pad-script replay (T1 phase 2.2); driven by tools/replay/replay.py (format: README.md).
+-- replay.lua -- deterministic pad-script replay; driven by tools/replay/replay.py (format: README.md).
 -- Needs `-interpreter`: under the dynarec (Redux 298) the game stalls before the intro FMV (C0104).
 -- Env REDUX_PAD = .pad file (absolute; cwd is .run/redux), REDUX_OUT = directory for <name>.png (default cwd),
 -- REDUX_PLANT = <hexaddr>:<hexword>@<frame> (optional RAM write, `redux: plant …`).

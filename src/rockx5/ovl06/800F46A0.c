@@ -6,12 +6,10 @@
 #include "mmx5/object.h"
 
 extern void func_80024548(s32);
-extern u8 D_8009A1F8[];
-extern u8 D_800D1C00[];
 
 void func_800F46A0_ovl06(u8* a0) {
-    u8* d = D_8009A1F8;
-    u8* g = D_800D1C00;
+    u8* d = D_8009A1F8.u;
+    u8* g = g_playthrough_state.u;
 
     a0[0x8B] = 1;
     *(s16*)(a0 + 0x80) = *(s16*)(d + 0x24);

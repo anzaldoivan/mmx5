@@ -66,7 +66,6 @@ void func_800F5940_ovl03(u8* obj) {
 
 extern u8* func_8002C938();
 extern u8 D_8009A197;
-extern u8 D_800D1C10;
 extern u8 D_800F9E6C_ovl03[];
 
 void func_800F5B0C_ovl03(u8* obj) {
@@ -78,7 +77,7 @@ void func_800F5B0C_ovl03(u8* obj) {
     if (t == 1) {
         *(u8**)(obj + 0x54) = D_800F9E6C_ovl03;
         D_8009A197 = 0;
-        D_800D1C10 = 0;
+        D_800D1C10.u = 0;
     } else if (t == 0x1E) {
         set_animation(obj, 5);
         obj[7] = 0;

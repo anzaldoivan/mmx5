@@ -1,0 +1,2 @@
+# config/globtypes-baseline.txt -- tools/readability/globtypes.py --all: non-view conflicts allowed (rc 1 above it).
+conflicts 28

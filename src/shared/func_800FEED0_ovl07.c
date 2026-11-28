@@ -4,7 +4,6 @@
 #include "mmx5/globals.h"
 
 extern void start_pad_vibration(s32);
-extern signed char D_800D1C0C;
 
 void func_800FEED0_ovl07(u8* obj) {
     s32 d;
@@ -17,7 +16,7 @@ void func_800FEED0_ovl07(u8* obj) {
         obj[0x15] = 0;
         d = (u8)(((u32(*)())random_byte)() % 48) + 0xFFE8;
         *(u16*)(obj + 0xA) += d;
-        if (D_800D1C0C != 0xC) {
+        if (D_800D1C0C.s != 0xC) {
             *(s16*)(obj + 0xE) = 0x480;
         } else {
             *(s16*)(obj + 0xE) = 0x40;

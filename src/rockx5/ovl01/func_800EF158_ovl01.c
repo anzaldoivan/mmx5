@@ -2,21 +2,20 @@
 #include "mmx5/globals.h"
 
 extern void* D_800FBFD4_ovl01[];
-extern u8 D_8009A1F8[];
 
 void func_800EF158_ovl01(u8* arg0) {
     ((void (*)(u8*))D_800FBFD4_ovl01[((s8*)arg0)[5]])(arg0);
     if (((s8*)arg0)[5] < 7) {
         u8* p = g_Player;
         if (p[0xF7] != 0) {
-            u8* q = D_8009A1F8;
+            u8* q = D_8009A1F8.u;
             *(s16*)(q + 0x5E) += *(s16*)(q + 0xA) - *(s16*)(q + 0x16);
         } else {
-            u8* q = D_8009A1F8;
+            u8* q = D_8009A1F8.u;
             *(s32*)(q + 0x5C) += *(s32*)(arg0 + 0x14);
         }
         {
-            u8* q = D_8009A1F8;
+            u8* q = D_8009A1F8.u;
             *(s16*)(q + 0x62) = *(s16*)(q + 0xE) + *(s16*)(q + 0xE) / 2 + 8;
             if (*(s16*)(q + 0x5E) < 0xE00) {
                 if (*(s16*)(q + 0x5E) >= 0x400) {
@@ -32,22 +31,22 @@ void func_800EF158_ovl01(u8* arg0) {
             }
         }
         {
-            u8* q = D_8009A1F8;
+            u8* q = D_8009A1F8.u;
             q[0xA0] = 1;
         }
     } else {
-        u8* q = D_8009A1F8;
+        u8* q = D_8009A1F8.u;
         u8* p = g_Player;
         *(s32*)(q + 0x5C) += *(s32*)(p + 0x8) - *(s32*)(p + 0x18);
     }
     {
-        u8* q = D_8009A1F8;
+        u8* q = D_8009A1F8.u;
         if (arg0[0x1D] == 0 && *(s16*)(q + 0xA) >= 0xEC0) {
             arg0[0x1D] = 1;
         }
     }
     {
-        u8* q = D_8009A1F8;
+        u8* q = D_8009A1F8.u;
         if (arg0[0x1D] == 1 && *(s16*)(q + 0xB2) == 0x200) {
             arg0[0x1D] = 2;
             q[0xF6] = 5;
@@ -56,7 +55,7 @@ void func_800EF158_ovl01(u8* arg0) {
     }
     {
         if (arg0[0x1D] == 2) {
-            u8* q = D_8009A1F8;
+            u8* q = D_8009A1F8.u;
             if (*(s16*)(q + 0xB2) == 0x400) {
                 arg0[0x1D] = 3;
                 q[0xF5] = 4;
@@ -67,10 +66,10 @@ void func_800EF158_ovl01(u8* arg0) {
     {
         u8* p = g_Player;
         if (p[0xF7] != 0) {
-            u8* q = D_8009A1F8;
+            u8* q = D_8009A1F8.u;
             *(s32*)(q + 0xB0) += (*(s32*)(q + 0x8) - *(s32*)(q + 0x14)) / 4;
         } else {
-            u8* q = D_8009A1F8;
+            u8* q = D_8009A1F8.u;
             *(s32*)(q + 0xB0) += *(s32*)(arg0 + 0x14) >> 1;
         }
     }

@@ -2,7 +2,7 @@
 #include "mmx5/globals.h"
 #include "mmx5/sound.h"
 
-extern Gm1C00 D_800D1C00;
+#define D_800D1C00_as_Gm1C00 (*(Gm1C00*)&g_playthrough_state)
 
 void func_800F9088_ovl07(u8* obj, s32 b1, s32 b2) {
     u8 a1 = b1;
@@ -13,7 +13,8 @@ void func_800F9088_ovl07(u8* obj, s32 b1, s32 b2) {
     u8* q;
 
     hi = g_Player[0x5C] & 0x80;
-    if ((g_Player[0x5C] & 0x7F) < (s8)D_800D1C00.lim[(s8)g_Player[2]]) {
+    if ((g_Player[0x5C] & 0x7F) <
+        (s8)D_800D1C00_as_Gm1C00.lim[(s8)g_Player[2]]) {
         func_800F94C8_ovl07(1);
         obj[0x85] = 4;
         obj[0x84] = a1;
@@ -24,12 +25,13 @@ void func_800F9088_ovl07(u8* obj, s32 b1, s32 b2) {
     } else {
         obj[4] = 3;
     }
-    if (!((g_Player[0x5C] & 0x7F) < (s8)D_800D1C00.lim[(s8)g_Player[2]])) {
-        g_Player[0x5C] = D_800D1C00.lim[(s8)g_Player[2]] | hi;
+    if (!((g_Player[0x5C] & 0x7F) <
+          (s8)D_800D1C00_as_Gm1C00.lim[(s8)g_Player[2]])) {
+        g_Player[0x5C] = D_800D1C00_as_Gm1C00.lim[(s8)g_Player[2]] | hi;
     }
     for (i = 0; i < 2; i++) {
-        q = &D_800D1C00.cnt[i];
-        if (D_800D1C00.flags & (0x1000 << i)) {
+        q = &D_800D1C00_as_Gm1C00.cnt[i];
+        if (D_800D1C00_as_Gm1C00.flags & (0x1000 << i)) {
             v = *q & 0x7F;
             if (v < 0x20) {
                 v = a2 + v;

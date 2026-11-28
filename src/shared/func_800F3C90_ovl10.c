@@ -5,7 +5,6 @@
 #include "mmx5/graphics.h"
 
 extern u8* func_8002CA10(u8* obj, s32 arg1);
-extern signed char D_800D1C0C;
 
 void func_800F3C90_ovl10(u8* obj) {
     s32 lim;
@@ -15,7 +14,7 @@ void func_800F3C90_ovl10(u8* obj) {
     u8 t;
     s32 r;
 
-    if (D_800D1C0C != 0xC) {
+    if (D_800D1C0C.s != 0xC) {
         lim = 0x2000;
         x = 0x1F80;
     } else {

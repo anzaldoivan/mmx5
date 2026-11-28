@@ -7,9 +7,9 @@ planned work, item by item.
 
 The census counts 7647 game functions. The numbers come from [docs/progress.md](progress.md).
 
-- 7483 functions have the status finished: they are in C, and the build is byte-identical. That is 97.9%.
-- 164 functions are open: they are still in assembly, and each one has a ledger row. That is 2.1%.
-- 37 functions have a name. That is 0.5%.
+- 7552 functions have the status finished: they are in C, and the build is byte-identical. That is 98.8%.
+- 95 functions are open: they are still in assembly, and each one has a ledger row. That is 1.2%.
+- 100 functions have a name. That is 1.3%.
 
 The current work is Generation 4, the clean final repository. Its goal is to complete the C and to leave a clean
 repository. Each file must be a compile unit, with one declaration for each symbol. The public repository must ship
@@ -77,26 +77,35 @@ only what a person needs to build, check, mod and contribute. Both binaries stay
 
 ### 4.7: The ledger after the merge
 
-- Status: next
-- What and why: Some open functions may need the other functions of their unit to match. This phase attacks each of
-  these functions once, inside its merged unit.
-- Result: `python3 tools/wave/ledger.py check` prints `0 unledgered, 0 without draft, 0 without blocker`. The open
-  count does not rise.
+- Status: done
+- What and why: Some open functions may need the other functions of their unit to match. The tools learned to try
+  and bank a function inside its merged unit. The tools that copy a body to its twins and rename functions now take
+  merged units. Then each open function that had never had a coder got one capped pass.
+- Result: The open count fell from 164 to 96. 5 of the 7 functions tagged for their unit matched inside it. 54 of the
+  93 functions marked as walls without a coder matched in one pass of at most 20 tries. 13 byte twins of these came
+  free. Each of the 40 functions that stay open records its 4.7 wave and its blocker in the ledger. Both binaries
+  stayed byte-identical after each commit.
 
 ### 4.8: Names, types and data
 
-- Status: next
+- Status: done
 - What and why: Functions, types and data get names, each with recorded evidence. One pass removes the comments that
-  do not tell why. The readability scan gets checks for task ids and banners.
-- Result: `make readability-check PY=...` prints `0 task ids, 0 banners` with its other zero counts. The named count
-  in [docs/progress.md](progress.md) rises.
+  do not tell why. The readability scan gets checks for task ids, banners and end markers.
+- Result: The named count rose from 37 to 100 functions, and 24 game variables have names. Each new name has a recorded
+  source. Shared globals got one home header each, and the type conflicts fell from 141 to 59. 11 data blocks are now
+  defined in C. `make readability-check PY=...` prints `0 task ids, 0 banners, 0 end markers` with its other zero
+  counts. Both binaries stayed byte-identical after each commit.
 
 ### 4.9: The version axis
 
-- Status: next
+- Status: done
 - What and why: The build learns to select a game version. US stays the only version in this phase. The
   paths change once, before the release, so that they stay the same after it.
 - Result: Both binaries stay byte-identical with `VERSION=us`. `make check` prints `check: 2 of 2 green, 0 failed`.
+  Build outputs are under `build/us/`, and address-bound config is under `config/us/`. The file
+  `config/versions.tsv` lists each version, and `make check-all` checks each one.
+- Code: The executable has the build name `main`. C code tests the version with `#if VERSION >= VER_US`. The style
+  check refuses `#ifdef VERSION_US`.
 
 ### 4.10: Validation: the clean repository
 

@@ -1,6 +1,5 @@
 #include "types.h"
-
-extern u8 D_80092090[];
+#include "mmx5/object.h"
 
 void func_800F2F28_ovl06(u8* obj) {
     s32 x;

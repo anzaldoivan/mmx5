@@ -1,4 +1,5 @@
 #include "types.h"
+#include "mmx5/ovl06.h"
 #include "mmx5/system.h"
 #include "mmx5/graphics.h"
 #include "mmx5/sound.h"
@@ -17,8 +18,6 @@ void func_800F9EA8_ovl06(u8* arg0) {
 }
 
 extern void func_800FAF38_ovl06(u8*, s32, s32, s32);
-extern u8 D_800FF1DC_ovl06[];
-extern u8 D_800FF1E0_ovl06[];
 
 void func_800F9F0C_ovl06(u8* obj) {
     s8 state;
@@ -35,8 +34,8 @@ void func_800F9F0C_ovl06(u8* obj) {
     } else if (state == 3) {
         if (--*(s16*)(obj + 0x7E) == 0) {
             set_animation(obj, 20);
-            *(u8**)(obj + 0x50) = D_800FF1DC_ovl06;
-            *(u8**)(obj + 0x54) = D_800FF1E0_ovl06;
+            *(u8**)(obj + 0x50) = D_800FF1DC_ovl06.u;
+            *(u8**)(obj + 0x54) = D_800FF1E0_ovl06.u;
             *(s32*)(obj + 0x20) = 0;
             *(s32*)(obj + 0x28) = 0;
             *(s32*)(obj + 0x24) = 0;

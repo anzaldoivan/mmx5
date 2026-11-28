@@ -10,7 +10,6 @@ extern void func_8002C1C8(void);
 extern u8 D_80093E66;
 extern u8 D_8009A42C;
 extern u8 D_800D50DC;
-extern u8 D_8009A1F8[];
 
 void func_800FA078_ovl43(u8* arg0) {
     func_8002C50C();
@@ -22,8 +21,8 @@ void func_800FA078_ovl43(u8* arg0) {
     D_8009A42C = 0;
     D_800D50DC = 0;
     func_8002C1C8();
-    D_8009A1F8[0x3] = 0;
-    D_8009A1F8[0x57] = 0;
-    D_8009A1F8[0xAB] = 0;
+    D_8009A1F8.u[0x3] = 0;
+    D_8009A1F8.u[0x57] = 0;
+    D_8009A1F8.u[0xAB] = 0;
     arg0[1]++;
 }

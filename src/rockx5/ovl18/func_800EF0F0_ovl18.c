@@ -9,7 +9,7 @@ extern u32* D_80098118;
 extern u8 D_800F75B0_ovl18[];
 extern u8 D_800F75E8_ovl18[];
 extern u8 D_800F75EC_ovl18[];
-extern D1C00_800F6A94 D_800D1C00;
+#define D_800D1C00_as_D1C00_800F6A94 (*(D1C00_800F6A94*)&g_playthrough_state)
 extern u8 D_8009A244;
 
 void func_800EF0F0_ovl18(u8* obj) {
@@ -36,7 +36,7 @@ void func_800EF0F0_ovl18(u8* obj) {
     obj[0x75] = 0;
     if (obj[2] & 0x10) {
         for (i = 8, n = 0; i < 16; i++) {
-            if (D_800D1C00.f26[i] != 0) {
+            if (D_800D1C00_as_D1C00_800F6A94.f26[i] != 0) {
                 n++;
             }
         }
@@ -84,7 +84,7 @@ void func_800EF0F0_ovl18(u8* obj) {
         }
         return;
     }
-    v = D_800D1C00.f26[(s8)obj[2] + 6];
+    v = D_800D1C00_as_D1C00_800F6A94.f26[(s8)obj[2] + 6];
     if (v != 1) {
         if (v < 2) {
             if (v == 0) {
@@ -132,7 +132,7 @@ void func_800EF0F0_ovl18(u8* obj) {
         obj[4] = 1;
         obj[5] = 1;
         set_animation(obj, 4);
-        D_800D1C00.f26[((s8*)obj)[2] + 6] = 2;
+        D_800D1C00_as_D1C00_800F6A94.f26[((s8*)obj)[2] + 6] = 2;
         c = find_free_visual_obj();
         if (c != 0) {
             c[0] = 0x41;

@@ -1,4 +1,3 @@
-/* W38 draft: copy state byte, place relative to parent by kind, dispatch state handler (rockx5 ovl04). */
 #include "types.h"
 
 extern u8 D_800D1C2A;

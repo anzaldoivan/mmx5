@@ -8,7 +8,6 @@
 extern void func_800FAF38_ovl06(u8*, s32, s32, s32);
 extern void start_pad_vibration(s32);
 extern void func_8002A600(s32, s32, s32);
-extern signed char D_800D1C0C;
 extern u8 D_800FF500_ovl06[];
 extern u8 D_800FF510_ovl06[];
 extern u8 D_800FF520_ovl06[];
@@ -33,7 +32,7 @@ void func_800F8CE8_ovl06(u8* o) {
         func_8002A600(0x28, 4, 2);
         o[0x9A] = 0;
         set_animation(o, 0x1E);
-        if (D_800D1C0C != 12) {
+        if (D_800D1C0C.s != 12) {
             func_80028B18(0, 0x11B0, 0x10, D_800FF500_ovl06);
         } else {
             func_80028B18(0, (s16)(D_800FF94C_ovl06 + 0x11B0),
@@ -51,7 +50,7 @@ void func_800F8CE8_ovl06(u8* o) {
         func_8002A600(0x28, 4, 2);
         o[0x9A] = 0;
         set_animation(o, 0x1E);
-        if (D_800D1C0C != 12) {
+        if (D_800D1C0C.s != 12) {
             func_80028B18(0, 0x1300, 0x10, D_800FF510_ovl06);
         } else {
             func_80028B18(0, (s16)(D_800FF94C_ovl06 + 0x1300),
@@ -65,7 +64,6 @@ void func_800F8CE8_ovl06(u8* o) {
 }
 
 extern u8 D_8009A244;
-extern s8 D_800D1C0C;
 extern u8 D_800FF508_ovl06[];
 extern u8 D_800FF518_ovl06[];
 extern u8 D_800FF528_ovl06[];
@@ -78,7 +76,7 @@ void func_800F8ED4_ovl06(u8* obj) {
     }
     if (--*(s16*)(obj + 0x7C) == 0) {
         if (obj[0x15] == 0) {
-            if (D_800D1C0C != 0xC) {
+            if (D_800D1C0C.s != 0xC) {
                 ((void (*)(s32, s16, s16, void*))func_80028B18)(
                     0, 0x11B0, 0x10, D_800FF508_ovl06);
             } else {
@@ -86,7 +84,7 @@ void func_800F8ED4_ovl06(u8* obj) {
                     0, D_800FF94C_ovl06 + 0x11B0, D_800FF94E_ovl06 + 0x10,
                     D_800FF528_ovl06);
             }
-        } else if (D_800D1C0C != 0xC) {
+        } else if (D_800D1C0C.s != 0xC) {
             ((void (*)(s32, s16, s16, void*))func_80028B18)(0, 0x1300, 0x10,
                                                             D_800FF518_ovl06);
         } else {

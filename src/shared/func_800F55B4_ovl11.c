@@ -3,8 +3,7 @@
 #include "addr.h"
 
 extern void func_80024548(s32);
-extern u8 D_8009A1F8[];
-extern Glb800F3EA0 D_800D1C00;
+#define D_800D1C00_as_Glb800F3EA0 (*(Glb800F3EA0*)&g_playthrough_state)
 extern u8 D_800FA064_ovl11[];
 
 void func_800F55B4_ovl11(u8* obj) {
@@ -14,23 +13,23 @@ void func_800F55B4_ovl11(u8* obj) {
     if (t == 0) {
         func_8003D29C(0x14, 0x40);
     } else if (t == 0xA0) {
-        u8* a = D_8009A1F8;
+        u8* a = D_8009A1F8.u;
 
         *(u16*)D_800FA064_ovl11 = *(u16*)(a + 0x26);
         *(u16*)(a + 0x24) -= 0x10;
         *(u16*)(a + 0x26) = *(u16*)(a + 0x24) - 0x30;
     }
     if (*(s8*)*(u8**)(D_1F80004C.bytes + 0x84) == 0) {
-        D_800D1C00.unk24 = 1;
-        D_800D1C00.unk25 = 0;
-        D_800D1C00.unk20 = obj;
-        D_800D1C00.unkA2 = 0x38;
-        if (D_800D1C00.unkC == 0xC) {
+        D_800D1C00_as_Glb800F3EA0.unk24 = 1;
+        D_800D1C00_as_Glb800F3EA0.unk25 = 0;
+        D_800D1C00_as_Glb800F3EA0.unk20 = obj;
+        D_800D1C00_as_Glb800F3EA0.unkA2 = 0x38;
+        if (D_800D1C00_as_Glb800F3EA0.unkC == 0xC) {
             func_80024548(-1);
         } else {
             func_80024548(1);
         }
-        D_1F80004C.bytes[0x8C] = D_800D1C00.unkA2;
+        D_1F80004C.bytes[0x8C] = D_800D1C00_as_Glb800F3EA0.unkA2;
         obj[0x15] = 0;
         *(s32*)(obj + 0x20) = 0;
         *(s32*)(obj + 0x28) = 0;

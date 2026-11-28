@@ -1,4 +1,5 @@
 #include "types.h"
+#include "mmx5/ovl20.h"
 #include "mmx5/globals.h"
 #include "addr.h"
 
@@ -11,9 +12,6 @@ extern u8 D_8009A428;
 extern u8 D_800D1598;
 extern u8 D_800F6DF9_ovl20;
 extern u8 D_800F6DFA_ovl20;
-extern Blk200 D_800F5FF0_ovl20;
-extern Blk200 D_800F63F0_ovl20;
-extern Blk200 D_800F67F0_ovl20;
 extern Blk100 D_800F6BF0_ovl20;
 
 void func_800EEA98_ovl20(u8* arg0) {
@@ -32,11 +30,11 @@ void func_800EEA98_ovl20(u8* arg0) {
     *(s16*)(arg0 + 8) = 0;
     *(s16*)(arg0 + 0xA) = 0;
     src = D_1F800028 + 0xE00;
-    D_800F5FF0_ovl20 = *(Blk200*)src;
+    D_800F5FF0_ovl20.blk = *(Blk200*)src;
     src = D_1F800028 + 0x1600;
-    D_800F63F0_ovl20 = *(Blk200*)src;
+    D_800F63F0_ovl20.blk = *(Blk200*)src;
     src = D_1F800028 + 0x800;
-    D_800F67F0_ovl20 = *(Blk200*)src;
+    D_800F67F0_ovl20.blk = *(Blk200*)src;
     src = D_1F800028 + 0x80;
     D_800F6BF0_ovl20 = *(Blk100*)src;
     func_8002C50C();

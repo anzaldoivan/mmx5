@@ -1,4 +1,5 @@
 #include "types.h"
+#include "mmx5/globals.h"
 #include "mmx5/graphics.h"
 #include "addr.h"
 
@@ -6,7 +7,6 @@ extern u8* func_8002D33C(u8* p, s32 backward);
 extern void set_animation_frame(u8* a0, s32 a1, s32 a2);
 extern u32* D_80098118;
 extern u8 D_800F53C4_ovl20[];
-extern u8 D_800D1C00[];
 
 void func_800F1E64_ovl20(u8* obj) {
     u8* p;
@@ -22,7 +22,7 @@ void func_800F1E64_ovl20(u8* obj) {
     obj[0x16] = 3;
     obj[0x14] = 1;
     obj[0x15] = 0;
-    d = D_800D1C00;
+    d = g_playthrough_state.u;
     if (((s8*)d)[0x2A] == 5) {
         if (!(d[0x4A] & 0x10)) {
             *(s16*)(obj + 0x42) = 0x7844;
@@ -33,7 +33,7 @@ void func_800F1E64_ovl20(u8* obj) {
         *(s16*)(obj + 0x42) = 0x7840;
     }
     if (((s8*)obj)[2] == 0) {
-        e = D_800D1C00;
+        e = g_playthrough_state.u;
         if (((s8*)e)[0x2A] == 5) {
             set_animation(obj, 1);
         } else {
@@ -48,7 +48,7 @@ void func_800F1E64_ovl20(u8* obj) {
             *(u8**)(p + 0x50) = obj;
         }
     } else {
-        g = D_800D1C00;
+        g = g_playthrough_state.u;
         obj[0x16] = 2;
         set_animation_frame(obj, 2, ((s8*)g)[0x2A]);
         obj[4] = 2;

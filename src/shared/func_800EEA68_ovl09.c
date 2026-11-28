@@ -3,7 +3,6 @@
 #include "mmx5/globals.h"
 #include "mmx5/title.h"
 
-extern u8 D_8009A1F8[];
 extern u16 D_800FA620_ovl09[3][8][2];
 
 void func_800EEA68_ovl09(u8* obj) {
@@ -21,7 +20,7 @@ void func_800EEA68_ovl09(u8* obj) {
     q = random_byte() & 0xF;
     if (((s8*)obj)[7] != 0) {
         for (i = 0; i < 8; i++) {
-            e = D_8009A1F8;
+            e = D_8009A1F8.u;
             p = g_Player;
             d = *(s16*)(p + 0xA) - *(s16*)(e + 0xA);
             if (d < 0x6E) {
@@ -100,7 +99,7 @@ void func_800EEA68_ovl09(u8* obj) {
         }
     } else {
         for (i = 0; i < 8; i++) {
-            e2 = D_8009A1F8;
+            e2 = D_8009A1F8.u;
             p2 = g_Player;
             d2 = *(s16*)(p2 + 0xA) - *(s16*)(e2 + 0xA);
             if (d2 < 0x6E) {

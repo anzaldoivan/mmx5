@@ -5,7 +5,6 @@ extern s32 func_8001D7E8(u8);
 extern s32 func_800F3968_ovl24(u8*, u8, s32);
 extern void func_800F3988_ovl24(u8*);
 extern u8 D_8009A427;
-extern u8 D_800D1C00[];
 extern Rgb800F3884 D_800EE988_ovl24;
 
 void func_800F3884_ovl24(u8* obj) {
@@ -30,8 +29,8 @@ void func_800F3884_ovl24(u8* obj) {
             return;
         }
     }
-    D_800D1C00[1] = 0xA;
+    g_playthrough_state.u[1] = 0xA;
     ((s32(*)())func_8002C50C)();
     D_8009A427 = 0;
-    D_800D1C00[3] = 0xD;
+    g_playthrough_state.u[3] = 0xD;
 }

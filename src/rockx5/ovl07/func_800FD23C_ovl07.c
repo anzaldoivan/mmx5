@@ -1,4 +1,5 @@
 #include "types.h"
+#include "mmx5/globals.h"
 #include "mmx5/graphics.h"
 
 extern u8 D_80074E40[];
@@ -11,7 +12,6 @@ extern u8 D_80101DCC_ovl07[];
 extern u8 D_80101DD4_ovl07[];
 extern u8 D_80101DD8_ovl07[];
 extern u8 D_80101DDC_ovl07[];
-extern signed char D_800D1C0C;
 
 void func_800FD23C_ovl07(Obj800FD23C* o) {
     o->unk60 = 4;
@@ -106,7 +106,7 @@ void func_800FD23C_ovl07(Obj800FD23C* o) {
         break;
     }
 
-    if (D_800D1C0C != 12) {
+    if (D_800D1C0C.s != 12) {
         o->unk84[0] = 0;
         o->unk84[1] = 0;
     } else {

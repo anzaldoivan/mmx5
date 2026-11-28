@@ -6,13 +6,11 @@
 
 extern void func_80024548(s32);
 extern void func_800FAFFC_ovl06(u8*, s32, s32, s32);
-extern u8 D_8009A1F8[];
-extern u8 D_800D1C00[];
 
 void func_800F8084_ovl06(u8* arg0) {
     s16 t;
     u8* p;
-    u8* g = D_800D1C00;
+    u8* g = g_playthrough_state.u;
     u8* q;
     u16 a;
     u16 b;
@@ -25,12 +23,12 @@ void func_800F8084_ovl06(u8* arg0) {
         if (t == 0) {
             func_8003D29C(0x14, 0x40);
         } else if (t == 0x32) {
-            q = D_8009A1F8;
+            q = D_8009A1F8.u;
             *(s32*)(arg0 + 0x8C) = *(s16*)(q + 0x26);
             *(s16*)(q + 0x26) = *(u16*)(q + 0x24) - 0x10;
         }
         if (**(s8**)(D_1F80004C.bytes + 0x80) == 0) {
-            r = (s8*)D_800D1C00;
+            r = (s8*)g_playthrough_state.u;
             c = r[0xC];
             r[0x24] = 1;
             r[0x25] = 0;
@@ -42,7 +40,7 @@ void func_800F8084_ovl06(u8* arg0) {
                 func_80024548(1);
             }
             p = D_1F80004C.bytes;
-            p[0x86] = D_800D1C00[0xA2];
+            p[0x86] = g_playthrough_state.u[0xA2];
             arg0[0x15] = 0;
             *(s32*)(arg0 + 0x20) = 0;
             *(s32*)(arg0 + 0x28) = 0;

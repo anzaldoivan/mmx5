@@ -3,8 +3,6 @@
 #include "mmx5/sound.h"
 
 extern void func_800EF584_ovl04(void);
-extern u8 D_8009A1F8[];
-extern u8 D_800D1C00[];
 
 void func_800EF184_ovl04(u8* arg0) {
     s32 flag;
@@ -22,17 +20,17 @@ void func_800EF184_ovl04(u8* arg0) {
         flag = 1;
     }
     if (flag != 0) {
-        o = D_8009A1F8;
+        o = D_8009A1F8.u;
         *(s32*)(o + 0xC) += 0x4000;
     }
-    q = D_8009A1F8;
+    q = D_8009A1F8.u;
     v = *(s16*)(q + 0xE);
     if (v >= 0x3C0) {
         *(s16*)(q + 0x2A) = v;
         *(s16*)(q + 0x28) = v;
         *(s16*)(q + 0x22) = v;
         *(s16*)(q + 0x20) = v;
-        r = D_800D1C00;
+        r = g_playthrough_state.u;
         w = *(s16*)(q + 0xA);
         r[0x26] |= 2;
         *(s16*)(q + 0x26) = w;
@@ -45,14 +43,13 @@ void func_800EF184_ovl04(u8* arg0) {
 
 extern void func_80028A20(s32, s32, s32, u8*);
 extern u8* alloc_class3_slot(void);
-extern u8 D_8009A1F8[];
 extern u8 D_80100DBC_ovl04[];
 extern s16 D_80102FD4_ovl04;
 extern u8* D_80102FD8_ovl04;
 
 void func_800EF258_ovl04(u8* obj) {
     u8* p;
-    u8* g = D_8009A1F8;
+    u8* g = D_8009A1F8.u;
     u8* q;
     s32 t;
 

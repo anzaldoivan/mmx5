@@ -46,7 +46,7 @@ void func_800F1414_ovl24(u8* arg0) {
     }
     b = D_8009A420;
     old = b[7];
-    if (D_800C931C[2] & 0x1000) {
+    if (g_pad1_buttons[2] & 0x1000) {
         if (old == 0) {
             for (i = 0; i < 7; i++) {
                 r = D_800E81D8;
@@ -64,7 +64,7 @@ void func_800F1414_ovl24(u8* arg0) {
         }
         func_800F19F0_ovl24(n);
     }
-    if (D_800C931C[2] & 0x4000) {
+    if (g_pad1_buttons[2] & 0x4000) {
         n = D_8009A420[7];
         if (n == 7) {
             for (i = 0; i < 7; i++) {
@@ -86,7 +86,7 @@ void func_800F1414_ovl24(u8* arg0) {
     if (D_8009A420[7] != old) {
         play_sound(0, 0xC, 0);
     }
-    if (D_800C931C[2] & 0x10) {
+    if (g_pad1_buttons[2] & 0x10) {
         play_sound(0, 0x22, 0);
         ((s32(*)())func_8002C50C)();
         arg0[0] = 0xE;
@@ -95,7 +95,7 @@ void func_800F1414_ovl24(u8* arg0) {
         arg0[3] = 0;
         return;
     }
-    if (D_800C931C[2] & 0x40) {
+    if (g_pad1_buttons[2] & 0x40) {
         play_sound(0, 0x22, 0);
         D_800E81D8[7] = D_8009A420[7];
         p = func_8002D27C();
@@ -116,7 +116,7 @@ void func_800F1414_ovl24(u8* arg0) {
 extern s32 func_8001D7E8(u8);
 extern void func_800F19F0_ovl24(void);
 extern u8 D_8009A427;
-extern X4_EngineObj D_800D1C00;
+#define D_800D1C00_as_X4_EngineObj (*(X4_EngineObj*)&g_playthrough_state)
 extern u8* D_800F5F84_ovl24;
 
 static inline s32 func_800F1688_ovl24_poll(u8* arg0) {
@@ -154,18 +154,18 @@ void func_800F1688_ovl24(u8* arg0) {
     if (func_800F1688_ovl24_poll(arg0) != 0) {
         return;
     }
-    if (D_800C931C[2] & 0xA000) {
+    if (g_pad1_buttons[2] & 0xA000) {
         play_sound(0, 0xC, 0);
-        D_800D1C00.unkA ^= 1;
+        D_800D1C00_as_X4_EngineObj.unkA ^= 1;
     }
-    if (D_800C931C[2] & 0x40) {
+    if (g_pad1_buttons[2] & 0x40) {
         play_sound(0, 0x22, 0);
         p = D_800F5F84_ovl24;
         n = 0x5F;
         do {
             *p++ = 0;
         } while (n--);
-        if (D_800D1C00.unkA == 0) {
+        if (D_800D1C00_as_X4_EngineObj.unkA == 0) {
             b = D_800E81D8;
             if (**(u8**)(b + 0xC) != 0xFF) {
                 p = func_8002D27C();
@@ -196,7 +196,7 @@ void func_800F1688_ovl24(u8* arg0) {
 extern s32 func_8001D7E8(u8);
 extern void func_800F19F0_ovl24(void);
 extern u8 D_8009A427;
-extern X4_EngineObj D_800D1C00;
+#define D_800D1C00_as_X4_EngineObj (*(X4_EngineObj*)&g_playthrough_state)
 extern u8* D_800F5F84_ovl24;
 
 static inline s32 func_800F1878_ovl24_poll(u8* arg0) {
@@ -233,18 +233,18 @@ void func_800F1878_ovl24(u8* arg0) {
     if (func_800F1878_ovl24_poll(arg0) != 0) {
         return;
     }
-    if (D_800C931C[2] & 0xA000) {
+    if (g_pad1_buttons[2] & 0xA000) {
         play_sound(0, 0xC, 0);
-        D_800D1C00.unkA ^= 1;
+        D_800D1C00_as_X4_EngineObj.unkA ^= 1;
     }
-    if (D_800C931C[2] & 0x40) {
+    if (g_pad1_buttons[2] & 0x40) {
         play_sound(0, 0x22, 0);
         p = D_800F5F84_ovl24;
         n = 0x5F;
         do {
             *p++ = 0;
         } while (n--);
-        if (D_800D1C00.unkA == 0) {
+        if (D_800D1C00_as_X4_EngineObj.unkA == 0) {
             D_800E81D8[0xA] = 3;
             arg0[3] = 0xB;
             arg0[1]++;

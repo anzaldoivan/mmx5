@@ -2,15 +2,12 @@
 #include "mmx5/object.h"
 #include "mmx5/globals.h"
 
-extern Unk800770CC D_800770CC[];
-extern s32 D_800770B0[];
-
 extern void func_8002F460(Ent493F0*);
 
 void func_800493F0(Ent493F0* p) {
     animate_object(p);
-    p->unk68 = &D_800770CC[p->unk45 & 0x3F];
-    p->unk50 = &D_800770B0[p->unk45 & 0x3F];
+    p->unk68 = &D_800770CC.e[p->unk45 & 0x3F];
+    p->unk50 = &D_800770B0.w[p->unk45 & 0x3F];
     if (!(p->unk45 & 0x80)) {
         move_object(p);
     }

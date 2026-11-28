@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """ovl_syms.py — shifted exe link, pass 2 (T8): exe->ovl names at the shifted rockx5's addresses.
 
-  gen   --pinned config/shift/ovl_syms.ld --map <rockx5 .map> --out <ld>
+  gen   --pinned config/us/shift/ovl_syms.ld --map <rockx5 .map> --out <ld>
         copy of the pinned script (header lines verbatim), every `NAME = 0x...;` value = NAME's address in the map;
         exit 1 naming any pinned name the map lacks
   check --pass1 <exe elf> --pass2 <exe elf> --map <rockx5 .map> --pinned <ld>

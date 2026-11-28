@@ -175,8 +175,6 @@ void func_800F12E8_ovl06(u8* arg0) {
     }
 }
 
-extern s8 D_8009A0FC;
-
 void func_800F1630_ovl06(u8* arg0) {
     s32 flag;
     u16 m;
@@ -212,7 +210,7 @@ void func_800F1630_ovl06(u8* arg0) {
         }
     } else {
         flag = 1;
-        if (D_8009A0FC != -0x80) {
+        if (D_8009A0FC.s != -0x80) {
         clear:
             flag = 0;
         }
@@ -389,8 +387,6 @@ void func_800F1838_ovl06(u8* arg0) {
     }
 }
 
-extern s8 D_8009A0FC;
-
 void func_800F1C0C_ovl06(u8* obj) {
     s32 hit;
     s32 press;
@@ -420,7 +416,7 @@ void func_800F1C0C_ovl06(u8* obj) {
             goto zero; // !FAKE: goto kept for the matching branch layout
         }
         hit = 1;
-    } else if (D_8009A0FC == -0x80) {
+    } else if (D_8009A0FC.s == -0x80) {
         hit = 1;
     } else {
     zero:
@@ -481,7 +477,6 @@ void func_800F1C0C_ovl06(u8* obj) {
 
 extern u8* func_8002D078();
 extern s32 func_8002B5B4(s32);
-extern s8 D_8009A0FC;
 
 static inline void func_800F1DD8_ovl06_spawn(u8* p, u8* obj, s32 k) {
     s32 r;
@@ -507,7 +502,7 @@ static inline s32 func_800F1DD8_ovl06_test(u8* obj) {
         if (*(u16*)(obj + 0x8A) & 0x80) {
             return 1;
         }
-    } else if (D_8009A0FC == -0x80) {
+    } else if (D_8009A0FC.s == -0x80) {
         return 1;
     }
     return 0;

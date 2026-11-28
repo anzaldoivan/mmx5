@@ -1,13 +1,12 @@
 #include "types.h"
+#include "mmx5/ovl20.h"
+#include "mmx5/globals.h"
 #include "mmx5/object.h"
 #include "mmx5/graphics.h"
 #include "addr.h"
 
 extern void set_animation_frame(u8* a0, s32 a1, s32 a2);
 extern u32* D_80098118;
-extern s8 D_800D1C00[];
-extern s8 D_800D1C32;
-extern u16 D_800F5724_ovl20[][2];
 extern u8 D_800F5814_ovl20[];
 
 void func_800F3A28_ovl20(u8* o) {
@@ -24,8 +23,8 @@ void func_800F3A28_ovl20(u8* o) {
     ((u8**)o)[0xC] = D_800F5814_ovl20;
     if (s < 0x10) {
         set_animation_frame(o, 0, s);
-        ((u16*)o)[5] = D_800F5724_ovl20[((s8*)o)[2]][0];
-        ((u16*)o)[7] = D_800F5724_ovl20[((s8*)o)[2]][1];
+        ((u16*)o)[5] = D_800F5724_ovl20.u[((s8*)o)[2]][0];
+        ((u16*)o)[7] = D_800F5724_ovl20.u[((s8*)o)[2]][1];
         o[0x16] = 3;
         o[4] = 1;
     } else if (s == 0x10) {
@@ -37,24 +36,24 @@ void func_800F3A28_ovl20(u8* o) {
         o[4] = 1;
     } else if (s < 0x21) {
         set_animation(o, 3);
-        ((u16*)o)[5] = D_800F5724_ovl20[((s8*)o)[2] - 0x11][0];
-        ((u16*)o)[7] = D_800F5724_ovl20[((s8*)o)[2] - 0x11][1];
+        ((u16*)o)[5] = D_800F5724_ovl20.u[((s8*)o)[2] - 0x11][0];
+        ((u16*)o)[7] = D_800F5724_ovl20.u[((s8*)o)[2] - 0x11][1];
         o[0x16] = 2;
         o[2] = o[2] - 0x11;
         o[4] = 2;
     } else if (s == 0x21) {
-        g = D_800D1C00;
+        g = g_playthrough_state.s;
         if (g[0x32] == -1) {
             clear_object_slot(o);
             return;
         }
         set_animation(o, 4);
-        ((u16*)o)[5] = D_800F5724_ovl20[g[0x32]][0];
-        ((u16*)o)[7] = D_800F5724_ovl20[g[0x32]][1];
+        ((u16*)o)[5] = D_800F5724_ovl20.u[g[0x32]][0];
+        ((u16*)o)[7] = D_800F5724_ovl20.u[g[0x32]][1];
         o[0x16] = 1;
         o[4] = 3;
     } else if (s == 0x22) {
-        s = D_800D1C32;
+        s = D_800D1C32.s;
         if (s == -1) {
             clear_object_slot(o);
             return;
@@ -65,7 +64,7 @@ void func_800F3A28_ovl20(u8* o) {
         o[0x16] = 3;
         o[4] = 4;
     } else if (s == 0x23) {
-        h = D_800D1C00;
+        h = g_playthrough_state.s;
         if (h[0x30] == 4) {
             set_animation_frame(o, 5, h[0x31]);
         } else if (h[0x30] == 2) {

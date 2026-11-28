@@ -1,7 +1,6 @@
 #include "types.h"
 #include "mmx5/globals.h"
 
-extern u8 D_8009A1F8[];
 extern s8 D_8009A424;
 extern u8 D_800D1F3C;
 
@@ -11,14 +10,14 @@ void func_800FA004_ovl46(u8* o) {
     s32 i;
 
     if (--*(s16*)(o + 6) == 0) {
-        q = D_8009A1F8;
+        q = D_8009A1F8.u;
         *(s16*)(q + 0xB6) += 0x100;
         if (*(s16*)(q + 0xB6) >= 0x300) {
             *(s16*)(q + 0xB6) = 0;
         }
         *(s16*)(o + 6) = 0x3C;
     }
-    p = D_8009A1F8;
+    p = D_8009A1F8.u;
     p[0xF4] = 1;
     if (D_800D1F3C == 0 && D_8009A424 == 0) {
         func_8001E668();

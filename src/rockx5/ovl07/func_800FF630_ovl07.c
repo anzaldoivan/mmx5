@@ -6,7 +6,6 @@
 #define D_800D1C28_as_u8 (*(u8*)&D_800D1C28)
 
 extern u8* find_free_visual_obj(void);
-extern u32* D_8007B2E8[];
 extern s8 D_8009A0A2;
 
 void func_800FF630_ovl07(u8* obj) {
@@ -30,7 +29,7 @@ void func_800FF630_ovl07(u8* obj) {
             e[0x14] = obj[0x14];
             p = D_1F80001C.bytes;
             off = *(s32*)(p + 4);
-            *(u32***)(e + 0x30) = D_8007B2E8;
+            *(u32***)(e + 0x30) = g_visual_animation_tables.p;
             *(s16*)(e + 0x40) = 0;
             *(u16*)(e + 0x42) = 0x7802;
             e[0x16] = 0;

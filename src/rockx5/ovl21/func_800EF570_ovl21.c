@@ -1,10 +1,10 @@
 #include "types.h"
+#include "mmx5/object.h"
 #include "mmx5/globals.h"
 #include "mmx5/graphics.h"
 #include "addr.h"
 
 extern u32* D_80098118;
-extern u8 D_800C9310;
 extern u8 D_800EFD14_ovl21[];
 
 void func_800EF570_ovl21(u8* obj) {
@@ -47,7 +47,7 @@ void func_800EF570_ovl21(u8* obj) {
             i++;
             q++;
         } while (i < 15);
-        D_800C9310 |= 1;
+        D_800C9310.b |= 1;
         ((s32(*)())set_animation)(obj, ((s8*)obj)[2] - 1);
         obj[4] = 1;
         obj[0x16] = 0x10;

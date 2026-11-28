@@ -10,8 +10,6 @@
 extern s32 ratan2(s32, s32);
 extern s32 rcos(s32);
 extern s32 rsin(s32);
-extern s32 D_800FEADC_ovl33[];
-extern s32 D_800FEAE0_ovl33[];
 extern s16 D_800FEDF4_ovl33[][2];
 
 void func_800FAB94_ovl33(u8* obj) {
@@ -23,8 +21,8 @@ void func_800FAB94_ovl33(u8* obj) {
     s32 t2;
 
     set_animation(obj, 0x13);
-    *(s32**)(obj + 0x50) = D_800FEADC_ovl33;
-    ((s32**)obj)[0x54 / 4] = D_800FEAE0_ovl33;
+    *(s32**)(obj + 0x50) = D_800FEADC_ovl33.w;
+    ((s32**)obj)[0x54 / 4] = D_800FEAE0_ovl33.w;
     if (D_8009A0AA > D_800FF054_ovl33 + 0x1260) {
         i = 0;
         obj[0x15] = 0x40;

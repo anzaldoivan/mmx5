@@ -4,7 +4,6 @@
 #include "mmx5/graphics.h"
 
 extern s8 D_800D1C0F;
-extern u8 D_8009A1F8[];
 
 void func_800F7AB8_ovl28(u8* obj) {
     u8* p;
@@ -14,7 +13,7 @@ void func_800F7AB8_ovl28(u8* obj) {
         return;
     }
     if (*(s16*)(obj + 0x7C) == 0x28) {
-        p = D_8009A1F8;
+        p = D_8009A1F8.u;
         *(s32*)(obj + 0x94) = *(s16*)(p + 0x26);
         *(s16*)(p + 0x26) = *(s16*)(p + 0x24) - 0x10;
     }

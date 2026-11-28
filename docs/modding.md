@@ -10,23 +10,31 @@ If you change this file, run this command. It checks that each toggle has a veri
 bash tools/modding_check.sh
 ```
 
+## VERSION=
+
+`VERSION=<version>` selects the game version. It defaults to `us`, the only version that builds now.
+The version must have a row in `config/versions.tsv`. If it has no row, make stops.
+
+The outputs of the version go to `build/<version>/`. Its hash lists are `config/check.<version>.<binary>.sha`.
+`VERSION=` combines with every toggle on this page.
+
 ## BINARY=
 
-`BINARY=<a>` builds one binary. `BINARY=slus` builds the main executable into `build/slus/SLUS_013.34`. The build
-checks its hash with `sha1sum -c config/check.slus.sha`.
+`BINARY=<a>` builds one binary. `BINARY=main` builds the main executable into `build/us/main/SLUS_013.34`. The build
+checks its hash with `sha1sum -c config/check.us.main.sha`.
 
 ```sh
-make split build BINARY=slus PY=...
+make split build BINARY=main PY=...
 ```
 
-On success, the build prints `build/slus/SLUS_013.34: OK`. After `slus`, `BINARY=rockx5` builds
-`build/rockx5/ROCK_X5.BIN` and prints `build/rockx5/ROCK_X5.BIN: OK`. `make check` builds both binaries and prints
+On success, the build prints `build/us/main/SLUS_013.34: OK`. After `main`, `BINARY=rockx5` builds
+`build/us/rockx5/ROCK_X5.BIN` and prints `build/us/rockx5/ROCK_X5.BIN: OK`. `make check` builds both binaries and prints
 `check: 2 of 2 green, 0 failed`. `BINARY=` combines with `SHIFT=1` and `PATCHES=`. Then the build skips the hash check.
 
 ## SHIFT=1 and replay-shift
 
 `SHIFT=1` builds a shifted variant. Every code and data address moves. The disc goes into
-`build/shift/disc/mmx5.cue`. The build has no hash gate.
+`build/us/shift/disc/mmx5.cue`. The build has no hash gate.
 
 ```sh
 make disc SHIFT=1 PY=...
@@ -37,7 +45,7 @@ The build regenerates `ROCK_X5.BIN` and its table of contents from the shifted l
 on the shifted disc. On success, it prints `replay: shifted 0 divergences`. The detail is in
 [tools/shift/README.md](../tools/shift/README.md). The replay is in [tools/replay/README.md](../tools/replay/README.md).
 
-The region B base 0x800FA000 is pinned. Five code sites hold it as a constant: slus 8001369C, 80014310 and
+The region B base 0x800FA000 is pinned. Five code sites hold it as a constant: main 8001369C, 80014310 and
 80013528, and rockx5 ovl18 800F6B24 and 800F6C1C. If a mod moves the end of the exe bss, do not move region B.
 The list of sites is in [memory-map.md](memory-map.md).
 
@@ -73,7 +81,7 @@ On a clean build, the scan prints `shift-scan: 0 unsymbolized (exe 0, rockx5 0; 
 controls. For each direction, it prints `shift-scan: plant caught at <addr> (<direction>)`. `make check` runs the
 scan and fails on any finding.
 
-The file `config/shift/not_pointers.txt` lists the words that the scan does not count. Each line gives a reason. The
+The file `config/us/shift/not_pointers.txt` lists the words that the scan does not count. Each line gives a reason. The
 list holds five raw exe pointers into overlay region A that the developer accepted:
 
 - `800710A4->800EEBB8` (mode 6)
@@ -98,7 +106,7 @@ On success, it prints `shift-oversize: link failed as planted (<ovl>)`.
 ## PATCHES= and replay-patch
 
 `PATCHES=<name>` builds a patched variant from `patches/<name>/`. It works with `SHIFT=1` only. Without `SHIFT=1`, the
-build stops with an error. The rules are in `mk/patches.mk`. The disc goes into `build/shift-<name>/disc/mmx5.cue`.
+build stops with an error. The rules are in `mk/patches.mk`. The disc goes into `build/us/shift-<name>/disc/mmx5.cue`.
 
 ```sh
 make disc SHIFT=1 PATCHES=halfdmg PY=...
@@ -111,7 +119,7 @@ The example patch set is [patches/halfdmg](../patches/halfdmg/README.md). On suc
 ## ASSET_EDIT= and replay-asset
 
 `ASSET_EDIT=<name>` builds a disc with an edited data asset from `asset-edits/<name>/`. The disc goes into
-`build/asset-<name>/disc/mmx5.cue`. The build has no hash gate.
+`build/us/asset-<name>/disc/mmx5.cue`. The build has no hash gate.
 
 ```sh
 make disc ASSET_EDIT=m092fill PY=...
@@ -123,7 +131,7 @@ The example asset edit is [asset-edits/m092fill](../asset-edits/m092fill/README.
 
 ## disc-assets
 
-`make disc-assets` exports and imports `ROCK_X5.DAT` again, then rebuilds the image into `build/assets/disc/mmx5.cue`.
+`make disc-assets` exports and imports `ROCK_X5.DAT` again, then rebuilds the image into `build/us/assets/disc/mmx5.cue`.
 
 ```sh
 make disc-assets PY=...
@@ -132,9 +140,9 @@ make disc-assets SHIFT=1 PATCHES=halfdmg PY=...
 ```
 
 On success, the unshifted build prints `disc-assets: re-imported image sha1 matches config/medium.sha1`. With
-`SHIFT=1`, the image goes into `build/shift/disc`. With `PATCHES=<name>` too, it goes into `build/shift-<name>/disc`.
-The shifted build prints `disc-assets: re-imported DAT packed into build/shift/disc (shifted, no gate)`. A patched
-build names its own `build/shift-<name>/disc` path in that string.
+`SHIFT=1`, the image goes into `build/us/shift/disc`. With `PATCHES=<name>` too, it goes into `build/us/shift-<name>/disc`.
+The shifted build prints `disc-assets: re-imported DAT packed into build/us/shift/disc (shifted, no gate)`. A patched
+build names its own `build/us/shift-<name>/disc` path in that string.
 
 ## assets.py
 
@@ -158,7 +166,7 @@ The detail is in [tools/assets/README.md](../tools/assets/README.md). The repack
 
 `make replay-check` plays the intro script on the original image, on the rebuilt image and on a planted change. The
 tracked script `tools/replay/scripts/intro.pad` holds pad events per frame and no game bytes. The replay runs on your
-original image 3 times and on the rebuilt `build/disc/mmx5.cue` once. It runs once more with a planted
+original image 3 times and on the rebuilt `build/us/disc/mmx5.cue` once. It runs once more with a planted
 one-instruction change (`tools/replay/plants.txt`).
 
 First, build the disc. On success, `make disc` prints `disc: track sha1 10709231f857636b5ccd3cd9acebc91458dcb5fd OK`.
@@ -186,8 +194,8 @@ build. If you set `ASSET_EDIT=` with `SHIFT=1`, the build stops before it starts
 1. Make the directory `patches/<name>/`.
 2. Copy each source file that you change to `patches/<name>/<alias>/<file>.c`.
 3. Make sure that each patch file has a twin `src/<alias>/<file>.c`. For `rockx5`, the twin is `src/rockx5/ovlNN/<file>.c`
-   and the patch file is `patches/<name>/rockx5/ovlNN/<file>.c`. For a `slus` unit in a system folder, the patch
-   file is `patches/<name>/slus/<system>/<file>.c`.
+   and the patch file is `patches/<name>/rockx5/ovlNN/<file>.c`. For a `main` unit in a system folder, the patch
+   file is `patches/<name>/main/<system>/<file>.c`.
 4. Write the declared checkpoint as the first line of `patches/<name>/checkpoint` that does not start with `#`.
 5. Run `make replay-patch PATCHES=<name> PY=...` after the shifted disc build.
 

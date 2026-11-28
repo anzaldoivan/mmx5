@@ -4,7 +4,6 @@
 #include "mmx5/graphics.h"
 
 extern u8 D_80074EE0[];
-extern u8 D_8009A1F8[];
 extern u8 D_800D1C26;
 extern u8 D_800FE4D0_ovl06[];
 extern u8 D_800FE4D4_ovl06[];
@@ -49,7 +48,7 @@ void func_800F3780_ovl06(u8* o) {
     o[0x8C] = 0;
     o[0x8D] = 0;
     D_800D1C26 = 0;
-    p = D_8009A1F8;
+    p = D_8009A1F8.u;
     t = *(u16*)(p + 0xA);
     *(u16*)(o + 0xA) = t;
     *(u16*)(p + 0x26) = t;

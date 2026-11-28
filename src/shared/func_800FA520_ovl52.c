@@ -4,10 +4,6 @@
 #define D_8009A420_as_s32 (*(s32*)&D_8009A420)
 
 extern u8 D_80091C44;
-extern u16 D_80093E68;
-extern u8 D_8009A1F8[];
-extern u16 D_8009A42E;
-extern u16 D_800D50DE;
 
 void func_800FA520_ovl52(u8* arg0) {
     u8* p;
@@ -20,7 +16,7 @@ void func_800FA520_ovl52(u8* arg0) {
             D_80093E68 += 0x400;
         }
         if (D_800D50DE >= 0x1F) {
-            p = D_8009A1F8;
+            p = D_8009A1F8.u;
             p[0x3] = 0;
             p[0x4C] = 1;
             p[0x57] = 0;

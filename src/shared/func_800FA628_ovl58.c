@@ -1,13 +1,13 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
 extern u8 D_80091C44;
-extern u8 D_8009A1F8[];
 
 void func_800FA628_ovl58(UnkObj* arg0) {
     u8* p;
 
     if (D_80091C44 == 0) {
-        p = D_8009A1F8;
+        p = D_8009A1F8.u;
         *(s16*)(p + 0x5E) = 0x200;
         *(s16*)(p + 0x62) = 0;
         p[0xA0] = 1;

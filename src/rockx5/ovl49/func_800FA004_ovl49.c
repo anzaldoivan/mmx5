@@ -3,19 +3,17 @@
 #include "mmx5/system.h"
 #include "mmx5/sound.h"
 
-extern u8 D_8009A1F8[];
-
 void func_800FA004_ovl49(u8* arg0) {
     u8* p;
 
     if (++*(u16*)(arg0 + 6) & 1) {
-        u8* p1 = D_8009A1F8;
+        u8* p1 = D_8009A1F8.u;
         *(s16*)(p1 + 0xB6) = random_byte() % 5 + 0x104;
     } else {
-        u8* p2 = D_8009A1F8;
+        u8* p2 = D_8009A1F8.u;
         *(s16*)(p2 + 0xB6) = 0x100;
     }
-    p = D_8009A1F8;
+    p = D_8009A1F8.u;
     *(s32*)(p + 0x5C) += 0xAAAAA;
     if (++*(s16*)(arg0 + 4) >= 0x1E) {
         *(s32*)(p + 0x5C) = 0x2000000;

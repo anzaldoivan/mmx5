@@ -2,7 +2,6 @@
 #include "mmx5/globals.h"
 
 extern s8 D_8009A170;
-extern u8 D_800D1C00[];
 
 void func_800F7998_ovl09(u8* p) {
     u8* d;
@@ -10,7 +9,7 @@ void func_800F7998_ovl09(u8* p) {
 
     if (D_8009A170 < 0) {
         func_8003D2C4();
-        d = D_800D1C00;
+        d = g_playthrough_state.u;
         t = p[2];
         ((s8*)d)[0xF] = -0x40;
         d[0x1D] = t & 0xF;

@@ -1,9 +1,6 @@
 #include "types.h"
 #include "mmx5/globals.h"
 
-extern u8 D_8009A1F8[];
-extern u8 D_800D1C00[];
-
 void func_800F01E8_ovl07(u8* obj) {
     s16 d;
     s16 x;
@@ -13,7 +10,7 @@ void func_800F01E8_ovl07(u8* obj) {
     u8* g;
     u8* h;
 
-    e = D_8009A1F8;
+    e = D_8009A1F8.u;
     d = *(u16*)(obj + 0xA) - *(u16*)(e + *(s8*)(obj + 0x14) * 0x54 + 0xA);
     flags = obj[0x70] | obj[0x71];
     if (obj[0x15] == 0) {
@@ -26,7 +23,7 @@ void func_800F01E8_ovl07(u8* obj) {
         *(u16*)(obj + 0xA) = *(u16*)(obj + 0xA) + (x < 0 ? -x : x);
     } else if (x < -8) {
         g = g_Player;
-        h = D_800D1C00;
+        h = g_playthrough_state.u;
         t = g[0x5C];
         *(s8*)(g + 0x5C) = -0x80;
         *(s32*)(h + 0xB8) = *(s32*)(h + 0xB8) + (t & 0x7F);

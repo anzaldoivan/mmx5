@@ -7,7 +7,6 @@
 
 extern void func_8004D4F4(s32 a0, void* a1, u8* a2);
 extern u8 D_8009A197;
-extern u8 D_8009A1F8[];
 extern u8 D_800F95F0_ovl11[];
 extern void* D_800F967C_ovl11[];
 
@@ -33,7 +32,7 @@ void func_800EEBF0_ovl11(u8* arg0) {
         arg0[3] = 0;
     }
     if (*(s16*)(arg0 + 0x84) == 0) {
-        u8* d = D_8009A1F8;
+        u8* d = D_8009A1F8.u;
         s32 dx = *(u16*)(arg0 + 0xA) - *(u16*)(d + 0xA);
         s16 dy = *(u16*)(arg0 + 0xE) - *(u16*)(d + 0xE);
         if ((u16)dx < 0x140 && (u16)dy < 0xF0) {

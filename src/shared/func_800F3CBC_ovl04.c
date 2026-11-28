@@ -7,8 +7,6 @@
 extern u8 D_80075CA0[];
 extern u32* D_80098118;
 extern u8 D_8009A0B4;
-extern u8 D_8009A1F8[];
-extern s8 D_800D1C00[];
 extern u8 D_801017E8_ovl04[];
 extern u8 D_801017EC_ovl04[];
 extern u16 D_801017F8_ovl04[][20];
@@ -28,7 +26,7 @@ void func_800F3CBC_ovl04(u8* obj) {
     *(s32*)(obj + 0x68) = 0;
     *(u8**)(obj + 0x58) = D_80075CA0;
     obj[0x14] = D_8009A0B4;
-    if (D_800D1C00[0xC] != 0xC) {
+    if (g_playthrough_state.s[0xC] != 0xC) {
         *(s16*)(obj + 0x40) = (*D_80098118 >> 7) + 0x210;
     } else {
         *(s16*)(obj + 0x40) = (*D_80098118 >> 7) + 0x210;
@@ -43,7 +41,7 @@ void func_800F3CBC_ovl04(u8* obj) {
     obj[0x5C] = 0;
     obj[0x60] = 5;
     add = 0;
-    if (D_800D1C00[0xC] != 0xC) {
+    if (g_playthrough_state.s[0xC] != 0xC) {
         *(s16*)(obj + 0xA) = 0x1700;
         *(s16*)(obj + 0xE) = 0xB0;
     } else {
@@ -65,6 +63,6 @@ void func_800F3CBC_ovl04(u8* obj) {
     obj[0x92] = 0;
     *(s16*)(obj + 0x7E) = 0;
     obj[7] = 0;
-    D_8009A1F8[0x48] = 1;
+    D_8009A1F8.u[0x48] = 1;
     set_animation(obj, 3);
 }

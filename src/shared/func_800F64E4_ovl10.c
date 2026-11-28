@@ -51,7 +51,6 @@ void func_800F64E4_ovl10(u8* obj) {
 
 extern u8 D_80074DA0[];
 extern u8 D_800FBF38_ovl10[];
-extern signed char D_800D1C0C;
 
 void func_800F660C_ovl10(u8* o) {
     s32 y;
@@ -68,7 +67,7 @@ void func_800F660C_ovl10(u8* o) {
     o[0x5C] = 0x18;
     o[0x60] = 4;
     set_animation(o, 5);
-    if (D_800D1C0C != 12) {
+    if (D_800D1C0C.s != 12) {
         y = *(s16*)(o + 0xA);
         if (y < 0x1F61) {
             *(s16*)(o + 0x88) = 0x32;
@@ -110,8 +109,6 @@ void func_800F660C_ovl10(u8* o) {
     play_sound(2, 0x2D, o);
 }
 
-extern signed char D_800D1C0C;
-
 void func_800F6780_ovl10(u8* o) {
     s32 r;
     s16 x;
@@ -129,7 +126,7 @@ void func_800F6780_ovl10(u8* o) {
     } else {
         move_object(o);
     }
-    if (D_800D1C0C != 0xC) {
+    if (D_800D1C0C.s != 0xC) {
         d = *(u16*)(o + 0xA) - 0x1F71;
     } else {
         d = *(u16*)(o + 0xA) - 0xA71;
@@ -205,7 +202,6 @@ void func_800F6924_ovl10(u8* o) {
     }
 }
 
-extern s8 D_800D1C0C;
 extern u8 D_800FBF34_ovl10[];
 
 void func_800F6AAC_ovl10(u8* a0) {
@@ -217,7 +213,7 @@ void func_800F6AAC_ovl10(u8* a0) {
     u8* c;
     s8 m;
 
-    if (D_800D1C0C != 0xC) {
+    if (D_800D1C0C.s != 0xC) {
         lim = 0x3C0;
         x = 0x2000;
         vx = 0x20900000;
@@ -283,7 +279,6 @@ void func_800F6AAC_ovl10(u8* a0) {
 }
 
 extern u8 D_800FBF3C_ovl10[];
-extern signed char D_800D1C0C;
 
 void func_800F6CC8_ovl10(u8* o) {
     s32 lim;
@@ -293,7 +288,7 @@ void func_800F6CC8_ovl10(u8* o) {
     u8 f;
 
     *(u8**)(o + 0x54) = D_800FBF3C_ovl10;
-    if (D_800D1C0C != 12) {
+    if (D_800D1C0C.s != 12) {
         lim = 0x3F0;
         mid = 0x2000;
     } else {

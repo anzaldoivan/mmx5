@@ -3,7 +3,6 @@
 #include "mmx5/object.h"
 
 extern s32 func_8002B5B4(s32);
-extern u8 D_8009A1F8[];
 extern s8 D_800D1C1D;
 extern u8 D_800F5648_ovl05[];
 extern u8 D_800F5668_ovl05[];
@@ -17,7 +16,7 @@ void func_800F3B54_ovl05(u8* arg0) {
     u16 a;
 
     if (D_800D1C1D == 2) {
-        p = D_8009A1F8;
+        p = D_8009A1F8.u;
         a = *(u16*)(p + 0xA);
         *(s16*)(arg0 + 0xE) = 0xB40;
         *(s16*)(arg0 + 0xA) = a - 0x10;
@@ -31,8 +30,8 @@ void func_800F3B54_ovl05(u8* arg0) {
         *(s16*)(arg0 + 0x7C) = 0;
         arg0[4]++;
         t = ((func_8002B5B4(0x25) << 16) >> 14) + 0x1A;
-        func_8002C338(0x61, D_800F5648_ovl05, 1);
-        func_8002C338(t, D_800F5668_ovl05, 1);
+        load_palette(0x61, D_800F5648_ovl05, 1);
+        load_palette(t, D_800F5668_ovl05, 1);
     }
 }
 

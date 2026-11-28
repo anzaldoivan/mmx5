@@ -2,12 +2,10 @@
 #include "mmx5/globals.h"
 #include "mmx5/graphics.h"
 
-extern signed char D_800D1C0C;
-
 void func_800F5864_ovl04(Obj5864* obj) {
     s32 goal = 0x70;
 
-    if (D_800D1C0C != 12) {
+    if (D_800D1C0C.s != 12) {
         goal = 0x60;
     }
     if (obj->unk7C != 0) {

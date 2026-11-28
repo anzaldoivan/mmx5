@@ -1,9 +1,9 @@
-# sched.md — scheduling + delayed-branch: pass → residual → lever (gcc-2.95.2-psx pin)
+# sched.md (scheduling + delayed-branch): pass → residual → lever (gcc-2.95.2-psx pin)
 
 Translation of the kit's `gcc-2.7.2-map/sched.md` (S1-S13, D1-D5) to our pin. The kit was consulted, not copied.
 Every claim was re-derived on the staged tree `refs/gcc-2.95.2-psx/` (cites audited by `cites.py check`).
 Status: `transfers` (mechanism present, same lever) · `changed` (present, different behaviour/lever) · `absent in 2.95.2`.
-Experiments: `.run/t3/c1/*.c` (scratch, `levers.py dump` + pin compile). The byte-proven levers are in `levers.yaml`
+Experiments: `docs/codegen-map/evidence/sched/*.c` (`levers.py dump` + pin compile). The byte-proven levers are in `levers.yaml`
 (group `sched`).
 
 ## 0. Which scheduler the pin runs
@@ -19,7 +19,7 @@ Experiments: `.run/t3/c1/*.c` (scratch, `levers.py dump` + pin compile). The byt
   (gcc/config/mips/mips.md:159 define_function_unit), imul 12 (gcc/config/mips/mips.md:188 eq_attr).
 - psx default flags include split addresses (gcc/config/mips/psx.h:24 MASK_SPLIT_ADDR): globals are `lui %hi`
   + `%lo(sym)($r)`, two length-1 insns, not `-G0` macro loads/stores. Changes D2 below.
-- Dump tells (as kit, verified in `.run/codegen/dumps/<stem>/<stem>.c.sched`): `(7f000001)` = boosted,
+- Dump tells (as kit, verified in the `levers.py dump` file `<stem>.c.sched`): `(7f000001)` = boosted,
   `;; blocking insn N for K cycles`, `;; insn N has a greater potential hazard`.
 
 ## 1. Pick algorithm (sched.c, backward list scheduling per bb)
@@ -37,38 +37,38 @@ Experiments: `.run/t3/c1/*.c` (scratch, `levers.py dump` + pin compile). The byt
 
 ## 2. Residual classes
 
-### S1 — equal-priority order = source order · transfers
+### S1: equal-priority order = source order · transfers
 - Pass: sched1 rank tie-break gcc/sched.c:1881 INSN_LUID (sort gcc/sched.c:1829 qsort).
 - Residual: same insns, permuted, latency-1 block. Lever: reorder statements to the target order.
 - Experiment: lever `sched_stmt_order` (byte-proven): three store chains follow statement order exactly.
 
-### S2 — birthing boost: single-set def sinks to use, multi-set def does not · transfers
+### S2: birthing boost: single-set def sinks to use, multi-set def does not · transfers
 - Pass: sched1 gcc/sched.c:1990 birthing_insn_p. Discriminator: gcc/sched.c:1941 REG_N_SETS (dest live + 1 set).
-  Dest test is `REG` only, hard regs qualify (gcc/sched.c:1931 SET_DEST) — kit's 2026-07-28 correction holds.
+  Dest test is `REG` only, hard regs qualify (gcc/sched.c:1931 SET_DEST). The kit's 2026-07-28 correction holds.
   Off after reload: gcc/sched.c:1927 reload_completed.
 - Lever: create the boost = fresh single-set local. Kill it = second surviving set.
 - Experiment: lever `sched_birth_boost` (byte-proven): reused `k` (2 sets) → set #2 shows `(1)` in sched dump,
   first k chain stays at block head. Fresh `m` → `(7f000001)`, both defs sink to their stores.
 
-### S3 — load/mul-fed chain sinks below lower-priority stores · transfers
+### S3: load/mul-fed chain sinks below lower-priority stores · transfers
 - Pass: gcc/sched.c:892 priority (+1 per load on R3000, +11 per imul). Priority dominates LUID
   (gcc/sched.c:1848 INSN_PRIORITY). No C edit lowers a priority. Lever: equalise sibling chains or permuter.
 
-### S4 — one insn wedged between a load and its consumer · transfers
+### S4: one insn wedged between a load and its consumer · transfers
 - Pass: cost>1 link queues the pred: gcc/sched.c:2058 queue_insn. Tick: gcc/sched.c:2043 INSN_TICK.
 - Lever: statement order picks the filler among ready equal-priority insns. Add/remove an independent stmt.
   Observed: `sched_reused_temp_fence.after.c` puts `sw` between `lhu` and its `subu`.
 
-### S5 — memory ops spaced / memory ops pulled ahead among ties · transfers
+### S5: memory ops spaced / memory ops pulled ahead among ties · transfers
 - Pass: gcc/sched.c:2094 actual_hazard (queue blocked unit users), gcc/sched.c:2119 potential_hazard
-  (largest hazard to the front, over LUID). Seen in `.run/codegen/dumps/s2c/s2c.c.sched`:
+  (largest hazard to the front, over LUID). Seen in the `.sched` dump of `evidence/sched/s2c.c`:
   `insn 28 has a greater potential hazard`. Lever: filler availability via statement order.
 
-### S6 — independent insn between address-gen and use · transfers
+### S6: independent insn between address-gen and use · transfers
 - Pass: class rule gcc/sched.c:1859 insn_cost (cost-1 links = class 3) + gcc/config/mips/mips.h:3785 ADJUST_COST
   (anti/output always cost-free). Lever: which independents are ready (statement order).
 
-### S7 — prologue/epilogue saves interleave with the body · changed
+### S7: prologue/epilogue saves interleave with the body · changed
 - Prologue RTL: gcc/config/mips/mips.c:6289 mips_expand_prologue (saves emitted by
   gcc/config/mips/mips.c:5681 save_restore_insns). Transfers: `sw $16` lands in the first `jal` slot (scratch s2b.c).
 - Epilogue: 2.7.2 kit said the epilogue expander was dead. In 2.95.2 it is live
@@ -77,26 +77,26 @@ Experiments: `.run/t3/c1/*.c` (scratch, `levers.py dump` + pin compile). The byt
   Observed (scratch d2.c): `lw $31,16($sp)` woven between body `lui`/`li`, `addu $sp` in the `j $31` slot.
 - Lever: body-side order (S1/S2) moves the weave. Restore order itself is fixed by save_restore_insns.
 
-### S8 — bb0 head-skip of leading param copies · absent in 2.95.2
+### S8: bb0 head-skip of leading param copies · absent in 2.95.2
 - The head-skip loop exists but sits in an `#if 0` block, sched.c lines 2648-2686
   (body at gcc/sched.c:2661 reload_completed). Param copies `pseudo = $aN` ARE scheduled.
 - Observed: s2c sched dump, param copies insn 4/6/8 in the ready list, insn 8 (`a2`) reordered ahead of insn 15.
 - Consequence: no immovable head. Param copies follow S1/S2 like any single-set move (boosted).
 
-### S9 — sched1 order persists through sched2 · transfers
+### S9: sched1 order persists through sched2 · transfers
 - sched2 runs the same code with LUIDs = sched1 output. No boost after reload (gcc/sched.c:1963 reload_completed).
   New vs kit: epilogue restores also enter sched2 (S7). Diagnose order residuals in `.sched` first.
 
-### S10 — `-fno-schedule-insns[2]` attribution · transfers
+### S10: `-fno-schedule-insns[2]` attribution · transfers
 - Flags: gcc/toplev.c:907 flag_schedule_insns, gcc/toplev.c:909 flag_schedule_insns_after_reload,
   gcc/toplev.c:897 flag_delayed_branch. Diagnostic only, never a fix (the pin's cflags are fixed).
 
-### S11 — LUID ⊗ allocation coupling · transfers (treat as constraint)
+### S11: LUID ⊗ allocation coupling · transfers (treat as constraint)
 - sched1 runs before allocation (gcc/toplev.c:4161 local_alloc after gcc/toplev.c:4133 schedule_insns) and
   rewrites reg counts the allocator reads (gcc/sched.c:4171 reg_n_sets). Any S1/S2 lever can flip allocation.
   Apply one lever at a time, re-score. Allocator side: see regalloc.md.
 
-### S12 — reused-temp fence: batch vs pair loads · transfers (type trap included)
+### S12: reused-temp fence: batch vs pair loads · transfers (type trap included)
 - Pass: dep build gcc/sched.c:1490 sched_analyze_insn. Reused pseudo gets output dep
   (gcc/sched.c:1191 REG_DEP_OUTPUT) and anti dep (gcc/sched.c:1188 REG_DEP_ANTI) on the second pair.
 - Type trap transfers although mips.h now defines gcc/config/mips/mips.h:1542 PROMOTE_MODE: `unsigned short`
@@ -104,25 +104,25 @@ Experiments: `.run/t3/c1/*.c` (scratch, `levers.py dump` + pin compile). The byt
 - Experiment: lever `sched_reused_temp_fence` (byte-proven). Unfenced plain form (scratch s12c.c) batches too.
 - Pin note: kit's "pin dest kills boost" was refuted. Still true here (S2 dest test is REG-only).
 
-### S13 — head-skip escape via body-local param copy · changed
+### S13: head-skip escape via body-local param copy · changed
 - Its premise (S8 head pinning) is absent: param copies already float. The asm-copy and dead-read sub-levers are
   pass-agnostic and still apply (cse cannot see through asm). The reorder effect now comes from S1/S2 alone.
   Re-derive on a real case before using. Dep source for the dead-read fence: gcc/sched.c:1490 sched_analyze_insn.
 
-### D1 — delay slot = nearest eligible insn above the branch/call · transfers
+### D1: delay slot = nearest eligible insn above the branch/call · transfers
 - Pass: gcc/reorg.c:1998 fill_simple_delay_slots backward scan (gcc/reorg.c:2117 stop_search_p). The owner's
   sets/needs are computed without delayed effects (gcc/reorg.c:2114 mark_set_resources) → arg setups fill their own
   call's slot. Observed: `j $31` slot gets the last store (sched_stmt_order), `jal` slot gets the `$16` save.
 - Lever: make the wanted insn adjacent pre-dbr (S1/S2).
 
-### D2 — slot stays nop: eligibility · changed
+### D2: slot stays nop: eligibility · changed
 - Rule: gcc/config/mips/mips.md:125 define_delay (slot insn `dslot=no` and `length=1`).
   loads/hilo/xfer are `dslot=yes` on MIPS1 (gcc/config/mips/mips.md:91 dslot) → never in a slot. Transfers.
 - Changed: global stores are split `%hi/%lo` (S0, MASK_SPLIT_ADDR), so `sw $r,%lo(A)($2)` IS slot-eligible.
   Observed (scratch d2.c): `beq …; sw $5,%lo(A)($2)`. The kit's "-G0 macro store → nop" tell does not apply.
 - No annulled slots: gcc/config/mips/mips.md:102 branch_likely is no at MIPS1.
 
-### D3 — target/fallthrough-thread steal (eager fill) · transfers
+### D3: target/fallthrough-thread steal (eager fill) · transfers
 - Pass: gcc/reorg.c:2892 fill_eager_delay_slots → gcc/reorg.c:2491 fill_slots_from_thread. Direction:
   gcc/reorg.c:891 mostly_true_jump (EQ not-taken gcc/reorg.c:981 EQ. NE taken gcc/reorg.c:983 NE).
   Dest must be dead on the opposite thread (gcc/reorg.c:2611 opposite_needed). Move vs copy:
@@ -133,10 +133,10 @@ Experiments: `.run/t3/c1/*.c` (scratch, `levers.py dump` + pin compile). The byt
 - Lever: branch polarity. Experiment: lever `dbr_branch_polarity` (byte-proven): `c == 0` puts `addu $2,$5,2`
   in the `bne` slot, `c != 0` puts `addu $2,$5,1` in the `beq` slot.
 
-### D4 — slot insn reads the pre-copy register · transfers
+### D4: slot insn reads the pre-copy register · transfers
 - Pass: gcc/reorg.c:2745 validate_replace_rtx (thread head `r2=r1; use r2` → use rewritten to r1).
 
-### D5 — shared exit: slot takes the insn at a common jump target · transfers
+### D5: shared exit: slot takes the insn at a common jump target · transfers
 - Pass: fill_simple stop at unconditional jump gcc/reorg.c:2316 simplejump_p. fill_simple copies the target insn
   (gcc/reorg.c:2340 add_to_delay_list) and redirects both jumps.
 

@@ -1,10 +1,9 @@
 #include "types.h"
+#include "mmx5/globals.h"
 #include "mmx5/system.h"
 
 extern void func_8002A600(s32, s32, s32);
 extern s32 func_800F033C_ovl04(void);
-extern u8 D_8009A1F8[];
-extern u8 D_800D1C00[];
 
 void func_800FA83C_ovl04(u8* o) {
     u8 f;
@@ -17,7 +16,7 @@ void func_800FA83C_ovl04(u8* o) {
     u8* h2;
 
     if (func_800F033C_ovl04() != 0) {
-        g = D_8009A1F8;
+        g = D_8009A1F8.u;
         m = *(s16*)(g + 0xA);
         if (m == 0x280 || m == 0x3EE || m == 0x620) {
             *(s8*)(o + 0x8C) = 1;
@@ -38,7 +37,7 @@ void func_800FA83C_ovl04(u8* o) {
         } else if (*(s8*)(o + 0x8C) == -1) {
             *(s32*)(o + 0x84) -= 0x4000;
         }
-        t = (s32)D_800D1C00;
+        t = (s32)g_playthrough_state.u;
         if (*(s8*)(t + 0x27) != 0) {
             *(s32*)(o + 0x84) += 0xFFFF0000;
             *(u8*)(t + 0x27) = 0;
@@ -51,7 +50,7 @@ void func_800FA83C_ovl04(u8* o) {
             *(s8*)(o + 0x8C) = 0;
         }
         t = o[0x97];
-        g2 = D_8009A1F8;
+        g2 = D_8009A1F8.u;
         if (t != 0 && (m = *(u16*)(g2 + 0x34)) == 0) {
             if (t == 1) {
                 func_8002A600(0x1E, 2, 2);
@@ -63,7 +62,7 @@ void func_800FA83C_ovl04(u8* o) {
                 o[0x97] = 0;
             }
         }
-        h2 = D_800D1C00;
+        h2 = g_playthrough_state.u;
         f = h2[0x26];
         if (!(f & 2) && (f & 1) && *(s8*)(o + 0x8C) == 0) {
             if (*(s16*)(o + 0x8A) == 0 || --*(s16*)(o + 0x8A) == 0) {

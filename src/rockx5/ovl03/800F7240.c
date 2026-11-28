@@ -6,7 +6,7 @@
 
 extern u8 D_80074EE0[];
 
-// from rockx5 800F7240: child init, copies pose from parent (unk7C) and picks a timer by unk2
+// child init, copies pose from parent (unk7C) and picks a timer by unk2
 void func_800F7240_ovl03(Ent7240* e) {
     Ent7240* p = e->unk7C;
 

@@ -1,4 +1,5 @@
 #include "types.h"
+#include "mmx5/globals.h"
 #include "mmx5/object.h"
 #include "mmx5/sound.h"
 
@@ -7,7 +8,6 @@ extern void func_8002C1C8(void);
 extern u8 D_80093E66;
 extern u8 D_8009A42C;
 extern u8 D_800D50DC;
-extern u8 D_8009A1F8[];
 
 void func_800FB000_ovl49(u8* arg0) {
     u8* p;
@@ -21,7 +21,7 @@ void func_800FB000_ovl49(u8* arg0) {
         D_8009A42C = 0;
         D_800D50DC = 0;
         func_8002C1C8();
-        p = D_8009A1F8;
+        p = D_8009A1F8.u;
         p[3] = 0;
         *(s32*)(p + 0x5C) = 0x02000000;
         *(s32*)(p + 0x60) = 0x02000000;

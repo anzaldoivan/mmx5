@@ -1,4 +1,5 @@
 #include "types.h"
+#include "mmx5/ovl03.h"
 #include "mmx5/graphics.h"
 #include "addr.h"
 
@@ -6,7 +7,6 @@ extern s32 func_8002B5B4(s32);
 extern u32* D_80098118;
 extern u8 D_800F9DC4_ovl03[];
 extern u8 D_800F9DF0_ovl03[];
-extern u8 D_800FA238_ovl03;
 
 void func_800F2560_ovl03(u8* a0) {
     s32 r0;
@@ -29,7 +29,7 @@ void func_800F2560_ovl03(u8* a0) {
         set_animation(a0, 0);
     }
     if (((s8*)a0)[2] == 0) {
-        D_800FA238_ovl03 = 0;
+        D_800FA238_ovl03.u = 0;
         a0[5] = 1;
     } else {
         a0[5] = 0;

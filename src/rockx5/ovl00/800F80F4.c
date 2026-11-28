@@ -1,4 +1,5 @@
 #include "types.h"
+#include "mmx5/ovl00.h"
 #include "mmx5/globals.h"
 #include "mmx5/graphics.h"
 
@@ -43,10 +44,8 @@ void func_800F8170_ovl00(u8* arg0) {
     }
 }
 
-extern u8 D_800D1C00[];
-
 void func_800F8224_ovl00(u8* a0) {
-    u8* p = D_800D1C00;
+    u8* p = g_playthrough_state.u;
 
     if (((s8*)p)[0x28] != 0) {
         func_8002385C(0, 0xFF, p[0x2E]);
@@ -62,11 +61,10 @@ void func_800F8224_ovl00(u8* a0) {
 }
 
 extern u8 D_80091C44;
-extern u8 D_800D1C00[];
 
 void func_800F82A0_ovl00(u8* a0) {
     if (D_80091C44 == 0) {
-        u8* p = D_800D1C00;
+        u8* p = g_playthrough_state.u;
 
         a0[6]++;
         p[0x16] = 0;
@@ -81,7 +79,6 @@ void func_800F82A0_ovl00(u8* a0) {
 
 extern void func_8002A600(s32, s32, s32);
 extern u8* alloc_class3_slot(void);
-extern u8 D_800FB46C_ovl00[];
 extern u8 D_800D50DC;
 extern u8 D_8009A42C;
 extern u8 D_80093E66;
@@ -92,7 +89,7 @@ void func_800F82E8_ovl00(u8* arg0) {
     u8* b;
 
     func_8002A600(0x10, 6, 3);
-    b = D_800FB46C_ovl00;
+    b = D_800FB46C_ovl00.u;
     *(s16*)(b + 0xC) = 0;
     *(s16*)(b + 0x1A) = 0;
     *(s16*)(b + 0x28) = 0;
@@ -134,9 +131,6 @@ void func_800F839C_ovl00(u8* arg0) {
 }
 
 extern void func_800F6D58_ovl00(s32);
-extern u16 D_800D50DE;
-extern u16 D_8009A42E;
-extern u16 D_80093E68;
 
 void func_800F8420_ovl00(u8* obj) {
     func_800F6D58_ovl00(0);
@@ -155,7 +149,6 @@ void func_800F8420_ovl00(u8* obj) {
     }
 }
 
-extern u8 D_8009A1F8[];
 extern s32 D_800FB694_ovl00;
 
 void func_800F84F4_ovl00(u8* obj) {
@@ -163,7 +156,7 @@ void func_800F84F4_ovl00(u8* obj) {
 
     if (--*(s16*)(obj + 0x7C) == 0) {
         set_animation(obj, 0);
-        g = D_8009A1F8;
+        g = D_8009A1F8.u;
         g[0x98] = 0;
         g[0xA6] = 0;
         obj[0x90] = 1;
@@ -173,10 +166,6 @@ void func_800F84F4_ovl00(u8* obj) {
         obj[6]++;
     }
 }
-
-extern u16 D_800D50DE;
-extern u16 D_8009A42E;
-extern u16 D_80093E68;
 
 void func_800F857C_ovl00(u8* obj) {
     *(s16*)(obj + 0x7C) += 1;

@@ -9,7 +9,7 @@ extern u8 D_800FD344_ovl27[];
 extern u8 D_800FD348_ovl27[];
 extern void func_800F5C58_ovl27(Ent5308*);
 
-// from rockx5 800F5308: init routine, seeds anim/state pointers and resets the scratch block
+// init routine, seeds anim/state pointers and resets the scratch block
 void func_800F5308_ovl27(Ent5308* e) {
     e->unk5C = 0x20;
     e->unk60 = 0xA;

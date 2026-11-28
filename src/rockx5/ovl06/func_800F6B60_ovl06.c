@@ -3,11 +3,9 @@
 #include "mmx5/globals.h"
 
 extern s32 func_800F6A7C_ovl06(u8* obj);
-extern u8 D_8009A1F8[];
-extern u8 D_800D1C00[];
 
 void func_800F6B60_ovl06(u8* obj) {
-    u8* sys = D_800D1C00;
+    u8* sys = g_playthrough_state.u;
     u8* sys2;
     u8* g;
     u8* g2;
@@ -44,11 +42,11 @@ void func_800F6B60_ovl06(u8* obj) {
         g5 = g_Player;
         t = g5[0x5C];
         *(s8*)(g5 + 0x5C) = -0x80;
-        sys2 = D_800D1C00;
+        sys2 = g_playthrough_state.u;
         *(s32*)(sys2 + 0xB8) += t & 0x7F;
     }
     {
-        u8* dst = D_8009A1F8;
+        u8* dst = D_8009A1F8.u;
         s16 e;
         s16 x;
         g6 = g_Player;

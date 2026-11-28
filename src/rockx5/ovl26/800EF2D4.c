@@ -9,7 +9,6 @@
 #undef D_800F4828_ovl05
 
 extern s32 func_8002D800(u8* a0);
-extern s16 D_8009A206;
 extern s16 D_8009A0AE;
 extern s32 D_800E92F8;
 extern s8 D_800D1C1D;
@@ -21,7 +20,7 @@ void func_800EF308_ovl26(u8* obj) {
     if (func_8002D800(obj) == 0) {
         p = *(u8**)(obj + 0x18);
         y = *(s16*)(p + 0xC);
-        if (D_8009A206 < y) {
+        if (D_8009A206.s < y) {
             return;
         }
         if (D_8009A0AE < y + 0x30) {

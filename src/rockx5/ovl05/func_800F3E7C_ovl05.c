@@ -1,7 +1,6 @@
 #include "types.h"
 #include "mmx5/globals.h"
 
-extern u8 D_8009A1F8[];
 extern u16 D_800F5894_ovl05[];
 extern u8 D_800F5964_ovl05[];
 
@@ -13,7 +12,7 @@ void func_800F3E7C_ovl05(u8* obj) {
 
     i = obj[0x80];
     if (i < 3) {
-        base = D_8009A1F8;
+        base = D_8009A1F8.u;
         do {
             dx = D_800F5894_ovl05[i] - *(u16*)(base + 0xA);
             if ((u16)dx < 0x141) {

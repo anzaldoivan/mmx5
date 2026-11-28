@@ -1,11 +1,8 @@
 #include "types.h"
 #include "mmx5/globals.h"
 
-extern u8 D_8009A1F8[];
-extern u8 D_800D1C00[];
-
 void func_800EEACC_ovl11(u8* a0) {
-    u8* p = D_8009A1F8;
+    u8* p = D_8009A1F8.u;
     s8* g;
 
     *(s32*)(p + 0xB0) -= *(s32*)(a0 + 0x14);
@@ -18,7 +15,7 @@ void func_800EEACC_ovl11(u8* a0) {
         *(s16*)(p + 0xB6) -= 0x400;
         p[0xF4] = 1;
     }
-    g = (s8*)D_800D1C00;
+    g = (s8*)g_playthrough_state.u;
     if (g[0x1D] >= 2) {
         p[0x58] = 2;
     }
@@ -40,10 +37,8 @@ void func_800EEB74_ovl11(u8* a0) {
     }
 }
 
-extern u8 D_8009A1F8[];
-
 void func_800EEBC4_ovl11(u8* arg0) {
-    u8* p = D_8009A1F8;
+    u8* p = D_8009A1F8.u;
 
     p[0xAB] = 0;
     p[0xEC] = 0;

@@ -11,8 +11,6 @@ extern s32 func_8002B5B4(s32);
 extern u8 D_80076CE0[];
 extern u32* D_80098118;
 extern u8 D_8009A0B4;
-extern u8 D_800C6A10[];
-extern signed char D_800D1C0C;
 extern Blk4 D_801016D0_ovl07;
 extern u8 D_801016D4_ovl07[];
 
@@ -31,7 +29,7 @@ void func_800F8128_ovl07(u8* p) {
     r = func_8002B5B4(0x98);
     *(s16*)(p + 0x42) =
         ((r * 4 + 0x18) % 16) | (((func_8002B5B4(0x98) + 6) / 4 + 0x1E0) << 6);
-    if (D_800D1C0C == 7) {
+    if (D_800D1C0C.s == 7) {
         p[0x16] = 0x20;
     } else {
         p[0x16] = 0x37;
@@ -57,7 +55,7 @@ void func_800F8128_ovl07(u8* p) {
         p[4] = 2;
     }
     if (((s8*)p)[2] == 0x11) {
-        Blk0A4* d = (Blk0A4*)D_800C6A10;
+        Blk0A4* d = (Blk0A4*)g_class4_slots.u;
         d[63] = *(Blk0A4*)p;
         clear_object_slot(p);
     }
@@ -67,7 +65,6 @@ extern s32 func_80032F70(u8* a0);
 extern int func_8002D7A0();
 extern void func_8003258C(u8* a0);
 extern s32 func_800326BC(u8* a0);
-extern s8 D_800D1C00[];
 extern void* D_801016E4_ovl07[];
 
 void func_800F8330_ovl07(u8* arg0) {
@@ -75,7 +72,7 @@ void func_800F8330_ovl07(u8* arg0) {
     s16 cmp;
     s16 val;
 
-    if (D_800D1C00[0xC] == 7) {
+    if (g_playthrough_state.s[0xC] == 7) {
         y = *(s16*)(arg0 + 0xE);
         if (y >= 0x468) {
             arg0[0x16] = 0x23;
@@ -113,10 +110,10 @@ void func_800F8330_ovl07(u8* arg0) {
     if (is_off_screen(arg0, 0x80, 0x80) == 0) {
         func_8002D89C(arg0);
     } else {
-        val = D_800D1C00[0xC];
+        val = g_playthrough_state.s[0xC];
         if (val == 7) {
             cmp = 1;
-            val = D_800D1C00[0x1D];
+            val = g_playthrough_state.s[0x1D];
         } else {
             cmp = 0x1ED8;
             val = *(s16*)(arg0 + 0xA);

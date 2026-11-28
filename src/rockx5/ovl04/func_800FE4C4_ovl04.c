@@ -1,12 +1,12 @@
 #include "types.h"
+#include "mmx5/globals.h"
 #include "mmx5/system.h"
 
-extern u8 D_800D1C00[];
 extern s16 D_8009A202;
 extern u8 D_80102AD0_ovl04[];
 
 void func_800FE4C4_ovl04(u8* obj) {
-    u8* p = D_800D1C00;
+    u8* p = g_playthrough_state.u;
     s32 t;
     s32 r;
 
@@ -24,7 +24,7 @@ void func_800FE4C4_ovl04(u8* obj) {
     } else if (t < 0x9FF) {
         if (t == 0x78F || t == 0x858 || t == 0x8B4 || t == 0x92A ||
             t == 0x9A8 || t == 0x9E8) {
-            D_800D1C00[0x28] = 0x30;
+            g_playthrough_state.u[0x28] = 0x30;
         }
     }
 }

@@ -32,12 +32,10 @@ void func_800F5528_ovl04(u8* o) {
     animate_object(o);
 }
 
-extern signed char D_800D1C0C;
-
 void func_800F55F8_ovl04(u8* obj) {
     s32 lim = 0xB0;
 
-    if (D_800D1C0C != 12) {
+    if (D_800D1C0C.s != 12) {
         lim = 0xA0;
     }
     animate_object(obj);

@@ -1,7 +1,7 @@
 # dedup.exclude.yaml -- functions the draw filter (tools/dedup/draw.py) must refuse, reason `exclude-list`.
 # Restricted YAML read by draw.py with the stdlib: `#` comment lines, `entries:` (or `entries: []` when empty), then
 # one entry per line as `  - {json object}` (a JSON object is YAML flow syntax). Keys, all strings:
-#   alias    slus | rockx5
+#   alias    main | rockx5
 #   vram     8 hex digits, no 0x (as inventory.jsonl)
 #   name     the inventory name
 #   reason   why it must not be drawn
@@ -9,11 +9,10 @@
 #   reprobe  argv run by shlex split, cwd repo root, no shell, 120 s timeout; non-zero exit = still refuses (live),
 #            exit 0 = stale -> draw.py prints `draw: stale exclude <alias> <vram> <reason>` and refuses to run (G38)
 # Example:
-#   - {"alias": "slus", "vram": "80012E0C", "name": "game_80012E0C", "reason": "...", "date": "2026-10-05", "reprobe": "python3 tools/dedup/carve.py plan slus 80012E0C"}
+#   - {"alias": "main", "vram": "80012E0C", "name": "game_80012E0C", "reason": "...", "date": "2026-10-05", "reprobe": "python3 tools/dedup/carve.py plan main 80012E0C"}
 entries:
-  - {"alias": "rockx5", "vram": "800EFD5C", "name": "func_800EFD5C_ovl02", "reason": "ledgered failure W3+W4 (diff 10/50); docs/ledger.md", "date": "2026-10-06", "reprobe": "test -f src/rockx5/ovl02/func_800EFD5C_ovl02.c"}
   - {"alias": "rockx5", "vram": "800F19F0", "name": "func_800F19F0_ovl24", "reason": "ledgered failure W2 (diff 7/992); docs/ledger.md", "date": "2026-10-06", "reprobe": "test -f src/rockx5/ovl24/func_800F19F0_ovl24.c"}
-  - {"alias": "slus", "vram": "80013348", "name": "func_80013348", "reason": "C0261 sign: $sp stack switch to the scratchpad (saves $sp, sets 0x1F800400); hand .s src/slus/game_80013348.s for the SHIFT relink; kept as asm, 3.8 I44; docs/ledger.md", "date": "2026-11-16", "reprobe": "test -f src/slus/func_80013348.c"}
-  - {"alias": "slus", "vram": "8001336C", "name": "func_8001336C", "reason": "C0261 sign: $sp stack switch restore half (loads the saved $sp); hand .s src/slus/game_80013348.s for the SHIFT relink; kept as asm, 3.8 I44; docs/ledger.md", "date": "2026-11-16", "reprobe": "test -f src/slus/func_8001336C.c"}
-  - {"alias": "slus", "vram": "80013438", "name": "func_80013438", "reason": "C0261 sign: old-pointer zero loop (compares the old pointer, increments it in the delay slot); kept as asm, 3.8 I44; docs/ledger.md", "date": "2026-11-16", "reprobe": "test -f src/slus/func_80013438.c"}
-  - {"alias": "slus", "vram": "8001344C", "name": "func_8001344C", "reason": "C0261 sign: lone break stub (break then jr ra, no divide); kept as asm, 3.8 I44; docs/ledger.md", "date": "2026-11-16", "reprobe": "test -f src/slus/func_8001344C.c"}
+  - {"alias": "main", "vram": "80013348", "name": "func_80013348", "reason": "C0261 sign: $sp stack switch to the scratchpad (saves $sp, sets 0x1F800400); hand .s src/main/game_80013348.s for the SHIFT relink; kept as asm, 3.8 I44; docs/ledger.md", "date": "2026-11-16", "reprobe": "test -f src/main/func_80013348.c"}
+  - {"alias": "main", "vram": "8001336C", "name": "func_8001336C", "reason": "C0261 sign: $sp stack switch restore half (loads the saved $sp); hand .s src/main/game_80013348.s for the SHIFT relink; kept as asm, 3.8 I44; docs/ledger.md", "date": "2026-11-16", "reprobe": "test -f src/main/func_8001336C.c"}
+  - {"alias": "main", "vram": "80013438", "name": "func_80013438", "reason": "C0261 sign: old-pointer zero loop (compares the old pointer, increments it in the delay slot); kept as asm, 3.8 I44; docs/ledger.md", "date": "2026-11-16", "reprobe": "test -f src/main/func_80013438.c"}
+  - {"alias": "main", "vram": "8001344C", "name": "func_8001344C", "reason": "C0261 sign: lone break stub (break then jr ra, no divide); kept as asm, 3.8 I44; docs/ledger.md", "date": "2026-11-16", "reprobe": "test -f src/main/func_8001344C.c"}

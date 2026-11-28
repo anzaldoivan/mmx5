@@ -1,4 +1,4 @@
-# docs/codegen-map — the pin's codegen map (gcc-2.95.2-psx cc1)
+# docs/codegen-map: the pin's codegen map (gcc-2.95.2-psx cc1)
 
 For each pass group, the map goes from a residual pattern in a near-miss diff to the compiler mechanism. The map
 cites the mechanism into the staged source `refs/gcc-2.95.2-psx/`. The map then gives the C lever that moves the
@@ -25,9 +25,9 @@ The writers translated the map item by item from the kit's gcc-2.7.2 map
 - `levers.yaml` and `levers/<id>.{before,after}.c` hold the byte-proven levers. The levers are a JSON list.
 
 ## Entry shape
-An entry starts with `### <kit id> — <residual> · <status>`. Bullets follow. They give the pass with its
+An entry starts with `### <kit id>: <residual> · <status>`. Bullets follow. They give the pass with its
 `gcc/<path>:<line> <symbol>` cite(s), the residual tell, the lever and the experiment. The experiment is a lever
-id in levers.yaml, or a scratch file under `.run/`, which the repository does not keep.
+id in levers.yaml, or a C file under `evidence/`.
 
 The status is one value of this vocabulary:
 - `transfers`: the mechanism is present in 2.95.2, and the kit lever applies.
@@ -35,11 +35,11 @@ The status is one value of this vocabulary:
 - `absent in 2.95.2`: at the pin, the mechanism is not compiled into cc1, or it is not reachable.
 
 ## Tools
-- The cite check — every `gcc/<path>:<line> <symbol>` in this dir must be grep-true in the
+- The cite check: every `gcc/<path>:<line> <symbol>` in this dir must be grep-true in the
   staged tree (lines split on `\n`). The check prints `cites: <ok> of <n> citations resolve, <s> stale`.
-- The lever check — the tool compiles the before/after of each lever at the pin. The tell regex
+- The lever check: the tool compiles the before/after of each lever at the pin. The tell regex
   must match before and not after. The masked words of `fn` must differ. Its `dump <file.c>` mode gives `-da` RTL
-  dumps in `.run/codegen/dumps/<stem>/` (`.sched`, `.sched2`, `.dbr`, …).
+  dumps, one file per pass (`.sched`, `.sched2`, `.dbr`, …).
 - Reproducers are synthetic C with no game bytes. The function of a reproducer has a `lever_*` name.
 
 ## Levers by group
@@ -83,7 +83,7 @@ pointer.
 | frame offsets ±8 / out of decl order | frame layout (cse_expr.md K§5) | temp population, or decl order | — |
 
 ## Residual classes
-This table is the vocabulary that T6's `plateau.py classify` emits as `class <c>`, on slus and rockx5 functions alike (3.6 T2). The names come from the kit's
+This table is the vocabulary that T6's `plateau.py classify` emits as `class <c>`, on main and rockx5 functions alike (3.6 T2). The names come from the kit's
 residual classifier (decision order, first match wins). The table routes the names to our pin's groups. Bytes
 decide the class. The byte gate decides the match.
 
@@ -110,14 +110,14 @@ decide the class. The byte gate decides the match.
 
 The plateau labels (`plateau.py classify … label <l>`) follow. Each stalled permuter run has one label, and the
 route of the class is its key:
-- `missing-transform` — the class routes to the permuter (REGALLOC-*, SCHEDULE-REORDER, DELAY-SLOT, small
+- `missing-transform`: the class routes to the permuter (REGALLOC-*, SCHEDULE-REORDER, DELAY-SLOT, small
   LENGTH-DRIFT, IMM-VALUE), but the run plateaued. The cause is a lever that the permuter lacks. Add a transform or
   a levers.yaml entry.
-- `mis-classified` — the stored class/route disagrees with what the bytes say. Re-route. Do not grind.
-- `seed-structural` — the class is structural (WIDTH, BRANCH-POLARITY, ADDRESSING, STRENGTH, IMM-OFFSET,
+- `mis-classified`: the stored class/route disagrees with what the bytes say. Re-route. Do not grind.
+- `seed-structural`: the class is structural (WIDTH, BRANCH-POLARITY, ADDRESSING, STRENGTH, IMM-OFFSET,
   SHIFT-DRIFT, big LENGTH-DRIFT, SIZE-MISMATCH). Fix the seed's C shape via the triage row first. Permuter CPU is
   waste.
-- `wall` — none of the above applies after a walk of the triage rows and the lever ladder. The label requires
+- `wall`: none of the above applies after a walk of the triage rows and the lever ladder. The label requires
   evidence (G61), never a closeness number.
 
 ### Routes (3.6 T3)

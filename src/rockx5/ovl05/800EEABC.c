@@ -5,7 +5,6 @@
 
 extern s32 func_8002D800(u8* a0);
 extern s16 D_8009A0AE;
-extern u8 D_8009A1F8[];
 extern s8 D_800D1C1D;
 extern s32 D_800E92F8;
 
@@ -15,7 +14,7 @@ void func_800EEAF0_ovl05(u8* arg0) {
     s16 y;
 
     if (func_8002D800(arg0) == 0) {
-        d = D_8009A1F8;
+        d = D_8009A1F8.u;
         p = *(u8**)(arg0 + 0x18);
         y = *(s16*)(p + 0xC);
         if (*(s16*)(d + 0xE) >= y && D_8009A0AE >= y + 0x24) {

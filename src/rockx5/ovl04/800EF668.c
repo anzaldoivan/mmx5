@@ -1,4 +1,5 @@
 #include "types.h"
+#include "mmx5/globals.h"
 #include "mmx5/system.h"
 
 #define D_800F4844_ovl05 D_80100E50_ovl04
@@ -8,7 +9,6 @@
 #undef func_800EEA80_ovl05
 #undef D_800F4844_ovl05
 
-extern u8 D_800D1C00[];
 extern u8 D_80093E66;
 extern u8 D_8009A42C;
 extern u8 D_800D50DC;
@@ -16,7 +16,7 @@ extern void func_8002C1C8(void);
 extern void func_800EF76C_ovl04(u8* arg0);
 
 void func_800EF6A4_ovl04(u8* arg0) {
-    u8* gm = D_800D1C00;
+    u8* gm = g_playthrough_state.u;
     u8 t;
 
     if (((s8*)gm)[0x1D] >= 6) {

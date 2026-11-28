@@ -10,7 +10,6 @@
 #include "mmx5/title.h"
 
 extern void func_8002C1C8(void);
-extern u8 D_800D1C00[];
 extern s32 D_80093DD0[];
 extern u8 D_80093E66;
 extern u8 D_8009A42C;
@@ -22,8 +21,8 @@ void func_800EEC50_ovl02(u8* arg) {
 
     *(s16*)(arg + 0x14) = -100;
     arg[4]++;
-    D_800D1C00[0x26] = 0;
-    D_800D1C00[0x27] = 0;
+    g_playthrough_state.u[0x26] = 0;
+    g_playthrough_state.u[0x27] = 0;
     *(s8*)(arg + 0x16) = -1;
     func_8002C1C8();
     D_80093E66 = 1;
@@ -40,18 +39,14 @@ void func_800EEC50_ovl02(u8* arg) {
     }
 }
 
-extern s16 D_8009A1F8[];
 extern s8 D_800D1C26;
-extern u16 D_80093E68;
-extern u16 D_8009A42E;
-extern u16 D_800D50DE;
 
 void func_8002B070(s32, s32, s32, s32, s32);
 
 void func_800EED00_ovl02(u8* arg0) {
     if (++*(s16*)(arg0 + 0x14) == 0xB2) {
-        func_8002B070(D_8009A1F8[5] - 0x30, D_8009A1F8[5] + 0x170,
-                      D_8009A1F8[7] - 0x30, D_8009A1F8[7] + 0x120, 0);
+        func_8002B070(D_8009A1F8.h[5] - 0x30, D_8009A1F8.h[5] + 0x170,
+                      D_8009A1F8.h[7] - 0x30, D_8009A1F8.h[7] + 0x120, 0);
     }
     if (*(s16*)(arg0 + 0x14) >= 0xB5) {
         D_800D1C26 = 1;

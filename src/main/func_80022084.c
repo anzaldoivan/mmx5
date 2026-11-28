@@ -1,0 +1,29 @@
+#include "types.h"
+#include "mmx5/object.h"
+#include "mmx5/globals.h"
+#include "addr.h"
+
+extern void* D_80071168[];
+extern int func_8002DAA0();
+
+void func_80022084(void) {
+    s8* obj;
+
+    if ((s8)g_Player[0xCC] != 0) {
+        return;
+    }
+    for (D_1F800050 = D_80098120.u; D_1F800050 < D_80098120.u + 0x1380;
+         D_1F800050 += 0x9C) {
+        obj = (s8*)D_1F800050;
+        if (obj[0] != 0) {
+            if ((s8)g_Player[0xCC] != 0 ||
+                ((s8)g_playthrough_state.u[0x11] != 0 && !(*(u8*)obj & 8))) {
+                if (obj[3] != 0) {
+                    func_8002DAA0(obj);
+                }
+            } else {
+                ((void (*)(u8*))D_80071168[obj[1]])((u8*)obj);
+            }
+        }
+    }
+}

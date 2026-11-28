@@ -10,7 +10,7 @@ code adapted from a third-party source.
 An entry gives the name, the URL, the pinned ref, the licence and the tracked path that holds the adapted code. Its
 class is `adapt`, or `copyleft` when licence-compatible with AGPL-3.0.
 
-- mmx6 — https://github.com/anzaldoivan/mmx6 — `93515c1f8546647b2a0aa03e3cae28fbd9f44670` — AGPL-3.0
+- mmx6: https://github.com/anzaldoivan/mmx6 at `344d0c91a27719eeb21b8e8fba44b0b37c67f1e4`, AGPL-3.0
   (copyleft), the developer's own Mega Man X6 decompilation under this repository's licence, path `src/`. A function
   drafted from a card's `## Twin in X6` adapts its X6 twin's C from `refs/mmx6/src/`, with X5's symbols and types.
   `docs/prior-art.md` L8d describes the leads. Some of those X6 files are adapted from
@@ -19,6 +19,16 @@ class is `adapt`, or `copyleft` when licence-compatible with AGPL-3.0.
   as each ported draft's first line.
 
   The rename tool of this project adapts code from `mmx6:tools/mmx6/rename.py` at `93515c1f`. Its header says so.
+  The names queue of this project adapts code from `mmx6:tools/mmx6/namesqueue.py` at
+  `344d0c91`. Its header says so.
+  The field census of this project adapts code from `mmx6:tools/mmx6/objfields.py` at `344d0c91`.
+  Its header says so.
+
+  The object map of this project adapts code from `mmx6:tools/mmx6/objmap.py` at `344d0c91`.
+  Its header says so.
+
+  The pin was `93515c1f8546647b2a0aa03e3cae28fbd9f44670` until 2026-11-22. Code adapted before that date names
+  `93515c1f` and keeps that pin.
 
   The pin was `c1c892dc301cfb2f1752b06854cbc02778e1404a` until 2026-11-14. Drafts adapted before that date name
   `c1c892dc` in their attribution line. Those drafts keep that pin.
@@ -30,29 +40,29 @@ class is `adapt`, or `copyleft` when licence-compatible with AGPL-3.0.
 `tools/bootstrap.sh`, `tools/refs_fetch.sh`, `tools/toolchain/fetch.sh` or `pip` fetches these sources into ignored
 paths (`refs/`, `.venv/`, `.run/`). They are never committed. Our tools invoke them. They keep their own licences.
 
-- maspsx — https://github.com/mkst/maspsx — `423ffc6bca05e53f9b7ab06159d0cbe71111bc90` — MIT. It is the assembler
+- maspsx: https://github.com/mkst/maspsx at `423ffc6bca05e53f9b7ab06159d0cbe71111bc90`, MIT. It is the assembler
   shim in the build (`mk/`), run from `refs/maspsx/`.
-- splat (splat64) — https://github.com/ethteck/splat — `1d09139b886f0bece632bd8f367ccc1d3318ca2a` — MIT. It is the
+- splat (splat64): https://github.com/ethteck/splat at `1d09139b886f0bece632bd8f367ccc1d3318ca2a`, MIT. It is the
   splitter, installed as `splat64[mips]==0.50.0` (`requirements-python.txt`). Our `config/splat.*.yaml` are our own
   configs.
-- spimdisasm — https://github.com/Decompollaborate/spimdisasm — `4b5d4c68eeb9f9eae14b3bb713971433ae2c3c43` — MIT.
+- spimdisasm: https://github.com/Decompollaborate/spimdisasm at `4b5d4c68eeb9f9eae14b3bb713971433ae2c3c43`, MIT.
   It is splat's disassembler backend, installed as `spimdisasm==1.42.4`.
-- decomp-permuter — https://github.com/simonlindholm/decomp-permuter — `059609d4aec73eb0650726772954e1ad575825f8` —
-  MIT. `tools/codegen/stage.sh --permuter` stages it into `refs/decomp-permuter/`. Our own
+- decomp-permuter: https://github.com/simonlindholm/decomp-permuter at `059609d4aec73eb0650726772954e1ad575825f8`,
+  MIT. The dev setup stages it into `refs/decomp-permuter/`. Our own
   wrapper drives it. The wrapper has no permuter code in it.
-- mmx4 — https://github.com/sozud/mmx4 — `4e16dfc7c06597fd5719dd112654d8cf85d343c2` — AGPL-3.0 (copyleft).
-  The signature tool (L8, `build-foreign`) compiles `refs/mmx4/src/main/**/*.c` into `.run/sig/mmx4/` only. It does
+- mmx4: https://github.com/sozud/mmx4 at `4e16dfc7c06597fd5719dd112654d8cf85d343c2`, AGPL-3.0 (copyleft).
+  The signature tool (L8, `build-foreign`) compiles `refs/mmx4/src/main/**/*.c` into an ignored scratch folder only. It does
   so to compare leaf-function signatures. It cites mmx4's build flags (`build.py` line references) and copies no
   mmx4 code (sig.py:276). Nothing from mmx4 is in a tracked file, so nothing is attributed as adapted.
-- psy-q-decomp — https://github.com/sozud/psy-q-decomp — `6edf9b24721ba02a53eb423b8a7497b82ba0768c` — MIT. It is an
+- psy-q-decomp: https://github.com/sozud/psy-q-decomp at `6edf9b24721ba02a53eb423b8a7497b82ba0768c`, MIT. It is an
   optional reference, read only. Nothing is adapted.
-- sotn-decomp — https://github.com/Xeeynamo/sotn-decomp — `9faca7c81c736a037949022237051cdd170e84e5` — AGPL-3.0
+- sotn-decomp: https://github.com/Xeeynamo/sotn-decomp at `9faca7c81c736a037949022237051cdd170e84e5`, AGPL-3.0
   (copyleft). It is an optional reference for layout and style, read only. Nothing is adapted.
-- GCC 2.7.2 / 2.95.2 sources — https://ftp.gnu.org/gnu/gcc/ — tarball sha256 in `config/refs.toml` — GPL-2.0-or-later
+- GCC 2.7.2 / 2.95.2 sources: https://ftp.gnu.org/gnu/gcc/, tarball sha256 in `config/refs.toml`, GPL-2.0-or-later
   (copyleft). It is an optional compiler-source reference, read only. The cc1 binaries are decompals/old-gcc 0.17
   release tarballs (GCC, GPL). `tools/toolchain/fetch.sh` (`tools/toolchain/compilers.txt`) fetches them with pinned
   sha256 into an ignored path.
-- pcsx-redux PsyQ obj parser — https://github.com/grumpycoders/pcsx-redux — `config/refs.toml` — GPL-2.0 (copyleft).
+- pcsx-redux PsyQ obj parser: https://github.com/grumpycoders/pcsx-redux, pin in `config/refs.toml`, GPL-2.0 (copyleft).
   It is optional. It is read only.
 
 ## Facts only, not included

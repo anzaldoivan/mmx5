@@ -1,3 +1,4 @@
 kind	image	scope	old_name	new_name	decision	evidence	reason
 data	fix		D_00001010	BasedSym	provisional	label:tools/readability/fixtures/config/symbols.fix.txt:2	
 function	fix			ControlMain	provisional	func:tools/readability/fixtures/src/control.c:9	
+function	ovl01		func_00001300	fixovl_ovl01	provisional	func:tools/readability/fixtures/src/kept.c:8	

@@ -3,7 +3,6 @@
 #include "mmx5/globals.h"
 #include "addr.h"
 
-extern Row5C8C D_8009A1F8[];
 extern u8 D_800F9D10_ovl11[];
 extern u8 D_800F9D14_ovl11[];
 extern s16 D_800FA05A_ovl11;
@@ -17,11 +16,11 @@ void func_800F637C_ovl11(Obj637C* obj) {
             if (obj->unkA > D_800FA05A_ovl11) {
                 obj->unk15 = 0;
                 obj->unk20 = 0xFFFC0000;
-                obj->unkA = (obj->unk14 + D_8009A1F8)->unkA + 0x1A0;
+                obj->unkA = (obj->unk14 + D_8009A1F8.row)->unkA + 0x1A0;
             } else {
                 obj->unk15 = 0x40;
                 obj->unk20 = 0x40000;
-                obj->unkA = (obj->unk14 + D_8009A1F8)->unkA - 0x60;
+                obj->unkA = (obj->unk14 + D_8009A1F8.row)->unkA - 0x60;
             }
         }
     } else {

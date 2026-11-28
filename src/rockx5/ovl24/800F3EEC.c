@@ -1,4 +1,5 @@
 #include "types.h"
+#include "mmx5/globals.h"
 
 void func_800F4D50_ovl24(u8* arg0, s16 arg1, s16 arg2, u8 arg3);
 extern s32 D_800D1CB0;
@@ -100,7 +101,6 @@ void func_800F3EEC_ovl24(u8* arg0) {
 #undef D_800F596C_ovl24
 
 void func_800F4D50_ovl24(u8* arg0, s16 arg1, s16 arg2, u8 arg3);
-extern u8 D_800D1C00[];
 extern s32 D_800F59C8_ovl24[];
 extern s32 D_800F59D4_ovl24[];
 extern s32 D_800F59E0_ovl24[];
@@ -164,13 +164,13 @@ static inline s32 func_800F45D4_ovl24_rating(s32 a, s32 b, s32 c, s16 d,
 }
 
 void func_800F45D4_ovl24(u8* arg0) {
-    u8* p = D_800D1C00;
-    u8 lvl = (D_800D1C00 + *(s8*)(p + 0x44))[0xAA];
-    s32 a = *(s32*)(D_800D1C00 + 0xB0);
-    s32 b = *(s32*)(D_800D1C00 + 0xB4);
-    s32 c = *(s32*)(D_800D1C00 + 0xB8);
-    s16 d = *(s16*)(D_800D1C00 + 0xBC);
-    s16 e = *(s16*)(D_800D1C00 + 0xBE);
+    u8* p = g_playthrough_state.u;
+    u8 lvl = (g_playthrough_state.u + *(s8*)(p + 0x44))[0xAA];
+    s32 a = *(s32*)(g_playthrough_state.u + 0xB0);
+    s32 b = *(s32*)(g_playthrough_state.u + 0xB4);
+    s32 c = *(s32*)(g_playthrough_state.u + 0xB8);
+    s16 d = *(s16*)(g_playthrough_state.u + 0xBC);
+    s16 e = *(s16*)(g_playthrough_state.u + 0xBE);
     s32 m;
 
     m = func_800F45D4_ovl24_rating(a, b, c, d, e);
@@ -184,8 +184,8 @@ void func_800F45D4_ovl24(u8* arg0) {
         }
     }
     {
-        u8* q = D_800D1C00;
-        (D_800D1C00 + *(s8*)(q + 0x44))[0xAA] = lvl;
+        u8* q = g_playthrough_state.u;
+        (g_playthrough_state.u + *(s8*)(q + 0x44))[0xAA] = lvl;
     }
     func_800F4D50_ovl24(arg0, 0, 0, lvl + 10);
     arg0[4] = 2;

@@ -2,7 +2,6 @@
 #include "mmx5/globals.h"
 #include "mmx5/graphics.h"
 
-extern u8 D_800D1C00[];
 extern void* D_80102D1C_ovl04[];
 
 void func_800FCB44_ovl04(u8* obj) {
@@ -24,21 +23,18 @@ void func_800FCB44_ovl04(u8* obj) {
         *(s32*)(obj + 0x54) = 0;
         *(s32*)(obj + 0x84) = 0;
         set_animation(obj, 0x1C);
-        D_800D1C00[0x27] |= 1;
+        g_playthrough_state.u[0x27] |= 1;
     } else if (r > 0) {
-        D_800D1C00[0x27] |= 1;
+        g_playthrough_state.u[0x27] |= 1;
     } else if (*(u16*)(p + 0x42) & 0x8000) {
         *(u16*)(obj + 0x42) |= 0x8000;
     }
-    if (D_800D1C00[0x2A] & 0xC) {
+    if (g_playthrough_state.u[0x2A] & 0xC) {
         ((s32(*)())func_8004FD24)(obj);
         obj[4]++;
     }
 }
 
-/* W84 draft: copy state byte, follow parent, dispatch state handler, resolve hit (rockx5 ovl04). */
-
-extern u8 D_800D1C00[];
 extern void* D_80102D34_ovl04[];
 
 void func_800FCC84_ovl04(u8* obj) {
@@ -52,7 +48,7 @@ void func_800FCC84_ovl04(u8* obj) {
     *(s16*)(obj + 0xA) = *(s16*)(parent + 0xA) + *(s16*)(obj + 0x88);
     *(s16*)(obj + 0xE) = *(s16*)(parent + 0xE) + *(s16*)(obj + 0x8A);
     ((void (*)(u8*))D_80102D34_ovl04[(s8)st])(obj);
-    if (D_800D1C00[0x26] & 2) {
+    if (g_playthrough_state.u[0x26] & 2) {
         r = func_80031DD0(obj);
         if (r < 0) {
             ((s32(*)())func_8004FD24)(obj);
@@ -60,15 +56,15 @@ void func_800FCC84_ovl04(u8* obj) {
             obj[3] = 0;
             *(s32*)(obj + 0x54) = 0;
             *(s32*)(obj + 0x84) = 0;
-            D_800D1C00[0x27] |= 1;
-            D_800D1C00[0x2A] |= 1;
+            g_playthrough_state.u[0x27] |= 1;
+            g_playthrough_state.u[0x2A] |= 1;
         } else if (r > 0) {
-            D_800D1C00[0x27] |= 1;
+            g_playthrough_state.u[0x27] |= 1;
         } else if (*(u16*)(parent + 0x42) & 0x8000) {
             *(u16*)(obj + 0x42) |= 0x8000;
         }
     }
-    if (D_800D1C00[0x2A] & 4) {
+    if (g_playthrough_state.u[0x2A] & 4) {
         obj[4]++;
     }
 }

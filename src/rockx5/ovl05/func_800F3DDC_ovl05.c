@@ -1,8 +1,8 @@
 #include "types.h"
+#include "mmx5/globals.h"
 #include "mmx5/sound.h"
 
 extern void func_8002A600(s32, s32, s32);
-extern u8 D_8009A1F8[];
 extern s16 D_800F595C_ovl05;
 extern s16 D_800F595E_ovl05;
 
@@ -11,7 +11,7 @@ void func_800F3DDC_ovl05(u8* arg0) {
     s32 t;
 
     func_8002A600(0x30, 3, 2);
-    p = D_8009A1F8;
+    p = D_8009A1F8.u;
     t = *(u16*)(p + 0xA) - 0x10;
     *(s16*)(arg0 + 0xA) = t;
     t = 1;

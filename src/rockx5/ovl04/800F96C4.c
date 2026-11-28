@@ -3,7 +3,6 @@
 #include "mmx5/system.h"
 #include "mmx5/globals.h"
 
-extern u8 D_800D1C00[];
 extern u8 D_80102B98_ovl04[];
 extern u8 D_80102B9C_ovl04[];
 
@@ -12,7 +11,7 @@ void func_800F96C4_ovl04(u8* obj) {
     u8* h;
     s8 m;
 
-    g = D_800D1C00;
+    g = g_playthrough_state.u;
     m = g[0x28] & obj[0x93];
     if (m != 0) {
         obj[0x94] = m >> 4;
@@ -28,7 +27,7 @@ void func_800F96C4_ovl04(u8* obj) {
         obj[0x95] = ~obj[0x93];
         obj[6]++;
     }
-    h = D_800D1C00;
+    h = g_playthrough_state.u;
     if (*(s8*)(h + 0x28) == 0) {
         m = h[0x29] & obj[0x93];
         if (m != 0) {

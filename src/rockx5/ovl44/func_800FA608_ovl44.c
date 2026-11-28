@@ -3,13 +3,12 @@
 #include "mmx5/sound.h"
 
 extern u8 D_80091C44;
-extern u8 D_8009A1F8[];
 
 void func_800FA608_ovl44(Ovl45State* arg0) {
     if (D_80091C44 == 0) {
         u8* p;
         play_sound(2, 0x4B, 0);
-        p = D_8009A1F8;
+        p = D_8009A1F8.u;
         p[0x3] = 0;
         p[0x57] = 0;
         *(s16*)(p + 0xB2) = 0x200;

@@ -1,8 +1,7 @@
 #include "types.h"
+#include "mmx5/ovl28.h"
 #include "mmx5/globals.h"
 #include "addr.h"
-
-extern s16 D_800FD9CC_ovl28[];
 
 void func_800F092C_ovl28(Obj092C* arg0) {
     Scr092C* s;

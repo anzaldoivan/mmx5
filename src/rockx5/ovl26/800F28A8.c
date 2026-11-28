@@ -58,9 +58,6 @@ void func_800F28A8_ovl26(u8* p) {
     }
 }
 
-extern u8 D_800D1C00[];
-extern u8 D_8009A1F8[];
-
 void func_800F2A48_ovl26(u8* obj) {
     u8* child;
     s8* q;
@@ -95,8 +92,8 @@ void func_800F2A48_ovl26(u8* obj) {
             func_8002D9EC(obj, 0x60, 0x60);
         }
     } else {
-        g = D_800D1C00;
-        h = D_8009A1F8;
+        g = g_playthrough_state.u;
+        h = D_8009A1F8.u;
         g[0xF] = 0x10;
         g[0x24] = 0;
         *(s32*)(g + 0x20) = 0;

@@ -31,10 +31,10 @@ __pycache__/
 # 2. Extracted payloads — regenerated from YOUR dump by the extractor and verified against the
 #    committed manifest of hashes, the only thing tracked under extracted/
 /extracted/*
-!/extracted/retail/
-/extracted/retail/*
-!/extracted/retail/manifest.jsonl
-!/extracted/retail/manifest.sha1
+!/extracted/us/
+/extracted/us/*
+!/extracted/us/manifest.jsonl
+!/extracted/us/manifest.sha1
 
 # 3. Generated disassembly, assets and build output — `make extract` / `make build` recreate them;
 #    the durable record is the symbol file. (A pasted listing of target instructions is class 3 too.)

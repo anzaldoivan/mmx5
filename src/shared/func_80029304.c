@@ -1,6 +1,6 @@
 /* Adapted from mmx6 @c1c892d src/shared/SLUS_013.95/func_80028338.c, AGPL-3.0 (THIRD_PARTY.md). */
 #include "types.h"
-extern X4_BackgroundObj D_8009A1F8[3];
+#include "mmx5/globals.h"
 
 void func_80029304(X4_BackgroundObj* arg0) {
     u16 ref;
@@ -11,9 +11,9 @@ void func_80029304(X4_BackgroundObj* arg0) {
     s16 tmp;
 
     ref = (u16)arg0->unk14.i.hi;
-    tmp = D_8009A1F8[0].y_pos.i.hi >> 2;
+    tmp = D_8009A1F8.bg[0].y_pos.i.hi >> 2;
     arg0->y_pos.i.hi = tmp + (s16)arg0->unk42;
-    tmp = D_8009A1F8[0].x_pos.i.hi >> 2;
+    tmp = D_8009A1F8.bg[0].x_pos.i.hi >> 2;
     pos = tmp + (s16)arg0->unk40;
     diff = pos - ref;
     arg0->x_pos.i.hi = pos;

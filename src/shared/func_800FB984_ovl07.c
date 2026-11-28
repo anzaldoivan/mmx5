@@ -87,12 +87,7 @@ void func_800FBBAC_ovl07(u8* obj) {
 }
 
 extern void func_80044DD0(s32 a0);
-extern u16 D_80093E68;
 extern s16 D_8009A220[];
-extern u16 D_8009A42E;
-extern u8 D_800C9310;
-extern signed char D_800D1C0C;
-extern u16 D_800D50DE;
 
 void func_800FBC2C_ovl07(u8* arg0) {
     animate_object(arg0);
@@ -101,9 +96,9 @@ void func_800FBC2C_ovl07(u8* arg0) {
         D_800D50DE--;
         D_8009A42E -= 0x20;
         D_80093E68 -= 0x400;
-        D_800C9310 |= 1;
+        D_800C9310.b |= 1;
         if (D_800D50DE < 0xB) {
-            if (D_800D1C0C != 0xC) {
+            if (D_800D1C0C.s != 0xC) {
                 D_8009A220[1] = 0x440;
             }
             func_80044DD0(0);

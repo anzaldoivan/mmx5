@@ -1,9 +1,8 @@
 #include "types.h"
+#include "mmx5/ovl10.h"
 #include "mmx5/movement.h"
 #include "mmx5/globals.h"
 #include "mmx5/graphics.h"
-
-extern u8 D_800FC1C8_ovl10[];
 
 void func_800F5454_ovl10(u8* obj) {
     apply_object_motion(obj);
@@ -13,10 +12,10 @@ void func_800F5454_ovl10(u8* obj) {
     }
     if ((obj[0x70] & 8) && *(s32*)(obj + 0x24) <= 0) {
         if (obj[0x88] == 0 && *(u16*)(obj + 0x92) == 0) {
-            D_800FC1C8_ovl10[1] = 1;
+            D_800FC1C8_ovl10.u[1] = 1;
             set_animation(obj, 0x20);
         } else {
-            D_800FC1C8_ovl10[1] = 0;
+            D_800FC1C8_ovl10.u[1] = 0;
             set_animation(obj, 0x10);
         }
         obj[6] = 2;
@@ -44,8 +43,6 @@ void func_800F5524_ovl10(u8* obj) {
     }
 }
 
-extern u8 D_800FC1C8_ovl10[];
-
 void func_800F55A4_ovl10(u8* obj) {
     u8* p;
 
@@ -54,7 +51,7 @@ void func_800F55A4_ovl10(u8* obj) {
     if (p != 0) {
         p[0] = 0x41;
         p[1] = 0x27;
-        if (D_800FC1C8_ovl10[1] != 0) {
+        if (D_800FC1C8_ovl10.u[1] != 0) {
             p[2] = 1;
             *(s16*)(obj + 0x92) = 0x12C;
             p[4] = 7;
@@ -83,18 +80,16 @@ void func_800F55A4_ovl10(u8* obj) {
     obj[6] = 4;
 }
 
-extern u8 D_800FBE00_ovl10[];
-
 void func_800F56C4_ovl10(u8* obj) {
     animate_object(obj);
     if (*(signed char*)(obj + 0x45) == 1) {
         if (obj[0x8E] != 0) {
             obj[0x8E] = 0;
             obj[0x88] = 0;
-            obj[5] = D_800FBE00_ovl10[(obj[0x8A] * 2 + obj[0x89]) * 5];
+            obj[5] = D_800FBE00_ovl10.u[(obj[0x8A] * 2 + obj[0x89]) * 5];
         } else {
-            obj[5] =
-                D_800FBE00_ovl10[++obj[0x88] + (obj[0x8A] * 2 + obj[0x89]) * 5];
+            obj[5] = D_800FBE00_ovl10
+                         .u[++obj[0x88] + (obj[0x8A] * 2 + obj[0x89]) * 5];
         }
         obj[6] = 0;
     }

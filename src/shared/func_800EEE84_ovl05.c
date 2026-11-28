@@ -7,7 +7,6 @@
 extern s8 D_800F4EC0_ovl05[][32];
 extern u8 D_800F4F40_ovl05[][32];
 extern u8 D_800F4FC4_ovl05[];
-extern u8 D_800D1C00[];
 extern s8 func_8002E024(ObjEEE84*, u8*);
 extern void func_800EF078_ovl05(ObjEEE84*);
 extern void set_velocity_from_angle();
@@ -43,8 +42,8 @@ void func_800EEE84_ovl05(ObjEEE84* s) {
     p->parent = s;
     p->unk84 = 0;
     set_velocity_from_angle(p, (s8)G[0x86] & 0xFE);
-    G[0x84] = D_800F4FC4_ovl05[(s8)D_800D1C00[0x44]];
-    G[0x85] = D_800F4FC4_ovl05[(s8)D_800D1C00[0x44]] >> 1;
+    G[0x84] = D_800F4FC4_ovl05[(s8)g_playthrough_state.u[0x44]];
+    G[0x85] = D_800F4FC4_ovl05[(s8)g_playthrough_state.u[0x44]] >> 1;
     s->unk5 = 2;
     s->unk6 = 0;
 }

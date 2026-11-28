@@ -1,19 +1,18 @@
 #include "types.h"
+#include "mmx5/globals.h"
 #include "mmx5/sound.h"
 
-extern u16 D_800C9320;
-extern u8 D_800D1C00[];
 extern s8 D_800D1C2C;
 
 void func_800F08D8_ovl20(u8* arg0) {
-    u16 pad = D_800C9320;
+    u16 pad = D_800C9320.h;
     s8 v;
     u8* p;
 
     if (pad & 0x5000) {
         if (arg0[0x10F] != 2 && arg0[0x10F] != 4) {
             play_sound(5, 0, 0);
-            p = D_800D1C00;
+            p = g_playthrough_state.u;
             if ((s8)++p[0x2C] >= 2) {
                 p[0x2C] = 0;
             }

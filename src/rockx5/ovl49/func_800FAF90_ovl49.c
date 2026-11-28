@@ -2,10 +2,6 @@
 #include "mmx5/globals.h"
 #define D_8009A420_as_s32 (*(s32*)&D_8009A420)
 
-extern u16 D_800D50DE;
-extern u16 D_80093E68;
-extern u16 D_8009A42E;
-
 void func_800FAF90_ovl49(u8* arg0) {
     if (D_8009A420_as_s32 & 1) {
         D_800D50DE++;

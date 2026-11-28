@@ -5,9 +5,6 @@
 #include "mmx5/graphics.h"
 
 extern void func_800F6D58_ovl00(s32);
-extern u16 D_80093E68;
-extern u16 D_8009A42E;
-extern u16 D_800D50DE;
 extern s32 D_800FB694_ovl00;
 extern s32 D_800FB698_ovl00;
 
@@ -85,8 +82,6 @@ void func_800F711C_ovl00(u8* arg0) {
     }
 }
 
-extern u8 D_800D1C00[];
-
 void func_800F741C_ovl00(u8* obj) {
     u8* p;
 
@@ -94,7 +89,7 @@ void func_800F741C_ovl00(u8* obj) {
         *(s16*)(obj + 0xE) = 0x11C;
         *(s32*)(obj + 0x24) = 0;
         *(s32*)(obj + 0x2C) = 0;
-        D_800D1C00[0x24] = 1;
+        g_playthrough_state.u[0x24] = 1;
         *(s16*)(obj + 0x7C) = 3;
         obj[6]++;
         p = func_8002D27C();
@@ -102,15 +97,15 @@ void func_800F741C_ovl00(u8* obj) {
             p[0] = 0x41;
             p[1] = 0x37;
         }
-        func_8002385C(1, 0xFF, D_800D1C00[0x2E]);
-        D_800D1C00[0x2E] = 1;
-        D_800D1C00[0x16] = 1;
-        D_800D1C00[0x13] = 1;
-        D_800D1C00[0x19] = 1;
-        D_800D1C00[0x18] = 1;
-        D_800D1C00[0x17] = 1;
-        D_800D1C00[0x14] = 1;
-        D_800D1C00[0x15] = 1;
+        func_8002385C(1, 0xFF, g_playthrough_state.u[0x2E]);
+        g_playthrough_state.u[0x2E] = 1;
+        g_playthrough_state.u[0x16] = 1;
+        g_playthrough_state.u[0x13] = 1;
+        g_playthrough_state.u[0x19] = 1;
+        g_playthrough_state.u[0x18] = 1;
+        g_playthrough_state.u[0x17] = 1;
+        g_playthrough_state.u[0x14] = 1;
+        g_playthrough_state.u[0x15] = 1;
     }
     animate_object(obj);
     apply_object_motion(obj);
@@ -120,7 +115,6 @@ void func_800F741C_ovl00(u8* obj) {
 extern s32 func_80044DE0();
 extern u8 D_80091C44;
 extern u8 D_8009A240;
-extern u8 D_800D1C00[];
 extern u8 D_800FB3D8_ovl00[];
 
 void func_800F74FC_ovl00(u8* obj) {
@@ -128,14 +122,14 @@ void func_800F74FC_ovl00(u8* obj) {
 
     func_8002D9EC(obj, 0xFF, 0xFF);
     if (D_80091C44 == 0 && func_80044DE0() == 0) {
-        D_800D1C00[0x16] = 0;
-        D_800D1C00[0x13] = 0;
-        D_800D1C00[0x19] = 0;
-        D_800D1C00[0x18] = 0;
-        D_800D1C00[0x17] = 0;
-        D_800D1C00[0x14] = 0;
-        D_800D1C00[0x15] = 0;
-        if (*(s8*)(obj + 0x5C) < *(s8*)(D_800D1C00 + 0xA2)) {
+        g_playthrough_state.u[0x16] = 0;
+        g_playthrough_state.u[0x13] = 0;
+        g_playthrough_state.u[0x19] = 0;
+        g_playthrough_state.u[0x18] = 0;
+        g_playthrough_state.u[0x17] = 0;
+        g_playthrough_state.u[0x14] = 0;
+        g_playthrough_state.u[0x15] = 0;
+        if (*(s8*)(obj + 0x5C) < *(s8*)(g_playthrough_state.u + 0xA2)) {
             t = *(u16*)(obj + 0x7C) - 1;
             *(u16*)(obj + 0x7C) = t;
             if ((t << 16) == 0) {

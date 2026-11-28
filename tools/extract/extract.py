@@ -140,7 +140,8 @@ def main(argv=None):
     if not cue:
         cues = sorted(glob.glob("disks/*.cue"))
         if len(cues) != 1:
-            sys.exit(f"extract: want exactly one disks/*.cue, found {len(cues)}; pass --cue")
+            sys.exit(f"extract: want exactly one disks/*.cue, found {len(cues)}. "
+                     "Pass --cue, or run bash bootstrap.sh <dump.cue> once to set .run/dump-cue.")
         cue = cues[0]
     disc = Disc(parse_cue(cue))
     os.makedirs(a.out, exist_ok=True)

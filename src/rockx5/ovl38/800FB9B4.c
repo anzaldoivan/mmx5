@@ -28,7 +28,6 @@ void func_800FB9EC_ovl38(Obj3DD4* a) {
 }
 
 extern s32 func_80024548(s32);
-extern u8 D_800D1C00[];
 
 void func_800FBA68_ovl38(u8* obj) {
     u8* child;
@@ -41,7 +40,7 @@ void func_800FBA68_ovl38(u8* obj) {
     if (*(signed char*)child == 0) {
         t = D_1F80009C;
         *(u8**)(obj + 0x3C) = t + *(s32*)t;
-        g = D_800D1C00;
+        g = g_playthrough_state.u;
         g[0x24] = 1;
         g[0x25] = 1;
         *(u8**)(g + 0x20) = obj;
@@ -81,12 +80,10 @@ void func_800FBB58_ovl38(u8* obj) {
     }
 }
 
-extern u8 D_800D1C00[];
-
 void func_800FBBC8_ovl38(u8* obj) {
     set_animation(obj, 1);
-    func_8002385C(0x48, 0xFF, D_800D1C00[0x2E]);
-    D_800D1C00[0x2E] = 1;
+    func_8002385C(0x48, 0xFF, g_playthrough_state.u[0x2E]);
+    g_playthrough_state.u[0x2E] = 1;
     obj[6]++;
 }
 

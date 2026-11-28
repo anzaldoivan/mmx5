@@ -9,7 +9,6 @@ extern u8 D_80091C44;
 extern u8 D_80093E66;
 extern u8 D_8009A42C;
 extern u8 D_800D50DC;
-extern u8 D_8009A1F8[];
 extern u8 D_800FAF9C_ovl53[];
 extern u8 D_800FB39C_ovl53[];
 
@@ -19,7 +18,7 @@ void func_800FA104_ovl53(u8* arg0) {
 
     if (D_80091C44 == 0) {
         if (++*(s16*)(arg0 + 4) > 0x3C) {
-            p = D_8009A1F8;
+            p = D_8009A1F8.u;
             *(s16*)(p + 0xA) = 0;
             *(s16*)(p + 0xE) = 0x100;
             p[0x3] = 1;
@@ -30,9 +29,9 @@ void func_800FA104_ovl53(u8* arg0) {
             p[0xA0] = 1;
             func_8002C3CC(D_800FAF9C_ovl53, D_800FAD9C_ovl53, 0x100, 0x3C,
                           0x3C);
-            func_8002C338(0x60, D_800FAF9C_ovl53, 0x10);
+            load_palette(0x60, D_800FAF9C_ovl53, 0x10);
             func_8002C3CC(D_800FB39C_ovl53, D_800FB19C_ovl53, 0x100, 0, 0x3C);
-            func_8002C338(0x70, D_800FB39C_ovl53, 0x10);
+            load_palette(0x70, D_800FB39C_ovl53, 0x10);
             o = alloc_class6_slot();
             if (o != 0) {
                 o[0] = 1;

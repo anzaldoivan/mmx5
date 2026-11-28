@@ -6,14 +6,12 @@
 
 #define D_8009A420_as_s32 (*(s32*)&D_8009A420)
 
-extern s8 D_8009A0FC;
-
 static inline s32 func_800F0B1C_ovl06_test(u8* obj) {
     if ((*(u16*)(obj + 0x88) & 7) == 4) {
         if (*(u16*)(obj + 0x8A) & 0x80) {
             return 1;
         }
-    } else if (D_8009A0FC == -0x80) {
+    } else if (D_8009A0FC.s == -0x80) {
         return 1;
     }
     return 0;
@@ -59,7 +57,6 @@ void func_800F0B1C_ovl06(u8* obj) {
 #undef D_8009A420_as_s32
 
 extern u8* func_8002D078();
-extern s8 D_8009A0FC;
 
 void func_800F0C8C_ovl06(u8* obj) {
     u8* p;
@@ -75,7 +72,7 @@ void func_800F0C8C_ovl06(u8* obj) {
         }
     } else {
         flag = 1;
-        if (D_8009A0FC != -0x80) {
+        if (D_8009A0FC.s != -0x80) {
         clear:
             flag = 0;
         }
@@ -140,7 +137,6 @@ void func_800F0C8C_ovl06(u8* obj) {
 
 extern s32 func_8002B5B4(s32);
 extern u8* func_8002D078();
-extern s8 D_8009A0FC;
 
 void func_800F0EB4_ovl06(u8* arg0) {
     s32 flag;
@@ -158,7 +154,7 @@ void func_800F0EB4_ovl06(u8* arg0) {
         }
     } else {
         flag = 1;
-        if (D_8009A0FC != -0x80) {
+        if (D_8009A0FC.s != -0x80) {
         clear:
             flag = 0;
         }

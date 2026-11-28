@@ -1,11 +1,11 @@
 #include "types.h"
+#include "mmx5/globals.h"
 #include "mmx5/system.h"
 
-extern u8 D_800D1C00[];
 extern u8 D_80102B50_ovl04[][2];
 
 void func_800FECD8_ovl04(u8* arg0) {
-    u8* g = D_800D1C00;
+    u8* g = g_playthrough_state.u;
     s32 i;
 
     if (*(u16*)(g + 0x28) == 0) {

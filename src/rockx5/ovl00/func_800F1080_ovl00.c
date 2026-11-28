@@ -1,10 +1,10 @@
 #include "types.h"
+#include "mmx5/globals.h"
 #include "mmx5/graphics.h"
 #include "addr.h"
 
 extern s32 func_8002B5B4(s32);
 extern u32* D_80098118;
-extern u16 D_8009A206;
 extern u8 D_800FA984_ovl00[];
 
 void func_800F1080_ovl00(u8* obj) {
@@ -21,7 +21,7 @@ void func_800F1080_ovl00(u8* obj) {
     *(u8**)(obj + 0x30) = D_800FA984_ovl00;
     *(s8*)(obj + 0x14) = -1;
     obj[0x15] = 0;
-    *(u16*)(obj + 0xE) -= D_8009A206;
+    *(u16*)(obj + 0xE) -= D_8009A206.u;
     *(u16*)(obj + 0x54) = *(u16*)(obj + 0xA);
     if (((s8*)obj)[2] == 0) {
         set_animation(obj, 0);

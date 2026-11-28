@@ -16,9 +16,6 @@ void func_800F0D8C_ovl07(u8* arg0) {
 extern u8 D_80093E66;
 extern u8 D_8009A42C;
 extern u8 D_800D50DC;
-extern u16 D_800D50DE;
-extern u16 D_8009A42E;
-extern u16 D_80093E68;
 
 void func_800F0DD0_ovl07(u8* arg0) {
     if (*(s16*)(arg0 + 0xA) >= 0x1EFB) {
@@ -78,13 +75,11 @@ void func_800F0F10_ovl07(u8* p) {
     }
 }
 
-extern u8 D_800D1C00[];
-
 void func_800F0FE8_ovl07(u8* arg0) {
     u8* p;
 
     if ((u16)++ * (u16*)(arg0 + 0x9C) >= 0x5A) {
-        p = D_800D1C00;
+        p = g_playthrough_state.u;
         if ((p[0xA1] & 1) || ((s8*)p)[0x26] == 0) {
             arg0[5] = 9;
         } else {
@@ -112,12 +107,10 @@ void func_800F1078_ovl07(u8* arg0) {
     }
 }
 
-extern u8 D_800D1C00[];
-
 void func_800F10E8_ovl07(u8* arg0) {
     u8* p;
 
-    p = D_800D1C00;
+    p = g_playthrough_state.u;
     if (((s8*)p)[0x27] == 3) {
         if (((s8*)p)[0x26] == 8) {
             func_8002385C(0x38, 0xFF, 0);
